@@ -1,0 +1,1250 @@
+Analyzing new YANG file:
+ietf-inet-types.yang
+
+
+
+
+Analyzing new YANG file:
+ietf-yang-types.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-cfg-interface-group.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-cfg-interface.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-cfg-network.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-cfg-system.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-cfg-wireless.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-ap-events.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-ap-fra-sensor.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-ap-fra.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-ap-interface-stats.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-ap-report.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-ap-rf-neighbors.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-ap-rf-stats.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-ap.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-cdp.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-client-app-stat-events.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-client-dns-report-events.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-client-events.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-client-nearest-aps.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-client-report.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-client-rf-measurements.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-client-traffic-measurement.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-clients.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-config-events.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-dhcp.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-eogre.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-fabric.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-interferers.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-licensing.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-mobility.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-ndp.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-radius-events.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-radius.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-redundancy-events.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-redundancy.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-rogue-client-events.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-rogue-client.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-rogue-events.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-rogue.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-system-core-stats.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-system-dataplane-stats.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-system-general-stats.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-system-port-stats.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-system-process-stats.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-ops-tacacs.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-types-extended.yang
+
+
+
+
+Analyzing new YANG file:
+wlc-types.yang
+
+
+
+
+Analyzing new YANG file:
+wlc.yang
+module: wlc
+  +--rw wlc
+     +--rw config
+     |  +--rw network
+     |  |  +--rw http-proxy-ip?     inet:ip-address
+     |  |  +--rw http-proxy-port?   uint32
+     |  |  +--rw dns-ip?            string
+     |  |  +--rw ports* [port]
+     |  |  |  +--rw port          uint32
+     |  |  |  +--rw admin-mode?   uint32
+     |  |  |  +--rw max-speed?    wlc:wlc-port-speed
+     |  |  +--rw interfaces* [name]
+     |  |  |  +--rw name               string
+     |  |  |  +--rw vlan-id?           int32
+     |  |  |  +--rw type?              wlc-interface-type
+     |  |  |  +--rw ap-manager-flag?   uint32
+     |  |  |  +--rw l2
+     |  |  |  |  +--rw ports
+     |  |  |  |  |  +--rw primary?   uint32
+     |  |  |  |  |  +--rw backup?    uint32
+     |  |  |  |  +--rw l2-mcast-state?    wlc-l2-mcast-state
+     |  |  |  |  +--rw quarantine-vlan?   int32
+     |  |  |  +--rw l3
+     |  |  |  |  +--rw address
+     |  |  |  |  |  +--rw ip?        inet:ipv4-address
+     |  |  |  |  |  +--rw netmask?   inet:ipv4-address
+     |  |  |  |  |  +--rw gateway?   inet:ipv4-address
+     |  |  |  |  +--rw dhcp
+     |  |  |  |  |  +--rw protocol-state?   wlc-interface-protocol-state
+     |  |  |  |  |  +--rw mode?             wlc-interface-dhcp-mode
+     |  |  |  |  |  +--rw servers
+     |  |  |  |  |  |  +--rw primary?     inet:ipv4-address
+     |  |  |  |  |  |  +--rw secondary?   inet:ipv4-address
+     |  |  |  |  |  +--rw opt82
+     |  |  |  |  |     +--rw state?                       wlc-opt82-state
+     |  |  |  |  |     +--rw bridged-mode-insert-state?   wlc-bridged-mode-insert-state
+     |  |  |  |  |     +--rw link-select
+     |  |  |  |  |     |  +--rw state?       wlc-ls-state
+     |  |  |  |  |     |  +--rw relay-src?   string
+     |  |  |  |  |     +--rw vpn-select
+     |  |  |  |  |        +--rw state?      wlc-vs-state
+     |  |  |  |  |        +--rw option?     wlc-vs-option
+     |  |  |  |  |        +--rw vpn-id?     string
+     |  |  |  |  |        +--rw vrf-name?   string
+     |  |  |  |  +--rw nat
+     |  |  |  |  |  +--rw state?     wlc-nat-state
+     |  |  |  |  |  +--rw address?   inet:ipv4-address
+     |  |  |  |  +--rw dns-server?   string
+     |  |  |  |  +--rw acl-name?     string
+     |  |  |  +--rw nas-id?            string
+     |  |  |  +--rw mDNS-profile?      string
+     |  |  |  +--rw ipv6
+     |  |  |     +--rw address?                 string
+     |  |  |     +--rw gateway?                 string
+     |  |  |     +--rw prefix-length?           uint32
+     |  |  |     +--rw address-state?           wlc-sim-ipv6-addr-state
+     |  |  |     +--rw link-local-addr-state?   wlc-sim-ipv6-addr-state
+     |  |  +--rw interface-group* [name]
+     |  |     +--rw name                   string
+     |  |     +--rw total-interfaces?      uint32
+     |  |     +--rw description?           string
+     |  |     +--rw failure-detect-mode?   fail-detect-mode
+     |  |     +--rw mDNS-profile?          string
+     |  |     +--rw quarantine?            uint32
+     |  |     +--rw interface* [interface]
+     |  |        +--rw interface           string
+     |  |        +--rw dirty-flag?         boolean
+     |  |        +--rw dirty-time-stamp?   uint32
+     |  +--rw system
+     |  |  +--rw system-name?              string
+     |  |  +--rw system-uptime?            uint32
+     |  |  +--rw mgmt-ip-address?          string
+     |  |  +--rw mgmt-ipv6-address?        string
+     |  |  +--rw redundancy-status?        boolean
+     |  |  +--rw redundancy-state?         string
+     |  |  +--rw wlc-primary-image
+     |  |  |  +--rw image-version?   string
+     |  |  |  +--rw active-flag?     boolean
+     |  |  +--rw wlc-backup-image
+     |  |  |  +--rw image-version?   string
+     |  |  |  +--rw active-flag?     boolean
+     |  |  +--rw default-boot-partition?   string
+     |  |  +--rw wlc-country?              string
+     |  |  +--rw wlc-reg-domain-indoor?    string
+     |  |  +--rw wlc-reg-domain-outdoor?   string
+     |  |  +--rw mobility-domain?          string
+     |  |  +--rw serial-number?            string
+     |  |  +--rw system-init-complete?     boolean
+     |  |  +--rw lag-status?               boolean
+     |  |  +--rw next-preferred-master?    string
+     |  |  +--rw tftp-configured?          boolean
+     |  |  +--rw cco-configured?           boolean
+     |  |  +--rw wlc-fabric-support?       boolean
+     |  |  +--rw timezone
+     |  |     +--rw delta-hours?   int32
+     |  |     +--rw delta-mins?    int32
+     |  |     +--rw location?      wlc:timezone-location
+     |  +--rw wireless
+     |     +--rw general
+     |     |  +--rw fra-enabled?   uint8
+     |     +--rw wlan* [wlan-id]
+     |     |  +--rw wlan-id                 uint32
+     |     |  +--rw ssid?                   string
+     |     |  +--rw profile-name?           string
+     |     |  +--rw interface?              string
+     |     |  +--rw interface-group?        string
+     |     |  +--rw auth-type?              string
+     |     |  +--rw atf-policy?             uint32
+     |     |  +--rw opendns-profile-name?   string
+     |     |  +--rw opendns-mode?           opendns-mode
+     |     +--rw apgroups* [name]
+     |     |  +--rw name          string
+     |     |  +--rw rf-profile
+     |     |  |  +--rw slot24?   string
+     |     |  |  +--rw slot5?    string
+     |     |  +--rw wlans* [wlan-id]
+     |     |     +--rw wlan-id            uint32
+     |     |     +--rw opendns-profile?   string
+     |     +--rw flexgroups* [name]
+     |     |  +--rw name            string
+     |     |  +--rw wlanOverride* [wlan]
+     |     |     +--rw wlan       uint32
+     |     |     +--rw mapping
+     |     |        +--rw webauthAcl?          string
+     |     |        +--rw local-split-acl?     string
+     |     |        +--rw vlan?                uint32
+     |     |        +--rw avc?                 string
+     |     |        +--rw central-dhcp?        boolean
+     |     |        +--rw dhcp-nat-pat?        boolean
+     |     |        +--rw dhcp-override-dns?   boolean
+     |     +--rw apModel* [model]
+     |     |  +--rw model    string
+     |     |  +--rw radio* [radioType]
+     |     |     +--rw radioType         uint32
+     |     |     +--rw protocol?         wlc:radio-protocol
+     |     |     +--rw spatial-stream?   uint32
+     |     |     +--rw max-data-rate?    uint32
+     |     +--rw ap* [mac]
+     |     |  +--rw mac     yang:mac-address
+     |     |  +--rw mode?   wlc:ap-mode
+     |     +--rw radio* [radioType]
+     |     |  +--rw radioType       uint32
+     |     |  +--rw beam-forming?   uint32
+     |     +--rw rogue-ignore-list* [mac]
+     |        +--rw mac    yang:mac-address
+     +--ro ops
+        +--ro network
+        |  +--ro cdp* [port]
+        |  |  +--ro port           string
+        |  |  +--ro device?        string
+        |  |  +--ro expire-time?   uint64
+        |  +--ro dhcp* [server-ip]
+        |  |  +--ro server-ip    string
+        |  |  +--ro stats
+        |  |     +--ro last-tx-time?                   uint32
+        |  |     +--ro last-rx-time?                   uint32
+        |  |     +--ro min-discover-offer-resp-time?   uint64
+        |  |     +--ro max-discover-offer-resp-time?   uint64
+        |  |     +--ro avg-discover-offer-resp-time?   uint64
+        |  |     +--ro min-request-ack-resp-time?      uint64
+        |  |     +--ro max-request-ack-resp-time?      uint64
+        |  |     +--ro avg-request-ack-resp-time?      uint64
+        |  |     +--ro min-discover-ack-resp-time?     uint64
+        |  |     +--ro max-discover-ack-resp-time?     uint64
+        |  |     +--ro avg-discover-ack-resp-time?     uint64
+        |  |     +--ro counters
+        |  |        +--ro tx-discovers?   uint32
+        |  |        +--ro rx-discovers?   uint32
+        |  |        +--ro requests?       uint32
+        |  |        +--ro informs?        uint32
+        |  |        +--ro declines?       uint32
+        |  |        +--ro releases?       uint32
+        |  |        +--ro replies?        uint32
+        |  |        +--ro offers?         uint32
+        |  |        +--ro acks?           uint32
+        |  |        +--ro nacks?          uint32
+        |  |        +--ro tx-failures?    uint32
+        |  +--ro ndp
+        |  |  +--ro ndp-rcv-rs?          uint32
+        |  |  +--ro ndp-rcv-ra?          uint32
+        |  |  +--ro ndp-rcv-ns?          uint32
+        |  |  +--ro ndp-rcv-na?          uint32
+        |  |  +--ro ndp-rcv-redirect?    uint32
+        |  |  +--ro ndp-brgd-rs?         uint32
+        |  |  +--ro ndp-brgd-ra?         uint32
+        |  |  +--ro ndp-brgd-ns?         uint32
+        |  |  +--ro ndp-brgd-na?         uint32
+        |  |  +--ro ndp-brgd-redirect?   uint32
+        |  +--ro radius
+        |  |  +--ro auth-servers* [ip-address]
+        |  |  |  +--ro ip-address             string
+        |  |  |  +--ro round-trip-time?       uint32
+        |  |  |  +--ro round-trip-time-avg?   uint32
+        |  |  |  +--ro round-trip-time-exp?   uint32
+        |  |  |  +--ro counters
+        |  |  |  |  +--ro pending-reqs?                    uint32
+        |  |  |  |  +--ro first-requests?                  uint32
+        |  |  |  |  +--ro retry-requests?                  uint32
+        |  |  |  |  +--ro accept-responses?                uint32
+        |  |  |  |  +--ro reject-responses?                uint32
+        |  |  |  |  +--ro challenge-responses?             uint32
+        |  |  |  |  +--ro malformed-msgs?                  uint32
+        |  |  |  |  +--ro bad-authenticator-msgs?          uint32
+        |  |  |  |  +--ro timeout-reqs?                    uint32
+        |  |  |  |  +--ro unknown-msgs?                    uint32
+        |  |  |  |  +--ro other-drops?                     uint32
+        |  |  |  |  +--ro consecutive-timeout-events?      uint32
+        |  |  |  |  +--ro consecutive-response-failures?   uint32
+        |  |  |  +--ro queues* [id]
+        |  |  |     +--ro id                            uint8
+        |  |  |     +--ro outstanding-requests?         uint32
+        |  |  |     +--ro max-requests-limit-reached?   uint32
+        |  |  +--ro account-servers* [ip-address]
+        |  |     +--ro ip-address             string
+        |  |     +--ro round-trip-time?       uint32
+        |  |     +--ro round-trip-time-avg?   uint32
+        |  |     +--ro round-trip-time-exp?   uint32
+        |  |     +--ro counters
+        |  |     |  +--ro first-requests?           uint32
+        |  |     |  +--ro retry-requests?           uint32
+        |  |     |  +--ro acct-responses?           uint32
+        |  |     |  +--ro malformed-msgs?           uint32
+        |  |     |  +--ro bad-authenticator-msgs?   uint32
+        |  |     |  +--ro timeout-reqs?             uint32
+        |  |     |  +--ro unknown-msgs?             uint32
+        |  |     |  +--ro other-drops?              uint32
+        |  |     |  +--ro pending-reqs?             uint32
+        |  |     +--ro queues* [id]
+        |  |        +--ro id                            uint8
+        |  |        +--ro outstanding-requests?         uint32
+        |  |        +--ro max-requests-limit-reached?   uint32
+        |  +--ro radius-events* [ip-address]
+        |  |  +--ro ip-address    string
+        |  |  +--ro events* [index]
+        |  |     +--ro index         uint8
+        |  |     +--ro event-type?   wlc-radius-event-type
+        |  |     +--ro timestamp?    uint64
+        |  +--ro tacacs
+        |     +--ro auth-servers* [ip-address]
+        |     |  +--ro ip-address    string
+        |     |  +--ro statistics
+        |     |     +--ro round-trip-time?              uint32
+        |     |     +--ro round-trip-time-avg?          uint32
+        |     |     +--ro round-trip-time-exp?          uint32
+        |     |     +--ro first-requests?               uint32
+        |     |     +--ro retry-requests?               uint32
+        |     |     +--ro accept-responses?             uint32
+        |     |     +--ro reject-responses?             uint32
+        |     |     +--ro error-responses?              uint32
+        |     |     +--ro restart-responses?            uint32
+        |     |     +--ro follow-responses?             uint32
+        |     |     +--ro get-data-responses?           uint32
+        |     |     +--ro encrypt-nosecret-responses?   uint32
+        |     |     +--ro challenge-responses?          uint32
+        |     |     +--ro malformed-msgs?               uint32
+        |     |     +--ro bad-authenticator-msgs?       uint32
+        |     |     +--ro timeout-requests?             uint32
+        |     |     +--ro unknown-msgs?                 uint32
+        |     |     +--ro other-drops?                  uint32
+        |     +--ro athr-servers* [ip-address]
+        |     |  +--ro ip-address    string
+        |     |  +--ro statistics
+        |     |     +--ro round-trip-time?                uint32
+        |     |     +--ro round-trip-time-avg?            uint32
+        |     |     +--ro round-trip-time-exp?            uint32
+        |     |     +--ro first-requests?                 uint32
+        |     |     +--ro retry-requests?                 uint32
+        |     |     +--ro authorization-responses?        uint32
+        |     |     +--ro authorization-pass-responses?   uint32
+        |     |     +--ro authorization-fail-responses?   uint32
+        |     |     +--ro challenge-responses?            uint32
+        |     |     +--ro malformed-msgs?                 uint32
+        |     |     +--ro bad-authenticator-msgs?         uint32
+        |     |     +--ro timeout-requests?               uint32
+        |     |     +--ro unknown-msgs?                   uint32
+        |     |     +--ro other-drops?                    uint32
+        |     +--ro acct-servers* [ip-address]
+        |        +--ro ip-address    string
+        |        +--ro statistics
+        |           +--ro round-trip-time?          uint32
+        |           +--ro round-trip-time-avg?      uint32
+        |           +--ro round-trip-time-exp?      uint32
+        |           +--ro first-requests?           uint32
+        |           +--ro retry-requests?           uint32
+        |           +--ro acct-responses?           uint32
+        |           +--ro acct-pass-responses?      uint32
+        |           +--ro acct-fail-responses?      uint32
+        |           +--ro malformed-msgs?           uint32
+        |           +--ro bad-authenticator-msgs?   uint32
+        |           +--ro timeout-requests?         uint32
+        |           +--ro unknown-msgs?             uint32
+        |           +--ro other-drops?              uint32
+        +--ro system
+        |  +--ro eogre
+        |  |  +--ro eogre-gateway* [name]
+        |  |     +--ro name             string
+        |  |     +--ro ip-address?      string
+        |  |     +--ro status?          string
+        |  |     +--ro total-clients?   uint32
+        |  |     +--ro statistics
+        |  |        +--ro recieved-bytes?     uint32
+        |  |        +--ro sent-bytes?         uint32
+        |  |        +--ro recieved-packets?   uint32
+        |  |        +--ro sent-packets?       uint32
+        |  |        +--ro keepalive-loss?     uint32
+        |  |        +--ro up-time?            uint64
+        |  +--ro licensing
+        |  |  +--ro max-count?              uint32
+        |  |  +--ro inuse-count?            uint32
+        |  |  +--ro smart-license-status?   wlc-smart-license
+        |  |  +--ro licenses* [name]
+        |  |     +--ro name                      string
+        |  |     +--ro type?                     wlc-license-type
+        |  |     +--ro eula-status?              wlc-eula-status
+        |  |     +--ro evaluation-period-left?   uint64
+        |  |     +--ro state?                    wlc-license-state
+        |  |     +--ro count?                    uint32
+        |  |     +--ro priority?                 wlc-license-priority
+        |  +--ro redundancy
+        |  |  +--ro general
+        |  |  |  +--ro mode?                     string
+        |  |  |  +--ro unit?                     string
+        |  |  |  +--ro state?                    string
+        |  |  |  +--ro last-switchover-time?     uint64
+        |  |  |  +--ro last-switchover-reason?   string
+        |  |  |  +--ro peer-state?               string
+        |  |  |  +--ro peer-serial-number?       string
+        |  |  |  +--ro peer-fan-status?          string
+        |  |  |  +--ro peer-power-supply* [index]
+        |  |  |     +--ro index     uint32
+        |  |  |     +--ro status?   string
+        |  |  +--ro peer
+        |  |  |  +--ro latency?     uint32
+        |  |  |  +--ro keepalive
+        |  |  |     +--ro requests?             uint32
+        |  |  |     +--ro responses?            uint32
+        |  |  |     +--ro failed-requests?      uint32
+        |  |  |     +--ro failed-responses?     uint32
+        |  |  |     +--ro consecutive-losses?   uint32
+        |  |  +--ro gateway
+        |  |     +--ro latency?     uint32
+        |  |     +--ro keepalive
+        |  |        +--ro requests?                      uint32
+        |  |        +--ro responses?                     uint32
+        |  |        +--ro consecutive-response-losses?   uint32
+        |  +--ro redundancy-events* [wlc-mac]
+        |  |  +--ro wlc-mac    yang:mac-address
+        |  |  +--ro events* [index]
+        |  |     +--ro index           uint8
+        |  |     +--ro event-name?     redundancy-event-name
+        |  |     +--ro timestamp?      uint64
+        |  |     +--ro event-reason?   redundancy-event-reason
+        |  |     +--ro unit-type?      redundancy-unit
+        |  |     +--ro role?           redundancy-role
+        |  +--ro system-core-stats
+        |  |  +--ro memory
+        |  |  |  +--ro total?   uint32
+        |  |  |  +--ro free?    uint32
+        |  |  |  +--ro mbuf
+        |  |  |     +--ro in-use?   uint32
+        |  |  |     +--ro free?     uint32
+        |  |  +--ro timers
+        |  |  |  +--ro available?   uint32
+        |  |  |  +--ro free?        uint32
+        |  |  +--ro cpu
+        |  |  |  +--ro usage?   uint32
+        |  |  |  +--ro core* [id]
+        |  |  |     +--ro id       uint32
+        |  |  |     +--ro usage?   uint32
+        |  |  +--ro power-supply* [index]
+        |  |  |  +--ro index     uint32
+        |  |  |  +--ro status?   string
+        |  |  +--ro queue* [name]
+        |  |  |  +--ro name        string
+        |  |  |  +--ro size?       uint32
+        |  |  |  +--ro in-use?     uint32
+        |  |  |  +--ro peak?       uint32
+        |  |  |  +--ro breached?   uint16
+        |  |  +--ro task* [name]
+        |  |  |  +--ro name          string
+        |  |  |  +--ro cpu-usage?    uint32
+        |  |  |  +--ro user-cpu?     uint8
+        |  |  |  +--ro system-cpu?   uint8
+        |  |  |  +--ro peak?         uint8
+        |  |  +--ro forwarding
+        |  |     +--ro buffers
+        |  |        +--ro packet-pool?             uint32
+        |  |        +--ro packet-pool-threshold?   uint32
+        |  |        +--ro wqe-pool?                uint32
+        |  |        +--ro wqe-pool-threshold?      uint32
+        |  +--ro system-general-stats
+        |  |  +--ro last-reset-reason?             string
+        |  |  +--ro joined-aps-count?              uint16
+        |  |  +--ro associated-clients-count?      uint32
+        |  |  +--ro active-fan-status?             string
+        |  |  +--ro joined-me-capable-aps-count?   uint16
+        |  |  +--ro max-aps-count?                 uint16
+        |  |  +--ro temperatures
+        |  |  |  +--ro internal-temperature?   int32
+        |  |  |  +--ro mgig-temperature?       int32
+        |  |  |  +--ro external-temperature?   int32
+        |  |  +--ro image
+        |  |     +--ro tftp-failed?    boolean
+        |  |     +--ro cco-invalid?    boolean
+        |  |     +--ro max-exceeded?   boolean
+        |  |     +--ro eula-failure?   boolean
+        |  |     +--ro k9-failure?     boolean
+        |  +--ro system-process-stats
+        |  |  +--ro process-stats* [name]
+        |  |     +--ro name                 string
+        |  |     +--ro memory-rss?          uint32
+        |  |     +--ro process-cpu-usage
+        |  |        +--ro average-cpu-usage?   percentage
+        |  |        +--ro peak-cpu-usage?      percentage
+        |  +--ro system-dataplane-stats
+        |  |  +--ro timestamp?        uint64
+        |  |  +--ro buffer-zones* [zone]
+        |  |  |  +--ro zone                 wlc:buffer-zone
+        |  |  |  +--ro num-times-entered?   uint32
+        |  |  +--ro buffer-history* [index]
+        |  |  |  +--ro index            uint8
+        |  |  |  +--ro zone?            wlc:buffer-zone
+        |  |  |  +--ro time-in-zone?    uint64
+        |  |  |  +--ro system-uptime?   uint64
+        |  |  +--ro dp-cp-queues* [queue]
+        |  |  |  +--ro queue               wlc:dp-cp-queue
+        |  |  |  +--ro tx?                 uint64
+        |  |  |  +--ro rate-limit-drops?   uint64
+        |  |  |  +--ro pkt-limit-drops?    uint64
+        |  |  +--ro cp-encaps* [type]
+        |  |     +--ro type     wlc:cp-encap
+        |  |     +--ro drops?   uint64
+        |  +--ro system-port-stats
+        |  |  +--ro port-stats* [port]
+        |  |     +--ro port           uint32
+        |  |     +--ro oper-status?   uint32
+        |  |     +--ro speed?         wlc:wlc-port-speed
+        |  |     +--ro reset-count?   uint32
+        |  |     +--ro tx-packets?    uint32
+        |  |     +--ro rx-packets?    uint32
+        |  |     +--ro tx-bytes?      uint32
+        |  |     +--ro rx-bytes?      uint32
+        |  |     +--ro tx-errors?     uint32
+        |  |     +--ro rx-errors?     uint32
+        |  |     +--ro collisions?    uint32
+        |  +--ro config-events* [wlc-mac]
+        |     +--ro wlc-mac    yang:mac-address
+        |     +--ro events* [index]
+        |        +--ro index                uint8
+        |        +--ro cli?                 string
+        |        +--ro timestamp?           uint64
+        |        +--ro login-type?          wlc-config-event-login-type
+        |        +--ro user-name?           string
+        |        +--ro remote-ip-address?   string
+        +--ro wireless
+           +--ro aps* [mac]
+           |  +--ro mac                        yang:mac-address
+           |  +--ro ethernet-mac?              yang:mac-address
+           |  +--ro name?                      string
+           |  +--ro ap-group?                  string
+           |  +--ro flex-group?                string
+           |  +--ro mode?                      wlc:ap-mode
+           |  +--ro sub-mode?                  ap-sub-mode
+           |  +--ro op-state?                  wlc:ap-op-state
+           |  +--ro admin-state?               wlc:ap-admin-state
+           |  +--ro connected-time?            uint32
+           |  +--ro bootup-time?               uint32
+           |  +--ro power-mode?                ap-power-mode
+           |  +--ro power-type?                ap-power-type
+           |  +--ro flexconnect-vlan-status?   boolean
+           |  +--ro image-version?             wlc:version
+           |  +--ro inventory
+           |  |  +--ro serial-number?   string
+           |  |  +--ro model?           string
+           |  |  +--ro location?        string
+           |  |  +--ro module
+           |  |     +--ro connected?      boolean
+           |  |     +--ro enabled?        boolean
+           |  |     +--ro description?    string
+           |  |     +--ro capabilites?    string
+           |  |     +--ro module-type?    string
+           |  |     +--ro module-state?   string
+           |  +--ro port-lag
+           |  |  +--ro support?   boolean
+           |  |  +--ro status?    boolean
+           |  +--ro network
+           |  |  +--ro ip?                inet:ip-address
+           |  |  +--ro ipv6config
+           |  |  |  +--ro ipv6static?      boolean
+           |  |  |  +--ro configuration?   uint8
+           |  |  |  +--ro prefix?          uint32
+           |  |  +--ro fallbackaddress
+           |  |  |  +--ro ipv4?   inet:ipv4-address
+           |  |  |  +--ro ipv6?   inet:ipv6-address
+           |  |  +--ro cdp
+           |  |     +--ro device?   string
+           |  |     +--ro port?     string
+           |  +--ro capwap
+           |  |  +--ro preferred-discovery-mode?   preferred-joining-mode
+           |  |  +--ro preferred-wlc-name*         string
+           |  |  +--ro preferred-wlc-ipv4*         inet:ipv4-address
+           |  |  +--ro preferred-wlc-ipv6*         inet:ip-address
+           |  |  +--ro discovery
+           |  |     +--ro method?            discovery-method
+           |  |     +--ro discovered-wlcs*   inet:ip-address
+           |  +--ro fabric
+           |  |  +--ro status?    boolean
+           |  |  +--ro rloc?      inet:ipv4-address
+           |  |  +--ro l3-vnid?   uint32
+           |  |  +--ro l2-vnid?   uint32
+           |  +--ro system
+           |  |  +--ro cpu-usage?      uint8
+           |  |  +--ro memory-usage?   uint8
+           |  +--ro resets
+           |  |  +--ro failure-type?   ap-failure-types
+           |  |  +--ro reason?         uint8
+           |  |  +--ro counters
+           |  |     +--ro crashes?       uint16
+           |  |     +--ro soft-resets?   uint16
+           |  +--ro flexconnect
+           |  |  +--ro latency-flag?   flexconnect-latency-flag
+           |  |  +--ro latency?        uint32
+           |  +--ro sensor-ap-connectivity
+           |  |  +--ro status?       uint8
+           |  |  +--ro error-code?   uint16
+           |  +--ro capability
+           |  |  +--ro icap?   uint8
+           |  +--ro radio* [slot]
+           |     +--ro slot                                 uint8
+           |     +--ro frequency?                           ap-radio-types
+           |     +--ro radio-sub-type?                      ap-radio-sub-types
+           |     +--ro protocol?                            wlc:radio-protocol
+           |     +--ro op-state?                            wlc:ap-op-state
+           |     +--ro admin-state?                         wlc:ap-admin-state
+           |     +--ro radio-mode?                          ap-radio-mode
+           |     +--ro legacy-beam-forming-status?          uint8
+           |     +--ro legacy-beam-forming-global-status?   uint8
+           |     +--ro country-code?                        string
+           |     +--ro client-count?                        uint16
+           |     +--ro regulatory-domain?                   regulatory-domain-code
+           |     +--ro radio-reset?                         uint32
+           |     +--ro current-channel
+           |     |  +--ro channel?   uint16
+           |     |  +--ro width?     channel-width
+           |     +--ro channel-changes
+           |     |  +--ro change-count?    uint32
+           |     |  +--ro change-reason?   wlc:wlc-ap-channel-change-reason
+           |     +--ro wlan-stats* [wlan-id]
+           |        +--ro wlan-id         uint32
+           |        +--ro client-count?   uint16
+           +--ro ap-events* [mac]
+           |  +--ro mac       yang:mac-address
+           |  +--ro events* [index]
+           |     +--ro index                   uint8
+           |     +--ro event-type?             wlc-ap-events-rrm-event-type
+           |     +--ro timestamp?              uint64
+           |     +--ro name?                   string
+           |     +--ro reason-code?            wlc-ap-events-reason
+           |     +--ro last-failure-reason?    wlc-ap-events-last-failure-reason
+           |     +--ro channel-reason-code?    wlc:wlc-ap-channel-change-reason
+           |     +--ro tx-power-reason-code?   wlc-ap-events-rrm-txpower-change-reason
+           |     +--ro slot-id?                uint8
+           |     +--ro new-value?              uint8
+           |     +--ro radio
+           |     |  +--ro reset-cause?   wlc-ap-radio-reset-cause
+           |     |  +--ro op-state?      wlc:ap-op-state
+           |     +--ro client-list* [index]
+           |        +--ro index    uint8
+           |        +--ro mac?     yang:mac-address
+           |        +--ro rssi?    int8
+           |        +--ro snr?     int8
+           +--ro ap-fra
+           |  +--ro aps* [mac]
+           |     +--ro mac      yang:mac-address
+           |     +--ro radio* [slot]
+           |        +--ro slot                   uint8
+           |        +--ro metric?                uint8
+           |        +--ro redundancy-status?     uint8
+           |        +--ro contributing-status?   uint8
+           |        +--ro sensor-reachability?   uint8
+           +--ro ap-fra-sensor* [index]
+           |  +--ro index             uint8
+           |  +--ro timestamp?        uint64
+           |  +--ro ap-fra-sensors* [mac]
+           |     +--ro mac                    yang:mac-address
+           |     +--ro sensor-reachability?   uint8
+           |     +--ro neighbor* [mac]
+           |        +--ro mac               yang:mac-address
+           |        +--ro slot-id?          uint8
+           |        +--ro sensor-covered?   uint8
+           |        +--ro rssi?             int8
+           +--ro ap-interface-stats
+           |  +--ro aps* [mac]
+           |     +--ro mac           yang:mac-address
+           |     +--ro interfaces* [name]
+           |        +--ro name             string
+           |        +--ro duplex-status?   uint8
+           |        +--ro speed?           uint8
+           |        +--ro statistics
+           |           +--ro tx-unicast-pkts?      uint32
+           |           +--ro rx-unicast-pkts?      uint32
+           |           +--ro tx-nunicast-pkts?     uint32
+           |           +--ro rx-nunicast-pkts?     uint32
+           |           +--ro tx-bytes?             uint32
+           |           +--ro rx-bytes?             uint32
+           |           +--ro input-crc?            uint32
+           |           +--ro input-aborts?         uint32
+           |           +--ro input-errors?         uint32
+           |           +--ro input-overrun?        uint32
+           |           +--ro input-drops?          uint32
+           |           +--ro unknown-protocol?     uint32
+           |           +--ro reset-count?          uint32
+           |           +--ro output-collision?     uint32
+           |           +--ro output-no-buffer?     uint32
+           |           +--ro output-underrun?      uint32
+           |           +--ro output-errors?        uint32
+           |           +--ro output-total-drops?   uint32
+           +--ro ap-report
+           |  +--ro aps* [mac]
+           |     +--ro mac      yang:mac-address
+           |     +--ro radio* [slot]
+           |        +--ro slot              uint8
+           |        +--ro priority-queue* [index]
+           |           +--ro index       uint8
+           |           +--ro counters
+           |              +--ro discards?   uint32
+           |              +--ro sends?      uint32
+           |              +--ro failures?   uint32
+           +--ro ap-rf-stats
+           |  +--ro aps* [mac]
+           |     +--ro mac      yang:mac-address
+           |     +--ro radio* [slot]
+           |        +--ro slot               uint8
+           |        +--ro statistics
+           |        |  +--ro traffic
+           |        |  |  +--ro timestamp?   uint32
+           |        |  |  +--ro data-rate?   uint64
+           |        |  |  +--ro tx-bytes?    yang:counter64
+           |        |  |  +--ro rx-bytes?    yang:counter64
+           |        |  +--ro mac-counters
+           |        |     +--ro timestamp?                      uint32
+           |        |     +--ro rx-mgmt-frame-count?            yang:counter32
+           |        |     +--ro rx-ctrl-frame-count?            yang:counter32
+           |        |     +--ro rx-data-frame-count?            yang:counter32
+           |        |     +--ro rx-multicast-frame-count?       yang:counter32
+           |        |     +--ro tx-frame-count?                 yang:counter32
+           |        |     +--ro tx-mgmt-frame-count?            yang:counter32
+           |        |     +--ro tx-ctrl-frame-count?            yang:counter32
+           |        |     +--ro tx-data-frame-count?            yang:counter32
+           |        |     +--ro tx-multicast-frame-count?       yang:counter32
+           |        |     +--ro retries?                        yang:counter32
+           |        |     +--ro tx-multiple-retry-count?        yang:counter32
+           |        |     +--ro rx-error-frame-count?           yang:counter32
+           |        |     +--ro rx-fcs-error-frame-count?       yang:counter32
+           |        |     +--ro rx-mic-error-frame-count?       yang:counter32
+           |        |     +--ro rx-decrypt-error-frame-count?   yang:counter32
+           |        |     +--ro failures?                       yang:counter32
+           |        |     +--ro tx-frames-dropped-count?        yang:counter32
+           |        |     +--ro tx-ack-failure-count?           yang:counter32
+           |        |     +--ro rts-success-count?              yang:counter32
+           |        |     +--ro rts-failure-count?              yang:counter32
+           |        +--ro performance
+           |        |  +--ro traffic?        uint32
+           |        |  +--ro interference?   uint32
+           |        |  +--ro utilization?    uint32
+           |        +--ro tx-power
+           |        |  +--ro power?           int16
+           |        |  +--ro change-reason?   uint32
+           |        +--ro channel-quality* [channel]
+           |           +--ro channel            uint8
+           |           +--ro noise?             int8
+           |           +--ro air-quality?       uint8
+           |           +--ro min-air-quality?   uint8
+           +--ro ap-rf-neighbors
+           |  +--ro aps* [mac]
+           |     +--ro mac      yang:mac-address
+           |     +--ro radio* [slot]
+           |        +--ro slot            uint8
+           |        +--ro rf-neighbors* [mac]
+           |           +--ro mac              yang:mac-address
+           |           +--ro channel?         uint8
+           |           +--ro channel-width?   uint8
+           |           +--ro tx-power?        uint8
+           |           +--ro avg-rssi?        int8
+           +--ro clients* [mac]
+           |  +--ro mac                       yang:mac-address
+           |  +--ro state?                    wlc-client-op-state
+           |  +--ro assoc-state?              wlc-client-assoc-state
+           |  +--ro connected-time?           uint32
+           |  +--ro username?                 string
+           |  +--ro ccx?                      uint8
+           |  +--ro central-switching-mode?   boolean
+           |  +--ro central-dhcp-mode?        boolean
+           |  +--ro dns-override?             boolean
+           |  +--ro split-tunnel?             boolean
+           |  +--ro nat?                      boolean
+           |  +--ro eogre?                    boolean
+           |  +--ro auth-mode?                boolean
+           |  +--ro pmipv6-support?           boolean
+           |  +--ro sgt-tag?                  uint32
+           |  +--ro protocol?                 wlc:client-protocol
+           |  +--ro fabric
+           |  |  +--ro mode?   boolean
+           |  |  +--ro vnid?   uint32
+           |  |  +--ro rloc?   inet:ipv4-address
+           |  +--ro device
+           |  |  +--ro hostname?   string
+           |  |  +--ro type?       string
+           |  |  +--ro os?         string
+           |  |  +--ro version?    string
+           |  +--ro network
+           |  |  +--ro ipv4?          inet:ipv4-address
+           |  |  +--ro ipv6*          inet:ipv6-address
+           |  |  +--ro vlan?          uint32
+           |  |  +--ro gateway?       inet:ipv4-address
+           |  |  +--ro dns-servers*   inet:ipv4-address
+           |  +--ro wireless
+           |  |  +--ro wlan-id?                      uint32
+           |  |  +--ro ap-mac?                       yang:mac-address
+           |  |  +--ro radio-slot?                   uint8
+           |  |  +--ro frequency?                    uint8
+           |  |  +--ro dot11-association-failures?   uint32
+           |  |  +--ro max-data-rate?                uint32
+           |  |  +--ro opendns-profile?              string
+           |  +--ro mobility
+           |  |  +--ro role?   wlc:client-mobility-role
+           |  +--ro policies
+           |     +--ro atf-policy?   string
+           |     +--ro avc-policy?   string
+           |     +--ro security
+           |     |  +--ro policy?           uint16
+           |     |  +--ro cipher?           security-cipher
+           |     |  +--ro key-management?   security-key-management
+           |     |  +--ro eap-type?         security-eap-type
+           |     |  +--ro aaa-role?         string
+           |     +--ro acl
+           |     |  +--ro ipv4?   string
+           |     |  +--ro ipv6?   string
+           |     +--ro qos
+           |        +--ro level?   wlc-client-qos-policies
+           |        +--ro wmm?     uint8
+           |        +--ro uapsd?   uint8
+           |        +--ro mdns?    string
+           +--ro client-app-stat-events
+           |  +--ro clients* [mac]
+           |     +--ro mac       yang:mac-address
+           |     +--ro events* [index]
+           |        +--ro index        uint8
+           |        +--ro timestamp?   uint64
+           |        +--ro app-id?      uint16
+           |        +--ro app-name?    string
+           |        +--ro traffic
+           |           +--ro tx-bytes?   uint64
+           |           +--ro rx-bytes?   uint64
+           +--ro client-dns-report* [mac]
+           |  +--ro mac       yang:mac-address
+           |  +--ro events* [index]
+           |     +--ro index             uint16
+           |     +--ro timestamp?        uint64
+           |     +--ro base-radio-mac?   yang:mac-address
+           |     +--ro server-ip* [index]
+           |     |  +--ro index            uint8
+           |     |  +--ro dns-server-ip?   inet:ipv4-address
+           |     +--ro dns-requests?     uint32
+           |     +--ro dns-responses?    uint32
+           +--ro client-events* [mac]
+           |  +--ro mac       yang:mac-address
+           |  +--ro events* [index]
+           |     +--ro index             uint16
+           |     +--ro event-type?       wlc-client-event-type
+           |     +--ro timestamp?        uint64
+           |     +--ro result-type?      wlc-client-event-result-types
+           |     +--ro reason-type?      wlc-types-ext:wlc-client-event-reason-types
+           |     +--ro slot-id?          uint8
+           |     +--ro ap-mac?           yang:mac-address
+           |     +--ro ssid?             string
+           |     +--ro ipv4?             inet:ipv4-address
+           |     +--ro ipv6?             inet:ipv6-address
+           |     +--ro vlan?             uint32
+           |     +--ro dhcp-server* [index]
+           |     |  +--ro index        uint8
+           |     |  +--ro server-ip?   string
+           |     +--ro aaa-server-ip?    string
+           |     +--ro username?         string
+           |     +--ro role?             wlc:client-mobility-role
+           |     +--ro sub-reason?       wlc-types-ext:wlc-client-event-sub-reason-types
+           |     +--ro rssi?             int8
+           |     +--ro snr?              int8
+           |     +--ro event-duration?   uint64
+           +--ro client-report
+           |  +--ro clients* [mac]
+           |     +--ro mac                        yang:mac-address
+           |     +--ro avg-rate?                  uint32
+           |     +--ro sequence-number?           uint32
+           |     +--ro decrypt-failures?          uint32
+           |     +--ro eap-failures?              uint32
+           |     +--ro block-ack-miss?            uint32
+           |     +--ro tx-queue-full?             uint32
+           |     +--ro is-sm-power-save-static?   uint8
+           +--ro client-rf-measurements
+           |  +--ro clients* [mac]
+           |     +--ro mac                            yang:mac-address
+           |     +--ro snr?                           int8
+           |     +--ro rssi?                          int8
+           |     +--ro spatial-stream?                uint8
+           |     +--ro speed?                         uint32
+           |     +--ro ap-mac?                        yang:mac-address
+           |     +--ro radio-slot?                    uint8
+           |     +--ro bidirectional-rate-limiting
+           |        +--ro avg-data-rate?                  uint32
+           |        +--ro avg-realtime-rate?              uint32
+           |        +--ro burst-data-rate?                uint32
+           |        +--ro burst-realtime-rate?            uint32
+           |        +--ro avg-upstream-data-rate?         uint32
+           |        +--ro avg-realtime-upstream-rate?     uint32
+           |        +--ro burst-upstream-data-rate?       uint32
+           |        +--ro burst-realtime-upstream-rate?   uint32
+           +--ro client-traffic-measurement
+           |  +--ro clients* [mac]
+           |     +--ro mac                  yang:mac-address
+           |     +--ro traffic
+           |     |  +--ro timestamp?                       uint32
+           |     |  +--ro tx-bytes?                        yang:counter64
+           |     |  +--ro tx-bytes-change?                 yang:counter32
+           |     |  +--ro rx-bytes?                        yang:counter64
+           |     |  +--ro rx-bytes-change?                 yang:counter32
+           |     |  +--ro tx-packets?                      yang:counter64
+           |     |  +--ro rx-packets?                      yang:counter64
+           |     |  +--ro data-retries?                    yang:counter64
+           |     |  +--ro ipv6-ra-guard-packets-dropped?   yang:counter64
+           |     +--ro eap-statistics
+           |     |  +--ro eapol-id-request-retries?    yang:counter32
+           |     |  +--ro eapol-id-request-failures?   yang:counter32
+           |     |  +--ro eap-request-retries?         yang:counter32
+           |     |  +--ro eap-request-failures?        yang:counter32
+           |     |  +--ro eapol-key-retries?           yang:counter32
+           |     |  +--ro eapol-key-failures?          yang:counter32
+           |     +--ro radius-statistics
+           |     |  +--ro radius-acct-interim-updates?   uint16
+           |     +--ro client-active?       boolean
+           +--ro client-nearest-aps
+           |  +--ro clients* [mac]
+           |     +--ro mac           yang:mac-address
+           |     +--ro nearest-ap* [mac]
+           |        +--ro mac     yang:mac-address
+           |        +--ro band?   ap-radio-band
+           |        +--ro slot* [id]
+           |           +--ro id        uint8
+           |           +--ro rssi-A?   int8
+           |           +--ro rssi-B?   int8
+           +--ro fabric
+           |  +--ro map-server* [ip]
+           |     +--ro ip                 inet:ipv4-address
+           |     +--ro status?            mapServerStatus
+           |     +--ro type?              mapServerType
+           |     +--ro redundancy-type?   mapServerRedundancyType
+           |     +--ro counters
+           |        +--ro reg-rejects?     uint64
+           |        +--ro dereg-rejects?   uint64
+           +--ro interferers* [device-id]
+           |  +--ro device-id                  yang:mac-address
+           |  +--ro ap-mac?                    yang:mac-address
+           |  +--ro ap-radio-slot?             uint8
+           |  +--ro cluster-id?                yang:mac-address
+           |  +--ro device-type?               uint8
+           |  +--ro rssi?                      int8
+           |  +--ro status?                    uint8
+           |  +--ro affected-channel-bitmap?   uint32
+           |  +--ro severity-index?            uint8
+           |  +--ro device-duty-cycle?         uint8
+           +--ro mobility
+           |  +--ro members* [ip-addr]
+           |  |  +--ro ip-addr       string
+           |  |  +--ro group-name?   string
+           |  |  +--ro status?       mobility-status
+           |  +--ro anchor* [vap-id]
+           |     +--ro vap-id         uint32
+           |     +--ro anchor-info
+           |        +--ro member* [ip-addr]
+           |           +--ro ip-addr     string
+           |           +--ro status?     mobility-status
+           |           +--ro priority?   uint32
+           +--ro rogues* [mac]
+           |  +--ro mac                    yang:mac-address
+           |  +--ro wired?                 uint8
+           |  +--ro adhoc-mode?            uint8
+           |  +--ro class-type?            wlc:rogue-ap-class-type
+           |  +--ro state-type?            wlc:rogue-ap-state-type
+           |  +--ro state-change-reason?   wlc:rogue-ap-state-change-reason
+           |  +--ro timestamp?             uint64
+           |  +--ro reporting-ap* [mac]
+           |     +--ro mac                  yang:mac-address
+           |     +--ro reporting-ap-slot* [slot-id]
+           |        +--ro slot-id             uint8
+           |        +--ro timestamp?          uint64
+           |        +--ro channel?            uint16
+           |        +--ro channel-width?      rogue-ap-chanwidth-type
+           |        +--ro ssid?               string
+           |        +--ro rssi?               int8
+           |        +--ro snr?                int8
+           |        +--ro containment-type?   wlc:rogue-containment-type
+           |        +--ro security-type?      rogue-ap-security-type
+           |        +--ro radio-type?         wlc:rogue-radio-type
+           +--ro rogue-events* [mac]
+           |  +--ro mac       yang:mac-address
+           |  +--ro events* [index]
+           |     +--ro index                  uint16
+           |     +--ro event-type?            rogue-ap-event-type
+           |     +--ro timestamp?             uint64
+           |     +--ro class?                 wlc:rogue-ap-class-type
+           |     +--ro state?                 wlc:rogue-ap-state-type
+           |     +--ro state-change-reason?   wlc:rogue-ap-state-change-reason
+           |     +--ro srcMac?                yang:mac-address
+           |     +--ro reporting-ap
+           |        +--ro mac?             yang:mac-address
+           |        +--ro channel?         uint16
+           |        +--ro ssid?            string
+           |        +--ro rssi?            int8
+           |        +--ro channel-width?   uint8
+           |        +--ro slot-id?         uint8
+           |        +--ro radio-type?      wlc:rogue-radio-type
+           +--ro rogue-client-events* [mac]
+           |  +--ro mac       yang:mac-address
+           |  +--ro events* [index]
+           |     +--ro index                   uint16
+           |     +--ro event-type?             wlc-rogue-client-event-type
+           |     +--ro bssid?                  yang:mac-address
+           |     +--ro state?                  wlc:rogue-client-state
+           |     +--ro state-change-reason?    wlc:rogue-client-state-change-reason
+           |     +--ro ipv4?                   inet:ipv4-address
+           |     +--ro ipv6?                   inet:ipv6-address
+           |     +--ro gw-mac-addr?            yang:mac-address
+           |     +--ro last-heard-timestamp?   uint64
+           |     +--ro reporting-ap
+           |        +--ro mac?       yang:mac-address
+           |        +--ro rssi?      int8
+           |        +--ro snr?       int8
+           |        +--ro channel?   uint16
+           |        +--ro slot-id?   uint8
+           +--ro rogue-clients* [mac]
+              +--ro mac                     yang:mac-address
+              +--ro bssid?                  yang:mac-address
+              +--ro state?                  wlc:rogue-client-state
+              +--ro state-change-reason?    wlc:rogue-client-state-change-reason
+              +--ro ipv4?                   inet:ipv4-address
+              +--ro ipv6?                   inet:ipv6-address
+              +--ro gw-mac-addr?            yang:mac-address
+              +--ro last-heard-timestamp?   uint64
+              +--ro reporting-ap* [mac]
+                 +--ro mac     yang:mac-address
+                 +--ro slot* [slot-id]
+                    +--ro slot-id                         uint8
+                    +--ro channel?                        uint16
+                    +--ro rssi?                           int8
+                    +--ro snr?                            int8
+                    +--ro rogue-client-containemt-type?   wlc:rogue-containment-type
+
+
+
+
