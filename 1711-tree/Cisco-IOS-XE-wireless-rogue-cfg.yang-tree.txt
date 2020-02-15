@@ -1,0 +1,152 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-rogue-cfg.yang
+module: Cisco-IOS-XE-wireless-rogue-cfg
+  +--rw rogue-cfg-data
+     +--rw rogue-global
+     |  +--rw rogue-rldp?                                        wireless-enum-types:rldp-config-mode
+     |  +--rw rogue-rldp-auto-contain?                           boolean
+     |  +--rw rogue-rldp-schedule-set?                           boolean
+     |  +--rw rogue-rldp-retry-count?                            uint8
+     |  +--rw rogue-auto-contain-my-ssid?                        boolean
+     |  +--rw rogue-auto-contain-ad-hoc?                         boolean
+     |  +--rw rogue-auto-contain-valid-mobile-on-untrusted-ap?   boolean
+     |  +--rw rogue-validate-mobiles-against-radius?             boolean
+     |  +--rw rogue-validate-mobiles-against-mse?                boolean
+     |  +--rw rogue-validate-aps-against-radius?                 boolean
+     |  +--rw adhoc-rogue-reporting?                             boolean
+     |  +--rw ap-auth-enabled?                                   boolean
+     |  +--rw rogue-auto-contain-level-monitor-ap?               boolean
+     |  +--rw security-level?                                    wireless-enum-types:rogue-security-level
+     |  +--rw ap-auth-alarm-th?                                  uint8
+     |  +--rw rogue-cleanup-timer?                               uint32
+     |  +--rw rogue-init-timer?                                  uint32
+     |  +--rw rogue-auto-contain-level?                          uint32
+     |  +--rw rogue-polling-interval?                            uint32
+     |  +--rw rogue-detection-client-num-threshold?              uint32
+     |  +--rw notify-rogue-ap-threshold?                         uint32
+     |  +--rw notify-rogue-client-threshold?                     uint32
+     |  +--rw notify-rogue-ap-min-rssi?                          int32
+     |  +--rw notify-rogue-client-min-rssi?                      int32
+     |  +--rw rogue-wsa-events-enabled?                          boolean
+     +--rw rldp-schedules
+     |  +--rw rldp-schedule* [day]
+     |     +--rw day           wireless-enum-types:work-day
+     |     +--rw start-time?   string
+     |     +--rw end-time?     string
+     +--rw rogue-ap-cfgs
+     |  +--rw rogue-ap-cfg* [rogue-address]
+     |     +--rw rogue-address        yang:mac-address
+     |     +--rw adhoc?               boolean
+     |     +--rw rogue-class-type     wireless-enum-types:rogue-class-type
+     |     +--rw rogue-mode?          wireless-enum-types:rogue-state
+     |     +--rw containment-level?   uint32
+     +--rw rogue-client-cfgs
+     |  +--rw rogue-client-cfg* [rogue-client-address]
+     |     +--rw rogue-client-address    yang:mac-address
+     |     +--rw rogue-mode?             wireless-enum-types:rogue-state
+     |     +--rw containment-level?      uint32
+     +--rw rogue-ignore-data-entries
+     |  +--rw rogue-ignore-data-entry* [rogue-ignore-address]
+     |     +--rw rogue-ignore-address    yang:mac-address
+     +--rw rule-data-entries
+        +--rw rule-data-entry* [rule-name]
+           +--rw rule-name     string
+           +--rw rule-cfg
+           |  +--rw class-type?               wireless-enum-types:rogue-class-type
+           |  +--rw state?                    wireless-enum-types:rogue-state
+           |  +--rw severity-score?           uint32
+           |  +--rw class-type-custom-name?   string
+           |  +--rw match-op?                 wireless-enum-types:apf-rogue-rule-rule-match-op
+           |  +--rw priority-num              int32
+           |  +--rw enable?                   boolean
+           |  +--rw notify?                   boolean
+           +--rw cond-lists
+              +--rw cond-list* [cond-name]
+                 +--rw cond-name     string
+                 +--rw cond-cfg
+                 |  +--rw rssi?              int32
+                 |  +--rw client-count?      uint32
+                 |  +--rw no-encryption?     boolean
+                 |  +--rw managed-ssid?      boolean
+                 |  +--rw duration?          uint32
+                 |  +--rw any-encryption?    boolean
+                 |  +--rw wpa-encryption?    boolean
+                 |  +--rw wpa2-encryption?   boolean
+                 +--rw ssid-lists
+                    +--rw ssid-list* [ssid]
+                       +--rw ssid    string
+Xpaths for model: Cisco-IOS-XE-wireless-rogue-cfg.yang
+/wireless-rogue-cfg:rogue-cfg-data,container,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global,container,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-rldp,leaf,wireless-enum-types:rldp-config-mode
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-rldp-auto-contain,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-rldp-schedule-set,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-rldp-retry-count,leaf,uint8
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-auto-contain-my-ssid,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-auto-contain-ad-hoc,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-auto-contain-valid-mobile-on-untrusted-ap,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-validate-mobiles-against-radius,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-validate-mobiles-against-mse,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-validate-aps-against-radius,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:adhoc-rogue-reporting,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:ap-auth-enabled,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-auto-contain-level-monitor-ap,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:security-level,leaf,wireless-enum-types:rogue-security-level
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:ap-auth-alarm-th,leaf,uint8
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-cleanup-timer,leaf,uint32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-init-timer,leaf,uint32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-auto-contain-level,leaf,uint32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-polling-interval,leaf,uint32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-detection-client-num-threshold,leaf,uint32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:notify-rogue-ap-threshold,leaf,uint32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:notify-rogue-client-threshold,leaf,uint32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:notify-rogue-ap-min-rssi,leaf,int32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:notify-rogue-client-min-rssi,leaf,int32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-global/wireless-rogue-cfg:rogue-wsa-events-enabled,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rldp-schedules,container,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rldp-schedules/wireless-rogue-cfg:rldp-schedule,list,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rldp-schedules/wireless-rogue-cfg:rldp-schedule/wireless-rogue-cfg:day,leaf,wireless-enum-types:work-day
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rldp-schedules/wireless-rogue-cfg:rldp-schedule/wireless-rogue-cfg:start-time,leaf,string
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rldp-schedules/wireless-rogue-cfg:rldp-schedule/wireless-rogue-cfg:end-time,leaf,string
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-ap-cfgs,container,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-ap-cfgs/wireless-rogue-cfg:rogue-ap-cfg,list,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-ap-cfgs/wireless-rogue-cfg:rogue-ap-cfg/wireless-rogue-cfg:rogue-address,leaf,yang:mac-address
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-ap-cfgs/wireless-rogue-cfg:rogue-ap-cfg/wireless-rogue-cfg:adhoc,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-ap-cfgs/wireless-rogue-cfg:rogue-ap-cfg/wireless-rogue-cfg:rogue-class-type,leaf,wireless-enum-types:rogue-class-type
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-ap-cfgs/wireless-rogue-cfg:rogue-ap-cfg/wireless-rogue-cfg:rogue-mode,leaf,wireless-enum-types:rogue-state
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-ap-cfgs/wireless-rogue-cfg:rogue-ap-cfg/wireless-rogue-cfg:containment-level,leaf,uint32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-client-cfgs,container,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-client-cfgs/wireless-rogue-cfg:rogue-client-cfg,list,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-client-cfgs/wireless-rogue-cfg:rogue-client-cfg/wireless-rogue-cfg:rogue-client-address,leaf,yang:mac-address
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-client-cfgs/wireless-rogue-cfg:rogue-client-cfg/wireless-rogue-cfg:rogue-mode,leaf,wireless-enum-types:rogue-state
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-client-cfgs/wireless-rogue-cfg:rogue-client-cfg/wireless-rogue-cfg:containment-level,leaf,uint32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-ignore-data-entries,container,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-ignore-data-entries/wireless-rogue-cfg:rogue-ignore-data-entry,list,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rogue-ignore-data-entries/wireless-rogue-cfg:rogue-ignore-data-entry/wireless-rogue-cfg:rogue-ignore-address,leaf,yang:mac-address
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries,container,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry,list,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:rule-name,leaf,string
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:rule-cfg,container,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:rule-cfg/wireless-rogue-cfg:class-type,leaf,wireless-enum-types:rogue-class-type
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:rule-cfg/wireless-rogue-cfg:state,leaf,wireless-enum-types:rogue-state
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:rule-cfg/wireless-rogue-cfg:severity-score,leaf,uint32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:rule-cfg/wireless-rogue-cfg:class-type-custom-name,leaf,string
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:rule-cfg/wireless-rogue-cfg:match-op,leaf,wireless-enum-types:apf-rogue-rule-rule-match-op
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:rule-cfg/wireless-rogue-cfg:priority-num,leaf,int32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:rule-cfg/wireless-rogue-cfg:enable,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:rule-cfg/wireless-rogue-cfg:notify,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:cond-lists,container,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:cond-lists/wireless-rogue-cfg:cond-list,list,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:cond-lists/wireless-rogue-cfg:cond-list/wireless-rogue-cfg:cond-name,leaf,string
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:cond-lists/wireless-rogue-cfg:cond-list/wireless-rogue-cfg:cond-cfg,container,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:cond-lists/wireless-rogue-cfg:cond-list/wireless-rogue-cfg:cond-cfg/wireless-rogue-cfg:rssi,leaf,int32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:cond-lists/wireless-rogue-cfg:cond-list/wireless-rogue-cfg:cond-cfg/wireless-rogue-cfg:client-count,leaf,uint32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:cond-lists/wireless-rogue-cfg:cond-list/wireless-rogue-cfg:cond-cfg/wireless-rogue-cfg:no-encryption,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:cond-lists/wireless-rogue-cfg:cond-list/wireless-rogue-cfg:cond-cfg/wireless-rogue-cfg:managed-ssid,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:cond-lists/wireless-rogue-cfg:cond-list/wireless-rogue-cfg:cond-cfg/wireless-rogue-cfg:duration,leaf,uint32
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:cond-lists/wireless-rogue-cfg:cond-list/wireless-rogue-cfg:cond-cfg/wireless-rogue-cfg:any-encryption,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:cond-lists/wireless-rogue-cfg:cond-list/wireless-rogue-cfg:cond-cfg/wireless-rogue-cfg:wpa-encryption,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:cond-lists/wireless-rogue-cfg:cond-list/wireless-rogue-cfg:cond-cfg/wireless-rogue-cfg:wpa2-encryption,leaf,boolean
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:cond-lists/wireless-rogue-cfg:cond-list/wireless-rogue-cfg:ssid-lists,container,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:cond-lists/wireless-rogue-cfg:cond-list/wireless-rogue-cfg:ssid-lists/wireless-rogue-cfg:ssid-list,list,
+/wireless-rogue-cfg:rogue-cfg-data/wireless-rogue-cfg:rule-data-entries/wireless-rogue-cfg:rule-data-entry/wireless-rogue-cfg:cond-lists/wireless-rogue-cfg:cond-list/wireless-rogue-cfg:ssid-lists/wireless-rogue-cfg:ssid-list/wireless-rogue-cfg:ssid,leaf,string

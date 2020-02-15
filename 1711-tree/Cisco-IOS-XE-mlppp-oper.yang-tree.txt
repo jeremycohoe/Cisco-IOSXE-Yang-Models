@@ -1,0 +1,96 @@
+ 
+KPI for model: Cisco-IOS-XE-mlppp-oper.yang
+module: Cisco-IOS-XE-mlppp-oper
+  +--ro mlppp-oper-data
+     +--ro mlppp-statistics!
+     |  +--ro mlppp-link-at-lcp-stage?                 uint32
+     |  +--ro mlppp-link-at-unauth-name-stage?         uint32
+     |  +--ro mlppp-link-at-auth-name-stage?           uint32
+     |  +--ro mlppp-link-at-post-lcp-noauth-stage?     uint32
+     |  +--ro mlppp-link-at-post-lcp-callback-stage?   uint32
+     |  +--ro mlppp-link-at-forwarded-stage?           uint32
+     |  +--ro mlppp-link-at-local-termination-stage?   uint32
+     |  +--ro non-mlppp-sessions?                      uint32
+     |  +--ro mlppp-sessions?                          uint32
+     |  +--ro non-mlppp-links?                         uint32
+     |  +--ro mlppp-links?                             uint32
+     |  +--ro mlppp-authorization-failed?              uint32
+     |  +--ro removing-mlppp-bundle?                   uint32
+     |  +--ro mlppp-requires-authen-or-caller-id?      uint32
+     |  +--ro mlppp-drop-link?                         uint32
+     |  +--ro mlppp-kill-link?                         uint32
+     |  +--ro mlppp-add-link-failed?                   uint32
+     |  +--ro mlppp-link-not-needed?                   uint32
+     +--ro mlppp-bundle* [if-name]
+        +--ro if-name                                 string
+        +--ro bundle-name?                            string
+        +--ro bundle-mode?                            mlppp-ios-xe-oper:mlppp-bundle-mode-type
+        +--ro remote-username?                        string
+        +--ro local-username?                         string
+        +--ro remote-endpoint-discriminator?          string
+        +--ro local-endpoint-discriminator?           string
+        +--ro bundle-uptime?                          yang:date-and-time
+        +--ro total-bandwidth?                        uint32
+        +--ro load?                                   string
+        +--ro receive-buffer-limit?                   uint32
+        +--ro frag-timeout?                           uint32
+        +--ro fragment-per-byte-in-reassembly-list?   string
+        +--ro lost-fragments?                         uint32
+        +--ro reordered?                              uint32
+        +--ro discarded-fragments-per-byte?           string
+        +--ro lost-received?                          uint32
+        +--ro member-links?                           uint32
+        +--ro member-link-max?                        uint32
+        +--ro member-link-min?                        uint32
+        +--ro member-type?                            mlppp-ios-xe-oper:mlppp-member-type
+        +--ro interface-up-time* []
+           +--ro if-name?       string
+           +--ro up-time?       yang:date-and-time
+           +--ro member-type?   mlppp-ios-xe-oper:mlppp-member-type
+Xpaths for model: Cisco-IOS-XE-mlppp-oper.yang
+/mlppp-ios-xe-oper:mlppp-oper-data,container,
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics,container,
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:mlppp-link-at-lcp-stage,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:mlppp-link-at-unauth-name-stage,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:mlppp-link-at-auth-name-stage,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:mlppp-link-at-post-lcp-noauth-stage,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:mlppp-link-at-post-lcp-callback-stage,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:mlppp-link-at-forwarded-stage,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:mlppp-link-at-local-termination-stage,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:non-mlppp-sessions,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:mlppp-sessions,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:non-mlppp-links,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:mlppp-links,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:mlppp-authorization-failed,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:removing-mlppp-bundle,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:mlppp-requires-authen-or-caller-id,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:mlppp-drop-link,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:mlppp-kill-link,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:mlppp-add-link-failed,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-statistics/mlppp-ios-xe-oper:mlppp-link-not-needed,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle,list,
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:if-name,leaf,string
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:bundle-name,leaf,string
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:bundle-mode,leaf,mlppp-ios-xe-oper:mlppp-bundle-mode-type
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:remote-username,leaf,string
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:local-username,leaf,string
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:remote-endpoint-discriminator,leaf,string
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:local-endpoint-discriminator,leaf,string
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:bundle-uptime,leaf,yang:date-and-time
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:total-bandwidth,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:load,leaf,string
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:receive-buffer-limit,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:frag-timeout,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:fragment-per-byte-in-reassembly-list,leaf,string
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:lost-fragments,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:reordered,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:discarded-fragments-per-byte,leaf,string
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:lost-received,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:member-links,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:member-link-max,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:member-link-min,leaf,uint32
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:member-type,leaf,mlppp-ios-xe-oper:mlppp-member-type
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:interface-up-time,list,
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:interface-up-time/mlppp-ios-xe-oper:if-name,leaf,string
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:interface-up-time/mlppp-ios-xe-oper:up-time,leaf,yang:date-and-time
+/mlppp-ios-xe-oper:mlppp-oper-data/mlppp-ios-xe-oper:mlppp-bundle/mlppp-ios-xe-oper:interface-up-time/mlppp-ios-xe-oper:member-type,leaf,mlppp-ios-xe-oper:mlppp-member-type

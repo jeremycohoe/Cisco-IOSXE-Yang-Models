@@ -1,0 +1,19 @@
+ 
+KPI for model: Cisco-IOS-XE-rmi-dad.yang
+
+module: Cisco-IOS-XE-rmi-dad
+  augment /ios:native/ios:redun-management:
+    +--rw interface* [interface]
+       +--rw interface    string
+       +--rw chassis* [chassis]
+          +--rw chassis    uint8
+          +--rw address* [address]
+             +--rw address    union
+             +--rw chassis* [chassis]
+                +--rw chassis    uint8
+                +--rw address* [address]
+                   +--rw address    union
+  augment /ios:native/ios:management:
+    +--rw gateway-failover
+       +--rw enable?   boolean
+Xpaths for model: Cisco-IOS-XE-rmi-dad.yang

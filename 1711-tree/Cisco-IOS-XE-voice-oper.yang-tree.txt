@@ -1,0 +1,324 @@
+ 
+KPI for model: Cisco-IOS-XE-voice-oper.yang
+module: Cisco-IOS-XE-voice-oper
+  +--ro voice-oper-data
+     +--ro dspfarm-dsp* [bridge-id]
+     |  +--ro bridge-id       uint32
+     |  +--ro dsp-slot?       string
+     |  +--ro dsp-num?        uint32
+     |  +--ro dsp-version?    string
+     |  +--ro dsp-status?     voice-ios-xe-oper:dsp-status-type
+     |  +--ro chnl-id?        uint32
+     |  +--ro chnl-status?    voice-ios-xe-oper:chnl-status-type
+     |  +--ro service-type?   voice-ios-xe-oper:dsp-service-type
+     |  +--ro rsc-id?         uint32
+     |  +--ro pkts-txed?      uint32
+     |  +--ro pkts-rxed?      uint32
+     +--ro sccp-connection* [conn-id]
+     |  +--ro conn-id        uint32
+     |  +--ro sess-id?       uint32
+     |  +--ro stype?         voice-ios-xe-oper:sccp-sess-type
+     |  +--ro mode?          voice-ios-xe-oper:sccp-conn-mode
+     |  +--ro codec?         voice-ios-xe-oper:voip-codec-type
+     |  +--ro rmt-ipaddr?    inet:ip-address
+     |  +--ro rmt-port?      uint16
+     |  +--ro src-port?      uint16
+     |  +--ro dtmf-method?   voice-ios-xe-oper:dtmf-method-type
+     +--ro voice-recording-port* [port-dptag]
+     |  +--ro port-dptag      uint32
+     |  +--ro pa-bay?         uint32
+     |  +--ro port-type?      voice-ios-xe-oper:dsp-port-type
+     |  +--ro port-id?        string
+     |  +--ro server-dptag?   uint32
+     +--ro voice-recording-license!
+     |  +--ro configured?         uint32
+     |  +--ro allocated?          uint32
+     |  +--ro max-support-call?   uint32
+     |  +--ro call-use-license?   uint32
+     +--ro dspfarm-utlz-profile* [profile-id]
+     |  +--ro profile-id            uint32
+     |  +--ro type?                 string
+     |  +--ro profile-utlz?         uint32
+     |  +--ro profile-pvdm-entry* [pvdm-id]
+     |     +--ro pvdm-id      string
+     |     +--ro pvdm-utlz?   uint32
+     +--ro dspfarm-utlz-detail* [profile-id]
+     |  +--ro profile-id               uint32
+     |  +--ro type?                    string
+     |  +--ro profile-utlz?            uint32
+     |  +--ro dsp-utlz-detail-entry* [dsp-id]
+     |     +--ro dsp-id              string
+     |     +--ro dsp-alloc-ratio?    uint32
+     |     +--ro dsp-channel-utlz?   uint32
+     |     +--ro dsp-credit-utlz?    uint32
+     |     +--ro dsp-session-utlz?   uint32
+     +--ro dsapp-line-dev-sum!
+     |  +--ro total-dev?              uint32
+     |  +--ro dsapp-line-dev-entry* [key-id]
+     |     +--ro key-id       string
+     |     +--ro port-id
+     |     |  +--ro slot?      uint32
+     |     |  +--ro subslot?   uint32
+     |     |  +--ro port?      uint32
+     |     +--ro dev-name?    string
+     |     +--ro reg-state?   voice-ios-xe-oper:reg-state-type
+     |     +--ro dev-type?    voice-ios-xe-oper:device-type
+     |     +--ro dir-num?     string
+     +--ro dsapp-line-fac!
+     |  +--ro prefix?                string
+     |  +--ro call-forward-all?      string
+     |  +--ro call-forward-cancel?   string
+     |  +--ro pickup-local?          string
+     |  +--ro pickup-group?          string
+     |  +--ro pickup-direct?         string
+     |  +--ro cancel-call-waiting?   string
+     |  +--ro last-redial?           string
+     +--ro active-voice-call-sum!
+     |  +--ro total-entry?               uint32
+     |  +--ro active-voice-call-entry* [key-id]
+     |     +--ro key-id                  string
+     |     +--ro call-id?                uint64
+     |     +--ro voice-port-id?          string
+     |     +--ro codec-type?             voice-ios-xe-oper:voip-codec-type
+     |     +--ro vad?                    voice-ios-xe-oper:vad-configuration
+     |     +--ro dsp-id?                 string
+     |     +--ro dsp-type?               voice-ios-xe-oper:dsp-type-enum
+     |     +--ro dsp-version?            string
+     |     +--ro dsp-abort-packet-cnt?   uint32
+     |     +--ro dsp-tx-packet-cnt?      uint32
+     |     +--ro dsp-rx-packet-cnt?      uint32
+     +--ro active-voip-call-summary!
+     |  +--ro telephony-call-legs?        uint32
+     |  +--ro sip-call-legs?              uint32
+     |  +--ro total-call-legs?            uint32
+     |  +--ro active-voip-call-details* [call-index call-setuptime]
+     |     +--ro call-index           uint32
+     |     +--ro call-setuptime       yang:date-and-time
+     |     +--ro call-id?             uint32
+     |     +--ro call-type?           voice-ios-xe-oper:voice-call-type-enum
+     |     +--ro bridge-id?           uint32
+     |     +--ro peer-id?             int32
+     |     +--ro direction?           voice-ios-xe-oper:voice-call-direction-enum
+     |     +--ro directory-number?    string
+     |     +--ro call-state?          voice-ios-xe-oper:voice-call-state-enum
+     |     +--ro call-duration?       uint32
+     |     +--ro transmit-packets?    uint32
+     |     +--ro transmit-bytes?      uint32
+     |     +--ro receive-packets?     uint32
+     |     +--ro receive-bytes?       uint32
+     |     +--ro remote-ip-address?   inet:ip-address
+     |     +--ro remote-media-port?   uint16
+     |     +--ro codec?               voice-ios-xe-oper:voip-codec-type
+     +--ro sccp-ccm-group* [ccm-group-id]
+     |  +--ro ccm-group-id            uint32
+     |  +--ro description?            string
+     |  +--ro bound-intf?             string
+     |  +--ro ipv6-address?           inet:ip-address
+     |  +--ro ipv4-address?           inet:ip-address
+     |  +--ro registration-retries?   uint32
+     |  +--ro registration-timeout?   uint32
+     |  +--ro keepalive-retries?      uint32
+     |  +--ro keepalive-timeout?      uint32
+     |  +--ro connect-retries?        uint32
+     |  +--ro connect-interval?       uint32
+     |  +--ro switchover-method?      voice-ios-xe-oper:swo-method
+     |  +--ro switchback-method?      voice-ios-xe-oper:swb-method
+     |  +--ro switchback-interval?    uint32
+     |  +--ro switchback-timeout?     uint32
+     |  +--ro signaling-dscp?         uint8
+     |  +--ro audio-dscp?             uint8
+     |  +--ro asso-ccm-entry* [ccm-id]
+     |  |  +--ro ccm-id          uint32
+     |  |  +--ro ccm-priority?   uint32
+     |  +--ro asso-profile-entry* [profile-id]
+     |     +--ro profile-id    uint32
+     |     +--ro reg-name?     string
+     +--ro dspfp* [profile-id]
+     |  +--ro profile-id                uint32
+     |  +--ro service-id?               voice-ios-xe-oper:srvc-id
+     |  +--ro resource-id?              uint32
+     |  +--ro secure-mode?              voice-ios-xe-oper:secure-mode
+     |  +--ro prof-admin-state?         voice-ios-xe-oper:prof-admin-state
+     |  +--ro prof-oper-state?          voice-ios-xe-oper:prof-oper-state
+     |  +--ro app-id?                   voice-ios-xe-oper:app-id
+     |  +--ro app-assoc-status?         voice-ios-xe-oper:app-assoc
+     |  +--ro rsc-provider?             voice-ios-xe-oper:rscprv-id
+     |  +--ro rsc-status?               voice-ios-xe-oper:rscprv-state
+     |  +--ro total-rsc-cfg-count?      uint32
+     |  +--ro total-rsc-avail-count?    uint32
+     |  +--ro total-rsc-oos-count?      uint32
+     |  +--ro total-rsc-active-count?   uint32
+     |  +--ro total-codec-count?        uint32
+     |  +--ro dspfp-codec-entry* [codec-idx]
+     |     +--ro codec-idx         uint32
+     |     +--ro codec-type?       voice-ios-xe-oper:voip-codec-type
+     |     +--ro max-pkt-period?   uint32
+     +--ro voice-reg-phone-info* [pool-tag]
+        +--ro pool-tag               uint32
+        +--ro id-network?            inet:ip-address
+        +--ro reg-state?             voice-ios-xe-oper:reg-state-type
+        +--ro voice-reg-line-info* [dialpeer-tag]
+           +--ro dialpeer-tag    uint32
+           +--ro address?        inet:ip-address
+           +--ro dir-number?     string
+Xpaths for model: Cisco-IOS-XE-voice-oper.yang
+/voice-ios-xe-oper:voice-oper-data,container,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-dsp,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-dsp/voice-ios-xe-oper:bridge-id,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-dsp/voice-ios-xe-oper:dsp-slot,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-dsp/voice-ios-xe-oper:dsp-num,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-dsp/voice-ios-xe-oper:dsp-version,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-dsp/voice-ios-xe-oper:dsp-status,leaf,voice-ios-xe-oper:dsp-status-type
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-dsp/voice-ios-xe-oper:chnl-id,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-dsp/voice-ios-xe-oper:chnl-status,leaf,voice-ios-xe-oper:chnl-status-type
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-dsp/voice-ios-xe-oper:service-type,leaf,voice-ios-xe-oper:dsp-service-type
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-dsp/voice-ios-xe-oper:rsc-id,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-dsp/voice-ios-xe-oper:pkts-txed,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-dsp/voice-ios-xe-oper:pkts-rxed,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-connection,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-connection/voice-ios-xe-oper:conn-id,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-connection/voice-ios-xe-oper:sess-id,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-connection/voice-ios-xe-oper:stype,leaf,voice-ios-xe-oper:sccp-sess-type
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-connection/voice-ios-xe-oper:mode,leaf,voice-ios-xe-oper:sccp-conn-mode
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-connection/voice-ios-xe-oper:codec,leaf,voice-ios-xe-oper:voip-codec-type
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-connection/voice-ios-xe-oper:rmt-ipaddr,leaf,inet:ip-address
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-connection/voice-ios-xe-oper:rmt-port,leaf,uint16
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-connection/voice-ios-xe-oper:src-port,leaf,uint16
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-connection/voice-ios-xe-oper:dtmf-method,leaf,voice-ios-xe-oper:dtmf-method-type
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-recording-port,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-recording-port/voice-ios-xe-oper:port-dptag,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-recording-port/voice-ios-xe-oper:pa-bay,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-recording-port/voice-ios-xe-oper:port-type,leaf,voice-ios-xe-oper:dsp-port-type
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-recording-port/voice-ios-xe-oper:port-id,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-recording-port/voice-ios-xe-oper:server-dptag,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-recording-license,container,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-recording-license/voice-ios-xe-oper:configured,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-recording-license/voice-ios-xe-oper:allocated,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-recording-license/voice-ios-xe-oper:max-support-call,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-recording-license/voice-ios-xe-oper:call-use-license,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-profile,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-profile/voice-ios-xe-oper:profile-id,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-profile/voice-ios-xe-oper:type,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-profile/voice-ios-xe-oper:profile-utlz,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-profile/voice-ios-xe-oper:profile-pvdm-entry,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-profile/voice-ios-xe-oper:profile-pvdm-entry/voice-ios-xe-oper:pvdm-id,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-profile/voice-ios-xe-oper:profile-pvdm-entry/voice-ios-xe-oper:pvdm-utlz,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-detail,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-detail/voice-ios-xe-oper:profile-id,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-detail/voice-ios-xe-oper:type,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-detail/voice-ios-xe-oper:profile-utlz,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-detail/voice-ios-xe-oper:dsp-utlz-detail-entry,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-detail/voice-ios-xe-oper:dsp-utlz-detail-entry/voice-ios-xe-oper:dsp-id,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-detail/voice-ios-xe-oper:dsp-utlz-detail-entry/voice-ios-xe-oper:dsp-alloc-ratio,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-detail/voice-ios-xe-oper:dsp-utlz-detail-entry/voice-ios-xe-oper:dsp-channel-utlz,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-detail/voice-ios-xe-oper:dsp-utlz-detail-entry/voice-ios-xe-oper:dsp-credit-utlz,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfarm-utlz-detail/voice-ios-xe-oper:dsp-utlz-detail-entry/voice-ios-xe-oper:dsp-session-utlz,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-dev-sum,container,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-dev-sum/voice-ios-xe-oper:total-dev,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-dev-sum/voice-ios-xe-oper:dsapp-line-dev-entry,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-dev-sum/voice-ios-xe-oper:dsapp-line-dev-entry/voice-ios-xe-oper:key-id,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-dev-sum/voice-ios-xe-oper:dsapp-line-dev-entry/voice-ios-xe-oper:port-id,container,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-dev-sum/voice-ios-xe-oper:dsapp-line-dev-entry/voice-ios-xe-oper:port-id/voice-ios-xe-oper:slot,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-dev-sum/voice-ios-xe-oper:dsapp-line-dev-entry/voice-ios-xe-oper:port-id/voice-ios-xe-oper:subslot,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-dev-sum/voice-ios-xe-oper:dsapp-line-dev-entry/voice-ios-xe-oper:port-id/voice-ios-xe-oper:port,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-dev-sum/voice-ios-xe-oper:dsapp-line-dev-entry/voice-ios-xe-oper:dev-name,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-dev-sum/voice-ios-xe-oper:dsapp-line-dev-entry/voice-ios-xe-oper:reg-state,leaf,voice-ios-xe-oper:reg-state-type
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-dev-sum/voice-ios-xe-oper:dsapp-line-dev-entry/voice-ios-xe-oper:dev-type,leaf,voice-ios-xe-oper:device-type
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-dev-sum/voice-ios-xe-oper:dsapp-line-dev-entry/voice-ios-xe-oper:dir-num,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-fac,container,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-fac/voice-ios-xe-oper:prefix,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-fac/voice-ios-xe-oper:call-forward-all,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-fac/voice-ios-xe-oper:call-forward-cancel,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-fac/voice-ios-xe-oper:pickup-local,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-fac/voice-ios-xe-oper:pickup-group,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-fac/voice-ios-xe-oper:pickup-direct,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-fac/voice-ios-xe-oper:cancel-call-waiting,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dsapp-line-fac/voice-ios-xe-oper:last-redial,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voice-call-sum,container,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voice-call-sum/voice-ios-xe-oper:total-entry,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voice-call-sum/voice-ios-xe-oper:active-voice-call-entry,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voice-call-sum/voice-ios-xe-oper:active-voice-call-entry/voice-ios-xe-oper:key-id,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voice-call-sum/voice-ios-xe-oper:active-voice-call-entry/voice-ios-xe-oper:call-id,leaf,uint64
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voice-call-sum/voice-ios-xe-oper:active-voice-call-entry/voice-ios-xe-oper:voice-port-id,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voice-call-sum/voice-ios-xe-oper:active-voice-call-entry/voice-ios-xe-oper:codec-type,leaf,voice-ios-xe-oper:voip-codec-type
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voice-call-sum/voice-ios-xe-oper:active-voice-call-entry/voice-ios-xe-oper:vad,leaf,voice-ios-xe-oper:vad-configuration
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voice-call-sum/voice-ios-xe-oper:active-voice-call-entry/voice-ios-xe-oper:dsp-id,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voice-call-sum/voice-ios-xe-oper:active-voice-call-entry/voice-ios-xe-oper:dsp-type,leaf,voice-ios-xe-oper:dsp-type-enum
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voice-call-sum/voice-ios-xe-oper:active-voice-call-entry/voice-ios-xe-oper:dsp-version,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voice-call-sum/voice-ios-xe-oper:active-voice-call-entry/voice-ios-xe-oper:dsp-abort-packet-cnt,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voice-call-sum/voice-ios-xe-oper:active-voice-call-entry/voice-ios-xe-oper:dsp-tx-packet-cnt,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voice-call-sum/voice-ios-xe-oper:active-voice-call-entry/voice-ios-xe-oper:dsp-rx-packet-cnt,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary,container,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:telephony-call-legs,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:sip-call-legs,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:total-call-legs,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:call-index,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:call-setuptime,leaf,yang:date-and-time
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:call-id,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:call-type,leaf,voice-ios-xe-oper:voice-call-type-enum
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:bridge-id,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:peer-id,leaf,int32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:direction,leaf,voice-ios-xe-oper:voice-call-direction-enum
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:directory-number,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:call-state,leaf,voice-ios-xe-oper:voice-call-state-enum
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:call-duration,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:transmit-packets,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:transmit-bytes,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:receive-packets,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:receive-bytes,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:remote-ip-address,leaf,inet:ip-address
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:remote-media-port,leaf,uint16
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:active-voip-call-summary/voice-ios-xe-oper:active-voip-call-details/voice-ios-xe-oper:codec,leaf,voice-ios-xe-oper:voip-codec-type
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:ccm-group-id,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:description,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:bound-intf,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:ipv6-address,leaf,inet:ip-address
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:ipv4-address,leaf,inet:ip-address
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:registration-retries,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:registration-timeout,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:keepalive-retries,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:keepalive-timeout,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:connect-retries,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:connect-interval,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:switchover-method,leaf,voice-ios-xe-oper:swo-method
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:switchback-method,leaf,voice-ios-xe-oper:swb-method
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:switchback-interval,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:switchback-timeout,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:signaling-dscp,leaf,uint8
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:audio-dscp,leaf,uint8
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:asso-ccm-entry,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:asso-ccm-entry/voice-ios-xe-oper:ccm-id,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:asso-ccm-entry/voice-ios-xe-oper:ccm-priority,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:asso-profile-entry,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:asso-profile-entry/voice-ios-xe-oper:profile-id,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:sccp-ccm-group/voice-ios-xe-oper:asso-profile-entry/voice-ios-xe-oper:reg-name,leaf,string
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:profile-id,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:service-id,leaf,voice-ios-xe-oper:srvc-id
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:resource-id,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:secure-mode,leaf,voice-ios-xe-oper:secure-mode
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:prof-admin-state,leaf,voice-ios-xe-oper:prof-admin-state
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:prof-oper-state,leaf,voice-ios-xe-oper:prof-oper-state
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:app-id,leaf,voice-ios-xe-oper:app-id
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:app-assoc-status,leaf,voice-ios-xe-oper:app-assoc
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:rsc-provider,leaf,voice-ios-xe-oper:rscprv-id
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:rsc-status,leaf,voice-ios-xe-oper:rscprv-state
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:total-rsc-cfg-count,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:total-rsc-avail-count,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:total-rsc-oos-count,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:total-rsc-active-count,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:total-codec-count,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:dspfp-codec-entry,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:dspfp-codec-entry/voice-ios-xe-oper:codec-idx,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:dspfp-codec-entry/voice-ios-xe-oper:codec-type,leaf,voice-ios-xe-oper:voip-codec-type
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:dspfp/voice-ios-xe-oper:dspfp-codec-entry/voice-ios-xe-oper:max-pkt-period,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-reg-phone-info,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-reg-phone-info/voice-ios-xe-oper:pool-tag,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-reg-phone-info/voice-ios-xe-oper:id-network,leaf,inet:ip-address
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-reg-phone-info/voice-ios-xe-oper:reg-state,leaf,voice-ios-xe-oper:reg-state-type
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-reg-phone-info/voice-ios-xe-oper:voice-reg-line-info,list,
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-reg-phone-info/voice-ios-xe-oper:voice-reg-line-info/voice-ios-xe-oper:dialpeer-tag,leaf,uint32
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-reg-phone-info/voice-ios-xe-oper:voice-reg-line-info/voice-ios-xe-oper:address,leaf,inet:ip-address
+/voice-ios-xe-oper:voice-oper-data/voice-ios-xe-oper:voice-reg-phone-info/voice-ios-xe-oper:voice-reg-line-info/voice-ios-xe-oper:dir-number,leaf,string

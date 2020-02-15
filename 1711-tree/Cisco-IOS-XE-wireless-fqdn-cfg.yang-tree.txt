@@ -1,0 +1,42 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-fqdn-cfg.yang
+module: Cisco-IOS-XE-wireless-fqdn-cfg
+  +--rw fqdn-cfg-data
+     +--rw fqdn-configs
+     |  +--rw fqdn-config* [url-list-name]
+     |     +--rw url-list-name           string
+     |     +--rw action?                 wireless-types:ewlc-url-rule-type
+     |     +--rw ipv4-redirect-server?   inet:ipv4-address
+     |     +--rw ipv6-redirect-server?   inet:ipv6-address
+     |     +--rw filter-type?            wireless-types:ewlc-url-filter-type
+     |     +--rw fqdn-urllists
+     |        +--rw fqdn-urllist* [fqdn-url]
+     |           +--rw fqdn-url    string
+     +--rw fqdn-enhanced-configs
+        +--rw fqdn-enhanced-config* [url-list-name]
+           +--rw url-list-name         string
+           +--rw fqdn-enhanced-urls
+              +--rw fqdn-enhanced-url* [fqdn-url]
+                 +--rw fqdn-url      string
+                 +--rw action?       wireless-types:ewlc-url-rule-type
+                 +--rw preference    uint16
+Xpaths for model: Cisco-IOS-XE-wireless-fqdn-cfg.yang
+/wireless-fqdn-ios-cfg:fqdn-cfg-data,container,
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-configs,container,
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-configs/wireless-fqdn-ios-cfg:fqdn-config,list,
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-configs/wireless-fqdn-ios-cfg:fqdn-config/wireless-fqdn-ios-cfg:url-list-name,leaf,string
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-configs/wireless-fqdn-ios-cfg:fqdn-config/wireless-fqdn-ios-cfg:action,leaf,wireless-types:ewlc-url-rule-type
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-configs/wireless-fqdn-ios-cfg:fqdn-config/wireless-fqdn-ios-cfg:ipv4-redirect-server,leaf,inet:ipv4-address
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-configs/wireless-fqdn-ios-cfg:fqdn-config/wireless-fqdn-ios-cfg:ipv6-redirect-server,leaf,inet:ipv6-address
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-configs/wireless-fqdn-ios-cfg:fqdn-config/wireless-fqdn-ios-cfg:filter-type,leaf,wireless-types:ewlc-url-filter-type
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-configs/wireless-fqdn-ios-cfg:fqdn-config/wireless-fqdn-ios-cfg:fqdn-urllists,container,
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-configs/wireless-fqdn-ios-cfg:fqdn-config/wireless-fqdn-ios-cfg:fqdn-urllists/wireless-fqdn-ios-cfg:fqdn-urllist,list,
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-configs/wireless-fqdn-ios-cfg:fqdn-config/wireless-fqdn-ios-cfg:fqdn-urllists/wireless-fqdn-ios-cfg:fqdn-urllist/wireless-fqdn-ios-cfg:fqdn-url,leaf,string
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-enhanced-configs,container,
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-enhanced-configs/wireless-fqdn-ios-cfg:fqdn-enhanced-config,list,
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-enhanced-configs/wireless-fqdn-ios-cfg:fqdn-enhanced-config/wireless-fqdn-ios-cfg:url-list-name,leaf,string
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-enhanced-configs/wireless-fqdn-ios-cfg:fqdn-enhanced-config/wireless-fqdn-ios-cfg:fqdn-enhanced-urls,container,
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-enhanced-configs/wireless-fqdn-ios-cfg:fqdn-enhanced-config/wireless-fqdn-ios-cfg:fqdn-enhanced-urls/wireless-fqdn-ios-cfg:fqdn-enhanced-url,list,
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-enhanced-configs/wireless-fqdn-ios-cfg:fqdn-enhanced-config/wireless-fqdn-ios-cfg:fqdn-enhanced-urls/wireless-fqdn-ios-cfg:fqdn-enhanced-url/wireless-fqdn-ios-cfg:fqdn-url,leaf,string
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-enhanced-configs/wireless-fqdn-ios-cfg:fqdn-enhanced-config/wireless-fqdn-ios-cfg:fqdn-enhanced-urls/wireless-fqdn-ios-cfg:fqdn-enhanced-url/wireless-fqdn-ios-cfg:action,leaf,wireless-types:ewlc-url-rule-type
+/wireless-fqdn-ios-cfg:fqdn-cfg-data/wireless-fqdn-ios-cfg:fqdn-enhanced-configs/wireless-fqdn-ios-cfg:fqdn-enhanced-config/wireless-fqdn-ios-cfg:fqdn-enhanced-urls/wireless-fqdn-ios-cfg:fqdn-enhanced-url/wireless-fqdn-ios-cfg:preference,leaf,uint16

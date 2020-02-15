@@ -1,0 +1,42 @@
+ 
+KPI for model: Cisco-IOS-XE-vservice.yang
+
+module: Cisco-IOS-XE-vservice
+  augment /ios:native/ios:virtual-service:
+    +--rw ip
+    |  +--rw shared
+    |     +--rw host-interface
+    |        +--rw FastEthernet?          string
+    |        +--rw TenGigabitEthernet?    string
+    |        +--rw GigabitEthernet?       string
+    |        +--rw FiveGigabitEthernet?   string
+    |        +--rw AppGigabitEthernet?    string
+    |        +--rw TwentyFiveGigE?        string
+    |        +--rw TwoGigabitEthernet?    string
+    |        +--rw Loopback?              uint64
+    |        +--rw Vlan?                  uint16
+    +--rw activate?   empty
+    +--rw profile?    string
+    +--rw vnic
+       +--rw gateway
+       |  +--rw VirtualPortGroup* [number]
+       |     +--rw number    uint16
+       |     +--rw guest
+       |        +--rw (ip-address)?
+       |           +--:(ipv4-case)
+       |           |  +--rw ip
+       |           |     +--rw address?   inet:ipv4-address
+       |           +--:(ipv6-case)
+       |              +--rw ipv6
+       |                 +--rw address?   inet:ipv6-address
+       +--rw management
+          +--rw GigabitEthernet0?   empty
+          +--rw guest
+             +--rw (ip-address)?
+                +--:(ipv4-case)
+                |  +--rw ip
+                |     +--rw address?   inet:ipv4-address
+                +--:(ipv6-case)
+                   +--rw ipv6
+                      +--rw address?   inet:ipv6-address
+Xpaths for model: Cisco-IOS-XE-vservice.yang

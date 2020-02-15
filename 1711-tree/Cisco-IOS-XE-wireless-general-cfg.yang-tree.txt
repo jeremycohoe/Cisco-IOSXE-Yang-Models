@@ -1,0 +1,144 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-general-cfg.yang
+module: Cisco-IOS-XE-wireless-general-cfg
+  +--rw general-cfg-data
+     +--rw mewlc-config!
+     |  +--rw mewlc-platform?          boolean
+     |  +--rw mewlc-vrrp-vrid?         uint8
+     |  +--rw preferred-master-name?   string
+     +--rw cac-config!
+     |  +--rw iplearnq-high-threshold?             uint32
+     |  +--rw aaa-high-threshold?                  uint32
+     |  +--rw ipc-high-threshold?                  uint32
+     |  +--rw ipc-low-threshold?                   uint32
+     |  +--rw cpu-high-threshold?                  uint32
+     |  +--rw mobility-discovery-threshold-high?   uint32
+     +--rw mfp!
+     |  +--rw global-mfp-state?             boolean
+     |  +--rw ap-impersonation-detection?   boolean
+     |  +--rw mfp-key-refresh-interval?     uint8
+     +--rw fips-cfg!
+     |  +--rw dtls-version?       wireless-types:enm-dtls-version
+     |  +--rw dtls-ciphersuite?   wireless-types:enm-ciphersuite
+     +--rw exclusion-list-file-records
+     |  +--rw exclusion-list-file-record* [mac-addr]
+     |     +--rw mac-addr       yang:mac-address
+     |     +--rw description?   string
+     +--rw wsa-config!
+     |  +--rw enable?                          boolean
+     |  +--rw url?                             string
+     |  +--rw token?                           string
+     |  +--rw enable-dataplane-statistics?     boolean
+     |  +--rw interval-dataplane-statistics?   uint16
+     |  +--rw icap-port?                       uint16
+     +--rw na-server-cert
+     |  +--rw protocol?        wireless-types:download-protocol
+     |  +--rw server-ip?       inet:ip-address
+     |  +--rw path?            string
+     |  +--rw filename?        string
+     |  +--rw encrypted?       boolean
+     |  +--rw username?        string
+     |  +--rw password?        string
+     |  +--rw password-type?   wireless-enum-types:crypt-type
+     |  +--rw vrf?             string
+     +--rw ap-dna-global-config!
+     |  +--rw token?        string
+     |  +--rw token-type?   wireless-enum-types:crypt-type
+     +--rw sim-l3-interface-cache-data!
+     |  +--rw interface-name?         string
+     |  +--rw nat-ip-address?         inet:ip-address
+     |  +--rw nat-enable?             boolean
+     |  +--rw private-ip-discovery?   boolean
+     |  +--rw public-ip-discovery?    boolean
+     +--rw laginfo!
+     |  +--rw enabled?   boolean
+     +--rw multicast-config!
+     |  +--rw multicast-over-multicast-ipv4-addr?   inet:ipv4-address
+     |  +--rw multicast-over-multicast-ipv6-addr?   inet:ipv6-address
+     |  +--rw is-mcast-enabled?                     boolean
+     |  +--rw is-non-ip-multicast-enabled?          boolean
+     |  +--rw is-mdns-enabled?                      boolean
+     |  +--rw multicast-mode?                       boolean
+     |  +--rw multicast-v6-mode?                    boolean
+     |  +--rw is-broadcast-enabled?                 boolean
+     +--rw multicast-non-ip-config
+     |  +--rw multicast-non-ip-vlan-config* [vlan-id]
+     |     +--rw vlan-id    uint32
+     +--rw broadcast-config
+     |  +--rw broadcast-vlan-config* [vlan-id]
+     |     +--rw vlan-id    uint32
+     +--rw ap-upgrade-config
+     |  +--rw percentage?   wireless-types:enum-ewlc-ap-upgrade-config
+     o--rw li-global-config!
+        +--rw li-host-ip-address?   inet:ip-address
+Xpaths for model: Cisco-IOS-XE-wireless-general-cfg.yang
+/wireless-general-cfg:general-cfg-data,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:mewlc-config,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:mewlc-config/wireless-general-cfg:mewlc-platform,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:mewlc-config/wireless-general-cfg:mewlc-vrrp-vrid,leaf,uint8
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:mewlc-config/wireless-general-cfg:preferred-master-name,leaf,string
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:cac-config,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:cac-config/wireless-general-cfg:iplearnq-high-threshold,leaf,uint32
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:cac-config/wireless-general-cfg:aaa-high-threshold,leaf,uint32
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:cac-config/wireless-general-cfg:ipc-high-threshold,leaf,uint32
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:cac-config/wireless-general-cfg:ipc-low-threshold,leaf,uint32
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:cac-config/wireless-general-cfg:cpu-high-threshold,leaf,uint32
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:cac-config/wireless-general-cfg:mobility-discovery-threshold-high,leaf,uint32
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:mfp,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:mfp/wireless-general-cfg:global-mfp-state,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:mfp/wireless-general-cfg:ap-impersonation-detection,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:mfp/wireless-general-cfg:mfp-key-refresh-interval,leaf,uint8
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:fips-cfg,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:fips-cfg/wireless-general-cfg:dtls-version,leaf,wireless-types:enm-dtls-version
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:fips-cfg/wireless-general-cfg:dtls-ciphersuite,leaf,wireless-types:enm-ciphersuite
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:exclusion-list-file-records,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:exclusion-list-file-records/wireless-general-cfg:exclusion-list-file-record,list,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:exclusion-list-file-records/wireless-general-cfg:exclusion-list-file-record/wireless-general-cfg:mac-addr,leaf,yang:mac-address
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:exclusion-list-file-records/wireless-general-cfg:exclusion-list-file-record/wireless-general-cfg:description,leaf,string
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:wsa-config,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:wsa-config/wireless-general-cfg:enable,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:wsa-config/wireless-general-cfg:url,leaf,string
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:wsa-config/wireless-general-cfg:token,leaf,string
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:wsa-config/wireless-general-cfg:enable-dataplane-statistics,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:wsa-config/wireless-general-cfg:interval-dataplane-statistics,leaf,uint16
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:wsa-config/wireless-general-cfg:icap-port,leaf,uint16
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:na-server-cert,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:na-server-cert/wireless-general-cfg:protocol,leaf,wireless-types:download-protocol
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:na-server-cert/wireless-general-cfg:server-ip,leaf,inet:ip-address
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:na-server-cert/wireless-general-cfg:path,leaf,string
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:na-server-cert/wireless-general-cfg:filename,leaf,string
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:na-server-cert/wireless-general-cfg:encrypted,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:na-server-cert/wireless-general-cfg:username,leaf,string
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:na-server-cert/wireless-general-cfg:password,leaf,string
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:na-server-cert/wireless-general-cfg:password-type,leaf,wireless-enum-types:crypt-type
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:na-server-cert/wireless-general-cfg:vrf,leaf,string
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:ap-dna-global-config,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:ap-dna-global-config/wireless-general-cfg:token,leaf,string
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:ap-dna-global-config/wireless-general-cfg:token-type,leaf,wireless-enum-types:crypt-type
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:sim-l3-interface-cache-data,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:sim-l3-interface-cache-data/wireless-general-cfg:interface-name,leaf,string
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:sim-l3-interface-cache-data/wireless-general-cfg:nat-ip-address,leaf,inet:ip-address
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:sim-l3-interface-cache-data/wireless-general-cfg:nat-enable,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:sim-l3-interface-cache-data/wireless-general-cfg:private-ip-discovery,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:sim-l3-interface-cache-data/wireless-general-cfg:public-ip-discovery,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:laginfo,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:laginfo/wireless-general-cfg:enabled,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:multicast-config,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:multicast-config/wireless-general-cfg:multicast-over-multicast-ipv4-addr,leaf,inet:ipv4-address
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:multicast-config/wireless-general-cfg:multicast-over-multicast-ipv6-addr,leaf,inet:ipv6-address
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:multicast-config/wireless-general-cfg:is-mcast-enabled,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:multicast-config/wireless-general-cfg:is-non-ip-multicast-enabled,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:multicast-config/wireless-general-cfg:is-mdns-enabled,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:multicast-config/wireless-general-cfg:multicast-mode,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:multicast-config/wireless-general-cfg:multicast-v6-mode,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:multicast-config/wireless-general-cfg:is-broadcast-enabled,leaf,boolean
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:multicast-non-ip-config,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:multicast-non-ip-config/wireless-general-cfg:multicast-non-ip-vlan-config,list,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:multicast-non-ip-config/wireless-general-cfg:multicast-non-ip-vlan-config/wireless-general-cfg:vlan-id,leaf,uint32
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:broadcast-config,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:broadcast-config/wireless-general-cfg:broadcast-vlan-config,list,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:broadcast-config/wireless-general-cfg:broadcast-vlan-config/wireless-general-cfg:vlan-id,leaf,uint32
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:ap-upgrade-config,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:ap-upgrade-config/wireless-general-cfg:percentage,leaf,wireless-types:enum-ewlc-ap-upgrade-config
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:li-global-config,container,
+/wireless-general-cfg:general-cfg-data/wireless-general-cfg:li-global-config/wireless-general-cfg:li-host-ip-address,leaf,inet:ip-address

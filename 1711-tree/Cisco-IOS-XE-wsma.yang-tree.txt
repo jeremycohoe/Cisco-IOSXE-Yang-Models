@@ -1,0 +1,19 @@
+ 
+KPI for model: Cisco-IOS-XE-wsma.yang
+
+module: Cisco-IOS-XE-wsma
+  augment /ios:native/ios:wsma:
+    +--rw agent
+    |  +--rw exec
+    |  |  +--rw profile*   string
+    |  +--rw config
+    |  |  +--rw profile*   string
+    |  +--rw filesys
+    |  |  +--rw profile*   string
+    |  +--rw notify
+    |     +--rw profile*   string
+    +--rw profile
+       +--rw listener* [name]
+          +--rw name         string
+          +--rw transport?   enumeration
+Xpaths for model: Cisco-IOS-XE-wsma.yang

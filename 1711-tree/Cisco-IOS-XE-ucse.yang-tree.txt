@@ -1,0 +1,54 @@
+ 
+KPI for model: Cisco-IOS-XE-ucse.yang
+
+module: Cisco-IOS-XE-ucse
+  augment /ios:native:
+    +--rw ucse
+       +--rw subslot* [subslot-name]
+          +--rw subslot-name    string
+          +--rw imc
+          |  +--rw access-port
+          |  |  +--rw (access-port-choice)?
+          |  |     +--:(dedicated-mgmt-port)
+          |  |     |  +--rw dedicated?    empty
+          |  |     +--:(shared-lom-port)
+          |  |        +--rw shared-lom
+          |  |           +--rw (port-choice)?
+          |  |              +--:(ge1)
+          |  |              |  +--rw ge1?        empty
+          |  |              +--:(ge2)
+          |  |              |  +--rw ge2?        empty
+          |  |              +--:(ge3)
+          |  |              |  +--rw ge3?        empty
+          |  |              +--:(te2)
+          |  |              |  +--rw te2?        empty
+          |  |              +--:(te3)
+          |  |              |  +--rw te3?        empty
+          |  |              +--:(console)
+          |  |              |  +--rw console?    empty
+          |  |              +--:(failover)
+          |  |                 +--rw failover
+          |  |                    +--rw failover-ge-case
+          |  |                    |  +--rw ge2    empty
+          |  |                    |  +--rw ge3?   empty
+          |  |                    +--rw failover-te-case
+          |  |                       +--rw te2    empty
+          |  |                       +--rw te3?   empty
+          |  +--rw ip
+          |  |  +--rw (ip-static-vs-dhcp-choice)?
+          |  |     +--:(static-case)
+          |  |     |  +--rw static-case
+          |  |     |     +--rw address            inet:ipv4-address
+          |  |     |     +--rw mask               inet:ipv4-address
+          |  |     |     +--rw default-gateway?   inet:ipv4-address
+          |  |     +--:(dhcp-case)
+          |  |        +--rw dhcp-case
+          |  |           +--rw dhcp?   empty
+          |  +--rw vlan
+          |     +--rw vlan-id?    uint16
+          |     +--rw priority?   uint8
+          +--rw platform
+             +--rw switchport* [port-number]
+                +--rw port-number    uint8
+                +--rw svi            empty
+Xpaths for model: Cisco-IOS-XE-ucse.yang

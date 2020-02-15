@@ -1,0 +1,34 @@
+ 
+KPI for model: Cisco-IOS-XE-yang-interfaces-cfg.yang
+module: Cisco-IOS-XE-yang-interfaces-cfg
+  +--rw yang-interfaces-cfg-data
+     +--rw acl
+     |  +--rw netconf-yang-ssh
+     |  |  +--rw ipv4-acl-name?   string
+     |  |  +--rw ipv6-acl-name?   string
+     |  +--rw restconf
+     |     +--rw ipv4-acl-name?   string
+     |     +--rw ipv6-acl-name?   string
+     +--rw general
+        +--rw snmp-global-forwarding?   boolean
+        +--rw snmp-trap* [trap-oid]
+        |  +--rw trap-oid       string
+        |  +--rw description?   string
+        |  +--rw forward?       boolean
+        +--rw snmp-community?           string
+Xpaths for model: Cisco-IOS-XE-yang-interfaces-cfg.yang
+/yang-interfaces-cfg:yang-interfaces-cfg-data,container,
+/yang-interfaces-cfg:yang-interfaces-cfg-data/yang-interfaces-cfg:acl,container,
+/yang-interfaces-cfg:yang-interfaces-cfg-data/yang-interfaces-cfg:acl/yang-interfaces-cfg:netconf-yang-ssh,container,
+/yang-interfaces-cfg:yang-interfaces-cfg-data/yang-interfaces-cfg:acl/yang-interfaces-cfg:netconf-yang-ssh/yang-interfaces-cfg:ipv4-acl-name,leaf,string
+/yang-interfaces-cfg:yang-interfaces-cfg-data/yang-interfaces-cfg:acl/yang-interfaces-cfg:netconf-yang-ssh/yang-interfaces-cfg:ipv6-acl-name,leaf,string
+/yang-interfaces-cfg:yang-interfaces-cfg-data/yang-interfaces-cfg:acl/yang-interfaces-cfg:restconf,container,
+/yang-interfaces-cfg:yang-interfaces-cfg-data/yang-interfaces-cfg:acl/yang-interfaces-cfg:restconf/yang-interfaces-cfg:ipv4-acl-name,leaf,string
+/yang-interfaces-cfg:yang-interfaces-cfg-data/yang-interfaces-cfg:acl/yang-interfaces-cfg:restconf/yang-interfaces-cfg:ipv6-acl-name,leaf,string
+/yang-interfaces-cfg:yang-interfaces-cfg-data/yang-interfaces-cfg:general,container,
+/yang-interfaces-cfg:yang-interfaces-cfg-data/yang-interfaces-cfg:general/yang-interfaces-cfg:snmp-global-forwarding,leaf,boolean
+/yang-interfaces-cfg:yang-interfaces-cfg-data/yang-interfaces-cfg:general/yang-interfaces-cfg:snmp-trap,list,
+/yang-interfaces-cfg:yang-interfaces-cfg-data/yang-interfaces-cfg:general/yang-interfaces-cfg:snmp-trap/yang-interfaces-cfg:trap-oid,leaf,string
+/yang-interfaces-cfg:yang-interfaces-cfg-data/yang-interfaces-cfg:general/yang-interfaces-cfg:snmp-trap/yang-interfaces-cfg:description,leaf,string
+/yang-interfaces-cfg:yang-interfaces-cfg-data/yang-interfaces-cfg:general/yang-interfaces-cfg:snmp-trap/yang-interfaces-cfg:forward,leaf,boolean
+/yang-interfaces-cfg:yang-interfaces-cfg-data/yang-interfaces-cfg:general/yang-interfaces-cfg:snmp-community,leaf,string

@@ -1,0 +1,596 @@
+ 
+KPI for model: common-mpls-static.yang
+module: common-mpls-static
+  +--rw mpls-static
+     +--rw mpls-static-cfg
+     |  +--rw interfaces
+     |  |  +--rw interface* [name]
+     |  |     +--rw name       if:interface-ref
+     |  |     +--rw enabled    uint32
+     |  +--rw ipv4-ingress-lsps
+     |  |  +--rw ipv4-ingress-lsp* [vrf-name prefix]
+     |  |     +--rw vrf-name    string
+     |  |     +--rw prefix      inet:ipv4-prefix
+     |  |     +--rw name?       string
+     |  |     +--rw in-label?   mpls:ietf-mpls-label
+     |  |     +--rw path
+     |  |        +--rw (resolution)?
+     |  |           +--:(auto-next-hops)
+     |  |           |  +--rw operations
+     |  |           |  |  +--rw (operation)?
+     |  |           |  |     +--:(preserve-stack)
+     |  |           |  |     |  +--rw preserve           empty
+     |  |           |  |     +--:(swap-with-label-stack)
+     |  |           |  |     |  +--rw swap
+     |  |           |  |     |     +--rw stack
+     |  |           |  |     |        +--rw label-stack*   ietf-mpls-label
+     |  |           |  |     +--:(push-label-stack)
+     |  |           |  |     |  +--rw push
+     |  |           |  |     |     +--rw stack
+     |  |           |  |     |        +--rw label-stack*   ietf-mpls-label
+     |  |           |  |     +--:(pop-and-forward)
+     |  |           |  |        +--rw pop-and-forward    empty
+     |  |           |  +--rw auto-protect?   boolean
+     |  |           +--:(explicit-next-hops)
+     |  |              +--rw next-hop* [index]
+     |  |                 +--rw index            uint32
+     |  |                 +--rw type             hoptype
+     |  |                 +--rw protected-by?    uint32
+     |  |                 +--rw next-hop-type
+     |  |                 |  +--rw (address-type)?
+     |  |                 |  |  +--:(unnumberd)
+     |  |                 |  |  |  +--rw if-index        uint32
+     |  |                 |  |  +--:(layer3-ipv4)
+     |  |                 |  |  |  +--rw ipv4-address    inet:ipv4-address-no-zone
+     |  |                 |  |  +--:(layer3-ipv6)
+     |  |                 |  |  |  +--rw ipv6-address    inet:ipv6-address-no-zone
+     |  |                 |  |  +--:(layer2)
+     |  |                 |  |     +--rw mac-address     yang:mac-address
+     |  |                 |  +--rw out-interface-name?   if:interface-ref
+     |  |                 +--rw operations
+     |  |                    +--rw (operation)?
+     |  |                       +--:(preserve-stack)
+     |  |                       |  +--rw preserve           empty
+     |  |                       +--:(swap-with-label-stack)
+     |  |                       |  +--rw swap
+     |  |                       |     +--rw stack
+     |  |                       |        +--rw label-stack*   ietf-mpls-label
+     |  |                       +--:(push-label-stack)
+     |  |                       |  +--rw push
+     |  |                       |     +--rw stack
+     |  |                       |        +--rw label-stack*   ietf-mpls-label
+     |  |                       +--:(pop-and-forward)
+     |  |                          +--rw pop-and-forward    empty
+     |  +--rw ipv6-ingress-lsps
+     |  |  +--rw ipv6-ingress-lsp* [vrf-name prefix]
+     |  |     +--rw prefix      inet:ipv6-prefix
+     |  |     +--rw name?       string
+     |  |     +--rw in-label?   mpls:ietf-mpls-label
+     |  |     +--rw vrf-name    string
+     |  |     +--rw path
+     |  |        +--rw (resolution)?
+     |  |           +--:(auto-next-hops)
+     |  |           |  +--rw operations
+     |  |           |  |  +--rw (operation)?
+     |  |           |  |     +--:(preserve-stack)
+     |  |           |  |     |  +--rw preserve           empty
+     |  |           |  |     +--:(swap-with-label-stack)
+     |  |           |  |     |  +--rw swap
+     |  |           |  |     |     +--rw stack
+     |  |           |  |     |        +--rw label-stack*   ietf-mpls-label
+     |  |           |  |     +--:(push-label-stack)
+     |  |           |  |     |  +--rw push
+     |  |           |  |     |     +--rw stack
+     |  |           |  |     |        +--rw label-stack*   ietf-mpls-label
+     |  |           |  |     +--:(pop-and-forward)
+     |  |           |  |        +--rw pop-and-forward    empty
+     |  |           |  +--rw auto-protect?   boolean
+     |  |           +--:(explicit-next-hops)
+     |  |              +--rw next-hop* [index]
+     |  |                 +--rw index            uint32
+     |  |                 +--rw type             hoptype
+     |  |                 +--rw protected-by?    uint32
+     |  |                 +--rw next-hop-type
+     |  |                 |  +--rw (address-type)?
+     |  |                 |  |  +--:(unnumberd)
+     |  |                 |  |  |  +--rw if-index        uint32
+     |  |                 |  |  +--:(layer3-ipv4)
+     |  |                 |  |  |  +--rw ipv4-address    inet:ipv4-address-no-zone
+     |  |                 |  |  +--:(layer3-ipv6)
+     |  |                 |  |  |  +--rw ipv6-address    inet:ipv6-address-no-zone
+     |  |                 |  |  +--:(layer2)
+     |  |                 |  |     +--rw mac-address     yang:mac-address
+     |  |                 |  +--rw out-interface-name?   if:interface-ref
+     |  |                 +--rw operations
+     |  |                    +--rw (operation)?
+     |  |                       +--:(preserve-stack)
+     |  |                       |  +--rw preserve           empty
+     |  |                       +--:(swap-with-label-stack)
+     |  |                       |  +--rw swap
+     |  |                       |     +--rw stack
+     |  |                       |        +--rw label-stack*   ietf-mpls-label
+     |  |                       +--:(push-label-stack)
+     |  |                       |  +--rw push
+     |  |                       |     +--rw stack
+     |  |                       |        +--rw label-stack*   ietf-mpls-label
+     |  |                       +--:(pop-and-forward)
+     |  |                          +--rw pop-and-forward    empty
+     |  +--rw in-label-lsps
+     |  |  +--rw in-label-lsp* [vrf-name in-label]
+     |  |     +--rw in-label    mpls:ietf-mpls-label
+     |  |     +--rw vrf-name    string
+     |  |     +--rw path
+     |  |        +--rw (resolution)?
+     |  |           +--:(auto-next-hops)
+     |  |           |  +--rw operations
+     |  |           |  |  +--rw (operation)?
+     |  |           |  |     +--:(preserve-stack)
+     |  |           |  |     |  +--rw preserve           empty
+     |  |           |  |     +--:(swap-with-label-stack)
+     |  |           |  |     |  +--rw swap
+     |  |           |  |     |     +--rw stack
+     |  |           |  |     |        +--rw label-stack*   ietf-mpls-label
+     |  |           |  |     +--:(push-label-stack)
+     |  |           |  |     |  +--rw push
+     |  |           |  |     |     +--rw stack
+     |  |           |  |     |        +--rw label-stack*   ietf-mpls-label
+     |  |           |  |     +--:(pop-and-forward)
+     |  |           |  |        +--rw pop-and-forward    empty
+     |  |           |  +--rw auto-protect?   boolean
+     |  |           +--:(explicit-next-hops)
+     |  |              +--rw next-hop* [index]
+     |  |                 +--rw index            uint32
+     |  |                 +--rw type             hoptype
+     |  |                 +--rw protected-by?    uint32
+     |  |                 +--rw next-hop-type
+     |  |                 |  +--rw (address-type)?
+     |  |                 |  |  +--:(unnumberd)
+     |  |                 |  |  |  +--rw if-index        uint32
+     |  |                 |  |  +--:(layer3-ipv4)
+     |  |                 |  |  |  +--rw ipv4-address    inet:ipv4-address-no-zone
+     |  |                 |  |  +--:(layer3-ipv6)
+     |  |                 |  |  |  +--rw ipv6-address    inet:ipv6-address-no-zone
+     |  |                 |  |  +--:(layer2)
+     |  |                 |  |     +--rw mac-address     yang:mac-address
+     |  |                 |  +--rw out-interface-name?   if:interface-ref
+     |  |                 +--rw operations
+     |  |                    +--rw (operation)?
+     |  |                       +--:(preserve-stack)
+     |  |                       |  +--rw preserve           empty
+     |  |                       +--:(swap-with-label-stack)
+     |  |                       |  +--rw swap
+     |  |                       |     +--rw stack
+     |  |                       |        +--rw label-stack*   ietf-mpls-label
+     |  |                       +--:(push-label-stack)
+     |  |                       |  +--rw push
+     |  |                       |     +--rw stack
+     |  |                       |        +--rw label-stack*   ietf-mpls-label
+     |  |                       +--:(pop-and-forward)
+     |  |                          +--rw pop-and-forward    empty
+     |  +--rw named-lsps
+     |     +--rw named-lsp* [vrf-name name]
+     |        +--rw name           string
+     |        +--rw lsp-type       identityref
+     |        +--rw vrf-name       string
+     |        +--rw in-label?      mpls:ietf-mpls-label
+     |        +--rw ipv4-prefix?   inet:ipv4-prefix
+     |        +--rw ipv6-prefix?   inet:ipv6-prefix
+     |        +--rw path
+     |           +--rw (resolution)?
+     |              +--:(auto-next-hops)
+     |              |  +--rw operations
+     |              |  |  +--rw (operation)?
+     |              |  |     +--:(preserve-stack)
+     |              |  |     |  +--rw preserve           empty
+     |              |  |     +--:(swap-with-label-stack)
+     |              |  |     |  +--rw swap
+     |              |  |     |     +--rw stack
+     |              |  |     |        +--rw label-stack*   ietf-mpls-label
+     |              |  |     +--:(push-label-stack)
+     |              |  |     |  +--rw push
+     |              |  |     |     +--rw stack
+     |              |  |     |        +--rw label-stack*   ietf-mpls-label
+     |              |  |     +--:(pop-and-forward)
+     |              |  |        +--rw pop-and-forward    empty
+     |              |  +--rw auto-protect?   boolean
+     |              +--:(explicit-next-hops)
+     |                 +--rw next-hop* [index]
+     |                    +--rw index            uint32
+     |                    +--rw type             hoptype
+     |                    +--rw protected-by?    uint32
+     |                    +--rw next-hop-type
+     |                    |  +--rw (address-type)?
+     |                    |  |  +--:(unnumberd)
+     |                    |  |  |  +--rw if-index        uint32
+     |                    |  |  +--:(layer3-ipv4)
+     |                    |  |  |  +--rw ipv4-address    inet:ipv4-address-no-zone
+     |                    |  |  +--:(layer3-ipv6)
+     |                    |  |  |  +--rw ipv6-address    inet:ipv6-address-no-zone
+     |                    |  |  +--:(layer2)
+     |                    |  |     +--rw mac-address     yang:mac-address
+     |                    |  +--rw out-interface-name?   if:interface-ref
+     |                    +--rw operations
+     |                       +--rw (operation)?
+     |                          +--:(preserve-stack)
+     |                          |  +--rw preserve           empty
+     |                          +--:(swap-with-label-stack)
+     |                          |  +--rw swap
+     |                          |     +--rw stack
+     |                          |        +--rw label-stack*   ietf-mpls-label
+     |                          +--:(push-label-stack)
+     |                          |  +--rw push
+     |                          |     +--rw stack
+     |                          |        +--rw label-stack*   ietf-mpls-label
+     |                          +--:(pop-and-forward)
+     |                             +--rw pop-and-forward    empty
+     +--ro mpls-static-state
+        +--ro label-switched-paths
+           +--ro label-switched-path* [vrf-name prefix]
+              +--ro name?             string
+              +--ro vrf-name          string
+              +--ro in-label-value?   mpls:ietf-mpls-label
+              +--ro prefix            inet:ip-prefix
+              +--ro ingress-stats
+              |  +--ro stats
+              |     +--ro packets?           uint64
+              |     +--ro bytes?             uint64
+              |     +--ro dropped-packets?   uint64
+              |     +--ro dropped-bytes?     uint64
+              +--ro egress-stats
+              |  +--ro stats
+              |     +--ro packets?           uint64
+              |     +--ro bytes?             uint64
+              |     +--ro dropped-packets?   uint64
+              |     +--ro dropped-bytes?     uint64
+              +--ro path
+                 +--ro (resolution)?
+                    +--:(auto-next-hops)
+                    |  +--ro operations
+                    |  |  +--ro (operation)?
+                    |  |     +--:(preserve-stack)
+                    |  |     |  +--ro preserve           empty
+                    |  |     +--:(swap-with-label-stack)
+                    |  |     |  +--ro swap
+                    |  |     |     +--ro stack
+                    |  |     |        +--ro label-stack*   ietf-mpls-label
+                    |  |     +--:(push-label-stack)
+                    |  |     |  +--ro push
+                    |  |     |     +--ro stack
+                    |  |     |        +--ro label-stack*   ietf-mpls-label
+                    |  |     +--:(pop-and-forward)
+                    |  |        +--ro pop-and-forward    empty
+                    |  +--ro auto-protect?   boolean
+                    +--:(explicit-next-hops)
+                       +--ro next-hop* [index]
+                          +--ro index            uint32
+                          +--ro type             hoptype
+                          +--ro protected-by?    uint32
+                          +--ro next-hop-type
+                          |  +--ro (address-type)?
+                          |  |  +--:(unnumberd)
+                          |  |  |  +--ro if-index        uint32
+                          |  |  +--:(layer3-ipv4)
+                          |  |  |  +--ro ipv4-address    inet:ipv4-address-no-zone
+                          |  |  +--:(layer3-ipv6)
+                          |  |  |  +--ro ipv6-address    inet:ipv6-address-no-zone
+                          |  |  +--:(layer2)
+                          |  |     +--ro mac-address     yang:mac-address
+                          |  +--ro out-interface-name?   if:interface-ref
+                          +--ro operations
+                          |  +--ro (operation)?
+                          |     +--:(preserve-stack)
+                          |     |  +--ro preserve           empty
+                          |     +--:(swap-with-label-stack)
+                          |     |  +--ro swap
+                          |     |     +--ro stack
+                          |     |        +--ro label-stack*   ietf-mpls-label
+                          |     +--:(push-label-stack)
+                          |     |  +--ro push
+                          |     |     +--ro stack
+                          |     |        +--ro label-stack*   ietf-mpls-label
+                          |     +--:(pop-and-forward)
+                          |        +--ro pop-and-forward    empty
+                          +--ro origin?          identityref
+                          +--ro nexthop-stats
+                             +--ro stats
+                                +--ro packets?           uint64
+                                +--ro bytes?             uint64
+                                +--ro dropped-packets?   uint64
+                                +--ro dropped-bytes?     uint64
+Xpaths for model: common-mpls-static.yang
+/ms:mpls-static,container,
+/ms:mpls-static/ms:mpls-static-cfg,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:interfaces,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:interfaces/ms:interface,list,
+/ms:mpls-static/ms:mpls-static-cfg/ms:interfaces/ms:interface/ms:name,leaf,if:interface-ref
+/ms:mpls-static/ms:mpls-static-cfg/ms:interfaces/ms:interface/ms:enabled,leaf,uint32
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp,list,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:vrf-name,leaf,string
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:prefix,leaf,inet:ipv4-prefix
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:name,leaf,string
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:in-label,leaf,mpls:ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:operations,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:operations,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:operations/ms:preserve,leaf,empty
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:operations/ms:swap,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:operations/ms:swap/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:operations/ms:swap/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:operations/ms:push,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:operations/ms:push/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:operations/ms:push/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:operations/ms:pop-and-forward,leaf,empty
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:auto-protect,leaf,boolean
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop,list,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:index,leaf,uint32
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:type,leaf,hoptype
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:protected-by,leaf,uint32
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:if-index,leaf,uint32
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:ipv4-address,leaf,inet:ipv4-address-no-zone
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:ipv6-address,leaf,inet:ipv6-address-no-zone
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:mac-address,leaf,yang:mac-address
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:out-interface-name,leaf,if:interface-ref
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:operations,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:operations,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:preserve,leaf,empty
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:swap,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:swap/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:swap/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:push,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:push/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:push/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv4-ingress-lsps/ms:ipv4-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:pop-and-forward,leaf,empty
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp,list,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:prefix,leaf,inet:ipv6-prefix
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:name,leaf,string
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:in-label,leaf,mpls:ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:vrf-name,leaf,string
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:operations,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:operations,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:operations/ms:preserve,leaf,empty
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:operations/ms:swap,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:operations/ms:swap/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:operations/ms:swap/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:operations/ms:push,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:operations/ms:push/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:operations/ms:push/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:operations/ms:pop-and-forward,leaf,empty
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:auto-protect,leaf,boolean
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop,list,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:index,leaf,uint32
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:type,leaf,hoptype
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:protected-by,leaf,uint32
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:if-index,leaf,uint32
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:ipv4-address,leaf,inet:ipv4-address-no-zone
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:ipv6-address,leaf,inet:ipv6-address-no-zone
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:mac-address,leaf,yang:mac-address
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:out-interface-name,leaf,if:interface-ref
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:operations,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:operations,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:preserve,leaf,empty
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:swap,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:swap/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:swap/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:push,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:push/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:push/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:ipv6-ingress-lsps/ms:ipv6-ingress-lsp/ms:path/ms:next-hop/ms:operations/ms:pop-and-forward,leaf,empty
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp,list,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:in-label,leaf,mpls:ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:vrf-name,leaf,string
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:operations,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:operations,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:operations/ms:preserve,leaf,empty
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:operations/ms:swap,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:operations/ms:swap/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:operations/ms:swap/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:operations/ms:push,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:operations/ms:push/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:operations/ms:push/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:operations/ms:pop-and-forward,leaf,empty
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:auto-protect,leaf,boolean
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop,list,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:index,leaf,uint32
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:type,leaf,hoptype
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:protected-by,leaf,uint32
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:next-hop-type,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:next-hop-type,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:if-index,leaf,uint32
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:ipv4-address,leaf,inet:ipv4-address-no-zone
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:ipv6-address,leaf,inet:ipv6-address-no-zone
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:mac-address,leaf,yang:mac-address
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:out-interface-name,leaf,if:interface-ref
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:operations,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:operations,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:operations/ms:preserve,leaf,empty
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:operations/ms:swap,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:operations/ms:swap/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:operations/ms:swap/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:operations/ms:push,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:operations/ms:push/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:operations/ms:push/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:in-label-lsps/ms:in-label-lsp/ms:path/ms:next-hop/ms:operations/ms:pop-and-forward,leaf,empty
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp,list,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:name,leaf,string
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:lsp-type,leaf,identityref
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:vrf-name,leaf,string
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:in-label,leaf,mpls:ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:ipv4-prefix,leaf,inet:ipv4-prefix
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:ipv6-prefix,leaf,inet:ipv6-prefix
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:operations,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:operations,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:operations/ms:preserve,leaf,empty
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:operations/ms:swap,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:operations/ms:swap/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:operations/ms:swap/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:operations/ms:push,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:operations/ms:push/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:operations/ms:push/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:operations/ms:pop-and-forward,leaf,empty
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:auto-protect,leaf,boolean
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop,list,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:index,leaf,uint32
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:type,leaf,hoptype
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:protected-by,leaf,uint32
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:next-hop-type,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:next-hop-type,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:if-index,leaf,uint32
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:ipv4-address,leaf,inet:ipv4-address-no-zone
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:ipv6-address,leaf,inet:ipv6-address-no-zone
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:mac-address,leaf,yang:mac-address
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:next-hop-type/ms:out-interface-name,leaf,if:interface-ref
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:operations,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:operations,choice,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:operations/ms:preserve,leaf,empty
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:operations/ms:swap,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:operations/ms:swap/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:operations/ms:swap/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:operations/ms:push,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:operations/ms:push/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:operations/ms:push/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-cfg/ms:named-lsps/ms:named-lsp/ms:path/ms:next-hop/ms:operations/ms:pop-and-forward,leaf,empty
+/ms:mpls-static/ms:mpls-static-state,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path,list,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:name,leaf,string
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:vrf-name,leaf,string
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:in-label-value,leaf,mpls:ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:prefix,leaf,inet:ip-prefix
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:ingress-stats,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:ingress-stats/ms:stats,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:ingress-stats/ms:stats/ms:packets,leaf,uint64
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:ingress-stats/ms:stats/ms:bytes,leaf,uint64
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:ingress-stats/ms:stats/ms:dropped-packets,leaf,uint64
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:ingress-stats/ms:stats/ms:dropped-bytes,leaf,uint64
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:egress-stats,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:egress-stats/ms:stats,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:egress-stats/ms:stats/ms:packets,leaf,uint64
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:egress-stats/ms:stats/ms:bytes,leaf,uint64
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:egress-stats/ms:stats/ms:dropped-packets,leaf,uint64
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:egress-stats/ms:stats/ms:dropped-bytes,leaf,uint64
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path,choice,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path,case,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:operations,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:operations,choice,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:operations/ms:preserve,leaf,empty
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:operations/ms:swap,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:operations/ms:swap/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:operations/ms:swap/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:operations/ms:push,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:operations/ms:push/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:operations/ms:push/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:operations/ms:pop-and-forward,leaf,empty
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:auto-protect,leaf,boolean
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path,case,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop,list,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:index,leaf,uint32
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:type,leaf,hoptype
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:protected-by,leaf,uint32
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:next-hop-type,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:next-hop-type,choice,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:next-hop-type/ms:if-index,leaf,uint32
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:next-hop-type/ms:ipv4-address,leaf,inet:ipv4-address-no-zone
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:next-hop-type/ms:ipv6-address,leaf,inet:ipv6-address-no-zone
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:next-hop-type,case,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:next-hop-type/ms:mac-address,leaf,yang:mac-address
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:next-hop-type/ms:out-interface-name,leaf,if:interface-ref
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:operations,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:operations,choice,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:operations/ms:preserve,leaf,empty
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:operations/ms:swap,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:operations/ms:swap/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:operations/ms:swap/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:operations/ms:push,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:operations/ms:push/ms:stack,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:operations/ms:push/ms:stack/ms:label-stack,leaf-list,ietf-mpls-label
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:operations,case,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:operations/ms:pop-and-forward,leaf,empty
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:origin,leaf,identityref
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:nexthop-stats,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:nexthop-stats/ms:stats,container,
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:nexthop-stats/ms:stats/ms:packets,leaf,uint64
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:nexthop-stats/ms:stats/ms:bytes,leaf,uint64
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:nexthop-stats/ms:stats/ms:dropped-packets,leaf,uint64
+/ms:mpls-static/ms:mpls-static-state/ms:label-switched-paths/ms:label-switched-path/ms:path/ms:next-hop/ms:nexthop-stats/ms:stats/ms:dropped-bytes,leaf,uint64

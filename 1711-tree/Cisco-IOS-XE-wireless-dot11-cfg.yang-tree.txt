@@ -1,0 +1,330 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-dot11-cfg.yang
+module: Cisco-IOS-XE-wireless-dot11-cfg
+  +--rw dot11-cfg-data
+     +--rw dot11ac-mcs-entries
+     |  +--rw dot11ac-mcs-entry* [spatial-stream index]
+     |     +--rw spatial-stream               uint8
+     |     +--rw index                        wireless-enum-types:dot11ac-mcs-rate-index
+     |     +--rw apf-80211ac-mcs-tx-enable?   boolean
+     +--rw dot11-entries
+        +--rw dot11-entry* [band]
+           +--rw band                            wireless-types:enm-ewlc-dot11-radio-band
+           +--rw voice-adm-ctrl-support?         boolean
+           +--rw video-adm-ctrl-support?         boolean
+           +--rw sip-cac-voice-sample-size?      uint8
+           +--rw sip-cac-config-bandwidth?       uint8
+           +--rw apf-network-state?              boolean
+           +--rw apf-dot11g-supported?           boolean
+           +--rw cac-voice-max-bandwidth?        uint8
+           +--rw apf-dtpc?                       boolean
+           +--rw cac-video-max-bandwidth?        uint8
+           +--rw cac-voice-roam-bandwidth?       uint8
+           +--rw cac-video-roam-bandwidth?       uint8
+           +--rw tsm-enable?                     boolean
+           +--rw exp-bandwidth-req-enable?       boolean
+           +--rw cac-voice-loadbased?            boolean
+           +--rw cac-tspec-inactivity-timeout?   boolean
+           +--rw cac-stream-size?                uint32
+           +--rw cac-max-streams?                uint8
+           +--rw beamforming?                    wireless-enum-types:nw-leg-beam-form
+           +--rw world-mode-ie?                  boolean
+           +--rw cac-voice-sip?                  boolean
+           +--rw apf-dot11b-short-preamble?      boolean
+           +--rw tx-power-control-threshold?     int8
+           +--rw channel-aware-tpc?              boolean
+           +--rw apf-dot11-default-cfg
+           |  +--rw fragmentation-threshold?   uint16
+           |  +--rw default-tx-power-level?    uint16
+           +--rw apf-dot11-capability
+           |  +--rw apf-beacon-interval?   uint16
+           +--rw ht-cfg
+           |  +--rw dot11n-enabled?               boolean
+           |  +--rw dot11n-rifs-tx-status?        boolean
+           |  +--rw dot11n-short-guard-enabled?   boolean
+           +--rw dot11ac-cfg
+           |  +--rw vht-enable?   boolean
+           +--rw dot11ax-cfg
+           |  +--rw he-enable?                 boolean
+           |  +--rw he-dynamic-frag?           boolean
+           |  +--rw he-mbssid-cap?             boolean
+           |  +--rw he-twt-enable?             boolean
+           |  +--rw he-twt-broadcast-enable?   boolean
+           |  +--rw he-bss-color?              boolean
+           +--rw dot11h-cfg
+           |  +--rw channel-switch-enable?   boolean
+           |  +--rw channel-switch-mode?     wireless-enum-types:enm-channel-switch-mode
+           |  +--rw power-constraint?        uint8
+           |  +--rw smart-dfs?               boolean
+           +--rw dot11-qos-pm
+           |  +--rw qos-pm-name?   string
+           |  +--rw def-11gn?      uint32
+           |  +--rw def-11an?      uint32
+           |  +--rw def-11ac?      uint32
+           +--rw ate-oper-mode?                  wireless-enum-types:apf-ate-mode
+           +--rw ate-stealing?                   wireless-enum-types:apf-ate-stealing-policy
+           +--rw g-edca?                         wireless-enum-types:edca-profile
+           +--rw medium-occupancy-limit?         uint32
+           +--rw ed-threshold?                   int32
+           +--rw cfp-period?                     uint32
+           +--rw cfp-max-duration?               uint32
+           +--rw rts-threshold?                  uint32
+           +--rw cf-pollable?                    boolean
+           +--rw cf-poll-request?                boolean
+           +--rw dtim-period?                    uint32
+           +--rw max-tx-power-level?             uint32
+           +--rw short-retry-limit?              uint32
+           +--rw long-retry-limit?               uint32
+           +--rw max-tx-msdu-lifetime?           uint32
+           +--rw max-rx-lifetime?                uint32
+           +--rw channel-agility?                boolean
+           +--rw ampdu-entries
+           |  +--rw ampdu-entry* [index]
+           |     +--rw index                           uint8
+           |     +--rw apf-80211n-ampdu-tx-priority?   wireless-enum-types:apf-80211n-ampdu
+           +--rw ampdu-tx-scheduler!
+           |  +--rw scheduler-enabled?   boolean
+           |  +--rw rt-timeout?          uint32
+           |  +--rw frame-burst?         wireless-enum-types:frame-burst-mode
+           +--rw amsdu-entries
+           |  +--rw amsdu-entry* [index]
+           |     +--rw index                           uint8
+           |     +--rw apf-80211n-amsdu-tx-priority?   wireless-enum-types:apf-80211n-amsdu
+           +--rw media-stream-band-info-cfg!
+           |  +--rw multicast-direct?                        boolean
+           |  +--rw multicast-direct-adm-best-effort?        boolean
+           |  +--rw video-redirect?                          boolean
+           |  +--rw cac-mmedia-max-bw?                       uint32
+           |  +--rw cac-mstream-mdirect-min-client-rate?     wireless-enum-types:dot11-min-phy-rate
+           |  +--rw cac-mstream-mdirect-max-retry-percent?   uint32
+           |  +--rw mdirect-max-stream-per-radio?            uint32
+           |  +--rw mdirect-max-stream-per-client?           uint32
+           +--rw spectrum-cfg!
+           |  +--rw spectrum-admin-state-set?            boolean
+           |  +--rw si-admin-state-set?                  boolean
+           |  +--rw dev-report-state-set?                boolean
+           |  +--rw aq-polling-period?                   uint8
+           |  +--rw id-report-enable?                    boolean
+           |  +--rw id-report-period?                    uint8
+           |  +--rw aq-report-enable?                    boolean
+           |  +--rw aq-alarm-mode?                       boolean
+           |  +--rw aq-alarm-threshold?                  uint8
+           |  +--rw dev-alarm-mode?                      boolean
+           |  +--rw rrm-ed-enable?                       boolean
+           |  +--rw rrm-ed-threshold-level?              wireless-enum-types:rrm-ed-threshold-level
+           |  +--rw rrm-ed-custom-threshold-value?       uint32
+           |  +--rw rrm-ed-rogue-enable?                 boolean
+           |  +--rw rrm-ed-rogue?                        uint8
+           |  +--rw idrv-period?                         uint8
+           |  +--rw aq-alarm2-control?                   boolean
+           |  +--rw aq-alarm2-threshold?                 uint8
+           |  +--rw cleanair-dev-all-mode?               boolean
+           |  +--rw rrm-pd-propagation?                  boolean
+           |  +--rw cleanair-device-bt-link-mode?        boolean
+           |  +--rw device-bt-link-mode?                 boolean
+           |  +--rw cleanair-device-mw-oven-mode?        boolean
+           |  +--rw device-mw-oven-mode?                 boolean
+           |  +--rw cleanair-dev802fh-mode?              boolean
+           |  +--rw dev802fh-mode?                       boolean
+           |  +--rw cleanair-device-bt-discovery-mode?   boolean
+           |  +--rw device-bt-discovery-mode?            boolean
+           |  +--rw cleanair-device-tddtx-mode?          boolean
+           |  +--rw device-tddtx-mode?                   boolean
+           |  +--rw cleanair-device-jammer-mode?         boolean
+           |  +--rw device-jammer-mode?                  boolean
+           |  +--rw cleanair-device-conttx-mode?         boolean
+           |  +--rw device-conttx-mode?                  boolean
+           |  +--rw cleanair-device-dect-like-mode?      boolean
+           |  +--rw device-dect-like-mode?               boolean
+           |  +--rw cleanair-device-video-mode?          boolean
+           |  +--rw device-video-mode?                   boolean
+           |  +--rw cleanair-device-zig-bee-mode?        boolean
+           |  +--rw device-zig-bee-mode?                 boolean
+           |  +--rw cleanair-device-inv-mode?            boolean
+           |  +--rw device-inv-mode?                     boolean
+           |  +--rw cleanair-device-nonstd-mode?         boolean
+           |  +--rw device-nonstd-mode?                  boolean
+           |  +--rw cleanair-device-superag-mode?        boolean
+           |  +--rw device-superag-mode?                 boolean
+           |  +--rw cleanair-device-canopy-mode?         boolean
+           |  +--rw device-canopy-mode?                  boolean
+           |  +--rw cleanair-device-xbox-mode?           boolean
+           |  +--rw device-xbox-mode?                    boolean
+           |  +--rw cleanair-device-wimax-mobile-mode?   boolean
+           |  +--rw device-wimax-mobile-mode?            boolean
+           |  +--rw cleanair-device-wimax-fixed-mode?    boolean
+           |  +--rw device-wimax-fixed-mode?             boolean
+           |  +--rw cleanair-device-ble-beacon-mode?     boolean
+           |  +--rw device-ble-beacon-mode?              boolean
+           |  +--rw si-device-fhss-mode?                 boolean
+           |  +--rw device-fhss-mode?                    boolean
+           +--rw dot11ax-mcs-entries
+           |  +--rw dot11ax-mcs-entry* [spatial-stream index]
+           |     +--rw spatial-stream               uint8
+           |     +--rw index                        wireless-enum-types:mcs-index
+           |     +--rw apf-80211ax-mcs-tx-enable?   boolean
+           +--rw cac-max-calls?                  uint32
+Xpaths for model: Cisco-IOS-XE-wireless-dot11-cfg.yang
+/wireless-dot11-cfg:dot11-cfg-data,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11ac-mcs-entries,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11ac-mcs-entries/wireless-dot11-cfg:dot11ac-mcs-entry,list,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11ac-mcs-entries/wireless-dot11-cfg:dot11ac-mcs-entry/wireless-dot11-cfg:spatial-stream,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11ac-mcs-entries/wireless-dot11-cfg:dot11ac-mcs-entry/wireless-dot11-cfg:index,leaf,wireless-enum-types:dot11ac-mcs-rate-index
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11ac-mcs-entries/wireless-dot11-cfg:dot11ac-mcs-entry/wireless-dot11-cfg:apf-80211ac-mcs-tx-enable,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry,list,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:band,leaf,wireless-types:enm-ewlc-dot11-radio-band
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:voice-adm-ctrl-support,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:video-adm-ctrl-support,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:sip-cac-voice-sample-size,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:sip-cac-config-bandwidth,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:apf-network-state,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:apf-dot11g-supported,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:cac-voice-max-bandwidth,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:apf-dtpc,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:cac-video-max-bandwidth,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:cac-voice-roam-bandwidth,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:cac-video-roam-bandwidth,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:tsm-enable,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:exp-bandwidth-req-enable,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:cac-voice-loadbased,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:cac-tspec-inactivity-timeout,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:cac-stream-size,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:cac-max-streams,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:beamforming,leaf,wireless-enum-types:nw-leg-beam-form
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:world-mode-ie,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:cac-voice-sip,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:apf-dot11b-short-preamble,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:tx-power-control-threshold,leaf,int8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:channel-aware-tpc,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:apf-dot11-default-cfg,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:apf-dot11-default-cfg/wireless-dot11-cfg:fragmentation-threshold,leaf,uint16
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:apf-dot11-default-cfg/wireless-dot11-cfg:default-tx-power-level,leaf,uint16
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:apf-dot11-capability,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:apf-dot11-capability/wireless-dot11-cfg:apf-beacon-interval,leaf,uint16
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:ht-cfg,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:ht-cfg/wireless-dot11-cfg:dot11n-enabled,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:ht-cfg/wireless-dot11-cfg:dot11n-rifs-tx-status,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:ht-cfg/wireless-dot11-cfg:dot11n-short-guard-enabled,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11ac-cfg,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11ac-cfg/wireless-dot11-cfg:vht-enable,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11ax-cfg,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11ax-cfg/wireless-dot11-cfg:he-enable,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11ax-cfg/wireless-dot11-cfg:he-dynamic-frag,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11ax-cfg/wireless-dot11-cfg:he-mbssid-cap,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11ax-cfg/wireless-dot11-cfg:he-twt-enable,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11ax-cfg/wireless-dot11-cfg:he-twt-broadcast-enable,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11ax-cfg/wireless-dot11-cfg:he-bss-color,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11h-cfg,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11h-cfg/wireless-dot11-cfg:channel-switch-enable,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11h-cfg/wireless-dot11-cfg:channel-switch-mode,leaf,wireless-enum-types:enm-channel-switch-mode
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11h-cfg/wireless-dot11-cfg:power-constraint,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11h-cfg/wireless-dot11-cfg:smart-dfs,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11-qos-pm,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11-qos-pm/wireless-dot11-cfg:qos-pm-name,leaf,string
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11-qos-pm/wireless-dot11-cfg:def-11gn,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11-qos-pm/wireless-dot11-cfg:def-11an,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11-qos-pm/wireless-dot11-cfg:def-11ac,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:ate-oper-mode,leaf,wireless-enum-types:apf-ate-mode
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:ate-stealing,leaf,wireless-enum-types:apf-ate-stealing-policy
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:g-edca,leaf,wireless-enum-types:edca-profile
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:medium-occupancy-limit,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:ed-threshold,leaf,int32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:cfp-period,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:cfp-max-duration,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:rts-threshold,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:cf-pollable,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:cf-poll-request,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dtim-period,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:max-tx-power-level,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:short-retry-limit,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:long-retry-limit,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:max-tx-msdu-lifetime,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:max-rx-lifetime,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:channel-agility,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:ampdu-entries,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:ampdu-entries/wireless-dot11-cfg:ampdu-entry,list,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:ampdu-entries/wireless-dot11-cfg:ampdu-entry/wireless-dot11-cfg:index,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:ampdu-entries/wireless-dot11-cfg:ampdu-entry/wireless-dot11-cfg:apf-80211n-ampdu-tx-priority,leaf,wireless-enum-types:apf-80211n-ampdu
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:ampdu-tx-scheduler,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:ampdu-tx-scheduler/wireless-dot11-cfg:scheduler-enabled,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:ampdu-tx-scheduler/wireless-dot11-cfg:rt-timeout,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:ampdu-tx-scheduler/wireless-dot11-cfg:frame-burst,leaf,wireless-enum-types:frame-burst-mode
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:amsdu-entries,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:amsdu-entries/wireless-dot11-cfg:amsdu-entry,list,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:amsdu-entries/wireless-dot11-cfg:amsdu-entry/wireless-dot11-cfg:index,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:amsdu-entries/wireless-dot11-cfg:amsdu-entry/wireless-dot11-cfg:apf-80211n-amsdu-tx-priority,leaf,wireless-enum-types:apf-80211n-amsdu
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:media-stream-band-info-cfg,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:media-stream-band-info-cfg/wireless-dot11-cfg:multicast-direct,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:media-stream-band-info-cfg/wireless-dot11-cfg:multicast-direct-adm-best-effort,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:media-stream-band-info-cfg/wireless-dot11-cfg:video-redirect,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:media-stream-band-info-cfg/wireless-dot11-cfg:cac-mmedia-max-bw,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:media-stream-band-info-cfg/wireless-dot11-cfg:cac-mstream-mdirect-min-client-rate,leaf,wireless-enum-types:dot11-min-phy-rate
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:media-stream-band-info-cfg/wireless-dot11-cfg:cac-mstream-mdirect-max-retry-percent,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:media-stream-band-info-cfg/wireless-dot11-cfg:mdirect-max-stream-per-radio,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:media-stream-band-info-cfg/wireless-dot11-cfg:mdirect-max-stream-per-client,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:spectrum-admin-state-set,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:si-admin-state-set,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:dev-report-state-set,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:aq-polling-period,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:id-report-enable,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:id-report-period,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:aq-report-enable,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:aq-alarm-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:aq-alarm-threshold,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:dev-alarm-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:rrm-ed-enable,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:rrm-ed-threshold-level,leaf,wireless-enum-types:rrm-ed-threshold-level
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:rrm-ed-custom-threshold-value,leaf,uint32
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:rrm-ed-rogue-enable,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:rrm-ed-rogue,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:idrv-period,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:aq-alarm2-control,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:aq-alarm2-threshold,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-dev-all-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:rrm-pd-propagation,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-bt-link-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-bt-link-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-mw-oven-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-mw-oven-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-dev802fh-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:dev802fh-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-bt-discovery-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-bt-discovery-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-tddtx-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-tddtx-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-jammer-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-jammer-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-conttx-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-conttx-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-dect-like-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-dect-like-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-video-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-video-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-zig-bee-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-zig-bee-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-inv-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-inv-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-nonstd-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-nonstd-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-superag-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-superag-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-canopy-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-canopy-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-xbox-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-xbox-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-wimax-mobile-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-wimax-mobile-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-wimax-fixed-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-wimax-fixed-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:cleanair-device-ble-beacon-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-ble-beacon-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:si-device-fhss-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:spectrum-cfg/wireless-dot11-cfg:device-fhss-mode,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11ax-mcs-entries,container,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11ax-mcs-entries/wireless-dot11-cfg:dot11ax-mcs-entry,list,
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11ax-mcs-entries/wireless-dot11-cfg:dot11ax-mcs-entry/wireless-dot11-cfg:spatial-stream,leaf,uint8
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11ax-mcs-entries/wireless-dot11-cfg:dot11ax-mcs-entry/wireless-dot11-cfg:index,leaf,wireless-enum-types:mcs-index
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:dot11ax-mcs-entries/wireless-dot11-cfg:dot11ax-mcs-entry/wireless-dot11-cfg:apf-80211ax-mcs-tx-enable,leaf,boolean
+/wireless-dot11-cfg:dot11-cfg-data/wireless-dot11-cfg:dot11-entries/wireless-dot11-cfg:dot11-entry/wireless-dot11-cfg:cac-max-calls,leaf,uint32

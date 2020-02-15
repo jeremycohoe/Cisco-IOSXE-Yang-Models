@@ -1,0 +1,112 @@
+ 
+KPI for model: ietf-diffserv-action.yang
+
+module: ietf-diffserv-action
+  augment /policy:policies/policy:policy-entry/policy:classifier-entry/policy:classifier-action-entry-cfg/policy:action-cfg-params:
+    +--:(marking)
+    |  +--rw marking-cfg
+    |     +--rw dscp?   inet:dscp
+    +--:(priority)
+    |  +--rw priority-cfg
+    |     +--rw priority-level?   uint8
+    |     +--rw rate-burst {priority-rate-burst-support}?
+    |        +--rw rate?                   uint64
+    |        +--rw absolute-rate-metric?   policy-types:metric
+    |        +--rw absolute-rate-units?    policy-types:rate-unit
+    |        +--rw rate-percent?           percent-value-1to100
+    |        +--rw rate-ratio?             uint32
+    |        +--rw (burst-type)?
+    |           +--:(size)
+    |           |  +--rw burst-size?       uint64
+    |           +--:(interval)
+    |              +--rw burst-interval?   uint64
+    +--:(meter)
+    |  +--rw meter-cfg
+    |     +--rw meter-list* [meter-id]
+    |        +--rw meter-id                uint16
+    |        +--rw meter-rate?             uint64
+    |        +--rw (burst-type)?
+    |        |  +--:(size)
+    |        |  |  +--rw burst-size?       uint64
+    |        |  +--:(interval)
+    |        |     +--rw burst-interval?   uint64
+    |        +--rw color
+    |        |  +--rw classifier-entry-name?               string
+    |        |  +--rw classifier-entry-descr?              string
+    |        |  +--rw classifier-entry-filter-operation?   identityref
+    |        +--rw succeed-action
+    |        |  +--rw meter-action-type?   identityref
+    |        |  +--rw next-meter-id?       uint16
+    |        |  +--rw (val)?
+    |        |     +--:(meter-action-mark)
+    |        |     |  +--rw dscp?          inet:dscp
+    |        |     +--:(meter-action-drop)
+    |        |        +--rw drop-action?   empty
+    |        +--rw fail-action
+    |           +--rw meter-action-type?   identityref
+    |           +--rw next-meter-id?       uint16
+    |           +--rw (val)?
+    |              +--:(meter-action-mark)
+    |              |  +--rw dscp?          inet:dscp
+    |              +--:(meter-action-drop)
+    |                 +--rw drop-action?   empty
+    +--:(min-rate)
+    |  +--rw min-rate-cfg
+    |     +--rw min-rate?               uint64
+    |     +--rw absolute-rate-metric?   policy-types:metric
+    |     +--rw absolute-rate-units?    policy-types:rate-unit
+    |     +--rw rate-percent?           percent-value-1to100
+    |     +--rw rate-ratio?             uint32
+    |     +--rw bw-excess-share-cfg
+    |        +--rw value?                  uint32
+    |        +--rw absolute-rate-metric?   policy-types:metric
+    |        +--rw absolute-rate-units?    policy-types:rate-unit
+    |        +--rw rate-percent?           percent-value-1to100
+    |        +--rw rate-ratio?             uint32
+    +--:(max-rate)
+    |  +--rw max-rate-cfg
+    |     +--rw absolute-rate?          uint64
+    |     +--rw (burst-type)?
+    |     |  +--:(size)
+    |     |  |  +--rw burst-size?       uint64
+    |     |  +--:(interval)
+    |     |     +--rw burst-interval?   uint64
+    |     +--rw absolute-rate-metric?   policy-types:metric
+    |     +--rw absolute-rate-units?    policy-types:rate-unit
+    |     +--rw rate-percent?           percent-value-1to100
+    |     +--rw rate-ratio?             uint32
+    +--:(algorithmic-drop)
+       +--rw (drop-algorithm)?
+          +--:(always-drop)
+          |  +--rw drop-cfg
+          |     +--rw drop-action?   empty
+          +--:(tail-drop)
+          |  +--rw tail-drop-cfg
+          |     +--rw qlimit-dscp-thresh* [dscp-min dscp-max]
+          |        +--rw dscp-min     inet:dscp
+          |        +--rw dscp-max     inet:dscp
+          |        +--rw threshold
+          |           +--rw (threshold-type)?
+          |              +--:(size)
+          |              |  +--rw threshold-size?       uint64
+          |              +--:(interval)
+          |                 +--rw threshold-interval?   uint64
+          +--:(random-detect)
+             +--rw random-detect-cfg {aqm-red-support}?
+                +--rw exp-weighting-const?   uint32
+                +--rw red-min-thresh
+                |  +--rw threshold
+                |     +--rw (threshold-type)?
+                |        +--:(size)
+                |        |  +--rw threshold-size?       uint64
+                |        +--:(interval)
+                |           +--rw threshold-interval?   uint64
+                +--rw red-max-thresh
+                |  +--rw threshold
+                |     +--rw (threshold-type)?
+                |        +--:(size)
+                |        |  +--rw threshold-size?       uint64
+                |        +--:(interval)
+                |           +--rw threshold-interval?   uint64
+                +--rw mark-probability?      uint32
+Xpaths for model: ietf-diffserv-action.yang

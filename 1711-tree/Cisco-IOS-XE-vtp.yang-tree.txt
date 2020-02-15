@@ -1,0 +1,34 @@
+ 
+KPI for model: Cisco-IOS-XE-vtp.yang
+
+module: Cisco-IOS-XE-vtp
+  augment /ios:native/ios:vtp:
+    +--rw file?        string
+    +--rw interface
+    |  +--rw interface-name?   string
+    |  +--rw only?             empty
+    +--rw password
+    |  +--rw password?   string
+    |  +--rw hidden?     empty
+    |  +--rw secret?     empty
+    +--rw pruning?     empty
+    +--rw version?     uint8
+    +--rw domain?      string
+    +--rw mode
+       +--rw client!
+       |  +--rw mst?       empty
+       |  +--rw unknown?   empty
+       |  +--rw vlan?      empty
+       +--rw off!
+       |  +--rw mst?       empty
+       |  +--rw unknown?   empty
+       |  +--rw vlan?      empty
+       +--rw server!
+       |  +--rw mst?       empty
+       |  +--rw unknown?   empty
+       |  +--rw vlan?      empty
+       +--rw transparent!
+          +--rw mst?       empty
+          +--rw unknown?   empty
+          +--rw vlan?      empty
+Xpaths for model: Cisco-IOS-XE-vtp.yang

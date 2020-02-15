@@ -1,0 +1,12 @@
+ 
+KPI for model: cisco-xe-openconfig-platform-ext.yang
+
+module: cisco-xe-openconfig-platform-ext
+  augment /oc-platform:components/oc-platform:component:
+    +--rw integrated-circuit
+       +--rw realized-processes
+          +--ro realized-process* [name]
+             +--ro name     -> ../state/name
+             +--ro state
+                +--ro name?   -> /oc-platform:components/component/state/name
+Xpaths for model: cisco-xe-openconfig-platform-ext.yang

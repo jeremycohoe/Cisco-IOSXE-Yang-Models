@@ -1,0 +1,36 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-ble-mgmt-oper.yang
+module: Cisco-IOS-XE-wireless-ble-mgmt-oper
+  +--ro ble-mgmt-oper-data
+     +--ro ble-mgmt-ap* [ap-mac]
+     |  +--ro ap-mac           yang:mac-address
+     |  +--ro is-new?          boolean
+     |  +--ro cmx-id?          uint64
+     |  +--ro ble-interface?   wireless-ble-mgmt-oper:ble-mgmt-interface
+     |  +--ro radio-state?     wireless-ble-mgmt-oper:ble-mgmt-state
+     |  +--ro oper-state?      boolean
+     +--ro ble-mgmt-cmx* [cmx-id]
+        +--ro cmx-id            uint64
+        +--ro oper-state?       boolean
+        +--ro reason-down?      wireless-ble-mgmt-oper:ble-mgmt-reason
+        +--ro admin-state?      boolean
+        +--ro cmx-resolved?     boolean
+        +--ro scan-interval?    uint32
+        +--ro ble-source-mac?   yang:mac-address
+Xpaths for model: Cisco-IOS-XE-wireless-ble-mgmt-oper.yang
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data,container,
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data/wireless-ble-mgmt-oper:ble-mgmt-ap,list,
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data/wireless-ble-mgmt-oper:ble-mgmt-ap/wireless-ble-mgmt-oper:ap-mac,leaf,yang:mac-address
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data/wireless-ble-mgmt-oper:ble-mgmt-ap/wireless-ble-mgmt-oper:is-new,leaf,boolean
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data/wireless-ble-mgmt-oper:ble-mgmt-ap/wireless-ble-mgmt-oper:cmx-id,leaf,uint64
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data/wireless-ble-mgmt-oper:ble-mgmt-ap/wireless-ble-mgmt-oper:ble-interface,leaf,wireless-ble-mgmt-oper:ble-mgmt-interface
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data/wireless-ble-mgmt-oper:ble-mgmt-ap/wireless-ble-mgmt-oper:radio-state,leaf,wireless-ble-mgmt-oper:ble-mgmt-state
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data/wireless-ble-mgmt-oper:ble-mgmt-ap/wireless-ble-mgmt-oper:oper-state,leaf,boolean
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data/wireless-ble-mgmt-oper:ble-mgmt-cmx,list,
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data/wireless-ble-mgmt-oper:ble-mgmt-cmx/wireless-ble-mgmt-oper:cmx-id,leaf,uint64
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data/wireless-ble-mgmt-oper:ble-mgmt-cmx/wireless-ble-mgmt-oper:oper-state,leaf,boolean
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data/wireless-ble-mgmt-oper:ble-mgmt-cmx/wireless-ble-mgmt-oper:reason-down,leaf,wireless-ble-mgmt-oper:ble-mgmt-reason
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data/wireless-ble-mgmt-oper:ble-mgmt-cmx/wireless-ble-mgmt-oper:admin-state,leaf,boolean
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data/wireless-ble-mgmt-oper:ble-mgmt-cmx/wireless-ble-mgmt-oper:cmx-resolved,leaf,boolean
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data/wireless-ble-mgmt-oper:ble-mgmt-cmx/wireless-ble-mgmt-oper:scan-interval,leaf,uint32
+/wireless-ble-mgmt-oper:ble-mgmt-oper-data/wireless-ble-mgmt-oper:ble-mgmt-cmx/wireless-ble-mgmt-oper:ble-source-mac,leaf,yang:mac-address

@@ -1,0 +1,26 @@
+ 
+KPI for model: Cisco-IOS-XE-vlan-oper.yang
+module: Cisco-IOS-XE-vlan-oper
+  +--ro vlans
+     +--ro vlan* [id]
+        +--ro id                 uint16
+        +--ro name?              string
+        +--ro status?            vlan-ios-xe-oper:vlan-status-type
+        +--ro ports* []
+        |  +--ro interface?      string
+        |  +--ro subinterface?   uint32
+        +--ro vlan-interfaces* [interface]
+           +--ro interface       string
+           +--ro subinterface?   uint32
+Xpaths for model: Cisco-IOS-XE-vlan-oper.yang
+/vlan-ios-xe-oper:vlans,container,
+/vlan-ios-xe-oper:vlans/vlan-ios-xe-oper:vlan,list,
+/vlan-ios-xe-oper:vlans/vlan-ios-xe-oper:vlan/vlan-ios-xe-oper:id,leaf,uint16
+/vlan-ios-xe-oper:vlans/vlan-ios-xe-oper:vlan/vlan-ios-xe-oper:name,leaf,string
+/vlan-ios-xe-oper:vlans/vlan-ios-xe-oper:vlan/vlan-ios-xe-oper:status,leaf,vlan-ios-xe-oper:vlan-status-type
+/vlan-ios-xe-oper:vlans/vlan-ios-xe-oper:vlan/vlan-ios-xe-oper:ports,list,
+/vlan-ios-xe-oper:vlans/vlan-ios-xe-oper:vlan/vlan-ios-xe-oper:ports/vlan-ios-xe-oper:interface,leaf,string
+/vlan-ios-xe-oper:vlans/vlan-ios-xe-oper:vlan/vlan-ios-xe-oper:ports/vlan-ios-xe-oper:subinterface,leaf,uint32
+/vlan-ios-xe-oper:vlans/vlan-ios-xe-oper:vlan/vlan-ios-xe-oper:vlan-interfaces,list,
+/vlan-ios-xe-oper:vlans/vlan-ios-xe-oper:vlan/vlan-ios-xe-oper:vlan-interfaces/vlan-ios-xe-oper:interface,leaf,string
+/vlan-ios-xe-oper:vlans/vlan-ios-xe-oper:vlan/vlan-ios-xe-oper:vlan-interfaces/vlan-ios-xe-oper:subinterface,leaf,uint32

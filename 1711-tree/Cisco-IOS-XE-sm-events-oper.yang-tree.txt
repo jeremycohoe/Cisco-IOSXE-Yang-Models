@@ -1,0 +1,45 @@
+ 
+KPI for model: Cisco-IOS-XE-sm-events-oper.yang
+module: Cisco-IOS-XE-sm-events-oper
+  +--ro sm-events
+
+  notifications:
+    +---n sessionevent
+       +--ro client-mac?                        yang:mac-address
+       +--ro audit-session-id?                  string
+       +--ro method-id?                         sm-enum-types:session-auth-method-id
+       +--ro username?                          string
+       +--ro client-join-time?                  yang:date-and-time
+       +--ro server-address?                    inet:ip-address
+       +--ro (session-event-choice)?
+          +--:(session-event-session-authc-success)
+          |  +--ro authc-success-params
+          |     +--ro eap-method?   sm-enum-types:session-eap-method
+          +--:(session-event-session-authc-failed)
+          |  +--ro authc-failure-params
+          |     +--ro failure-reason?     sm-enum-types:session-event-failure-reason
+          |     +--ro failed-attribute?   string
+          +--:(session-event-session-authz-success)
+          |  +--ro authz-success-params
+          |     +--ro res-vlan-id?     uint32
+          |     +--ro res-vlan-name?   string
+          |     +--ro sgt?             uint32
+          |     +--ro eap-method?      sm-enum-types:session-eap-method
+          +--:(session-event-session-authz-failed)
+          |  +--ro authz-failure-params
+          |     +--ro failure-reason?     sm-enum-types:session-event-failure-reason
+          |     +--ro failed-attribute?   string
+          +--:(session-event-policy-update)
+          |  +--ro policy-change-params
+          |     +--ro res-vlan-id?     uint32
+          |     +--ro res-vlan-name?   string
+          |     +--ro sgt?             uint32
+          |     +--ro eap-method?      sm-enum-types:session-eap-method
+          +--:(session-event-coa-start)
+          |  +--ro coa-params
+          |     +--ro coa-req-type?   sm-enum-types:session-coa-request-type
+          +--:(session-event-security-violation)
+             +--ro security-violation-params
+                +--ro security-violation-action?   sm-enum-types:session-security-violation-action
+Xpaths for model: Cisco-IOS-XE-sm-events-oper.yang
+/sm-event-oper:sm-events,container,

@@ -1,0 +1,13 @@
+ 
+KPI for model: Cisco-IOS-XE-zone-rpc.yang
+
+module: Cisco-IOS-XE-zone-rpc
+  augment /ios-xe-rpc:clear/ios-xe-rpc:input/ios-xe-rpc:clear-choice:
+    +--:(zone-pair-case)
+       +-- zone-pair
+          +-- counter?   empty
+  augment /ios-xe-rpc:clear/ios-xe-rpc:input/ios-xe-rpc:clear-choice/ios-xe-rpc:platform-case/ios-xe-rpc:platform/ios-xe-rpc:platform-choice/ios-xe-rpc:hardware-case/ios-xe-rpc:hardware/ios-xe-rpc:qfp/ios-xe-rpc:active/ios-xe-rpc:feature/ios-xe-rpc:feature-choice:
+    +--:(firewall-case)
+       +-- firewall
+          +-- drop?   empty
+Xpaths for model: Cisco-IOS-XE-zone-rpc.yang

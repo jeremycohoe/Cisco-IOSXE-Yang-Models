@@ -1,0 +1,21 @@
+ 
+KPI for model: Cisco-IOS-XE-pppoe.yang
+
+module: Cisco-IOS-XE-pppoe
+  augment /ios:native/ios:interface/ios:Ethernet:
+    +--rw pppoe-session
+    |  +--rw threshold
+    |     +--rw loss-threshold?   uint32
+    |     +--rw percent
+    |        +--rw percantage?   uint32
+    |        +--rw interval?     uint32
+    +--rw pppoe-client
+    |  +--rw dial-pool-number-list* [number]
+    |  |  +--rw number    uint32
+    |  x--rw dial-pool-number?        uint32
+    |  +--rw ppp-max-payload?         uint32
+    +--rw pppoe
+       +--rw enable!
+       |  +--rw group?   union
+       +--rw max-sessons?   uint32
+Xpaths for model: Cisco-IOS-XE-pppoe.yang

@@ -1,0 +1,3 @@
+ 
+KPI for model: openconfig-mpls-types.yang
+Xpaths for model: openconfig-mpls-types.yang

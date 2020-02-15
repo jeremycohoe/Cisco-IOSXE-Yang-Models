@@ -1,0 +1,74 @@
+ 
+KPI for model: Cisco-IOS-XE-vrrp-oper.yang
+module: Cisco-IOS-XE-vrrp-oper
+  +--ro vrrp-oper-data
+     +--ro vrrp-oper-state* [if-number group-id addr-type]
+        +--ro if-number                  uint32
+        +--ro group-id                   uint32
+        +--ro addr-type                  common-types-ios-xe:addr-type
+        +--ro version?                   vrrp-ios-xe-oper:proto-version
+        +--ro virtual-ip?                inet:ip-address
+        +--ro if-name?                   string
+        +--ro vrrp-state?                vrrp-ios-xe-oper:vrrp-proto-state
+        +--ro virtual-mac?               yang:mac-address
+        +--ro master-ip?                 inet:ip-address
+        +--ro is-owner?                  boolean
+        +--ro priority?                  uint32
+        +--ro advertisement-timer?       uint32
+        +--ro master-down-timer?         uint32
+        +--ro skew-time?                 uint32
+        +--ro preempt?                   boolean
+        +--ro master-transitions?        uint32
+        +--ro new-master-reason?         vrrp-ios-xe-oper:master-reason
+        +--ro last-state-change-time?    yang:date-and-time
+        +--ro adv-interval-errors?       uint32
+        +--ro ip-ttl-errors?             uint32
+        +--ro rcvd-pri-zero-pak?         uint32
+        +--ro sent-pri-zero-pak?         uint32
+        +--ro rcvd-invalid-type-pak?     uint32
+        +--ro addr-list-errors?          uint32
+        +--ro pak-len-errors?            uint32
+        +--ro discontinuity-time?        yang:date-and-time
+        +--ro advertisement-sent?        uint32
+        +--ro advertisement-rcvd?        uint32
+        +--ro track-list* []
+        |  +--ro track-name?        string
+        |  +--ro track-obj-state?   vrrp-ios-xe-oper:track-state
+        +--ro omp-state?                 vrrp-ios-xe-oper:omp-state-updown
+        +--ro secondary-vip-addresses*   inet:ip-address
+Xpaths for model: Cisco-IOS-XE-vrrp-oper.yang
+/vrrp-ios-xe-oper:vrrp-oper-data,container,
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state,list,
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:if-number,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:group-id,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:addr-type,leaf,common-types-ios-xe:addr-type
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:version,leaf,vrrp-ios-xe-oper:proto-version
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:virtual-ip,leaf,inet:ip-address
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:if-name,leaf,string
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:vrrp-state,leaf,vrrp-ios-xe-oper:vrrp-proto-state
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:virtual-mac,leaf,yang:mac-address
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:master-ip,leaf,inet:ip-address
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:is-owner,leaf,boolean
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:priority,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:advertisement-timer,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:master-down-timer,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:skew-time,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:preempt,leaf,boolean
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:master-transitions,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:new-master-reason,leaf,vrrp-ios-xe-oper:master-reason
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:last-state-change-time,leaf,yang:date-and-time
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:adv-interval-errors,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:ip-ttl-errors,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:rcvd-pri-zero-pak,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:sent-pri-zero-pak,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:rcvd-invalid-type-pak,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:addr-list-errors,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:pak-len-errors,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:discontinuity-time,leaf,yang:date-and-time
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:advertisement-sent,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:advertisement-rcvd,leaf,uint32
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:track-list,list,
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:track-list/vrrp-ios-xe-oper:track-name,leaf,string
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:track-list/vrrp-ios-xe-oper:track-obj-state,leaf,vrrp-ios-xe-oper:track-state
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:omp-state,leaf,vrrp-ios-xe-oper:omp-state-updown
+/vrrp-ios-xe-oper:vrrp-oper-data/vrrp-ios-xe-oper:vrrp-oper-state/vrrp-ios-xe-oper:secondary-vip-addresses,leaf-list,inet:ip-address

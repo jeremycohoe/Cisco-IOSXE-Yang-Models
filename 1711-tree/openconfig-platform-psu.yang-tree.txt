@@ -1,0 +1,15 @@
+ 
+KPI for model: openconfig-platform-psu.yang
+
+module: openconfig-platform-psu
+  augment /oc-platform:components/oc-platform:component/oc-platform:power-supply/oc-platform:config:
+    +--rw enabled?   boolean
+  augment /oc-platform:components/oc-platform:component/oc-platform:power-supply/oc-platform:state:
+    +--ro enabled?          boolean
+    +--ro capacity?         oc-types:ieeefloat32
+    +--ro input-current?    oc-types:ieeefloat32
+    +--ro input-voltage?    oc-types:ieeefloat32
+    +--ro output-current?   oc-types:ieeefloat32
+    +--ro output-voltage?   oc-types:ieeefloat32
+    +--ro output-power?     oc-types:ieeefloat32
+Xpaths for model: openconfig-platform-psu.yang

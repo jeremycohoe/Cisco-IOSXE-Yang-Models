@@ -1,0 +1,9 @@
+ 
+KPI for model: cisco-xe-openconfig-spanning-tree-ext.yang
+
+module: cisco-xe-openconfig-spanning-tree-ext
+  augment /oc-stp:stp/oc-stp:global/oc-stp:config:
+    +--rw enabled-protocol?   identityref
+  augment /oc-stp:stp/oc-stp:global/oc-stp:state:
+    +--ro enabled-protocol?   identityref
+Xpaths for model: cisco-xe-openconfig-spanning-tree-ext.yang

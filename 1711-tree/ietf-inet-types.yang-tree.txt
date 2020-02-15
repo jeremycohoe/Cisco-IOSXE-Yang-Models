@@ -1,0 +1,3 @@
+ 
+KPI for model: ietf-inet-types.yang
+Xpaths for model: ietf-inet-types.yang

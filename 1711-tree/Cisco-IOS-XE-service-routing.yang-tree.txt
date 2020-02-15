@@ -1,0 +1,12 @@
+ 
+KPI for model: Cisco-IOS-XE-service-routing.yang
+
+module: Cisco-IOS-XE-service-routing
+  augment /ios:native:
+    +--rw service-routing
+       +--rw capabilities-manager?   boolean
+       +--rw mdns-sd!
+          +--rw service-policy* [direction]
+             +--rw direction      enumeration
+             +--rw policy-name?   string
+Xpaths for model: Cisco-IOS-XE-service-routing.yang

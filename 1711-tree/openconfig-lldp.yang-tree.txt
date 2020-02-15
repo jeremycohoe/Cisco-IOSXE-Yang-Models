@@ -1,0 +1,164 @@
+ 
+KPI for model: openconfig-lldp.yang
+module: openconfig-lldp
+  +--rw lldp
+     +--rw config
+     |  +--rw enabled?                      boolean
+     |  +--rw hello-timer?                  uint64
+     |  +--rw suppress-tlv-advertisement*   identityref
+     |  +--rw system-name?                  string
+     |  +--rw system-description?           string
+     |  +--rw chassis-id?                   string
+     |  +--rw chassis-id-type?              oc-lldp-types:chassis-id-type
+     +--ro state
+     |  +--ro enabled?                      boolean
+     |  +--ro hello-timer?                  uint64
+     |  +--ro suppress-tlv-advertisement*   identityref
+     |  +--ro system-name?                  string
+     |  +--ro system-description?           string
+     |  +--ro chassis-id?                   string
+     |  +--ro chassis-id-type?              oc-lldp-types:chassis-id-type
+     |  +--ro counters
+     |     +--ro frame-in?           yang:counter64
+     |     +--ro frame-out?          yang:counter64
+     |     +--ro frame-error-in?     yang:counter64
+     |     +--ro frame-discard?      yang:counter64
+     |     +--ro tlv-discard?        yang:counter64
+     |     +--ro tlv-unknown?        yang:counter64
+     |     +--ro last-clear?         yang:date-and-time
+     |     +--ro tlv-accepted?       yang:counter64
+     |     +--ro entries-aged-out?   yang:counter64
+     +--rw interfaces
+        +--rw interface* [name]
+           +--rw name         -> ../config/name
+           +--rw config
+           |  +--rw name?      oc-if:base-interface-ref
+           |  +--rw enabled?   boolean
+           +--ro state
+           |  +--ro name?       oc-if:base-interface-ref
+           |  +--ro enabled?    boolean
+           |  +--ro counters
+           |     +--ro frame-in?          yang:counter64
+           |     +--ro frame-out?         yang:counter64
+           |     +--ro frame-error-in?    yang:counter64
+           |     +--ro frame-discard?     yang:counter64
+           |     +--ro tlv-discard?       yang:counter64
+           |     +--ro tlv-unknown?       yang:counter64
+           |     +--ro last-clear?        yang:date-and-time
+           |     +--ro frame-error-out?   yang:counter64
+           +--ro neighbors
+              +--ro neighbor* [id]
+                 +--ro id              -> ../state/id
+                 +--ro config
+                 +--ro state
+                 |  +--ro system-name?               string
+                 |  +--ro system-description?        string
+                 |  +--ro chassis-id?                string
+                 |  +--ro chassis-id-type?           oc-lldp-types:chassis-id-type
+                 |  +--ro id?                        string
+                 |  +--ro age?                       uint64
+                 |  +--ro last-update?               int64
+                 |  +--ro port-id?                   string
+                 |  +--ro port-id-type?              oc-lldp-types:port-id-type
+                 |  +--ro port-description?          string
+                 |  +--ro management-address?        string
+                 |  +--ro management-address-type?   string
+                 +--ro custom-tlvs
+                 |  +--ro tlv* [type oui oui-subtype]
+                 |     +--ro type           -> ../state/type
+                 |     +--ro oui            -> ../state/oui
+                 |     +--ro oui-subtype    -> ../state/oui-subtype
+                 |     +--ro config
+                 |     +--ro state
+                 |        +--ro type?          int32
+                 |        +--ro oui?           string
+                 |        +--ro oui-subtype?   string
+                 |        +--ro value?         binary
+                 +--ro capabilities
+                    +--ro capability* [name]
+                       +--ro name      -> ../state/name
+                       +--ro config
+                       +--ro state
+                          +--ro name?      identityref
+                          +--ro enabled?   boolean
+Xpaths for model: openconfig-lldp.yang
+/oc-lldp:lldp,container,
+/oc-lldp:lldp/oc-lldp:config,container,
+/oc-lldp:lldp/oc-lldp:config/oc-lldp:enabled,leaf,boolean
+/oc-lldp:lldp/oc-lldp:config/oc-lldp:hello-timer,leaf,uint64
+/oc-lldp:lldp/oc-lldp:config/oc-lldp:suppress-tlv-advertisement,leaf-list,identityref
+/oc-lldp:lldp/oc-lldp:config/oc-lldp:system-name,leaf,string
+/oc-lldp:lldp/oc-lldp:config/oc-lldp:system-description,leaf,string
+/oc-lldp:lldp/oc-lldp:config/oc-lldp:chassis-id,leaf,string
+/oc-lldp:lldp/oc-lldp:config/oc-lldp:chassis-id-type,leaf,oc-lldp-types:chassis-id-type
+/oc-lldp:lldp/oc-lldp:state,container,
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:enabled,leaf,boolean
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:hello-timer,leaf,uint64
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:suppress-tlv-advertisement,leaf-list,identityref
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:system-name,leaf,string
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:system-description,leaf,string
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:chassis-id,leaf,string
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:chassis-id-type,leaf,oc-lldp-types:chassis-id-type
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:counters,container,
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:counters/oc-lldp:frame-in,leaf,yang:counter64
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:counters/oc-lldp:frame-out,leaf,yang:counter64
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:counters/oc-lldp:frame-error-in,leaf,yang:counter64
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:counters/oc-lldp:frame-discard,leaf,yang:counter64
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:counters/oc-lldp:tlv-discard,leaf,yang:counter64
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:counters/oc-lldp:tlv-unknown,leaf,yang:counter64
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:counters/oc-lldp:last-clear,leaf,yang:date-and-time
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:counters/oc-lldp:tlv-accepted,leaf,yang:counter64
+/oc-lldp:lldp/oc-lldp:state/oc-lldp:counters/oc-lldp:entries-aged-out,leaf,yang:counter64
+/oc-lldp:lldp/oc-lldp:interfaces,container,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface,list,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:name,leaf,leafref
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:config,container,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:config/oc-lldp:name,leaf,oc-if:base-interface-ref
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:config/oc-lldp:enabled,leaf,boolean
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:state,container,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:state/oc-lldp:name,leaf,oc-if:base-interface-ref
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:state/oc-lldp:enabled,leaf,boolean
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:state/oc-lldp:counters,container,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:state/oc-lldp:counters/oc-lldp:frame-in,leaf,yang:counter64
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:state/oc-lldp:counters/oc-lldp:frame-out,leaf,yang:counter64
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:state/oc-lldp:counters/oc-lldp:frame-error-in,leaf,yang:counter64
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:state/oc-lldp:counters/oc-lldp:frame-discard,leaf,yang:counter64
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:state/oc-lldp:counters/oc-lldp:tlv-discard,leaf,yang:counter64
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:state/oc-lldp:counters/oc-lldp:tlv-unknown,leaf,yang:counter64
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:state/oc-lldp:counters/oc-lldp:last-clear,leaf,yang:date-and-time
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:state/oc-lldp:counters/oc-lldp:frame-error-out,leaf,yang:counter64
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors,container,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor,list,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:id,leaf,leafref
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:config,container,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:state,container,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:state/oc-lldp:system-name,leaf,string
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:state/oc-lldp:system-description,leaf,string
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:state/oc-lldp:chassis-id,leaf,string
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:state/oc-lldp:chassis-id-type,leaf,oc-lldp-types:chassis-id-type
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:state/oc-lldp:id,leaf,string
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:state/oc-lldp:age,leaf,uint64
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:state/oc-lldp:last-update,leaf,int64
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:state/oc-lldp:port-id,leaf,string
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:state/oc-lldp:port-id-type,leaf,oc-lldp-types:port-id-type
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:state/oc-lldp:port-description,leaf,string
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:state/oc-lldp:management-address,leaf,string
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:state/oc-lldp:management-address-type,leaf,string
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:custom-tlvs,container,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:custom-tlvs/oc-lldp:tlv,list,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:custom-tlvs/oc-lldp:tlv/oc-lldp:type,leaf,leafref
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:custom-tlvs/oc-lldp:tlv/oc-lldp:oui,leaf,leafref
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:custom-tlvs/oc-lldp:tlv/oc-lldp:oui-subtype,leaf,leafref
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:custom-tlvs/oc-lldp:tlv/oc-lldp:config,container,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:custom-tlvs/oc-lldp:tlv/oc-lldp:state,container,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:custom-tlvs/oc-lldp:tlv/oc-lldp:state/oc-lldp:type,leaf,int32
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:custom-tlvs/oc-lldp:tlv/oc-lldp:state/oc-lldp:oui,leaf,string
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:custom-tlvs/oc-lldp:tlv/oc-lldp:state/oc-lldp:oui-subtype,leaf,string
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:custom-tlvs/oc-lldp:tlv/oc-lldp:state/oc-lldp:value,leaf,binary
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:capabilities,container,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:capabilities/oc-lldp:capability,list,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:capabilities/oc-lldp:capability/oc-lldp:name,leaf,leafref
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:capabilities/oc-lldp:capability/oc-lldp:config,container,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:capabilities/oc-lldp:capability/oc-lldp:state,container,
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:capabilities/oc-lldp:capability/oc-lldp:state/oc-lldp:name,leaf,identityref
+/oc-lldp:lldp/oc-lldp:interfaces/oc-lldp:interface/oc-lldp:neighbors/oc-lldp:neighbor/oc-lldp:capabilities/oc-lldp:capability/oc-lldp:state/oc-lldp:enabled,leaf,boolean

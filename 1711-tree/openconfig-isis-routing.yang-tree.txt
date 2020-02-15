@@ -1,0 +1,3 @@
+ 
+KPI for model: openconfig-isis-routing.yang
+Xpaths for model: openconfig-isis-routing.yang

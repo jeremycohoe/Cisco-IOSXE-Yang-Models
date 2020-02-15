@@ -1,0 +1,82 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-radio-cfg.yang
+module: Cisco-IOS-XE-wireless-radio-cfg
+  +--rw radio-cfg-data
+     +--rw ap-specific-configs
+     |  +--rw ap-specific-config* [ap-ethernet-mac-addr]
+     |     +--rw ap-ethernet-mac-addr        yang:mac-address
+     |     +--rw ap-specific-slot-configs
+     |        +--rw ap-specific-slot-config* [slot-id]
+     |           +--rw slot-id               uint8
+     |           +--rw radio-band?           wireless-types:enm-radio-frequency
+     |           +--rw radio-params-24ghz
+     |           |  +--rw admin-state?            boolean
+     |           |  +--rw transmit-power-level?   uint8
+     |           |  +--rw channel?                uint8
+     |           |  +--rw channel-width?          uint8
+     |           |  +--rw dca?                    boolean
+     |           |  +--rw dtp?                    boolean
+     |           |  +--rw antenna-gain?           uint8
+     |           +--rw radio-params-5ghz
+     |              +--rw admin-state?            boolean
+     |              +--rw transmit-power-level?   uint8
+     |              +--rw channel?                uint8
+     |              +--rw channel-width?          uint8
+     |              +--rw dca?                    boolean
+     |              +--rw dtp?                    boolean
+     |              +--rw antenna-gain?           uint8
+     +--rw ap-spec-configs
+        +--rw ap-spec-config* [ap-eth-mac-addr]
+           +--rw ap-eth-mac-addr                    yang:mac-address
+           +--rw ap-host-name?                      string
+           +--rw enable-bssid-stats?                boolean
+           +--rw primary-controller-name?           string
+           +--rw primary-controller-ip-addr?        inet:ipv4-address
+           +--rw primary-controller-v6-ip-addr?     inet:ipv6-address
+           +--rw secondary-controller-name?         string
+           +--rw secondary-controller-ip-addr?      inet:ipv4-address
+           +--rw secondary-controller-v6-ip-addr?   inet:ipv6-address
+           +--rw tertiary-controller-name?          string
+           +--rw tertiary-controller-ip-addr?       inet:ipv4-address
+           +--rw tertiary-controller-v6-ip-addr?    inet:ipv6-address
+           +--rw roaming-domain?                    string
+Xpaths for model: Cisco-IOS-XE-wireless-radio-cfg.yang
+/wireless-radio-cfg:radio-cfg-data,container,
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs,container,
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config,list,
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-ethernet-mac-addr,leaf,yang:mac-address
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs,container,
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config,list,
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:slot-id,leaf,uint8
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-band,leaf,wireless-types:enm-radio-frequency
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-24ghz,container,
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-24ghz/wireless-radio-cfg:admin-state,leaf,boolean
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-24ghz/wireless-radio-cfg:transmit-power-level,leaf,uint8
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-24ghz/wireless-radio-cfg:channel,leaf,uint8
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-24ghz/wireless-radio-cfg:channel-width,leaf,uint8
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-24ghz/wireless-radio-cfg:dca,leaf,boolean
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-24ghz/wireless-radio-cfg:dtp,leaf,boolean
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-24ghz/wireless-radio-cfg:antenna-gain,leaf,uint8
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-5ghz,container,
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-5ghz/wireless-radio-cfg:admin-state,leaf,boolean
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-5ghz/wireless-radio-cfg:transmit-power-level,leaf,uint8
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-5ghz/wireless-radio-cfg:channel,leaf,uint8
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-5ghz/wireless-radio-cfg:channel-width,leaf,uint8
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-5ghz/wireless-radio-cfg:dca,leaf,boolean
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-5ghz/wireless-radio-cfg:dtp,leaf,boolean
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-specific-configs/wireless-radio-cfg:ap-specific-config/wireless-radio-cfg:ap-specific-slot-configs/wireless-radio-cfg:ap-specific-slot-config/wireless-radio-cfg:radio-params-5ghz/wireless-radio-cfg:antenna-gain,leaf,uint8
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-spec-configs,container,
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-spec-configs/wireless-radio-cfg:ap-spec-config,list,
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-spec-configs/wireless-radio-cfg:ap-spec-config/wireless-radio-cfg:ap-eth-mac-addr,leaf,yang:mac-address
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-spec-configs/wireless-radio-cfg:ap-spec-config/wireless-radio-cfg:ap-host-name,leaf,string
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-spec-configs/wireless-radio-cfg:ap-spec-config/wireless-radio-cfg:enable-bssid-stats,leaf,boolean
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-spec-configs/wireless-radio-cfg:ap-spec-config/wireless-radio-cfg:primary-controller-name,leaf,string
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-spec-configs/wireless-radio-cfg:ap-spec-config/wireless-radio-cfg:primary-controller-ip-addr,leaf,inet:ipv4-address
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-spec-configs/wireless-radio-cfg:ap-spec-config/wireless-radio-cfg:primary-controller-v6-ip-addr,leaf,inet:ipv6-address
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-spec-configs/wireless-radio-cfg:ap-spec-config/wireless-radio-cfg:secondary-controller-name,leaf,string
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-spec-configs/wireless-radio-cfg:ap-spec-config/wireless-radio-cfg:secondary-controller-ip-addr,leaf,inet:ipv4-address
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-spec-configs/wireless-radio-cfg:ap-spec-config/wireless-radio-cfg:secondary-controller-v6-ip-addr,leaf,inet:ipv6-address
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-spec-configs/wireless-radio-cfg:ap-spec-config/wireless-radio-cfg:tertiary-controller-name,leaf,string
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-spec-configs/wireless-radio-cfg:ap-spec-config/wireless-radio-cfg:tertiary-controller-ip-addr,leaf,inet:ipv4-address
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-spec-configs/wireless-radio-cfg:ap-spec-config/wireless-radio-cfg:tertiary-controller-v6-ip-addr,leaf,inet:ipv6-address
+/wireless-radio-cfg:radio-cfg-data/wireless-radio-cfg:ap-spec-configs/wireless-radio-cfg:ap-spec-config/wireless-radio-cfg:roaming-domain,leaf,string

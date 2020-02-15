@@ -1,0 +1,390 @@
+ 
+KPI for model: Cisco-IOS-XE-poe-oper.yang
+module: Cisco-IOS-XE-poe-oper
+  +--ro poe-oper-data
+     +--ro poe-port* [intf-name]
+     |  +--ro intf-name              string
+     |  +--ro poe-intf-enabled?      boolean
+     |  +--ro power-used?            decimal64
+     |  +--ro pd-class?              poe-ios-xe-oper:ilpower-pd-class
+     |  +--ro oper-state?            poe-ios-xe-oper:ilpower-pd-power-state
+     |  +--ro admin-state?           poe-ios-xe-oper:ilpower-admin-state
+     |  +--ro oper-power?            decimal64
+     |  +--ro admin-police?          string
+     |  +--ro oper-police?           string
+     |  +--ro cutoff-power-police?   decimal64
+     |  +--ro module?                uint32
+     |  +--ro ilp-detail
+     |  |  +--ro oper-status?               poe-ios-xe-oper:ilpower-device-state
+     |  |  +--ro device-detected?           boolean
+     |  |  +--ro device-name?               string
+     |  |  +--ro discovery?                 poe-ios-xe-oper:ilpower-pd-discovery-protocol
+     |  |  +--ro police-state-on?           boolean
+     |  |  +--ro power-admin-max?           decimal64
+     |  |  +--ro power-from-pse?            decimal64
+     |  |  +--ro power-to-pd?               decimal64
+     |  |  +--ro power-consumption?         decimal64
+     |  |  +--ro max-power-drawn?           decimal64
+     |  |  +--ro power-negotiation-used?    string
+     |  |  +--ro lldp-tx-power-type?        poe-ios-xe-oper:poe-lldp-power-type
+     |  |  +--ro lldp-tx-power-source?      poe-ios-xe-oper:poe-lldp-power-source
+     |  |  +--ro lldp-tx-power-priority?    poe-ios-xe-oper:poe-lldp-power-priority
+     |  |  +--ro lldp-tx-power-requested?   decimal64
+     |  |  +--ro lldp-tx-power-allocated?   decimal64
+     |  |  +--ro lldp-rx-power-type?        poe-ios-xe-oper:poe-lldp-power-type
+     |  |  +--ro lldp-rx-power-source?      poe-ios-xe-oper:poe-lldp-power-source
+     |  |  +--ro lldp-rx-power-priority?    poe-ios-xe-oper:poe-lldp-power-priority
+     |  |  +--ro lldp-rx-power-requested?   decimal64
+     |  |  +--ro lldp-rx-power-allocated?   decimal64
+     |  |  +--ro four-pair-poe-supported?   string
+     |  |  +--ro four-pair-poe-enabled?     string
+     |  |  +--ro four-pair-pd-arch?         string
+     |  |  +--ro over-current-counter?      uint32
+     |  |  +--ro short-current-counter?     uint32
+     |  +--ro port-poe-detail
+     |     +--ro initialization?           boolean
+     |     +--ro ilp-supported?            boolean
+     |     +--ro ilp-enabled?              boolean
+     |     +--ro post?                     boolean
+     |     +--ro power-on?                 boolean
+     |     +--ro power-denied?             boolean
+     |     +--ro state?                    poe-ios-xe-oper:power-state
+     |     +--ro short-circuit-detected?   uint32
+     |     +--ro spare-pair-mode?          poe-ios-xe-oper:poe-upoe-cmd-mode
+     |     +--ro spare-pair-power-is-on?   boolean
+     |     +--ro pd-power-state?           poe-ios-xe-oper:ilpower-pd-power-state
+     +--ro poe-port-detail* [intf-name]
+     |  +--ro intf-name                  string
+     |  +--ro power-used?                decimal64
+     |  +--ro pd-class?                  poe-ios-xe-oper:poe-pd-class
+     |  +--ro device-detected?           boolean
+     |  +--ro device-name?               string
+     |  +--ro police?                    boolean
+     |  +--ro power-admin-max?           decimal64
+     |  +--ro power-from-pse?            decimal64
+     |  +--ro power-to-pd?               decimal64
+     |  +--ro power-consumption?         decimal64
+     |  +--ro max-power-drawn?           decimal64
+     |  +--ro oper-state?                poe-ios-xe-oper:poe-pd-power-state
+     |  +--ro admin-state?               poe-ios-xe-oper:ilpower-admin-state
+     |  +--ro oper-power?                decimal64
+     |  +--ro admin-police?              poe-ios-xe-oper:poe-police-action
+     |  +--ro oper-police?               poe-ios-xe-oper:poe-police-oper
+     |  +--ro cutoff-power-police?       decimal64
+     |  +--ro power-negotiation-used?    poe-ios-xe-oper:power-neg-used
+     |  +--ro four-pair-poe-supported?   boolean
+     |  +--ro four-pair-poe-enabled?     boolean
+     |  +--ro four-pair-pd-arch?         poe-ios-xe-oper:four-pair-pd-architecture
+     |  +--ro over-current-counter?      uint32
+     |  +--ro short-current-counter?     uint32
+     |  +--ro power-denied-counter?      uint32
+     |  +--ro conn-type?                 poe-ios-xe-oper:poe-conn-check
+     |  +--ro signal-pair-data
+     |  |  +--ro pd-class?            poe-ios-xe-oper:poe-pd-class
+     |  |  +--ro assigned-pd-class?   poe-ios-xe-oper:poe-pd-class
+     |  |  +--ro oper-power?          decimal64
+     |  |  +--ro power-from-pse?      decimal64
+     |  |  +--ro power-to-pd?         decimal64
+     |  +--ro spare-pair-data
+     |  |  +--ro pd-class?            poe-ios-xe-oper:poe-pd-class
+     |  |  +--ro assigned-pd-class?   poe-ios-xe-oper:poe-pd-class
+     |  |  +--ro oper-power?          decimal64
+     |  |  +--ro power-from-pse?      decimal64
+     |  |  +--ro power-to-pd?         decimal64
+     |  +--ro discovery?                 poe-ios-xe-oper:ilpower-pd-discovery-protocol
+     |  +--ro lldp-mdi-rx
+     |  |  +--ro power-type?                  poe-ios-xe-oper:poe-lldp-power-type
+     |  |  +--ro power-source?                poe-ios-xe-oper:ilpower-lldp-power-source
+     |  |  +--ro power-priority?              poe-ios-xe-oper:poe-lldp-power-priority
+     |  |  +--ro power-requested?             decimal64
+     |  |  +--ro power-allocated?             decimal64
+     |  |  +--ro pd-4pid?                     uint8
+     |  |  +--ro length?                      uint16
+     |  |  +--ro pd-req-pwr-mode-a?           decimal64
+     |  |  +--ro pd-req-pwr-mode-b?           decimal64
+     |  |  +--ro pse-alloc-pwr-mode-a?        decimal64
+     |  |  +--ro pse-alloc-pwr-mode-b?        decimal64
+     |  |  +--ro pse-pwring-status?           poe-ios-xe-oper:pse-lldp-pwr-status
+     |  |  +--ro pd-pwred-status?             poe-ios-xe-oper:pd-lldp-pwr-status
+     |  |  +--ro pse-pwr-pair-ext?            poe-ios-xe-oper:lldp-pse-pwr-ext-type
+     |  |  +--ro dual-sig-pwr-class-mode-a?   poe-ios-xe-oper:dual-sig-pwr-class
+     |  |  +--ro dual-sig-pwr-class-mode-b?   poe-ios-xe-oper:dual-sig-pwr-class
+     |  |  +--ro pwr-ss-class-ext?            poe-ios-xe-oper:ss-pwr-class
+     |  |  +--ro pwr-type-ext?                poe-ios-xe-oper:lldp-power-ext
+     |  |  +--ro pse-max-available-power?     decimal64
+     |  |  +--ro pse-auto-class-support?      boolean
+     |  |  +--ro auto-class-comp?             boolean
+     |  |  +--ro auto-class-req?              boolean
+     |  |  +--ro pwr-down-req?                boolean
+     |  |  +--ro power-down-time?             uint64
+     |  +--ro lldp-mdi-tx
+     |  |  +--ro power-type?                  poe-ios-xe-oper:poe-lldp-power-type
+     |  |  +--ro power-source?                poe-ios-xe-oper:ilpower-lldp-power-source
+     |  |  +--ro power-priority?              poe-ios-xe-oper:poe-lldp-power-priority
+     |  |  +--ro power-requested?             decimal64
+     |  |  +--ro power-allocated?             decimal64
+     |  |  +--ro pd-4pid?                     uint8
+     |  |  +--ro length?                      uint16
+     |  |  +--ro pd-req-pwr-mode-a?           decimal64
+     |  |  +--ro pd-req-pwr-mode-b?           decimal64
+     |  |  +--ro pse-alloc-pwr-mode-a?        decimal64
+     |  |  +--ro pse-alloc-pwr-mode-b?        decimal64
+     |  |  +--ro pse-pwring-status?           poe-ios-xe-oper:pse-lldp-pwr-status
+     |  |  +--ro pd-pwred-status?             poe-ios-xe-oper:pd-lldp-pwr-status
+     |  |  +--ro pse-pwr-pair-ext?            poe-ios-xe-oper:lldp-pse-pwr-ext-type
+     |  |  +--ro dual-sig-pwr-class-mode-a?   poe-ios-xe-oper:dual-sig-pwr-class
+     |  |  +--ro dual-sig-pwr-class-mode-b?   poe-ios-xe-oper:dual-sig-pwr-class
+     |  |  +--ro pwr-ss-class-ext?            poe-ios-xe-oper:ss-pwr-class
+     |  |  +--ro pwr-type-ext?                poe-ios-xe-oper:lldp-power-ext
+     |  |  +--ro pse-max-available-power?     decimal64
+     |  |  +--ro pse-auto-class-support?      boolean
+     |  |  +--ro auto-class-comp?             boolean
+     |  |  +--ro auto-class-req?              boolean
+     |  |  +--ro pwr-down-req?                boolean
+     |  |  +--ro power-down-time?             uint64
+     |  +--ro lldp-med-mdi-rx
+     |  |  +--ro power-type?       poe-ios-xe-oper:ilpower-lldp-med-power-type
+     |  |  +--ro power-source?     poe-ios-xe-oper:ilpower-lldp-med-power-source
+     |  |  +--ro power-priority?   poe-ios-xe-oper:ilpower-lldp-med-power-priority
+     |  +--ro lldp-med-mdi-tx
+     |  |  +--ro power-type?       poe-ios-xe-oper:ilpower-lldp-med-power-type
+     |  |  +--ro power-source?     poe-ios-xe-oper:ilpower-lldp-med-power-source
+     |  |  +--ro power-priority?   poe-ios-xe-oper:ilpower-lldp-med-power-priority
+     |  +--ro fast-poe-enabled?          boolean
+     |  +--ro perpetual-poe-enabled?     boolean
+     |  +--ro oper-priority?             poe-ios-xe-oper:port-oper-priority
+     |  +--ro post-done?                 boolean
+     |  +--ro upoe-plus-enabled?         boolean
+     |  +--ro poe-intf-enabled?          boolean
+     +--ro poe-module* [module]
+     |  +--ro module             uint32
+     |  +--ro available-power?   decimal64
+     |  +--ro used-power?        decimal64
+     |  +--ro remaining-power?   decimal64
+     |  +--ro chassis-num?       uint32
+     +--ro poe-stack* [power-stack-name]
+     |  +--ro power-stack-name    string
+     |  +--ro mode?               poe-ios-xe-oper:power-stack-mode
+     |  +--ro topolgy?            poe-ios-xe-oper:poe-stack-topo
+     |  +--ro total-power?        int32
+     |  +--ro rsvd-power?         int32
+     |  +--ro alloc-power?        int32
+     |  +--ro unused-power?       int32
+     |  +--ro num-sw?             uint8
+     |  +--ro num-ps?             uint8
+     +--ro poe-switch* [switch-num]
+        +--ro switch-num               uint8
+        +--ro power-budget?            uint16
+        +--ro power-allocated?         uint32
+        +--ro low-port-priority?       uint8
+        +--ro high-port-priority?      uint8
+        +--ro switch-priority?         uint8
+        +--ro port-one-status?         poe-ios-xe-oper:poe-port-status
+        +--ro port-two-status?         poe-ios-xe-oper:poe-port-status
+        +--ro neighbor-on-port-one?    yang:mac-address
+        +--ro neighbor-on-port-two?    yang:mac-address
+        +--ro consumed-switch-power?   uint32
+        +--ro consumed-high-power?     uint32
+        +--ro consumed-low-power?      uint32
+        +--ro allocated-high-power?    uint32
+        +--ro allocated-low-power?     uint32
+        +--ro ps-a?                    uint16
+        +--ro ps-b?                    uint16
+        +--ro available-power?         int32
+        +--ro consumed-system-power?   int32
+        +--ro consumed-poe-power?      int32
+        +--ro power-stack-name?        string
+Xpaths for model: Cisco-IOS-XE-poe-oper.yang
+/poe-ios-xe-oper:poe-oper-data,container,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port,list,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:intf-name,leaf,string
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:poe-intf-enabled,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:power-used,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:pd-class,leaf,poe-ios-xe-oper:ilpower-pd-class
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:oper-state,leaf,poe-ios-xe-oper:ilpower-pd-power-state
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:admin-state,leaf,poe-ios-xe-oper:ilpower-admin-state
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:oper-power,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:admin-police,leaf,string
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:oper-police,leaf,string
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:cutoff-power-police,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:module,leaf,uint32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail,container,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:oper-status,leaf,poe-ios-xe-oper:ilpower-device-state
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:device-detected,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:device-name,leaf,string
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:discovery,leaf,poe-ios-xe-oper:ilpower-pd-discovery-protocol
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:police-state-on,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:power-admin-max,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:power-from-pse,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:power-to-pd,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:power-consumption,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:max-power-drawn,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:power-negotiation-used,leaf,string
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:lldp-tx-power-type,leaf,poe-ios-xe-oper:poe-lldp-power-type
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:lldp-tx-power-source,leaf,poe-ios-xe-oper:poe-lldp-power-source
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:lldp-tx-power-priority,leaf,poe-ios-xe-oper:poe-lldp-power-priority
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:lldp-tx-power-requested,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:lldp-tx-power-allocated,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:lldp-rx-power-type,leaf,poe-ios-xe-oper:poe-lldp-power-type
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:lldp-rx-power-source,leaf,poe-ios-xe-oper:poe-lldp-power-source
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:lldp-rx-power-priority,leaf,poe-ios-xe-oper:poe-lldp-power-priority
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:lldp-rx-power-requested,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:lldp-rx-power-allocated,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:four-pair-poe-supported,leaf,string
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:four-pair-poe-enabled,leaf,string
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:four-pair-pd-arch,leaf,string
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:over-current-counter,leaf,uint32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:ilp-detail/poe-ios-xe-oper:short-current-counter,leaf,uint32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:port-poe-detail,container,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:port-poe-detail/poe-ios-xe-oper:initialization,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:port-poe-detail/poe-ios-xe-oper:ilp-supported,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:port-poe-detail/poe-ios-xe-oper:ilp-enabled,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:port-poe-detail/poe-ios-xe-oper:post,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:port-poe-detail/poe-ios-xe-oper:power-on,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:port-poe-detail/poe-ios-xe-oper:power-denied,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:port-poe-detail/poe-ios-xe-oper:state,leaf,poe-ios-xe-oper:power-state
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:port-poe-detail/poe-ios-xe-oper:short-circuit-detected,leaf,uint32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:port-poe-detail/poe-ios-xe-oper:spare-pair-mode,leaf,poe-ios-xe-oper:poe-upoe-cmd-mode
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:port-poe-detail/poe-ios-xe-oper:spare-pair-power-is-on,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:port-poe-detail/poe-ios-xe-oper:pd-power-state,leaf,poe-ios-xe-oper:ilpower-pd-power-state
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail,list,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:intf-name,leaf,string
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:power-used,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:pd-class,leaf,poe-ios-xe-oper:poe-pd-class
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:device-detected,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:device-name,leaf,string
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:police,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:power-admin-max,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:power-from-pse,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:power-to-pd,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:power-consumption,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:max-power-drawn,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:oper-state,leaf,poe-ios-xe-oper:poe-pd-power-state
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:admin-state,leaf,poe-ios-xe-oper:ilpower-admin-state
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:oper-power,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:admin-police,leaf,poe-ios-xe-oper:poe-police-action
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:oper-police,leaf,poe-ios-xe-oper:poe-police-oper
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:cutoff-power-police,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:power-negotiation-used,leaf,poe-ios-xe-oper:power-neg-used
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:four-pair-poe-supported,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:four-pair-poe-enabled,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:four-pair-pd-arch,leaf,poe-ios-xe-oper:four-pair-pd-architecture
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:over-current-counter,leaf,uint32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:short-current-counter,leaf,uint32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:power-denied-counter,leaf,uint32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:conn-type,leaf,poe-ios-xe-oper:poe-conn-check
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:signal-pair-data,container,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:signal-pair-data/poe-ios-xe-oper:pd-class,leaf,poe-ios-xe-oper:poe-pd-class
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:signal-pair-data/poe-ios-xe-oper:assigned-pd-class,leaf,poe-ios-xe-oper:poe-pd-class
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:signal-pair-data/poe-ios-xe-oper:oper-power,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:signal-pair-data/poe-ios-xe-oper:power-from-pse,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:signal-pair-data/poe-ios-xe-oper:power-to-pd,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:spare-pair-data,container,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:spare-pair-data/poe-ios-xe-oper:pd-class,leaf,poe-ios-xe-oper:poe-pd-class
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:spare-pair-data/poe-ios-xe-oper:assigned-pd-class,leaf,poe-ios-xe-oper:poe-pd-class
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:spare-pair-data/poe-ios-xe-oper:oper-power,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:spare-pair-data/poe-ios-xe-oper:power-from-pse,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:spare-pair-data/poe-ios-xe-oper:power-to-pd,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:discovery,leaf,poe-ios-xe-oper:ilpower-pd-discovery-protocol
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx,container,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:power-type,leaf,poe-ios-xe-oper:poe-lldp-power-type
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:power-source,leaf,poe-ios-xe-oper:ilpower-lldp-power-source
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:power-priority,leaf,poe-ios-xe-oper:poe-lldp-power-priority
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:power-requested,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:power-allocated,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:pd-4pid,leaf,uint8
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:length,leaf,uint16
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:pd-req-pwr-mode-a,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:pd-req-pwr-mode-b,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:pse-alloc-pwr-mode-a,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:pse-alloc-pwr-mode-b,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:pse-pwring-status,leaf,poe-ios-xe-oper:pse-lldp-pwr-status
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:pd-pwred-status,leaf,poe-ios-xe-oper:pd-lldp-pwr-status
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:pse-pwr-pair-ext,leaf,poe-ios-xe-oper:lldp-pse-pwr-ext-type
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:dual-sig-pwr-class-mode-a,leaf,poe-ios-xe-oper:dual-sig-pwr-class
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:dual-sig-pwr-class-mode-b,leaf,poe-ios-xe-oper:dual-sig-pwr-class
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:pwr-ss-class-ext,leaf,poe-ios-xe-oper:ss-pwr-class
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:pwr-type-ext,leaf,poe-ios-xe-oper:lldp-power-ext
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:pse-max-available-power,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:pse-auto-class-support,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:auto-class-comp,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:auto-class-req,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:pwr-down-req,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-rx/poe-ios-xe-oper:power-down-time,leaf,uint64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx,container,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:power-type,leaf,poe-ios-xe-oper:poe-lldp-power-type
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:power-source,leaf,poe-ios-xe-oper:ilpower-lldp-power-source
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:power-priority,leaf,poe-ios-xe-oper:poe-lldp-power-priority
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:power-requested,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:power-allocated,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:pd-4pid,leaf,uint8
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:length,leaf,uint16
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:pd-req-pwr-mode-a,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:pd-req-pwr-mode-b,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:pse-alloc-pwr-mode-a,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:pse-alloc-pwr-mode-b,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:pse-pwring-status,leaf,poe-ios-xe-oper:pse-lldp-pwr-status
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:pd-pwred-status,leaf,poe-ios-xe-oper:pd-lldp-pwr-status
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:pse-pwr-pair-ext,leaf,poe-ios-xe-oper:lldp-pse-pwr-ext-type
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:dual-sig-pwr-class-mode-a,leaf,poe-ios-xe-oper:dual-sig-pwr-class
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:dual-sig-pwr-class-mode-b,leaf,poe-ios-xe-oper:dual-sig-pwr-class
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:pwr-ss-class-ext,leaf,poe-ios-xe-oper:ss-pwr-class
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:pwr-type-ext,leaf,poe-ios-xe-oper:lldp-power-ext
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:pse-max-available-power,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:pse-auto-class-support,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:auto-class-comp,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:auto-class-req,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:pwr-down-req,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-mdi-tx/poe-ios-xe-oper:power-down-time,leaf,uint64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-med-mdi-rx,container,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-med-mdi-rx/poe-ios-xe-oper:power-type,leaf,poe-ios-xe-oper:ilpower-lldp-med-power-type
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-med-mdi-rx/poe-ios-xe-oper:power-source,leaf,poe-ios-xe-oper:ilpower-lldp-med-power-source
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-med-mdi-rx/poe-ios-xe-oper:power-priority,leaf,poe-ios-xe-oper:ilpower-lldp-med-power-priority
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-med-mdi-tx,container,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-med-mdi-tx/poe-ios-xe-oper:power-type,leaf,poe-ios-xe-oper:ilpower-lldp-med-power-type
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-med-mdi-tx/poe-ios-xe-oper:power-source,leaf,poe-ios-xe-oper:ilpower-lldp-med-power-source
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:lldp-med-mdi-tx/poe-ios-xe-oper:power-priority,leaf,poe-ios-xe-oper:ilpower-lldp-med-power-priority
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:fast-poe-enabled,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:perpetual-poe-enabled,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:oper-priority,leaf,poe-ios-xe-oper:port-oper-priority
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:post-done,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:upoe-plus-enabled,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port-detail/poe-ios-xe-oper:poe-intf-enabled,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-module,list,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-module/poe-ios-xe-oper:module,leaf,uint32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-module/poe-ios-xe-oper:available-power,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-module/poe-ios-xe-oper:used-power,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-module/poe-ios-xe-oper:remaining-power,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-module/poe-ios-xe-oper:chassis-num,leaf,uint32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-stack,list,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-stack/poe-ios-xe-oper:power-stack-name,leaf,string
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-stack/poe-ios-xe-oper:mode,leaf,poe-ios-xe-oper:power-stack-mode
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-stack/poe-ios-xe-oper:topolgy,leaf,poe-ios-xe-oper:poe-stack-topo
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-stack/poe-ios-xe-oper:total-power,leaf,int32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-stack/poe-ios-xe-oper:rsvd-power,leaf,int32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-stack/poe-ios-xe-oper:alloc-power,leaf,int32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-stack/poe-ios-xe-oper:unused-power,leaf,int32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-stack/poe-ios-xe-oper:num-sw,leaf,uint8
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-stack/poe-ios-xe-oper:num-ps,leaf,uint8
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch,list,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:switch-num,leaf,uint8
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:power-budget,leaf,uint16
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:power-allocated,leaf,uint32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:low-port-priority,leaf,uint8
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:high-port-priority,leaf,uint8
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:switch-priority,leaf,uint8
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:port-one-status,leaf,poe-ios-xe-oper:poe-port-status
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:port-two-status,leaf,poe-ios-xe-oper:poe-port-status
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:neighbor-on-port-one,leaf,yang:mac-address
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:neighbor-on-port-two,leaf,yang:mac-address
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:consumed-switch-power,leaf,uint32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:consumed-high-power,leaf,uint32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:consumed-low-power,leaf,uint32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:allocated-high-power,leaf,uint32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:allocated-low-power,leaf,uint32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:ps-a,leaf,uint16
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:ps-b,leaf,uint16
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:available-power,leaf,int32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:consumed-system-power,leaf,int32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:consumed-poe-power,leaf,int32
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-switch/poe-ios-xe-oper:power-stack-name,leaf,string

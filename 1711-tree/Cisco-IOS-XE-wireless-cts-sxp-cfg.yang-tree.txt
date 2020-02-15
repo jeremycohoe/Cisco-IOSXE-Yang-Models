@@ -1,0 +1,36 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-cts-sxp-cfg.yang
+module: Cisco-IOS-XE-wireless-cts-sxp-cfg
+  +--rw cts-sxp-cfg-data
+     +--rw cts-sxp-configuration
+        +--rw cts-sxp-config* [sxp-profile-name]
+           +--rw sxp-profile-name             string
+           +--rw enable?                      boolean
+           +--rw default-password?            string
+           +--rw listener-minimum-holdtime?   uint32
+           +--rw listener-maximum-holdtime?   uint32
+           +--rw speaker-holdtime?            uint32
+           +--rw reconcile-period?            uint32
+           +--rw retry-period?                uint32
+           +--rw sxp-connections
+              +--rw sxp-connection-config* [peer-ip-address]
+                 +--rw peer-ip-address    inet:ip-address
+                 +--rw connection-mode?   wireless-types:enm-cts-sxp-conn-mode
+                 +--rw password-type?     wireless-types:enm-cts-sxp-password-type
+Xpaths for model: Cisco-IOS-XE-wireless-cts-sxp-cfg.yang
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data,container,
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data/wireless-cts-sxp-cfg:cts-sxp-configuration,container,
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data/wireless-cts-sxp-cfg:cts-sxp-configuration/wireless-cts-sxp-cfg:cts-sxp-config,list,
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data/wireless-cts-sxp-cfg:cts-sxp-configuration/wireless-cts-sxp-cfg:cts-sxp-config/wireless-cts-sxp-cfg:sxp-profile-name,leaf,string
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data/wireless-cts-sxp-cfg:cts-sxp-configuration/wireless-cts-sxp-cfg:cts-sxp-config/wireless-cts-sxp-cfg:enable,leaf,boolean
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data/wireless-cts-sxp-cfg:cts-sxp-configuration/wireless-cts-sxp-cfg:cts-sxp-config/wireless-cts-sxp-cfg:default-password,leaf,string
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data/wireless-cts-sxp-cfg:cts-sxp-configuration/wireless-cts-sxp-cfg:cts-sxp-config/wireless-cts-sxp-cfg:listener-minimum-holdtime,leaf,uint32
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data/wireless-cts-sxp-cfg:cts-sxp-configuration/wireless-cts-sxp-cfg:cts-sxp-config/wireless-cts-sxp-cfg:listener-maximum-holdtime,leaf,uint32
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data/wireless-cts-sxp-cfg:cts-sxp-configuration/wireless-cts-sxp-cfg:cts-sxp-config/wireless-cts-sxp-cfg:speaker-holdtime,leaf,uint32
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data/wireless-cts-sxp-cfg:cts-sxp-configuration/wireless-cts-sxp-cfg:cts-sxp-config/wireless-cts-sxp-cfg:reconcile-period,leaf,uint32
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data/wireless-cts-sxp-cfg:cts-sxp-configuration/wireless-cts-sxp-cfg:cts-sxp-config/wireless-cts-sxp-cfg:retry-period,leaf,uint32
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data/wireless-cts-sxp-cfg:cts-sxp-configuration/wireless-cts-sxp-cfg:cts-sxp-config/wireless-cts-sxp-cfg:sxp-connections,container,
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data/wireless-cts-sxp-cfg:cts-sxp-configuration/wireless-cts-sxp-cfg:cts-sxp-config/wireless-cts-sxp-cfg:sxp-connections/wireless-cts-sxp-cfg:sxp-connection-config,list,
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data/wireless-cts-sxp-cfg:cts-sxp-configuration/wireless-cts-sxp-cfg:cts-sxp-config/wireless-cts-sxp-cfg:sxp-connections/wireless-cts-sxp-cfg:sxp-connection-config/wireless-cts-sxp-cfg:peer-ip-address,leaf,inet:ip-address
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data/wireless-cts-sxp-cfg:cts-sxp-configuration/wireless-cts-sxp-cfg:cts-sxp-config/wireless-cts-sxp-cfg:sxp-connections/wireless-cts-sxp-cfg:sxp-connection-config/wireless-cts-sxp-cfg:connection-mode,leaf,wireless-types:enm-cts-sxp-conn-mode
+/wireless-cts-sxp-cfg:cts-sxp-cfg-data/wireless-cts-sxp-cfg:cts-sxp-configuration/wireless-cts-sxp-cfg:cts-sxp-config/wireless-cts-sxp-cfg:sxp-connections/wireless-cts-sxp-cfg:sxp-connection-config/wireless-cts-sxp-cfg:password-type,leaf,wireless-types:enm-cts-sxp-password-type

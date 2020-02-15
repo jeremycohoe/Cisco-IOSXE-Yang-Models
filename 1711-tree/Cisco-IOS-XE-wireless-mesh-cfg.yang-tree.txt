@@ -1,0 +1,120 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-mesh-cfg.yang
+module: Cisco-IOS-XE-wireless-mesh-cfg
+  +--rw mesh-cfg-data
+     +--rw mesh!
+     |  +--rw assoc-count-alarm-thresh?           uint32
+     |  +--rw high-snr-alarm-thresh?              uint32
+     |  +--rw low-snr-alarm-thresh?               uint32
+     |  +--rw max-map-children-alarm-thresh?      uint32
+     |  +--rw max-rap-children-alarm-thresh?      uint32
+     |  +--rw max-hop-alarm-thresh?               uint32
+     |  +--rw parent-change-count-alarm-thresh?   uint32
+     |  +--rw bhaul-rrm-enabled?                  boolean
+     |  +--rw bhaul-bdomain-chan-used?            boolean
+     |  +--rw cac-enabled?                        boolean
+     |  +--rw psk-prov-mode?                      boolean
+     |  +--rw default-psk?                        boolean
+     |  +--rw psk-inuse-index?                    uint8
+     |  +--rw rap-channel-sync-enabled?           boolean
+     |  +--rw eth-bridging-bpdu-allowed?          boolean
+     |  +--rw public-safety-enabled?              boolean
+     +--rw mesh-profiles
+     |  +--rw mesh-profile* [profile-name]
+     |     +--rw profile-name                string
+     |     +--rw description?                string
+     |     +--rw amsdu-enabled?              boolean
+     |     +--rw bg-scan-enabled?            boolean
+     |     +--rw ccn-mode?                   boolean
+     |     +--rw bhaul-client-access?        boolean
+     |     +--rw eth-vlan-transparent?       boolean
+     |     +--rw full-sector-dfs?            boolean
+     |     +--rw ids-state-enabled?          boolean
+     |     +--rw multicast-mode?             wireless-types:mesh-multicast-mode
+     |     +--rw range?                      uint32
+     |     +--rw security-mode?              wireless-types:mesh-security-mode
+     |     +--rw conv-method?                wireless-types:mesh-convergence-method
+     |     +--rw lsc-only-auth?              boolean
+     |     +--rw bridgegroupname?            string
+     |     +--rw bgn-strict-match-enabled?   boolean
+     |     +--rw eth-bridging-enabled?       boolean
+     |     +--rw battery-state-enabled?      boolean
+     |     +--rw authorization-method?       string
+     |     +--rw authentication-method?      string
+     |     +--rw bhaul-tx-rate-dot11bg
+     |     |  +--rw type?                wireless-types:mesh-bhaul-data-rate-type
+     |     |  +--rw rate?                wireless-types:mesh-dot11abg-data-rate
+     |     |  +--rw dot11n-mcs-index?    uint8
+     |     |  +--rw dot11ac-mcs-index?   uint8
+     |     |  +--rw spatial-stream?      uint8
+     |     +--rw bhaul-tx-rate-dot11a
+     |        +--rw type?                wireless-types:mesh-bhaul-data-rate-type
+     |        +--rw rate?                wireless-types:mesh-dot11abg-data-rate
+     |        +--rw dot11n-mcs-index?    uint8
+     |        +--rw dot11ac-mcs-index?   uint8
+     |        +--rw spatial-stream?      uint8
+     +--rw mesh-psks
+        +--rw mesh-psk* [index]
+           +--rw index           uint8
+           +--rw psk-key?        string
+           +--rw psk-key-type?   wireless-enum-types:crypt-type
+           +--rw description?    string
+Xpaths for model: Cisco-IOS-XE-wireless-mesh-cfg.yang
+/wireless-mesh-cfg:mesh-cfg-data,container,
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh,container,
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:assoc-count-alarm-thresh,leaf,uint32
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:high-snr-alarm-thresh,leaf,uint32
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:low-snr-alarm-thresh,leaf,uint32
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:max-map-children-alarm-thresh,leaf,uint32
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:max-rap-children-alarm-thresh,leaf,uint32
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:max-hop-alarm-thresh,leaf,uint32
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:parent-change-count-alarm-thresh,leaf,uint32
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:bhaul-rrm-enabled,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:bhaul-bdomain-chan-used,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:cac-enabled,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:psk-prov-mode,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:default-psk,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:psk-inuse-index,leaf,uint8
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:rap-channel-sync-enabled,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:eth-bridging-bpdu-allowed,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh/wireless-mesh-cfg:public-safety-enabled,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles,container,
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile,list,
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:profile-name,leaf,string
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:description,leaf,string
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:amsdu-enabled,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bg-scan-enabled,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:ccn-mode,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bhaul-client-access,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:eth-vlan-transparent,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:full-sector-dfs,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:ids-state-enabled,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:multicast-mode,leaf,wireless-types:mesh-multicast-mode
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:range,leaf,uint32
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:security-mode,leaf,wireless-types:mesh-security-mode
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:conv-method,leaf,wireless-types:mesh-convergence-method
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:lsc-only-auth,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bridgegroupname,leaf,string
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bgn-strict-match-enabled,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:eth-bridging-enabled,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:battery-state-enabled,leaf,boolean
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:authorization-method,leaf,string
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:authentication-method,leaf,string
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bhaul-tx-rate-dot11bg,container,
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bhaul-tx-rate-dot11bg/wireless-mesh-cfg:type,leaf,wireless-types:mesh-bhaul-data-rate-type
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bhaul-tx-rate-dot11bg/wireless-mesh-cfg:rate,leaf,wireless-types:mesh-dot11abg-data-rate
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bhaul-tx-rate-dot11bg/wireless-mesh-cfg:dot11n-mcs-index,leaf,uint8
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bhaul-tx-rate-dot11bg/wireless-mesh-cfg:dot11ac-mcs-index,leaf,uint8
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bhaul-tx-rate-dot11bg/wireless-mesh-cfg:spatial-stream,leaf,uint8
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bhaul-tx-rate-dot11a,container,
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bhaul-tx-rate-dot11a/wireless-mesh-cfg:type,leaf,wireless-types:mesh-bhaul-data-rate-type
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bhaul-tx-rate-dot11a/wireless-mesh-cfg:rate,leaf,wireless-types:mesh-dot11abg-data-rate
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bhaul-tx-rate-dot11a/wireless-mesh-cfg:dot11n-mcs-index,leaf,uint8
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bhaul-tx-rate-dot11a/wireless-mesh-cfg:dot11ac-mcs-index,leaf,uint8
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-profiles/wireless-mesh-cfg:mesh-profile/wireless-mesh-cfg:bhaul-tx-rate-dot11a/wireless-mesh-cfg:spatial-stream,leaf,uint8
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-psks,container,
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-psks/wireless-mesh-cfg:mesh-psk,list,
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-psks/wireless-mesh-cfg:mesh-psk/wireless-mesh-cfg:index,leaf,uint8
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-psks/wireless-mesh-cfg:mesh-psk/wireless-mesh-cfg:psk-key,leaf,string
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-psks/wireless-mesh-cfg:mesh-psk/wireless-mesh-cfg:psk-key-type,leaf,wireless-enum-types:crypt-type
+/wireless-mesh-cfg:mesh-cfg-data/wireless-mesh-cfg:mesh-psks/wireless-mesh-cfg:mesh-psk/wireless-mesh-cfg:description,leaf,string

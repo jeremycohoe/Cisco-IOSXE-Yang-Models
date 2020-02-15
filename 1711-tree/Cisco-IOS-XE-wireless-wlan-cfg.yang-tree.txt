@@ -1,0 +1,632 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-wlan-cfg.yang
+module: Cisco-IOS-XE-wireless-wlan-cfg
+  +--rw wlan-cfg-data
+     +--rw calendar-profile-configs
+     |  +--rw calendar-profile-config* [profile-name]
+     |     +--rw profile-name                string
+     |     +--rw start-time                  string
+     |     +--rw end-time?                   string
+     |     +--rw recurrence                  wireless-enum-types:calendar-recurrence
+     |     +--rw calendar-weekly-configs
+     |     |  +--rw calendar-weekly-config* [day]
+     |     |     +--rw day    wireless-enum-types:work-day
+     |     +--rw calendar-monthly-configs
+     |        +--rw calendar-monthly-config* [date]
+     |           +--rw date    uint8
+     +--rw wlan-cfg-entries
+     |  +--rw wlan-cfg-entry* [profile-name]
+     |     +--rw wlan-id                            uint32
+     |     +--rw profile-name                       string
+     |     +--rw description?                       string
+     |     +--rw security-wpa?                      boolean
+     |     +--rw wep-enabled?                       boolean
+     |     +--rw webauth-enabled?                   boolean
+     |     o--rw cond-web-redirect?                 boolean
+     |     +--rw splash-web-redirect?               boolean
+     |     +--rw dot11-auth-type?                   wireless-enum-types:apf-vap-80211-authentication
+     |     +--rw wep-key-index?                     uint8
+     |     +--rw wep-key-size?                      wireless-enum-types:apf-vap-80211-encryption
+     |     +--rw wep-key?                           string
+     |     +--rw wep-key-type?                      wireless-enum-types:crypt-type
+     |     +--rw wep-key-format?                    wireless-enum-types:apf-vap-key-type
+     |     +--rw wpa1-enabled?                      boolean
+     |     +--rw wpa1-tkip?                         boolean
+     |     +--rw wpa1-aes?                          boolean
+     |     +--rw auth-key-mgmt-psk?                 boolean
+     |     +--rw psk-key-type?                      wireless-enum-types:apf-vap-key-type
+     |     +--rw wpa2-enabled?                      boolean
+     |     +--rw wpa2-aes?                          boolean
+     |     +--rw rsn-cipher-suite-gcmp128?          boolean
+     |     +--rw rsn-cipher-suite-gcmp256?          boolean
+     |     +--rw rsn-cipher-suite-ccmp256?          boolean
+     |     +--rw auth-key-mgmt-dot1x?               boolean
+     |     +--rw auth-key-mgmt-cckm?                boolean
+     |     +--rw auth-key-mgmt-ft-dot1x?            boolean
+     |     +--rw auth-key-mgmt-ft-psk?              boolean
+     |     +--rw auth-key-mgmt-dot1x-sha256?        boolean
+     |     +--rw auth-key-mgmt-psk-sha256?          boolean
+     |     +--rw psk?                               string
+     |     +--rw psk-type?                          wireless-enum-types:crypt-type
+     |     +--rw mac-filtering-list?                string
+     |     +--rw mac-override-authorization-list?   string
+     |     +--rw webauth-ipv4-preauth-acl?          string
+     |     +--rw webauth-ipv6-preauth-acl?          string
+     |     +--rw radio-policy?                      wireless-enum-types:apf-vap-radio-policies
+     |     +--rw qos-wmm-status?                    wireless-enum-types:apf-vap-wme-policies
+     |     +--rw ft-over-ds?                        boolean
+     |     +--rw ft-reassoc-timeout?                uint32
+     |     +--rw ft-mode?                           wireless-enum-types:ft-dot11r-mode
+     |     +--rw pmf-options?                       wireless-enum-types:apf-vap-pmf-policies
+     |     +--rw pmf-assoc-comeback-timeout?        uint32
+     |     +--rw pmf-sa-query-retry-timeout?        uint32
+     |     +--rw local-eap-profile-name?            string
+     |     +--rw local-eap-enable?                  boolean
+     |     +--rw band-steering-allowed?             boolean
+     |     +--rw load-balance?                      boolean
+     |     +--rw universal-ap-admin?                boolean
+     |     +--rw mu-mimo?                           boolean
+     |     +--rw multicast-mc-direct?               boolean
+     |     +--rw defer-time?                        uint16
+     |     +--rw defer-priority0?                   boolean
+     |     +--rw defer-priority1?                   boolean
+     |     +--rw defer-priority2?                   boolean
+     |     +--rw defer-priority3?                   boolean
+     |     +--rw defer-priority4?                   boolean
+     |     +--rw defer-priority5?                   boolean
+     |     +--rw defer-priority6?                   boolean
+     |     +--rw defer-priority7?                   boolean
+     |     +--rw authentication-list?               string
+     |     +--rw authorization-list?                string
+     |     +--rw max-clients-allowed?               uint32
+     |     +--rw max-clients-per-ap-per-wlan?       uint32
+     |     +--rw max-clients-per-radio-per-wlan?    uint32
+     |     +--rw static-ip-tunneling?               boolean
+     |     +--rw webauth-on-mac-auth-failure?       boolean
+     |     +--rw web-authc-list?                    string
+     |     +--rw web-authz-list?                    string
+     |     +--rw web-auth-parameter-map?            string
+     |     +--rw ip-source-guard-enabled?           boolean
+     |     +--rw uapsd-compliant?                   boolean
+     |     +--rw re-anchor-roam-clients?            boolean
+     |     +--rw wlan-11k-assisted-roaming?         boolean
+     |     +--rw wlan-11k-dual-band-neigh-list?     boolean
+     |     +--rw wlan-11k-neigh-list?               boolean
+     |     +--rw multicast-buffer-value?            uint8
+     |     +--rw multicast-buffer-enable?           boolean
+     |     +--rw apf-vap-id-data
+     |     |  +--rw broadcast-ssid?     boolean
+     |     |  +--rw ccx-aironet-ie?     boolean
+     |     |  +--rw p2p-block-action?   wireless-enum-types:apf-vap-p2p-blocking-action
+     |     |  +--rw ssid?               string
+     |     |  +--rw dot11a-dtim?        uint8
+     |     |  +--rw dot11b-dtim?        uint8
+     |     |  +--rw chd?                boolean
+     |     |  +--rw wlan-status?        boolean
+     |     +--rw cckm-tsf-tolerance?                uint16
+     |     +--rw apf-vap-802-11v-data
+     |     |  +--rw dot11v-dms?                       boolean
+     |     |  +--rw dot11v-bss-max-idle?              boolean
+     |     |  +--rw dot11v-bss-max-idle-protected?    boolean
+     |     |  +--rw dot11v-tfs?                       boolean
+     |     |  +--rw dot11v-bss-transition?            boolean
+     |     |  +--rw dot11v-wnm-sleep-mode?            boolean
+     |     |  +--rw dot11v-disassoc-imminent?         boolean
+     |     |  +--rw dot11v-disassoc-timer?            uint16
+     |     |  +--rw dot11v-disassoc-timer-opt-roam?   uint16
+     |     +--rw vap-dot11ax-cfg
+     |     |  +--rw he-ofdma-downlink?             boolean
+     |     |  +--rw he-ofdma-uplink?               boolean
+     |     |  +--rw he-mumimo-downlink?            boolean
+     |     |  +--rw he-mumimo-uplink?              boolean
+     |     |  +--rw he-bss-color-enable?           boolean
+     |     |  +--rw he-bss-partial-color-enable?   boolean
+     |     |  +--rw he-bss-color?                  uint8
+     |     |  +--rw he-twt-enable?                 boolean
+     |     |  +--rw he-twt-broadcast-support?      boolean
+     |     +--rw mpsk-enable?                       boolean
+     |     +--rw mpsk-keys
+     |     |  +--rw mpsk-key* [priority]
+     |     |     +--rw priority           uint8
+     |     |     +--rw mpsk-key?          string
+     |     |     +--rw mpsk-key-type?     wireless-enum-types:crypt-type
+     |     |     +--rw mpsk-key-format?   wireless-enum-types:apf-vap-key-type
+     |     +--rw mdns-sd-mode?                      wireless-enum-types:enm-wlan-mdns-sd-cfg
+     |     +--rw mbo?                               boolean
+     |     +--rw gtk-randomize?                     boolean
+     |     +--rw osen?                              boolean
+     |     +--rw wpa3-enabled?                      boolean
+     |     +--rw auth-key-mgmt-sae?                 boolean
+     |     +--rw sae-anti-clog-threshold?           uint16
+     |     +--rw sae-retx-timeout-msec?             uint16
+     |     +--rw sae-max-retries?                   uint8
+     |     +--rw akm-owe?                           boolean
+     |     +--rw transition-mode-wlan-id?           uint16
+     |     +--rw device-analytics
+     |     |  +--rw da-export?    boolean
+     |     |  +--rw da-support?   boolean
+     |     +--rw okc?                               boolean
+     +--rw wlan-policies
+     |  +--rw wlan-policy* [policy-profile-name]
+     |     +--rw policy-profile-name                string
+     |     +--rw description?                       string
+     |     +--rw status?                            boolean
+     |     +--rw passive-client?                    boolean
+     |     +--rw interface-name?                    string
+     |     +--rw mcast-vlan-id?                     uint32
+     |     +--rw wlan-switching-policy
+     |     |  +--rw central-switching?        boolean
+     |     |  +--rw central-authentication?   boolean
+     |     |  +--rw central-dhcp?             boolean
+     |     |  +--rw override-nat-pat?         boolean
+     |     |  +--rw central-assoc-enable?     boolean
+     |     +--rw wlan-flex-policy
+     |     |  +--rw split-mac-acl?            string
+     |     |  +--rw vlan-central-switching?   boolean
+     |     +--rw static-ip-mobility
+     |     |  +--rw is-static-ip-mobility?   boolean
+     |     +--rw wlan-acl
+     |     |  +--rw ipv4-acl?                   string
+     |     |  +--rw ipv6-acl?                   string
+     |     |  +--rw layer2-acl?                 string
+     |     |  +--rw pre-auth-urlfilter-list?    string
+     |     |  +--rw post-auth-urlfilter-list?   string
+     |     +--rw wlan-timeout
+     |     |  +--rw session-timeout?   uint32
+     |     |  +--rw idle-timeout?      uint32
+     |     |  +--rw idle-threshold?    uint32
+     |     +--rw wlan-local-profiling
+     |     |  +--rw device-classification?    boolean
+     |     |  +--rw subscriber-policy-name?   string
+     |     |  +--rw radius-profiling?         boolean
+     |     |  +--rw http-tlv-caching?         boolean
+     |     |  +--rw dhcp-tlv-caching?         boolean
+     |     +--rw wlan-mobility
+     |     |  +--rw anchor?   boolean
+     |     +--rw nbar-protocol-discovery?           boolean
+     |     +--rw reanchor-classmap-name?            string
+     |     +--rw per-ssid-qos
+     |     |  +--rw ingress-service-name?   string
+     |     |  +--rw egress-service-name?    string
+     |     +--rw per-client-qos
+     |     |  +--rw ingress-service-name?   string
+     |     |  +--rw egress-service-name?    string
+     |     +--rw autoqos-mode
+     |     |  +--rw mode?   wireless-enum-types:autoqos-profile
+     |     +--rw dhcp-params
+     |     |  +--rw is-dhcp-enabled?       boolean
+     |     |  +--rw dhcp-server-address?   inet:ipv4-address
+     |     |  +--rw dhcp-opt82-enable?     boolean
+     |     |  +--rw dhcp-opt82-ascii?      boolean
+     |     |  +--rw dhcp-opt82-rid?        boolean
+     |     |  +--rw apmac?                 boolean
+     |     |  +--rw ssid?                  boolean
+     |     |  +--rw ap-ethmac?             boolean
+     |     |  +--rw apname?                boolean
+     |     |  +--rw policy-tag?            boolean
+     |     |  +--rw ap-location?           boolean
+     |     |  +--rw vlan-id?               boolean
+     |     |  +--rw dhcp-option-none?      boolean
+     |     +--rw mdns-service-policy
+     |     |  +--rw policy-name?   string
+     |     +--rw cts-policy
+     |     |  +--rw sgacl-enforcement?   boolean
+     |     +--rw inline-tagging?                    boolean
+     |     +--rw sgt?                               uint16
+     |     +--rw umbrella-params
+     |     |  +--rw param-map-name?   string
+     |     +--rw blacklist-params
+     |     |  +--rw is-blacklist-enabled?   boolean
+     |     |  +--rw blacklist-timeout?      uint32
+     |     +--rw aaa-policy-params
+     |     |  +--rw aaa-override?      boolean
+     |     |  +--rw nac?               boolean
+     |     |  +--rw aaa-policy-name?   string
+     |     |  +--rw nac-type?          wireless-enum-types:nac-type
+     |     +--rw et-analytics-params
+     |     |  +--rw is-tvi-enabled?   boolean
+     |     +--rw wgb-policy-params
+     |     |  +--rw broadcast-tagging?   boolean
+     |     |  +--rw wgb-vlan?            boolean
+     |     +--rw fabric-profile-name?               string
+     |     +--rw accounting-list?                   string
+     |     +--rw client-count?                      uint32
+     |     +--rw atf-policy-map-entries
+     |     |  +--rw atf-policy-map-entry* [band-id]
+     |     |     +--rw band-id            uint8
+     |     |     +--rw atf-policy-name?   string
+     |     +--rw guest-mm-db-export-entries
+     |     |  +--rw guest-mm-db-export-entry* [ip]
+     |     |     +--rw ip                 inet:ip-address
+     |     |     +--rw anchor-priority?   wireless-enum-types:enm-export-anchor-priority-type
+     |     +--rw call-snoop?                        boolean
+     |     +--rw sip-cac-send-dis-assoc?            boolean
+     |     +--rw sip-cac-send-486-busy?             boolean
+     |     +--rw tunnel-profile-name?               string
+     |     +--rw avc-ipv4-fm-ingress-entries
+     |     |  +--rw avc-ipv4-fm-ingress-entry* [name]
+     |     |     +--rw name    string
+     |     +--rw avc-ipv4-fm-egress-entries
+     |     |  +--rw avc-ipv4-fm-egress-entry* [name]
+     |     |     +--rw name    string
+     |     +--rw avc-ipv6-fm-ingress-entries
+     |     |  +--rw avc-ipv6-fm-ingress-entry* [name]
+     |     |     +--rw name    string
+     |     +--rw avc-ipv6-fm-egress-entries
+     |     |  +--rw avc-ipv6-fm-egress-entry* [name]
+     |     |     +--rw name    string
+     |     +--rw hotspot-anqp-server?               string
+     |     +--rw guest-lan
+     |     |  +--rw enable-session-timeout?   boolean
+     |     +--rw policy-profile-calendar-configs
+     |     |  +--rw policy-profile-calendar-config* [calendar-profile-name]
+     |     |     +--rw calendar-profile-name     string
+     |     |     +--rw wlan-enable?              wireless-enum-types:timer-profile-action
+     |     |     +--rw client-session-disable?   wireless-enum-types:timer-profile-action
+     |     +--rw upn
+     |     |  +--rw is-upn-restrict-enable?   boolean
+     |     |  +--rw upn-unicast-disable?      boolean
+     |     +--rw proxy
+     |     |  +--rw ipv6-proxy?   wireless-enum-types:ipv6-proxy
+     |     |  +--rw arp-proxy?    boolean
+     |     +--rw umbrella-flex-params
+     |     |  +--rw dhcp-dns-option-enable?   boolean
+     |     |  +--rw mode-force?               boolean
+     |     +--rw multicast-filter?                  boolean
+     |     +--rw qbss-load?                         boolean
+     +--rw policy-list-entries
+     |  +--rw policy-list-entry* [tag-name]
+     |     +--rw tag-name                         string
+     |     +--rw description?                     string
+     |     +--rw wlan-policies
+     |     |  +--rw wlan-policy* [wlan-profile-name]
+     |     |     +--rw wlan-profile-name      string
+     |     |     +--rw policy-profile-name    string
+     |     +--rw tag-child-rlan-policy-configs
+     |        +--rw tag-child-rlan-policy-config* [port-id]
+     |           +--rw port-id                     uint16
+     |           +--rw rlan-profile-name?          string
+     |           +--rw rlan-policy-profile-name?   string
+     +--rw wireless-aaa-policy-configs
+     |  +--rw wireless-aaa-policy-config* [policy-name]
+     |     +--rw policy-name    string
+     |     +--rw nas-id
+     |     |  +--rw option1?   wireless-types:enm-nas-id-options
+     |     |  +--rw option2?   wireless-types:enm-nas-id-options
+     |     |  +--rw option3?   wireless-types:enm-nas-id-options
+     |     +--rw aaa-realm?     boolean
+     +--rw guest-lan-configs
+     |  +--rw guest-lan-config* [profile-name]
+     |     +--rw guest-lan-id              uint32
+     |     +--rw profile-name              string
+     |     +--rw has-wired-vlan            wireless-enum-types:ewlc-guest-lan-has-wired-vlan
+     |     +--rw wired-vlan?               uint32
+     |     +--rw security-web-auth?        boolean
+     |     +--rw auth-list?                string
+     |     +--rw authz-list?               string
+     |     +--rw web-auth-parameter-map?   string
+     |     +--rw max-associated-clients?   uint32
+     |     +--rw status?                   boolean
+     |     +--rw mdns-sd-mode?             wireless-enum-types:enm-wlan-mdns-sd-cfg
+     +--rw guest-lan-maps
+        +--rw guest-lan-map* [map-name]
+           +--rw map-name                 string
+           +--rw guest-lan-policy-maps
+              +--rw guest-lan-policy-map* [guest-lan-profile-name]
+                 +--rw guest-lan-profile-name    string
+                 +--rw policy-profile-name       string
+Xpaths for model: Cisco-IOS-XE-wireless-wlan-cfg.yang
+/wireless-wlan-cfg:wlan-cfg-data,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:calendar-profile-configs,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:calendar-profile-configs/wireless-wlan-cfg:calendar-profile-config,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:calendar-profile-configs/wireless-wlan-cfg:calendar-profile-config/wireless-wlan-cfg:profile-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:calendar-profile-configs/wireless-wlan-cfg:calendar-profile-config/wireless-wlan-cfg:start-time,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:calendar-profile-configs/wireless-wlan-cfg:calendar-profile-config/wireless-wlan-cfg:end-time,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:calendar-profile-configs/wireless-wlan-cfg:calendar-profile-config/wireless-wlan-cfg:recurrence,leaf,wireless-enum-types:calendar-recurrence
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:calendar-profile-configs/wireless-wlan-cfg:calendar-profile-config/wireless-wlan-cfg:calendar-weekly-configs,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:calendar-profile-configs/wireless-wlan-cfg:calendar-profile-config/wireless-wlan-cfg:calendar-weekly-configs/wireless-wlan-cfg:calendar-weekly-config,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:calendar-profile-configs/wireless-wlan-cfg:calendar-profile-config/wireless-wlan-cfg:calendar-weekly-configs/wireless-wlan-cfg:calendar-weekly-config/wireless-wlan-cfg:day,leaf,wireless-enum-types:work-day
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:calendar-profile-configs/wireless-wlan-cfg:calendar-profile-config/wireless-wlan-cfg:calendar-monthly-configs,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:calendar-profile-configs/wireless-wlan-cfg:calendar-profile-config/wireless-wlan-cfg:calendar-monthly-configs/wireless-wlan-cfg:calendar-monthly-config,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:calendar-profile-configs/wireless-wlan-cfg:calendar-profile-config/wireless-wlan-cfg:calendar-monthly-configs/wireless-wlan-cfg:calendar-monthly-config/wireless-wlan-cfg:date,leaf,uint8
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wlan-id,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:profile-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:description,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:security-wpa,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wep-enabled,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:webauth-enabled,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:cond-web-redirect,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:splash-web-redirect,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:dot11-auth-type,leaf,wireless-enum-types:apf-vap-80211-authentication
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wep-key-index,leaf,uint8
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wep-key-size,leaf,wireless-enum-types:apf-vap-80211-encryption
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wep-key,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wep-key-type,leaf,wireless-enum-types:crypt-type
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wep-key-format,leaf,wireless-enum-types:apf-vap-key-type
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wpa1-enabled,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wpa1-tkip,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wpa1-aes,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:auth-key-mgmt-psk,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:psk-key-type,leaf,wireless-enum-types:apf-vap-key-type
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wpa2-enabled,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wpa2-aes,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:rsn-cipher-suite-gcmp128,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:rsn-cipher-suite-gcmp256,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:rsn-cipher-suite-ccmp256,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:auth-key-mgmt-dot1x,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:auth-key-mgmt-cckm,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:auth-key-mgmt-ft-dot1x,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:auth-key-mgmt-ft-psk,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:auth-key-mgmt-dot1x-sha256,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:auth-key-mgmt-psk-sha256,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:psk,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:psk-type,leaf,wireless-enum-types:crypt-type
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:mac-filtering-list,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:mac-override-authorization-list,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:webauth-ipv4-preauth-acl,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:webauth-ipv6-preauth-acl,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:radio-policy,leaf,wireless-enum-types:apf-vap-radio-policies
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:qos-wmm-status,leaf,wireless-enum-types:apf-vap-wme-policies
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:ft-over-ds,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:ft-reassoc-timeout,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:ft-mode,leaf,wireless-enum-types:ft-dot11r-mode
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:pmf-options,leaf,wireless-enum-types:apf-vap-pmf-policies
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:pmf-assoc-comeback-timeout,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:pmf-sa-query-retry-timeout,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:local-eap-profile-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:local-eap-enable,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:band-steering-allowed,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:load-balance,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:universal-ap-admin,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:mu-mimo,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:multicast-mc-direct,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:defer-time,leaf,uint16
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:defer-priority0,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:defer-priority1,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:defer-priority2,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:defer-priority3,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:defer-priority4,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:defer-priority5,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:defer-priority6,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:defer-priority7,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:authentication-list,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:authorization-list,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:max-clients-allowed,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:max-clients-per-ap-per-wlan,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:max-clients-per-radio-per-wlan,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:static-ip-tunneling,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:webauth-on-mac-auth-failure,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:web-authc-list,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:web-authz-list,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:web-auth-parameter-map,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:ip-source-guard-enabled,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:uapsd-compliant,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:re-anchor-roam-clients,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wlan-11k-assisted-roaming,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wlan-11k-dual-band-neigh-list,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wlan-11k-neigh-list,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:multicast-buffer-value,leaf,uint8
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:multicast-buffer-enable,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-id-data,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-id-data/wireless-wlan-cfg:broadcast-ssid,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-id-data/wireless-wlan-cfg:ccx-aironet-ie,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-id-data/wireless-wlan-cfg:p2p-block-action,leaf,wireless-enum-types:apf-vap-p2p-blocking-action
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-id-data/wireless-wlan-cfg:ssid,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-id-data/wireless-wlan-cfg:dot11a-dtim,leaf,uint8
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-id-data/wireless-wlan-cfg:dot11b-dtim,leaf,uint8
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-id-data/wireless-wlan-cfg:chd,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-id-data/wireless-wlan-cfg:wlan-status,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:cckm-tsf-tolerance,leaf,uint16
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-802-11v-data,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-802-11v-data/wireless-wlan-cfg:dot11v-dms,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-802-11v-data/wireless-wlan-cfg:dot11v-bss-max-idle,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-802-11v-data/wireless-wlan-cfg:dot11v-bss-max-idle-protected,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-802-11v-data/wireless-wlan-cfg:dot11v-tfs,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-802-11v-data/wireless-wlan-cfg:dot11v-bss-transition,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-802-11v-data/wireless-wlan-cfg:dot11v-wnm-sleep-mode,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-802-11v-data/wireless-wlan-cfg:dot11v-disassoc-imminent,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-802-11v-data/wireless-wlan-cfg:dot11v-disassoc-timer,leaf,uint16
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:apf-vap-802-11v-data/wireless-wlan-cfg:dot11v-disassoc-timer-opt-roam,leaf,uint16
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:vap-dot11ax-cfg,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:vap-dot11ax-cfg/wireless-wlan-cfg:he-ofdma-downlink,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:vap-dot11ax-cfg/wireless-wlan-cfg:he-ofdma-uplink,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:vap-dot11ax-cfg/wireless-wlan-cfg:he-mumimo-downlink,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:vap-dot11ax-cfg/wireless-wlan-cfg:he-mumimo-uplink,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:vap-dot11ax-cfg/wireless-wlan-cfg:he-bss-color-enable,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:vap-dot11ax-cfg/wireless-wlan-cfg:he-bss-partial-color-enable,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:vap-dot11ax-cfg/wireless-wlan-cfg:he-bss-color,leaf,uint8
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:vap-dot11ax-cfg/wireless-wlan-cfg:he-twt-enable,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:vap-dot11ax-cfg/wireless-wlan-cfg:he-twt-broadcast-support,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:mpsk-enable,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:mpsk-keys,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:mpsk-keys/wireless-wlan-cfg:mpsk-key,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:mpsk-keys/wireless-wlan-cfg:mpsk-key/wireless-wlan-cfg:priority,leaf,uint8
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:mpsk-keys/wireless-wlan-cfg:mpsk-key/wireless-wlan-cfg:mpsk-key,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:mpsk-keys/wireless-wlan-cfg:mpsk-key/wireless-wlan-cfg:mpsk-key-type,leaf,wireless-enum-types:crypt-type
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:mpsk-keys/wireless-wlan-cfg:mpsk-key/wireless-wlan-cfg:mpsk-key-format,leaf,wireless-enum-types:apf-vap-key-type
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:mdns-sd-mode,leaf,wireless-enum-types:enm-wlan-mdns-sd-cfg
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:mbo,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:gtk-randomize,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:osen,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:wpa3-enabled,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:auth-key-mgmt-sae,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:sae-anti-clog-threshold,leaf,uint16
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:sae-retx-timeout-msec,leaf,uint16
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:sae-max-retries,leaf,uint8
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:akm-owe,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:transition-mode-wlan-id,leaf,uint16
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:device-analytics,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:device-analytics/wireless-wlan-cfg:da-export,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:device-analytics/wireless-wlan-cfg:da-support,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-cfg-entries/wireless-wlan-cfg:wlan-cfg-entry/wireless-wlan-cfg:okc,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:policy-profile-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:description,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:status,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:passive-client,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:interface-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:mcast-vlan-id,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-switching-policy,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-switching-policy/wireless-wlan-cfg:central-switching,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-switching-policy/wireless-wlan-cfg:central-authentication,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-switching-policy/wireless-wlan-cfg:central-dhcp,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-switching-policy/wireless-wlan-cfg:override-nat-pat,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-switching-policy/wireless-wlan-cfg:central-assoc-enable,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-flex-policy,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-flex-policy/wireless-wlan-cfg:split-mac-acl,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-flex-policy/wireless-wlan-cfg:vlan-central-switching,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:static-ip-mobility,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:static-ip-mobility/wireless-wlan-cfg:is-static-ip-mobility,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-acl,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-acl/wireless-wlan-cfg:ipv4-acl,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-acl/wireless-wlan-cfg:ipv6-acl,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-acl/wireless-wlan-cfg:layer2-acl,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-acl/wireless-wlan-cfg:pre-auth-urlfilter-list,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-acl/wireless-wlan-cfg:post-auth-urlfilter-list,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-timeout,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-timeout/wireless-wlan-cfg:session-timeout,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-timeout/wireless-wlan-cfg:idle-timeout,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-timeout/wireless-wlan-cfg:idle-threshold,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-local-profiling,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-local-profiling/wireless-wlan-cfg:device-classification,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-local-profiling/wireless-wlan-cfg:subscriber-policy-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-local-profiling/wireless-wlan-cfg:radius-profiling,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-local-profiling/wireless-wlan-cfg:http-tlv-caching,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-local-profiling/wireless-wlan-cfg:dhcp-tlv-caching,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-mobility,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-mobility/wireless-wlan-cfg:anchor,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:nbar-protocol-discovery,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:reanchor-classmap-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:per-ssid-qos,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:per-ssid-qos/wireless-wlan-cfg:ingress-service-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:per-ssid-qos/wireless-wlan-cfg:egress-service-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:per-client-qos,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:per-client-qos/wireless-wlan-cfg:ingress-service-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:per-client-qos/wireless-wlan-cfg:egress-service-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:autoqos-mode,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:autoqos-mode/wireless-wlan-cfg:mode,leaf,wireless-enum-types:autoqos-profile
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:dhcp-params,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:dhcp-params/wireless-wlan-cfg:is-dhcp-enabled,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:dhcp-params/wireless-wlan-cfg:dhcp-server-address,leaf,inet:ipv4-address
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:dhcp-params/wireless-wlan-cfg:dhcp-opt82-enable,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:dhcp-params/wireless-wlan-cfg:dhcp-opt82-ascii,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:dhcp-params/wireless-wlan-cfg:dhcp-opt82-rid,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:dhcp-params/wireless-wlan-cfg:apmac,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:dhcp-params/wireless-wlan-cfg:ssid,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:dhcp-params/wireless-wlan-cfg:ap-ethmac,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:dhcp-params/wireless-wlan-cfg:apname,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:dhcp-params/wireless-wlan-cfg:policy-tag,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:dhcp-params/wireless-wlan-cfg:ap-location,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:dhcp-params/wireless-wlan-cfg:vlan-id,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:dhcp-params/wireless-wlan-cfg:dhcp-option-none,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:mdns-service-policy,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:mdns-service-policy/wireless-wlan-cfg:policy-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:cts-policy,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:cts-policy/wireless-wlan-cfg:sgacl-enforcement,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:inline-tagging,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:sgt,leaf,uint16
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:umbrella-params,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:umbrella-params/wireless-wlan-cfg:param-map-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:blacklist-params,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:blacklist-params/wireless-wlan-cfg:is-blacklist-enabled,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:blacklist-params/wireless-wlan-cfg:blacklist-timeout,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:aaa-policy-params,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:aaa-policy-params/wireless-wlan-cfg:aaa-override,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:aaa-policy-params/wireless-wlan-cfg:nac,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:aaa-policy-params/wireless-wlan-cfg:aaa-policy-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:aaa-policy-params/wireless-wlan-cfg:nac-type,leaf,wireless-enum-types:nac-type
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:et-analytics-params,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:et-analytics-params/wireless-wlan-cfg:is-tvi-enabled,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wgb-policy-params,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wgb-policy-params/wireless-wlan-cfg:broadcast-tagging,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wgb-policy-params/wireless-wlan-cfg:wgb-vlan,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:fabric-profile-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:accounting-list,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:client-count,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:atf-policy-map-entries,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:atf-policy-map-entries/wireless-wlan-cfg:atf-policy-map-entry,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:atf-policy-map-entries/wireless-wlan-cfg:atf-policy-map-entry/wireless-wlan-cfg:band-id,leaf,uint8
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:atf-policy-map-entries/wireless-wlan-cfg:atf-policy-map-entry/wireless-wlan-cfg:atf-policy-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:guest-mm-db-export-entries,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:guest-mm-db-export-entries/wireless-wlan-cfg:guest-mm-db-export-entry,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:guest-mm-db-export-entries/wireless-wlan-cfg:guest-mm-db-export-entry/wireless-wlan-cfg:ip,leaf,inet:ip-address
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:guest-mm-db-export-entries/wireless-wlan-cfg:guest-mm-db-export-entry/wireless-wlan-cfg:anchor-priority,leaf,wireless-enum-types:enm-export-anchor-priority-type
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:call-snoop,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:sip-cac-send-dis-assoc,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:sip-cac-send-486-busy,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:tunnel-profile-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:avc-ipv4-fm-ingress-entries,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:avc-ipv4-fm-ingress-entries/wireless-wlan-cfg:avc-ipv4-fm-ingress-entry,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:avc-ipv4-fm-ingress-entries/wireless-wlan-cfg:avc-ipv4-fm-ingress-entry/wireless-wlan-cfg:name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:avc-ipv4-fm-egress-entries,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:avc-ipv4-fm-egress-entries/wireless-wlan-cfg:avc-ipv4-fm-egress-entry,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:avc-ipv4-fm-egress-entries/wireless-wlan-cfg:avc-ipv4-fm-egress-entry/wireless-wlan-cfg:name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:avc-ipv6-fm-ingress-entries,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:avc-ipv6-fm-ingress-entries/wireless-wlan-cfg:avc-ipv6-fm-ingress-entry,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:avc-ipv6-fm-ingress-entries/wireless-wlan-cfg:avc-ipv6-fm-ingress-entry/wireless-wlan-cfg:name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:avc-ipv6-fm-egress-entries,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:avc-ipv6-fm-egress-entries/wireless-wlan-cfg:avc-ipv6-fm-egress-entry,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:avc-ipv6-fm-egress-entries/wireless-wlan-cfg:avc-ipv6-fm-egress-entry/wireless-wlan-cfg:name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:hotspot-anqp-server,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:guest-lan,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:guest-lan/wireless-wlan-cfg:enable-session-timeout,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:policy-profile-calendar-configs,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:policy-profile-calendar-configs/wireless-wlan-cfg:policy-profile-calendar-config,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:policy-profile-calendar-configs/wireless-wlan-cfg:policy-profile-calendar-config/wireless-wlan-cfg:calendar-profile-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:policy-profile-calendar-configs/wireless-wlan-cfg:policy-profile-calendar-config/wireless-wlan-cfg:wlan-enable,leaf,wireless-enum-types:timer-profile-action
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:policy-profile-calendar-configs/wireless-wlan-cfg:policy-profile-calendar-config/wireless-wlan-cfg:client-session-disable,leaf,wireless-enum-types:timer-profile-action
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:upn,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:upn/wireless-wlan-cfg:is-upn-restrict-enable,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:upn/wireless-wlan-cfg:upn-unicast-disable,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:proxy,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:proxy/wireless-wlan-cfg:ipv6-proxy,leaf,wireless-enum-types:ipv6-proxy
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:proxy/wireless-wlan-cfg:arp-proxy,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:umbrella-flex-params,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:umbrella-flex-params/wireless-wlan-cfg:dhcp-dns-option-enable,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:umbrella-flex-params/wireless-wlan-cfg:mode-force,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:multicast-filter,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:qbss-load,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:policy-list-entries,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:policy-list-entries/wireless-wlan-cfg:policy-list-entry,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:policy-list-entries/wireless-wlan-cfg:policy-list-entry/wireless-wlan-cfg:tag-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:policy-list-entries/wireless-wlan-cfg:policy-list-entry/wireless-wlan-cfg:description,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:policy-list-entries/wireless-wlan-cfg:policy-list-entry/wireless-wlan-cfg:wlan-policies,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:policy-list-entries/wireless-wlan-cfg:policy-list-entry/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:policy-list-entries/wireless-wlan-cfg:policy-list-entry/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:wlan-profile-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:policy-list-entries/wireless-wlan-cfg:policy-list-entry/wireless-wlan-cfg:wlan-policies/wireless-wlan-cfg:wlan-policy/wireless-wlan-cfg:policy-profile-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:policy-list-entries/wireless-wlan-cfg:policy-list-entry/wireless-wlan-cfg:tag-child-rlan-policy-configs,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:policy-list-entries/wireless-wlan-cfg:policy-list-entry/wireless-wlan-cfg:tag-child-rlan-policy-configs/wireless-wlan-cfg:tag-child-rlan-policy-config,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:policy-list-entries/wireless-wlan-cfg:policy-list-entry/wireless-wlan-cfg:tag-child-rlan-policy-configs/wireless-wlan-cfg:tag-child-rlan-policy-config/wireless-wlan-cfg:port-id,leaf,uint16
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:policy-list-entries/wireless-wlan-cfg:policy-list-entry/wireless-wlan-cfg:tag-child-rlan-policy-configs/wireless-wlan-cfg:tag-child-rlan-policy-config/wireless-wlan-cfg:rlan-profile-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:policy-list-entries/wireless-wlan-cfg:policy-list-entry/wireless-wlan-cfg:tag-child-rlan-policy-configs/wireless-wlan-cfg:tag-child-rlan-policy-config/wireless-wlan-cfg:rlan-policy-profile-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wireless-aaa-policy-configs,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wireless-aaa-policy-configs/wireless-wlan-cfg:wireless-aaa-policy-config,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wireless-aaa-policy-configs/wireless-wlan-cfg:wireless-aaa-policy-config/wireless-wlan-cfg:policy-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wireless-aaa-policy-configs/wireless-wlan-cfg:wireless-aaa-policy-config/wireless-wlan-cfg:nas-id,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wireless-aaa-policy-configs/wireless-wlan-cfg:wireless-aaa-policy-config/wireless-wlan-cfg:nas-id/wireless-wlan-cfg:option1,leaf,wireless-types:enm-nas-id-options
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wireless-aaa-policy-configs/wireless-wlan-cfg:wireless-aaa-policy-config/wireless-wlan-cfg:nas-id/wireless-wlan-cfg:option2,leaf,wireless-types:enm-nas-id-options
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wireless-aaa-policy-configs/wireless-wlan-cfg:wireless-aaa-policy-config/wireless-wlan-cfg:nas-id/wireless-wlan-cfg:option3,leaf,wireless-types:enm-nas-id-options
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:wireless-aaa-policy-configs/wireless-wlan-cfg:wireless-aaa-policy-config/wireless-wlan-cfg:aaa-realm,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-configs,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-configs/wireless-wlan-cfg:guest-lan-config,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-configs/wireless-wlan-cfg:guest-lan-config/wireless-wlan-cfg:guest-lan-id,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-configs/wireless-wlan-cfg:guest-lan-config/wireless-wlan-cfg:profile-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-configs/wireless-wlan-cfg:guest-lan-config/wireless-wlan-cfg:has-wired-vlan,leaf,wireless-enum-types:ewlc-guest-lan-has-wired-vlan
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-configs/wireless-wlan-cfg:guest-lan-config/wireless-wlan-cfg:wired-vlan,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-configs/wireless-wlan-cfg:guest-lan-config/wireless-wlan-cfg:security-web-auth,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-configs/wireless-wlan-cfg:guest-lan-config/wireless-wlan-cfg:auth-list,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-configs/wireless-wlan-cfg:guest-lan-config/wireless-wlan-cfg:authz-list,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-configs/wireless-wlan-cfg:guest-lan-config/wireless-wlan-cfg:web-auth-parameter-map,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-configs/wireless-wlan-cfg:guest-lan-config/wireless-wlan-cfg:max-associated-clients,leaf,uint32
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-configs/wireless-wlan-cfg:guest-lan-config/wireless-wlan-cfg:status,leaf,boolean
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-configs/wireless-wlan-cfg:guest-lan-config/wireless-wlan-cfg:mdns-sd-mode,leaf,wireless-enum-types:enm-wlan-mdns-sd-cfg
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-maps,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-maps/wireless-wlan-cfg:guest-lan-map,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-maps/wireless-wlan-cfg:guest-lan-map/wireless-wlan-cfg:map-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-maps/wireless-wlan-cfg:guest-lan-map/wireless-wlan-cfg:guest-lan-policy-maps,container,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-maps/wireless-wlan-cfg:guest-lan-map/wireless-wlan-cfg:guest-lan-policy-maps/wireless-wlan-cfg:guest-lan-policy-map,list,
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-maps/wireless-wlan-cfg:guest-lan-map/wireless-wlan-cfg:guest-lan-policy-maps/wireless-wlan-cfg:guest-lan-policy-map/wireless-wlan-cfg:guest-lan-profile-name,leaf,string
+/wireless-wlan-cfg:wlan-cfg-data/wireless-wlan-cfg:guest-lan-maps/wireless-wlan-cfg:guest-lan-map/wireless-wlan-cfg:guest-lan-policy-maps/wireless-wlan-cfg:guest-lan-policy-map/wireless-wlan-cfg:policy-profile-name,leaf,string

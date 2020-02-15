@@ -1,0 +1,75 @@
+ 
+KPI for model: openconfig-vlan.yang
+module: openconfig-vlan
+  +--rw vlans
+     +--rw vlan* [vlan-id]
+        +--rw vlan-id    -> ../config/vlan-id
+        +--rw config
+        |  +--rw vlan-id?   oc-vlan-types:vlan-id
+        |  +--rw name?      string
+        |  +--rw status?    enumeration
+        +--ro state
+        |  +--ro vlan-id?   oc-vlan-types:vlan-id
+        |  +--ro name?      string
+        |  +--ro status?    enumeration
+        +--rw members
+           +--ro member* []
+              +--ro state
+                 +--ro interface?   base-interface-ref
+
+  augment /oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface:
+    +--rw vlan
+       +--rw config
+       |  +--rw vlan-id?   union
+       +--ro state
+          +--ro vlan-id?   union
+  augment /oc-if:interfaces/oc-if:interface/oc-if:config:
+    +--rw tpid?   identityref
+  augment /oc-if:interfaces/oc-if:interface/oc-if:state:
+    +--ro tpid?   identityref
+  augment /oc-if:interfaces/oc-if:interface/oc-eth:ethernet:
+    +--rw switched-vlan
+       +--rw config
+       |  +--rw interface-mode?   oc-vlan-types:vlan-mode-type
+       |  +--rw native-vlan?      oc-vlan-types:vlan-id
+       |  +--rw access-vlan?      oc-vlan-types:vlan-id
+       |  +--rw trunk-vlans*      union
+       +--ro state
+          +--ro interface-mode?   oc-vlan-types:vlan-mode-type
+          +--ro native-vlan?      oc-vlan-types:vlan-id
+          +--ro access-vlan?      oc-vlan-types:vlan-id
+          +--ro trunk-vlans*      union
+  augment /oc-if:interfaces/oc-if:interface/oc-lag:aggregation:
+    +--rw switched-vlan
+       +--rw config
+       |  +--rw interface-mode?   oc-vlan-types:vlan-mode-type
+       |  +--rw native-vlan?      oc-vlan-types:vlan-id
+       |  +--rw access-vlan?      oc-vlan-types:vlan-id
+       |  +--rw trunk-vlans*      union
+       +--ro state
+          +--ro interface-mode?   oc-vlan-types:vlan-mode-type
+          +--ro native-vlan?      oc-vlan-types:vlan-id
+          +--ro access-vlan?      oc-vlan-types:vlan-id
+          +--ro trunk-vlans*      union
+  augment /oc-if:interfaces/oc-if:interface:
+    +--rw routed-vlan
+       +--rw config
+       |  +--rw vlan?   union
+       +--ro state
+          +--ro vlan?   union
+Xpaths for model: openconfig-vlan.yang
+/oc-vlan:vlans,container,
+/oc-vlan:vlans/oc-vlan:vlan,list,
+/oc-vlan:vlans/oc-vlan:vlan/oc-vlan:vlan-id,leaf,leafref
+/oc-vlan:vlans/oc-vlan:vlan/oc-vlan:config,container,
+/oc-vlan:vlans/oc-vlan:vlan/oc-vlan:config/oc-vlan:vlan-id,leaf,oc-vlan-types:vlan-id
+/oc-vlan:vlans/oc-vlan:vlan/oc-vlan:config/oc-vlan:name,leaf,string
+/oc-vlan:vlans/oc-vlan:vlan/oc-vlan:config/oc-vlan:status,leaf,enumeration
+/oc-vlan:vlans/oc-vlan:vlan/oc-vlan:state,container,
+/oc-vlan:vlans/oc-vlan:vlan/oc-vlan:state/oc-vlan:vlan-id,leaf,oc-vlan-types:vlan-id
+/oc-vlan:vlans/oc-vlan:vlan/oc-vlan:state/oc-vlan:name,leaf,string
+/oc-vlan:vlans/oc-vlan:vlan/oc-vlan:state/oc-vlan:status,leaf,enumeration
+/oc-vlan:vlans/oc-vlan:vlan/oc-vlan:members,container,
+/oc-vlan:vlans/oc-vlan:vlan/oc-vlan:members/oc-vlan:member,list,
+/oc-vlan:vlans/oc-vlan:vlan/oc-vlan:members/oc-vlan:member/oc-vlan:state,container,
+/oc-vlan:vlans/oc-vlan:vlan/oc-vlan:members/oc-vlan:member/oc-vlan:state/oc-vlan:interface,leaf,base-interface-ref

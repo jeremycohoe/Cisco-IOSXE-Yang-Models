@@ -1,0 +1,110 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-flex-cfg.yang
+module: Cisco-IOS-XE-wireless-flex-cfg
+  +--rw flex-cfg-data
+     +--rw flex-policy-entries
+        +--rw flex-policy-entry* [policy-name]
+           +--rw policy-name                      string
+           +--rw description?                     string
+           +--rw eap-fast-profile-name?           string
+           +--rw radius-server-group-name?        string
+           +--rw fallback-radio-shut?             boolean
+           +--rw arp-caching?                     boolean
+           +--rw cts-inline-tagging?              boolean
+           +--rw cts-rolebased-enforce?           boolean
+           +--rw cts-profile-name?                string
+           +--rw join-min-latency?                boolean
+           +--rw radius-enable?                   boolean
+           +--rw vlan-enable?                     boolean
+           +--rw is-home-ap-enable?               boolean
+           +--rw is-radio-backhaul?               boolean
+           +--rw is-resilient-mode?               boolean
+           +--rw efficient-ap-upgrade-enable?     boolean
+           +--rw http-proxy-ip?                   inet:ip-address
+           +--rw security
+           |  +--rw is-peap?   empty
+           |  +--rw is-leap?   empty
+           |  +--rw is-eap?    empty
+           |  +--rw is-tls?    empty
+           +--rw native-vlan-id?                  uint32
+           +--rw slave-max-retry-count?           uint32
+           +--rw http-proxy-port?                 uint16
+           o--rw vlan-acls
+           |  +--rw vlan-acl* [vlan-id]
+           |     +--rw vlan-id             uint32
+           |     +--rw ingress-acl-name?   string
+           |     +--rw egress-acl-name?    string
+           +--rw policy-acls
+           |  +--rw policy-acl* [acl-name]
+           |     +--rw acl-name              string
+           |     +--rw is-cwa?               boolean
+           |     +--rw urlfilterlist-name?   string
+           +--rw local-auth-users
+           |  +--rw local-auth-user* [user-name]
+           |     +--rw user-name        string
+           |     +--rw password?        string
+           |     +--rw password-type?   wireless-enum-types:crypt-type
+           +--rw if-name-vlan-ids
+           |  +--rw if-name-vlan-id* [interface-name]
+           |     +--rw interface-name    string
+           |     +--rw vlan-id?          uint32
+           |     +--rw acl-name?         string
+           +--rw acct-radius-server-group-name?   string
+           +--rw is-local-roaming-enable?         boolean
+           +--rw umbrella-profiles
+              +--rw umbrella-profile* [umbrella-name]
+                 +--rw umbrella-name    string
+Xpaths for model: Cisco-IOS-XE-wireless-flex-cfg.yang
+/wireless-flex-cfg:flex-cfg-data,container,
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries,container,
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry,list,
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:policy-name,leaf,string
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:description,leaf,string
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:eap-fast-profile-name,leaf,string
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:radius-server-group-name,leaf,string
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:fallback-radio-shut,leaf,boolean
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:arp-caching,leaf,boolean
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:cts-inline-tagging,leaf,boolean
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:cts-rolebased-enforce,leaf,boolean
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:cts-profile-name,leaf,string
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:join-min-latency,leaf,boolean
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:radius-enable,leaf,boolean
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:vlan-enable,leaf,boolean
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:is-home-ap-enable,leaf,boolean
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:is-radio-backhaul,leaf,boolean
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:is-resilient-mode,leaf,boolean
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:efficient-ap-upgrade-enable,leaf,boolean
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:http-proxy-ip,leaf,inet:ip-address
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:security,container,
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:security/wireless-flex-cfg:is-peap,leaf,empty
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:security/wireless-flex-cfg:is-leap,leaf,empty
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:security/wireless-flex-cfg:is-eap,leaf,empty
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:security/wireless-flex-cfg:is-tls,leaf,empty
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:native-vlan-id,leaf,uint32
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:slave-max-retry-count,leaf,uint32
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:http-proxy-port,leaf,uint16
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:vlan-acls,container,
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:vlan-acls/wireless-flex-cfg:vlan-acl,list,
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:vlan-acls/wireless-flex-cfg:vlan-acl/wireless-flex-cfg:vlan-id,leaf,uint32
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:vlan-acls/wireless-flex-cfg:vlan-acl/wireless-flex-cfg:ingress-acl-name,leaf,string
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:vlan-acls/wireless-flex-cfg:vlan-acl/wireless-flex-cfg:egress-acl-name,leaf,string
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:policy-acls,container,
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:policy-acls/wireless-flex-cfg:policy-acl,list,
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:policy-acls/wireless-flex-cfg:policy-acl/wireless-flex-cfg:acl-name,leaf,string
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:policy-acls/wireless-flex-cfg:policy-acl/wireless-flex-cfg:is-cwa,leaf,boolean
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:policy-acls/wireless-flex-cfg:policy-acl/wireless-flex-cfg:urlfilterlist-name,leaf,string
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:local-auth-users,container,
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:local-auth-users/wireless-flex-cfg:local-auth-user,list,
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:local-auth-users/wireless-flex-cfg:local-auth-user/wireless-flex-cfg:user-name,leaf,string
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:local-auth-users/wireless-flex-cfg:local-auth-user/wireless-flex-cfg:password,leaf,string
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:local-auth-users/wireless-flex-cfg:local-auth-user/wireless-flex-cfg:password-type,leaf,wireless-enum-types:crypt-type
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:if-name-vlan-ids,container,
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:if-name-vlan-ids/wireless-flex-cfg:if-name-vlan-id,list,
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:if-name-vlan-ids/wireless-flex-cfg:if-name-vlan-id/wireless-flex-cfg:interface-name,leaf,string
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:if-name-vlan-ids/wireless-flex-cfg:if-name-vlan-id/wireless-flex-cfg:vlan-id,leaf,uint32
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:if-name-vlan-ids/wireless-flex-cfg:if-name-vlan-id/wireless-flex-cfg:acl-name,leaf,string
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:acct-radius-server-group-name,leaf,string
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:is-local-roaming-enable,leaf,boolean
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:umbrella-profiles,container,
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:umbrella-profiles/wireless-flex-cfg:umbrella-profile,list,
+/wireless-flex-cfg:flex-cfg-data/wireless-flex-cfg:flex-policy-entries/wireless-flex-cfg:flex-policy-entry/wireless-flex-cfg:umbrella-profiles/wireless-flex-cfg:umbrella-profile/wireless-flex-cfg:umbrella-name,leaf,string

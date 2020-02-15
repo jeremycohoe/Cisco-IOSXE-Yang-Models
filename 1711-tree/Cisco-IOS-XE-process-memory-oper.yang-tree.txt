@@ -1,0 +1,24 @@
+ 
+KPI for model: Cisco-IOS-XE-process-memory-oper.yang
+module: Cisco-IOS-XE-process-memory-oper
+  +--ro memory-usage-processes
+     +--ro memory-usage-process* [pid name]
+        +--ro pid                 uint32
+        +--ro name                string
+        +--ro tty?                uint16
+        +--ro allocated-memory?   uint64
+        +--ro freed-memory?       uint64
+        +--ro holding-memory?     uint64
+        +--ro get-buffers?        uint32
+        +--ro ret-buffers?        uint32
+Xpaths for model: Cisco-IOS-XE-process-memory-oper.yang
+/process-memory-ios-xe-oper:memory-usage-processes,container,
+/process-memory-ios-xe-oper:memory-usage-processes/process-memory-ios-xe-oper:memory-usage-process,list,
+/process-memory-ios-xe-oper:memory-usage-processes/process-memory-ios-xe-oper:memory-usage-process/process-memory-ios-xe-oper:pid,leaf,uint32
+/process-memory-ios-xe-oper:memory-usage-processes/process-memory-ios-xe-oper:memory-usage-process/process-memory-ios-xe-oper:name,leaf,string
+/process-memory-ios-xe-oper:memory-usage-processes/process-memory-ios-xe-oper:memory-usage-process/process-memory-ios-xe-oper:tty,leaf,uint16
+/process-memory-ios-xe-oper:memory-usage-processes/process-memory-ios-xe-oper:memory-usage-process/process-memory-ios-xe-oper:allocated-memory,leaf,uint64
+/process-memory-ios-xe-oper:memory-usage-processes/process-memory-ios-xe-oper:memory-usage-process/process-memory-ios-xe-oper:freed-memory,leaf,uint64
+/process-memory-ios-xe-oper:memory-usage-processes/process-memory-ios-xe-oper:memory-usage-process/process-memory-ios-xe-oper:holding-memory,leaf,uint64
+/process-memory-ios-xe-oper:memory-usage-processes/process-memory-ios-xe-oper:memory-usage-process/process-memory-ios-xe-oper:get-buffers,leaf,uint32
+/process-memory-ios-xe-oper:memory-usage-processes/process-memory-ios-xe-oper:memory-usage-process/process-memory-ios-xe-oper:ret-buffers,leaf,uint32

@@ -1,0 +1,118 @@
+ 
+KPI for model: Cisco-IOS-XE-scada-gw-oper.yang
+module: Cisco-IOS-XE-scada-gw-oper
+  +--ro scada-gw-oper-data
+     +--ro scada-gw-stats!
+     |  +--ro t104-stats* [channel-name]
+     |  |  +--ro channel-name         string
+     |  |  +--ro messages-sent?       uint32
+     |  |  +--ro messages-received?   uint32
+     |  |  +--ro timeouts?            uint32
+     |  |  +--ro aborts?              uint32
+     |  |  +--ro rejections?          uint32
+     |  |  +--ro protocol-errors?     uint32
+     |  |  +--ro link-errors?         uint32
+     |  |  +--ro addr-errors?         uint32
+     |  +--ro t101-stats* [channel-name]
+     |  |  +--ro channel-name         string
+     |  |  +--ro messages-sent?       uint32
+     |  |  +--ro messages-received?   uint32
+     |  |  +--ro timeouts?            uint32
+     |  |  +--ro aborts?              uint32
+     |  |  +--ro rejections?          uint32
+     |  |  +--ro protocol-errors?     uint32
+     |  |  +--ro link-errors?         uint32
+     |  |  +--ro addr-errors?         uint32
+     |  +--ro dnp3n-stats* [channel-name]
+     |  |  +--ro channel-name         string
+     |  |  +--ro messages-sent?       uint32
+     |  |  +--ro messages-received?   uint32
+     |  |  +--ro timeouts?            uint32
+     |  |  +--ro aborts?              uint32
+     |  |  +--ro rejections?          uint32
+     |  |  +--ro protocol-errors?     uint32
+     |  |  +--ro link-errors?         uint32
+     |  |  +--ro addr-errors?         uint32
+     |  +--ro dnp3s-stats* [channel-name]
+     |     +--ro channel-name         string
+     |     +--ro messages-sent?       uint32
+     |     +--ro messages-received?   uint32
+     |     +--ro timeouts?            uint32
+     |     +--ro aborts?              uint32
+     |     +--ro rejections?          uint32
+     |     +--ro protocol-errors?     uint32
+     |     +--ro link-errors?         uint32
+     |     +--ro addr-errors?         uint32
+     +--ro scada-gw-conns!
+        +--ro t104-tcp-conns* [channel-name]
+        |  +--ro channel-name    string
+        |  +--ro conn* []
+        |     +--ro local-ip?      inet:ip-address
+        |     +--ro local-port?    uint16
+        |     +--ro remote-ip?     inet:ip-address
+        |     +--ro data-socket?   uint32
+        +--ro dnp3n-tcp-conns* [channel-name]
+           +--ro channel-name    string
+           +--ro conn* []
+              +--ro local-ip?      inet:ip-address
+              +--ro local-port?    uint16
+              +--ro remote-ip?     inet:ip-address
+              +--ro data-socket?   uint32
+Xpaths for model: Cisco-IOS-XE-scada-gw-oper.yang
+/scada-gw-ios-xe-oper:scada-gw-oper-data,container,
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats,container,
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t104-stats,list,
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t104-stats/scada-gw-ios-xe-oper:channel-name,leaf,string
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t104-stats/scada-gw-ios-xe-oper:messages-sent,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t104-stats/scada-gw-ios-xe-oper:messages-received,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t104-stats/scada-gw-ios-xe-oper:timeouts,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t104-stats/scada-gw-ios-xe-oper:aborts,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t104-stats/scada-gw-ios-xe-oper:rejections,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t104-stats/scada-gw-ios-xe-oper:protocol-errors,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t104-stats/scada-gw-ios-xe-oper:link-errors,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t104-stats/scada-gw-ios-xe-oper:addr-errors,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t101-stats,list,
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t101-stats/scada-gw-ios-xe-oper:channel-name,leaf,string
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t101-stats/scada-gw-ios-xe-oper:messages-sent,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t101-stats/scada-gw-ios-xe-oper:messages-received,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t101-stats/scada-gw-ios-xe-oper:timeouts,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t101-stats/scada-gw-ios-xe-oper:aborts,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t101-stats/scada-gw-ios-xe-oper:rejections,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t101-stats/scada-gw-ios-xe-oper:protocol-errors,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t101-stats/scada-gw-ios-xe-oper:link-errors,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:t101-stats/scada-gw-ios-xe-oper:addr-errors,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3n-stats,list,
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3n-stats/scada-gw-ios-xe-oper:channel-name,leaf,string
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3n-stats/scada-gw-ios-xe-oper:messages-sent,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3n-stats/scada-gw-ios-xe-oper:messages-received,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3n-stats/scada-gw-ios-xe-oper:timeouts,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3n-stats/scada-gw-ios-xe-oper:aborts,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3n-stats/scada-gw-ios-xe-oper:rejections,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3n-stats/scada-gw-ios-xe-oper:protocol-errors,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3n-stats/scada-gw-ios-xe-oper:link-errors,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3n-stats/scada-gw-ios-xe-oper:addr-errors,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3s-stats,list,
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3s-stats/scada-gw-ios-xe-oper:channel-name,leaf,string
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3s-stats/scada-gw-ios-xe-oper:messages-sent,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3s-stats/scada-gw-ios-xe-oper:messages-received,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3s-stats/scada-gw-ios-xe-oper:timeouts,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3s-stats/scada-gw-ios-xe-oper:aborts,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3s-stats/scada-gw-ios-xe-oper:rejections,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3s-stats/scada-gw-ios-xe-oper:protocol-errors,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3s-stats/scada-gw-ios-xe-oper:link-errors,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-stats/scada-gw-ios-xe-oper:dnp3s-stats/scada-gw-ios-xe-oper:addr-errors,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-conns,container,
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-conns/scada-gw-ios-xe-oper:t104-tcp-conns,list,
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-conns/scada-gw-ios-xe-oper:t104-tcp-conns/scada-gw-ios-xe-oper:channel-name,leaf,string
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-conns/scada-gw-ios-xe-oper:t104-tcp-conns/scada-gw-ios-xe-oper:conn,list,
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-conns/scada-gw-ios-xe-oper:t104-tcp-conns/scada-gw-ios-xe-oper:conn/scada-gw-ios-xe-oper:local-ip,leaf,inet:ip-address
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-conns/scada-gw-ios-xe-oper:t104-tcp-conns/scada-gw-ios-xe-oper:conn/scada-gw-ios-xe-oper:local-port,leaf,uint16
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-conns/scada-gw-ios-xe-oper:t104-tcp-conns/scada-gw-ios-xe-oper:conn/scada-gw-ios-xe-oper:remote-ip,leaf,inet:ip-address
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-conns/scada-gw-ios-xe-oper:t104-tcp-conns/scada-gw-ios-xe-oper:conn/scada-gw-ios-xe-oper:data-socket,leaf,uint32
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-conns/scada-gw-ios-xe-oper:dnp3n-tcp-conns,list,
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-conns/scada-gw-ios-xe-oper:dnp3n-tcp-conns/scada-gw-ios-xe-oper:channel-name,leaf,string
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-conns/scada-gw-ios-xe-oper:dnp3n-tcp-conns/scada-gw-ios-xe-oper:conn,list,
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-conns/scada-gw-ios-xe-oper:dnp3n-tcp-conns/scada-gw-ios-xe-oper:conn/scada-gw-ios-xe-oper:local-ip,leaf,inet:ip-address
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-conns/scada-gw-ios-xe-oper:dnp3n-tcp-conns/scada-gw-ios-xe-oper:conn/scada-gw-ios-xe-oper:local-port,leaf,uint16
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-conns/scada-gw-ios-xe-oper:dnp3n-tcp-conns/scada-gw-ios-xe-oper:conn/scada-gw-ios-xe-oper:remote-ip,leaf,inet:ip-address
+/scada-gw-ios-xe-oper:scada-gw-oper-data/scada-gw-ios-xe-oper:scada-gw-conns/scada-gw-ios-xe-oper:dnp3n-tcp-conns/scada-gw-ios-xe-oper:conn/scada-gw-ios-xe-oper:data-socket,leaf,uint32

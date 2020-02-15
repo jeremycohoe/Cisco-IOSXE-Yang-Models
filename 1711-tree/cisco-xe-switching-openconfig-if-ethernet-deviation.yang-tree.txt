@@ -1,0 +1,3 @@
+ 
+KPI for model: cisco-xe-switching-openconfig-if-ethernet-deviation.yang
+Xpaths for model: cisco-xe-switching-openconfig-if-ethernet-deviation.yang

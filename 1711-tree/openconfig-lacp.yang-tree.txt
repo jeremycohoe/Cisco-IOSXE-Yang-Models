@@ -1,0 +1,88 @@
+ 
+KPI for model: openconfig-lacp.yang
+module: openconfig-lacp
+  +--rw lacp
+     +--rw config
+     |  +--rw system-priority?   uint16
+     +--ro state
+     |  +--ro system-priority?   uint16
+     +--rw interfaces
+        +--rw interface* [name]
+           +--rw name       -> ../config/name
+           +--rw config
+           |  +--rw name?              oc-if:base-interface-ref
+           |  +--rw interval?          lacp-period-type
+           |  +--rw lacp-mode?         lacp-activity-type
+           |  +--rw system-id-mac?     yang:mac-address
+           |  +--rw system-priority?   uint16
+           +--ro state
+           |  +--ro name?              oc-if:base-interface-ref
+           |  +--ro interval?          lacp-period-type
+           |  +--ro lacp-mode?         lacp-activity-type
+           |  +--ro system-id-mac?     yang:mac-address
+           |  +--ro system-priority?   uint16
+           +--ro members
+              +--ro member* [interface]
+                 +--ro interface    -> ../state/interface
+                 +--ro state
+                    +--ro interface?         oc-if:base-interface-ref
+                    +--ro activity?          lacp-activity-type
+                    +--ro timeout?           lacp-timeout-type
+                    +--ro synchronization?   lacp-synchronization-type
+                    +--ro aggregatable?      boolean
+                    +--ro collecting?        boolean
+                    +--ro distributing?      boolean
+                    +--ro system-id?         yang:mac-address
+                    +--ro oper-key?          uint16
+                    +--ro partner-id?        yang:mac-address
+                    +--ro partner-key?       uint16
+                    +--ro counters
+                       +--ro lacp-in-pkts?          yang:counter64
+                       +--ro lacp-out-pkts?         yang:counter64
+                       +--ro lacp-rx-errors?        yang:counter64
+                       +--ro lacp-tx-errors?        yang:counter64
+                       +--ro lacp-unknown-errors?   yang:counter64
+                       +--ro lacp-errors?           yang:counter64
+Xpaths for model: openconfig-lacp.yang
+/oc-lacp:lacp,container,
+/oc-lacp:lacp/oc-lacp:config,container,
+/oc-lacp:lacp/oc-lacp:config/oc-lacp:system-priority,leaf,uint16
+/oc-lacp:lacp/oc-lacp:state,container,
+/oc-lacp:lacp/oc-lacp:state/oc-lacp:system-priority,leaf,uint16
+/oc-lacp:lacp/oc-lacp:interfaces,container,
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface,list,
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:name,leaf,leafref
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:config,container,
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:config/oc-lacp:name,leaf,oc-if:base-interface-ref
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:config/oc-lacp:interval,leaf,lacp-period-type
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:config/oc-lacp:lacp-mode,leaf,lacp-activity-type
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:config/oc-lacp:system-id-mac,leaf,yang:mac-address
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:config/oc-lacp:system-priority,leaf,uint16
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:state,container,
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:state/oc-lacp:name,leaf,oc-if:base-interface-ref
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:state/oc-lacp:interval,leaf,lacp-period-type
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:state/oc-lacp:lacp-mode,leaf,lacp-activity-type
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:state/oc-lacp:system-id-mac,leaf,yang:mac-address
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:state/oc-lacp:system-priority,leaf,uint16
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members,container,
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member,list,
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:interface,leaf,leafref
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state,container,
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:interface,leaf,oc-if:base-interface-ref
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:activity,leaf,lacp-activity-type
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:timeout,leaf,lacp-timeout-type
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:synchronization,leaf,lacp-synchronization-type
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:aggregatable,leaf,boolean
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:collecting,leaf,boolean
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:distributing,leaf,boolean
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:system-id,leaf,yang:mac-address
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:oper-key,leaf,uint16
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:partner-id,leaf,yang:mac-address
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:partner-key,leaf,uint16
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:counters,container,
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:counters/oc-lacp:lacp-in-pkts,leaf,yang:counter64
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:counters/oc-lacp:lacp-out-pkts,leaf,yang:counter64
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:counters/oc-lacp:lacp-rx-errors,leaf,yang:counter64
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:counters/oc-lacp:lacp-tx-errors,leaf,yang:counter64
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:counters/oc-lacp:lacp-unknown-errors,leaf,yang:counter64
+/oc-lacp:lacp/oc-lacp:interfaces/oc-lacp:interface/oc-lacp:members/oc-lacp:member/oc-lacp:state/oc-lacp:counters/oc-lacp:lacp-errors,leaf,yang:counter64

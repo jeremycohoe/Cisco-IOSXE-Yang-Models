@@ -1,0 +1,48 @@
+ 
+KPI for model: Cisco-IOS-XE-stack-oper.yang
+module: Cisco-IOS-XE-stack-oper
+  +--ro stack-oper-data
+     +--ro stack-node* [chassis-number]
+        +--ro chassis-number        uint8
+        +--ro priority?             uint8
+        +--ro serial-number?        string
+        +--ro latency?              uint32
+        +--ro keepalive-counters
+        |  +--ro sent?                 uint64
+        |  +--ro received?             uint64
+        |  +--ro sent-failure?         uint64
+        |  +--ro receive-failure?      uint64
+        |  +--ro consecutive-losses?   uint64
+        +--ro interface-mtu?        uint32
+        +--ro role?                 stack-ios-xe-oper:stack-node-role-id
+        +--ro node-state?           stack-ios-xe-oper:stack-node-state
+        +--ro stack-mode?           stack-ios-xe-oper:stacking-mode
+        +--ro sso-ready-flag?       boolean
+        +--ro mac-address?          yang:mac-address
+        +--ro stack-ports* []
+           +--ro port-num?          uint8
+           +--ro port-state?        stack-ios-xe-oper:stacking-port-state
+           +--ro switch-nbr-port?   uint8
+Xpaths for model: Cisco-IOS-XE-stack-oper.yang
+/stack-ios-xe-oper:stack-oper-data,container,
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node,list,
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:chassis-number,leaf,uint8
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:priority,leaf,uint8
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:serial-number,leaf,string
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:latency,leaf,uint32
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:keepalive-counters,container,
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:keepalive-counters/stack-ios-xe-oper:sent,leaf,uint64
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:keepalive-counters/stack-ios-xe-oper:received,leaf,uint64
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:keepalive-counters/stack-ios-xe-oper:sent-failure,leaf,uint64
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:keepalive-counters/stack-ios-xe-oper:receive-failure,leaf,uint64
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:keepalive-counters/stack-ios-xe-oper:consecutive-losses,leaf,uint64
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:interface-mtu,leaf,uint32
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:role,leaf,stack-ios-xe-oper:stack-node-role-id
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:node-state,leaf,stack-ios-xe-oper:stack-node-state
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:stack-mode,leaf,stack-ios-xe-oper:stacking-mode
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:sso-ready-flag,leaf,boolean
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:mac-address,leaf,yang:mac-address
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:stack-ports,list,
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:stack-ports/stack-ios-xe-oper:port-num,leaf,uint8
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:stack-ports/stack-ios-xe-oper:port-state,leaf,stack-ios-xe-oper:stacking-port-state
+/stack-ios-xe-oper:stack-oper-data/stack-ios-xe-oper:stack-node/stack-ios-xe-oper:stack-ports/stack-ios-xe-oper:switch-nbr-port,leaf,uint8

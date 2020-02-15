@@ -1,0 +1,3 @@
+ 
+KPI for model: openconfig-bgp-common-multiprotocol.yang
+Xpaths for model: openconfig-bgp-common-multiprotocol.yang

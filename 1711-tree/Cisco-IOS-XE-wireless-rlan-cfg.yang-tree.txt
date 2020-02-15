@@ -1,0 +1,136 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-rlan-cfg.yang
+module: Cisco-IOS-XE-wireless-rlan-cfg
+  +--rw rlan-cfg-data
+     +--rw rlan-configs
+     |  +--rw rlan-config* [rlan-id]
+     |     +--rw rlan-id                        uint32
+     |     +--rw profile-name                   string
+     |     +--rw mac-filtering?                 string
+     |     +--rw auth-list?                     string
+     |     +--rw security-8021x-dot1x?          boolean
+     |     +--rw auth-list-dot1x?               string
+     |     +--rw security-web-auth?             boolean
+     |     +--rw local-auth-eap-profile-name?   string
+     |     +--rw local-eap-auth-enabled?        boolean
+     |     +--rw web-auth-parameter-map?        string
+     |     +--rw max-associated-clients?        uint32
+     |     +--rw status?                        boolean
+     |     +--rw web-pre-auth-acl
+     |     |  +--rw ipv4-acl?   string
+     |     |  +--rw ipv6-acl?   string
+     |     +--rw mdns-sd-mode?                  wireless-enum-types:enm-wlan-mdns-sd-cfg
+     +--rw rlan-policy-profile-configs
+        +--rw rlan-policy-profile-config* [profile-name]
+           +--rw profile-name          string
+           +--rw status?               boolean
+           +--rw description?          string
+           +--rw ipv4-acl?             string
+           +--rw ipv6-acl?             string
+           +--rw aaa-override?         boolean
+           +--rw aaa-policy-name?      string
+           +--rw central-switching?    boolean
+           +--rw central-dhcp?         boolean
+           +--rw interface-name?       string
+           +--rw poe?                  boolean
+           +--rw host-mode?            wireless-types:enm-host-mode
+           +--rw host-mode-vlans
+           |  +--rw voice-vlan-id?   uint16
+           |  +--rw data-vlan-id?    uint16
+           +--rw violation-mode?       wireless-types:enm-violation-mode
+           +--rw blacklist
+           |  +--rw is-blacklist-enabled?   boolean
+           |  +--rw blacklist-timeout?      uint32
+           +--rw pre-auth?             boolean
+           +--rw session-timeout?      uint32
+           +--rw flow-monitor-ipv4
+           |  +--rw flow-monitor-ingress-name?   string
+           |  +--rw flow-monitor-egress-name?    string
+           |  +--rw ingress-enable?              boolean
+           |  +--rw egress-enable?               boolean
+           +--rw flow-monitor-ipv6
+           |  +--rw flow-monitor-ingress-name?   string
+           |  +--rw flow-monitor-egress-name?    string
+           |  +--rw ingress-enable?              boolean
+           |  +--rw egress-enable?               boolean
+           +--rw split-tunnel-param
+           |  +--rw split-tunnel-enabled?    boolean
+           |  +--rw acl-name?                string
+           |  +--rw split-tunnel-override?   boolean
+           |  +--rw split-tunnel-gateway?    inet:ip-address
+           |  +--rw split-tunnel-netmask?    inet:ip-address
+           +--rw dhcp-server?          inet:ipv4-address
+           +--rw is-dhcp-enabled?      boolean
+           +--rw accounting-list?      string
+           +--rw mdns-policy-name?     string
+           +--rw upn
+           |  +--rw is-upn-restrict-enable?   boolean
+           |  +--rw upn-unicast-disable?      boolean
+           +--rw power-level-id?       uint8
+Xpaths for model: Cisco-IOS-XE-wireless-rlan-cfg.yang
+/wireless-rlan-cfg:rlan-cfg-data,container,
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs,container,
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config,list,
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:rlan-id,leaf,uint32
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:profile-name,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:mac-filtering,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:auth-list,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:security-8021x-dot1x,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:auth-list-dot1x,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:security-web-auth,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:local-auth-eap-profile-name,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:local-eap-auth-enabled,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:web-auth-parameter-map,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:max-associated-clients,leaf,uint32
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:status,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:web-pre-auth-acl,container,
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:web-pre-auth-acl/wireless-rlan-cfg:ipv4-acl,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:web-pre-auth-acl/wireless-rlan-cfg:ipv6-acl,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-configs/wireless-rlan-cfg:rlan-config/wireless-rlan-cfg:mdns-sd-mode,leaf,wireless-enum-types:enm-wlan-mdns-sd-cfg
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs,container,
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config,list,
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:profile-name,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:status,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:description,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:ipv4-acl,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:ipv6-acl,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:aaa-override,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:aaa-policy-name,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:central-switching,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:central-dhcp,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:interface-name,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:poe,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:host-mode,leaf,wireless-types:enm-host-mode
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:host-mode-vlans,container,
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:host-mode-vlans/wireless-rlan-cfg:voice-vlan-id,leaf,uint16
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:host-mode-vlans/wireless-rlan-cfg:data-vlan-id,leaf,uint16
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:violation-mode,leaf,wireless-types:enm-violation-mode
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:blacklist,container,
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:blacklist/wireless-rlan-cfg:is-blacklist-enabled,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:blacklist/wireless-rlan-cfg:blacklist-timeout,leaf,uint32
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:pre-auth,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:session-timeout,leaf,uint32
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:flow-monitor-ipv4,container,
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:flow-monitor-ipv4/wireless-rlan-cfg:flow-monitor-ingress-name,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:flow-monitor-ipv4/wireless-rlan-cfg:flow-monitor-egress-name,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:flow-monitor-ipv4/wireless-rlan-cfg:ingress-enable,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:flow-monitor-ipv4/wireless-rlan-cfg:egress-enable,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:flow-monitor-ipv6,container,
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:flow-monitor-ipv6/wireless-rlan-cfg:flow-monitor-ingress-name,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:flow-monitor-ipv6/wireless-rlan-cfg:flow-monitor-egress-name,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:flow-monitor-ipv6/wireless-rlan-cfg:ingress-enable,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:flow-monitor-ipv6/wireless-rlan-cfg:egress-enable,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:split-tunnel-param,container,
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:split-tunnel-param/wireless-rlan-cfg:split-tunnel-enabled,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:split-tunnel-param/wireless-rlan-cfg:acl-name,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:split-tunnel-param/wireless-rlan-cfg:split-tunnel-override,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:split-tunnel-param/wireless-rlan-cfg:split-tunnel-gateway,leaf,inet:ip-address
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:split-tunnel-param/wireless-rlan-cfg:split-tunnel-netmask,leaf,inet:ip-address
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:dhcp-server,leaf,inet:ipv4-address
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:is-dhcp-enabled,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:accounting-list,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:mdns-policy-name,leaf,string
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:upn,container,
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:upn/wireless-rlan-cfg:is-upn-restrict-enable,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:upn/wireless-rlan-cfg:upn-unicast-disable,leaf,boolean
+/wireless-rlan-cfg:rlan-cfg-data/wireless-rlan-cfg:rlan-policy-profile-configs/wireless-rlan-cfg:rlan-policy-profile-config/wireless-rlan-cfg:power-level-id,leaf,uint8

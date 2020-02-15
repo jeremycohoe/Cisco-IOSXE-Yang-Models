@@ -1,0 +1,129 @@
+ 
+KPI for model: Cisco-IOS-XE-lldp.yang
+
+module: Cisco-IOS-XE-lldp
+  augment /ios:native:
+    +--rw lldp
+       +--rw holdtime?     uint32
+       +--rw reinit?       uint8
+       +--rw run?          empty
+       +--rw timer?        uint16
+       +--rw tlv-select
+          +--rw four-wire-power-management?   boolean
+          +--rw mac-phy-cfg?                  boolean
+          +--rw management-address?           boolean
+          +--rw port-description?             boolean
+          +--rw port-vlan?                    boolean
+          +--rw power-management?             boolean
+          +--rw system-capabilities?          boolean
+          +--rw system-description?           boolean
+          +--rw system-name?                  boolean
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw lldp
+       +--rw receive?          boolean
+       +--rw tlv-select
+       |  +--rw four-wire-power-management?   boolean
+       |  +--rw power-management?             boolean
+       +--rw med-tlv-select {ios-features:med}?
+       |  +--rw inventory-management?   boolean
+       |  +--rw power-management?       boolean
+       |  +--rw location?               boolean
+       |  +--rw network-policy?         boolean
+       +--rw transmit?         boolean
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw lldp
+       +--rw receive?          boolean
+       +--rw tlv-select
+       |  +--rw four-wire-power-management?   boolean
+       |  +--rw power-management?             boolean
+       +--rw med-tlv-select {ios-features:med}?
+       |  +--rw inventory-management?   boolean
+       |  +--rw power-management?       boolean
+       |  +--rw location?               boolean
+       |  +--rw network-policy?         boolean
+       +--rw transmit?         boolean
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw lldp
+       +--rw receive?          boolean
+       +--rw tlv-select
+       |  +--rw four-wire-power-management?   boolean
+       |  +--rw power-management?             boolean
+       +--rw med-tlv-select {ios-features:med}?
+       |  +--rw inventory-management?   boolean
+       |  +--rw power-management?       boolean
+       |  +--rw location?               boolean
+       |  +--rw network-policy?         boolean
+       +--rw transmit?         boolean
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw lldp
+       +--rw receive?          boolean
+       +--rw tlv-select
+       |  +--rw four-wire-power-management?   boolean
+       |  +--rw power-management?             boolean
+       +--rw med-tlv-select {ios-features:med}?
+       |  +--rw inventory-management?   boolean
+       |  +--rw power-management?       boolean
+       |  +--rw location?               boolean
+       |  +--rw network-policy?         boolean
+       +--rw transmit?         boolean
+  augment /ios:native/ios:interface/ios:AppGigabitEthernet:
+    +--rw lldp
+       +--rw receive?          boolean
+       +--rw tlv-select
+       |  +--rw four-wire-power-management?   boolean
+       |  +--rw power-management?             boolean
+       +--rw med-tlv-select {ios-features:med}?
+       |  +--rw inventory-management?   boolean
+       |  +--rw power-management?       boolean
+       |  +--rw location?               boolean
+       |  +--rw network-policy?         boolean
+       +--rw transmit?         boolean
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw lldp
+       +--rw receive?          boolean
+       +--rw tlv-select
+       |  +--rw four-wire-power-management?   boolean
+       |  +--rw power-management?             boolean
+       +--rw med-tlv-select {ios-features:med}?
+       |  +--rw inventory-management?   boolean
+       |  +--rw power-management?       boolean
+       |  +--rw location?               boolean
+       |  +--rw network-policy?         boolean
+       +--rw transmit?         boolean
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw lldp
+       +--rw receive?          boolean
+       +--rw tlv-select
+       |  +--rw four-wire-power-management?   boolean
+       |  +--rw power-management?             boolean
+       +--rw med-tlv-select {ios-features:med}?
+       |  +--rw inventory-management?   boolean
+       |  +--rw power-management?       boolean
+       |  +--rw location?               boolean
+       |  +--rw network-policy?         boolean
+       +--rw transmit?         boolean
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw lldp
+       +--rw receive?          boolean
+       +--rw tlv-select
+       |  +--rw four-wire-power-management?   boolean
+       |  +--rw power-management?             boolean
+       +--rw med-tlv-select {ios-features:med}?
+       |  +--rw inventory-management?   boolean
+       |  +--rw power-management?       boolean
+       |  +--rw location?               boolean
+       |  +--rw network-policy?         boolean
+       +--rw transmit?         boolean
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw lldp
+       +--rw receive?          boolean
+       +--rw tlv-select
+       |  +--rw four-wire-power-management?   boolean
+       |  +--rw power-management?             boolean
+       +--rw med-tlv-select {ios-features:med}?
+       |  +--rw inventory-management?   boolean
+       |  +--rw power-management?       boolean
+       |  +--rw location?               boolean
+       |  +--rw network-policy?         boolean
+       +--rw transmit?         boolean
+Xpaths for model: Cisco-IOS-XE-lldp.yang

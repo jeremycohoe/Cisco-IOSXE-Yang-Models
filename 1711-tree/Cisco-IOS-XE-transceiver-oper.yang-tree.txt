@@ -1,0 +1,114 @@
+ 
+KPI for model: Cisco-IOS-XE-transceiver-oper.yang
+module: Cisco-IOS-XE-transceiver-oper
+  +--ro transceiver-oper-data
+     +--ro transceiver* [name]
+        +--ro name                     string
+        +--ro enabled?                 boolean
+        +--ro present?                 boolean
+        +--ro identifier?              string
+        +--ro connector?               string
+        +--ro ethernet-pmd?            string
+        +--ro vendor?                  string
+        +--ro vendor-part?             string
+        +--ro vendor-rev?              string
+        +--ro serial-no?               string
+        +--ro fault-condition?         boolean
+        +--ro date?                    string
+        +--ro sonet?                   xcvr-ios-xe-oper:xcvr-sonet-code
+        +--ro otn?                     xcvr-ios-xe-oper:xcvr-otn-code
+        +--ro internal-temp?           decimal64
+        +--ro output-power
+        |  +--ro instant?   decimal64
+        |  +--ro avg?       decimal64
+        |  +--ro max?       decimal64
+        |  +--ro min?       decimal64
+        +--ro input-power
+        |  +--ro instant?   decimal64
+        |  +--ro avg?       decimal64
+        |  +--ro max?       decimal64
+        |  +--ro min?       decimal64
+        +--ro laser-bias-current
+        |  +--ro instant?   decimal64
+        |  +--ro avg?       decimal64
+        |  +--ro max?       decimal64
+        |  +--ro min?       decimal64
+        +--ro xcvr-physical-channel* [index]
+        |  +--ro index                  uint16
+        |  +--ro description?           string
+        |  +--ro tx-laser?              boolean
+        |  +--ro target-output-power?   decimal64
+        |  +--ro output-frequency?      uint64
+        |  +--ro output-power
+        |  |  +--ro instant?   decimal64
+        |  |  +--ro avg?       decimal64
+        |  |  +--ro max?       decimal64
+        |  |  +--ro min?       decimal64
+        |  +--ro input-power
+        |  |  +--ro instant?   decimal64
+        |  |  +--ro avg?       decimal64
+        |  |  +--ro max?       decimal64
+        |  |  +--ro min?       decimal64
+        |  +--ro laser-bias-current
+        |     +--ro instant?   decimal64
+        |     +--ro avg?       decimal64
+        |     +--ro max?       decimal64
+        |     +--ro min?       decimal64
+        +--ro fault-reason?            ios-common-ios-xe-oper:port-err-reason
+        +--ro last-event-time?         yang:date-and-time
+Xpaths for model: Cisco-IOS-XE-transceiver-oper.yang
+/xcvr-ios-xe-oper:transceiver-oper-data,container,
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver,list,
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:name,leaf,string
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:enabled,leaf,boolean
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:present,leaf,boolean
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:identifier,leaf,string
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:connector,leaf,string
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:ethernet-pmd,leaf,string
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:vendor,leaf,string
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:vendor-part,leaf,string
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:vendor-rev,leaf,string
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:serial-no,leaf,string
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:fault-condition,leaf,boolean
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:date,leaf,string
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:sonet,leaf,xcvr-ios-xe-oper:xcvr-sonet-code
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:otn,leaf,xcvr-ios-xe-oper:xcvr-otn-code
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:internal-temp,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:output-power,container,
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:output-power/xcvr-ios-xe-oper:instant,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:output-power/xcvr-ios-xe-oper:avg,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:output-power/xcvr-ios-xe-oper:max,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:output-power/xcvr-ios-xe-oper:min,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:input-power,container,
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:input-power/xcvr-ios-xe-oper:instant,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:input-power/xcvr-ios-xe-oper:avg,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:input-power/xcvr-ios-xe-oper:max,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:input-power/xcvr-ios-xe-oper:min,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:laser-bias-current,container,
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:laser-bias-current/xcvr-ios-xe-oper:instant,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:laser-bias-current/xcvr-ios-xe-oper:avg,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:laser-bias-current/xcvr-ios-xe-oper:max,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:laser-bias-current/xcvr-ios-xe-oper:min,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel,list,
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:index,leaf,uint16
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:description,leaf,string
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:tx-laser,leaf,boolean
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:target-output-power,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:output-frequency,leaf,uint64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:output-power,container,
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:output-power/xcvr-ios-xe-oper:instant,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:output-power/xcvr-ios-xe-oper:avg,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:output-power/xcvr-ios-xe-oper:max,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:output-power/xcvr-ios-xe-oper:min,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:input-power,container,
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:input-power/xcvr-ios-xe-oper:instant,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:input-power/xcvr-ios-xe-oper:avg,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:input-power/xcvr-ios-xe-oper:max,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:input-power/xcvr-ios-xe-oper:min,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:laser-bias-current,container,
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:laser-bias-current/xcvr-ios-xe-oper:instant,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:laser-bias-current/xcvr-ios-xe-oper:avg,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:laser-bias-current/xcvr-ios-xe-oper:max,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:xcvr-physical-channel/xcvr-ios-xe-oper:laser-bias-current/xcvr-ios-xe-oper:min,leaf,decimal64
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:fault-reason,leaf,ios-common-ios-xe-oper:port-err-reason
+/xcvr-ios-xe-oper:transceiver-oper-data/xcvr-ios-xe-oper:transceiver/xcvr-ios-xe-oper:last-event-time,leaf,yang:date-and-time

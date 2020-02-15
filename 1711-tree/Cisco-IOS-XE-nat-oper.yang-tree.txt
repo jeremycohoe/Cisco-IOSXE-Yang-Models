@@ -1,0 +1,80 @@
+ 
+KPI for model: Cisco-IOS-XE-nat-oper.yang
+module: Cisco-IOS-XE-nat-oper
+  +--ro nat-data
+     +--ro ip-nat-statistics!
+     |  +--ro initialized?            boolean
+     |  +--ro entries?                uint64
+     |  +--ro statics?                uint64
+     |  +--ro statics-sorted*         uint64
+     |  +--ro flows?                  uint64
+     |  +--ro insides?                uint64
+     |  +--ro outsides?               uint64
+     |  +--ro entry-timeouts?         uint64
+     |  +--ro hits?                   uint64
+     |  +--ro misses?                 uint64
+     |  +--ro interrupt-switched?     uint64
+     |  +--ro packets-punted?         uint64
+     |  +--ro frag-pak-count?         uint64
+     |  +--ro pool-stats-drop?        uint64
+     |  +--ro mapping-stats-drop?     uint64
+     |  +--ro portlist-req-fail?      uint64
+     |  +--ro ipalias-add-fail?       uint64
+     |  +--ro limit-entry-add-fail?   uint64
+     |  +--ro in2out-drops?           uint64
+     |  +--ro out2in-drops?           uint64
+     |  +--ro mib-addr-binds?         uint32
+     |  +--ro mib-addport-binds?      uint32
+     +--ro ip-nat-translation* [inside-local-addr outside-local-addr inside-local-port outside-local-port vrfid protocol]
+        +--ro inside-global-addr?    inet:ipv4-address
+        +--ro outside-global-addr?   inet:ipv4-address
+        +--ro inside-global-port?    uint16
+        +--ro outside-global-port?   uint16
+        +--ro flags?                 uint32
+        +--ro application-type?      uint8
+        +--ro vrf-name?              string
+        +--ro inside-local-addr      inet:ipv4-address
+        +--ro outside-local-addr     inet:ipv4-address
+        +--ro inside-local-port      uint16
+        +--ro outside-local-port     uint16
+        +--ro vrfid                  uint16
+        +--ro protocol               uint8
+Xpaths for model: Cisco-IOS-XE-nat-oper.yang
+/nat-ios-xe-oper:nat-data,container,
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics,container,
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:initialized,leaf,boolean
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:entries,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:statics,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:statics-sorted,leaf-list,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:flows,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:insides,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:outsides,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:entry-timeouts,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:hits,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:misses,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:interrupt-switched,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:packets-punted,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:frag-pak-count,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:pool-stats-drop,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:mapping-stats-drop,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:portlist-req-fail,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:ipalias-add-fail,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:limit-entry-add-fail,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:in2out-drops,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:out2in-drops,leaf,uint64
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:mib-addr-binds,leaf,uint32
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-statistics/nat-ios-xe-oper:mib-addport-binds,leaf,uint32
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-translation,list,
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-translation/nat-ios-xe-oper:inside-global-addr,leaf,inet:ipv4-address
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-translation/nat-ios-xe-oper:outside-global-addr,leaf,inet:ipv4-address
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-translation/nat-ios-xe-oper:inside-global-port,leaf,uint16
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-translation/nat-ios-xe-oper:outside-global-port,leaf,uint16
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-translation/nat-ios-xe-oper:flags,leaf,uint32
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-translation/nat-ios-xe-oper:application-type,leaf,uint8
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-translation/nat-ios-xe-oper:vrf-name,leaf,string
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-translation/nat-ios-xe-oper:inside-local-addr,leaf,inet:ipv4-address
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-translation/nat-ios-xe-oper:outside-local-addr,leaf,inet:ipv4-address
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-translation/nat-ios-xe-oper:inside-local-port,leaf,uint16
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-translation/nat-ios-xe-oper:outside-local-port,leaf,uint16
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-translation/nat-ios-xe-oper:vrfid,leaf,uint16
+/nat-ios-xe-oper:nat-data/nat-ios-xe-oper:ip-nat-translation/nat-ios-xe-oper:protocol,leaf,uint8

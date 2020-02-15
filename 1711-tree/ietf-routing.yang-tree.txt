@@ -1,0 +1,131 @@
+ 
+KPI for model: ietf-routing.yang
+module: ietf-routing
+  +--ro routing-state
+  |  +--ro routing-instance* [name]
+  |     +--ro name                 string
+  |     +--ro type?                identityref
+  |     +--ro router-id?           yang:dotted-quad
+  |     +--ro interfaces
+  |     |  +--ro interface*   if:interface-state-ref
+  |     +--ro routing-protocols
+  |     |  +--ro routing-protocol* [type name]
+  |     |     +--ro type    identityref
+  |     |     +--ro name    string
+  |     +--ro ribs
+  |        +--ro rib* [name]
+  |           +--ro name              string
+  |           +--ro address-family    identityref
+  |           +--ro default-rib?      boolean {multiple-ribs}?
+  |           +--ro routes
+  |              +--ro route* [destination-prefix]
+  |                 +--ro route-preference?     route-preference
+  |                 +--ro destination-prefix    string
+  |                 +--ro metric?               uint32
+  |                 +--ro next-hop
+  |                 |  +--ro (next-hop-options)
+  |                 |     +--:(simple-next-hop)
+  |                 |     |  +--ro outgoing-interface?   string
+  |                 |     |  +--ro next-hop-address?     string
+  |                 |     +--:(special-next-hop)
+  |                 |        +--ro special-next-hop?     enumeration
+  |                 +--ro source-protocol       identityref
+  |                 +--ro active?               empty
+  |                 +--ro last-updated?         yang:date-and-time
+  |                 +--ro update-source?        string
+  +--rw routing
+     +--rw routing-instance* [name]
+        +--rw name                 string
+        +--rw type?                identityref
+        +--rw enabled?             boolean
+        +--rw router-id?           yang:dotted-quad {router-id}?
+        +--rw description?         string
+        +--rw interfaces
+        |  +--rw interface*   if:interface-ref
+        +--rw routing-protocols
+        |  +--rw routing-protocol* [type name]
+        |     +--rw type             identityref
+        |     +--rw name             string
+        |     +--rw description?     string
+        |     +--rw static-routes
+        +--rw ribs
+           +--rw rib* [name]
+              +--rw name              string
+              +--rw address-family?   identityref
+              +--rw description?      string
+
+  augment /if:interfaces-state/if:interface:
+    +--ro routing-instance?   string
+
+  rpcs:
+    +---x fib-route
+       +---w input
+       |  +---w routing-instance-name    string
+       |  +---w destination-address
+       |     +---w address-family    identityref
+       +--ro output
+          +--ro route
+             +--ro address-family     identityref
+             +--ro next-hop
+             |  +--ro (next-hop-options)
+             |     +--:(simple-next-hop)
+             |     |  +--ro outgoing-interface?   string
+             |     |  +--ro next-hop-address?     string
+             |     +--:(special-next-hop)
+             |        +--ro special-next-hop?     enumeration
+             +--ro source-protocol    identityref
+             +--ro active?            empty
+             +--ro last-updated?      yang:date-and-time
+Xpaths for model: ietf-routing.yang
+/rt:routing-state,container,
+/rt:routing-state/rt:routing-instance,list,
+/rt:routing-state/rt:routing-instance/rt:name,leaf,string
+/rt:routing-state/rt:routing-instance/rt:type,leaf,identityref
+/rt:routing-state/rt:routing-instance/rt:router-id,leaf,yang:dotted-quad
+/rt:routing-state/rt:routing-instance/rt:interfaces,container,
+/rt:routing-state/rt:routing-instance/rt:interfaces/rt:interface,leaf-list,if:interface-state-ref
+/rt:routing-state/rt:routing-instance/rt:routing-protocols,container,
+/rt:routing-state/rt:routing-instance/rt:routing-protocols/rt:routing-protocol,list,
+/rt:routing-state/rt:routing-instance/rt:routing-protocols/rt:routing-protocol/rt:type,leaf,identityref
+/rt:routing-state/rt:routing-instance/rt:routing-protocols/rt:routing-protocol/rt:name,leaf,string
+/rt:routing-state/rt:routing-instance/rt:ribs,container,
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib,list,
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:name,leaf,string
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:address-family,leaf,identityref
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:default-rib,leaf,boolean
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes,container,
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes/rt:route,list,
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes/rt:route/rt:route-preference,leaf,route-preference
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes/rt:route/rt:destination-prefix,leaf,string
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes/rt:route/rt:metric,leaf,uint32
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes/rt:route/rt:next-hop,container,
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes/rt:route/rt:next-hop,choice,
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes/rt:route/rt:next-hop,case,
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes/rt:route/rt:next-hop/rt:outgoing-interface,leaf,string
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes/rt:route/rt:next-hop/rt:next-hop-address,leaf,string
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes/rt:route/rt:next-hop,case,
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes/rt:route/rt:next-hop/rt:special-next-hop,leaf,enumeration
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes/rt:route/rt:source-protocol,leaf,identityref
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes/rt:route/rt:active,leaf,empty
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes/rt:route/rt:last-updated,leaf,yang:date-and-time
+/rt:routing-state/rt:routing-instance/rt:ribs/rt:rib/rt:routes/rt:route/rt:update-source,leaf,string
+/rt:routing,container,
+/rt:routing/rt:routing-instance,list,
+/rt:routing/rt:routing-instance/rt:name,leaf,string
+/rt:routing/rt:routing-instance/rt:type,leaf,identityref
+/rt:routing/rt:routing-instance/rt:enabled,leaf,boolean
+/rt:routing/rt:routing-instance/rt:router-id,leaf,yang:dotted-quad
+/rt:routing/rt:routing-instance/rt:description,leaf,string
+/rt:routing/rt:routing-instance/rt:interfaces,container,
+/rt:routing/rt:routing-instance/rt:interfaces/rt:interface,leaf-list,if:interface-ref
+/rt:routing/rt:routing-instance/rt:routing-protocols,container,
+/rt:routing/rt:routing-instance/rt:routing-protocols/rt:routing-protocol,list,
+/rt:routing/rt:routing-instance/rt:routing-protocols/rt:routing-protocol/rt:type,leaf,identityref
+/rt:routing/rt:routing-instance/rt:routing-protocols/rt:routing-protocol/rt:name,leaf,string
+/rt:routing/rt:routing-instance/rt:routing-protocols/rt:routing-protocol/rt:description,leaf,string
+/rt:routing/rt:routing-instance/rt:routing-protocols/rt:routing-protocol/rt:static-routes,container,
+/rt:routing/rt:routing-instance/rt:ribs,container,
+/rt:routing/rt:routing-instance/rt:ribs/rt:rib,list,
+/rt:routing/rt:routing-instance/rt:ribs/rt:rib/rt:name,leaf,string
+/rt:routing/rt:routing-instance/rt:ribs/rt:rib/rt:address-family,leaf,identityref
+/rt:routing/rt:routing-instance/rt:ribs/rt:rib/rt:description,leaf,string

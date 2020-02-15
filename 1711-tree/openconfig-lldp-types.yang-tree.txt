@@ -1,0 +1,3 @@
+ 
+KPI for model: openconfig-lldp-types.yang
+Xpaths for model: openconfig-lldp-types.yang

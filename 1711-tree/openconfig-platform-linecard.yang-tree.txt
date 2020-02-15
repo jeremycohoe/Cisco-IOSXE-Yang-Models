@@ -1,0 +1,12 @@
+ 
+KPI for model: openconfig-platform-linecard.yang
+
+module: openconfig-platform-linecard
+  augment /oc-platform:components/oc-platform:component:
+    +--rw linecard
+       +--rw config
+       |  +--rw power-admin-state?   oc-platform-types:component-power-type
+       +--ro state
+          +--ro power-admin-state?   oc-platform-types:component-power-type
+          +--ro slot-id?             string
+Xpaths for model: openconfig-platform-linecard.yang

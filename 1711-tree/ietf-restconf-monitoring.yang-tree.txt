@@ -1,0 +1,28 @@
+ 
+KPI for model: ietf-restconf-monitoring.yang
+module: ietf-restconf-monitoring
+  +--ro restconf-state
+     +--ro capabilities
+     |  +--ro capability*   inet:uri
+     +--ro streams
+        +--ro stream* [name]
+           +--ro name                        string
+           +--ro description?                string
+           +--ro replay-support?             boolean
+           +--ro replay-log-creation-time?   yang:date-and-time
+           +--ro access* [encoding]
+              +--ro encoding    string
+              +--ro location    inet:uri
+Xpaths for model: ietf-restconf-monitoring.yang
+/rcmon:restconf-state,container,
+/rcmon:restconf-state/rcmon:capabilities,container,
+/rcmon:restconf-state/rcmon:capabilities/rcmon:capability,leaf-list,inet:uri
+/rcmon:restconf-state/rcmon:streams,container,
+/rcmon:restconf-state/rcmon:streams/rcmon:stream,list,
+/rcmon:restconf-state/rcmon:streams/rcmon:stream/rcmon:name,leaf,string
+/rcmon:restconf-state/rcmon:streams/rcmon:stream/rcmon:description,leaf,string
+/rcmon:restconf-state/rcmon:streams/rcmon:stream/rcmon:replay-support,leaf,boolean
+/rcmon:restconf-state/rcmon:streams/rcmon:stream/rcmon:replay-log-creation-time,leaf,yang:date-and-time
+/rcmon:restconf-state/rcmon:streams/rcmon:stream/rcmon:access,list,
+/rcmon:restconf-state/rcmon:streams/rcmon:stream/rcmon:access/rcmon:encoding,leaf,string
+/rcmon:restconf-state/rcmon:streams/rcmon:stream/rcmon:access/rcmon:location,leaf,inet:uri

@@ -1,0 +1,3 @@
+ 
+KPI for model: openconfig-system-terminal.yang
+Xpaths for model: openconfig-system-terminal.yang

@@ -1,0 +1,3 @@
+ 
+KPI for model: cisco-xe-routing-isr-openconfig-platform-deviation.yang
+Xpaths for model: cisco-xe-routing-isr-openconfig-platform-deviation.yang

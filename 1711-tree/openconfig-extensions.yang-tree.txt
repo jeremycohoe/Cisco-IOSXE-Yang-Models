@@ -1,0 +1,3 @@
+ 
+KPI for model: openconfig-extensions.yang
+Xpaths for model: openconfig-extensions.yang

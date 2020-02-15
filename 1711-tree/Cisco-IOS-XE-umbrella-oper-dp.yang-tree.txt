@@ -1,0 +1,58 @@
+ 
+KPI for model: Cisco-IOS-XE-umbrella-oper-dp.yang
+module: Cisco-IOS-XE-umbrella-oper-dp
+  +--rw umbrella-oper-dp
+     +--ro stats
+        +--ro redirect-pkts?              uint64
+        +--ro local-domain-bypass-pkts?   uint64
+        +--ro parser-unknown-pkts?        uint64
+        +--ro parser-errors?              uint64
+        +--ro flow-create-requests?       uint64
+        +--ro matching-flow-found?        uint64
+        +--ro flow-create-failures?       uint64
+        +--ro flow-lookup-requests?       uint64
+        +--ro flow-lookup-failures?       uint64
+        +--ro flow-detach-requests?       uint64
+        +--ro flow-detach-failures?       uint64
+        +--ro flow-ageout-count?          uint64
+        +--ro flow-update-requests?       uint64
+        +--ro flow-update-failures?       uint64
+        +--ro dnscrypt-enc-sent?          uint64
+        +--ro dnscrypt-dec-rcvd?          uint64
+        +--ro dnscrypt-clear-sent?        uint64
+        +--ro dnscrypt-clear-rcvd?        uint64
+        +--ro dnscrypt-errors?            uint64
+
+  notifications:
+    +---n umbrella-anycast-server-switch
+    |  +--ro severity-level?   umbrella-netconf-notification-severity
+    |  +--ro host-name?        string
+    |  +--ro system-ip?        inet:ip-address
+    |  +--ro reason?           string
+    +---n umbrella-max-cft-flows
+       +--ro severity-level?   umbrella-netconf-notification-severity
+       +--ro host-name?        string
+       +--ro system-ip?        inet:ip-address
+       +--ro reason?           string
+Xpaths for model: Cisco-IOS-XE-umbrella-oper-dp.yang
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp,container,
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats,container,
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:redirect-pkts,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:local-domain-bypass-pkts,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:parser-unknown-pkts,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:parser-errors,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:flow-create-requests,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:matching-flow-found,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:flow-create-failures,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:flow-lookup-requests,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:flow-lookup-failures,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:flow-detach-requests,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:flow-detach-failures,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:flow-ageout-count,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:flow-update-requests,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:flow-update-failures,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:dnscrypt-enc-sent,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:dnscrypt-dec-rcvd,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:dnscrypt-clear-sent,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:dnscrypt-clear-rcvd,leaf,uint64
+/ios-xe-umbrella-oper-dp:umbrella-oper-dp/ios-xe-umbrella-oper-dp:stats/ios-xe-umbrella-oper-dp:dnscrypt-errors,leaf,uint64

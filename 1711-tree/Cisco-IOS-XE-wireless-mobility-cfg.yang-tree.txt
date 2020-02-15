@@ -1,0 +1,56 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-mobility-cfg.yang
+module: Cisco-IOS-XE-wireless-mobility-cfg
+  +--rw mobility-cfg-data
+     +--rw mobility-config
+     |  +--rw local-group?                     string
+     |  +--rw local-mcast-addr-enabled?        boolean
+     |  +--rw local-multicast-address?         inet:ipv4-address
+     |  +--rw local-ipv6-mcast-addr-enabled?   boolean
+     |  +--rw local-ipv6-multicast-address?    inet:ipv6-address
+     |  +--rw mobility-keepalive-interval?     uint16
+     |  +--rw mobility-keepalive-count?        uint16
+     |  +--rw mobility-dscp?                   uint8
+     |  +--rw mac-address?                     yang:mac-address
+     |  +--rw mobility-peers
+     |     +--rw mobility-peer* [mac-addr]
+     |        +--rw mac-addr                yang:mac-address
+     |        +--rw ip-address?             inet:ip-address
+     |        +--rw group-name              string
+     |        +--rw nat-ip?                 inet:ip-address
+     |        +--rw data-link-encryption?   boolean
+     |        +--rw ssc-hash?               string
+     +--rw mobility-groups
+        +--rw mobility-group* [group-name]
+           +--rw group-name              string
+           +--rw mcast-addr-enabled?     boolean
+           +--rw multicast-address?      inet:ipv4-address
+           +--rw mcast-addrv6-enabled?   boolean
+           +--rw multicast-addressv6?    inet:ipv6-address
+Xpaths for model: Cisco-IOS-XE-wireless-mobility-cfg.yang
+/wireless-mobility-cfg:mobility-cfg-data,container,
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config,container,
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:local-group,leaf,string
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:local-mcast-addr-enabled,leaf,boolean
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:local-multicast-address,leaf,inet:ipv4-address
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:local-ipv6-mcast-addr-enabled,leaf,boolean
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:local-ipv6-multicast-address,leaf,inet:ipv6-address
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:mobility-keepalive-interval,leaf,uint16
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:mobility-keepalive-count,leaf,uint16
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:mobility-dscp,leaf,uint8
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:mac-address,leaf,yang:mac-address
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:mobility-peers,container,
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:mobility-peers/wireless-mobility-cfg:mobility-peer,list,
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:mobility-peers/wireless-mobility-cfg:mobility-peer/wireless-mobility-cfg:mac-addr,leaf,yang:mac-address
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:mobility-peers/wireless-mobility-cfg:mobility-peer/wireless-mobility-cfg:ip-address,leaf,inet:ip-address
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:mobility-peers/wireless-mobility-cfg:mobility-peer/wireless-mobility-cfg:group-name,leaf,string
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:mobility-peers/wireless-mobility-cfg:mobility-peer/wireless-mobility-cfg:nat-ip,leaf,inet:ip-address
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:mobility-peers/wireless-mobility-cfg:mobility-peer/wireless-mobility-cfg:data-link-encryption,leaf,boolean
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-config/wireless-mobility-cfg:mobility-peers/wireless-mobility-cfg:mobility-peer/wireless-mobility-cfg:ssc-hash,leaf,string
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-groups,container,
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-groups/wireless-mobility-cfg:mobility-group,list,
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-groups/wireless-mobility-cfg:mobility-group/wireless-mobility-cfg:group-name,leaf,string
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-groups/wireless-mobility-cfg:mobility-group/wireless-mobility-cfg:mcast-addr-enabled,leaf,boolean
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-groups/wireless-mobility-cfg:mobility-group/wireless-mobility-cfg:multicast-address,leaf,inet:ipv4-address
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-groups/wireless-mobility-cfg:mobility-group/wireless-mobility-cfg:mcast-addrv6-enabled,leaf,boolean
+/wireless-mobility-cfg:mobility-cfg-data/wireless-mobility-cfg:mobility-groups/wireless-mobility-cfg:mobility-group/wireless-mobility-cfg:multicast-addressv6,leaf,inet:ipv6-address

@@ -1,0 +1,180 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-rrm-oper.yang
+module: Cisco-IOS-XE-wireless-rrm-oper
+  +--ro rrm-oper-data
+     +--ro ap-auto-rf-dot11-data* [wtp-mac radio-slot-id]
+     |  +--ro wtp-mac                yang:mac-address
+     |  +--ro radio-slot-id          uint8
+     |  +--ro neighbor-radio-info
+     |     +--ro neighbor-radio-list* []
+     |        +--ro neighbor-radio-info
+     |           +--ro neighbor-radio-mac?       yang:mac-address
+     |           +--ro neighbor-radio-slot-id?   uint8
+     |           +--ro rssi?                     int8
+     |           +--ro snr?                      int8
+     |           +--ro channel?                  uint8
+     |           +--ro power?                    uint8
+     |           +--ro group-leader-ip?          inet:ip-address
+     |           +--ro chan-width?               wireless-enum-types:radio-neighbor-chan-width
+     |           +--ro sensor-covered?           boolean
+     +--ro ap-dot11-radar-data* [wtp-mac radio-slot-id]
+     |  +--ro wtp-mac                yang:mac-address
+     |  +--ro radio-slot-id          uint8
+     |  +--ro radar-info
+     |  |  +--ro radar-info* []
+     |  |     +--ro channel-number?             uint32
+     |  |     +--ro radar-detected-timestamp?   yang:date-and-time
+     |  +--ro last-radar-on-radio?   yang:date-and-time
+     +--ro ap-dot11-spectrum-data* [wtp-mac radio-slot-id]
+     |  +--ro wtp-mac          yang:mac-address
+     |  +--ro radio-slot-id    uint8
+     |  +--ro config
+     |     +--ro spectrum-intelligence-enable?   boolean
+     |     +--ro spectrum-wtp-ca-si-capable?     wireless-rrm-types:enm-ca-si-capable
+     |     +--ro spectrum-operation-state?       wireless-rrm-oper:enm-cleanair-oper-state
+     |     +--ro spectrum-admin-state?           boolean
+     |     +--ro spectrum-capable?               boolean
+     |     +--ro sensord-operational-status?     int32
+     +--ro rrm-measurement* [wtp-mac radio-slot-id]
+     |  +--ro wtp-mac          yang:mac-address
+     |  +--ro radio-slot-id    uint8
+     |  +--ro load
+     |     +--ro rx-util-percentage?             uint16
+     |     +--ro tx-util-percentage?             uint16
+     |     +--ro cca-util-percentage?            uint16
+     |     +--ro rx-noise-channel-utilization?   uint16
+     +--ro radio-slot* [wtp-mac radio-slot-id]
+     |  +--ro wtp-mac          yang:mac-address
+     |  +--ro radio-slot-id    uint8
+     |  +--ro radio-data
+     |     +--ro load-prof-passed?              boolean
+     |     +--ro coverage-profile-passed?       boolean
+     |     +--ro interference-profile-passed?   boolean
+     |     +--ro noise-profile-passed?          boolean
+     +--ro main-data* [phy-type]
+     |  +--ro phy-type                     wireless-types:enm-ewlc-dot11-radio-band
+     |  +--ro grp
+     |  |  +--ro current-state?           wireless-rrm-oper:enm-rrm-group-state
+     |  |  +--ro current-grouping-mode?   wireless-rrm-types:enm-rrm-ctrl-mode
+     |  |  +--ro current-grouping-role?   wireless-rrm-oper:enm-rrm-grouping-role-db
+     |  |  +--ro cntrlr-name?             string
+     |  |  +--ro cntrlr-ip-addr?          inet:ipv4-address
+     |  |  +--ro is-static-member?        wireless-rrm-oper:enm-is-static-member
+     |  |  +--ro fra-sensor-coverage?     uint8
+     |  +--ro oper-data
+     |  |  +--ro default-dca-channels
+     |  |  |  +--ro channel*   uint16
+     |  |  +--ro default-non-dca-channels
+     |  |     +--ro channel*   uint16
+     |  +--ro rrm-mgr-static-grp-member* [cntrlr-ip-addr]
+     |  |  +--ro cntrlr-name?        string
+     |  |  +--ro cntrlr-ip-addr      inet:ip-address
+     |  |  +--ro has-joined?         boolean
+     |  |  +--ro nack-reason?        wireless-types:enm-rrm-grp-member-nack-reason
+     |  |  +--ro max-radio-num?      uint16
+     |  |  +--ro last-join-cmd-ts?   yang:date-and-time
+     |  +--ro rrm-mgr-grp-member* [member-ip]
+     |     +--ro member-ip              inet:ip-address
+     |     +--ro member-secondary-ip?   inet:ip-address
+     |     +--ro max-radio-cnt?         uint16
+     |     +--ro curr-radio-cnt?        uint16
+     |     +--ro name?                  string
+     +--ro spectrum-device-table* [device-id]
+        +--ro device-id            yang:mac-address
+        +--ro last-updated-time?   yang:date-and-time
+        +--ro idr-data
+           +--ro detecting-ap-mac?        yang:mac-address
+           +--ro affected-channel-list?   string
+           +--ro util?                    uint16
+           +--ro power?                   int8
+           +--ro is-persistent?           boolean
+           +--ro class-type-enum?         wireless-rrm-types:enm-cleanair-class-type
+Xpaths for model: Cisco-IOS-XE-wireless-rrm-oper.yang
+/wireless-rrm-oper:rrm-oper-data,container,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-auto-rf-dot11-data,list,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-auto-rf-dot11-data/wireless-rrm-oper:wtp-mac,leaf,yang:mac-address
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-auto-rf-dot11-data/wireless-rrm-oper:radio-slot-id,leaf,uint8
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-auto-rf-dot11-data/wireless-rrm-oper:neighbor-radio-info,container,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-auto-rf-dot11-data/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:neighbor-radio-list,list,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-auto-rf-dot11-data/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:neighbor-radio-list/wireless-rrm-oper:neighbor-radio-info,container,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-auto-rf-dot11-data/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:neighbor-radio-list/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:neighbor-radio-mac,leaf,yang:mac-address
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-auto-rf-dot11-data/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:neighbor-radio-list/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:neighbor-radio-slot-id,leaf,uint8
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-auto-rf-dot11-data/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:neighbor-radio-list/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:rssi,leaf,int8
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-auto-rf-dot11-data/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:neighbor-radio-list/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:snr,leaf,int8
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-auto-rf-dot11-data/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:neighbor-radio-list/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:channel,leaf,uint8
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-auto-rf-dot11-data/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:neighbor-radio-list/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:power,leaf,uint8
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-auto-rf-dot11-data/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:neighbor-radio-list/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:group-leader-ip,leaf,inet:ip-address
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-auto-rf-dot11-data/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:neighbor-radio-list/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:chan-width,leaf,wireless-enum-types:radio-neighbor-chan-width
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-auto-rf-dot11-data/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:neighbor-radio-list/wireless-rrm-oper:neighbor-radio-info/wireless-rrm-oper:sensor-covered,leaf,boolean
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-radar-data,list,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-radar-data/wireless-rrm-oper:wtp-mac,leaf,yang:mac-address
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-radar-data/wireless-rrm-oper:radio-slot-id,leaf,uint8
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-radar-data/wireless-rrm-oper:radar-info,container,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-radar-data/wireless-rrm-oper:radar-info/wireless-rrm-oper:radar-info,list,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-radar-data/wireless-rrm-oper:radar-info/wireless-rrm-oper:radar-info/wireless-rrm-oper:channel-number,leaf,uint32
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-radar-data/wireless-rrm-oper:radar-info/wireless-rrm-oper:radar-info/wireless-rrm-oper:radar-detected-timestamp,leaf,yang:date-and-time
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-radar-data/wireless-rrm-oper:last-radar-on-radio,leaf,yang:date-and-time
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-spectrum-data,list,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-spectrum-data/wireless-rrm-oper:wtp-mac,leaf,yang:mac-address
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-spectrum-data/wireless-rrm-oper:radio-slot-id,leaf,uint8
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-spectrum-data/wireless-rrm-oper:config,container,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-spectrum-data/wireless-rrm-oper:config/wireless-rrm-oper:spectrum-intelligence-enable,leaf,boolean
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-spectrum-data/wireless-rrm-oper:config/wireless-rrm-oper:spectrum-wtp-ca-si-capable,leaf,wireless-rrm-types:enm-ca-si-capable
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-spectrum-data/wireless-rrm-oper:config/wireless-rrm-oper:spectrum-operation-state,leaf,wireless-rrm-oper:enm-cleanair-oper-state
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-spectrum-data/wireless-rrm-oper:config/wireless-rrm-oper:spectrum-admin-state,leaf,boolean
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-spectrum-data/wireless-rrm-oper:config/wireless-rrm-oper:spectrum-capable,leaf,boolean
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:ap-dot11-spectrum-data/wireless-rrm-oper:config/wireless-rrm-oper:sensord-operational-status,leaf,int32
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:rrm-measurement,list,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:rrm-measurement/wireless-rrm-oper:wtp-mac,leaf,yang:mac-address
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:rrm-measurement/wireless-rrm-oper:radio-slot-id,leaf,uint8
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:rrm-measurement/wireless-rrm-oper:load,container,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:rrm-measurement/wireless-rrm-oper:load/wireless-rrm-oper:rx-util-percentage,leaf,uint16
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:rrm-measurement/wireless-rrm-oper:load/wireless-rrm-oper:tx-util-percentage,leaf,uint16
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:rrm-measurement/wireless-rrm-oper:load/wireless-rrm-oper:cca-util-percentage,leaf,uint16
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:rrm-measurement/wireless-rrm-oper:load/wireless-rrm-oper:rx-noise-channel-utilization,leaf,uint16
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:radio-slot,list,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:radio-slot/wireless-rrm-oper:wtp-mac,leaf,yang:mac-address
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:radio-slot/wireless-rrm-oper:radio-slot-id,leaf,uint8
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:radio-slot/wireless-rrm-oper:radio-data,container,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:radio-slot/wireless-rrm-oper:radio-data/wireless-rrm-oper:load-prof-passed,leaf,boolean
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:radio-slot/wireless-rrm-oper:radio-data/wireless-rrm-oper:coverage-profile-passed,leaf,boolean
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:radio-slot/wireless-rrm-oper:radio-data/wireless-rrm-oper:interference-profile-passed,leaf,boolean
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:radio-slot/wireless-rrm-oper:radio-data/wireless-rrm-oper:noise-profile-passed,leaf,boolean
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data,list,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:phy-type,leaf,wireless-types:enm-ewlc-dot11-radio-band
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:grp,container,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:grp/wireless-rrm-oper:current-state,leaf,wireless-rrm-oper:enm-rrm-group-state
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:grp/wireless-rrm-oper:current-grouping-mode,leaf,wireless-rrm-types:enm-rrm-ctrl-mode
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:grp/wireless-rrm-oper:current-grouping-role,leaf,wireless-rrm-oper:enm-rrm-grouping-role-db
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:grp/wireless-rrm-oper:cntrlr-name,leaf,string
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:grp/wireless-rrm-oper:cntrlr-ip-addr,leaf,inet:ipv4-address
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:grp/wireless-rrm-oper:is-static-member,leaf,wireless-rrm-oper:enm-is-static-member
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:grp/wireless-rrm-oper:fra-sensor-coverage,leaf,uint8
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:oper-data,container,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:oper-data/wireless-rrm-oper:default-dca-channels,container,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:oper-data/wireless-rrm-oper:default-dca-channels/wireless-rrm-oper:channel,leaf-list,uint16
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:oper-data/wireless-rrm-oper:default-non-dca-channels,container,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:oper-data/wireless-rrm-oper:default-non-dca-channels/wireless-rrm-oper:channel,leaf-list,uint16
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:rrm-mgr-static-grp-member,list,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:rrm-mgr-static-grp-member/wireless-rrm-oper:cntrlr-name,leaf,string
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:rrm-mgr-static-grp-member/wireless-rrm-oper:cntrlr-ip-addr,leaf,inet:ip-address
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:rrm-mgr-static-grp-member/wireless-rrm-oper:has-joined,leaf,boolean
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:rrm-mgr-static-grp-member/wireless-rrm-oper:nack-reason,leaf,wireless-types:enm-rrm-grp-member-nack-reason
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:rrm-mgr-static-grp-member/wireless-rrm-oper:max-radio-num,leaf,uint16
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:rrm-mgr-static-grp-member/wireless-rrm-oper:last-join-cmd-ts,leaf,yang:date-and-time
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:rrm-mgr-grp-member,list,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:rrm-mgr-grp-member/wireless-rrm-oper:member-ip,leaf,inet:ip-address
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:rrm-mgr-grp-member/wireless-rrm-oper:member-secondary-ip,leaf,inet:ip-address
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:rrm-mgr-grp-member/wireless-rrm-oper:max-radio-cnt,leaf,uint16
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:rrm-mgr-grp-member/wireless-rrm-oper:curr-radio-cnt,leaf,uint16
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:main-data/wireless-rrm-oper:rrm-mgr-grp-member/wireless-rrm-oper:name,leaf,string
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:spectrum-device-table,list,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:spectrum-device-table/wireless-rrm-oper:device-id,leaf,yang:mac-address
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:spectrum-device-table/wireless-rrm-oper:last-updated-time,leaf,yang:date-and-time
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:spectrum-device-table/wireless-rrm-oper:idr-data,container,
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:spectrum-device-table/wireless-rrm-oper:idr-data/wireless-rrm-oper:detecting-ap-mac,leaf,yang:mac-address
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:spectrum-device-table/wireless-rrm-oper:idr-data/wireless-rrm-oper:affected-channel-list,leaf,string
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:spectrum-device-table/wireless-rrm-oper:idr-data/wireless-rrm-oper:util,leaf,uint16
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:spectrum-device-table/wireless-rrm-oper:idr-data/wireless-rrm-oper:power,leaf,int8
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:spectrum-device-table/wireless-rrm-oper:idr-data/wireless-rrm-oper:is-persistent,leaf,boolean
+/wireless-rrm-oper:rrm-oper-data/wireless-rrm-oper:spectrum-device-table/wireless-rrm-oper:idr-data/wireless-rrm-oper:class-type-enum,leaf,wireless-rrm-types:enm-cleanair-class-type

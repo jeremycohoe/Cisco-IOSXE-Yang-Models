@@ -1,0 +1,648 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-mobility-oper.yang
+module: Cisco-IOS-XE-wireless-mobility-oper
+  +--ro mobility-oper-data
+     +--ro mm-if-global-stats!
+     |  +--ro mblty-stats
+     |  |  +--ro event-data-allocs?                   uint32
+     |  |  +--ro event-data-frees?                    uint32
+     |  |  +--ro mmif-fsm-invalid-events?             uint32
+     |  |  +--ro mmif-schedule-errors?                uint32
+     |  |  +--ro mmif-fsm-failure?                    uint32
+     |  |  +--ro mmif-ipc-failure?                    uint32
+     |  |  +--ro mmif-db-failure?                     uint32
+     |  |  +--ro mmif-invalid-params-failure?         uint32
+     |  |  +--ro mmif-mm-msg-decode-failure?          uint32
+     |  |  +--ro mmif-unknown-failure?                uint32
+     |  |  +--ro mmif-client-handoff-failure?         uint32
+     |  |  +--ro mmif-client-handoff-success?         uint32
+     |  |  +--ro mmif-anchor-deny?                    uint32
+     |  |  +--ro mmif-remote-delete?                  uint32
+     |  |  +--ro mmif-tunnel-down-delete?             uint32
+     |  |  +--ro mmif-mbssid-down-event?              uint32
+     |  |  +--ro intra-wncd-roam-count?               uint32
+     |  |  +--ro remote-inter-ctrlr-roams?            uint32
+     |  |  +--ro remote-webauth-pend-roams?           uint32
+     |  |  +--ro anchor-request-sent?                 uint32
+     |  |  +--ro anchor-request-grant-received?       uint32
+     |  |  +--ro anchor-request-deny-received?        uint32
+     |  |  +--ro anchor-request-received?             uint32
+     |  |  +--ro anchor-request-grant-sent?           uint32
+     |  |  +--ro anchor-request-deny-sent?            uint32
+     |  |  +--ro handoff-received-ok?                 uint32
+     |  |  +--ro handoff-received-grp-mismatch?       uint32
+     |  |  +--ro handoff-received-ms-unknown?         uint32
+     |  |  +--ro handoff-received-ms-ssid?            uint32
+     |  |  +--ro handoff-received-deny?               uint32
+     |  |  +--ro handoff-sent-ok?                     uint32
+     |  |  +--ro handoff-sent-grp-mismatch?           uint32
+     |  |  +--ro handoff-sent-ms-unknown?             uint32
+     |  |  +--ro handoff-sent-ms-ssid?                uint32
+     |  |  +--ro handoff-sent-deny?                   uint32
+     |  |  +--ro handoff-received-l3-vlan-override?   uint32
+     |  |  +--ro handoff-received-unknown-peer?       uint32
+     |  |  +--ro handoff-sent-l3-vlan-override?       uint32
+     |  +--ro mblty-domain-info
+     |     +--ro mobility-domain-id?   uint16
+     +--ro mm-if-global-msg-stats!
+     |  +--ro ipc-stats* []
+     |     +--ro type?          uint32
+     |     +--ro allocs?        uint32
+     |     +--ro frees?         uint32
+     |     +--ro tx?            uint32
+     |     +--ro rx?            uint32
+     |     +--ro forwarded?     uint32
+     |     +--ro tx-errors?     uint32
+     |     +--ro rx-errors?     uint32
+     |     +--ro tx-retries?    uint32
+     |     +--ro drops?         uint32
+     |     +--ro built?         uint32
+     |     +--ro processed?     uint32
+     |     +--ro mm-msg-type?   wireless-mobility-types:mm-mobility-msg-type
+     +--ro mobility-global-stats!
+     |  +--ro mm-mblty-stats
+     |     +--ro event-data-allocs?                          uint32
+     |     +--ro event-data-frees?                           uint32
+     |     +--ro fsm-set-allocs?                             uint32
+     |     +--ro fsm-set-frees?                              uint32
+     |     +--ro timer-allocs?                               uint32
+     |     +--ro timer-frees?                                uint32
+     |     +--ro timer-starts?                               uint32
+     |     +--ro timer-stops?                                uint32
+     |     +--ro mcfsm-invalid-events?                       uint32
+     |     +--ro mcfsm-internal-error?                       uint32
+     |     +--ro joined-as-local?                            uint32
+     |     +--ro joined-as-foreign?                          uint32
+     |     +--ro joined-as-export-foreign?                   uint32
+     |     +--ro joined-as-export-anchor?                    uint32
+     |     +--ro local-to-anchor?                            uint32
+     |     +--ro anchor-to-local?                            uint32
+     |     +--ro local-delete?                               uint32
+     |     +--ro remote-delete?                              uint32
+     |     +--ro mcfsm-delete-internal-error?                uint32
+     |     +--ro mcfsm-roam-internal-error?                  uint32
+     |     +--ro l2-roam-count?                              uint32
+     |     +--ro l3-roam-count?                              uint32
+     |     +--ro flex-client-roaming-count?                  uint32
+     |     +--ro inter-wncd-roam-count?                      uint32
+     |     +--ro exp-anc-req-sent?                           uint32
+     |     +--ro exp-anc-req-received?                       uint32
+     |     +--ro exp-anc-resp-ok-sent?                       uint32
+     |     +--ro exp-anc-resp-generic-deny-sent?             uint32
+     |     +--ro exp-anc-resp-client-blacklisted-sent?       uint32
+     |     +--ro exp-anc-resp-limit-reached-sent?            uint32
+     |     +--ro exp-anc-resp-profile-mismatch-sent?         uint32
+     |     +--ro exp-anc-resp-ok-received?                   uint32
+     |     +--ro exp-anc-resp-generic-deny-received?         uint32
+     |     +--ro exp-anc-resp-client-blacklisted-received?   uint32
+     |     +--ro exp-anc-resp-limit-reached-received?        uint32
+     |     +--ro exp-anc-resp-profile-mismatch-received?     uint32
+     |     +--ro exp-anc-resp-unknown-received?              uint32
+     |     +--ro handoff-sent-ms-blacklist?                  uint32
+     |     +--ro handoff-received-ms-blacklist?              uint32
+     +--ro mobility-global-msg-stats!
+     |  +--ro ipc-stats* []
+     |  |  +--ro type?          uint32
+     |  |  +--ro allocs?        uint32
+     |  |  +--ro frees?         uint32
+     |  |  +--ro tx?            uint32
+     |  |  +--ro rx?            uint32
+     |  |  +--ro forwarded?     uint32
+     |  |  +--ro tx-errors?     uint32
+     |  |  +--ro rx-errors?     uint32
+     |  |  +--ro tx-retries?    uint32
+     |  |  +--ro drops?         uint32
+     |  |  +--ro built?         uint32
+     |  |  +--ro processed?     uint32
+     |  |  +--ro mm-msg-type?   wireless-mobility-types:mm-mobility-msg-type
+     |  +--ro dgram-stats* []
+     |  |  +--ro type?          uint32
+     |  |  +--ro allocs?        uint32
+     |  |  +--ro frees?         uint32
+     |  |  +--ro tx?            uint32
+     |  |  +--ro rx?            uint32
+     |  |  +--ro forwarded?     uint32
+     |  |  +--ro tx-errors?     uint32
+     |  |  +--ro rx-errors?     uint32
+     |  |  +--ro tx-retries?    uint32
+     |  |  +--ro drops?         uint32
+     |  |  +--ro built?         uint32
+     |  |  +--ro processed?     uint32
+     |  |  +--ro mm-msg-type?   wireless-mobility-types:mm-mobility-msg-type
+     |  +--ro dgram-data-stats* []
+     |     +--ro type?          uint32
+     |     +--ro allocs?        uint32
+     |     +--ro frees?         uint32
+     |     +--ro tx?            uint32
+     |     +--ro rx?            uint32
+     |     +--ro forwarded?     uint32
+     |     +--ro tx-errors?     uint32
+     |     +--ro rx-errors?     uint32
+     |     +--ro tx-retries?    uint32
+     |     +--ro drops?         uint32
+     |     +--ro built?         uint32
+     |     +--ro processed?     uint32
+     |     +--ro mm-msg-type?   wireless-mobility-types:mm-mobility-msg-type
+     +--ro mobility-client-data* [client-mac]
+     |  +--ro client-mac                yang:mac-address
+     |  +--ro client-ifid?              uint32
+     |  +--ro owner-instance?           uint8
+     |  +--ro assoc-time-stamp?         yang:date-and-time
+     |  +--ro mobility-state?           wireless-mobility-types:mm-mobility-state
+     |  +--ro client-role?              wireless-mobility-types:mm-client-role
+     |  +--ro client-type?              wireless-mobility-types:mm-client-type
+     |  +--ro client-mode?              wireless-mobility-types:mm-client-mode
+     |  +--ro client-roam-type?         wireless-mobility-types:mm-client-roam-type
+     |  +--ro peer-ip?                  inet:ip-address
+     |  +--ro entry-last-update-time?   yang:date-and-time
+     |  +--ro client-create-time?       yang:date-and-time
+     |  +--ro wlan-profile?             string
+     +--ro ap-cache* [mac-addr]
+     |  +--ro mac-addr         yang:mac-address
+     |  +--ro name?            string
+     |  +--ro controller-ip?   inet:ip-address
+     |  +--ro source?          wireless-mobility-oper:mobility-ap-list-source-type
+     +--ro ap-peer-list* [peer-ip]
+     |  +--ro peer-ip     inet:ip-address
+     |  +--ro ap-count?   uint32
+     |  +--ro source?     wireless-mobility-oper:mobility-ap-list-source-type
+     +--ro mobility-client-stats* [client-mac]
+     |  +--ro client-mac        yang:mac-address
+     |  +--ro mm-mblty-stats
+     |  |  +--ro event-data-allocs?                          uint32
+     |  |  +--ro event-data-frees?                           uint32
+     |  |  +--ro fsm-set-allocs?                             uint32
+     |  |  +--ro fsm-set-frees?                              uint32
+     |  |  +--ro timer-allocs?                               uint32
+     |  |  +--ro timer-frees?                                uint32
+     |  |  +--ro timer-starts?                               uint32
+     |  |  +--ro timer-stops?                                uint32
+     |  |  +--ro mcfsm-invalid-events?                       uint32
+     |  |  +--ro mcfsm-internal-error?                       uint32
+     |  |  +--ro joined-as-local?                            uint32
+     |  |  +--ro joined-as-foreign?                          uint32
+     |  |  +--ro joined-as-export-foreign?                   uint32
+     |  |  +--ro joined-as-export-anchor?                    uint32
+     |  |  +--ro local-to-anchor?                            uint32
+     |  |  +--ro anchor-to-local?                            uint32
+     |  |  +--ro local-delete?                               uint32
+     |  |  +--ro remote-delete?                              uint32
+     |  |  +--ro mcfsm-delete-internal-error?                uint32
+     |  |  +--ro mcfsm-roam-internal-error?                  uint32
+     |  |  +--ro l2-roam-count?                              uint32
+     |  |  +--ro l3-roam-count?                              uint32
+     |  |  +--ro flex-client-roaming-count?                  uint32
+     |  |  +--ro inter-wncd-roam-count?                      uint32
+     |  |  +--ro exp-anc-req-sent?                           uint32
+     |  |  +--ro exp-anc-req-received?                       uint32
+     |  |  +--ro exp-anc-resp-ok-sent?                       uint32
+     |  |  +--ro exp-anc-resp-generic-deny-sent?             uint32
+     |  |  +--ro exp-anc-resp-client-blacklisted-sent?       uint32
+     |  |  +--ro exp-anc-resp-limit-reached-sent?            uint32
+     |  |  +--ro exp-anc-resp-profile-mismatch-sent?         uint32
+     |  |  +--ro exp-anc-resp-ok-received?                   uint32
+     |  |  +--ro exp-anc-resp-generic-deny-received?         uint32
+     |  |  +--ro exp-anc-resp-client-blacklisted-received?   uint32
+     |  |  +--ro exp-anc-resp-limit-reached-received?        uint32
+     |  |  +--ro exp-anc-resp-profile-mismatch-received?     uint32
+     |  |  +--ro exp-anc-resp-unknown-received?              uint32
+     |  |  +--ro handoff-sent-ms-blacklist?                  uint32
+     |  |  +--ro handoff-received-ms-blacklist?              uint32
+     |  +--ro ipc-stats* []
+     |  |  +--ro type?          uint32
+     |  |  +--ro allocs?        uint32
+     |  |  +--ro frees?         uint32
+     |  |  +--ro tx?            uint32
+     |  |  +--ro rx?            uint32
+     |  |  +--ro forwarded?     uint32
+     |  |  +--ro tx-errors?     uint32
+     |  |  +--ro rx-errors?     uint32
+     |  |  +--ro tx-retries?    uint32
+     |  |  +--ro drops?         uint32
+     |  |  +--ro built?         uint32
+     |  |  +--ro processed?     uint32
+     |  |  +--ro mm-msg-type?   wireless-mobility-types:mm-mobility-msg-type
+     |  +--ro dgram-stats* []
+     |     +--ro type?          uint32
+     |     +--ro allocs?        uint32
+     |     +--ro frees?         uint32
+     |     +--ro tx?            uint32
+     |     +--ro rx?            uint32
+     |     +--ro forwarded?     uint32
+     |     +--ro tx-errors?     uint32
+     |     +--ro rx-errors?     uint32
+     |     +--ro tx-retries?    uint32
+     |     +--ro drops?         uint32
+     |     +--ro built?         uint32
+     |     +--ro processed?     uint32
+     |     +--ro mm-msg-type?   wireless-mobility-types:mm-mobility-msg-type
+     +--ro mobility-node-data* [node-ip]
+     |  +--ro node-ip                 inet:ip-address
+     |  +--ro nat-ip?                 inet:ip-address
+     |  +--ro node-mac-addr?          yang:mac-address
+     |  +--ro ulink-status?           wireless-mobility-types:unified-link-status
+     |  +--ro tunnel-ifid?            uint32
+     |  +--ro group-name?             string
+     |  +--ro num-clients?            uint32
+     |  +--ro tunnel-plumbed?         boolean
+     |  +--ro pmtu?                   uint32
+     |  +--ro peer-capability* []
+     |  |  +--ro arch?     wireless-mobility-types:arch-capability
+     |  |  +--ro dtls?     wireless-mobility-types:dtls-capability
+     |  |  +--ro tunnel?   wireless-mobility-types:tunnel-capability
+     |  +--ro ctrl-state
+     |  |  +--ro peer-responses-in-interval?   uint8
+     |  |  +--ro intervals-without-response?   uint8
+     |  |  +--ro peer-status?                  boolean
+     |  |  +--ro link-status?                  boolean
+     |  |  +--ro packet-failure-cnt?           uint32
+     |  |  +--ro flaps-cnt?                    uint32
+     |  |  +--ro last-flap-timestamp?          yang:date-and-time
+     |  +--ro data-state
+     |  |  +--ro peer-responses-in-interval?   uint8
+     |  |  +--ro intervals-without-response?   uint8
+     |  |  +--ro peer-status?                  boolean
+     |  |  +--ro link-status?                  boolean
+     |  |  +--ro packet-failure-cnt?           uint32
+     |  |  +--ro flaps-cnt?                    uint32
+     |  |  +--ro last-flap-timestamp?          yang:date-and-time
+     |  +--ro dtls-session-id?        uint64
+     |  +--ro data-dtls-session-id?   uint64
+     |  +--ro dtls-info* []
+     |  |  +--ro connection-status?   wireless-mobility-types:mm-dtls-status
+     |  +--ro is-anchor?              boolean
+     |  +--ro is-anchor-full?         boolean
+     |  +--ro num-exported-clients?   uint32
+     |  +--ro num-imported-clients?   uint32
+     |  +--ro policy-ids* []
+     |  |  +--ro id?   uint32
+     |  +--ro node-stats
+     |     +--ro l2-roam-cnt?                  uint32
+     |     +--ro l3-roam-cnt?                  uint32
+     |     +--ro handoff-recvd-ok?             uint32
+     |     +--ro handoff-recvd-grp-mismatch?   uint32
+     |     +--ro handoff-recvd-ms-unknown?     uint32
+     |     +--ro handoff-recvd-ms-blacklist?   uint32
+     |     +--ro handoff-recvd-ms-ssid?        uint32
+     |     +--ro handoff-recvd-deny?           uint32
+     |     +--ro handoff-sent-ok?              uint32
+     |     +--ro handoff-sent-grp-mismatch?    uint32
+     |     +--ro handoff-sent-ms-unknown?      uint32
+     |     +--ro handoff-sent-ms-blacklist?    uint32
+     |     +--ro handoff-sent-ms-ssid?         uint32
+     |     +--ro handoff-sent-deny?            uint32
+     +--ro wlan-client-limit* [wlan-profile]
+     |  +--ro wlan-profile          string
+     |  +--ro curr-clients-count?   uint32
+     +--ro sleeping-client-stats* [client-mac]
+     |  +--ro client-mac           yang:mac-address
+     |  +--ro vap-ssid?            string
+     |  +--ro sclient-timestamp?   yang:date-and-time
+     +--ro mm-ap-channel-list* [bgn channel]
+     |  +--ro bgn                           string
+     |  +--ro channel                       uint8
+     |  +--ro local-wncd-info?              uint32
+     |  +--ro mm-ap-channel-list-peer-ip* [node-ip]
+     |     +--ro node-ip    inet:ip-address
+     +--ro mm-ap-channel-peer-list* [node-ip bgn channel]
+     |  +--ro node-ip    inet:ip-address
+     |  +--ro bgn        string
+     |  +--ro channel    uint8
+     |  +--ro stale?     uint8
+     +--ro mobility-global-dtls-stats!
+        +--ro event-stats* []
+        |  +--ro connect-start?         uint32
+        |  +--ro connect-established?   uint32
+        |  +--ro close?                 uint32
+        |  +--ro key-plumb-start?       uint32
+        |  +--ro key-plumb-acked?       uint32
+        |  +--ro tunnel-type?           wireless-mobility-types:mm-msg-dgram-type
+        +--ro msg-stats* []
+           +--ro handshake-msg-tx?   uint32
+           +--ro handshake-msg-rx?   uint32
+           +--ro encrypted-msg-tx?   uint32
+           +--ro encrypted-msg-rx?   uint32
+           +--ro tunnel-type?        wireless-mobility-types:mm-msg-dgram-type
+Xpaths for model: Cisco-IOS-XE-wireless-mobility-oper.yang
+/wireless-mobility-oper:mobility-oper-data,container,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats,container,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats,container,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:event-data-allocs,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:event-data-frees,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:mmif-fsm-invalid-events,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:mmif-schedule-errors,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:mmif-fsm-failure,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:mmif-ipc-failure,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:mmif-db-failure,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:mmif-invalid-params-failure,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:mmif-mm-msg-decode-failure,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:mmif-unknown-failure,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:mmif-client-handoff-failure,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:mmif-client-handoff-success,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:mmif-anchor-deny,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:mmif-remote-delete,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:mmif-tunnel-down-delete,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:mmif-mbssid-down-event,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:intra-wncd-roam-count,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:remote-inter-ctrlr-roams,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:remote-webauth-pend-roams,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:anchor-request-sent,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:anchor-request-grant-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:anchor-request-deny-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:anchor-request-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:anchor-request-grant-sent,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:anchor-request-deny-sent,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:handoff-received-ok,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:handoff-received-grp-mismatch,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:handoff-received-ms-unknown,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:handoff-received-ms-ssid,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:handoff-received-deny,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:handoff-sent-ok,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:handoff-sent-grp-mismatch,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:handoff-sent-ms-unknown,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:handoff-sent-ms-ssid,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:handoff-sent-deny,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:handoff-received-l3-vlan-override,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:handoff-received-unknown-peer,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-stats/wireless-mobility-oper:handoff-sent-l3-vlan-override,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-domain-info,container,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-stats/wireless-mobility-oper:mblty-domain-info/wireless-mobility-oper:mobility-domain-id,leaf,uint16
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-msg-stats,container,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-msg-stats/wireless-mobility-oper:ipc-stats,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:type,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:allocs,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:frees,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:tx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:rx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:forwarded,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:tx-errors,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:rx-errors,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:tx-retries,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:drops,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:built,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:processed,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-if-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:mm-msg-type,leaf,wireless-mobility-types:mm-mobility-msg-type
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats,container,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats,container,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:event-data-allocs,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:event-data-frees,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:fsm-set-allocs,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:fsm-set-frees,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:timer-allocs,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:timer-frees,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:timer-starts,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:timer-stops,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:mcfsm-invalid-events,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:mcfsm-internal-error,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:joined-as-local,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:joined-as-foreign,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:joined-as-export-foreign,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:joined-as-export-anchor,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:local-to-anchor,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:anchor-to-local,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:local-delete,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:remote-delete,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:mcfsm-delete-internal-error,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:mcfsm-roam-internal-error,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:l2-roam-count,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:l3-roam-count,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:flex-client-roaming-count,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:inter-wncd-roam-count,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-req-sent,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-req-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-ok-sent,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-generic-deny-sent,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-client-blacklisted-sent,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-limit-reached-sent,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-profile-mismatch-sent,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-ok-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-generic-deny-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-client-blacklisted-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-limit-reached-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-profile-mismatch-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-unknown-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:handoff-sent-ms-blacklist,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:handoff-received-ms-blacklist,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats,container,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:ipc-stats,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:type,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:allocs,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:frees,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:tx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:rx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:forwarded,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:tx-errors,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:rx-errors,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:tx-retries,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:drops,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:built,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:processed,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:mm-msg-type,leaf,wireless-mobility-types:mm-mobility-msg-type
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-stats,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:type,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:allocs,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:frees,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:tx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:rx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:forwarded,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:tx-errors,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:rx-errors,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:tx-retries,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:drops,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:built,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:processed,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:mm-msg-type,leaf,wireless-mobility-types:mm-mobility-msg-type
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-data-stats,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-data-stats/wireless-mobility-oper:type,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-data-stats/wireless-mobility-oper:allocs,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-data-stats/wireless-mobility-oper:frees,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-data-stats/wireless-mobility-oper:tx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-data-stats/wireless-mobility-oper:rx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-data-stats/wireless-mobility-oper:forwarded,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-data-stats/wireless-mobility-oper:tx-errors,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-data-stats/wireless-mobility-oper:rx-errors,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-data-stats/wireless-mobility-oper:tx-retries,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-data-stats/wireless-mobility-oper:drops,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-data-stats/wireless-mobility-oper:built,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-data-stats/wireless-mobility-oper:processed,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-msg-stats/wireless-mobility-oper:dgram-data-stats/wireless-mobility-oper:mm-msg-type,leaf,wireless-mobility-types:mm-mobility-msg-type
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-data,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-data/wireless-mobility-oper:client-mac,leaf,yang:mac-address
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-data/wireless-mobility-oper:client-ifid,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-data/wireless-mobility-oper:owner-instance,leaf,uint8
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-data/wireless-mobility-oper:assoc-time-stamp,leaf,yang:date-and-time
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-data/wireless-mobility-oper:mobility-state,leaf,wireless-mobility-types:mm-mobility-state
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-data/wireless-mobility-oper:client-role,leaf,wireless-mobility-types:mm-client-role
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-data/wireless-mobility-oper:client-type,leaf,wireless-mobility-types:mm-client-type
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-data/wireless-mobility-oper:client-mode,leaf,wireless-mobility-types:mm-client-mode
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-data/wireless-mobility-oper:client-roam-type,leaf,wireless-mobility-types:mm-client-roam-type
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-data/wireless-mobility-oper:peer-ip,leaf,inet:ip-address
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-data/wireless-mobility-oper:entry-last-update-time,leaf,yang:date-and-time
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-data/wireless-mobility-oper:client-create-time,leaf,yang:date-and-time
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-data/wireless-mobility-oper:wlan-profile,leaf,string
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:ap-cache,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:ap-cache/wireless-mobility-oper:mac-addr,leaf,yang:mac-address
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:ap-cache/wireless-mobility-oper:name,leaf,string
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:ap-cache/wireless-mobility-oper:controller-ip,leaf,inet:ip-address
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:ap-cache/wireless-mobility-oper:source,leaf,wireless-mobility-oper:mobility-ap-list-source-type
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:ap-peer-list,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:ap-peer-list/wireless-mobility-oper:peer-ip,leaf,inet:ip-address
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:ap-peer-list/wireless-mobility-oper:ap-count,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:ap-peer-list/wireless-mobility-oper:source,leaf,wireless-mobility-oper:mobility-ap-list-source-type
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:client-mac,leaf,yang:mac-address
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats,container,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:event-data-allocs,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:event-data-frees,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:fsm-set-allocs,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:fsm-set-frees,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:timer-allocs,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:timer-frees,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:timer-starts,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:timer-stops,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:mcfsm-invalid-events,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:mcfsm-internal-error,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:joined-as-local,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:joined-as-foreign,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:joined-as-export-foreign,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:joined-as-export-anchor,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:local-to-anchor,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:anchor-to-local,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:local-delete,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:remote-delete,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:mcfsm-delete-internal-error,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:mcfsm-roam-internal-error,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:l2-roam-count,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:l3-roam-count,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:flex-client-roaming-count,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:inter-wncd-roam-count,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-req-sent,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-req-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-ok-sent,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-generic-deny-sent,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-client-blacklisted-sent,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-limit-reached-sent,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-profile-mismatch-sent,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-ok-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-generic-deny-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-client-blacklisted-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-limit-reached-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-profile-mismatch-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:exp-anc-resp-unknown-received,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:handoff-sent-ms-blacklist,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:mm-mblty-stats/wireless-mobility-oper:handoff-received-ms-blacklist,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:ipc-stats,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:type,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:allocs,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:frees,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:tx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:rx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:forwarded,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:tx-errors,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:rx-errors,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:tx-retries,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:drops,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:built,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:processed,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:ipc-stats/wireless-mobility-oper:mm-msg-type,leaf,wireless-mobility-types:mm-mobility-msg-type
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:dgram-stats,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:type,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:allocs,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:frees,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:tx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:rx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:forwarded,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:tx-errors,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:rx-errors,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:tx-retries,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:drops,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:built,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:processed,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-client-stats/wireless-mobility-oper:dgram-stats/wireless-mobility-oper:mm-msg-type,leaf,wireless-mobility-types:mm-mobility-msg-type
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-ip,leaf,inet:ip-address
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:nat-ip,leaf,inet:ip-address
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-mac-addr,leaf,yang:mac-address
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:ulink-status,leaf,wireless-mobility-types:unified-link-status
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:tunnel-ifid,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:group-name,leaf,string
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:num-clients,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:tunnel-plumbed,leaf,boolean
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:pmtu,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:peer-capability,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:peer-capability/wireless-mobility-oper:arch,leaf,wireless-mobility-types:arch-capability
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:peer-capability/wireless-mobility-oper:dtls,leaf,wireless-mobility-types:dtls-capability
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:peer-capability/wireless-mobility-oper:tunnel,leaf,wireless-mobility-types:tunnel-capability
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:ctrl-state,container,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:ctrl-state/wireless-mobility-oper:peer-responses-in-interval,leaf,uint8
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:ctrl-state/wireless-mobility-oper:intervals-without-response,leaf,uint8
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:ctrl-state/wireless-mobility-oper:peer-status,leaf,boolean
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:ctrl-state/wireless-mobility-oper:link-status,leaf,boolean
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:ctrl-state/wireless-mobility-oper:packet-failure-cnt,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:ctrl-state/wireless-mobility-oper:flaps-cnt,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:ctrl-state/wireless-mobility-oper:last-flap-timestamp,leaf,yang:date-and-time
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:data-state,container,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:data-state/wireless-mobility-oper:peer-responses-in-interval,leaf,uint8
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:data-state/wireless-mobility-oper:intervals-without-response,leaf,uint8
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:data-state/wireless-mobility-oper:peer-status,leaf,boolean
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:data-state/wireless-mobility-oper:link-status,leaf,boolean
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:data-state/wireless-mobility-oper:packet-failure-cnt,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:data-state/wireless-mobility-oper:flaps-cnt,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:data-state/wireless-mobility-oper:last-flap-timestamp,leaf,yang:date-and-time
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:dtls-session-id,leaf,uint64
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:data-dtls-session-id,leaf,uint64
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:dtls-info,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:dtls-info/wireless-mobility-oper:connection-status,leaf,wireless-mobility-types:mm-dtls-status
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:is-anchor,leaf,boolean
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:is-anchor-full,leaf,boolean
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:num-exported-clients,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:num-imported-clients,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:policy-ids,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:policy-ids/wireless-mobility-oper:id,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-stats,container,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-stats/wireless-mobility-oper:l2-roam-cnt,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-stats/wireless-mobility-oper:l3-roam-cnt,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-stats/wireless-mobility-oper:handoff-recvd-ok,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-stats/wireless-mobility-oper:handoff-recvd-grp-mismatch,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-stats/wireless-mobility-oper:handoff-recvd-ms-unknown,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-stats/wireless-mobility-oper:handoff-recvd-ms-blacklist,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-stats/wireless-mobility-oper:handoff-recvd-ms-ssid,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-stats/wireless-mobility-oper:handoff-recvd-deny,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-stats/wireless-mobility-oper:handoff-sent-ok,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-stats/wireless-mobility-oper:handoff-sent-grp-mismatch,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-stats/wireless-mobility-oper:handoff-sent-ms-unknown,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-stats/wireless-mobility-oper:handoff-sent-ms-blacklist,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-stats/wireless-mobility-oper:handoff-sent-ms-ssid,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-node-data/wireless-mobility-oper:node-stats/wireless-mobility-oper:handoff-sent-deny,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:wlan-client-limit,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:wlan-client-limit/wireless-mobility-oper:wlan-profile,leaf,string
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:wlan-client-limit/wireless-mobility-oper:curr-clients-count,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:sleeping-client-stats,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:sleeping-client-stats/wireless-mobility-oper:client-mac,leaf,yang:mac-address
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:sleeping-client-stats/wireless-mobility-oper:vap-ssid,leaf,string
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:sleeping-client-stats/wireless-mobility-oper:sclient-timestamp,leaf,yang:date-and-time
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-ap-channel-list,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-ap-channel-list/wireless-mobility-oper:bgn,leaf,string
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-ap-channel-list/wireless-mobility-oper:channel,leaf,uint8
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-ap-channel-list/wireless-mobility-oper:local-wncd-info,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-ap-channel-list/wireless-mobility-oper:mm-ap-channel-list-peer-ip,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-ap-channel-list/wireless-mobility-oper:mm-ap-channel-list-peer-ip/wireless-mobility-oper:node-ip,leaf,inet:ip-address
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-ap-channel-peer-list,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-ap-channel-peer-list/wireless-mobility-oper:node-ip,leaf,inet:ip-address
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-ap-channel-peer-list/wireless-mobility-oper:bgn,leaf,string
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-ap-channel-peer-list/wireless-mobility-oper:channel,leaf,uint8
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mm-ap-channel-peer-list/wireless-mobility-oper:stale,leaf,uint8
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-dtls-stats,container,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-dtls-stats/wireless-mobility-oper:event-stats,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-dtls-stats/wireless-mobility-oper:event-stats/wireless-mobility-oper:connect-start,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-dtls-stats/wireless-mobility-oper:event-stats/wireless-mobility-oper:connect-established,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-dtls-stats/wireless-mobility-oper:event-stats/wireless-mobility-oper:close,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-dtls-stats/wireless-mobility-oper:event-stats/wireless-mobility-oper:key-plumb-start,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-dtls-stats/wireless-mobility-oper:event-stats/wireless-mobility-oper:key-plumb-acked,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-dtls-stats/wireless-mobility-oper:event-stats/wireless-mobility-oper:tunnel-type,leaf,wireless-mobility-types:mm-msg-dgram-type
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-dtls-stats/wireless-mobility-oper:msg-stats,list,
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-dtls-stats/wireless-mobility-oper:msg-stats/wireless-mobility-oper:handshake-msg-tx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-dtls-stats/wireless-mobility-oper:msg-stats/wireless-mobility-oper:handshake-msg-rx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-dtls-stats/wireless-mobility-oper:msg-stats/wireless-mobility-oper:encrypted-msg-tx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-dtls-stats/wireless-mobility-oper:msg-stats/wireless-mobility-oper:encrypted-msg-rx,leaf,uint32
+/wireless-mobility-oper:mobility-oper-data/wireless-mobility-oper:mobility-global-dtls-stats/wireless-mobility-oper:msg-stats/wireless-mobility-oper:tunnel-type,leaf,wireless-mobility-types:mm-msg-dgram-type

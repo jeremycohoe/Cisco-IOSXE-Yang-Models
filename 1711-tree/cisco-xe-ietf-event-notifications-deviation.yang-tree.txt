@@ -1,0 +1,3 @@
+ 
+KPI for model: cisco-xe-ietf-event-notifications-deviation.yang
+Xpaths for model: cisco-xe-ietf-event-notifications-deviation.yang

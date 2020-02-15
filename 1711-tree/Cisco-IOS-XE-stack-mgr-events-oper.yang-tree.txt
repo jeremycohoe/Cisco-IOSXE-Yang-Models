@@ -1,0 +1,16 @@
+ 
+KPI for model: Cisco-IOS-XE-stack-mgr-events-oper.yang
+module: Cisco-IOS-XE-stack-mgr-events-oper
+  +--ro stack-mgr-events
+
+  notifications:
+    +---n stkmevent
+       +--ro severity?        stack-mgr-events-oper:stack-mgr-notification-severity
+       +--ro host-name?       string
+       +--ro system-ip?       inet:ip-address
+       +--ro event?           stack-mgr-events-oper:stack-mgr-eventq-event-type
+       +--ro member-number?   uint8
+       +--ro serial-number?   string
+       +--ro pid?             string
+Xpaths for model: Cisco-IOS-XE-stack-mgr-events-oper.yang
+/stack-mgr-events-oper:stack-mgr-events,container,

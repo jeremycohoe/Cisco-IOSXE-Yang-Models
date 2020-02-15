@@ -1,0 +1,3 @@
+ 
+KPI for model: openconfig-isis-types.yang
+Xpaths for model: openconfig-isis-types.yang

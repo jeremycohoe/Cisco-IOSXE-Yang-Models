@@ -1,0 +1,660 @@
+ 
+KPI for model: Cisco-IOS-XE-rsvp.yang
+
+module: Cisco-IOS-XE-rsvp
+  augment /ios:native/ios:ip:
+    +--rw rsvp
+       +--rw authentication!
+       |  +--rw neighbor
+       |  |  +--rw access-list
+       |  |  |  +--rw number* [acl-number]
+       |  |  |  |  +--rw acl-number     uint8
+       |  |  |  |  +--rw challenge?     empty
+       |  |  |  |  +--rw key-chain?     string
+       |  |  |  |  +--rw lifetime
+       |  |  |  |  |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  |  |  |  +--rw type?          enumeration
+       |  |  |  |  +--rw window-size?   uint8
+       |  |  |  +--rw name* [acl-name]
+       |  |  |     +--rw acl-name       string
+       |  |  |     +--rw challenge?     empty
+       |  |  |     +--rw key-chain?     string
+       |  |  |     +--rw lifetime
+       |  |  |     |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  |  |     +--rw type?          enumeration
+       |  |  |     +--rw window-size?   uint8
+       |  |  +--rw address
+       |  |     +--rw ipv4* [ipv4-address]
+       |  |        +--rw ipv4-address    inet:ipv4-address
+       |  |        +--rw challenge?      empty
+       |  |        +--rw key-chain?      string
+       |  |        +--rw lifetime
+       |  |        |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  |        +--rw type?           enumeration
+       |  |        +--rw window-size?    uint8
+       |  +--rw challenge?     empty
+       |  +--rw key-chain?     string
+       |  +--rw lifetime
+       |  |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  +--rw type?          enumeration
+       |  +--rw window-size?   uint8
+       +--rw signalling
+          +--rw fast-local-repair
+          |  +--rw notifications?   uint16
+          |  +--rw rate?            uint16
+          +--rw hello!
+          |  +--rw bfd?                empty
+          |  +--rw graceful-restart
+          |  |  +--rw dscp?      uint8
+          |  |  +--rw mode
+          |  |  |  +--rw full?            empty
+          |  |  |  +--rw help-neighbor?   empty
+          |  |  +--rw refresh
+          |  |  |  +--rw interval?   uint16
+          |  |  |  +--rw misses?     uint8
+          |  |  +--rw send
+          |  |     +--rw recovery-time?   uint32
+          |  +--rw statistics?         empty
+          +--rw initial-retransmit-delay?   uint16
+          +--rw patherr
+          |  +--rw state-removal!
+          |     +--rw neighbor?   uint8
+          +--rw rate-limit!
+          |  +--rw burst?     uint16
+          |  +--rw limit?     uint16
+          |  +--rw maxsize?   uint16
+          |  +--rw period?    uint16
+          +--rw refresh
+             +--rw interval?    uint32
+             +--rw misses?      uint8
+             +--rw reduction!
+                +--rw ack-delay?   uint16
+  augment /ios:native/ios:interface/ios:FastEthernet/ios:ip:
+    +--rw rsvp
+       +--rw authentication!
+       |  +--rw key?           string
+       |  +--rw challenge?     empty
+       |  +--rw key-chain?     string
+       |  +--rw lifetime
+       |  |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  +--rw type?          enumeration
+       |  +--rw window-size?   uint8
+       +--rw bandwidth!
+       |  +--rw value
+       |  |  +--rw value?      uint32
+       |  |  +--rw sub-pool?   uint32
+       |  +--rw percent?   uint16
+       |  +--rw mam
+       |     +--rw max-reservable-bw!
+       |        +--rw value?   uint32
+       |        +--rw bc0?     uint32
+       |        +--rw bc1?     uint32
+       +--rw neighbor!
+       |  +--rw acl-number?   uint8
+       +--rw precedence
+       |  +--rw conform?   uint8
+       |  +--rw exceed?    uint8
+       +--rw signalling
+       |  +--rw dscp?                uint8
+       |  +--rw fast-local-repair
+       |  |  +--rw wait-time?   uint16
+       |  +--rw hello!
+       |     +--rw bfd?                empty
+       |     +--rw dscp?               uint8
+       |     +--rw fast-reroute
+       |     |  +--rw dscp?      uint8
+       |     |  +--rw refresh
+       |     |     +--rw interval?   uint16
+       |     |     +--rw misses?     uint8
+       |     +--rw graceful-restart?   empty
+       |     +--rw refresh
+       |     |  +--rw interval?   uint16
+       |     |  +--rw misses?     uint8
+       |     +--rw reroute
+       |        +--rw dscp?      uint8
+       |        +--rw refresh
+       |           +--rw interval?   uint16
+       |           +--rw misses?     uint8
+       +--rw tos
+          +--rw conform?   uint8
+          +--rw exceed?    uint8
+  augment /ios:native/ios:interface/ios:GigabitEthernet/ios:ip:
+    +--rw rsvp
+       +--rw authentication!
+       |  +--rw key?           string
+       |  +--rw challenge?     empty
+       |  +--rw key-chain?     string
+       |  +--rw lifetime
+       |  |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  +--rw type?          enumeration
+       |  +--rw window-size?   uint8
+       +--rw bandwidth!
+       |  +--rw value
+       |  |  +--rw value?      uint32
+       |  |  +--rw sub-pool?   uint32
+       |  +--rw percent?   uint16
+       |  +--rw mam
+       |     +--rw max-reservable-bw!
+       |        +--rw value?   uint32
+       |        +--rw bc0?     uint32
+       |        +--rw bc1?     uint32
+       +--rw neighbor!
+       |  +--rw acl-number?   uint8
+       +--rw precedence
+       |  +--rw conform?   uint8
+       |  +--rw exceed?    uint8
+       +--rw signalling
+       |  +--rw dscp?                uint8
+       |  +--rw fast-local-repair
+       |  |  +--rw wait-time?   uint16
+       |  +--rw hello!
+       |     +--rw bfd?                empty
+       |     +--rw dscp?               uint8
+       |     +--rw fast-reroute
+       |     |  +--rw dscp?      uint8
+       |     |  +--rw refresh
+       |     |     +--rw interval?   uint16
+       |     |     +--rw misses?     uint8
+       |     +--rw graceful-restart?   empty
+       |     +--rw refresh
+       |     |  +--rw interval?   uint16
+       |     |  +--rw misses?     uint8
+       |     +--rw reroute
+       |        +--rw dscp?      uint8
+       |        +--rw refresh
+       |           +--rw interval?   uint16
+       |           +--rw misses?     uint8
+       +--rw tos
+          +--rw conform?   uint8
+          +--rw exceed?    uint8
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet/ios:ip:
+    +--rw rsvp
+       +--rw authentication!
+       |  +--rw key?           string
+       |  +--rw challenge?     empty
+       |  +--rw key-chain?     string
+       |  +--rw lifetime
+       |  |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  +--rw type?          enumeration
+       |  +--rw window-size?   uint8
+       +--rw bandwidth!
+       |  +--rw value
+       |  |  +--rw value?      uint32
+       |  |  +--rw sub-pool?   uint32
+       |  +--rw percent?   uint16
+       |  +--rw mam
+       |     +--rw max-reservable-bw!
+       |        +--rw value?   uint32
+       |        +--rw bc0?     uint32
+       |        +--rw bc1?     uint32
+       +--rw neighbor!
+       |  +--rw acl-number?   uint8
+       +--rw precedence
+       |  +--rw conform?   uint8
+       |  +--rw exceed?    uint8
+       +--rw signalling
+       |  +--rw dscp?                uint8
+       |  +--rw fast-local-repair
+       |  |  +--rw wait-time?   uint16
+       |  +--rw hello!
+       |     +--rw bfd?                empty
+       |     +--rw dscp?               uint8
+       |     +--rw fast-reroute
+       |     |  +--rw dscp?      uint8
+       |     |  +--rw refresh
+       |     |     +--rw interval?   uint16
+       |     |     +--rw misses?     uint8
+       |     +--rw graceful-restart?   empty
+       |     +--rw refresh
+       |     |  +--rw interval?   uint16
+       |     |  +--rw misses?     uint8
+       |     +--rw reroute
+       |        +--rw dscp?      uint8
+       |        +--rw refresh
+       |           +--rw interval?   uint16
+       |           +--rw misses?     uint8
+       +--rw tos
+          +--rw conform?   uint8
+          +--rw exceed?    uint8
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet/ios:ip:
+    +--rw rsvp
+       +--rw authentication!
+       |  +--rw key?           string
+       |  +--rw challenge?     empty
+       |  +--rw key-chain?     string
+       |  +--rw lifetime
+       |  |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  +--rw type?          enumeration
+       |  +--rw window-size?   uint8
+       +--rw bandwidth!
+       |  +--rw value
+       |  |  +--rw value?      uint32
+       |  |  +--rw sub-pool?   uint32
+       |  +--rw percent?   uint16
+       |  +--rw mam
+       |     +--rw max-reservable-bw!
+       |        +--rw value?   uint32
+       |        +--rw bc0?     uint32
+       |        +--rw bc1?     uint32
+       +--rw neighbor!
+       |  +--rw acl-number?   uint8
+       +--rw precedence
+       |  +--rw conform?   uint8
+       |  +--rw exceed?    uint8
+       +--rw signalling
+       |  +--rw dscp?                uint8
+       |  +--rw fast-local-repair
+       |  |  +--rw wait-time?   uint16
+       |  +--rw hello!
+       |     +--rw bfd?                empty
+       |     +--rw dscp?               uint8
+       |     +--rw fast-reroute
+       |     |  +--rw dscp?      uint8
+       |     |  +--rw refresh
+       |     |     +--rw interval?   uint16
+       |     |     +--rw misses?     uint8
+       |     +--rw graceful-restart?   empty
+       |     +--rw refresh
+       |     |  +--rw interval?   uint16
+       |     |  +--rw misses?     uint8
+       |     +--rw reroute
+       |        +--rw dscp?      uint8
+       |        +--rw refresh
+       |           +--rw interval?   uint16
+       |           +--rw misses?     uint8
+       +--rw tos
+          +--rw conform?   uint8
+          +--rw exceed?    uint8
+  augment /ios:native/ios:interface/ios:AppGigabitEthernet/ios:ip:
+    +--rw rsvp
+       +--rw authentication!
+       |  +--rw key?           string
+       |  +--rw challenge?     empty
+       |  +--rw key-chain?     string
+       |  +--rw lifetime
+       |  |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  +--rw type?          enumeration
+       |  +--rw window-size?   uint8
+       +--rw bandwidth!
+       |  +--rw value
+       |  |  +--rw value?      uint32
+       |  |  +--rw sub-pool?   uint32
+       |  +--rw percent?   uint16
+       |  +--rw mam
+       |     +--rw max-reservable-bw!
+       |        +--rw value?   uint32
+       |        +--rw bc0?     uint32
+       |        +--rw bc1?     uint32
+       +--rw neighbor!
+       |  +--rw acl-number?   uint8
+       +--rw precedence
+       |  +--rw conform?   uint8
+       |  +--rw exceed?    uint8
+       +--rw signalling
+       |  +--rw dscp?                uint8
+       |  +--rw fast-local-repair
+       |  |  +--rw wait-time?   uint16
+       |  +--rw hello!
+       |     +--rw bfd?                empty
+       |     +--rw dscp?               uint8
+       |     +--rw fast-reroute
+       |     |  +--rw dscp?      uint8
+       |     |  +--rw refresh
+       |     |     +--rw interval?   uint16
+       |     |     +--rw misses?     uint8
+       |     +--rw graceful-restart?   empty
+       |     +--rw refresh
+       |     |  +--rw interval?   uint16
+       |     |  +--rw misses?     uint8
+       |     +--rw reroute
+       |        +--rw dscp?      uint8
+       |        +--rw refresh
+       |           +--rw interval?   uint16
+       |           +--rw misses?     uint8
+       +--rw tos
+          +--rw conform?   uint8
+          +--rw exceed?    uint8
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE/ios:ip:
+    +--rw rsvp
+       +--rw authentication!
+       |  +--rw key?           string
+       |  +--rw challenge?     empty
+       |  +--rw key-chain?     string
+       |  +--rw lifetime
+       |  |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  +--rw type?          enumeration
+       |  +--rw window-size?   uint8
+       +--rw bandwidth!
+       |  +--rw value
+       |  |  +--rw value?      uint32
+       |  |  +--rw sub-pool?   uint32
+       |  +--rw percent?   uint16
+       |  +--rw mam
+       |     +--rw max-reservable-bw!
+       |        +--rw value?   uint32
+       |        +--rw bc0?     uint32
+       |        +--rw bc1?     uint32
+       +--rw neighbor!
+       |  +--rw acl-number?   uint8
+       +--rw precedence
+       |  +--rw conform?   uint8
+       |  +--rw exceed?    uint8
+       +--rw signalling
+       |  +--rw dscp?                uint8
+       |  +--rw fast-local-repair
+       |  |  +--rw wait-time?   uint16
+       |  +--rw hello!
+       |     +--rw bfd?                empty
+       |     +--rw dscp?               uint8
+       |     +--rw fast-reroute
+       |     |  +--rw dscp?      uint8
+       |     |  +--rw refresh
+       |     |     +--rw interval?   uint16
+       |     |     +--rw misses?     uint8
+       |     +--rw graceful-restart?   empty
+       |     +--rw refresh
+       |     |  +--rw interval?   uint16
+       |     |  +--rw misses?     uint8
+       |     +--rw reroute
+       |        +--rw dscp?      uint8
+       |        +--rw refresh
+       |           +--rw interval?   uint16
+       |           +--rw misses?     uint8
+       +--rw tos
+          +--rw conform?   uint8
+          +--rw exceed?    uint8
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet/ios:ip:
+    +--rw rsvp
+       +--rw authentication!
+       |  +--rw key?           string
+       |  +--rw challenge?     empty
+       |  +--rw key-chain?     string
+       |  +--rw lifetime
+       |  |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  +--rw type?          enumeration
+       |  +--rw window-size?   uint8
+       +--rw bandwidth!
+       |  +--rw value
+       |  |  +--rw value?      uint32
+       |  |  +--rw sub-pool?   uint32
+       |  +--rw percent?   uint16
+       |  +--rw mam
+       |     +--rw max-reservable-bw!
+       |        +--rw value?   uint32
+       |        +--rw bc0?     uint32
+       |        +--rw bc1?     uint32
+       +--rw neighbor!
+       |  +--rw acl-number?   uint8
+       +--rw precedence
+       |  +--rw conform?   uint8
+       |  +--rw exceed?    uint8
+       +--rw signalling
+       |  +--rw dscp?                uint8
+       |  +--rw fast-local-repair
+       |  |  +--rw wait-time?   uint16
+       |  +--rw hello!
+       |     +--rw bfd?                empty
+       |     +--rw dscp?               uint8
+       |     +--rw fast-reroute
+       |     |  +--rw dscp?      uint8
+       |     |  +--rw refresh
+       |     |     +--rw interval?   uint16
+       |     |     +--rw misses?     uint8
+       |     +--rw graceful-restart?   empty
+       |     +--rw refresh
+       |     |  +--rw interval?   uint16
+       |     |  +--rw misses?     uint8
+       |     +--rw reroute
+       |        +--rw dscp?      uint8
+       |        +--rw refresh
+       |           +--rw interval?   uint16
+       |           +--rw misses?     uint8
+       +--rw tos
+          +--rw conform?   uint8
+          +--rw exceed?    uint8
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet/ios:ip:
+    +--rw rsvp
+       +--rw authentication!
+       |  +--rw key?           string
+       |  +--rw challenge?     empty
+       |  +--rw key-chain?     string
+       |  +--rw lifetime
+       |  |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  +--rw type?          enumeration
+       |  +--rw window-size?   uint8
+       +--rw bandwidth!
+       |  +--rw value
+       |  |  +--rw value?      uint32
+       |  |  +--rw sub-pool?   uint32
+       |  +--rw percent?   uint16
+       |  +--rw mam
+       |     +--rw max-reservable-bw!
+       |        +--rw value?   uint32
+       |        +--rw bc0?     uint32
+       |        +--rw bc1?     uint32
+       +--rw neighbor!
+       |  +--rw acl-number?   uint8
+       +--rw precedence
+       |  +--rw conform?   uint8
+       |  +--rw exceed?    uint8
+       +--rw signalling
+       |  +--rw dscp?                uint8
+       |  +--rw fast-local-repair
+       |  |  +--rw wait-time?   uint16
+       |  +--rw hello!
+       |     +--rw bfd?                empty
+       |     +--rw dscp?               uint8
+       |     +--rw fast-reroute
+       |     |  +--rw dscp?      uint8
+       |     |  +--rw refresh
+       |     |     +--rw interval?   uint16
+       |     |     +--rw misses?     uint8
+       |     +--rw graceful-restart?   empty
+       |     +--rw refresh
+       |     |  +--rw interval?   uint16
+       |     |  +--rw misses?     uint8
+       |     +--rw reroute
+       |        +--rw dscp?      uint8
+       |        +--rw refresh
+       |           +--rw interval?   uint16
+       |           +--rw misses?     uint8
+       +--rw tos
+          +--rw conform?   uint8
+          +--rw exceed?    uint8
+  augment /ios:native/ios:interface/ios:HundredGigE/ios:ip:
+    +--rw rsvp
+       +--rw authentication!
+       |  +--rw key?           string
+       |  +--rw challenge?     empty
+       |  +--rw key-chain?     string
+       |  +--rw lifetime
+       |  |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  +--rw type?          enumeration
+       |  +--rw window-size?   uint8
+       +--rw bandwidth!
+       |  +--rw value
+       |  |  +--rw value?      uint32
+       |  |  +--rw sub-pool?   uint32
+       |  +--rw percent?   uint16
+       |  +--rw mam
+       |     +--rw max-reservable-bw!
+       |        +--rw value?   uint32
+       |        +--rw bc0?     uint32
+       |        +--rw bc1?     uint32
+       +--rw neighbor!
+       |  +--rw acl-number?   uint8
+       +--rw precedence
+       |  +--rw conform?   uint8
+       |  +--rw exceed?    uint8
+       +--rw signalling
+       |  +--rw dscp?                uint8
+       |  +--rw fast-local-repair
+       |  |  +--rw wait-time?   uint16
+       |  +--rw hello!
+       |     +--rw bfd?                empty
+       |     +--rw dscp?               uint8
+       |     +--rw fast-reroute
+       |     |  +--rw dscp?      uint8
+       |     |  +--rw refresh
+       |     |     +--rw interval?   uint16
+       |     |     +--rw misses?     uint8
+       |     +--rw graceful-restart?   empty
+       |     +--rw refresh
+       |     |  +--rw interval?   uint16
+       |     |  +--rw misses?     uint8
+       |     +--rw reroute
+       |        +--rw dscp?      uint8
+       |        +--rw refresh
+       |           +--rw interval?   uint16
+       |           +--rw misses?     uint8
+       +--rw tos
+          +--rw conform?   uint8
+          +--rw exceed?    uint8
+  augment /ios:native/ios:interface/ios:Port-channel/ios:ip:
+    +--rw rsvp
+       +--rw authentication!
+       |  +--rw key?           string
+       |  +--rw challenge?     empty
+       |  +--rw key-chain?     string
+       |  +--rw lifetime
+       |  |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  +--rw type?          enumeration
+       |  +--rw window-size?   uint8
+       +--rw bandwidth!
+       |  +--rw value
+       |  |  +--rw value?      uint32
+       |  |  +--rw sub-pool?   uint32
+       |  +--rw percent?   uint16
+       |  +--rw mam
+       |     +--rw max-reservable-bw!
+       |        +--rw value?   uint32
+       |        +--rw bc0?     uint32
+       |        +--rw bc1?     uint32
+       +--rw neighbor!
+       |  +--rw acl-number?   uint8
+       +--rw precedence
+       |  +--rw conform?   uint8
+       |  +--rw exceed?    uint8
+       +--rw signalling
+       |  +--rw dscp?                uint8
+       |  +--rw fast-local-repair
+       |  |  +--rw wait-time?   uint16
+       |  +--rw hello!
+       |     +--rw bfd?                empty
+       |     +--rw dscp?               uint8
+       |     +--rw fast-reroute
+       |     |  +--rw dscp?      uint8
+       |     |  +--rw refresh
+       |     |     +--rw interval?   uint16
+       |     |     +--rw misses?     uint8
+       |     +--rw graceful-restart?   empty
+       |     +--rw refresh
+       |     |  +--rw interval?   uint16
+       |     |  +--rw misses?     uint8
+       |     +--rw reroute
+       |        +--rw dscp?      uint8
+       |        +--rw refresh
+       |           +--rw interval?   uint16
+       |           +--rw misses?     uint8
+       +--rw tos
+          +--rw conform?   uint8
+          +--rw exceed?    uint8
+  augment /ios:native/ios:interface/ios:Loopback/ios:ip:
+    +--rw rsvp
+       +--rw authentication!
+       |  +--rw key?           string
+       |  +--rw challenge?     empty
+       |  +--rw key-chain?     string
+       |  +--rw lifetime
+       |  |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  +--rw type?          enumeration
+       |  +--rw window-size?   uint8
+       +--rw bandwidth!
+       |  +--rw value
+       |  |  +--rw value?      uint32
+       |  |  +--rw sub-pool?   uint32
+       |  +--rw percent?   uint16
+       |  +--rw mam
+       |     +--rw max-reservable-bw!
+       |        +--rw value?   uint32
+       |        +--rw bc0?     uint32
+       |        +--rw bc1?     uint32
+       +--rw neighbor!
+       |  +--rw acl-number?   uint8
+       +--rw precedence
+       |  +--rw conform?   uint8
+       |  +--rw exceed?    uint8
+       +--rw signalling
+       |  +--rw dscp?                uint8
+       |  +--rw fast-local-repair
+       |  |  +--rw wait-time?   uint16
+       |  +--rw hello!
+       |     +--rw bfd?                empty
+       |     +--rw dscp?               uint8
+       |     +--rw fast-reroute
+       |     |  +--rw dscp?      uint8
+       |     |  +--rw refresh
+       |     |     +--rw interval?   uint16
+       |     |     +--rw misses?     uint8
+       |     +--rw graceful-restart?   empty
+       |     +--rw refresh
+       |     |  +--rw interval?   uint16
+       |     |  +--rw misses?     uint8
+       |     +--rw reroute
+       |        +--rw dscp?      uint8
+       |        +--rw refresh
+       |           +--rw interval?   uint16
+       |           +--rw misses?     uint8
+       +--rw tos
+          +--rw conform?   uint8
+          +--rw exceed?    uint8
+  augment /ios:native/ios:interface/ios:Tunnel/ios:ip:
+    +--rw rsvp
+       +--rw authentication!
+       |  +--rw key?           string
+       |  +--rw challenge?     empty
+       |  +--rw key-chain?     string
+       |  +--rw lifetime
+       |  |  +--rw hh-mm-ss?   ios-types:hhmmss-type
+       |  +--rw type?          enumeration
+       |  +--rw window-size?   uint8
+       +--rw bandwidth!
+       |  +--rw value
+       |  |  +--rw value?      uint32
+       |  |  +--rw sub-pool?   uint32
+       |  +--rw percent?   uint16
+       |  +--rw mam
+       |     +--rw max-reservable-bw!
+       |        +--rw value?   uint32
+       |        +--rw bc0?     uint32
+       |        +--rw bc1?     uint32
+       +--rw neighbor!
+       |  +--rw acl-number?   uint8
+       +--rw precedence
+       |  +--rw conform?   uint8
+       |  +--rw exceed?    uint8
+       +--rw signalling
+       |  +--rw dscp?                uint8
+       |  +--rw fast-local-repair
+       |  |  +--rw wait-time?   uint16
+       |  +--rw hello!
+       |     +--rw bfd?                empty
+       |     +--rw dscp?               uint8
+       |     +--rw fast-reroute
+       |     |  +--rw dscp?      uint8
+       |     |  +--rw refresh
+       |     |     +--rw interval?   uint16
+       |     |     +--rw misses?     uint8
+       |     +--rw graceful-restart?   empty
+       |     +--rw refresh
+       |     |  +--rw interval?   uint16
+       |     |  +--rw misses?     uint8
+       |     +--rw reroute
+       |        +--rw dscp?      uint8
+       |        +--rw refresh
+       |           +--rw interval?   uint16
+       |           +--rw misses?     uint8
+       +--rw tos
+          +--rw conform?   uint8
+          +--rw exceed?    uint8
+Xpaths for model: Cisco-IOS-XE-rsvp.yang

@@ -1,0 +1,3 @@
+ 
+KPI for model: openconfig-network-instance-types.yang
+Xpaths for model: openconfig-network-instance-types.yang

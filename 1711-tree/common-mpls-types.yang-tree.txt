@@ -1,0 +1,3 @@
+ 
+KPI for model: common-mpls-types.yang
+Xpaths for model: common-mpls-types.yang

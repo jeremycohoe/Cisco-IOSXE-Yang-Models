@@ -1,0 +1,321 @@
+ 
+KPI for model: Cisco-IOS-XE-power.yang
+
+module: Cisco-IOS-XE-power
+  augment /ios:native:
+    +--rw power
+       +--rw inline!
+       |  +--rw consumption
+       |  |  +--rw default?   uint16
+       |  +--rw logging
+       |     +--rw global?   empty
+       +--rw redundancy-mode-config
+       |  +--rw combined?    empty
+       |  +--rw redundant
+       |     +--rw n-plus-one?   uint8
+       |     +--rw n-plus-n*     uint8
+       x--rw redundancy-mode?          enumeration
+       +--rw supply
+       |  +--rw autoLC
+       |     +--rw priority*   uint8
+       |     +--rw shutdown?   empty
+       +--rw max-min?                  enumeration
+       +--rw inputs?                   uint8
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw power
+       +--rw efficient-ethernet
+       |  +--rw auto?   empty
+       +--rw inline
+          +--rw consumption?           uint16
+          +--rw (auto-static-never)?
+          |  +--:(never-choice)
+          |  |  +--rw never-choice?    empty
+          |  +--:(auto-choice)
+          |  |  +--rw auto-choice!
+          |  |     +--rw max?   int32
+          |  +--:(static-choice)
+          |     +--rw static-choice!
+          |        +--rw max?   int32
+          x--rw never?                 empty
+          x--rw auto!
+          |  x--rw max?   int32
+          +--rw four-pair
+          |  +--rw forced?   empty
+          +--rw police!
+          |  +--rw action
+          |     +--rw errdisable?   empty
+          |     +--rw log?          empty
+          +--rw port
+          |  +--rw poe-ha?             empty
+          |  +--rw perpetual-poe-ha?   empty
+          |  +--rw two-event?          empty
+          |  +--rw twox-mode?          empty
+          |  +--rw no-xtalk-wa?        empty
+          |  +--rw priority?           enumeration
+          x--rw static!
+             x--rw max?   int32
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw power
+       +--rw efficient-ethernet
+       |  +--rw auto?   empty
+       +--rw inline
+          +--rw consumption?           uint16
+          +--rw (auto-static-never)?
+          |  +--:(never-choice)
+          |  |  +--rw never-choice?    empty
+          |  +--:(auto-choice)
+          |  |  +--rw auto-choice!
+          |  |     +--rw max?   int32
+          |  +--:(static-choice)
+          |     +--rw static-choice!
+          |        +--rw max?   int32
+          x--rw never?                 empty
+          x--rw auto!
+          |  x--rw max?   int32
+          +--rw four-pair
+          |  +--rw forced?   empty
+          +--rw police!
+          |  +--rw action
+          |     +--rw errdisable?   empty
+          |     +--rw log?          empty
+          +--rw port
+          |  +--rw poe-ha?             empty
+          |  +--rw perpetual-poe-ha?   empty
+          |  +--rw two-event?          empty
+          |  +--rw twox-mode?          empty
+          |  +--rw no-xtalk-wa?        empty
+          |  +--rw priority?           enumeration
+          x--rw static!
+             x--rw max?   int32
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw power
+       +--rw efficient-ethernet
+       |  +--rw auto?   empty
+       +--rw inline
+          +--rw consumption?           uint16
+          +--rw (auto-static-never)?
+          |  +--:(never-choice)
+          |  |  +--rw never-choice?    empty
+          |  +--:(auto-choice)
+          |  |  +--rw auto-choice!
+          |  |     +--rw max?   int32
+          |  +--:(static-choice)
+          |     +--rw static-choice!
+          |        +--rw max?   int32
+          x--rw never?                 empty
+          x--rw auto!
+          |  x--rw max?   int32
+          +--rw four-pair
+          |  +--rw forced?   empty
+          +--rw police!
+          |  +--rw action
+          |     +--rw errdisable?   empty
+          |     +--rw log?          empty
+          +--rw port
+          |  +--rw poe-ha?             empty
+          |  +--rw perpetual-poe-ha?   empty
+          |  +--rw two-event?          empty
+          |  +--rw twox-mode?          empty
+          |  +--rw no-xtalk-wa?        empty
+          |  +--rw priority?           enumeration
+          x--rw static!
+             x--rw max?   int32
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw power
+       +--rw efficient-ethernet
+       |  +--rw auto?   empty
+       +--rw inline
+          +--rw consumption?           uint16
+          +--rw (auto-static-never)?
+          |  +--:(never-choice)
+          |  |  +--rw never-choice?    empty
+          |  +--:(auto-choice)
+          |  |  +--rw auto-choice!
+          |  |     +--rw max?   int32
+          |  +--:(static-choice)
+          |     +--rw static-choice!
+          |        +--rw max?   int32
+          x--rw never?                 empty
+          x--rw auto!
+          |  x--rw max?   int32
+          +--rw four-pair
+          |  +--rw forced?   empty
+          +--rw police!
+          |  +--rw action
+          |     +--rw errdisable?   empty
+          |     +--rw log?          empty
+          +--rw port
+          |  +--rw poe-ha?             empty
+          |  +--rw perpetual-poe-ha?   empty
+          |  +--rw two-event?          empty
+          |  +--rw twox-mode?          empty
+          |  +--rw no-xtalk-wa?        empty
+          |  +--rw priority?           enumeration
+          x--rw static!
+             x--rw max?   int32
+  augment /ios:native/ios:interface/ios:AppGigabitEthernet:
+    +--rw power
+       +--rw efficient-ethernet
+       |  +--rw auto?   empty
+       +--rw inline
+          +--rw consumption?           uint16
+          +--rw (auto-static-never)?
+          |  +--:(never-choice)
+          |  |  +--rw never-choice?    empty
+          |  +--:(auto-choice)
+          |  |  +--rw auto-choice!
+          |  |     +--rw max?   int32
+          |  +--:(static-choice)
+          |     +--rw static-choice!
+          |        +--rw max?   int32
+          x--rw never?                 empty
+          x--rw auto!
+          |  x--rw max?   int32
+          +--rw four-pair
+          |  +--rw forced?   empty
+          +--rw police!
+          |  +--rw action
+          |     +--rw errdisable?   empty
+          |     +--rw log?          empty
+          +--rw port
+          |  +--rw poe-ha?             empty
+          |  +--rw perpetual-poe-ha?   empty
+          |  +--rw two-event?          empty
+          |  +--rw twox-mode?          empty
+          |  +--rw no-xtalk-wa?        empty
+          |  +--rw priority?           enumeration
+          x--rw static!
+             x--rw max?   int32
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw power
+       +--rw efficient-ethernet
+       |  +--rw auto?   empty
+       +--rw inline
+          +--rw consumption?           uint16
+          +--rw (auto-static-never)?
+          |  +--:(never-choice)
+          |  |  +--rw never-choice?    empty
+          |  +--:(auto-choice)
+          |  |  +--rw auto-choice!
+          |  |     +--rw max?   int32
+          |  +--:(static-choice)
+          |     +--rw static-choice!
+          |        +--rw max?   int32
+          x--rw never?                 empty
+          x--rw auto!
+          |  x--rw max?   int32
+          +--rw four-pair
+          |  +--rw forced?   empty
+          +--rw police!
+          |  +--rw action
+          |     +--rw errdisable?   empty
+          |     +--rw log?          empty
+          +--rw port
+          |  +--rw poe-ha?             empty
+          |  +--rw perpetual-poe-ha?   empty
+          |  +--rw two-event?          empty
+          |  +--rw twox-mode?          empty
+          |  +--rw no-xtalk-wa?        empty
+          |  +--rw priority?           enumeration
+          x--rw static!
+             x--rw max?   int32
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw power
+       +--rw efficient-ethernet
+       |  +--rw auto?   empty
+       +--rw inline
+          +--rw consumption?           uint16
+          +--rw (auto-static-never)?
+          |  +--:(never-choice)
+          |  |  +--rw never-choice?    empty
+          |  +--:(auto-choice)
+          |  |  +--rw auto-choice!
+          |  |     +--rw max?   int32
+          |  +--:(static-choice)
+          |     +--rw static-choice!
+          |        +--rw max?   int32
+          x--rw never?                 empty
+          x--rw auto!
+          |  x--rw max?   int32
+          +--rw four-pair
+          |  +--rw forced?   empty
+          +--rw police!
+          |  +--rw action
+          |     +--rw errdisable?   empty
+          |     +--rw log?          empty
+          +--rw port
+          |  +--rw poe-ha?             empty
+          |  +--rw perpetual-poe-ha?   empty
+          |  +--rw two-event?          empty
+          |  +--rw twox-mode?          empty
+          |  +--rw no-xtalk-wa?        empty
+          |  +--rw priority?           enumeration
+          x--rw static!
+             x--rw max?   int32
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw power
+       +--rw efficient-ethernet
+       |  +--rw auto?   empty
+       +--rw inline
+          +--rw consumption?           uint16
+          +--rw (auto-static-never)?
+          |  +--:(never-choice)
+          |  |  +--rw never-choice?    empty
+          |  +--:(auto-choice)
+          |  |  +--rw auto-choice!
+          |  |     +--rw max?   int32
+          |  +--:(static-choice)
+          |     +--rw static-choice!
+          |        +--rw max?   int32
+          x--rw never?                 empty
+          x--rw auto!
+          |  x--rw max?   int32
+          +--rw four-pair
+          |  +--rw forced?   empty
+          +--rw police!
+          |  +--rw action
+          |     +--rw errdisable?   empty
+          |     +--rw log?          empty
+          +--rw port
+          |  +--rw poe-ha?             empty
+          |  +--rw perpetual-poe-ha?   empty
+          |  +--rw two-event?          empty
+          |  +--rw twox-mode?          empty
+          |  +--rw no-xtalk-wa?        empty
+          |  +--rw priority?           enumeration
+          x--rw static!
+             x--rw max?   int32
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw power
+       +--rw efficient-ethernet
+       |  +--rw auto?   empty
+       +--rw inline
+          +--rw consumption?           uint16
+          +--rw (auto-static-never)?
+          |  +--:(never-choice)
+          |  |  +--rw never-choice?    empty
+          |  +--:(auto-choice)
+          |  |  +--rw auto-choice!
+          |  |     +--rw max?   int32
+          |  +--:(static-choice)
+          |     +--rw static-choice!
+          |        +--rw max?   int32
+          x--rw never?                 empty
+          x--rw auto!
+          |  x--rw max?   int32
+          +--rw four-pair
+          |  +--rw forced?   empty
+          +--rw police!
+          |  +--rw action
+          |     +--rw errdisable?   empty
+          |     +--rw log?          empty
+          +--rw port
+          |  +--rw poe-ha?             empty
+          |  +--rw perpetual-poe-ha?   empty
+          |  +--rw two-event?          empty
+          |  +--rw twox-mode?          empty
+          |  +--rw no-xtalk-wa?        empty
+          |  +--rw priority?           enumeration
+          x--rw static!
+             x--rw max?   int32
+Xpaths for model: Cisco-IOS-XE-power.yang

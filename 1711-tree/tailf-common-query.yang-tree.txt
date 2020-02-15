@@ -1,0 +1,3 @@
+ 
+KPI for model: tailf-common-query.yang
+Xpaths for model: tailf-common-query.yang

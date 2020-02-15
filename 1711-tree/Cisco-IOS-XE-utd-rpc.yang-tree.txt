@@ -1,0 +1,131 @@
+ 
+KPI for model: Cisco-IOS-XE-utd-rpc.yang
+
+module: Cisco-IOS-XE-utd-rpc
+  augment /ios-xe-rpc:clear/ios-xe-rpc:input/ios-xe-rpc:clear-choice:
+    +--:(utd-case)
+       +-- utd
+          +-- engine
+             +-- standard
+                +-- (utd-eng-std-choice)?
+                   +--:(logging)
+                   |  +-- logging
+                   |     +-- events?   empty
+                   +--:(statistics)
+                      +-- statistics
+                         +-- (stats-choice)?
+                            +--:(daq)
+                            |  +-- daq
+                            |     +-- (daq-choice)?
+                            |        +--:(all)
+                            |        |  +-- all-drop-node-name?   empty
+                            |        +--:(vrf)
+                            |           +-- vrf
+                            |              +-- (vrf-choice)?
+                            |                 +--:(global)
+                            |                 |  +-- global?   empty
+                            |                 +--:(name)
+                            |                    +-- name?     string
+                            +--:(url-filtering)
+                               +-- url-filtering
+                                  +-- (url-filtering-choice)?
+                                     +--:(all)
+                                     |  +-- all-drop-node-name?   empty
+                                     +--:(vrf)
+                                        +-- vrf
+                                           +-- (vrf-choice)?
+                                              +--:(global)
+                                              |  +-- global?   empty
+                                              +--:(name)
+                                                 +-- name?     string
+  augment /ios-xe-rpc:clear/ios-xe-rpc:input/ios-xe-rpc:clear-choice/ios-xe-rpc:platform-case/ios-xe-rpc:platform/ios-xe-rpc:platform-choice/ios-xe-rpc:hardware-case/ios-xe-rpc:hardware/ios-xe-rpc:qfp/ios-xe-rpc:active/ios-xe-rpc:feature/ios-xe-rpc:feature-choice:
+    +--:(utd-case)
+       +-- utd
+          +-- stats
+             +-- (stats-choice)?
+                +--:(all)
+                |  +-- all-drop-node-name?   empty
+                +--:(default)
+                |  +-- default
+                |     +-- context?   empty
+                +--:(divert)
+                |  +-- divert?               empty
+                +--:(drop)
+                |  +-- drop?                 empty
+                +--:(general)
+                |  +-- general?              empty
+                +--:(sn)
+                |  +-- sn?                   empty
+                +--:(summary)
+                |  +-- summary?              empty
+                +--:(tls-decrypt)
+                |  +-- tls-decrypt?          empty
+                +--:(channel)
+                |  +-- channel
+                |     +-- (chnl-choice)?
+                |        +--:(threat-defense)
+                |        |  +-- threat-defense?   empty
+                |        +--:(service)
+                |           +-- service?          empty
+                +--:(policy)
+                |  +-- policy?               empty
+                +--:(vrf)
+                   +-- vrf
+                      +-- (vrf-choice)?
+                         +--:(default-context)
+                         |  +-- default
+                         |     +-- context?   empty
+                         +--:(global)
+                         |  +-- global?    empty
+                         +--:(id)
+                         |  +-- id?        uint16
+                         +--:(name)
+                            +-- name?      string
+
+  rpcs:
+    +---x utd
+       +---w input
+       |  +---w (feature)?
+       |     +--:(feature-threat)
+       |     |  +---w threat-inspection
+       |     |     +---w signature
+       |     |        +---w (method)?
+       |     |           +--:(saved-drop-node-name)
+       |     |           |  +---w saved-drop-node-name
+       |     |           |     +---w update    empty
+       |     |           +--:(manual-drop-node-name)
+       |     |              +---w manual-drop-node-name
+       |     |                 +---w update
+       |     |                    +---w (type)?
+       |     |                       +--:(file)
+       |     |                       |  +---w file
+       |     |                       |     +---w filename-drop-node-name    string
+       |     |                       +--:(server)
+       |     |                          +---w server
+       |     |                             +---w (type)?
+       |     |                                +--:(cisco)
+       |     |                                |  +---w cisco
+       |     |                                |     +---w username    string
+       |     |                                |     +---w password    string
+       |     |                                +--:(url)
+       |     |                                   +---w url
+       |     |                                      +---w (url-uname-passwd)?
+       |     |                                         +--:(credentials-drop-node-name)
+       |     |                                         |  +---w credentials-drop-node-name
+       |     |                                         |     +---w url-drop-node-name    string
+       |     |                                         |     +---w username              string
+       |     |                                         |     +---w password              string
+       |     |                                         +--:(no-credentials-drop-node-name)
+       |     |                                            +---w no-credentials-drop-node-name
+       |     |                                               +---w url-drop-node-name    string
+       |     +--:(feature-webfltr)
+       |     |  +---w web-filter
+       |     |     +---w database
+       |     |        +---w update    empty
+       |     +--:(feature-file-inspection)
+       |        +---w file-inspection
+       |           +---w analysis
+       |              +---w apikey    string
+       +--ro output
+          +--ro result?   string
+Xpaths for model: Cisco-IOS-XE-utd-rpc.yang

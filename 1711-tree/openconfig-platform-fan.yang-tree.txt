@@ -1,0 +1,7 @@
+ 
+KPI for model: openconfig-platform-fan.yang
+
+module: openconfig-platform-fan
+  augment /oc-platform:components/oc-platform:component/oc-platform:fan/oc-platform:state:
+    +--ro speed?   uint32
+Xpaths for model: openconfig-platform-fan.yang

@@ -1,0 +1,90 @@
+ 
+KPI for model: openconfig-local-routing.yang
+module: openconfig-local-routing
+  +--rw local-routes
+     +--rw config
+     +--ro state
+     +--rw static-routes
+     |  +--rw static* [prefix]
+     |     +--rw prefix       -> ../config/prefix
+     |     +--rw config
+     |     |  +--rw prefix?    inet:ip-prefix
+     |     |  +--rw set-tag?   oc-pt:tag-type
+     |     +--ro state
+     |     |  +--ro prefix?    inet:ip-prefix
+     |     |  +--ro set-tag?   oc-pt:tag-type
+     |     +--rw next-hops
+     |        +--rw next-hop* [index]
+     |           +--rw index            -> ../config/index
+     |           +--rw config
+     |           |  +--rw index?      string
+     |           |  +--rw next-hop?   union
+     |           |  +--rw metric?     uint32
+     |           |  +--rw recurse?    boolean
+     |           +--ro state
+     |           |  +--ro index?      string
+     |           |  +--ro next-hop?   union
+     |           |  +--ro metric?     uint32
+     |           |  +--ro recurse?    boolean
+     |           +--rw interface-ref
+     |              +--rw config
+     |              |  +--rw interface?      -> /oc-if:interfaces/interface/name
+     |              |  +--rw subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+     |              +--ro state
+     |                 +--ro interface?      -> /oc-if:interfaces/interface/name
+     |                 +--ro subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+     +--rw local-aggregates
+        +--rw aggregate* [prefix]
+           +--rw prefix    -> ../config/prefix
+           +--rw config
+           |  +--rw prefix?    inet:ip-prefix
+           |  +--rw discard?   boolean
+           |  +--rw set-tag?   oc-pt:tag-type
+           +--ro state
+              +--ro prefix?    inet:ip-prefix
+              +--ro discard?   boolean
+              +--ro set-tag?   oc-pt:tag-type
+Xpaths for model: openconfig-local-routing.yang
+/oc-loc-rt:local-routes,container,
+/oc-loc-rt:local-routes/oc-loc-rt:config,container,
+/oc-loc-rt:local-routes/oc-loc-rt:state,container,
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes,container,
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static,list,
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:prefix,leaf,leafref
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:config,container,
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:config/oc-loc-rt:prefix,leaf,inet:ip-prefix
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:config/oc-loc-rt:set-tag,leaf,oc-pt:tag-type
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:state,container,
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:state/oc-loc-rt:prefix,leaf,inet:ip-prefix
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:state/oc-loc-rt:set-tag,leaf,oc-pt:tag-type
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops,container,
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop,list,
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:index,leaf,leafref
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:config,container,
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:config/oc-loc-rt:index,leaf,string
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:config/oc-loc-rt:next-hop,leaf,union
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:config/oc-loc-rt:metric,leaf,uint32
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:config/oc-loc-rt:recurse,leaf,boolean
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:state,container,
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:state/oc-loc-rt:index,leaf,string
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:state/oc-loc-rt:next-hop,leaf,union
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:state/oc-loc-rt:metric,leaf,uint32
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:state/oc-loc-rt:recurse,leaf,boolean
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:interface-ref,container,
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:interface-ref/oc-loc-rt:config,container,
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:interface-ref/oc-loc-rt:config/oc-loc-rt:interface,leaf,leafref
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:interface-ref/oc-loc-rt:config/oc-loc-rt:subinterface,leaf,leafref
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:interface-ref/oc-loc-rt:state,container,
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:interface-ref/oc-loc-rt:state/oc-loc-rt:interface,leaf,leafref
+/oc-loc-rt:local-routes/oc-loc-rt:static-routes/oc-loc-rt:static/oc-loc-rt:next-hops/oc-loc-rt:next-hop/oc-loc-rt:interface-ref/oc-loc-rt:state/oc-loc-rt:subinterface,leaf,leafref
+/oc-loc-rt:local-routes/oc-loc-rt:local-aggregates,container,
+/oc-loc-rt:local-routes/oc-loc-rt:local-aggregates/oc-loc-rt:aggregate,list,
+/oc-loc-rt:local-routes/oc-loc-rt:local-aggregates/oc-loc-rt:aggregate/oc-loc-rt:prefix,leaf,leafref
+/oc-loc-rt:local-routes/oc-loc-rt:local-aggregates/oc-loc-rt:aggregate/oc-loc-rt:config,container,
+/oc-loc-rt:local-routes/oc-loc-rt:local-aggregates/oc-loc-rt:aggregate/oc-loc-rt:config/oc-loc-rt:prefix,leaf,inet:ip-prefix
+/oc-loc-rt:local-routes/oc-loc-rt:local-aggregates/oc-loc-rt:aggregate/oc-loc-rt:config/oc-loc-rt:discard,leaf,boolean
+/oc-loc-rt:local-routes/oc-loc-rt:local-aggregates/oc-loc-rt:aggregate/oc-loc-rt:config/oc-loc-rt:set-tag,leaf,oc-pt:tag-type
+/oc-loc-rt:local-routes/oc-loc-rt:local-aggregates/oc-loc-rt:aggregate/oc-loc-rt:state,container,
+/oc-loc-rt:local-routes/oc-loc-rt:local-aggregates/oc-loc-rt:aggregate/oc-loc-rt:state/oc-loc-rt:prefix,leaf,inet:ip-prefix
+/oc-loc-rt:local-routes/oc-loc-rt:local-aggregates/oc-loc-rt:aggregate/oc-loc-rt:state/oc-loc-rt:discard,leaf,boolean
+/oc-loc-rt:local-routes/oc-loc-rt:local-aggregates/oc-loc-rt:aggregate/oc-loc-rt:state/oc-loc-rt:set-tag,leaf,oc-pt:tag-type

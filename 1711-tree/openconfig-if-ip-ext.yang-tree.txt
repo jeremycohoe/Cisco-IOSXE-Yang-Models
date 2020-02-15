@@ -1,0 +1,17 @@
+ 
+KPI for model: openconfig-if-ip-ext.yang
+
+module: openconfig-if-ip-ext
+  augment /oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-ip:ipv6:
+    +--rw autoconf
+       +--rw config
+       |  +--rw create-global-addresses?        boolean
+       |  +--rw create-temporary-addresses?     boolean
+       |  +--rw temporary-valid-lifetime?       uint32
+       |  +--rw temporary-preferred-lifetime?   uint32
+       +--ro state
+          +--ro create-global-addresses?        boolean
+          +--ro create-temporary-addresses?     boolean
+          +--ro temporary-valid-lifetime?       uint32
+          +--ro temporary-preferred-lifetime?   uint32
+Xpaths for model: openconfig-if-ip-ext.yang

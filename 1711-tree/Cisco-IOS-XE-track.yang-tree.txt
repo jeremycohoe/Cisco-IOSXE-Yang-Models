@@ -1,0 +1,149 @@
+ 
+KPI for model: Cisco-IOS-XE-track.yang
+
+module: Cisco-IOS-XE-track
+  augment /ios:native/ios:track:
+    +--rw tracked-object* [object-number]
+    |  +--rw object-number    uint32
+    |  +--rw interface
+    |  |  +--rw name?       string
+    |  |  +--rw protocol?   enumeration
+    |  |  +--rw routing?    empty
+    |  +--rw ip
+    |  |  +--rw route
+    |  |  |  +--rw address?                 inet:ipv4-address
+    |  |  |  +--rw mask?                    inet:ipv4-address
+    |  |  |  +--rw (option)?
+    |  |  |  |  +--:(reachability-case)
+    |  |  |  |  |  +--rw reachability-ip?   empty
+    |  |  |  |  +--:(metric-case)
+    |  |  |  |     +--rw metric-ip?         enumeration
+    |  |  |  o--rw reachability?            empty
+    |  |  |  o--rw metric?                  enumeration
+    |  |  +--rw sla
+    |  |     +--rw number?                   uint32
+    |  |     +--rw (option)?
+    |  |     |  +--:(reachability-case)
+    |  |     |  |  +--rw reachability-sla?   empty
+    |  |     |  +--:(state-case)
+    |  |     |     +--rw state-sla?          empty
+    |  |     o--rw reachability?             empty
+    |  |     o--rw state?                    empty
+    |  +--rw ipv6
+    |  |  +--rw route
+    |  |     +--rw address?                   ios-types:ipv6-prefix
+    |  |     +--rw (option)?
+    |  |     |  +--:(reachability-case)
+    |  |     |  |  +--rw reachability-ipv6?   empty
+    |  |     |  +--:(metric-case)
+    |  |     |     +--rw metric-ipv6?         enumeration
+    |  |     o--rw reachability?              empty
+    |  |     o--rw metric?                    enumeration
+    |  +--rw list
+    |  |  +--rw (option)?
+    |  |  |  +--:(boolean-case)
+    |  |  |  |  +--rw boolean-config?     enumeration
+    |  |  |  +--:(threshold-case)
+    |  |  |     +--rw threshold-config?   enumeration
+    |  |  o--rw boolean?                  enumeration
+    |  |  o--rw threshold?                enumeration
+    |  +--rw stub-object?     empty
+    |  +--rw delay
+    |  |  +--rw down?   uint32
+    |  |  +--rw up?     uint32
+    |  +--rw carrier-delay?   empty
+    |  +--rw threshold
+    |  |  +--rw metric
+    |  |  |  +--rw up?     uint32
+    |  |  |  +--rw down?   uint32
+    |  |  +--rw weight
+    |  |  |  +--rw up?     uint32
+    |  |  |  +--rw down?   uint32
+    |  |  +--rw percentage
+    |  |     +--rw up?     uint32
+    |  |     +--rw down?   uint32
+    |  +--rw default-state?   enumeration
+    |  +--rw object* [number]
+    |  |  +--rw number    uint32
+    |  |  +--rw not?      empty
+    |  |  +--rw weight?   uint32
+    |  +--rw ip-wrapper
+    |     +--rw ipv6
+    |     |  +--rw vrf?   string
+    |     +--rw ip
+    |        +--rw vrf?   string
+    +--rw resolution
+    |  +--rw ip
+    |  |  +--rw route
+    |  |     +--rw bgp?      uint32
+    |  |     +--rw eigrp?    uint32
+    |  |     +--rw isis?     uint32
+    |  |     +--rw ospf?     uint32
+    |  |     +--rw static?   uint32
+    |  +--rw ipv6
+    |     +--rw route
+    |        +--rw bgp?      uint32
+    |        +--rw eigrp?    uint32
+    |        +--rw isis?     uint32
+    |        +--rw ospf?     uint32
+    |        +--rw static?   uint32
+    +--rw timer
+       +--rw interface
+       |  +--rw (timer-val)?
+       |  |  +--:(time-sec)
+       |  |  |  +--rw sec?    uint32
+       |  |  +--:(time-msec)
+       |  |     +--rw msec?   uint32
+       |  o--rw seconds?      uint32
+       |  o--rw ms?           uint32
+       +--rw ip
+       |  +--rw route
+       |  |  +--rw (timer-val)?
+       |  |  |  +--:(time-sec)
+       |  |  |  |  +--rw sec?    uint32
+       |  |  |  +--:(time-msec)
+       |  |  |     +--rw msec?   uint32
+       |  |  o--rw seconds?      uint32
+       |  |  o--rw ms?           uint32
+       |  +--rw sla
+       |     +--rw (timer-val)?
+       |     |  +--:(time-sec)
+       |     |  |  +--rw sec?    uint32
+       |     |  +--:(time-msec)
+       |     |     +--rw msec?   uint32
+       |     o--rw seconds?      uint32
+       |     o--rw ms?           uint32
+       +--rw ipv6
+       |  +--rw route
+       |     +--rw (timer-val)?
+       |     |  +--:(time-sec)
+       |     |  |  +--rw sec?    uint32
+       |     |  +--:(time-msec)
+       |     |     +--rw msec?   uint32
+       |     o--rw seconds?      uint32
+       |     o--rw ms?           uint32
+       +--rw list
+       |  +--rw (timer-val)?
+       |  |  +--:(time-sec)
+       |  |  |  +--rw sec?    uint32
+       |  |  +--:(time-msec)
+       |  |     +--rw msec?   uint32
+       |  o--rw seconds?      uint32
+       |  o--rw ms?           uint32
+       +--rw stub-object
+          +--rw (timer-val)?
+          |  +--:(time-sec)
+          |  |  +--rw sec?    uint32
+          |  +--:(time-msec)
+          |     +--rw msec?   uint32
+          o--rw seconds?      uint32
+          o--rw ms?           uint32
+  augment /ios:native/ios:redundancy/ios:application/ios:redundancy/ios:group:
+    +--rw track* [object-number]
+       +--rw object-number      -> /ios:native/track/ios-track:tracked-object/object-number
+       +--rw (decrement-shutdown)?
+          +--:(decrement-case)
+          |  +--rw decrement?   uint8
+          +--:(shutdown-case)
+             +--rw shutdown?    empty
+Xpaths for model: Cisco-IOS-XE-track.yang

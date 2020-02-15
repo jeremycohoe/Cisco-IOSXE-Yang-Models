@@ -1,0 +1,43 @@
+ 
+KPI for model: Cisco-IOS-XE-pnp.yang
+
+module: Cisco-IOS-XE-pnp
+  augment /ios:native:
+    +--rw pnp
+       +--rw startup-vlan?   uint16
+       +--rw profile* [name]
+          +--rw name         string
+          +--rw transport
+             +--rw https
+             |  +--rw host
+             |  |  +--rw host-name?    string
+             |  |  +--rw port?         uint16
+             |  |  +--rw localcert?    string
+             |  |  +--rw remotecert?   string
+             |  +--rw ipv4
+             |  |  +--rw ipv4-address?   inet:ipv4-address
+             |  |  +--rw port?           uint16
+             |  |  +--rw localcert?      string
+             |  |  +--rw remotecert?     string
+             |  +--rw ipv6
+             |     +--rw ipv6-address?   inet:ipv6-address
+             |     +--rw port?           uint16
+             |     +--rw localcert?      string
+             |     +--rw remotecert?     string
+             +--rw http
+                +--rw host
+                |  +--rw host-name?    string
+                |  +--rw port?         uint16
+                |  +--rw localcert?    string
+                |  +--rw remotecert?   string
+                +--rw ipv4
+                |  +--rw ipv4-address?   inet:ipv4-address
+                |  +--rw port?           uint16
+                |  +--rw localcert?      string
+                |  +--rw remotecert?     string
+                +--rw ipv6
+                   +--rw ipv6-address?   inet:ipv6-address
+                   +--rw port?           uint16
+                   +--rw localcert?      string
+                   +--rw remotecert?     string
+Xpaths for model: Cisco-IOS-XE-pnp.yang

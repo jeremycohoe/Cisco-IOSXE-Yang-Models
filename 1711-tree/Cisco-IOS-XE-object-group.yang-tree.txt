@@ -1,0 +1,201 @@
+ 
+KPI for model: Cisco-IOS-XE-object-group.yang
+
+module: Cisco-IOS-XE-object-group
+  augment /ios:native/ios:object-group:
+    +--rw network* [name]
+    |  +--rw name                             string
+    |  +--rw obj-Mode-config-network-group
+    |     +--rw network_address* [ipv4_addr ipv4_mask]
+    |     |  +--rw ipv4_addr    inet:ipv4-address
+    |     |  +--rw ipv4_mask    inet:ipv4-address
+    |     +--rw description?       string
+    |     +--rw group-object?      string
+    |     +--rw host* [ipv4-host]
+    |     |  +--rw ipv4-host    inet:host
+    |     +--rw range
+    |        +--rw ip-addr-min?   inet:ipv4-address
+    |        +--rw ip-addr-max?   inet:ipv4-address
+    +--rw security* [name]
+    |  +--rw name              string
+    |  +--rw security-group
+    |     +--rw description?      string
+    |     +--rw group-object?     string
+    |     +--rw security-group
+    |        +--rw tag?   uint16
+    +--rw service* [name]
+    |  +--rw name               string
+    |  +--rw description?       string
+    |  +--rw group-object?      string
+    |  +--rw protocal-number*   uint8
+    |  +--rw ahp?               empty
+    |  +--rw eigrp?             empty
+    |  +--rw esp?               empty
+    |  +--rw gre?               empty
+    |  +--rw icmp?              empty
+    |  +--rw icmp-conf
+    |  |  +--rw icmp
+    |  |     +--rw port-number?            uint8
+    |  |     +--rw alternate-address?      empty
+    |  |     +--rw conversion-error?       empty
+    |  |     +--rw echo?                   empty
+    |  |     +--rw echo-reply?             empty
+    |  |     +--rw information-reply?      empty
+    |  |     +--rw information-request?    empty
+    |  |     +--rw mask-reply?             empty
+    |  |     +--rw mask-request?           empty
+    |  |     +--rw mobile-redirect?        empty
+    |  |     +--rw parameter-problem?      empty
+    |  |     +--rw redirect?               empty
+    |  |     +--rw router-advertisement?   empty
+    |  |     +--rw router-solicitation?    empty
+    |  |     +--rw source-quench?          empty
+    |  |     +--rw time-exceeded?          empty
+    |  |     +--rw timestamp-reply?        empty
+    |  |     +--rw timestamp-request?      empty
+    |  |     +--rw traceroute?             empty
+    |  |     +--rw unreachable?            empty
+    |  +--rw igmp?              empty
+    |  +--rw ip?                empty
+    |  +--rw ipinip?            empty
+    |  +--rw nos?               empty
+    |  +--rw ospf?              empty
+    |  +--rw pcp?               empty
+    |  +--rw pim?               empty
+    |  +--rw tcp?               empty
+    |  +--rw tcp-conf
+    |  |  +--rw tcp
+    |  |     +--rw tcp-port-list* [tcp-port]
+    |  |     |  +--rw tcp-port    ios-types:acl-tcp-port-type
+    |  |     |  +--rw operator?   object-group-port-operator
+    |  |     +--rw tcp-range-port-list
+    |  |     |  +--rw range* [tcp-min-port tcp-max-port]
+    |  |     |     +--rw tcp-min-port    ios-types:acl-tcp-port-type
+    |  |     |     +--rw tcp-max-port    ios-types:acl-tcp-port-type
+    |  |     +--rw tcp-src-port-list
+    |  |     |  +--rw source* [tcp-port]
+    |  |     |     +--rw tcp-port    ios-types:acl-tcp-port-type
+    |  |     |     +--rw operator?   object-group-port-operator
+    |  |     +--rw tcp-src-range-port-list
+    |  |     |  +--rw source
+    |  |     |     +--rw range* [tcp-min-port tcp-max-port]
+    |  |     |        +--rw tcp-min-port    ios-types:acl-tcp-port-type
+    |  |     |        +--rw tcp-max-port    ios-types:acl-tcp-port-type
+    |  |     +--rw tcp-src-dst-port-list
+    |  |     |  +--rw source* [tcp-src-port tcp-dst-port]
+    |  |     |     +--rw src-operator?   object-group-port-operator
+    |  |     |     +--rw tcp-src-port    ios-types:acl-tcp-port-type
+    |  |     |     +--rw dst-operator?   object-group-port-operator
+    |  |     |     +--rw tcp-dst-port    ios-types:acl-tcp-port-type
+    |  |     +--rw tcp-src-range-dst-port-list
+    |  |     |  +--rw source* [tcp-src-min-port tcp-src-max-port tcp-dst-port]
+    |  |     |     +--rw tcp-src-min-port    ios-types:acl-tcp-port-type
+    |  |     |     +--rw tcp-src-max-port    ios-types:acl-tcp-port-type
+    |  |     |     +--rw operator?           object-group-port-operator
+    |  |     |     +--rw tcp-dst-port        ios-types:acl-tcp-port-type
+    |  |     +--rw tcp-src-dst-range-port-list
+    |  |     |  +--rw source* [tcp-src-port tcp-dst-min-port tcp-dst-max-port]
+    |  |     |     +--rw operator?           object-group-port-operator
+    |  |     |     +--rw tcp-src-port        ios-types:acl-tcp-port-type
+    |  |     |     +--rw tcp-dst-min-port    ios-types:acl-tcp-port-type
+    |  |     |     +--rw tcp-dst-max-port    ios-types:acl-tcp-port-type
+    |  |     +--rw tcp-src-range-dst-range-port-list
+    |  |        +--rw source* [tcp-src-min-port tcp-src-max-port tcp-dst-min-port tcp-dst-max-port]
+    |  |           +--rw tcp-src-min-port    ios-types:acl-tcp-port-type
+    |  |           +--rw tcp-src-max-port    ios-types:acl-tcp-port-type
+    |  |           +--rw tcp-dst-min-port    ios-types:acl-tcp-port-type
+    |  |           +--rw tcp-dst-max-port    ios-types:acl-tcp-port-type
+    |  +--rw tcp-udp
+    |  |  +--rw tcp-udp-port-list* [tcp-udp-port]
+    |  |  |  +--rw tcp-udp-port    ios-types:acl-tcp-udp-port-type
+    |  |  |  +--rw operator?       object-group-port-operator
+    |  |  +--rw tcp-udp-range-port-list
+    |  |  |  +--rw range* [tcp-udp-min-port tcp-udp-max-port]
+    |  |  |     +--rw tcp-udp-min-port    ios-types:acl-tcp-udp-port-type
+    |  |  |     +--rw tcp-udp-max-port    ios-types:acl-tcp-udp-port-type
+    |  |  +--rw tcp-udp-src-port-list
+    |  |  |  +--rw source* [tcp-udp-port]
+    |  |  |     +--rw tcp-udp-port    ios-types:acl-tcp-udp-port-type
+    |  |  |     +--rw operator?       object-group-port-operator
+    |  |  +--rw tcp-udp-src-range-port-list
+    |  |  |  +--rw source
+    |  |  |     +--rw range* [tcp-udp-min-port tcp-udp-max-port]
+    |  |  |        +--rw tcp-udp-min-port    ios-types:acl-tcp-udp-port-type
+    |  |  |        +--rw tcp-udp-max-port    ios-types:acl-tcp-udp-port-type
+    |  |  +--rw tcp-udp-src-dst-port-list
+    |  |  |  +--rw source* [tcp-udp-src-port tcp-udp-dst-port]
+    |  |  |     +--rw src-operator?       object-group-port-operator
+    |  |  |     +--rw tcp-udp-src-port    ios-types:acl-tcp-udp-port-type
+    |  |  |     +--rw dst-operator?       object-group-port-operator
+    |  |  |     +--rw tcp-udp-dst-port    ios-types:acl-tcp-udp-port-type
+    |  |  +--rw tcp-udp-src-range-dst-port-list
+    |  |  |  +--rw source* [tcp-udp-src-min-port tcp-udp-src-max-port tcp-udp-dst-port]
+    |  |  |     +--rw tcp-udp-src-min-port    ios-types:acl-tcp-udp-port-type
+    |  |  |     +--rw tcp-udp-src-max-port    ios-types:acl-tcp-udp-port-type
+    |  |  |     +--rw operator?               object-group-port-operator
+    |  |  |     +--rw tcp-udp-dst-port        ios-types:acl-tcp-udp-port-type
+    |  |  +--rw tcp-udp-src-dst-range-port-list
+    |  |  |  +--rw source* [tcp-udp-src-port tcp-udp-dst-min-port tcp-udp-dst-max-port]
+    |  |  |     +--rw operator?               object-group-port-operator
+    |  |  |     +--rw tcp-udp-src-port        ios-types:acl-tcp-udp-port-type
+    |  |  |     +--rw tcp-udp-dst-min-port    ios-types:acl-tcp-udp-port-type
+    |  |  |     +--rw tcp-udp-dst-max-port    ios-types:acl-tcp-udp-port-type
+    |  |  +--rw tcp-udp-src-range-dst-range-port-list
+    |  |     +--rw source* [tcp-udp-src-min-port tcp-udp-src-max-port tcp-udp-dst-min-port tcp-udp-dst-max-port]
+    |  |        +--rw tcp-udp-src-min-port    ios-types:acl-tcp-udp-port-type
+    |  |        +--rw tcp-udp-src-max-port    ios-types:acl-tcp-udp-port-type
+    |  |        +--rw tcp-udp-dst-min-port    ios-types:acl-tcp-udp-port-type
+    |  |        +--rw tcp-udp-dst-max-port    ios-types:acl-tcp-udp-port-type
+    |  +--rw udp?               empty
+    |  +--rw udp-conf
+    |     +--rw udp
+    |        +--rw udp-port-list* [udp-port]
+    |        |  +--rw udp-port    ios-types:acl-udp-port-type
+    |        |  +--rw operator?   object-group-port-operator
+    |        +--rw udp-range-port-list
+    |        |  +--rw range* [udp-min-port udp-max-port]
+    |        |     +--rw udp-min-port    ios-types:acl-udp-port-type
+    |        |     +--rw udp-max-port    ios-types:acl-udp-port-type
+    |        +--rw udp-src-port-list
+    |        |  +--rw source* [udp-port]
+    |        |     +--rw udp-port    ios-types:acl-udp-port-type
+    |        |     +--rw operator?   object-group-port-operator
+    |        +--rw udp-src-range-port-list
+    |        |  +--rw source
+    |        |     +--rw range* [udp-min-port udp-max-port]
+    |        |        +--rw udp-min-port    ios-types:acl-udp-port-type
+    |        |        +--rw udp-max-port    ios-types:acl-udp-port-type
+    |        +--rw udp-src-dst-port-list
+    |        |  +--rw source* [udp-src-port udp-dst-port]
+    |        |     +--rw src-operator?   object-group-port-operator
+    |        |     +--rw udp-src-port    ios-types:acl-udp-port-type
+    |        |     +--rw dst-operator?   object-group-port-operator
+    |        |     +--rw udp-dst-port    ios-types:acl-udp-port-type
+    |        +--rw udp-src-range-dst-port-list
+    |        |  +--rw source* [udp-src-min-port udp-src-max-port udp-dst-port]
+    |        |     +--rw udp-src-min-port    ios-types:acl-udp-port-type
+    |        |     +--rw udp-src-max-port    ios-types:acl-udp-port-type
+    |        |     +--rw operator?           object-group-port-operator
+    |        |     +--rw udp-dst-port        ios-types:acl-udp-port-type
+    |        +--rw udp-src-dst-range-port-list
+    |        |  +--rw source* [udp-src-port udp-dst-min-port udp-dst-max-port]
+    |        |     +--rw operator?           object-group-port-operator
+    |        |     +--rw udp-src-port        ios-types:acl-udp-port-type
+    |        |     +--rw udp-dst-min-port    ios-types:acl-udp-port-type
+    |        |     +--rw udp-dst-max-port    ios-types:acl-udp-port-type
+    |        +--rw udp-src-range-dst-range-port-list
+    |           +--rw source* [udp-src-min-port udp-src-max-port udp-dst-min-port udp-dst-max-port]
+    |              +--rw udp-src-min-port    ios-types:acl-udp-port-type
+    |              +--rw udp-src-max-port    ios-types:acl-udp-port-type
+    |              +--rw udp-dst-min-port    ios-types:acl-udp-port-type
+    |              +--rw udp-dst-max-port    ios-types:acl-udp-port-type
+    +--rw v6-network* [name]
+       +--rw name               string
+       +--rw description?       string
+       +--rw network-address* [ipv6-addr-prefix]
+       |  +--rw ipv6-addr-prefix    ios-types:ipv6-prefix
+       +--rw host* [ipv6-host]
+       |  +--rw ipv6-host    ios-types:ipv6-host
+       +--rw group-object* [v6-network-object-group]
+          +--rw v6-network-object-group    -> /ios:native/object-group/ios-og:v6-network/name
+Xpaths for model: Cisco-IOS-XE-object-group.yang

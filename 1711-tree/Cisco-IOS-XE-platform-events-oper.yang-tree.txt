@@ -1,0 +1,39 @@
+ 
+KPI for model: Cisco-IOS-XE-platform-events-oper.yang
+module: Cisco-IOS-XE-platform-events-oper
+  +--ro platform-events
+
+  notifications:
+    +---n platform-sensor-state-update
+    |  +--ro severity?      platform-events-ios-xe-oper:plat-notif-severity
+    |  +--ro comp-type?     platform-common-ios-xe-oper:plat-comp-type
+    |  +--ro sensor-type?   platform-common-ios-xe-oper:plat-sensor-type
+    |  +--ro description?   string
+    |  +--ro location?      string
+    |  +--ro id?            string
+    |  +--ro sensor-val
+    |  |  +--ro value-instant?         decimal64
+    |  |  +--ro value-avg?             decimal64
+    |  |  +--ro value-max?             decimal64
+    |  |  +--ro value-min?             decimal64
+    |  |  +--ro sampling-period-sec?   uint32
+    |  +--ro alarm-data
+    |  |  +--ro alarm-status?           boolean
+    |  |  +--ro alarm-threshold-high?   uint32
+    |  |  +--ro alarm-threshold-low?    uint32
+    |  |  +--ro severity?               platform-common-ios-xe-oper:plat-sensor-alarm-severity
+    |  +--ro new-state?     platform-common-ios-xe-oper:plat-sensor-state
+    |  +--ro time-stamp?    yang:date-and-time
+    +---n platform-component-state-update
+       +--ro severity?      platform-events-ios-xe-oper:plat-notif-severity
+       +--ro comp-type?     platform-common-ios-xe-oper:plat-comp-type
+       +--ro description?   string
+       +--ro location?      string
+       +--ro id?            string
+       +--ro part-no?       string
+       +--ro comp-state?    platform-events-ios-xe-oper:plat-comp-state
+       +--ro new-status?    platform-common-ios-xe-oper:plat-comp-status
+       +--ro status-desc?   platform-common-ios-xe-oper:plat-comp-status-desc
+       +--ro time-stamp?    yang:date-and-time
+Xpaths for model: Cisco-IOS-XE-platform-events-oper.yang
+/platform-events-ios-xe-oper:platform-events,container,

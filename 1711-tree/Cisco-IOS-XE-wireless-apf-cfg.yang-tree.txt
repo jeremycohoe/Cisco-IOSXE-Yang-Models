@@ -1,0 +1,102 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-apf-cfg.yang
+module: Cisco-IOS-XE-wireless-apf-cfg
+  +--rw apf-cfg-data
+     +--rw apf!
+        +--rw dot11-country-code?                string
+        +--rw system-mgmt-via-wireless?          boolean
+        +--rw enable-client-onboarding-event?    boolean
+        +--rw network-name?                      string
+        +--rw blacklist-dot1x-timeout?           boolean
+        +--rw blacklist-dot1x-auth?              boolean
+        +--rw blacklist-dot11-assoc?             boolean
+        +--rw blacklist-ip-theft?                boolean
+        +--rw blacklist-web-auth?                boolean
+        +--rw blacklist-failed-qos-policy?       boolean
+        +--rw probe-limit?                       uint16
+        +--rw probe-interval?                    uint16
+        +--rw max-user-logins?                   uint32
+        +--rw web-auth-max-retries?              uint8
+        +--rw dot1x-eapol-key-max-retries?       uint8
+        +--rw dot1x-eapol-key-timeout?           uint32
+        +--rw dot1x-eap-id-request-retries?      uint8
+        +--rw dot1x-eap-id-request-timeout?      uint8
+        +--rw dot1x-eap-request-max-retries?     uint8
+        +--rw dot1x-eap-request-timeout?         uint8
+        +--rw dot1x-eap-broadcast-interval?      uint32
+        +--rw probe-filter?                      boolean
+        +--rw assisted-roam-floor-bias?          uint16
+        +--rw assisted-roam-max-denial?          uint16
+        +--rw assisted-roam-min-prediction?      uint16
+        +--rw sip-pref-call-data-entry
+        |  +--rw sip-pref-call-data* [call-index]
+        |     +--rw call-index               uint8
+        |     +--rw sip-preferred-call-id?   string
+        +--rw spam-authorize-aps-mac?            boolean
+        +--rw spam-authorize-aps-serial-num?     boolean
+        +--rw spam-authorize-aps-method-list?    string
+        +--rw dot1x-login-count-check?           boolean
+        +--rw dedicated-to-xor-rssi-threshold?   int8
+        +--rw xor-to-dedicated-rssi-threshold?   int8
+        +--rw xor-roam-min-client-count?         uint16
+        +--rw balancing-window?                  uint16
+        +--rw xor-probe-suppress-hysteresis?     int8
+        +--rw xor-roam-probe-suppress-op-mode?   wireless-enum-types:enm-apf-xor-roam-probe-suppression
+        +--rw xor-probe-suppress-aggression?     uint8
+        +--rw fra-state?                         boolean
+        +--rw fra-interval?                      uint32
+        +--rw fra-sensitivity?                   wireless-types:enm-fra-sensitivity
+        +--rw fra-service-priority?              wireless-types:enm-fra-service-priority
+        +--rw fra-sensor-threshold?              wireless-types:enm-fra-sensor-coverage-profile
+        +--rw led-brightness-level?              uint8
+        +--rw locally-administered-mac?          boolean
+Xpaths for model: Cisco-IOS-XE-wireless-apf-cfg.yang
+/wireless-apf-cfg:apf-cfg-data,container,
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf,container,
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:dot11-country-code,leaf,string
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:system-mgmt-via-wireless,leaf,boolean
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:enable-client-onboarding-event,leaf,boolean
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:network-name,leaf,string
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:blacklist-dot1x-timeout,leaf,boolean
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:blacklist-dot1x-auth,leaf,boolean
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:blacklist-dot11-assoc,leaf,boolean
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:blacklist-ip-theft,leaf,boolean
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:blacklist-web-auth,leaf,boolean
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:blacklist-failed-qos-policy,leaf,boolean
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:probe-limit,leaf,uint16
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:probe-interval,leaf,uint16
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:max-user-logins,leaf,uint32
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:web-auth-max-retries,leaf,uint8
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:dot1x-eapol-key-max-retries,leaf,uint8
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:dot1x-eapol-key-timeout,leaf,uint32
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:dot1x-eap-id-request-retries,leaf,uint8
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:dot1x-eap-id-request-timeout,leaf,uint8
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:dot1x-eap-request-max-retries,leaf,uint8
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:dot1x-eap-request-timeout,leaf,uint8
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:dot1x-eap-broadcast-interval,leaf,uint32
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:probe-filter,leaf,boolean
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:assisted-roam-floor-bias,leaf,uint16
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:assisted-roam-max-denial,leaf,uint16
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:assisted-roam-min-prediction,leaf,uint16
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:sip-pref-call-data-entry,container,
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:sip-pref-call-data-entry/wireless-apf-cfg:sip-pref-call-data,list,
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:sip-pref-call-data-entry/wireless-apf-cfg:sip-pref-call-data/wireless-apf-cfg:call-index,leaf,uint8
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:sip-pref-call-data-entry/wireless-apf-cfg:sip-pref-call-data/wireless-apf-cfg:sip-preferred-call-id,leaf,string
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:spam-authorize-aps-mac,leaf,boolean
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:spam-authorize-aps-serial-num,leaf,boolean
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:spam-authorize-aps-method-list,leaf,string
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:dot1x-login-count-check,leaf,boolean
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:dedicated-to-xor-rssi-threshold,leaf,int8
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:xor-to-dedicated-rssi-threshold,leaf,int8
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:xor-roam-min-client-count,leaf,uint16
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:balancing-window,leaf,uint16
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:xor-probe-suppress-hysteresis,leaf,int8
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:xor-roam-probe-suppress-op-mode,leaf,wireless-enum-types:enm-apf-xor-roam-probe-suppression
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:xor-probe-suppress-aggression,leaf,uint8
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:fra-state,leaf,boolean
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:fra-interval,leaf,uint32
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:fra-sensitivity,leaf,wireless-types:enm-fra-sensitivity
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:fra-service-priority,leaf,wireless-types:enm-fra-service-priority
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:fra-sensor-threshold,leaf,wireless-types:enm-fra-sensor-coverage-profile
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:led-brightness-level,leaf,uint8
+/wireless-apf-cfg:apf-cfg-data/wireless-apf-cfg:apf/wireless-apf-cfg:locally-administered-mac,leaf,boolean

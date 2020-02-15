@@ -1,0 +1,3 @@
+ 
+KPI for model: Cisco-IOS-XE-wsa-types.yang
+Xpaths for model: Cisco-IOS-XE-wsa-types.yang

@@ -1,0 +1,748 @@
+ 
+KPI for model: openconfig-system.yang
+module: openconfig-system
+  +--rw system
+     +--rw config
+     |  +--rw hostname?       oc-inet:domain-name
+     |  +--rw domain-name?    oc-inet:domain-name
+     |  +--rw login-banner?   string
+     |  +--rw motd-banner?    string
+     +--ro state
+     |  +--ro hostname?           oc-inet:domain-name
+     |  +--ro domain-name?        oc-inet:domain-name
+     |  +--ro login-banner?       string
+     |  +--ro motd-banner?        string
+     |  +--ro current-datetime?   oc-yang:date-and-time
+     |  +--ro boot-time?          oc-types:timeticks64
+     +--rw clock
+     |  +--rw config
+     |  |  +--rw timezone-name?   timezone-name-type
+     |  +--ro state
+     |     +--ro timezone-name?   timezone-name-type
+     +--rw dns
+     |  +--rw config
+     |  |  +--rw search*   oc-inet:domain-name
+     |  +--ro state
+     |  |  +--ro search*   oc-inet:domain-name
+     |  +--rw servers
+     |  |  +--rw server* [address]
+     |  |     +--rw address    -> ../config/address
+     |  |     +--rw config
+     |  |     |  +--rw address?   oc-inet:ip-address
+     |  |     |  +--rw port?      oc-inet:port-number
+     |  |     +--ro state
+     |  |        +--ro address?   oc-inet:ip-address
+     |  |        +--ro port?      oc-inet:port-number
+     |  +--rw host-entries
+     |     +--rw host-entry* [hostname]
+     |        +--rw hostname    -> ../config/hostname
+     |        +--rw config
+     |        |  +--rw hostname?       string
+     |        |  +--rw alias*          string
+     |        |  +--rw ipv4-address*   oc-inet:ipv4-address
+     |        |  +--rw ipv6-address*   oc-inet:ipv6-address
+     |        +--ro state
+     |           +--ro hostname?       string
+     |           +--ro alias*          string
+     |           +--ro ipv4-address*   oc-inet:ipv4-address
+     |           +--ro ipv6-address*   oc-inet:ipv6-address
+     +--rw ntp
+     |  +--rw config
+     |  |  +--rw enabled?              boolean
+     |  |  +--rw ntp-source-address?   oc-inet:ip-address
+     |  |  +--rw enable-ntp-auth?      boolean
+     |  +--ro state
+     |  |  +--ro enabled?              boolean
+     |  |  +--ro ntp-source-address?   oc-inet:ip-address
+     |  |  +--ro enable-ntp-auth?      boolean
+     |  |  +--ro auth-mismatch?        oc-yang:counter64
+     |  +--rw ntp-keys
+     |  |  +--rw ntp-key* [key-id]
+     |  |     +--rw key-id    -> ../config/key-id
+     |  |     +--rw config
+     |  |     |  +--rw key-id?      uint16
+     |  |     |  +--rw key-type?    identityref
+     |  |     |  +--rw key-value?   string
+     |  |     +--ro state
+     |  |        +--ro key-id?      uint16
+     |  |        +--ro key-type?    identityref
+     |  |        +--ro key-value?   string
+     |  +--rw servers
+     |     +--rw server* [address]
+     |        +--rw address    -> ../config/address
+     |        +--rw config
+     |        |  +--rw address?            oc-inet:host
+     |        |  +--rw port?               oc-inet:port-number
+     |        |  +--rw version?            uint8
+     |        |  +--rw association-type?   enumeration
+     |        |  +--rw iburst?             boolean
+     |        |  +--rw prefer?             boolean
+     |        +--ro state
+     |           +--ro address?            oc-inet:host
+     |           +--ro port?               oc-inet:port-number
+     |           +--ro version?            uint8
+     |           +--ro association-type?   enumeration
+     |           +--ro iburst?             boolean
+     |           +--ro prefer?             boolean
+     |           +--ro stratum?            uint8
+     |           +--ro root-delay?         uint32
+     |           +--ro root-dispersion?    uint64
+     |           +--ro offset?             uint64
+     |           +--ro poll-interval?      uint32
+     +--rw grpc-server
+     |  +--rw config
+     |  |  +--rw enable?               boolean
+     |  |  +--rw port?                 oc-inet:port-number
+     |  |  +--rw transport-security?   boolean
+     |  |  +--rw certificate-id?       string
+     |  |  +--rw listen-addresses*     union
+     |  +--ro state
+     |     +--ro enable?               boolean
+     |     +--ro port?                 oc-inet:port-number
+     |     +--ro transport-security?   boolean
+     |     +--ro certificate-id?       string
+     |     +--ro listen-addresses*     union
+     +--rw ssh-server
+     |  +--rw config
+     |  |  +--rw enable?             boolean
+     |  |  +--rw protocol-version?   enumeration
+     |  |  +--rw timeout?            uint16
+     |  |  +--rw rate-limit?         uint16
+     |  |  +--rw session-limit?      uint16
+     |  +--ro state
+     |     +--ro enable?             boolean
+     |     +--ro protocol-version?   enumeration
+     |     +--ro timeout?            uint16
+     |     +--ro rate-limit?         uint16
+     |     +--ro session-limit?      uint16
+     +--rw telnet-server
+     |  +--rw config
+     |  |  +--rw enable?          boolean
+     |  |  +--rw timeout?         uint16
+     |  |  +--rw rate-limit?      uint16
+     |  |  +--rw session-limit?   uint16
+     |  +--ro state
+     |     +--ro enable?          boolean
+     |     +--ro timeout?         uint16
+     |     +--ro rate-limit?      uint16
+     |     +--ro session-limit?   uint16
+     +--rw logging
+     |  +--rw console
+     |  |  +--rw config
+     |  |  +--ro state
+     |  |  +--rw selectors
+     |  |     +--rw selector* [facility severity]
+     |  |        +--rw facility    -> ../config/facility
+     |  |        +--rw severity    -> ../config/severity
+     |  |        +--rw config
+     |  |        |  +--rw facility?   identityref
+     |  |        |  +--rw severity?   syslog-severity
+     |  |        +--ro state
+     |  |           +--ro facility?   identityref
+     |  |           +--ro severity?   syslog-severity
+     |  +--rw remote-servers
+     |     +--rw remote-server* [host]
+     |        +--rw host         -> ../config/host
+     |        +--rw config
+     |        |  +--rw host?             oc-inet:host
+     |        |  +--rw source-address?   oc-inet:ip-address
+     |        |  +--rw remote-port?      oc-inet:port-number
+     |        +--ro state
+     |        |  +--ro host?             oc-inet:host
+     |        |  +--ro source-address?   oc-inet:ip-address
+     |        |  +--ro remote-port?      oc-inet:port-number
+     |        +--rw selectors
+     |           +--rw selector* [facility severity]
+     |              +--rw facility    -> ../config/facility
+     |              +--rw severity    -> ../config/severity
+     |              +--rw config
+     |              |  +--rw facility?   identityref
+     |              |  +--rw severity?   syslog-severity
+     |              +--ro state
+     |                 +--ro facility?   identityref
+     |                 +--ro severity?   syslog-severity
+     +--rw aaa
+     |  +--rw config
+     |  +--ro state
+     |  +--rw authentication
+     |  |  +--rw config
+     |  |  |  +--rw authentication-method*   union
+     |  |  +--ro state
+     |  |  |  +--ro authentication-method*   union
+     |  |  +--rw admin-user
+     |  |  |  +--rw config
+     |  |  |  |  +--rw admin-password?          string
+     |  |  |  |  +--rw admin-password-hashed?   oc-aaa-types:crypt-password-type
+     |  |  |  +--ro state
+     |  |  |     +--ro admin-password?          string
+     |  |  |     +--ro admin-password-hashed?   oc-aaa-types:crypt-password-type
+     |  |  |     +--ro admin-username?          string
+     |  |  +--rw users
+     |  |     +--rw user* [username]
+     |  |        +--rw username    -> ../config/username
+     |  |        +--rw config
+     |  |        |  +--rw username?          string
+     |  |        |  +--rw password?          string
+     |  |        |  +--rw password-hashed?   oc-aaa-types:crypt-password-type
+     |  |        |  +--rw ssh-key?           string
+     |  |        |  +--rw role?              union
+     |  |        +--ro state
+     |  |           +--ro username?          string
+     |  |           +--ro password?          string
+     |  |           +--ro password-hashed?   oc-aaa-types:crypt-password-type
+     |  |           +--ro ssh-key?           string
+     |  |           +--ro role?              union
+     |  +--rw authorization
+     |  |  +--rw config
+     |  |  |  +--rw authorization-method*   union
+     |  |  +--ro state
+     |  |  |  +--ro authorization-method*   union
+     |  |  +--rw events
+     |  |     +--rw event* [event-type]
+     |  |        +--rw event-type    -> ../config/event-type
+     |  |        +--rw config
+     |  |        |  +--rw event-type?   identityref
+     |  |        +--ro state
+     |  |           +--ro event-type?   identityref
+     |  +--rw accounting
+     |  |  +--rw config
+     |  |  |  +--rw accounting-method*   union
+     |  |  +--ro state
+     |  |  |  +--ro accounting-method*   union
+     |  |  +--rw events
+     |  |     +--rw event* [event-type]
+     |  |        +--rw event-type    -> ../config/event-type
+     |  |        +--rw config
+     |  |        |  +--rw event-type?   identityref
+     |  |        |  +--rw record?       enumeration
+     |  |        +--ro state
+     |  |           +--ro event-type?   identityref
+     |  |           +--ro record?       enumeration
+     |  +--rw server-groups
+     |     +--rw server-group* [name]
+     |        +--rw name       -> ../config/name
+     |        +--rw config
+     |        |  +--rw name?   string
+     |        |  +--rw type?   identityref
+     |        +--ro state
+     |        |  +--ro name?   string
+     |        |  +--ro type?   identityref
+     |        +--rw servers
+     |           +--rw server* [address]
+     |              +--rw address    -> ../config/address
+     |              +--rw config
+     |              |  +--rw name?      string
+     |              |  +--rw address?   oc-inet:ip-address
+     |              |  +--rw timeout?   uint16
+     |              +--ro state
+     |              |  +--ro name?                  string
+     |              |  +--ro address?               oc-inet:ip-address
+     |              |  +--ro timeout?               uint16
+     |              |  +--ro connection-opens?      oc-yang:counter64
+     |              |  +--ro connection-closes?     oc-yang:counter64
+     |              |  +--ro connection-aborts?     oc-yang:counter64
+     |              |  +--ro connection-failures?   oc-yang:counter64
+     |              |  +--ro connection-timeouts?   oc-yang:counter64
+     |              |  +--ro messages-sent?         oc-yang:counter64
+     |              |  +--ro messages-received?     oc-yang:counter64
+     |              |  +--ro errors-received?       oc-yang:counter64
+     |              +--rw tacacs
+     |              |  +--rw config
+     |              |  |  +--rw port?             oc-inet:port-number
+     |              |  |  +--rw secret-key?       oc-types:routing-password
+     |              |  |  +--rw source-address?   oc-inet:ip-address
+     |              |  +--ro state
+     |              |     +--ro port?             oc-inet:port-number
+     |              |     +--ro secret-key?       oc-types:routing-password
+     |              |     +--ro source-address?   oc-inet:ip-address
+     |              +--rw radius
+     |                 +--rw config
+     |                 |  +--rw auth-port?             oc-inet:port-number
+     |                 |  +--rw acct-port?             oc-inet:port-number
+     |                 |  +--rw secret-key?            oc-types:routing-password
+     |                 |  +--rw source-address?        oc-inet:ip-address
+     |                 |  +--rw retransmit-attempts?   uint8
+     |                 +--ro state
+     |                    +--ro auth-port?             oc-inet:port-number
+     |                    +--ro acct-port?             oc-inet:port-number
+     |                    +--ro secret-key?            oc-types:routing-password
+     |                    +--ro source-address?        oc-inet:ip-address
+     |                    +--ro retransmit-attempts?   uint8
+     |                    +--ro counters
+     |                       +--ro retried-access-requests?   oc-yang:counter64
+     |                       +--ro access-accepts?            oc-yang:counter64
+     |                       +--ro access-rejects?            oc-yang:counter64
+     |                       +--ro timeout-access-requests?   oc-yang:counter64
+     +--rw memory
+     |  +--rw config
+     |  +--ro state
+     |     +--ro physical?   uint64
+     |     +--ro reserved?   uint64
+     +--ro cpus
+     |  +--ro cpu* [index]
+     |     +--ro index    -> ../state/index
+     |     +--ro state
+     |        +--ro index?                union
+     |        +--ro total
+     |        |  +--ro instant?    oc-types:percentage
+     |        |  +--ro avg?        oc-types:percentage
+     |        |  +--ro min?        oc-types:percentage
+     |        |  +--ro max?        oc-types:percentage
+     |        |  +--ro interval?   oc-types:stat-interval
+     |        |  +--ro min-time?   oc-types:timeticks64
+     |        |  +--ro max-time?   oc-types:timeticks64
+     |        +--ro user
+     |        |  +--ro instant?    oc-types:percentage
+     |        |  +--ro avg?        oc-types:percentage
+     |        |  +--ro min?        oc-types:percentage
+     |        |  +--ro max?        oc-types:percentage
+     |        |  +--ro interval?   oc-types:stat-interval
+     |        |  +--ro min-time?   oc-types:timeticks64
+     |        |  +--ro max-time?   oc-types:timeticks64
+     |        +--ro kernel
+     |        |  +--ro instant?    oc-types:percentage
+     |        |  +--ro avg?        oc-types:percentage
+     |        |  +--ro min?        oc-types:percentage
+     |        |  +--ro max?        oc-types:percentage
+     |        |  +--ro interval?   oc-types:stat-interval
+     |        |  +--ro min-time?   oc-types:timeticks64
+     |        |  +--ro max-time?   oc-types:timeticks64
+     |        +--ro nice
+     |        |  +--ro instant?    oc-types:percentage
+     |        |  +--ro avg?        oc-types:percentage
+     |        |  +--ro min?        oc-types:percentage
+     |        |  +--ro max?        oc-types:percentage
+     |        |  +--ro interval?   oc-types:stat-interval
+     |        |  +--ro min-time?   oc-types:timeticks64
+     |        |  +--ro max-time?   oc-types:timeticks64
+     |        +--ro idle
+     |        |  +--ro instant?    oc-types:percentage
+     |        |  +--ro avg?        oc-types:percentage
+     |        |  +--ro min?        oc-types:percentage
+     |        |  +--ro max?        oc-types:percentage
+     |        |  +--ro interval?   oc-types:stat-interval
+     |        |  +--ro min-time?   oc-types:timeticks64
+     |        |  +--ro max-time?   oc-types:timeticks64
+     |        +--ro wait
+     |        |  +--ro instant?    oc-types:percentage
+     |        |  +--ro avg?        oc-types:percentage
+     |        |  +--ro min?        oc-types:percentage
+     |        |  +--ro max?        oc-types:percentage
+     |        |  +--ro interval?   oc-types:stat-interval
+     |        |  +--ro min-time?   oc-types:timeticks64
+     |        |  +--ro max-time?   oc-types:timeticks64
+     |        +--ro hardware-interrupt
+     |        |  +--ro instant?    oc-types:percentage
+     |        |  +--ro avg?        oc-types:percentage
+     |        |  +--ro min?        oc-types:percentage
+     |        |  +--ro max?        oc-types:percentage
+     |        |  +--ro interval?   oc-types:stat-interval
+     |        |  +--ro min-time?   oc-types:timeticks64
+     |        |  +--ro max-time?   oc-types:timeticks64
+     |        +--ro software-interrupt
+     |           +--ro instant?    oc-types:percentage
+     |           +--ro avg?        oc-types:percentage
+     |           +--ro min?        oc-types:percentage
+     |           +--ro max?        oc-types:percentage
+     |           +--ro interval?   oc-types:stat-interval
+     |           +--ro min-time?   oc-types:timeticks64
+     |           +--ro max-time?   oc-types:timeticks64
+     +--rw processes
+     |  +--ro process* [pid]
+     |     +--ro pid      -> ../state/pid
+     |     +--ro state
+     |        +--ro pid?                  uint64
+     |        +--ro name?                 string
+     |        +--ro args*                 string
+     |        +--ro start-time?           uint64
+     |        +--ro uptime?               oc-types:timeticks64
+     |        +--ro cpu-usage-user?       oc-types:timeticks64
+     |        +--ro cpu-usage-system?     oc-types:timeticks64
+     |        +--ro cpu-utilization?      oc-types:percentage
+     |        +--ro memory-usage?         uint64
+     |        +--ro memory-utilization?   oc-types:percentage
+     +--rw alarms
+        +--rw alarm* [id]
+           +--rw id        -> ../config/id
+           +--rw config
+           |  +--rw id?   string
+           +--ro state
+              +--ro id?             string
+              +--ro resource?       string
+              +--ro text?           string
+              +--ro time-created?   oc-types:timeticks64
+              +--ro severity?       identityref
+              +--ro type-id?        union
+Xpaths for model: openconfig-system.yang
+/oc-sys:system,container,
+/oc-sys:system/oc-sys:config,container,
+/oc-sys:system/oc-sys:config/oc-sys:hostname,leaf,oc-inet:domain-name
+/oc-sys:system/oc-sys:config/oc-sys:domain-name,leaf,oc-inet:domain-name
+/oc-sys:system/oc-sys:config/oc-sys:login-banner,leaf,string
+/oc-sys:system/oc-sys:config/oc-sys:motd-banner,leaf,string
+/oc-sys:system/oc-sys:state,container,
+/oc-sys:system/oc-sys:state/oc-sys:hostname,leaf,oc-inet:domain-name
+/oc-sys:system/oc-sys:state/oc-sys:domain-name,leaf,oc-inet:domain-name
+/oc-sys:system/oc-sys:state/oc-sys:login-banner,leaf,string
+/oc-sys:system/oc-sys:state/oc-sys:motd-banner,leaf,string
+/oc-sys:system/oc-sys:state/oc-sys:current-datetime,leaf,oc-yang:date-and-time
+/oc-sys:system/oc-sys:state/oc-sys:boot-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:clock,container,
+/oc-sys:system/oc-sys:clock/oc-sys:config,container,
+/oc-sys:system/oc-sys:clock/oc-sys:config/oc-sys:timezone-name,leaf,timezone-name-type
+/oc-sys:system/oc-sys:clock/oc-sys:state,container,
+/oc-sys:system/oc-sys:clock/oc-sys:state/oc-sys:timezone-name,leaf,timezone-name-type
+/oc-sys:system/oc-sys:dns,container,
+/oc-sys:system/oc-sys:dns/oc-sys:config,container,
+/oc-sys:system/oc-sys:dns/oc-sys:config/oc-sys:search,leaf-list,oc-inet:domain-name
+/oc-sys:system/oc-sys:dns/oc-sys:state,container,
+/oc-sys:system/oc-sys:dns/oc-sys:state/oc-sys:search,leaf-list,oc-inet:domain-name
+/oc-sys:system/oc-sys:dns/oc-sys:servers,container,
+/oc-sys:system/oc-sys:dns/oc-sys:servers/oc-sys:server,list,
+/oc-sys:system/oc-sys:dns/oc-sys:servers/oc-sys:server/oc-sys:address,leaf,leafref
+/oc-sys:system/oc-sys:dns/oc-sys:servers/oc-sys:server/oc-sys:config,container,
+/oc-sys:system/oc-sys:dns/oc-sys:servers/oc-sys:server/oc-sys:config/oc-sys:address,leaf,oc-inet:ip-address
+/oc-sys:system/oc-sys:dns/oc-sys:servers/oc-sys:server/oc-sys:config/oc-sys:port,leaf,oc-inet:port-number
+/oc-sys:system/oc-sys:dns/oc-sys:servers/oc-sys:server/oc-sys:state,container,
+/oc-sys:system/oc-sys:dns/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:address,leaf,oc-inet:ip-address
+/oc-sys:system/oc-sys:dns/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:port,leaf,oc-inet:port-number
+/oc-sys:system/oc-sys:dns/oc-sys:host-entries,container,
+/oc-sys:system/oc-sys:dns/oc-sys:host-entries/oc-sys:host-entry,list,
+/oc-sys:system/oc-sys:dns/oc-sys:host-entries/oc-sys:host-entry/oc-sys:hostname,leaf,leafref
+/oc-sys:system/oc-sys:dns/oc-sys:host-entries/oc-sys:host-entry/oc-sys:config,container,
+/oc-sys:system/oc-sys:dns/oc-sys:host-entries/oc-sys:host-entry/oc-sys:config/oc-sys:hostname,leaf,string
+/oc-sys:system/oc-sys:dns/oc-sys:host-entries/oc-sys:host-entry/oc-sys:config/oc-sys:alias,leaf-list,string
+/oc-sys:system/oc-sys:dns/oc-sys:host-entries/oc-sys:host-entry/oc-sys:config/oc-sys:ipv4-address,leaf-list,oc-inet:ipv4-address
+/oc-sys:system/oc-sys:dns/oc-sys:host-entries/oc-sys:host-entry/oc-sys:config/oc-sys:ipv6-address,leaf-list,oc-inet:ipv6-address
+/oc-sys:system/oc-sys:dns/oc-sys:host-entries/oc-sys:host-entry/oc-sys:state,container,
+/oc-sys:system/oc-sys:dns/oc-sys:host-entries/oc-sys:host-entry/oc-sys:state/oc-sys:hostname,leaf,string
+/oc-sys:system/oc-sys:dns/oc-sys:host-entries/oc-sys:host-entry/oc-sys:state/oc-sys:alias,leaf-list,string
+/oc-sys:system/oc-sys:dns/oc-sys:host-entries/oc-sys:host-entry/oc-sys:state/oc-sys:ipv4-address,leaf-list,oc-inet:ipv4-address
+/oc-sys:system/oc-sys:dns/oc-sys:host-entries/oc-sys:host-entry/oc-sys:state/oc-sys:ipv6-address,leaf-list,oc-inet:ipv6-address
+/oc-sys:system/oc-sys:ntp,container,
+/oc-sys:system/oc-sys:ntp/oc-sys:config,container,
+/oc-sys:system/oc-sys:ntp/oc-sys:config/oc-sys:enabled,leaf,boolean
+/oc-sys:system/oc-sys:ntp/oc-sys:config/oc-sys:ntp-source-address,leaf,oc-inet:ip-address
+/oc-sys:system/oc-sys:ntp/oc-sys:config/oc-sys:enable-ntp-auth,leaf,boolean
+/oc-sys:system/oc-sys:ntp/oc-sys:state,container,
+/oc-sys:system/oc-sys:ntp/oc-sys:state/oc-sys:enabled,leaf,boolean
+/oc-sys:system/oc-sys:ntp/oc-sys:state/oc-sys:ntp-source-address,leaf,oc-inet:ip-address
+/oc-sys:system/oc-sys:ntp/oc-sys:state/oc-sys:enable-ntp-auth,leaf,boolean
+/oc-sys:system/oc-sys:ntp/oc-sys:state/oc-sys:auth-mismatch,leaf,oc-yang:counter64
+/oc-sys:system/oc-sys:ntp/oc-sys:ntp-keys,container,
+/oc-sys:system/oc-sys:ntp/oc-sys:ntp-keys/oc-sys:ntp-key,list,
+/oc-sys:system/oc-sys:ntp/oc-sys:ntp-keys/oc-sys:ntp-key/oc-sys:key-id,leaf,leafref
+/oc-sys:system/oc-sys:ntp/oc-sys:ntp-keys/oc-sys:ntp-key/oc-sys:config,container,
+/oc-sys:system/oc-sys:ntp/oc-sys:ntp-keys/oc-sys:ntp-key/oc-sys:config/oc-sys:key-id,leaf,uint16
+/oc-sys:system/oc-sys:ntp/oc-sys:ntp-keys/oc-sys:ntp-key/oc-sys:config/oc-sys:key-type,leaf,identityref
+/oc-sys:system/oc-sys:ntp/oc-sys:ntp-keys/oc-sys:ntp-key/oc-sys:config/oc-sys:key-value,leaf,string
+/oc-sys:system/oc-sys:ntp/oc-sys:ntp-keys/oc-sys:ntp-key/oc-sys:state,container,
+/oc-sys:system/oc-sys:ntp/oc-sys:ntp-keys/oc-sys:ntp-key/oc-sys:state/oc-sys:key-id,leaf,uint16
+/oc-sys:system/oc-sys:ntp/oc-sys:ntp-keys/oc-sys:ntp-key/oc-sys:state/oc-sys:key-type,leaf,identityref
+/oc-sys:system/oc-sys:ntp/oc-sys:ntp-keys/oc-sys:ntp-key/oc-sys:state/oc-sys:key-value,leaf,string
+/oc-sys:system/oc-sys:ntp/oc-sys:servers,container,
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server,list,
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:address,leaf,leafref
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:config,container,
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:config/oc-sys:address,leaf,oc-inet:host
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:config/oc-sys:port,leaf,oc-inet:port-number
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:config/oc-sys:version,leaf,uint8
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:config/oc-sys:association-type,leaf,enumeration
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:config/oc-sys:iburst,leaf,boolean
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:config/oc-sys:prefer,leaf,boolean
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:state,container,
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:address,leaf,oc-inet:host
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:port,leaf,oc-inet:port-number
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:version,leaf,uint8
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:association-type,leaf,enumeration
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:iburst,leaf,boolean
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:prefer,leaf,boolean
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:stratum,leaf,uint8
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:root-delay,leaf,uint32
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:root-dispersion,leaf,uint64
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:offset,leaf,uint64
+/oc-sys:system/oc-sys:ntp/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:poll-interval,leaf,uint32
+/oc-sys:system/oc-sys:grpc-server,container,
+/oc-sys:system/oc-sys:grpc-server/oc-sys:config,container,
+/oc-sys:system/oc-sys:grpc-server/oc-sys:config/oc-sys:enable,leaf,boolean
+/oc-sys:system/oc-sys:grpc-server/oc-sys:config/oc-sys:port,leaf,oc-inet:port-number
+/oc-sys:system/oc-sys:grpc-server/oc-sys:config/oc-sys:transport-security,leaf,boolean
+/oc-sys:system/oc-sys:grpc-server/oc-sys:config/oc-sys:certificate-id,leaf,string
+/oc-sys:system/oc-sys:grpc-server/oc-sys:config/oc-sys:listen-addresses,leaf-list,union
+/oc-sys:system/oc-sys:grpc-server/oc-sys:state,container,
+/oc-sys:system/oc-sys:grpc-server/oc-sys:state/oc-sys:enable,leaf,boolean
+/oc-sys:system/oc-sys:grpc-server/oc-sys:state/oc-sys:port,leaf,oc-inet:port-number
+/oc-sys:system/oc-sys:grpc-server/oc-sys:state/oc-sys:transport-security,leaf,boolean
+/oc-sys:system/oc-sys:grpc-server/oc-sys:state/oc-sys:certificate-id,leaf,string
+/oc-sys:system/oc-sys:grpc-server/oc-sys:state/oc-sys:listen-addresses,leaf-list,union
+/oc-sys:system/oc-sys:ssh-server,container,
+/oc-sys:system/oc-sys:ssh-server/oc-sys:config,container,
+/oc-sys:system/oc-sys:ssh-server/oc-sys:config/oc-sys:enable,leaf,boolean
+/oc-sys:system/oc-sys:ssh-server/oc-sys:config/oc-sys:protocol-version,leaf,enumeration
+/oc-sys:system/oc-sys:ssh-server/oc-sys:config/oc-sys:timeout,leaf,uint16
+/oc-sys:system/oc-sys:ssh-server/oc-sys:config/oc-sys:rate-limit,leaf,uint16
+/oc-sys:system/oc-sys:ssh-server/oc-sys:config/oc-sys:session-limit,leaf,uint16
+/oc-sys:system/oc-sys:ssh-server/oc-sys:state,container,
+/oc-sys:system/oc-sys:ssh-server/oc-sys:state/oc-sys:enable,leaf,boolean
+/oc-sys:system/oc-sys:ssh-server/oc-sys:state/oc-sys:protocol-version,leaf,enumeration
+/oc-sys:system/oc-sys:ssh-server/oc-sys:state/oc-sys:timeout,leaf,uint16
+/oc-sys:system/oc-sys:ssh-server/oc-sys:state/oc-sys:rate-limit,leaf,uint16
+/oc-sys:system/oc-sys:ssh-server/oc-sys:state/oc-sys:session-limit,leaf,uint16
+/oc-sys:system/oc-sys:telnet-server,container,
+/oc-sys:system/oc-sys:telnet-server/oc-sys:config,container,
+/oc-sys:system/oc-sys:telnet-server/oc-sys:config/oc-sys:enable,leaf,boolean
+/oc-sys:system/oc-sys:telnet-server/oc-sys:config/oc-sys:timeout,leaf,uint16
+/oc-sys:system/oc-sys:telnet-server/oc-sys:config/oc-sys:rate-limit,leaf,uint16
+/oc-sys:system/oc-sys:telnet-server/oc-sys:config/oc-sys:session-limit,leaf,uint16
+/oc-sys:system/oc-sys:telnet-server/oc-sys:state,container,
+/oc-sys:system/oc-sys:telnet-server/oc-sys:state/oc-sys:enable,leaf,boolean
+/oc-sys:system/oc-sys:telnet-server/oc-sys:state/oc-sys:timeout,leaf,uint16
+/oc-sys:system/oc-sys:telnet-server/oc-sys:state/oc-sys:rate-limit,leaf,uint16
+/oc-sys:system/oc-sys:telnet-server/oc-sys:state/oc-sys:session-limit,leaf,uint16
+/oc-sys:system/oc-sys:logging,container,
+/oc-sys:system/oc-sys:logging/oc-sys:console,container,
+/oc-sys:system/oc-sys:logging/oc-sys:console/oc-sys:config,container,
+/oc-sys:system/oc-sys:logging/oc-sys:console/oc-sys:state,container,
+/oc-sys:system/oc-sys:logging/oc-sys:console/oc-sys:selectors,container,
+/oc-sys:system/oc-sys:logging/oc-sys:console/oc-sys:selectors/oc-sys:selector,list,
+/oc-sys:system/oc-sys:logging/oc-sys:console/oc-sys:selectors/oc-sys:selector/oc-sys:facility,leaf,leafref
+/oc-sys:system/oc-sys:logging/oc-sys:console/oc-sys:selectors/oc-sys:selector/oc-sys:severity,leaf,leafref
+/oc-sys:system/oc-sys:logging/oc-sys:console/oc-sys:selectors/oc-sys:selector/oc-sys:config,container,
+/oc-sys:system/oc-sys:logging/oc-sys:console/oc-sys:selectors/oc-sys:selector/oc-sys:config/oc-sys:facility,leaf,identityref
+/oc-sys:system/oc-sys:logging/oc-sys:console/oc-sys:selectors/oc-sys:selector/oc-sys:config/oc-sys:severity,leaf,syslog-severity
+/oc-sys:system/oc-sys:logging/oc-sys:console/oc-sys:selectors/oc-sys:selector/oc-sys:state,container,
+/oc-sys:system/oc-sys:logging/oc-sys:console/oc-sys:selectors/oc-sys:selector/oc-sys:state/oc-sys:facility,leaf,identityref
+/oc-sys:system/oc-sys:logging/oc-sys:console/oc-sys:selectors/oc-sys:selector/oc-sys:state/oc-sys:severity,leaf,syslog-severity
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers,container,
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server,list,
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:host,leaf,leafref
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:config,container,
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:config/oc-sys:host,leaf,oc-inet:host
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:config/oc-sys:source-address,leaf,oc-inet:ip-address
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:config/oc-sys:remote-port,leaf,oc-inet:port-number
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:state,container,
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:state/oc-sys:host,leaf,oc-inet:host
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:state/oc-sys:source-address,leaf,oc-inet:ip-address
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:state/oc-sys:remote-port,leaf,oc-inet:port-number
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:selectors,container,
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:selectors/oc-sys:selector,list,
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:selectors/oc-sys:selector/oc-sys:facility,leaf,leafref
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:selectors/oc-sys:selector/oc-sys:severity,leaf,leafref
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:selectors/oc-sys:selector/oc-sys:config,container,
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:selectors/oc-sys:selector/oc-sys:config/oc-sys:facility,leaf,identityref
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:selectors/oc-sys:selector/oc-sys:config/oc-sys:severity,leaf,syslog-severity
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:selectors/oc-sys:selector/oc-sys:state,container,
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:selectors/oc-sys:selector/oc-sys:state/oc-sys:facility,leaf,identityref
+/oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:selectors/oc-sys:selector/oc-sys:state/oc-sys:severity,leaf,syslog-severity
+/oc-sys:system/oc-sys:aaa,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:config,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:state,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:config,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:config/oc-sys:authentication-method,leaf-list,union
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:state,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:state/oc-sys:authentication-method,leaf-list,union
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:admin-user,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:admin-user/oc-sys:config,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:admin-user/oc-sys:config/oc-sys:admin-password,leaf,string
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:admin-user/oc-sys:config/oc-sys:admin-password-hashed,leaf,oc-aaa-types:crypt-password-type
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:admin-user/oc-sys:state,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:admin-user/oc-sys:state/oc-sys:admin-password,leaf,string
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:admin-user/oc-sys:state/oc-sys:admin-password-hashed,leaf,oc-aaa-types:crypt-password-type
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:admin-user/oc-sys:state/oc-sys:admin-username,leaf,string
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:users,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:users/oc-sys:user,list,
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:users/oc-sys:user/oc-sys:username,leaf,leafref
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:users/oc-sys:user/oc-sys:config,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:users/oc-sys:user/oc-sys:config/oc-sys:username,leaf,string
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:users/oc-sys:user/oc-sys:config/oc-sys:password,leaf,string
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:users/oc-sys:user/oc-sys:config/oc-sys:password-hashed,leaf,oc-aaa-types:crypt-password-type
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:users/oc-sys:user/oc-sys:config/oc-sys:ssh-key,leaf,string
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:users/oc-sys:user/oc-sys:config/oc-sys:role,leaf,union
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:users/oc-sys:user/oc-sys:state,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:users/oc-sys:user/oc-sys:state/oc-sys:username,leaf,string
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:users/oc-sys:user/oc-sys:state/oc-sys:password,leaf,string
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:users/oc-sys:user/oc-sys:state/oc-sys:password-hashed,leaf,oc-aaa-types:crypt-password-type
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:users/oc-sys:user/oc-sys:state/oc-sys:ssh-key,leaf,string
+/oc-sys:system/oc-sys:aaa/oc-sys:authentication/oc-sys:users/oc-sys:user/oc-sys:state/oc-sys:role,leaf,union
+/oc-sys:system/oc-sys:aaa/oc-sys:authorization,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authorization/oc-sys:config,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authorization/oc-sys:config/oc-sys:authorization-method,leaf-list,union
+/oc-sys:system/oc-sys:aaa/oc-sys:authorization/oc-sys:state,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authorization/oc-sys:state/oc-sys:authorization-method,leaf-list,union
+/oc-sys:system/oc-sys:aaa/oc-sys:authorization/oc-sys:events,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authorization/oc-sys:events/oc-sys:event,list,
+/oc-sys:system/oc-sys:aaa/oc-sys:authorization/oc-sys:events/oc-sys:event/oc-sys:event-type,leaf,leafref
+/oc-sys:system/oc-sys:aaa/oc-sys:authorization/oc-sys:events/oc-sys:event/oc-sys:config,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authorization/oc-sys:events/oc-sys:event/oc-sys:config/oc-sys:event-type,leaf,identityref
+/oc-sys:system/oc-sys:aaa/oc-sys:authorization/oc-sys:events/oc-sys:event/oc-sys:state,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:authorization/oc-sys:events/oc-sys:event/oc-sys:state/oc-sys:event-type,leaf,identityref
+/oc-sys:system/oc-sys:aaa/oc-sys:accounting,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:accounting/oc-sys:config,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:accounting/oc-sys:config/oc-sys:accounting-method,leaf-list,union
+/oc-sys:system/oc-sys:aaa/oc-sys:accounting/oc-sys:state,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:accounting/oc-sys:state/oc-sys:accounting-method,leaf-list,union
+/oc-sys:system/oc-sys:aaa/oc-sys:accounting/oc-sys:events,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:accounting/oc-sys:events/oc-sys:event,list,
+/oc-sys:system/oc-sys:aaa/oc-sys:accounting/oc-sys:events/oc-sys:event/oc-sys:event-type,leaf,leafref
+/oc-sys:system/oc-sys:aaa/oc-sys:accounting/oc-sys:events/oc-sys:event/oc-sys:config,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:accounting/oc-sys:events/oc-sys:event/oc-sys:config/oc-sys:event-type,leaf,identityref
+/oc-sys:system/oc-sys:aaa/oc-sys:accounting/oc-sys:events/oc-sys:event/oc-sys:config/oc-sys:record,leaf,enumeration
+/oc-sys:system/oc-sys:aaa/oc-sys:accounting/oc-sys:events/oc-sys:event/oc-sys:state,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:accounting/oc-sys:events/oc-sys:event/oc-sys:state/oc-sys:event-type,leaf,identityref
+/oc-sys:system/oc-sys:aaa/oc-sys:accounting/oc-sys:events/oc-sys:event/oc-sys:state/oc-sys:record,leaf,enumeration
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group,list,
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:name,leaf,leafref
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:config,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:config/oc-sys:name,leaf,string
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:config/oc-sys:type,leaf,identityref
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:state,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:state/oc-sys:name,leaf,string
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:state/oc-sys:type,leaf,identityref
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server,list,
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:address,leaf,leafref
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:config,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:config/oc-sys:name,leaf,string
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:config/oc-sys:address,leaf,oc-inet:ip-address
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:config/oc-sys:timeout,leaf,uint16
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:state,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:name,leaf,string
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:address,leaf,oc-inet:ip-address
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:timeout,leaf,uint16
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:connection-opens,leaf,oc-yang:counter64
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:connection-closes,leaf,oc-yang:counter64
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:connection-aborts,leaf,oc-yang:counter64
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:connection-failures,leaf,oc-yang:counter64
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:connection-timeouts,leaf,oc-yang:counter64
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:messages-sent,leaf,oc-yang:counter64
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:messages-received,leaf,oc-yang:counter64
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:state/oc-sys:errors-received,leaf,oc-yang:counter64
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:tacacs,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:tacacs/oc-sys:config,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:tacacs/oc-sys:config/oc-sys:port,leaf,oc-inet:port-number
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:tacacs/oc-sys:config/oc-sys:secret-key,leaf,oc-types:routing-password
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:tacacs/oc-sys:config/oc-sys:source-address,leaf,oc-inet:ip-address
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:tacacs/oc-sys:state,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:tacacs/oc-sys:state/oc-sys:port,leaf,oc-inet:port-number
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:tacacs/oc-sys:state/oc-sys:secret-key,leaf,oc-types:routing-password
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:tacacs/oc-sys:state/oc-sys:source-address,leaf,oc-inet:ip-address
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:config,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:config/oc-sys:auth-port,leaf,oc-inet:port-number
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:config/oc-sys:acct-port,leaf,oc-inet:port-number
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:config/oc-sys:secret-key,leaf,oc-types:routing-password
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:config/oc-sys:source-address,leaf,oc-inet:ip-address
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:config/oc-sys:retransmit-attempts,leaf,uint8
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:state,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:state/oc-sys:auth-port,leaf,oc-inet:port-number
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:state/oc-sys:acct-port,leaf,oc-inet:port-number
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:state/oc-sys:secret-key,leaf,oc-types:routing-password
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:state/oc-sys:source-address,leaf,oc-inet:ip-address
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:state/oc-sys:retransmit-attempts,leaf,uint8
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:state/oc-sys:counters,container,
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:state/oc-sys:counters/oc-sys:retried-access-requests,leaf,oc-yang:counter64
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:state/oc-sys:counters/oc-sys:access-accepts,leaf,oc-yang:counter64
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:state/oc-sys:counters/oc-sys:access-rejects,leaf,oc-yang:counter64
+/oc-sys:system/oc-sys:aaa/oc-sys:server-groups/oc-sys:server-group/oc-sys:servers/oc-sys:server/oc-sys:radius/oc-sys:state/oc-sys:counters/oc-sys:timeout-access-requests,leaf,oc-yang:counter64
+/oc-sys:system/oc-sys:memory,container,
+/oc-sys:system/oc-sys:memory/oc-sys:config,container,
+/oc-sys:system/oc-sys:memory/oc-sys:state,container,
+/oc-sys:system/oc-sys:memory/oc-sys:state/oc-sys:physical,leaf,uint64
+/oc-sys:system/oc-sys:memory/oc-sys:state/oc-sys:reserved,leaf,uint64
+/oc-sys:system/oc-sys:cpus,container,
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu,list,
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:index,leaf,leafref
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state,container,
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:index,leaf,union
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:total,container,
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:total/oc-sys:instant,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:total/oc-sys:avg,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:total/oc-sys:min,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:total/oc-sys:max,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:total/oc-sys:interval,leaf,oc-types:stat-interval
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:total/oc-sys:min-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:total/oc-sys:max-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:user,container,
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:user/oc-sys:instant,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:user/oc-sys:avg,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:user/oc-sys:min,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:user/oc-sys:max,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:user/oc-sys:interval,leaf,oc-types:stat-interval
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:user/oc-sys:min-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:user/oc-sys:max-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:kernel,container,
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:kernel/oc-sys:instant,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:kernel/oc-sys:avg,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:kernel/oc-sys:min,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:kernel/oc-sys:max,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:kernel/oc-sys:interval,leaf,oc-types:stat-interval
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:kernel/oc-sys:min-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:kernel/oc-sys:max-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:nice,container,
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:nice/oc-sys:instant,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:nice/oc-sys:avg,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:nice/oc-sys:min,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:nice/oc-sys:max,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:nice/oc-sys:interval,leaf,oc-types:stat-interval
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:nice/oc-sys:min-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:nice/oc-sys:max-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:idle,container,
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:idle/oc-sys:instant,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:idle/oc-sys:avg,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:idle/oc-sys:min,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:idle/oc-sys:max,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:idle/oc-sys:interval,leaf,oc-types:stat-interval
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:idle/oc-sys:min-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:idle/oc-sys:max-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:wait,container,
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:wait/oc-sys:instant,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:wait/oc-sys:avg,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:wait/oc-sys:min,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:wait/oc-sys:max,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:wait/oc-sys:interval,leaf,oc-types:stat-interval
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:wait/oc-sys:min-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:wait/oc-sys:max-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:hardware-interrupt,container,
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:hardware-interrupt/oc-sys:instant,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:hardware-interrupt/oc-sys:avg,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:hardware-interrupt/oc-sys:min,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:hardware-interrupt/oc-sys:max,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:hardware-interrupt/oc-sys:interval,leaf,oc-types:stat-interval
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:hardware-interrupt/oc-sys:min-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:hardware-interrupt/oc-sys:max-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:software-interrupt,container,
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:software-interrupt/oc-sys:instant,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:software-interrupt/oc-sys:avg,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:software-interrupt/oc-sys:min,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:software-interrupt/oc-sys:max,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:software-interrupt/oc-sys:interval,leaf,oc-types:stat-interval
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:software-interrupt/oc-sys:min-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:cpus/oc-sys:cpu/oc-sys:state/oc-sys:software-interrupt/oc-sys:max-time,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:processes,container,
+/oc-sys:system/oc-sys:processes/oc-sys:process,list,
+/oc-sys:system/oc-sys:processes/oc-sys:process/oc-sys:pid,leaf,leafref
+/oc-sys:system/oc-sys:processes/oc-sys:process/oc-sys:state,container,
+/oc-sys:system/oc-sys:processes/oc-sys:process/oc-sys:state/oc-sys:pid,leaf,uint64
+/oc-sys:system/oc-sys:processes/oc-sys:process/oc-sys:state/oc-sys:name,leaf,string
+/oc-sys:system/oc-sys:processes/oc-sys:process/oc-sys:state/oc-sys:args,leaf-list,string
+/oc-sys:system/oc-sys:processes/oc-sys:process/oc-sys:state/oc-sys:start-time,leaf,uint64
+/oc-sys:system/oc-sys:processes/oc-sys:process/oc-sys:state/oc-sys:uptime,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:processes/oc-sys:process/oc-sys:state/oc-sys:cpu-usage-user,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:processes/oc-sys:process/oc-sys:state/oc-sys:cpu-usage-system,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:processes/oc-sys:process/oc-sys:state/oc-sys:cpu-utilization,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:processes/oc-sys:process/oc-sys:state/oc-sys:memory-usage,leaf,uint64
+/oc-sys:system/oc-sys:processes/oc-sys:process/oc-sys:state/oc-sys:memory-utilization,leaf,oc-types:percentage
+/oc-sys:system/oc-sys:alarms,container,
+/oc-sys:system/oc-sys:alarms/oc-sys:alarm,list,
+/oc-sys:system/oc-sys:alarms/oc-sys:alarm/oc-sys:id,leaf,leafref
+/oc-sys:system/oc-sys:alarms/oc-sys:alarm/oc-sys:config,container,
+/oc-sys:system/oc-sys:alarms/oc-sys:alarm/oc-sys:config/oc-sys:id,leaf,string
+/oc-sys:system/oc-sys:alarms/oc-sys:alarm/oc-sys:state,container,
+/oc-sys:system/oc-sys:alarms/oc-sys:alarm/oc-sys:state/oc-sys:id,leaf,string
+/oc-sys:system/oc-sys:alarms/oc-sys:alarm/oc-sys:state/oc-sys:resource,leaf,string
+/oc-sys:system/oc-sys:alarms/oc-sys:alarm/oc-sys:state/oc-sys:text,leaf,string
+/oc-sys:system/oc-sys:alarms/oc-sys:alarm/oc-sys:state/oc-sys:time-created,leaf,oc-types:timeticks64
+/oc-sys:system/oc-sys:alarms/oc-sys:alarm/oc-sys:state/oc-sys:severity,leaf,identityref
+/oc-sys:system/oc-sys:alarms/oc-sys:alarm/oc-sys:state/oc-sys:type-id,leaf,union

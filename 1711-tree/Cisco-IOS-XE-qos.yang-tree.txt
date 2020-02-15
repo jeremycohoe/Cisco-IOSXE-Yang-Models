@@ -1,0 +1,46 @@
+ 
+KPI for model: Cisco-IOS-XE-qos.yang
+
+module: Cisco-IOS-XE-qos
+  augment /ios:native/ios:qos:
+    +--rw account
+    |  +--rw layer-all
+    |  |  +--rw encapsulation?   empty
+    |  +--rw layer2
+    |     +--rw encapsulation
+    |        +--rw arpa?     empty
+    |        +--rw dot1q?    empty
+    |        +--rw isl?      empty
+    |        +--rw length!
+    |           +--rw byte-length?   int8
+    +--rw control-packets!
+    |  +--rw bpdu-range?        empty
+    |  +--rw cdp-vtp?           empty
+    |  +--rw eapol?             empty
+    |  +--rw lldp?              empty
+    |  +--rw protocol-tunnel?   empty
+    |  +--rw sstp?              empty
+    +--rw preserve
+    |  +--rw marking
+    |  |  +--rw hipriority?   empty
+    |  +--rw mpls
+    |     +--rw exp?   empty
+    +--rw trace
+    |  +--rw resize
+    |     +--rw size?      int32
+    |     +--rw all?       int32
+    |     +--rw error?     int32
+    |     +--rw event?     int32
+    |     +--rw warning?   int32
+    +--rw diffservmib?                empty
+    +--rw queue-softmax-multiplier {ios-features:qos-qsm}?
+       +--rw value?   int16
+  augment /ios:native/ios:table-map:
+    +--rw default?    union {ios-features:table-map}?
+    +--rw map-list* [from] {ios-features:table-map}?
+    |  +--rw from    uint8
+    |  +--rw to      uint8
+    x--rw map* [from to] {ios-features:table-map}?
+       x--rw from    uint8
+       x--rw to      uint8
+Xpaths for model: Cisco-IOS-XE-qos.yang

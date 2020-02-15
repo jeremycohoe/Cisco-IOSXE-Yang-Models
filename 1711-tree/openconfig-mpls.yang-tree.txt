@@ -1,0 +1,1082 @@
+ 
+KPI for model: openconfig-mpls.yang
+module: openconfig-mpls
+  +--rw mpls
+     +--rw global
+     |  +--rw config
+     |  |  +--rw null-label?   identityref
+     |  +--ro state
+     |  |  +--ro null-label?   identityref
+     |  +--rw interface-attributes
+     |  |  +--rw interface* [interface-id]
+     |  |     +--rw interface-id     -> ../config/interface-id
+     |  |     +--rw config
+     |  |     |  +--rw interface-id?   oc-if:interface-id
+     |  |     |  +--rw mpls-enabled?   boolean
+     |  |     +--ro state
+     |  |     |  +--ro interface-id?   oc-if:interface-id
+     |  |     |  +--ro mpls-enabled?   boolean
+     |  |     +--rw interface-ref
+     |  |        +--rw config
+     |  |        |  +--rw interface?      -> /oc-if:interfaces/interface/name
+     |  |        |  +--rw subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+     |  |        +--ro state
+     |  |           +--ro interface?      -> /oc-if:interfaces/interface/name
+     |  |           +--ro subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+     |  +--rw reserved-label-blocks
+     |     +--rw reserved-label-block* [local-id]
+     |        +--rw local-id    -> ../config/local-id
+     |        +--rw config
+     |        |  +--rw local-id?      string
+     |        |  +--rw lower-bound?   oc-mplst:mpls-label
+     |        |  +--rw upper-bound?   oc-mplst:mpls-label
+     |        +--ro state
+     |           +--ro local-id?      string
+     |           +--ro lower-bound?   oc-mplst:mpls-label
+     |           +--ro upper-bound?   oc-mplst:mpls-label
+     +--rw te-global-attributes
+     |  +--rw srlgs
+     |  |  +--rw srlg* [name]
+     |  |     +--rw name                   -> ../config/name
+     |  |     +--rw config
+     |  |     |  +--rw name?            string
+     |  |     |  +--rw value?           uint32
+     |  |     |  +--rw cost?            uint32
+     |  |     |  +--rw flooding-type?   mpls-srlg-flooding-type
+     |  |     +--ro state
+     |  |     |  +--ro name?            string
+     |  |     |  +--ro value?           uint32
+     |  |     |  +--ro cost?            uint32
+     |  |     |  +--ro flooding-type?   mpls-srlg-flooding-type
+     |  |     +--rw static-srlg-members
+     |  |        +--rw members-list* [from-address]
+     |  |           +--rw from-address    -> ../config/from-address
+     |  |           +--rw config
+     |  |           |  +--rw from-address?   inet:ip-address
+     |  |           |  +--rw to-address?     inet:ip-address
+     |  |           +--ro state
+     |  |              +--ro from-address?   inet:ip-address
+     |  |              +--ro to-address?     inet:ip-address
+     |  +--rw mpls-admin-groups
+     |  |  +--rw admin-group* [admin-group-name]
+     |  |     +--rw admin-group-name    -> ../config/admin-group-name
+     |  |     +--rw config
+     |  |     |  +--rw admin-group-name?   string
+     |  |     |  +--rw bit-position?       uint32
+     |  |     +--ro state
+     |  |        +--ro admin-group-name?   string
+     |  |        +--ro bit-position?       uint32
+     |  +--rw te-lsp-timers
+     |     +--rw config
+     |     |  +--rw install-delay?      uint16
+     |     |  +--rw cleanup-delay?      uint16
+     |     |  +--rw reoptimize-timer?   uint16
+     |     +--ro state
+     |        +--ro install-delay?      uint16
+     |        +--ro cleanup-delay?      uint16
+     |        +--ro reoptimize-timer?   uint16
+     +--rw te-interface-attributes
+     |  +--rw interface* [interface-id]
+     |     +--rw interface-id              -> ../config/interface-id
+     |     +--rw config
+     |     |  +--rw interface-id?      oc-if:interface-id
+     |     |  +--rw te-metric?         uint32
+     |     |  +--rw srlg-membership*   -> ../../../../te-global-attributes/srlgs/srlg/name
+     |     |  +--rw admin-group*       string
+     |     +--ro state
+     |     |  +--ro interface-id?      oc-if:interface-id
+     |     |  +--ro te-metric?         uint32
+     |     |  +--ro srlg-membership*   -> ../../../../te-global-attributes/srlgs/srlg/name
+     |     |  +--ro admin-group*       string
+     |     +--rw interface-ref
+     |     |  +--rw config
+     |     |  |  +--rw interface?      -> /oc-if:interfaces/interface/name
+     |     |  |  +--rw subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+     |     |  +--ro state
+     |     |     +--ro interface?      -> /oc-if:interfaces/interface/name
+     |     |     +--ro subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+     |     +--rw igp-flooding-bandwidth
+     |        +--rw config
+     |        |  +--rw threshold-type?            enumeration
+     |        |  +--rw delta-percentage?          oc-types:percentage
+     |        |  +--rw threshold-specification?   enumeration
+     |        |  +--rw up-thresholds*             oc-types:percentage
+     |        |  +--rw down-thresholds*           oc-types:percentage
+     |        |  +--rw up-down-thresholds*        oc-types:percentage
+     |        +--ro state
+     |           +--ro threshold-type?            enumeration
+     |           +--ro delta-percentage?          oc-types:percentage
+     |           +--ro threshold-specification?   enumeration
+     |           +--ro up-thresholds*             oc-types:percentage
+     |           +--ro down-thresholds*           oc-types:percentage
+     |           +--ro up-down-thresholds*        oc-types:percentage
+     +--rw signaling-protocols
+     |  +--rw rsvp-te
+     |  |  +--rw sessions
+     |  |  |  +--ro session* [local-index]
+     |  |  |     +--ro local-index             -> ../state/local-index
+     |  |  |     +--ro record-route-objects
+     |  |  |     |  +--ro record-route-object* [index]
+     |  |  |     |     +--ro index    -> ../state/index
+     |  |  |     |     +--ro state
+     |  |  |     |        +--ro index?            uint8
+     |  |  |     |        +--ro address?          inet:ip-address
+     |  |  |     |        +--ro reported-label?   oc-mplst:mpls-label
+     |  |  |     |        +--ro reported-flags?   uint8
+     |  |  |     +--ro state
+     |  |  |        +--ro local-index?           uint32
+     |  |  |        +--ro source-address?        inet:ip-address
+     |  |  |        +--ro destination-address?   inet:ip-address
+     |  |  |        +--ro tunnel-id?             uint16
+     |  |  |        +--ro lsp-id?                uint16
+     |  |  |        +--ro session-name?          string
+     |  |  |        +--ro status?                enumeration
+     |  |  |        +--ro type?                  identityref
+     |  |  |        +--ro label-in?              oc-mplst:mpls-label
+     |  |  |        +--ro label-out?             oc-mplst:mpls-label
+     |  |  +--rw neighbors
+     |  |  |  +--ro neighbor* [address]
+     |  |  |     +--ro address    -> ../state/address
+     |  |  |     +--ro state
+     |  |  |        +--ro address?              inet:ip-address
+     |  |  |        +--ro detected-interface?   string
+     |  |  |        +--ro neighbor-status?      enumeration
+     |  |  |        +--ro refresh-reduction?    boolean
+     |  |  +--rw global
+     |  |  |  +--rw graceful-restart
+     |  |  |  |  +--rw config
+     |  |  |  |  |  +--rw enable?          boolean
+     |  |  |  |  |  +--rw restart-time?    uint32
+     |  |  |  |  |  +--rw recovery-time?   uint32
+     |  |  |  |  +--ro state
+     |  |  |  |     +--ro enable?          boolean
+     |  |  |  |     +--ro restart-time?    uint32
+     |  |  |  |     +--ro recovery-time?   uint32
+     |  |  |  +--rw soft-preemption
+     |  |  |  |  +--rw config
+     |  |  |  |  |  +--rw enable?                    boolean
+     |  |  |  |  |  +--rw soft-preemption-timeout?   uint16
+     |  |  |  |  +--ro state
+     |  |  |  |     +--ro enable?                    boolean
+     |  |  |  |     +--ro soft-preemption-timeout?   uint16
+     |  |  |  +--rw hellos
+     |  |  |  |  +--rw config
+     |  |  |  |  |  +--rw hello-interval?      uint16
+     |  |  |  |  |  +--rw refresh-reduction?   boolean
+     |  |  |  |  +--ro state
+     |  |  |  |     +--ro hello-interval?      uint16
+     |  |  |  |     +--ro refresh-reduction?   boolean
+     |  |  |  +--ro state
+     |  |  |     +--ro counters
+     |  |  |        +--ro path-timeouts?                    yang:counter64
+     |  |  |        +--ro reservation-timeouts?             yang:counter64
+     |  |  |        +--ro rate-limited-messages?            yang:counter64
+     |  |  |        +--ro in-path-messages?                 yang:counter64
+     |  |  |        +--ro in-path-error-messages?           yang:counter64
+     |  |  |        +--ro in-path-tear-messages?            yang:counter64
+     |  |  |        +--ro in-reservation-messages?          yang:counter64
+     |  |  |        +--ro in-reservation-error-messages?    yang:counter64
+     |  |  |        +--ro in-reservation-tear-messages?     yang:counter64
+     |  |  |        +--ro in-hello-messages?                yang:counter64
+     |  |  |        +--ro in-srefresh-messages?             yang:counter64
+     |  |  |        +--ro in-ack-messages?                  yang:counter64
+     |  |  |        +--ro out-path-messages?                yang:counter64
+     |  |  |        +--ro out-path-error-messages?          yang:counter64
+     |  |  |        +--ro out-path-tear-messages?           yang:counter64
+     |  |  |        +--ro out-reservation-messages?         yang:counter64
+     |  |  |        +--ro out-reservation-error-messages?   yang:counter64
+     |  |  |        +--ro out-reservation-tear-messages?    yang:counter64
+     |  |  |        +--ro out-hello-messages?               yang:counter64
+     |  |  |        +--ro out-srefresh-messages?            yang:counter64
+     |  |  |        +--ro out-ack-messages?                 yang:counter64
+     |  |  +--rw interface-attributes
+     |  |     +--rw interface* [interface-id]
+     |  |        +--rw interface-id              -> ../config/interface-id
+     |  |        +--rw config
+     |  |        |  +--rw interface-id?   oc-if:interface-id
+     |  |        +--ro state
+     |  |        |  +--ro counters
+     |  |        |     +--ro in-path-messages?                 yang:counter64
+     |  |        |     +--ro in-path-error-messages?           yang:counter64
+     |  |        |     +--ro in-path-tear-messages?            yang:counter64
+     |  |        |     +--ro in-reservation-messages?          yang:counter64
+     |  |        |     +--ro in-reservation-error-messages?    yang:counter64
+     |  |        |     +--ro in-reservation-tear-messages?     yang:counter64
+     |  |        |     +--ro in-hello-messages?                yang:counter64
+     |  |        |     +--ro in-srefresh-messages?             yang:counter64
+     |  |        |     +--ro in-ack-messages?                  yang:counter64
+     |  |        |     +--ro out-path-messages?                yang:counter64
+     |  |        |     +--ro out-path-error-messages?          yang:counter64
+     |  |        |     +--ro out-path-tear-messages?           yang:counter64
+     |  |        |     +--ro out-reservation-messages?         yang:counter64
+     |  |        |     +--ro out-reservation-error-messages?   yang:counter64
+     |  |        |     +--ro out-reservation-tear-messages?    yang:counter64
+     |  |        |     +--ro out-hello-messages?               yang:counter64
+     |  |        |     +--ro out-srefresh-messages?            yang:counter64
+     |  |        |     +--ro out-ack-messages?                 yang:counter64
+     |  |        +--rw interface-ref
+     |  |        |  +--rw config
+     |  |        |  |  +--rw interface?      -> /oc-if:interfaces/interface/name
+     |  |        |  |  +--rw subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+     |  |        |  +--ro state
+     |  |        |     +--ro interface?      -> /oc-if:interfaces/interface/name
+     |  |        |     +--ro subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+     |  |        +--rw bandwidth-reservations
+     |  |        |  +--ro bandwidth-reservation* [priority]
+     |  |        |     +--ro priority    -> ../state/priority
+     |  |        |     +--ro state
+     |  |        |        +--ro priority?                    union
+     |  |        |        +--ro available-bandwidth?         oc-mplst:bandwidth-mbps
+     |  |        |        +--ro reserved-bandwidth?          oc-mplst:bandwidth-mbps
+     |  |        |        +--ro active-reservations-count?   yang:gauge64
+     |  |        |        +--ro highwater-mark?              oc-mplst:bandwidth-mbps
+     |  |        +--rw hellos
+     |  |        |  +--rw config
+     |  |        |  |  +--rw hello-interval?      uint16
+     |  |        |  |  +--rw refresh-reduction?   boolean
+     |  |        |  +--ro state
+     |  |        |     +--ro hello-interval?      uint16
+     |  |        |     +--ro refresh-reduction?   boolean
+     |  |        +--rw authentication
+     |  |        |  +--rw config
+     |  |        |  |  +--rw enable?               boolean
+     |  |        |  |  +--rw authentication-key?   string
+     |  |        |  +--ro state
+     |  |        |     +--ro enable?               boolean
+     |  |        |     +--ro authentication-key?   string
+     |  |        +--rw subscription
+     |  |        |  +--rw config
+     |  |        |  |  +--rw subscription?   oc-types:percentage
+     |  |        |  +--ro state
+     |  |        |     +--ro subscription?   oc-types:percentage
+     |  |        +--rw protection
+     |  |           +--rw config
+     |  |           |  +--rw link-protection-style-requested?   identityref
+     |  |           |  +--rw bypass-optimize-interval?          uint16
+     |  |           +--ro state
+     |  |              +--ro link-protection-style-requested?   identityref
+     |  |              +--ro bypass-optimize-interval?          uint16
+     |  +--rw ldp
+     |  |  +--rw timers
+     |  +--rw segment-routing
+     |     +--rw aggregate-sid-counters
+     |     |  +--ro aggregate-sid-counter* [mpls-label]
+     |     |     +--ro mpls-label    -> ../state/mpls-label
+     |     |     +--ro state
+     |     |        +--ro mpls-label?   oc-mpls-t:mpls-label
+     |     |        +--ro in-pkts?      yang:counter64
+     |     |        +--ro in-octets?    yang:counter64
+     |     |        +--ro out-pkts?     yang:counter64
+     |     |        +--ro out-octets?   yang:counter64
+     |     +--rw interfaces
+     |        +--rw interface* [interface-id]
+     |           +--rw interface-id     -> ../config/interface-id
+     |           +--rw config
+     |           |  +--rw interface-id?   string
+     |           +--ro state
+     |           |  +--ro interface-id?   string
+     |           |  +--ro in-pkts?        yang:counter64
+     |           |  +--ro in-octets?      yang:counter64
+     |           |  +--ro out-pkts?       yang:counter64
+     |           |  +--ro out-octets?     yang:counter64
+     |           +--rw sid-counters
+     |           |  +--ro sid-counter* [mpls-label]
+     |           |     +--ro mpls-label            -> ../state/mpls-label
+     |           |     +--ro state
+     |           |     |  +--ro mpls-label?   oc-mpls-t:mpls-label
+     |           |     |  +--ro in-pkts?      yang:counter64
+     |           |     |  +--ro in-octets?    yang:counter64
+     |           |     |  +--ro out-pkts?     yang:counter64
+     |           |     |  +--ro out-octets?   yang:counter64
+     |           |     +--ro forwarding-classes
+     |           |        +--ro forwarding-class* [exp]
+     |           |           +--ro exp      -> ../state/exp
+     |           |           +--ro state
+     |           |              +--ro exp?          uint8
+     |           |              +--ro in-pkts?      yang:counter64
+     |           |              +--ro in-octets?    yang:counter64
+     |           |              +--ro out-pkts?     yang:counter64
+     |           |              +--ro out-octets?   yang:counter64
+     |           +--rw interface-ref
+     |              +--rw config
+     |              |  +--rw interface?      -> /oc-if:interfaces/interface/name
+     |              |  +--rw subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+     |              +--ro state
+     |                 +--ro interface?      -> /oc-if:interfaces/interface/name
+     |                 +--ro subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+     +--rw lsps
+        +--rw constrained-path
+        |  +--rw named-explicit-paths
+        |  |  +--rw named-explicit-path* [name]
+        |  |     +--rw name                      -> ../config/name
+        |  |     +--rw config
+        |  |     |  +--rw name?                      string
+        |  |     |  +--rw sid-selection-mode?        enumeration
+        |  |     |  +--rw sid-protection-required?   boolean
+        |  |     +--ro state
+        |  |     |  +--ro name?                      string
+        |  |     |  +--ro sid-selection-mode?        enumeration
+        |  |     |  +--ro sid-protection-required?   boolean
+        |  |     +--rw explicit-route-objects
+        |  |        +--rw explicit-route-object* [index]
+        |  |           +--rw index     -> ../config/index
+        |  |           +--rw config
+        |  |           |  +--rw address?    inet:ip-address
+        |  |           |  +--rw hop-type?   mpls-hop-type
+        |  |           |  +--rw index?      uint8
+        |  |           +--ro state
+        |  |              +--ro address?    inet:ip-address
+        |  |              +--ro hop-type?   mpls-hop-type
+        |  |              +--ro index?      uint8
+        |  +--rw tunnels
+        |     +--rw tunnel* [name]
+        |        +--rw name                     -> ../config/name
+        |        +--rw config
+        |        |  +--rw name?                         string
+        |        |  +--rw type?                         identityref
+        |        |  +--rw signaling-protocol?           identityref
+        |        |  +--rw description?                  string
+        |        |  +--rw admin-status?                 identityref
+        |        |  +--rw preference?                   uint8
+        |        |  +--rw metric-type?                  identityref
+        |        |  +--rw metric?                       int32
+        |        |  +--rw shortcut-eligible?            boolean
+        |        |  +--rw protection-style-requested?   identityref
+        |        |  +--rw reoptimize-timer?             uint16
+        |        |  +--rw source?                       inet:ip-address
+        |        |  +--rw soft-preemption?              boolean
+        |        |  +--rw setup-priority?               uint8
+        |        |  +--rw hold-priority?                uint8
+        |        +--ro state
+        |        |  +--ro name?                         string
+        |        |  +--ro type?                         identityref
+        |        |  +--ro signaling-protocol?           identityref
+        |        |  +--ro description?                  string
+        |        |  +--ro admin-status?                 identityref
+        |        |  +--ro preference?                   uint8
+        |        |  +--ro metric-type?                  identityref
+        |        |  +--ro metric?                       int32
+        |        |  +--ro shortcut-eligible?            boolean
+        |        |  +--ro protection-style-requested?   identityref
+        |        |  +--ro reoptimize-timer?             uint16
+        |        |  +--ro source?                       inet:ip-address
+        |        |  +--ro soft-preemption?              boolean
+        |        |  +--ro setup-priority?               uint8
+        |        |  +--ro hold-priority?                uint8
+        |        |  +--ro oper-status?                  identityref
+        |        |  +--ro role?                         identityref
+        |        |  +--ro counters
+        |        |     +--ro bytes?                      yang:counter64
+        |        |     +--ro packets?                    yang:counter64
+        |        |     +--ro path-changes?               yang:counter64
+        |        |     +--ro state-changes?              yang:counter64
+        |        |     +--ro online-time?                yang:date-and-time
+        |        |     +--ro current-path-time?          yang:date-and-time
+        |        |     +--ro next-reoptimization-time?   yang:date-and-time
+        |        +--rw bandwidth
+        |        |  +--rw config
+        |        |  |  +--rw specification-type?   te-bandwidth-type
+        |        |  |  +--rw set-bandwidth?        uint32
+        |        |  +--ro state
+        |        |  |  +--ro specification-type?   te-bandwidth-type
+        |        |  |  +--ro set-bandwidth?        uint32
+        |        |  +--rw auto-bandwidth
+        |        |     +--rw config
+        |        |     |  +--rw enabled?            boolean
+        |        |     |  +--rw min-bw?             uint32
+        |        |     |  +--rw max-bw?             uint32
+        |        |     |  +--rw adjust-interval?    uint32
+        |        |     |  +--rw adjust-threshold?   oc-types:percentage
+        |        |     +--ro state
+        |        |     |  +--ro enabled?            boolean
+        |        |     |  +--ro min-bw?             uint32
+        |        |     |  +--ro max-bw?             uint32
+        |        |     |  +--ro adjust-interval?    uint32
+        |        |     |  +--ro adjust-threshold?   oc-types:percentage
+        |        |     +--rw overflow
+        |        |     |  +--rw config
+        |        |     |  |  +--rw enabled?               boolean
+        |        |     |  |  +--rw overflow-threshold?    oc-types:percentage
+        |        |     |  |  +--rw trigger-event-count?   uint16
+        |        |     |  +--ro state
+        |        |     |     +--ro enabled?               boolean
+        |        |     |     +--ro overflow-threshold?    oc-types:percentage
+        |        |     |     +--ro trigger-event-count?   uint16
+        |        |     +--rw underflow
+        |        |        +--rw config
+        |        |        |  +--rw enabled?               boolean
+        |        |        |  +--rw underflow-threshold?   oc-types:percentage
+        |        |        |  +--rw trigger-event-count?   uint16
+        |        |        +--ro state
+        |        |           +--ro enabled?               boolean
+        |        |           +--ro underflow-threshold?   oc-types:percentage
+        |        |           +--ro trigger-event-count?   uint16
+        |        +--rw p2p-tunnel-attributes
+        |           +--rw config
+        |           |  +--rw destination?   inet:ip-address
+        |           +--ro state
+        |           |  +--ro destination?   inet:ip-address
+        |           +--rw p2p-primary-path
+        |           |  +--rw p2p-primary-path* [name]
+        |           |     +--rw name                         -> ../config/name
+        |           |     +--rw config
+        |           |     |  +--rw name?                      string
+        |           |     |  +--rw path-computation-method?   identityref
+        |           |     |  +--rw use-cspf?                  boolean
+        |           |     |  +--rw cspf-tiebreaker?           cspf-tie-breaking
+        |           |     |  +--rw path-computation-server?   inet:ip-address
+        |           |     |  +--rw explicit-path-name?        -> ../../../../../../../named-explicit-paths/named-explicit-path/config/name
+        |           |     |  +--rw preference?                uint8
+        |           |     |  +--rw setup-priority?            uint8
+        |           |     |  +--rw hold-priority?             uint8
+        |           |     |  +--rw retry-timer?               uint16
+        |           |     +--ro state
+        |           |     |  +--ro name?                      string
+        |           |     |  +--ro path-computation-method?   identityref
+        |           |     |  +--ro use-cspf?                  boolean
+        |           |     |  +--ro cspf-tiebreaker?           cspf-tie-breaking
+        |           |     |  +--ro path-computation-server?   inet:ip-address
+        |           |     |  +--ro explicit-path-name?        -> ../../../../../../../named-explicit-paths/named-explicit-path/config/name
+        |           |     |  +--ro preference?                uint8
+        |           |     |  +--ro setup-priority?            uint8
+        |           |     |  +--ro hold-priority?             uint8
+        |           |     |  +--ro retry-timer?               uint16
+        |           |     |  +--ro associated-rsvp-session?   -> ../../../../../../../../../signaling-protocols/rsvp-te/sessions/session/local-index
+        |           |     +--rw candidate-secondary-paths
+        |           |     |  +--rw candidate-secondary-path* [secondary-path]
+        |           |     |     +--rw secondary-path    -> ../config/secondary-path
+        |           |     |     +--rw config
+        |           |     |     |  +--rw secondary-path?   -> ../../../../../../p2p-secondary-paths/p2p-secondary-path/config/name
+        |           |     |     |  +--rw priority?         uint16
+        |           |     |     +--ro state
+        |           |     |        +--ro secondary-path?   -> ../../../../../../p2p-secondary-paths/p2p-secondary-path/config/name
+        |           |     |        +--ro priority?         uint16
+        |           |     |        +--ro active?           boolean
+        |           |     +--rw admin-groups
+        |           |        +--rw config
+        |           |        |  +--rw exclude-group*       -> ../../../../../../../../../../te-global-attributes/mpls-admin-groups/admin-group/admin-group-name
+        |           |        |  +--rw include-all-group*   -> ../../../../../../../../../../te-global-attributes/mpls-admin-groups/admin-group/admin-group-name
+        |           |        |  +--rw include-any-group*   -> ../../../../../../../../../../te-global-attributes/mpls-admin-groups/admin-group/admin-group-name
+        |           |        +--ro state
+        |           |           +--ro exclude-group*       -> ../../../../../../../../../../te-global-attributes/mpls-admin-groups/admin-group/admin-group-name
+        |           |           +--ro include-all-group*   -> ../../../../../../../../../../te-global-attributes/mpls-admin-groups/admin-group/admin-group-name
+        |           |           +--ro include-any-group*   -> ../../../../../../../../../../te-global-attributes/mpls-admin-groups/admin-group/admin-group-name
+        |           +--rw p2p-secondary-paths
+        |              +--rw p2p-secondary-path* [name]
+        |                 +--rw name            -> ../config/name
+        |                 +--rw config
+        |                 |  +--rw name?                      string
+        |                 |  +--rw path-computation-method?   identityref
+        |                 |  +--rw use-cspf?                  boolean
+        |                 |  +--rw cspf-tiebreaker?           cspf-tie-breaking
+        |                 |  +--rw path-computation-server?   inet:ip-address
+        |                 |  +--rw explicit-path-name?        -> ../../../../../../../named-explicit-paths/named-explicit-path/config/name
+        |                 |  +--rw preference?                uint8
+        |                 |  +--rw setup-priority?            uint8
+        |                 |  +--rw hold-priority?             uint8
+        |                 |  +--rw retry-timer?               uint16
+        |                 +--ro state
+        |                 |  +--ro name?                      string
+        |                 |  +--ro path-computation-method?   identityref
+        |                 |  +--ro use-cspf?                  boolean
+        |                 |  +--ro cspf-tiebreaker?           cspf-tie-breaking
+        |                 |  +--ro path-computation-server?   inet:ip-address
+        |                 |  +--ro explicit-path-name?        -> ../../../../../../../named-explicit-paths/named-explicit-path/config/name
+        |                 |  +--ro preference?                uint8
+        |                 |  +--ro setup-priority?            uint8
+        |                 |  +--ro hold-priority?             uint8
+        |                 |  +--ro retry-timer?               uint16
+        |                 |  +--ro associated-rsvp-session?   -> ../../../../../../../../../signaling-protocols/rsvp-te/sessions/session/local-index
+        |                 +--rw admin-groups
+        |                    +--rw config
+        |                    |  +--rw exclude-group*       -> ../../../../../../../../../../te-global-attributes/mpls-admin-groups/admin-group/admin-group-name
+        |                    |  +--rw include-all-group*   -> ../../../../../../../../../../te-global-attributes/mpls-admin-groups/admin-group/admin-group-name
+        |                    |  +--rw include-any-group*   -> ../../../../../../../../../../te-global-attributes/mpls-admin-groups/admin-group/admin-group-name
+        |                    +--ro state
+        |                       +--ro exclude-group*       -> ../../../../../../../../../../te-global-attributes/mpls-admin-groups/admin-group/admin-group-name
+        |                       +--ro include-all-group*   -> ../../../../../../../../../../te-global-attributes/mpls-admin-groups/admin-group/admin-group-name
+        |                       +--ro include-any-group*   -> ../../../../../../../../../../te-global-attributes/mpls-admin-groups/admin-group/admin-group-name
+        +--rw unconstrained-path
+        |  +--rw path-setup-protocol
+        |     +--rw ldp
+        |        +--rw tunnel
+        |           +--rw tunnel-type?   oc-mplst:tunnel-type
+        |           +--rw ldp-type?      enumeration
+        |           +--rw p2p-lsp
+        |           |  +--rw fec-address*   inet:ip-prefix
+        |           +--rw p2mp-lsp
+        |           +--rw mp2mp-lsp
+        +--rw static-lsps
+           +--rw static-lsp* [name]
+              +--rw name       -> ../config/name
+              +--rw config
+              |  +--rw name?   string
+              +--ro state
+              |  +--ro name?   string
+              +--rw ingress
+              |  +--rw config
+              |  |  +--rw next-hop?         inet:ip-address
+              |  |  +--rw incoming-label?   oc-mplst:mpls-label
+              |  |  +--rw push-label?       oc-mplst:mpls-label
+              |  +--ro state
+              |     +--ro next-hop?         inet:ip-address
+              |     +--ro incoming-label?   oc-mplst:mpls-label
+              |     +--ro push-label?       oc-mplst:mpls-label
+              +--rw transit
+              |  +--rw config
+              |  |  +--rw next-hop?         inet:ip-address
+              |  |  +--rw incoming-label?   oc-mplst:mpls-label
+              |  |  +--rw push-label?       oc-mplst:mpls-label
+              |  +--ro state
+              |     +--ro next-hop?         inet:ip-address
+              |     +--ro incoming-label?   oc-mplst:mpls-label
+              |     +--ro push-label?       oc-mplst:mpls-label
+              +--rw egress
+                 +--rw config
+                 |  +--rw next-hop?         inet:ip-address
+                 |  +--rw incoming-label?   oc-mplst:mpls-label
+                 |  +--rw push-label?       oc-mplst:mpls-label
+                 +--ro state
+                    +--ro next-hop?         inet:ip-address
+                    +--ro incoming-label?   oc-mplst:mpls-label
+                    +--ro push-label?       oc-mplst:mpls-label
+Xpaths for model: openconfig-mpls.yang
+/oc-mpls:mpls,container,
+/oc-mpls:mpls/oc-mpls:global,container,
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:config/oc-mpls:null-label,leaf,identityref
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:state/oc-mpls:null-label,leaf,identityref
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes,container,
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes/oc-mpls:interface,list,
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-id,leaf,leafref
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:config/oc-mpls:interface-id,leaf,oc-if:interface-id
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:config/oc-mpls:mpls-enabled,leaf,boolean
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:interface-id,leaf,oc-if:interface-id
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:mpls-enabled,leaf,boolean
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-ref,container,
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:config/oc-mpls:interface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:config/oc-mpls:subinterface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:state/oc-mpls:interface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:state/oc-mpls:subinterface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:reserved-label-blocks,container,
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:reserved-label-blocks/oc-mpls:reserved-label-block,list,
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:reserved-label-blocks/oc-mpls:reserved-label-block/oc-mpls:local-id,leaf,leafref
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:reserved-label-blocks/oc-mpls:reserved-label-block/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:reserved-label-blocks/oc-mpls:reserved-label-block/oc-mpls:config/oc-mpls:local-id,leaf,string
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:reserved-label-blocks/oc-mpls:reserved-label-block/oc-mpls:config/oc-mpls:lower-bound,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:reserved-label-blocks/oc-mpls:reserved-label-block/oc-mpls:config/oc-mpls:upper-bound,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:reserved-label-blocks/oc-mpls:reserved-label-block/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:reserved-label-blocks/oc-mpls:reserved-label-block/oc-mpls:state/oc-mpls:local-id,leaf,string
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:reserved-label-blocks/oc-mpls:reserved-label-block/oc-mpls:state/oc-mpls:lower-bound,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:global/oc-mpls:reserved-label-blocks/oc-mpls:reserved-label-block/oc-mpls:state/oc-mpls:upper-bound,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:te-global-attributes,container,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs,container,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg,list,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:name,leaf,leafref
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:config/oc-mpls:name,leaf,string
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:config/oc-mpls:value,leaf,uint32
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:config/oc-mpls:cost,leaf,uint32
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:config/oc-mpls:flooding-type,leaf,mpls-srlg-flooding-type
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:state/oc-mpls:name,leaf,string
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:state/oc-mpls:value,leaf,uint32
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:state/oc-mpls:cost,leaf,uint32
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:state/oc-mpls:flooding-type,leaf,mpls-srlg-flooding-type
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:static-srlg-members,container,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:static-srlg-members/oc-mpls:members-list,list,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:static-srlg-members/oc-mpls:members-list/oc-mpls:from-address,leaf,leafref
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:static-srlg-members/oc-mpls:members-list/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:static-srlg-members/oc-mpls:members-list/oc-mpls:config/oc-mpls:from-address,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:static-srlg-members/oc-mpls:members-list/oc-mpls:config/oc-mpls:to-address,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:static-srlg-members/oc-mpls:members-list/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:static-srlg-members/oc-mpls:members-list/oc-mpls:state/oc-mpls:from-address,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:srlgs/oc-mpls:srlg/oc-mpls:static-srlg-members/oc-mpls:members-list/oc-mpls:state/oc-mpls:to-address,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:mpls-admin-groups,container,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:mpls-admin-groups/oc-mpls:admin-group,list,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:mpls-admin-groups/oc-mpls:admin-group/oc-mpls:admin-group-name,leaf,leafref
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:mpls-admin-groups/oc-mpls:admin-group/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:mpls-admin-groups/oc-mpls:admin-group/oc-mpls:config/oc-mpls:admin-group-name,leaf,string
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:mpls-admin-groups/oc-mpls:admin-group/oc-mpls:config/oc-mpls:bit-position,leaf,uint32
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:mpls-admin-groups/oc-mpls:admin-group/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:mpls-admin-groups/oc-mpls:admin-group/oc-mpls:state/oc-mpls:admin-group-name,leaf,string
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:mpls-admin-groups/oc-mpls:admin-group/oc-mpls:state/oc-mpls:bit-position,leaf,uint32
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:te-lsp-timers,container,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:te-lsp-timers/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:te-lsp-timers/oc-mpls:config/oc-mpls:install-delay,leaf,uint16
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:te-lsp-timers/oc-mpls:config/oc-mpls:cleanup-delay,leaf,uint16
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:te-lsp-timers/oc-mpls:config/oc-mpls:reoptimize-timer,leaf,uint16
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:te-lsp-timers/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:te-lsp-timers/oc-mpls:state/oc-mpls:install-delay,leaf,uint16
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:te-lsp-timers/oc-mpls:state/oc-mpls:cleanup-delay,leaf,uint16
+/oc-mpls:mpls/oc-mpls:te-global-attributes/oc-mpls:te-lsp-timers/oc-mpls:state/oc-mpls:reoptimize-timer,leaf,uint16
+/oc-mpls:mpls/oc-mpls:te-interface-attributes,container,
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface,list,
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:interface-id,leaf,leafref
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:config/oc-mpls:interface-id,leaf,oc-if:interface-id
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:config/oc-mpls:te-metric,leaf,uint32
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:config/oc-mpls:srlg-membership,leaf-list,leafref
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:config/oc-mpls:admin-group,leaf-list,string
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:interface-id,leaf,oc-if:interface-id
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:te-metric,leaf,uint32
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:srlg-membership,leaf-list,leafref
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:admin-group,leaf-list,string
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:interface-ref,container,
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:config/oc-mpls:interface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:config/oc-mpls:subinterface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:state/oc-mpls:interface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:state/oc-mpls:subinterface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:igp-flooding-bandwidth,container,
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:igp-flooding-bandwidth/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:igp-flooding-bandwidth/oc-mpls:config/oc-mpls:threshold-type,leaf,enumeration
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:igp-flooding-bandwidth/oc-mpls:config/oc-mpls:delta-percentage,leaf,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:igp-flooding-bandwidth/oc-mpls:config/oc-mpls:threshold-specification,leaf,enumeration
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:igp-flooding-bandwidth/oc-mpls:config/oc-mpls:up-thresholds,leaf-list,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:igp-flooding-bandwidth/oc-mpls:config/oc-mpls:down-thresholds,leaf-list,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:igp-flooding-bandwidth/oc-mpls:config/oc-mpls:up-down-thresholds,leaf-list,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:igp-flooding-bandwidth/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:igp-flooding-bandwidth/oc-mpls:state/oc-mpls:threshold-type,leaf,enumeration
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:igp-flooding-bandwidth/oc-mpls:state/oc-mpls:delta-percentage,leaf,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:igp-flooding-bandwidth/oc-mpls:state/oc-mpls:threshold-specification,leaf,enumeration
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:igp-flooding-bandwidth/oc-mpls:state/oc-mpls:up-thresholds,leaf-list,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:igp-flooding-bandwidth/oc-mpls:state/oc-mpls:down-thresholds,leaf-list,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:te-interface-attributes/oc-mpls:interface/oc-mpls:igp-flooding-bandwidth/oc-mpls:state/oc-mpls:up-down-thresholds,leaf-list,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:signaling-protocols,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session,list,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:local-index,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:record-route-objects,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:record-route-objects/oc-mpls:record-route-object,list,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:record-route-objects/oc-mpls:record-route-object/oc-mpls:index,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:record-route-objects/oc-mpls:record-route-object/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:record-route-objects/oc-mpls:record-route-object/oc-mpls:state/oc-mpls:index,leaf,uint8
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:record-route-objects/oc-mpls:record-route-object/oc-mpls:state/oc-mpls:address,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:record-route-objects/oc-mpls:record-route-object/oc-mpls:state/oc-mpls:reported-label,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:record-route-objects/oc-mpls:record-route-object/oc-mpls:state/oc-mpls:reported-flags,leaf,uint8
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:state/oc-mpls:local-index,leaf,uint32
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:state/oc-mpls:source-address,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:state/oc-mpls:destination-address,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:state/oc-mpls:tunnel-id,leaf,uint16
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:state/oc-mpls:lsp-id,leaf,uint16
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:state/oc-mpls:session-name,leaf,string
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:state/oc-mpls:status,leaf,enumeration
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:state/oc-mpls:type,leaf,identityref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:state/oc-mpls:label-in,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:sessions/oc-mpls:session/oc-mpls:state/oc-mpls:label-out,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:neighbors,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:neighbors/oc-mpls:neighbor,list,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:neighbors/oc-mpls:neighbor/oc-mpls:address,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:neighbors/oc-mpls:neighbor/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:neighbors/oc-mpls:neighbor/oc-mpls:state/oc-mpls:address,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:neighbors/oc-mpls:neighbor/oc-mpls:state/oc-mpls:detected-interface,leaf,string
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:neighbors/oc-mpls:neighbor/oc-mpls:state/oc-mpls:neighbor-status,leaf,enumeration
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:neighbors/oc-mpls:neighbor/oc-mpls:state/oc-mpls:refresh-reduction,leaf,boolean
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:graceful-restart,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:graceful-restart/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:graceful-restart/oc-mpls:config/oc-mpls:enable,leaf,boolean
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:graceful-restart/oc-mpls:config/oc-mpls:restart-time,leaf,uint32
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:graceful-restart/oc-mpls:config/oc-mpls:recovery-time,leaf,uint32
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:graceful-restart/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:graceful-restart/oc-mpls:state/oc-mpls:enable,leaf,boolean
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:graceful-restart/oc-mpls:state/oc-mpls:restart-time,leaf,uint32
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:graceful-restart/oc-mpls:state/oc-mpls:recovery-time,leaf,uint32
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:soft-preemption,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:soft-preemption/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:soft-preemption/oc-mpls:config/oc-mpls:enable,leaf,boolean
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:soft-preemption/oc-mpls:config/oc-mpls:soft-preemption-timeout,leaf,uint16
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:soft-preemption/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:soft-preemption/oc-mpls:state/oc-mpls:enable,leaf,boolean
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:soft-preemption/oc-mpls:state/oc-mpls:soft-preemption-timeout,leaf,uint16
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:hellos,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:hellos/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:hellos/oc-mpls:config/oc-mpls:hello-interval,leaf,uint16
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:hellos/oc-mpls:config/oc-mpls:refresh-reduction,leaf,boolean
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:hellos/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:hellos/oc-mpls:state/oc-mpls:hello-interval,leaf,uint16
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:hellos/oc-mpls:state/oc-mpls:refresh-reduction,leaf,boolean
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:path-timeouts,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:reservation-timeouts,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:rate-limited-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:in-path-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:in-path-error-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:in-path-tear-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:in-reservation-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:in-reservation-error-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:in-reservation-tear-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:in-hello-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:in-srefresh-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:in-ack-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:out-path-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:out-path-error-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:out-path-tear-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:out-reservation-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:out-reservation-error-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:out-reservation-tear-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:out-hello-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:out-srefresh-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:global/oc-mpls:state/oc-mpls:counters/oc-mpls:out-ack-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface,list,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-id,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:config/oc-mpls:interface-id,leaf,oc-if:interface-id
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:in-path-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:in-path-error-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:in-path-tear-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:in-reservation-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:in-reservation-error-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:in-reservation-tear-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:in-hello-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:in-srefresh-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:in-ack-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:out-path-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:out-path-error-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:out-path-tear-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:out-reservation-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:out-reservation-error-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:out-reservation-tear-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:out-hello-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:out-srefresh-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:state/oc-mpls:counters/oc-mpls:out-ack-messages,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-ref,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:config/oc-mpls:interface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:config/oc-mpls:subinterface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:state/oc-mpls:interface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:state/oc-mpls:subinterface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:bandwidth-reservations,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:bandwidth-reservations/oc-mpls:bandwidth-reservation,list,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:bandwidth-reservations/oc-mpls:bandwidth-reservation/oc-mpls:priority,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:bandwidth-reservations/oc-mpls:bandwidth-reservation/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:bandwidth-reservations/oc-mpls:bandwidth-reservation/oc-mpls:state/oc-mpls:priority,leaf,union
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:bandwidth-reservations/oc-mpls:bandwidth-reservation/oc-mpls:state/oc-mpls:available-bandwidth,leaf,oc-mplst:bandwidth-mbps
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:bandwidth-reservations/oc-mpls:bandwidth-reservation/oc-mpls:state/oc-mpls:reserved-bandwidth,leaf,oc-mplst:bandwidth-mbps
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:bandwidth-reservations/oc-mpls:bandwidth-reservation/oc-mpls:state/oc-mpls:active-reservations-count,leaf,yang:gauge64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:bandwidth-reservations/oc-mpls:bandwidth-reservation/oc-mpls:state/oc-mpls:highwater-mark,leaf,oc-mplst:bandwidth-mbps
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:hellos,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:hellos/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:hellos/oc-mpls:config/oc-mpls:hello-interval,leaf,uint16
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:hellos/oc-mpls:config/oc-mpls:refresh-reduction,leaf,boolean
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:hellos/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:hellos/oc-mpls:state/oc-mpls:hello-interval,leaf,uint16
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:hellos/oc-mpls:state/oc-mpls:refresh-reduction,leaf,boolean
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:authentication,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:authentication/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:authentication/oc-mpls:config/oc-mpls:enable,leaf,boolean
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:authentication/oc-mpls:config/oc-mpls:authentication-key,leaf,string
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:authentication/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:authentication/oc-mpls:state/oc-mpls:enable,leaf,boolean
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:authentication/oc-mpls:state/oc-mpls:authentication-key,leaf,string
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:subscription,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:subscription/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:subscription/oc-mpls:config/oc-mpls:subscription,leaf,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:subscription/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:subscription/oc-mpls:state/oc-mpls:subscription,leaf,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:protection,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:protection/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:protection/oc-mpls:config/oc-mpls:link-protection-style-requested,leaf,identityref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:protection/oc-mpls:config/oc-mpls:bypass-optimize-interval,leaf,uint16
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:protection/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:protection/oc-mpls:state/oc-mpls:link-protection-style-requested,leaf,identityref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:rsvp-te/oc-mpls:interface-attributes/oc-mpls:interface/oc-mpls:protection/oc-mpls:state/oc-mpls:bypass-optimize-interval,leaf,uint16
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:ldp,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:ldp/oc-mpls:timers,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:aggregate-sid-counters,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:aggregate-sid-counters/oc-mpls:aggregate-sid-counter,list,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:aggregate-sid-counters/oc-mpls:aggregate-sid-counter/oc-mpls:mpls-label,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:aggregate-sid-counters/oc-mpls:aggregate-sid-counter/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:aggregate-sid-counters/oc-mpls:aggregate-sid-counter/oc-mpls:state/oc-mpls:mpls-label,leaf,oc-mpls-t:mpls-label
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:aggregate-sid-counters/oc-mpls:aggregate-sid-counter/oc-mpls:state/oc-mpls:in-pkts,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:aggregate-sid-counters/oc-mpls:aggregate-sid-counter/oc-mpls:state/oc-mpls:in-octets,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:aggregate-sid-counters/oc-mpls:aggregate-sid-counter/oc-mpls:state/oc-mpls:out-pkts,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:aggregate-sid-counters/oc-mpls:aggregate-sid-counter/oc-mpls:state/oc-mpls:out-octets,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface,list,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:interface-id,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:config/oc-mpls:interface-id,leaf,string
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:state/oc-mpls:interface-id,leaf,string
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:state/oc-mpls:in-pkts,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:state/oc-mpls:in-octets,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:state/oc-mpls:out-pkts,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:state/oc-mpls:out-octets,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter,list,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:mpls-label,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:state/oc-mpls:mpls-label,leaf,oc-mpls-t:mpls-label
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:state/oc-mpls:in-pkts,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:state/oc-mpls:in-octets,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:state/oc-mpls:out-pkts,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:state/oc-mpls:out-octets,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:forwarding-classes,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:forwarding-classes/oc-mpls:forwarding-class,list,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:forwarding-classes/oc-mpls:forwarding-class/oc-mpls:exp,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:forwarding-classes/oc-mpls:forwarding-class/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:forwarding-classes/oc-mpls:forwarding-class/oc-mpls:state/oc-mpls:exp,leaf,uint8
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:forwarding-classes/oc-mpls:forwarding-class/oc-mpls:state/oc-mpls:in-pkts,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:forwarding-classes/oc-mpls:forwarding-class/oc-mpls:state/oc-mpls:in-octets,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:forwarding-classes/oc-mpls:forwarding-class/oc-mpls:state/oc-mpls:out-pkts,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:sid-counters/oc-mpls:sid-counter/oc-mpls:forwarding-classes/oc-mpls:forwarding-class/oc-mpls:state/oc-mpls:out-octets,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:interface-ref,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:config/oc-mpls:interface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:config/oc-mpls:subinterface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:state/oc-mpls:interface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:signaling-protocols/oc-mpls:segment-routing/oc-mpls:interfaces/oc-mpls:interface/oc-mpls:interface-ref/oc-mpls:state/oc-mpls:subinterface,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path,list,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:name,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:config/oc-mpls:name,leaf,string
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:config/oc-mpls:sid-selection-mode,leaf,enumeration
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:config/oc-mpls:sid-protection-required,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:state/oc-mpls:name,leaf,string
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:state/oc-mpls:sid-selection-mode,leaf,enumeration
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:state/oc-mpls:sid-protection-required,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:explicit-route-objects,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:explicit-route-objects/oc-mpls:explicit-route-object,list,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:explicit-route-objects/oc-mpls:explicit-route-object/oc-mpls:index,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:explicit-route-objects/oc-mpls:explicit-route-object/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:explicit-route-objects/oc-mpls:explicit-route-object/oc-mpls:config/oc-mpls:address,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:explicit-route-objects/oc-mpls:explicit-route-object/oc-mpls:config/oc-mpls:hop-type,leaf,mpls-hop-type
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:explicit-route-objects/oc-mpls:explicit-route-object/oc-mpls:config/oc-mpls:index,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:explicit-route-objects/oc-mpls:explicit-route-object/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:explicit-route-objects/oc-mpls:explicit-route-object/oc-mpls:state/oc-mpls:address,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:explicit-route-objects/oc-mpls:explicit-route-object/oc-mpls:state/oc-mpls:hop-type,leaf,mpls-hop-type
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:named-explicit-paths/oc-mpls:named-explicit-path/oc-mpls:explicit-route-objects/oc-mpls:explicit-route-object/oc-mpls:state/oc-mpls:index,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel,list,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:name,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config/oc-mpls:name,leaf,string
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config/oc-mpls:type,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config/oc-mpls:signaling-protocol,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config/oc-mpls:description,leaf,string
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config/oc-mpls:admin-status,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config/oc-mpls:preference,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config/oc-mpls:metric-type,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config/oc-mpls:metric,leaf,int32
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config/oc-mpls:shortcut-eligible,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config/oc-mpls:protection-style-requested,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config/oc-mpls:reoptimize-timer,leaf,uint16
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config/oc-mpls:source,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config/oc-mpls:soft-preemption,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config/oc-mpls:setup-priority,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:config/oc-mpls:hold-priority,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:name,leaf,string
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:type,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:signaling-protocol,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:description,leaf,string
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:admin-status,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:preference,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:metric-type,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:metric,leaf,int32
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:shortcut-eligible,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:protection-style-requested,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:reoptimize-timer,leaf,uint16
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:source,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:soft-preemption,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:setup-priority,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:hold-priority,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:oper-status,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:role,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:counters,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:counters/oc-mpls:bytes,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:counters/oc-mpls:packets,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:counters/oc-mpls:path-changes,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:counters/oc-mpls:state-changes,leaf,yang:counter64
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:counters/oc-mpls:online-time,leaf,yang:date-and-time
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:counters/oc-mpls:current-path-time,leaf,yang:date-and-time
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:state/oc-mpls:counters/oc-mpls:next-reoptimization-time,leaf,yang:date-and-time
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:config/oc-mpls:specification-type,leaf,te-bandwidth-type
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:config/oc-mpls:set-bandwidth,leaf,uint32
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:state/oc-mpls:specification-type,leaf,te-bandwidth-type
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:state/oc-mpls:set-bandwidth,leaf,uint32
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:config/oc-mpls:enabled,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:config/oc-mpls:min-bw,leaf,uint32
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:config/oc-mpls:max-bw,leaf,uint32
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:config/oc-mpls:adjust-interval,leaf,uint32
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:config/oc-mpls:adjust-threshold,leaf,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:state/oc-mpls:enabled,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:state/oc-mpls:min-bw,leaf,uint32
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:state/oc-mpls:max-bw,leaf,uint32
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:state/oc-mpls:adjust-interval,leaf,uint32
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:state/oc-mpls:adjust-threshold,leaf,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:overflow,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:overflow/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:overflow/oc-mpls:config/oc-mpls:enabled,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:overflow/oc-mpls:config/oc-mpls:overflow-threshold,leaf,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:overflow/oc-mpls:config/oc-mpls:trigger-event-count,leaf,uint16
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:overflow/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:overflow/oc-mpls:state/oc-mpls:enabled,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:overflow/oc-mpls:state/oc-mpls:overflow-threshold,leaf,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:overflow/oc-mpls:state/oc-mpls:trigger-event-count,leaf,uint16
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:underflow,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:underflow/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:underflow/oc-mpls:config/oc-mpls:enabled,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:underflow/oc-mpls:config/oc-mpls:underflow-threshold,leaf,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:underflow/oc-mpls:config/oc-mpls:trigger-event-count,leaf,uint16
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:underflow/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:underflow/oc-mpls:state/oc-mpls:enabled,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:underflow/oc-mpls:state/oc-mpls:underflow-threshold,leaf,oc-types:percentage
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:bandwidth/oc-mpls:auto-bandwidth/oc-mpls:underflow/oc-mpls:state/oc-mpls:trigger-event-count,leaf,uint16
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:config/oc-mpls:destination,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:state/oc-mpls:destination,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path,list,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:name,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:config/oc-mpls:name,leaf,string
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:config/oc-mpls:path-computation-method,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:config/oc-mpls:use-cspf,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:config/oc-mpls:cspf-tiebreaker,leaf,cspf-tie-breaking
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:config/oc-mpls:path-computation-server,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:config/oc-mpls:explicit-path-name,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:config/oc-mpls:preference,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:config/oc-mpls:setup-priority,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:config/oc-mpls:hold-priority,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:config/oc-mpls:retry-timer,leaf,uint16
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:state/oc-mpls:name,leaf,string
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:state/oc-mpls:path-computation-method,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:state/oc-mpls:use-cspf,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:state/oc-mpls:cspf-tiebreaker,leaf,cspf-tie-breaking
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:state/oc-mpls:path-computation-server,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:state/oc-mpls:explicit-path-name,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:state/oc-mpls:preference,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:state/oc-mpls:setup-priority,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:state/oc-mpls:hold-priority,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:state/oc-mpls:retry-timer,leaf,uint16
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:state/oc-mpls:associated-rsvp-session,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:candidate-secondary-paths,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:candidate-secondary-paths/oc-mpls:candidate-secondary-path,list,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:candidate-secondary-paths/oc-mpls:candidate-secondary-path/oc-mpls:secondary-path,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:candidate-secondary-paths/oc-mpls:candidate-secondary-path/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:candidate-secondary-paths/oc-mpls:candidate-secondary-path/oc-mpls:config/oc-mpls:secondary-path,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:candidate-secondary-paths/oc-mpls:candidate-secondary-path/oc-mpls:config/oc-mpls:priority,leaf,uint16
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:candidate-secondary-paths/oc-mpls:candidate-secondary-path/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:candidate-secondary-paths/oc-mpls:candidate-secondary-path/oc-mpls:state/oc-mpls:secondary-path,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:candidate-secondary-paths/oc-mpls:candidate-secondary-path/oc-mpls:state/oc-mpls:priority,leaf,uint16
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:candidate-secondary-paths/oc-mpls:candidate-secondary-path/oc-mpls:state/oc-mpls:active,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:admin-groups,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:admin-groups/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:admin-groups/oc-mpls:config/oc-mpls:exclude-group,leaf-list,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:admin-groups/oc-mpls:config/oc-mpls:include-all-group,leaf-list,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:admin-groups/oc-mpls:config/oc-mpls:include-any-group,leaf-list,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:admin-groups/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:admin-groups/oc-mpls:state/oc-mpls:exclude-group,leaf-list,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:admin-groups/oc-mpls:state/oc-mpls:include-all-group,leaf-list,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-primary-path/oc-mpls:p2p-primary-path/oc-mpls:admin-groups/oc-mpls:state/oc-mpls:include-any-group,leaf-list,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path,list,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:name,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:config/oc-mpls:name,leaf,string
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:config/oc-mpls:path-computation-method,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:config/oc-mpls:use-cspf,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:config/oc-mpls:cspf-tiebreaker,leaf,cspf-tie-breaking
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:config/oc-mpls:path-computation-server,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:config/oc-mpls:explicit-path-name,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:config/oc-mpls:preference,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:config/oc-mpls:setup-priority,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:config/oc-mpls:hold-priority,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:config/oc-mpls:retry-timer,leaf,uint16
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:state/oc-mpls:name,leaf,string
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:state/oc-mpls:path-computation-method,leaf,identityref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:state/oc-mpls:use-cspf,leaf,boolean
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:state/oc-mpls:cspf-tiebreaker,leaf,cspf-tie-breaking
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:state/oc-mpls:path-computation-server,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:state/oc-mpls:explicit-path-name,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:state/oc-mpls:preference,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:state/oc-mpls:setup-priority,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:state/oc-mpls:hold-priority,leaf,uint8
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:state/oc-mpls:retry-timer,leaf,uint16
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:state/oc-mpls:associated-rsvp-session,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:admin-groups,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:admin-groups/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:admin-groups/oc-mpls:config/oc-mpls:exclude-group,leaf-list,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:admin-groups/oc-mpls:config/oc-mpls:include-all-group,leaf-list,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:admin-groups/oc-mpls:config/oc-mpls:include-any-group,leaf-list,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:admin-groups/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:admin-groups/oc-mpls:state/oc-mpls:exclude-group,leaf-list,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:admin-groups/oc-mpls:state/oc-mpls:include-all-group,leaf-list,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:constrained-path/oc-mpls:tunnels/oc-mpls:tunnel/oc-mpls:p2p-tunnel-attributes/oc-mpls:p2p-secondary-paths/oc-mpls:p2p-secondary-path/oc-mpls:admin-groups/oc-mpls:state/oc-mpls:include-any-group,leaf-list,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:unconstrained-path,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:unconstrained-path/oc-mpls:path-setup-protocol,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:unconstrained-path/oc-mpls:path-setup-protocol/oc-mpls:ldp,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:unconstrained-path/oc-mpls:path-setup-protocol/oc-mpls:ldp/oc-mpls:tunnel,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:unconstrained-path/oc-mpls:path-setup-protocol/oc-mpls:ldp/oc-mpls:tunnel/oc-mpls:tunnel-type,leaf,oc-mplst:tunnel-type
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:unconstrained-path/oc-mpls:path-setup-protocol/oc-mpls:ldp/oc-mpls:tunnel/oc-mpls:ldp-type,leaf,enumeration
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:unconstrained-path/oc-mpls:path-setup-protocol/oc-mpls:ldp/oc-mpls:tunnel/oc-mpls:p2p-lsp,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:unconstrained-path/oc-mpls:path-setup-protocol/oc-mpls:ldp/oc-mpls:tunnel/oc-mpls:p2p-lsp/oc-mpls:fec-address,leaf-list,inet:ip-prefix
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:unconstrained-path/oc-mpls:path-setup-protocol/oc-mpls:ldp/oc-mpls:tunnel/oc-mpls:p2mp-lsp,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:unconstrained-path/oc-mpls:path-setup-protocol/oc-mpls:ldp/oc-mpls:tunnel/oc-mpls:mp2mp-lsp,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp,list,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:name,leaf,leafref
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:config/oc-mpls:name,leaf,string
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:state/oc-mpls:name,leaf,string
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:ingress,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:ingress/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:ingress/oc-mpls:config/oc-mpls:next-hop,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:ingress/oc-mpls:config/oc-mpls:incoming-label,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:ingress/oc-mpls:config/oc-mpls:push-label,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:ingress/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:ingress/oc-mpls:state/oc-mpls:next-hop,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:ingress/oc-mpls:state/oc-mpls:incoming-label,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:ingress/oc-mpls:state/oc-mpls:push-label,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:transit,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:transit/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:transit/oc-mpls:config/oc-mpls:next-hop,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:transit/oc-mpls:config/oc-mpls:incoming-label,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:transit/oc-mpls:config/oc-mpls:push-label,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:transit/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:transit/oc-mpls:state/oc-mpls:next-hop,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:transit/oc-mpls:state/oc-mpls:incoming-label,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:transit/oc-mpls:state/oc-mpls:push-label,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:egress,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:egress/oc-mpls:config,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:egress/oc-mpls:config/oc-mpls:next-hop,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:egress/oc-mpls:config/oc-mpls:incoming-label,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:egress/oc-mpls:config/oc-mpls:push-label,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:egress/oc-mpls:state,container,
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:egress/oc-mpls:state/oc-mpls:next-hop,leaf,inet:ip-address
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:egress/oc-mpls:state/oc-mpls:incoming-label,leaf,oc-mplst:mpls-label
+/oc-mpls:mpls/oc-mpls:lsps/oc-mpls:static-lsps/oc-mpls:static-lsp/oc-mpls:egress/oc-mpls:state/oc-mpls:push-label,leaf,oc-mplst:mpls-label

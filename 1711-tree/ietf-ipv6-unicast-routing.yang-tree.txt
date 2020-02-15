@@ -1,0 +1,28 @@
+ 
+KPI for model: ietf-ipv6-unicast-routing.yang
+
+module: ietf-ipv6-unicast-routing
+  augment /if:interfaces/if:interface/ip:ipv6:
+    +--rw ipv6-router-advertisements
+       +--rw send-advertisements?    boolean
+       +--rw max-rtr-adv-interval?   uint16
+       +--rw min-rtr-adv-interval?   uint16
+       +--rw managed-flag?           boolean
+       +--rw other-config-flag?      boolean
+       +--rw link-mtu?               uint32
+       +--rw reachable-time?         uint32
+       +--rw retrans-timer?          uint32
+       +--rw cur-hop-limit?          uint8
+       +--rw default-lifetime?       uint16
+       +--rw prefix-list
+          +--rw prefix* [prefix-spec]
+             +--rw prefix-spec                 inet:ipv6-prefix
+             +--rw (control-adv-prefixes)?
+                +--:(no-advertise)
+                |  +--rw no-advertise?         empty
+                +--:(advertise)
+                   +--rw valid-lifetime?       uint32
+                   +--rw on-link-flag?         boolean
+                   +--rw preferred-lifetime?   uint32
+                   +--rw autonomous-flag?      boolean
+Xpaths for model: ietf-ipv6-unicast-routing.yang

@@ -1,0 +1,36 @@
+ 
+KPI for model: Cisco-IOS-XE-ucse-rpc.yang
+module: Cisco-IOS-XE-ucse-rpc
+
+  rpcs:
+    +---x ucse
+       +---w input
+       |  +---w subslot             string
+       |  +---w (command-choice)
+       |     +--:(imc-case)
+       |     |  +---w imc
+       |     |     +---w password-reset?   empty
+       |     +--:(server-case)
+       |     |  +---w server
+       |     |     +---w (server-command-choice)?
+       |     |        +--:(server-cmos-password-reset)
+       |     |        |  +---w cmos-reset?       empty
+       |     |        +--:(server-password-reset)
+       |     |        |  +---w password-reset
+       |     |        |     +---w BIOS?   empty
+       |     |        +--:(server-reload)
+       |     |        |  +---w reload?           empty
+       |     |        +--:(server-reset)
+       |     |        |  +---w reset?            empty
+       |     |        +--:(server-start)
+       |     |        |  +---w start?            empty
+       |     |        +--:(server-stop)
+       |     |           +---w stop?             empty
+       |     +--:(shutdown-case)
+       |     |  +---w shutdown?     empty
+       |     +--:(statistics-case)
+       |        +---w statistics
+       |           +---w clear?   empty
+       +--ro output
+          +--ro result?   string
+Xpaths for model: Cisco-IOS-XE-ucse-rpc.yang

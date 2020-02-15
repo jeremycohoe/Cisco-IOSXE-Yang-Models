@@ -1,0 +1,228 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-mcast-oper.yang
+module: Cisco-IOS-XE-wireless-mcast-oper
+  +--ro mcast-oper-data
+     +--ro rrc-history-client-record-data* [user-time-stamp]
+     |  +--ro user-time-stamp            yang:date-and-time
+     |  +--ro client-mac?                yang:mac-address
+     |  +--ro qos?                       uint16
+     |  +--ro decision?                  wireless-enum-types:media-stream-decision-status
+     |  +--ro reason-code?               uint32
+     |  +--ro ap-mac?                    yang:mac-address
+     |  +--ro vap-id?                    uint16
+     |  +--ro slot-id?                   uint32
+     |  +--ro cac-enabled?               uint32
+     |  +--ro stream-name?               string
+     |  +--ro dst-ip-address?            inet:ip-address
+     |  +--ro cfg-stream-bw?             uint32
+     |  +--ro current-rate?              uint32
+     |  +--ro video-pkt-size?            uint32
+     |  +--ro curr-video-util?           uint32
+     |  +--ro curr-voice-util?           uint32
+     |  +--ro curr-channel-util?         uint32
+     |  +--ro curr-queue-util?           uint32
+     |  +--ro curr-video-pps?            uint32
+     |  +--ro video-delay-hist-severe?   uint32
+     |  +--ro video-pkt-loss-discard?    uint32
+     |  +--ro video-pkt-loss-fail?       uint32
+     |  +--ro num-video-streams?         uint32
+     +--ro rrc-sr-radio-record* [ap-mac slot-id]
+     |  +--ro ap-mac                   yang:mac-address
+     |  +--ro slot-id                  uint32
+     |  +--ro radio-type?              uint32
+     |  +--ro duplicated-band-width?   uint32
+     |  +--ro last-re-rrc?             yang:date-and-time
+     |  +--ro number-of-admitted?      uint16
+     |  +--ro rrc-groups-in-radio* [dest-ip]
+     |     +--ro dest-ip          inet:ip-address
+     |     +--ro no-of-streams?   uint16
+     +--ro rrc-stream-record* [stream-name-str group-ip cl-mac]
+     |  +--ro vap-id?             uint32
+     |  +--ro vlan?               uint32
+     |  +--ro wlan-id?            uint32
+     |  +--ro mgid?               uint16
+     |  +--ro priority?           uint16
+     |  +--ro rerrc-enable?       boolean
+     |  +--ro rerrc-drop?         boolean
+     |  +--ro decision?           wireless-enum-types:media-stream-decision-status
+     |  +--ro qos?                wireless-enum-types:media-stream-qos
+     |  +--ro kbps-bandwidth?     uint32
+     |  +--ro radio?              wireless-enum-types:enm-radio-type
+     |  +--ro stream-name?        string
+     |  +--ro ap-name?            string
+     |  +--ro start-time?         yang:date-and-time
+     |  +--ro last-updated?       yang:date-and-time
+     |  +--ro rrc-radio-record
+     |  |  +--ro ap-mac?    yang:mac-address
+     |  |  +--ro slot-id?   uint32
+     |  +--ro stream-name-str     string
+     |  +--ro group-ip            inet:ip-address
+     |  +--ro cl-mac              yang:mac-address
+     |  +--ro client-mac?         yang:mac-address
+     |  +--ro dest-ip?            inet:ip-address
+     +--ro rrc-stream-admit-record* [last-updated client-mac dest-ip]
+     |  +--ro last-updated    yang:date-and-time
+     |  +--ro client-mac      yang:mac-address
+     |  +--ro dest-ip         inet:ip-address
+     +--ro rrc-stream-deny-record* [last-updated client-mac dest-ip]
+     |  +--ro last-updated    yang:date-and-time
+     |  +--ro client-mac      yang:mac-address
+     |  +--ro dest-ip         inet:ip-address
+     +--ro flex-mediastream-client-summary* [client-mac]
+     |  +--ro client-mac                 yang:mac-address
+     |  +--ro vlan-id?                   uint16
+     |  +--ro flex-mcast-client-group* [mcast-ip]
+     |     +--ro mcast-ip       inet:ip-address
+     |     +--ro stream-name?   string
+     |     +--ro ap-mac?        yang:mac-address
+     |     +--ro is-direct?     boolean
+     +--ro fabric-media-stream-client-summary* [client-mac]
+     |  +--ro client-mac                   yang:mac-address
+     |  +--ro vlan-id?                     uint16
+     |  +--ro fabric-mcast-client-group* [mcast-ip]
+     |     +--ro mcast-ip       inet:ip-address
+     |     +--ro stream-name?   string
+     |     +--ro ap-mac?        yang:mac-address
+     |     +--ro is-direct?     boolean
+     +--ro mcast-mgid-info* [mgid]
+     |  +--ro mgid                         uint16
+     |  +--ro vlan?                        uint16
+     |  +--ro mc-only-num-clients?         uint32
+     |  +--ro mc2uc-num-clients?           uint32
+     |  +--ro mc2uc-num-deny-clients?      uint32
+     |  +--ro mc2uc-num-pending-clients?   uint32
+     |  +--ro group?                       inet:ip-address
+     |  +--ro mcast-mgid-client-list* [client-mac-addr]
+     |     +--ro client-mac-addr    yang:mac-address
+     |     +--ro client-ip-addr?    inet:ip-address
+     |     +--ro client-status?     wireless-enum-types:enm-mcast-client-status
+     +--ro vlan-l2-mgid-op* [vlan-index]
+     |  +--ro vlan-index                    uint32
+     |  +--ro is-nonip-multicast-enabled?   boolean
+     |  +--ro is-broadcast-enable?          boolean
+     +--ro multicast-oper-data* [ms-mac-address]
+        +--ro ms-mac-address    yang:mac-address
+        +--ro num-entries?      uint8
+        +--ro entry* []
+        |  +--ro vlan?            uint16
+        |  +--ro mgid?            uint16
+        |  +--ro group?           inet:ip-address
+        |  +--ro client-status?   wireless-enum-types:enm-mcast-client-status
+        |  +--ro qos?             wireless-enum-types:media-stream-qos
+        |  +--ro used?            boolean
+        +--ro client-ipv6?      inet:ipv6-address
+        +--ro capwap-iif-id?    uint64
+        +--ro client-ip?        inet:ipv4-address
+Xpaths for model: Cisco-IOS-XE-wireless-mcast-oper.yang
+/wireless-mcast-oper:mcast-oper-data,container,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data,list,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:user-time-stamp,leaf,yang:date-and-time
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:client-mac,leaf,yang:mac-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:qos,leaf,uint16
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:decision,leaf,wireless-enum-types:media-stream-decision-status
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:reason-code,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:ap-mac,leaf,yang:mac-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:vap-id,leaf,uint16
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:slot-id,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:cac-enabled,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:stream-name,leaf,string
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:dst-ip-address,leaf,inet:ip-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:cfg-stream-bw,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:current-rate,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:video-pkt-size,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:curr-video-util,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:curr-voice-util,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:curr-channel-util,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:curr-queue-util,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:curr-video-pps,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:video-delay-hist-severe,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:video-pkt-loss-discard,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:video-pkt-loss-fail,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-history-client-record-data/wireless-mcast-oper:num-video-streams,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-sr-radio-record,list,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-sr-radio-record/wireless-mcast-oper:ap-mac,leaf,yang:mac-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-sr-radio-record/wireless-mcast-oper:slot-id,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-sr-radio-record/wireless-mcast-oper:radio-type,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-sr-radio-record/wireless-mcast-oper:duplicated-band-width,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-sr-radio-record/wireless-mcast-oper:last-re-rrc,leaf,yang:date-and-time
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-sr-radio-record/wireless-mcast-oper:number-of-admitted,leaf,uint16
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-sr-radio-record/wireless-mcast-oper:rrc-groups-in-radio,list,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-sr-radio-record/wireless-mcast-oper:rrc-groups-in-radio/wireless-mcast-oper:dest-ip,leaf,inet:ip-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-sr-radio-record/wireless-mcast-oper:rrc-groups-in-radio/wireless-mcast-oper:no-of-streams,leaf,uint16
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record,list,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:vap-id,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:vlan,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:wlan-id,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:mgid,leaf,uint16
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:priority,leaf,uint16
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:rerrc-enable,leaf,boolean
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:rerrc-drop,leaf,boolean
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:decision,leaf,wireless-enum-types:media-stream-decision-status
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:qos,leaf,wireless-enum-types:media-stream-qos
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:kbps-bandwidth,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:radio,leaf,wireless-enum-types:enm-radio-type
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:stream-name,leaf,string
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:ap-name,leaf,string
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:start-time,leaf,yang:date-and-time
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:last-updated,leaf,yang:date-and-time
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:rrc-radio-record,container,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:rrc-radio-record/wireless-mcast-oper:ap-mac,leaf,yang:mac-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:rrc-radio-record/wireless-mcast-oper:slot-id,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:stream-name-str,leaf,string
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:group-ip,leaf,inet:ip-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:cl-mac,leaf,yang:mac-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:client-mac,leaf,yang:mac-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-record/wireless-mcast-oper:dest-ip,leaf,inet:ip-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-admit-record,list,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-admit-record/wireless-mcast-oper:last-updated,leaf,yang:date-and-time
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-admit-record/wireless-mcast-oper:client-mac,leaf,yang:mac-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-admit-record/wireless-mcast-oper:dest-ip,leaf,inet:ip-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-deny-record,list,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-deny-record/wireless-mcast-oper:last-updated,leaf,yang:date-and-time
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-deny-record/wireless-mcast-oper:client-mac,leaf,yang:mac-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:rrc-stream-deny-record/wireless-mcast-oper:dest-ip,leaf,inet:ip-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:flex-mediastream-client-summary,list,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:flex-mediastream-client-summary/wireless-mcast-oper:client-mac,leaf,yang:mac-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:flex-mediastream-client-summary/wireless-mcast-oper:vlan-id,leaf,uint16
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:flex-mediastream-client-summary/wireless-mcast-oper:flex-mcast-client-group,list,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:flex-mediastream-client-summary/wireless-mcast-oper:flex-mcast-client-group/wireless-mcast-oper:mcast-ip,leaf,inet:ip-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:flex-mediastream-client-summary/wireless-mcast-oper:flex-mcast-client-group/wireless-mcast-oper:stream-name,leaf,string
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:flex-mediastream-client-summary/wireless-mcast-oper:flex-mcast-client-group/wireless-mcast-oper:ap-mac,leaf,yang:mac-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:flex-mediastream-client-summary/wireless-mcast-oper:flex-mcast-client-group/wireless-mcast-oper:is-direct,leaf,boolean
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:fabric-media-stream-client-summary,list,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:fabric-media-stream-client-summary/wireless-mcast-oper:client-mac,leaf,yang:mac-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:fabric-media-stream-client-summary/wireless-mcast-oper:vlan-id,leaf,uint16
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:fabric-media-stream-client-summary/wireless-mcast-oper:fabric-mcast-client-group,list,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:fabric-media-stream-client-summary/wireless-mcast-oper:fabric-mcast-client-group/wireless-mcast-oper:mcast-ip,leaf,inet:ip-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:fabric-media-stream-client-summary/wireless-mcast-oper:fabric-mcast-client-group/wireless-mcast-oper:stream-name,leaf,string
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:fabric-media-stream-client-summary/wireless-mcast-oper:fabric-mcast-client-group/wireless-mcast-oper:ap-mac,leaf,yang:mac-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:fabric-media-stream-client-summary/wireless-mcast-oper:fabric-mcast-client-group/wireless-mcast-oper:is-direct,leaf,boolean
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:mcast-mgid-info,list,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:mcast-mgid-info/wireless-mcast-oper:mgid,leaf,uint16
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:mcast-mgid-info/wireless-mcast-oper:vlan,leaf,uint16
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:mcast-mgid-info/wireless-mcast-oper:mc-only-num-clients,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:mcast-mgid-info/wireless-mcast-oper:mc2uc-num-clients,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:mcast-mgid-info/wireless-mcast-oper:mc2uc-num-deny-clients,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:mcast-mgid-info/wireless-mcast-oper:mc2uc-num-pending-clients,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:mcast-mgid-info/wireless-mcast-oper:group,leaf,inet:ip-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:mcast-mgid-info/wireless-mcast-oper:mcast-mgid-client-list,list,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:mcast-mgid-info/wireless-mcast-oper:mcast-mgid-client-list/wireless-mcast-oper:client-mac-addr,leaf,yang:mac-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:mcast-mgid-info/wireless-mcast-oper:mcast-mgid-client-list/wireless-mcast-oper:client-ip-addr,leaf,inet:ip-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:mcast-mgid-info/wireless-mcast-oper:mcast-mgid-client-list/wireless-mcast-oper:client-status,leaf,wireless-enum-types:enm-mcast-client-status
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:vlan-l2-mgid-op,list,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:vlan-l2-mgid-op/wireless-mcast-oper:vlan-index,leaf,uint32
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:vlan-l2-mgid-op/wireless-mcast-oper:is-nonip-multicast-enabled,leaf,boolean
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:vlan-l2-mgid-op/wireless-mcast-oper:is-broadcast-enable,leaf,boolean
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:multicast-oper-data,list,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:multicast-oper-data/wireless-mcast-oper:ms-mac-address,leaf,yang:mac-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:multicast-oper-data/wireless-mcast-oper:num-entries,leaf,uint8
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:multicast-oper-data/wireless-mcast-oper:entry,list,
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:multicast-oper-data/wireless-mcast-oper:entry/wireless-mcast-oper:vlan,leaf,uint16
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:multicast-oper-data/wireless-mcast-oper:entry/wireless-mcast-oper:mgid,leaf,uint16
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:multicast-oper-data/wireless-mcast-oper:entry/wireless-mcast-oper:group,leaf,inet:ip-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:multicast-oper-data/wireless-mcast-oper:entry/wireless-mcast-oper:client-status,leaf,wireless-enum-types:enm-mcast-client-status
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:multicast-oper-data/wireless-mcast-oper:entry/wireless-mcast-oper:qos,leaf,wireless-enum-types:media-stream-qos
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:multicast-oper-data/wireless-mcast-oper:entry/wireless-mcast-oper:used,leaf,boolean
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:multicast-oper-data/wireless-mcast-oper:client-ipv6,leaf,inet:ipv6-address
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:multicast-oper-data/wireless-mcast-oper:capwap-iif-id,leaf,uint64
+/wireless-mcast-oper:mcast-oper-data/wireless-mcast-oper:multicast-oper-data/wireless-mcast-oper:client-ip,leaf,inet:ipv4-address

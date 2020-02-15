@@ -1,0 +1,3 @@
+ 
+KPI for model: policy-types.yang
+Xpaths for model: policy-types.yang

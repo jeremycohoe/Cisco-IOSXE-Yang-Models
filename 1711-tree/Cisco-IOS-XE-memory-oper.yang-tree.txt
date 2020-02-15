@@ -1,0 +1,20 @@
+ 
+KPI for model: Cisco-IOS-XE-memory-oper.yang
+module: Cisco-IOS-XE-memory-oper
+  +--ro memory-statistics
+     +--ro memory-statistic* [name]
+        +--ro name             string
+        +--ro total-memory?    uint64
+        +--ro used-memory?     uint64
+        +--ro free-memory?     uint64
+        +--ro lowest-usage?    uint64
+        +--ro highest-usage?   uint64
+Xpaths for model: Cisco-IOS-XE-memory-oper.yang
+/memory-ios-xe-oper:memory-statistics,container,
+/memory-ios-xe-oper:memory-statistics/memory-ios-xe-oper:memory-statistic,list,
+/memory-ios-xe-oper:memory-statistics/memory-ios-xe-oper:memory-statistic/memory-ios-xe-oper:name,leaf,string
+/memory-ios-xe-oper:memory-statistics/memory-ios-xe-oper:memory-statistic/memory-ios-xe-oper:total-memory,leaf,uint64
+/memory-ios-xe-oper:memory-statistics/memory-ios-xe-oper:memory-statistic/memory-ios-xe-oper:used-memory,leaf,uint64
+/memory-ios-xe-oper:memory-statistics/memory-ios-xe-oper:memory-statistic/memory-ios-xe-oper:free-memory,leaf,uint64
+/memory-ios-xe-oper:memory-statistics/memory-ios-xe-oper:memory-statistic/memory-ios-xe-oper:lowest-usage,leaf,uint64
+/memory-ios-xe-oper:memory-statistics/memory-ios-xe-oper:memory-statistic/memory-ios-xe-oper:highest-usage,leaf,uint64

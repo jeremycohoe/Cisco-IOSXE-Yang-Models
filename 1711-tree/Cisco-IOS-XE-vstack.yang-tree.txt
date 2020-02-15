@@ -1,0 +1,8 @@
+ 
+KPI for model: Cisco-IOS-XE-vstack.yang
+
+module: Cisco-IOS-XE-vstack
+  augment /ios:native:
+    +--rw vstack
+       +--rw director?   inet:ipv4-address
+Xpaths for model: Cisco-IOS-XE-vstack.yang

@@ -1,0 +1,3 @@
+ 
+KPI for model: openconfig-mpls-static.yang
+Xpaths for model: openconfig-mpls-static.yang

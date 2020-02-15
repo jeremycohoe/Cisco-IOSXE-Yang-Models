@@ -1,0 +1,18 @@
+ 
+KPI for model: Cisco-IOS-XE-ptp.yang
+
+module: Cisco-IOS-XE-ptp
+  augment /ios:native/ios:ptp:
+    +--rw domain?                                 uint8
+    +--rw profile
+    |  +--rw dot1as?   empty
+    +--rw neighbor-propagation-delay-threshold?   uint32
+    +--rw priority1?                              uint8
+    +--rw priority2?                              uint8
+    +--rw mode
+       +--rw boundary
+       |  +--rw delay-req?    empty
+       |  +--rw pdelay-req?   empty
+       +--rw e2etransparent?   empty
+       +--rw p2ptransparent?   empty
+Xpaths for model: Cisco-IOS-XE-ptp.yang

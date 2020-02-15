@@ -1,0 +1,432 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-client-oper.yang
+module: Cisco-IOS-XE-wireless-client-oper
+  +--ro client-oper-data
+     +--ro common-oper-data* [client-mac]
+     |  +--ro client-mac                   yang:mac-address
+     |  +--ro ap-name?                     string
+     |  +--ro ms-ap-slot-id?               uint8
+     |  +--ro ms-radio-type?               wireless-client-types:ms-phy-radio-type
+     |  +--ro wlan-id?                     uint32
+     |  +--ro client-type?                 wireless-client-types:ms-client-type
+     |  +--ro co-state?                    wireless-client-types:client-co-state
+     |  +--ro aaa-override-passphrase?     boolean
+     |  +--ro is-tvi-enabled?              boolean
+     |  +--ro wlan-policy
+     |  |  +--ro current-switching-mode?   wireless-client-oper:client-switching-mode
+     |  |  +--ro wlan-switching-mode?      wireless-client-oper:client-switching-mode
+     |  |  +--ro central-authentication?   wireless-client-oper:client-authentication-type
+     |  |  +--ro central-dhcp?             boolean
+     |  |  +--ro central-assoc-enable?     boolean
+     |  |  +--ro vlan-central-switching?   boolean
+     |  |  +--ro is-fabric-client?         boolean
+     |  |  +--ro is-guest-fabric-client?   boolean
+     |  |  +--ro upn-bit-flag?             wireless-client-oper:upn-status
+     |  +--ro username?                    string
+     |  +--ro guest-lan-client-info
+     |  |  +--ro wired-vlan?          uint16
+     |  |  +--ro phy-ifid?            uint32
+     |  |  +--ro idle-time-seconds?   uint32
+     |  +--ro method-id?                   wireless-client-oper:authentication-method-id
+     |  +--ro l3-vlan-override-received?   boolean
+     |  +--ro ipsk-tag
+     |  |  +--ro ipsk-tag-value*   uint8
+     |  +--ro upn-id?                      uint32
+     +--ro dot11-oper-data* [ms-mac-address]
+     |  +--ro ms-mac-address                yang:mac-address
+     |  +--ro ms-bssid?                     yang:mac-address
+     |  +--ro ap-mac-address?               yang:mac-address
+     |  +--ro current-channel?              uint8
+     |  +--ro ms-wlan-id?                   uint32
+     |  +--ro vap-ssid?                     string
+     |  +--ro policy-profile?               string
+     |  +--ro ms-ap-slot-id?                uint8
+     |  +--ro radio-type?                   wireless-client-types:ms-radio-type
+     |  +--ro ms-assoc-time?                yang:date-and-time
+     |  +--ro is-11g-client?                boolean
+     |  +--ro ms-wifi
+     |  |  +--ro wpa-version?     wireless-client-types:dot11-eap-wpa-version
+     |  |  +--ro cipher-suite?    wireless-client-types:dot11i-cipher-suite
+     |  |  +--ro auth-key-mgmt?   wireless-client-oper:dot11i-auth-key-mgmt-type
+     |  +--ro ms-wme-enabled?               boolean
+     |  +--ro dot11w-enabled?               boolean
+     |  +--ro dot11k-neighbor-list
+     |  |  +--ro dot11k-neighbor*   yang:mac-address
+     |  +--ro ewlc-ms-phy-type?             wireless-client-types:ms-phy-radio-type
+     |  +--ro encryption-type?              wireless-client-oper:encrypt-policy
+     |  +--ro client-wep-policy-type?       wireless-client-types:client-wep-policy-type
+     |  +--ro bss-trans-capable?            boolean
+     |  +--ro ms-apple-capable?             boolean
+     |  +--ro wlan-profile?                 string
+     |  +--ro dms-capable?                  boolean
+     |  +--ro eogre-client
+     |  |  +--ro is-eogre?                boolean
+     |  |  +--ro previous-match-reason?   wireless-enum-types:eogre-client-match-reason
+     |  |  +--ro match-reason?            wireless-enum-types:eogre-client-match-reason
+     |  |  +--ro is-aaa-data?             boolean
+     |  |  +--ro realm?                   string
+     |  |  +--ro vlan?                    uint16
+     |  |  +--ro domain?                  string
+     |  |  +--ro primary-gw?              inet:ip-address
+     |  |  +--ro secondary-gw?            inet:ip-address
+     |  |  +--ro plumbed-gw?              string
+     |  |  +--ro tunnel-ifid?             uint32
+     |  +--ro ms-hs20-data
+     |  |  +--ro is-hs20?         boolean
+     |  |  +--ro version?         wireless-enum-types:enm-hs20-supported-version
+     |  |  +--ro consortium-oi?   string
+     |  |  +--ro pps-mo-id?       uint16
+     |  |  +--ro swt-timer?       uint16
+     |  |  +--ro swt-timestamp?   yang:date-and-time
+     |  +--ro qosmap-capable?               boolean
+     |  +--ro non-oper-chan*                uint8
+     |  +--ro non-prefer-chan*              uint8
+     |  +--ro ms-supported-channels-list
+     |  |  +--ro supported-channels-list*   uint8
+     |  +--ro ap-local-client-state
+     |     +--ro acl-names*              string
+     |     +--ro client-state-servers*   yang:mac-address
+     +--ro mobility-oper-data* [ms-mac-addr]
+     |  +--ro ms-mac-addr                yang:mac-address
+     |  +--ro mm-client-role?            wireless-mobility-types:mm-client-role
+     |  +--ro mm-client-roam-type?       wireless-mobility-types:mm-client-roam-type
+     |  +--ro mm-instance?               uint32
+     |  +--ro mm-complete-timestamp?     yang:date-and-time
+     |  +--ro mm-remote-tunnel-ip?       inet:ip-address
+     |  +--ro mm-remote-tunnel-sec-ip?   inet:ip-address
+     |  +--ro mm-remote-platform-id?     uint8
+     |  +--ro mm-remote-tunnel-id?       uint32
+     |  +--ro mm-anchor-ip?              inet:ip-address
+     +--ro mm-if-client-stats* [client-mac]
+     |  +--ro client-mac     yang:mac-address
+     |  +--ro mblty-stats
+     |  |  +--ro event-data-allocs?                   uint32
+     |  |  +--ro event-data-frees?                    uint32
+     |  |  +--ro mmif-fsm-invalid-events?             uint32
+     |  |  +--ro mmif-schedule-errors?                uint32
+     |  |  +--ro mmif-fsm-failure?                    uint32
+     |  |  +--ro mmif-ipc-failure?                    uint32
+     |  |  +--ro mmif-db-failure?                     uint32
+     |  |  +--ro mmif-invalid-params-failure?         uint32
+     |  |  +--ro mmif-mm-msg-decode-failure?          uint32
+     |  |  +--ro mmif-unknown-failure?                uint32
+     |  |  +--ro mmif-client-handoff-failure?         uint32
+     |  |  +--ro mmif-client-handoff-success?         uint32
+     |  |  +--ro mmif-anchor-deny?                    uint32
+     |  |  +--ro mmif-remote-delete?                  uint32
+     |  |  +--ro mmif-tunnel-down-delete?             uint32
+     |  |  +--ro mmif-mbssid-down-event?              uint32
+     |  |  +--ro intra-wncd-roam-count?               uint32
+     |  |  +--ro remote-inter-ctrlr-roams?            uint32
+     |  |  +--ro remote-webauth-pend-roams?           uint32
+     |  |  +--ro anchor-request-sent?                 uint32
+     |  |  +--ro anchor-request-grant-received?       uint32
+     |  |  +--ro anchor-request-deny-received?        uint32
+     |  |  +--ro anchor-request-received?             uint32
+     |  |  +--ro anchor-request-grant-sent?           uint32
+     |  |  +--ro anchor-request-deny-sent?            uint32
+     |  |  +--ro handoff-received-ok?                 uint32
+     |  |  +--ro handoff-received-grp-mismatch?       uint32
+     |  |  +--ro handoff-received-ms-unknown?         uint32
+     |  |  +--ro handoff-received-ms-ssid?            uint32
+     |  |  +--ro handoff-received-deny?               uint32
+     |  |  +--ro handoff-sent-ok?                     uint32
+     |  |  +--ro handoff-sent-grp-mismatch?           uint32
+     |  |  +--ro handoff-sent-ms-unknown?             uint32
+     |  |  +--ro handoff-sent-ms-ssid?                uint32
+     |  |  +--ro handoff-sent-deny?                   uint32
+     |  |  +--ro handoff-received-l3-vlan-override?   uint32
+     |  |  +--ro handoff-received-unknown-peer?       uint32
+     |  |  +--ro handoff-sent-l3-vlan-override?       uint32
+     |  +--ro ipc-stats* []
+     |     +--ro type?          uint32
+     |     +--ro allocs?        uint32
+     |     +--ro frees?         uint32
+     |     +--ro tx?            uint32
+     |     +--ro rx?            uint32
+     |     +--ro forwarded?     uint32
+     |     +--ro tx-errors?     uint32
+     |     +--ro rx-errors?     uint32
+     |     +--ro tx-retries?    uint32
+     |     +--ro drops?         uint32
+     |     +--ro built?         uint32
+     |     +--ro processed?     uint32
+     |     +--ro mm-msg-type?   wireless-mobility-types:mm-mobility-msg-type
+     +--ro mm-if-client-history* [client-mac]
+     |  +--ro client-mac          yang:mac-address
+     |  +--ro mobility-history
+     |     +--ro entry* []
+     |        +--ro instance-id?       uint32
+     |        +--ro ms-ap-slot-id?     uint32
+     |        +--ro ms-assoc-time?     yang:date-and-time
+     |        +--ro role?              wireless-mobility-types:mm-client-role
+     |        +--ro bssid?             yang:mac-address
+     |        +--ro ap-name?           string
+     |        +--ro run-latency?       uint32
+     |        +--ro dot11-roam-type?   wireless-mobility-types:dot11-client-roam-type
+     +--ro traffic-stats* [ms-mac-address]
+     |  +--ro ms-mac-address                 yang:mac-address
+     |  +--ro bytes-rx?                      uint64
+     |  +--ro bytes-tx?                      uint64
+     |  +--ro pkts-rx?                       uint64
+     |  +--ro pkts-tx?                       uint64
+     |  +--ro data-retries?                  uint64
+     |  +--ro mic-mismatch?                  uint64
+     |  +--ro mic-missing?                   uint64
+     |  +--ro most-recent-rssi?              int8
+     |  +--ro most-recent-snr?               uint8
+     |  +--ro tx-retries?                    uint64
+     |  +--ro speed?                         uint32
+     |  +--ro spatial-stream?                uint32
+     |  +--ro glan-stats-update-timestamp?   yang:date-and-time
+     |  +--ro glan-idle-update-timestamp?    yang:date-and-time
+     +--ro client-wsa-info* [client-mac]
+     |  +--ro client-mac         yang:mac-address
+     |  +--ro device-hostname?   string
+     |  +--ro device-os?         string
+     +--ro sisf-db-mac* [mac-addr]
+     |  +--ro mac-addr        yang:mac-address
+     |  +--ro ipv4-binding
+     |  |  +--ro ip-key
+     |  |     +--ro zone-id?   uint32
+     |  |     +--ro ip-addr?   inet:ip-address
+     |  +--ro ipv6-binding* []
+     |     +--ro ip-key
+     |        +--ro zone-id?   uint32
+     |        +--ro ip-addr?   inet:ip-address
+     +--ro dc-info* [client-mac]
+        +--ro client-mac            yang:mac-address
+        +--ro device-type?          string
+        +--ro protocol-map?         wireless-client-oper:protocol-map
+        +--ro confidence-level?     uint32
+        +--ro classified-time?      yang:date-and-time
+        +--ro day-zero-dc?          string
+        +--ro sw-version?           string
+        +--ro sw-version-src?       wireless-client-oper:dc-db-attr-type-e
+        +--ro device-os?            string
+        +--ro device-sub-version?   string
+        +--ro device-os-src?        wireless-client-oper:dc-db-attr-type-e
+        +--ro device-name?          string
+        +--ro device-vendor?        string
+        +--ro device-vendor-src?    wireless-client-oper:dc-db-attr-type-e
+        +--ro sales-code?           string
+        +--ro sales-code-src?       wireless-client-oper:dc-db-attr-type-e
+        +--ro device?               string
+        +--ro device-src?           wireless-client-oper:dc-db-attr-type-e
+        +--ro country-name?         string
+        +--ro country-name-src?     wireless-client-oper:dc-db-attr-type-e
+Xpaths for model: Cisco-IOS-XE-wireless-client-oper.yang
+/wireless-client-oper:client-oper-data,container,
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data,list,
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:client-mac,leaf,yang:mac-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:ap-name,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:ms-ap-slot-id,leaf,uint8
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:ms-radio-type,leaf,wireless-client-types:ms-phy-radio-type
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:wlan-id,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:client-type,leaf,wireless-client-types:ms-client-type
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:co-state,leaf,wireless-client-types:client-co-state
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:aaa-override-passphrase,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:is-tvi-enabled,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:wlan-policy,container,
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:wlan-policy/wireless-client-oper:current-switching-mode,leaf,wireless-client-oper:client-switching-mode
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:wlan-policy/wireless-client-oper:wlan-switching-mode,leaf,wireless-client-oper:client-switching-mode
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:wlan-policy/wireless-client-oper:central-authentication,leaf,wireless-client-oper:client-authentication-type
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:wlan-policy/wireless-client-oper:central-dhcp,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:wlan-policy/wireless-client-oper:central-assoc-enable,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:wlan-policy/wireless-client-oper:vlan-central-switching,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:wlan-policy/wireless-client-oper:is-fabric-client,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:wlan-policy/wireless-client-oper:is-guest-fabric-client,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:wlan-policy/wireless-client-oper:upn-bit-flag,leaf,wireless-client-oper:upn-status
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:username,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:guest-lan-client-info,container,
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:guest-lan-client-info/wireless-client-oper:wired-vlan,leaf,uint16
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:guest-lan-client-info/wireless-client-oper:phy-ifid,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:guest-lan-client-info/wireless-client-oper:idle-time-seconds,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:method-id,leaf,wireless-client-oper:authentication-method-id
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:l3-vlan-override-received,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:ipsk-tag,container,
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:ipsk-tag/wireless-client-oper:ipsk-tag-value,leaf-list,uint8
+/wireless-client-oper:client-oper-data/wireless-client-oper:common-oper-data/wireless-client-oper:upn-id,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data,list,
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-mac-address,leaf,yang:mac-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-bssid,leaf,yang:mac-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ap-mac-address,leaf,yang:mac-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:current-channel,leaf,uint8
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-wlan-id,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:vap-ssid,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:policy-profile,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-ap-slot-id,leaf,uint8
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:radio-type,leaf,wireless-client-types:ms-radio-type
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-assoc-time,leaf,yang:date-and-time
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:is-11g-client,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-wifi,container,
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-wifi/wireless-client-oper:wpa-version,leaf,wireless-client-types:dot11-eap-wpa-version
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-wifi/wireless-client-oper:cipher-suite,leaf,wireless-client-types:dot11i-cipher-suite
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-wifi/wireless-client-oper:auth-key-mgmt,leaf,wireless-client-oper:dot11i-auth-key-mgmt-type
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-wme-enabled,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:dot11w-enabled,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:dot11k-neighbor-list,container,
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:dot11k-neighbor-list/wireless-client-oper:dot11k-neighbor,leaf-list,yang:mac-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ewlc-ms-phy-type,leaf,wireless-client-types:ms-phy-radio-type
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:encryption-type,leaf,wireless-client-oper:encrypt-policy
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:client-wep-policy-type,leaf,wireless-client-types:client-wep-policy-type
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:bss-trans-capable,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-apple-capable,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:wlan-profile,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:dms-capable,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:eogre-client,container,
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:eogre-client/wireless-client-oper:is-eogre,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:eogre-client/wireless-client-oper:previous-match-reason,leaf,wireless-enum-types:eogre-client-match-reason
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:eogre-client/wireless-client-oper:match-reason,leaf,wireless-enum-types:eogre-client-match-reason
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:eogre-client/wireless-client-oper:is-aaa-data,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:eogre-client/wireless-client-oper:realm,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:eogre-client/wireless-client-oper:vlan,leaf,uint16
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:eogre-client/wireless-client-oper:domain,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:eogre-client/wireless-client-oper:primary-gw,leaf,inet:ip-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:eogre-client/wireless-client-oper:secondary-gw,leaf,inet:ip-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:eogre-client/wireless-client-oper:plumbed-gw,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:eogre-client/wireless-client-oper:tunnel-ifid,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-hs20-data,container,
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-hs20-data/wireless-client-oper:is-hs20,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-hs20-data/wireless-client-oper:version,leaf,wireless-enum-types:enm-hs20-supported-version
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-hs20-data/wireless-client-oper:consortium-oi,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-hs20-data/wireless-client-oper:pps-mo-id,leaf,uint16
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-hs20-data/wireless-client-oper:swt-timer,leaf,uint16
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-hs20-data/wireless-client-oper:swt-timestamp,leaf,yang:date-and-time
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:qosmap-capable,leaf,boolean
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:non-oper-chan,leaf-list,uint8
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:non-prefer-chan,leaf-list,uint8
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-supported-channels-list,container,
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ms-supported-channels-list/wireless-client-oper:supported-channels-list,leaf-list,uint8
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ap-local-client-state,container,
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ap-local-client-state/wireless-client-oper:acl-names,leaf-list,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dot11-oper-data/wireless-client-oper:ap-local-client-state/wireless-client-oper:client-state-servers,leaf-list,yang:mac-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:mobility-oper-data,list,
+/wireless-client-oper:client-oper-data/wireless-client-oper:mobility-oper-data/wireless-client-oper:ms-mac-addr,leaf,yang:mac-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:mobility-oper-data/wireless-client-oper:mm-client-role,leaf,wireless-mobility-types:mm-client-role
+/wireless-client-oper:client-oper-data/wireless-client-oper:mobility-oper-data/wireless-client-oper:mm-client-roam-type,leaf,wireless-mobility-types:mm-client-roam-type
+/wireless-client-oper:client-oper-data/wireless-client-oper:mobility-oper-data/wireless-client-oper:mm-instance,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mobility-oper-data/wireless-client-oper:mm-complete-timestamp,leaf,yang:date-and-time
+/wireless-client-oper:client-oper-data/wireless-client-oper:mobility-oper-data/wireless-client-oper:mm-remote-tunnel-ip,leaf,inet:ip-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:mobility-oper-data/wireless-client-oper:mm-remote-tunnel-sec-ip,leaf,inet:ip-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:mobility-oper-data/wireless-client-oper:mm-remote-platform-id,leaf,uint8
+/wireless-client-oper:client-oper-data/wireless-client-oper:mobility-oper-data/wireless-client-oper:mm-remote-tunnel-id,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mobility-oper-data/wireless-client-oper:mm-anchor-ip,leaf,inet:ip-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats,list,
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:client-mac,leaf,yang:mac-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats,container,
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:event-data-allocs,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:event-data-frees,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:mmif-fsm-invalid-events,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:mmif-schedule-errors,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:mmif-fsm-failure,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:mmif-ipc-failure,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:mmif-db-failure,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:mmif-invalid-params-failure,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:mmif-mm-msg-decode-failure,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:mmif-unknown-failure,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:mmif-client-handoff-failure,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:mmif-client-handoff-success,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:mmif-anchor-deny,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:mmif-remote-delete,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:mmif-tunnel-down-delete,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:mmif-mbssid-down-event,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:intra-wncd-roam-count,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:remote-inter-ctrlr-roams,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:remote-webauth-pend-roams,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:anchor-request-sent,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:anchor-request-grant-received,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:anchor-request-deny-received,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:anchor-request-received,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:anchor-request-grant-sent,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:anchor-request-deny-sent,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:handoff-received-ok,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:handoff-received-grp-mismatch,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:handoff-received-ms-unknown,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:handoff-received-ms-ssid,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:handoff-received-deny,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:handoff-sent-ok,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:handoff-sent-grp-mismatch,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:handoff-sent-ms-unknown,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:handoff-sent-ms-ssid,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:handoff-sent-deny,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:handoff-received-l3-vlan-override,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:handoff-received-unknown-peer,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:mblty-stats/wireless-client-oper:handoff-sent-l3-vlan-override,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:ipc-stats,list,
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:ipc-stats/wireless-client-oper:type,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:ipc-stats/wireless-client-oper:allocs,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:ipc-stats/wireless-client-oper:frees,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:ipc-stats/wireless-client-oper:tx,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:ipc-stats/wireless-client-oper:rx,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:ipc-stats/wireless-client-oper:forwarded,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:ipc-stats/wireless-client-oper:tx-errors,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:ipc-stats/wireless-client-oper:rx-errors,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:ipc-stats/wireless-client-oper:tx-retries,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:ipc-stats/wireless-client-oper:drops,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:ipc-stats/wireless-client-oper:built,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:ipc-stats/wireless-client-oper:processed,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-stats/wireless-client-oper:ipc-stats/wireless-client-oper:mm-msg-type,leaf,wireless-mobility-types:mm-mobility-msg-type
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-history,list,
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-history/wireless-client-oper:client-mac,leaf,yang:mac-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-history/wireless-client-oper:mobility-history,container,
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-history/wireless-client-oper:mobility-history/wireless-client-oper:entry,list,
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-history/wireless-client-oper:mobility-history/wireless-client-oper:entry/wireless-client-oper:instance-id,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-history/wireless-client-oper:mobility-history/wireless-client-oper:entry/wireless-client-oper:ms-ap-slot-id,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-history/wireless-client-oper:mobility-history/wireless-client-oper:entry/wireless-client-oper:ms-assoc-time,leaf,yang:date-and-time
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-history/wireless-client-oper:mobility-history/wireless-client-oper:entry/wireless-client-oper:role,leaf,wireless-mobility-types:mm-client-role
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-history/wireless-client-oper:mobility-history/wireless-client-oper:entry/wireless-client-oper:bssid,leaf,yang:mac-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-history/wireless-client-oper:mobility-history/wireless-client-oper:entry/wireless-client-oper:ap-name,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-history/wireless-client-oper:mobility-history/wireless-client-oper:entry/wireless-client-oper:run-latency,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:mm-if-client-history/wireless-client-oper:mobility-history/wireless-client-oper:entry/wireless-client-oper:dot11-roam-type,leaf,wireless-mobility-types:dot11-client-roam-type
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats,list,
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats/wireless-client-oper:ms-mac-address,leaf,yang:mac-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats/wireless-client-oper:bytes-rx,leaf,uint64
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats/wireless-client-oper:bytes-tx,leaf,uint64
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats/wireless-client-oper:pkts-rx,leaf,uint64
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats/wireless-client-oper:pkts-tx,leaf,uint64
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats/wireless-client-oper:data-retries,leaf,uint64
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats/wireless-client-oper:mic-mismatch,leaf,uint64
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats/wireless-client-oper:mic-missing,leaf,uint64
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats/wireless-client-oper:most-recent-rssi,leaf,int8
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats/wireless-client-oper:most-recent-snr,leaf,uint8
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats/wireless-client-oper:tx-retries,leaf,uint64
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats/wireless-client-oper:speed,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats/wireless-client-oper:spatial-stream,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats/wireless-client-oper:glan-stats-update-timestamp,leaf,yang:date-and-time
+/wireless-client-oper:client-oper-data/wireless-client-oper:traffic-stats/wireless-client-oper:glan-idle-update-timestamp,leaf,yang:date-and-time
+/wireless-client-oper:client-oper-data/wireless-client-oper:client-wsa-info,list,
+/wireless-client-oper:client-oper-data/wireless-client-oper:client-wsa-info/wireless-client-oper:client-mac,leaf,yang:mac-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:client-wsa-info/wireless-client-oper:device-hostname,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:client-wsa-info/wireless-client-oper:device-os,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:sisf-db-mac,list,
+/wireless-client-oper:client-oper-data/wireless-client-oper:sisf-db-mac/wireless-client-oper:mac-addr,leaf,yang:mac-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:sisf-db-mac/wireless-client-oper:ipv4-binding,container,
+/wireless-client-oper:client-oper-data/wireless-client-oper:sisf-db-mac/wireless-client-oper:ipv4-binding/wireless-client-oper:ip-key,container,
+/wireless-client-oper:client-oper-data/wireless-client-oper:sisf-db-mac/wireless-client-oper:ipv4-binding/wireless-client-oper:ip-key/wireless-client-oper:zone-id,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:sisf-db-mac/wireless-client-oper:ipv4-binding/wireless-client-oper:ip-key/wireless-client-oper:ip-addr,leaf,inet:ip-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:sisf-db-mac/wireless-client-oper:ipv6-binding,list,
+/wireless-client-oper:client-oper-data/wireless-client-oper:sisf-db-mac/wireless-client-oper:ipv6-binding/wireless-client-oper:ip-key,container,
+/wireless-client-oper:client-oper-data/wireless-client-oper:sisf-db-mac/wireless-client-oper:ipv6-binding/wireless-client-oper:ip-key/wireless-client-oper:zone-id,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:sisf-db-mac/wireless-client-oper:ipv6-binding/wireless-client-oper:ip-key/wireless-client-oper:ip-addr,leaf,inet:ip-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info,list,
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:client-mac,leaf,yang:mac-address
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:device-type,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:protocol-map,leaf,wireless-client-oper:protocol-map
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:confidence-level,leaf,uint32
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:classified-time,leaf,yang:date-and-time
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:day-zero-dc,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:sw-version,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:sw-version-src,leaf,wireless-client-oper:dc-db-attr-type-e
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:device-os,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:device-sub-version,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:device-os-src,leaf,wireless-client-oper:dc-db-attr-type-e
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:device-name,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:device-vendor,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:device-vendor-src,leaf,wireless-client-oper:dc-db-attr-type-e
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:sales-code,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:sales-code-src,leaf,wireless-client-oper:dc-db-attr-type-e
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:device,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:device-src,leaf,wireless-client-oper:dc-db-attr-type-e
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:country-name,leaf,string
+/wireless-client-oper:client-oper-data/wireless-client-oper:dc-info/wireless-client-oper:country-name-src,leaf,wireless-client-oper:dc-db-attr-type-e

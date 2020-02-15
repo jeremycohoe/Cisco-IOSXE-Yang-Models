@@ -1,0 +1,14 @@
+ 
+KPI for model: Cisco-IOS-XE-linecard-oper.yang
+module: Cisco-IOS-XE-linecard-oper
+  +--ro linecard-oper-data
+     +--ro linecard* [name]
+        +--ro name                 string
+        +--ro power-admin-state?   boolean
+        +--ro slot-id?             uint16
+Xpaths for model: Cisco-IOS-XE-linecard-oper.yang
+/linecard-ios-xe-oper:linecard-oper-data,container,
+/linecard-ios-xe-oper:linecard-oper-data/linecard-ios-xe-oper:linecard,list,
+/linecard-ios-xe-oper:linecard-oper-data/linecard-ios-xe-oper:linecard/linecard-ios-xe-oper:name,leaf,string
+/linecard-ios-xe-oper:linecard-oper-data/linecard-ios-xe-oper:linecard/linecard-ios-xe-oper:power-admin-state,leaf,boolean
+/linecard-ios-xe-oper:linecard-oper-data/linecard-ios-xe-oper:linecard/linecard-ios-xe-oper:slot-id,leaf,uint16

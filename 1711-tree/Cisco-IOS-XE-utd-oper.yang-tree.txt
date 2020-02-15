@@ -1,0 +1,110 @@
+ 
+KPI for model: Cisco-IOS-XE-utd-oper.yang
+module: Cisco-IOS-XE-utd-oper
+  +--ro utd-oper-data
+     +--ro utd-engine-status!
+     |  +--ro version?                      string
+     |  +--ro profile?                      string
+     |  +--ro status?                       utd-ios-xe-oper:utd-oper-status-val
+     |  +--ro reason?                       string
+     |  +--ro memory-usage?                 decimal64
+     |  +--ro memory-status?                utd-ios-xe-oper:utd-oper-status-val
+     |  +--ro utd-engine-instance-status* [id]
+     |     +--ro id         uint32
+     |     +--ro running?   boolean
+     |     +--ro status?    utd-ios-xe-oper:utd-oper-status-val
+     |     +--ro reason?    string
+     +--ro utd-ips-update-status!
+     |  +--ro ips-update-status
+     |     +--ro version?                       string
+     |     +--ro last-update-time?              yang:date-and-time
+     |     +--ro last-update-status?            utd-common-ios-xe-oper:utd-update-status-val
+     |     +--ro last-update-reason?            string
+     |     +--ro last-successful-update-time?   yang:date-and-time
+     +--ro utd-urlf-update-status!
+     |  +--ro urlf-update-status
+     |     +--ro version?                       string
+     |     +--ro last-update-time?              yang:date-and-time
+     |     +--ro last-update-status?            utd-common-ios-xe-oper:utd-update-status-val
+     |     +--ro last-update-reason?            string
+     |     +--ro last-successful-update-time?   yang:date-and-time
+     +--ro utd-version-status!
+     |  +--ro recommended-version?   string
+     |  +--ro supported-regex?       string
+     |  +--ro installed-version?     string
+     |  +--ro supported?             boolean
+     +--ro utd-file-reputation-status!
+     |  +--ro version?   string
+     |  +--ro status?    utd-ios-xe-oper:utd-file-reputation-status-states
+     |  +--ro message?   string
+     +--ro utd-file-analysis-status!
+     |  +--ro status?             utd-ios-xe-oper:utd-file-analysis-states
+     |  +--ro backoff-interval?   uint64
+     |  +--ro message?            string
+     +--ro utd-route* [id]
+     |  +--ro id             uint32
+     |  +--ro destination?   inet:ip-address
+     |  +--ro gateway?       inet:ip-address
+     |  +--ro genmask?       inet:ip-address
+     |  +--ro flags?         utd-ios-xe-oper:utd-route-flag
+     |  +--ro metric?        int16
+     |  +--ro use?           int16
+     |  +--ro ref?           int16
+     |  +--ro interface?     string
+     +--ro utd-dns!
+        +--ro domain?        string
+        +--ro name-server*   inet:ip-address
+Xpaths for model: Cisco-IOS-XE-utd-oper.yang
+/utd-ios-xe-oper:utd-oper-data,container,
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-engine-status,container,
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-engine-status/utd-ios-xe-oper:version,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-engine-status/utd-ios-xe-oper:profile,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-engine-status/utd-ios-xe-oper:status,leaf,utd-ios-xe-oper:utd-oper-status-val
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-engine-status/utd-ios-xe-oper:reason,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-engine-status/utd-ios-xe-oper:memory-usage,leaf,decimal64
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-engine-status/utd-ios-xe-oper:memory-status,leaf,utd-ios-xe-oper:utd-oper-status-val
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-engine-status/utd-ios-xe-oper:utd-engine-instance-status,list,
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-engine-status/utd-ios-xe-oper:utd-engine-instance-status/utd-ios-xe-oper:id,leaf,uint32
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-engine-status/utd-ios-xe-oper:utd-engine-instance-status/utd-ios-xe-oper:running,leaf,boolean
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-engine-status/utd-ios-xe-oper:utd-engine-instance-status/utd-ios-xe-oper:status,leaf,utd-ios-xe-oper:utd-oper-status-val
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-engine-status/utd-ios-xe-oper:utd-engine-instance-status/utd-ios-xe-oper:reason,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-ips-update-status,container,
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-ips-update-status/utd-ios-xe-oper:ips-update-status,container,
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-ips-update-status/utd-ios-xe-oper:ips-update-status/utd-ios-xe-oper:version,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-ips-update-status/utd-ios-xe-oper:ips-update-status/utd-ios-xe-oper:last-update-time,leaf,yang:date-and-time
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-ips-update-status/utd-ios-xe-oper:ips-update-status/utd-ios-xe-oper:last-update-status,leaf,utd-common-ios-xe-oper:utd-update-status-val
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-ips-update-status/utd-ios-xe-oper:ips-update-status/utd-ios-xe-oper:last-update-reason,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-ips-update-status/utd-ios-xe-oper:ips-update-status/utd-ios-xe-oper:last-successful-update-time,leaf,yang:date-and-time
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-urlf-update-status,container,
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-urlf-update-status/utd-ios-xe-oper:urlf-update-status,container,
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-urlf-update-status/utd-ios-xe-oper:urlf-update-status/utd-ios-xe-oper:version,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-urlf-update-status/utd-ios-xe-oper:urlf-update-status/utd-ios-xe-oper:last-update-time,leaf,yang:date-and-time
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-urlf-update-status/utd-ios-xe-oper:urlf-update-status/utd-ios-xe-oper:last-update-status,leaf,utd-common-ios-xe-oper:utd-update-status-val
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-urlf-update-status/utd-ios-xe-oper:urlf-update-status/utd-ios-xe-oper:last-update-reason,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-urlf-update-status/utd-ios-xe-oper:urlf-update-status/utd-ios-xe-oper:last-successful-update-time,leaf,yang:date-and-time
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-version-status,container,
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-version-status/utd-ios-xe-oper:recommended-version,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-version-status/utd-ios-xe-oper:supported-regex,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-version-status/utd-ios-xe-oper:installed-version,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-version-status/utd-ios-xe-oper:supported,leaf,boolean
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-file-reputation-status,container,
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-file-reputation-status/utd-ios-xe-oper:version,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-file-reputation-status/utd-ios-xe-oper:status,leaf,utd-ios-xe-oper:utd-file-reputation-status-states
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-file-reputation-status/utd-ios-xe-oper:message,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-file-analysis-status,container,
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-file-analysis-status/utd-ios-xe-oper:status,leaf,utd-ios-xe-oper:utd-file-analysis-states
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-file-analysis-status/utd-ios-xe-oper:backoff-interval,leaf,uint64
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-file-analysis-status/utd-ios-xe-oper:message,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-route,list,
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-route/utd-ios-xe-oper:id,leaf,uint32
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-route/utd-ios-xe-oper:destination,leaf,inet:ip-address
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-route/utd-ios-xe-oper:gateway,leaf,inet:ip-address
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-route/utd-ios-xe-oper:genmask,leaf,inet:ip-address
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-route/utd-ios-xe-oper:flags,leaf,utd-ios-xe-oper:utd-route-flag
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-route/utd-ios-xe-oper:metric,leaf,int16
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-route/utd-ios-xe-oper:use,leaf,int16
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-route/utd-ios-xe-oper:ref,leaf,int16
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-route/utd-ios-xe-oper:interface,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-dns,container,
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-dns/utd-ios-xe-oper:domain,leaf,string
+/utd-ios-xe-oper:utd-oper-data/utd-ios-xe-oper:utd-dns/utd-ios-xe-oper:name-server,leaf-list,inet:ip-address

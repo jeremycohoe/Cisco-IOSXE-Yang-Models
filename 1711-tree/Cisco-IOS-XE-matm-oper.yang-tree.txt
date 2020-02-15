@@ -1,0 +1,28 @@
+ 
+KPI for model: Cisco-IOS-XE-matm-oper.yang
+module: Cisco-IOS-XE-matm-oper
+  +--ro matm-oper-data
+     +--ro matm-table* [table-type vlan-id-number]
+        +--ro aging-time?       uint32
+        +--ro matm-mac-entry* [table-type vlan-id-number mac]
+        |  +--ro mat-addr-type?    matm-ios-xe-oper:e-matm-addr-type
+        |  +--ro port?             string
+        |  +--ro vlan-all?         empty
+        |  +--ro table-type        matm-ios-xe-oper:e-matm-table-type
+        |  +--ro vlan-id-number    uint32
+        |  +--ro mac               yang:mac-address
+        +--ro table-type        matm-ios-xe-oper:e-matm-table-type
+        +--ro vlan-id-number    uint32
+Xpaths for model: Cisco-IOS-XE-matm-oper.yang
+/matm-ios-xe-oper:matm-oper-data,container,
+/matm-ios-xe-oper:matm-oper-data/matm-ios-xe-oper:matm-table,list,
+/matm-ios-xe-oper:matm-oper-data/matm-ios-xe-oper:matm-table/matm-ios-xe-oper:aging-time,leaf,uint32
+/matm-ios-xe-oper:matm-oper-data/matm-ios-xe-oper:matm-table/matm-ios-xe-oper:matm-mac-entry,list,
+/matm-ios-xe-oper:matm-oper-data/matm-ios-xe-oper:matm-table/matm-ios-xe-oper:matm-mac-entry/matm-ios-xe-oper:mat-addr-type,leaf,matm-ios-xe-oper:e-matm-addr-type
+/matm-ios-xe-oper:matm-oper-data/matm-ios-xe-oper:matm-table/matm-ios-xe-oper:matm-mac-entry/matm-ios-xe-oper:port,leaf,string
+/matm-ios-xe-oper:matm-oper-data/matm-ios-xe-oper:matm-table/matm-ios-xe-oper:matm-mac-entry/matm-ios-xe-oper:vlan-all,leaf,empty
+/matm-ios-xe-oper:matm-oper-data/matm-ios-xe-oper:matm-table/matm-ios-xe-oper:matm-mac-entry/matm-ios-xe-oper:table-type,leaf,matm-ios-xe-oper:e-matm-table-type
+/matm-ios-xe-oper:matm-oper-data/matm-ios-xe-oper:matm-table/matm-ios-xe-oper:matm-mac-entry/matm-ios-xe-oper:vlan-id-number,leaf,uint32
+/matm-ios-xe-oper:matm-oper-data/matm-ios-xe-oper:matm-table/matm-ios-xe-oper:matm-mac-entry/matm-ios-xe-oper:mac,leaf,yang:mac-address
+/matm-ios-xe-oper:matm-oper-data/matm-ios-xe-oper:matm-table/matm-ios-xe-oper:table-type,leaf,matm-ios-xe-oper:e-matm-table-type
+/matm-ios-xe-oper:matm-oper-data/matm-ios-xe-oper:matm-table/matm-ios-xe-oper:vlan-id-number,leaf,uint32

@@ -1,0 +1,164 @@
+ 
+KPI for model: Cisco-IOS-XE-lldp-oper.yang
+module: Cisco-IOS-XE-lldp-oper
+  +--ro lldp-entries
+     +--ro lldp-entry* [device-id local-interface connecting-interface]
+     |  +--ro device-id               string
+     |  +--ro local-interface         string
+     |  +--ro connecting-interface    string
+     |  +--ro ttl?                    uint32
+     |  +--ro capabilities
+     |  |  +--ro repeater?       empty
+     |  |  +--ro bridge?         empty
+     |  |  +--ro access-point?   empty
+     |  |  +--ro router?         empty
+     |  |  +--ro telephone?      empty
+     |  |  +--ro docsis?         empty
+     |  |  +--ro station?        empty
+     |  |  +--ro other?          empty
+     |  +--ro port-vlan-id?           uint32
+     |  +--ro mau-type?               uint32
+     |  +--ro auto-neg
+     |  |  +--ro enabled?     empty
+     |  |  +--ro supported?   empty
+     |  +--ro power
+     |     +--ro is-drawing-power?   empty
+     |     +--ro power-details
+     |        +--ro power-pair?          lldp-ios-xe-oper:lldp-pwr-pair-type
+     |        +--ro power-class?         lldp-ios-xe-oper:lldp-pwr-class-type
+     |        +--ro power-device-type?   lldp-ios-xe-oper:lldp-pwr-device-type
+     |        +--ro power-source?        lldp-ios-xe-oper:lldp-pwr-source-type
+     |        +--ro power-priority?      lldp-ios-xe-oper:lldp-pwr-priority-type
+     |        +--ro power-requested?     uint32
+     |        +--ro power-allocated?     uint32
+     +--ro lldp-state-details!
+     |  +--ro enabled?            boolean
+     |  +--ro hello-timer?        uint64
+     |  +--ro system-name?        string
+     |  +--ro system-desc?        string
+     |  +--ro chassis-id?         string
+     |  +--ro chassis-id-type?    lldp-ios-xe-oper:chid-subtype
+     |  +--ro frame-in?           uint64
+     |  +--ro frame-out?          uint64
+     |  +--ro frame-error-in?     uint64
+     |  +--ro frame-discard?      uint64
+     |  +--ro tlv-discard?        uint64
+     |  +--ro tlv-unknown?        uint64
+     |  +--ro entries-aged-out?   uint64
+     +--ro lldp-intf-details* [if-name]
+        +--ro if-name                  string
+        +--ro isenabled?               boolean
+        +--ro lldp-neighbor-details* [identifier]
+           +--ro identifier                string
+           +--ro chassis-id?               string
+           +--ro chassis-id-type?          lldp-ios-xe-oper:chid-subtype
+           +--ro port-id?                  string
+           +--ro port-id-type?             lldp-ios-xe-oper:poid-type
+           +--ro port-desc?                string
+           +--ro system-name?              string
+           +--ro system-desc?              string
+           +--ro time-remaining?           uint32
+           +--ro age?                      uint32
+           +--ro time-since-last-update?   uint32
+           +--ro mgmt-addrs* []
+           |  +--ro mgmt-addr?        string
+           |  +--ro mgmt-addr-type?   lldp-ios-xe-oper:mgmt-type
+           +--ro system-capabilities
+           |  +--ro repeater?       empty
+           |  +--ro bridge?         empty
+           |  +--ro access-point?   empty
+           |  +--ro router?         empty
+           |  +--ro telephone?      empty
+           |  +--ro docsis?         empty
+           |  +--ro station?        empty
+           |  +--ro other?          empty
+           +--ro enabled-capabilities
+              +--ro repeater?       empty
+              +--ro bridge?         empty
+              +--ro access-point?   empty
+              +--ro router?         empty
+              +--ro telephone?      empty
+              +--ro docsis?         empty
+              +--ro station?        empty
+              +--ro other?          empty
+Xpaths for model: Cisco-IOS-XE-lldp-oper.yang
+/lldp-ios-xe-oper:lldp-entries,container,
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry,list,
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:device-id,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:local-interface,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:connecting-interface,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:ttl,leaf,uint32
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities,container,
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:repeater,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:bridge,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:access-point,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:router,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:telephone,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:docsis,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:station,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:other,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:port-vlan-id,leaf,uint32
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:mau-type,leaf,uint32
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:auto-neg,container,
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:auto-neg/lldp-ios-xe-oper:enabled,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:auto-neg/lldp-ios-xe-oper:supported,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:power,container,
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:power/lldp-ios-xe-oper:is-drawing-power,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:power/lldp-ios-xe-oper:power-details,container,
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:power/lldp-ios-xe-oper:power-details/lldp-ios-xe-oper:power-pair,leaf,lldp-ios-xe-oper:lldp-pwr-pair-type
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:power/lldp-ios-xe-oper:power-details/lldp-ios-xe-oper:power-class,leaf,lldp-ios-xe-oper:lldp-pwr-class-type
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:power/lldp-ios-xe-oper:power-details/lldp-ios-xe-oper:power-device-type,leaf,lldp-ios-xe-oper:lldp-pwr-device-type
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:power/lldp-ios-xe-oper:power-details/lldp-ios-xe-oper:power-source,leaf,lldp-ios-xe-oper:lldp-pwr-source-type
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:power/lldp-ios-xe-oper:power-details/lldp-ios-xe-oper:power-priority,leaf,lldp-ios-xe-oper:lldp-pwr-priority-type
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:power/lldp-ios-xe-oper:power-details/lldp-ios-xe-oper:power-requested,leaf,uint32
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:power/lldp-ios-xe-oper:power-details/lldp-ios-xe-oper:power-allocated,leaf,uint32
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-state-details,container,
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-state-details/lldp-ios-xe-oper:enabled,leaf,boolean
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-state-details/lldp-ios-xe-oper:hello-timer,leaf,uint64
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-state-details/lldp-ios-xe-oper:system-name,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-state-details/lldp-ios-xe-oper:system-desc,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-state-details/lldp-ios-xe-oper:chassis-id,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-state-details/lldp-ios-xe-oper:chassis-id-type,leaf,lldp-ios-xe-oper:chid-subtype
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-state-details/lldp-ios-xe-oper:frame-in,leaf,uint64
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-state-details/lldp-ios-xe-oper:frame-out,leaf,uint64
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-state-details/lldp-ios-xe-oper:frame-error-in,leaf,uint64
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-state-details/lldp-ios-xe-oper:frame-discard,leaf,uint64
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-state-details/lldp-ios-xe-oper:tlv-discard,leaf,uint64
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-state-details/lldp-ios-xe-oper:tlv-unknown,leaf,uint64
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-state-details/lldp-ios-xe-oper:entries-aged-out,leaf,uint64
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details,list,
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:if-name,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:isenabled,leaf,boolean
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details,list,
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:identifier,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:chassis-id,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:chassis-id-type,leaf,lldp-ios-xe-oper:chid-subtype
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:port-id,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:port-id-type,leaf,lldp-ios-xe-oper:poid-type
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:port-desc,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:system-name,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:system-desc,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:time-remaining,leaf,uint32
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:age,leaf,uint32
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:time-since-last-update,leaf,uint32
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:mgmt-addrs,list,
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:mgmt-addrs/lldp-ios-xe-oper:mgmt-addr,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:mgmt-addrs/lldp-ios-xe-oper:mgmt-addr-type,leaf,lldp-ios-xe-oper:mgmt-type
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:system-capabilities,container,
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:system-capabilities/lldp-ios-xe-oper:repeater,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:system-capabilities/lldp-ios-xe-oper:bridge,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:system-capabilities/lldp-ios-xe-oper:access-point,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:system-capabilities/lldp-ios-xe-oper:router,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:system-capabilities/lldp-ios-xe-oper:telephone,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:system-capabilities/lldp-ios-xe-oper:docsis,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:system-capabilities/lldp-ios-xe-oper:station,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:system-capabilities/lldp-ios-xe-oper:other,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:enabled-capabilities,container,
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:enabled-capabilities/lldp-ios-xe-oper:repeater,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:enabled-capabilities/lldp-ios-xe-oper:bridge,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:enabled-capabilities/lldp-ios-xe-oper:access-point,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:enabled-capabilities/lldp-ios-xe-oper:router,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:enabled-capabilities/lldp-ios-xe-oper:telephone,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:enabled-capabilities/lldp-ios-xe-oper:docsis,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:enabled-capabilities/lldp-ios-xe-oper:station,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-intf-details/lldp-ios-xe-oper:lldp-neighbor-details/lldp-ios-xe-oper:enabled-capabilities/lldp-ios-xe-oper:other,leaf,empty

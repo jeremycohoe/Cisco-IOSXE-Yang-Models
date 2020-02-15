@@ -1,0 +1,876 @@
+ 
+KPI for model: Cisco-IOS-XE-sanet.yang
+
+module: Cisco-IOS-XE-sanet
+  augment /ios:native:
+    +--rw access-session
+    |  +--rw accounting
+    |  |  +--rw attributes
+    |  |     +--rw filter-spec
+    |  |        +--rw include
+    |  |           +--rw list?   -> /ios:native/ios-sanet:access-session/attributes/filter-list/list/name
+    |  +--rw acl
+    |  |  +--rw default
+    |  |  |  +--rw passthrough?   empty
+    |  |  +--rw ack-timer?   uint16
+    |  +--rw attributes
+    |  |  +--rw filter-list
+    |  |     +--rw list* [name]
+    |  |        +--rw name       string
+    |  |        +--rw cdp?       empty
+    |  |        +--rw dhcp?      empty
+    |  |        +--rw dhcpv6?    empty
+    |  |        +--rw http?      empty
+    |  |        +--rw lldp?      empty
+    |  |        +--rw vlan-id?   empty
+    |  +--rw authentication
+    |  |  +--rw attributes
+    |  |     +--rw filter-spec
+    |  |        +--rw include
+    |  |           +--rw list?   -> /ios:native/ios-sanet:access-session/attributes/filter-list/list/name
+    |  +--rw cache
+    |  |  +--rw limit?   uint16
+    |  +--rw event-logging
+    |  |  +--rw enable
+    |  |     +--rw session-limit
+    |  |        +--rw value?         uint16
+    |  |        +--rw event-limit?   uint8
+    |  +--rw interface-template
+    |  |  +--rw sticky!
+    |  |     +--rw timer?   uint16
+    |  +--rw mac-move
+    |  |  +--rw deny?                empty
+    |  |  +--rw deny-uncontrolled?   empty
+    |  +--rw monitor?              empty
+    |  +--rw tls-version?          enumeration
+    |  o--rw tunnel
+    |  |  o--rw vlan?   uint16
+    |  +--rw voice
+    |     +--rw skip-data-vlan?   empty
+    +--rw autoconf
+    |  +--rw enable?   empty
+    +--rw authentication
+       +--rw command
+       |  +--rw bounce-port
+       |  |  +--rw ignore?   empty
+       |  +--rw disable-port
+       |     +--rw ignore?   empty
+       +--rw critical
+       |  +--rw recovery
+       |     +--rw delay?   uint32
+       +--rw dis-scale-opt?   empty
+       +--rw logging
+       |  +--rw verbose?   empty
+       +--rw mac-move
+       |  +--rw permit?              empty
+       |  +--rw deny-uncontrolled?   empty
+       +--rw convert-to
+          +--rw new-style
+             +--rw forced?   empty
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |  |  +--rw authorize
+    |  |  |  |  |  +--rw vlan?   uint16
+    |  |  |  |  +--rw next-method?   empty
+    |  |  |  +--rw retry
+    |  |  |     +--rw value?    uint8
+    |  |  |     +--rw action
+    |  |  |        +--rw (retry-action)?
+    |  |  |           +--:(authorize)
+    |  |  |           |  +--rw authorize
+    |  |  |           |     +--rw vlan?   uint16
+    |  |  |           +--:(next-method)
+    |  |  |              +--rw next-method?   empty
+    |  |  +--rw no-response
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw linksec
+    |  |     +--rw fail
+    |  |        +--rw action
+    |  |           +--rw next-method?   empty
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config?    uint16
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config?   empty
+    |  |  |  x--rw value?                 uint16
+    |  |  |  x--rw server?                empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config
+    |  |  |  |  |     +--rw value?     uint16
+    |  |  |  |  |     +--rw dynamic?   empty
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config!
+    |  |  |  |        +--rw dynamic?   empty
+    |  |  |  x--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  x--rw dynamic?   empty
+    |  |  |  x--rw server!
+    |  |  |     x--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  |  +--rw unauthorized?     uint16
+    |  +--rw violation?           enumeration
+    |  +--rw linksec
+    |     +--rw policy?   enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |  |  +--rw authorize
+    |  |  |  |  |  +--rw vlan?   uint16
+    |  |  |  |  +--rw next-method?   empty
+    |  |  |  +--rw retry
+    |  |  |     +--rw value?    uint8
+    |  |  |     +--rw action
+    |  |  |        +--rw (retry-action)?
+    |  |  |           +--:(authorize)
+    |  |  |           |  +--rw authorize
+    |  |  |           |     +--rw vlan?   uint16
+    |  |  |           +--:(next-method)
+    |  |  |              +--rw next-method?   empty
+    |  |  +--rw no-response
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw linksec
+    |  |     +--rw fail
+    |  |        +--rw action
+    |  |           +--rw next-method?   empty
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config?    uint16
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config?   empty
+    |  |  |  x--rw value?                 uint16
+    |  |  |  x--rw server?                empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config
+    |  |  |  |  |     +--rw value?     uint16
+    |  |  |  |  |     +--rw dynamic?   empty
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config!
+    |  |  |  |        +--rw dynamic?   empty
+    |  |  |  x--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  x--rw dynamic?   empty
+    |  |  |  x--rw server!
+    |  |  |     x--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  |  +--rw unauthorized?     uint16
+    |  +--rw violation?           enumeration
+    |  +--rw linksec
+    |     +--rw policy?   enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |  |  +--rw authorize
+    |  |  |  |  |  +--rw vlan?   uint16
+    |  |  |  |  +--rw next-method?   empty
+    |  |  |  +--rw retry
+    |  |  |     +--rw value?    uint8
+    |  |  |     +--rw action
+    |  |  |        +--rw (retry-action)?
+    |  |  |           +--:(authorize)
+    |  |  |           |  +--rw authorize
+    |  |  |           |     +--rw vlan?   uint16
+    |  |  |           +--:(next-method)
+    |  |  |              +--rw next-method?   empty
+    |  |  +--rw no-response
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw linksec
+    |  |     +--rw fail
+    |  |        +--rw action
+    |  |           +--rw next-method?   empty
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config?    uint16
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config?   empty
+    |  |  |  x--rw value?                 uint16
+    |  |  |  x--rw server?                empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config
+    |  |  |  |  |     +--rw value?     uint16
+    |  |  |  |  |     +--rw dynamic?   empty
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config!
+    |  |  |  |        +--rw dynamic?   empty
+    |  |  |  x--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  x--rw dynamic?   empty
+    |  |  |  x--rw server!
+    |  |  |     x--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  |  +--rw unauthorized?     uint16
+    |  +--rw violation?           enumeration
+    |  +--rw linksec
+    |     +--rw policy?   enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |  |  +--rw authorize
+    |  |  |  |  |  +--rw vlan?   uint16
+    |  |  |  |  +--rw next-method?   empty
+    |  |  |  +--rw retry
+    |  |  |     +--rw value?    uint8
+    |  |  |     +--rw action
+    |  |  |        +--rw (retry-action)?
+    |  |  |           +--:(authorize)
+    |  |  |           |  +--rw authorize
+    |  |  |           |     +--rw vlan?   uint16
+    |  |  |           +--:(next-method)
+    |  |  |              +--rw next-method?   empty
+    |  |  +--rw no-response
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw linksec
+    |  |     +--rw fail
+    |  |        +--rw action
+    |  |           +--rw next-method?   empty
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config?    uint16
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config?   empty
+    |  |  |  x--rw value?                 uint16
+    |  |  |  x--rw server?                empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config
+    |  |  |  |  |     +--rw value?     uint16
+    |  |  |  |  |     +--rw dynamic?   empty
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config!
+    |  |  |  |        +--rw dynamic?   empty
+    |  |  |  x--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  x--rw dynamic?   empty
+    |  |  |  x--rw server!
+    |  |  |     x--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  |  +--rw unauthorized?     uint16
+    |  +--rw violation?           enumeration
+    |  +--rw linksec
+    |     +--rw policy?   enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:AppGigabitEthernet:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |  |  +--rw authorize
+    |  |  |  |  |  +--rw vlan?   uint16
+    |  |  |  |  +--rw next-method?   empty
+    |  |  |  +--rw retry
+    |  |  |     +--rw value?    uint8
+    |  |  |     +--rw action
+    |  |  |        +--rw (retry-action)?
+    |  |  |           +--:(authorize)
+    |  |  |           |  +--rw authorize
+    |  |  |           |     +--rw vlan?   uint16
+    |  |  |           +--:(next-method)
+    |  |  |              +--rw next-method?   empty
+    |  |  +--rw no-response
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw linksec
+    |  |     +--rw fail
+    |  |        +--rw action
+    |  |           +--rw next-method?   empty
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config?    uint16
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config?   empty
+    |  |  |  x--rw value?                 uint16
+    |  |  |  x--rw server?                empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config
+    |  |  |  |  |     +--rw value?     uint16
+    |  |  |  |  |     +--rw dynamic?   empty
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config!
+    |  |  |  |        +--rw dynamic?   empty
+    |  |  |  x--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  x--rw dynamic?   empty
+    |  |  |  x--rw server!
+    |  |  |     x--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  |  +--rw unauthorized?     uint16
+    |  +--rw violation?           enumeration
+    |  +--rw linksec
+    |     +--rw policy?   enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |  |  +--rw authorize
+    |  |  |  |  |  +--rw vlan?   uint16
+    |  |  |  |  +--rw next-method?   empty
+    |  |  |  +--rw retry
+    |  |  |     +--rw value?    uint8
+    |  |  |     +--rw action
+    |  |  |        +--rw (retry-action)?
+    |  |  |           +--:(authorize)
+    |  |  |           |  +--rw authorize
+    |  |  |           |     +--rw vlan?   uint16
+    |  |  |           +--:(next-method)
+    |  |  |              +--rw next-method?   empty
+    |  |  +--rw no-response
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw linksec
+    |  |     +--rw fail
+    |  |        +--rw action
+    |  |           +--rw next-method?   empty
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config?    uint16
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config?   empty
+    |  |  |  x--rw value?                 uint16
+    |  |  |  x--rw server?                empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config
+    |  |  |  |  |     +--rw value?     uint16
+    |  |  |  |  |     +--rw dynamic?   empty
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config!
+    |  |  |  |        +--rw dynamic?   empty
+    |  |  |  x--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  x--rw dynamic?   empty
+    |  |  |  x--rw server!
+    |  |  |     x--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  |  +--rw unauthorized?     uint16
+    |  +--rw violation?           enumeration
+    |  +--rw linksec
+    |     +--rw policy?   enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |  |  +--rw authorize
+    |  |  |  |  |  +--rw vlan?   uint16
+    |  |  |  |  +--rw next-method?   empty
+    |  |  |  +--rw retry
+    |  |  |     +--rw value?    uint8
+    |  |  |     +--rw action
+    |  |  |        +--rw (retry-action)?
+    |  |  |           +--:(authorize)
+    |  |  |           |  +--rw authorize
+    |  |  |           |     +--rw vlan?   uint16
+    |  |  |           +--:(next-method)
+    |  |  |              +--rw next-method?   empty
+    |  |  +--rw no-response
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw linksec
+    |  |     +--rw fail
+    |  |        +--rw action
+    |  |           +--rw next-method?   empty
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config?    uint16
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config?   empty
+    |  |  |  x--rw value?                 uint16
+    |  |  |  x--rw server?                empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config
+    |  |  |  |  |     +--rw value?     uint16
+    |  |  |  |  |     +--rw dynamic?   empty
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config!
+    |  |  |  |        +--rw dynamic?   empty
+    |  |  |  x--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  x--rw dynamic?   empty
+    |  |  |  x--rw server!
+    |  |  |     x--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  |  +--rw unauthorized?     uint16
+    |  +--rw violation?           enumeration
+    |  +--rw linksec
+    |     +--rw policy?   enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |  |  +--rw authorize
+    |  |  |  |  |  +--rw vlan?   uint16
+    |  |  |  |  +--rw next-method?   empty
+    |  |  |  +--rw retry
+    |  |  |     +--rw value?    uint8
+    |  |  |     +--rw action
+    |  |  |        +--rw (retry-action)?
+    |  |  |           +--:(authorize)
+    |  |  |           |  +--rw authorize
+    |  |  |           |     +--rw vlan?   uint16
+    |  |  |           +--:(next-method)
+    |  |  |              +--rw next-method?   empty
+    |  |  +--rw no-response
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw linksec
+    |  |     +--rw fail
+    |  |        +--rw action
+    |  |           +--rw next-method?   empty
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config?    uint16
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config?   empty
+    |  |  |  x--rw value?                 uint16
+    |  |  |  x--rw server?                empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config
+    |  |  |  |  |     +--rw value?     uint16
+    |  |  |  |  |     +--rw dynamic?   empty
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config!
+    |  |  |  |        +--rw dynamic?   empty
+    |  |  |  x--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  x--rw dynamic?   empty
+    |  |  |  x--rw server!
+    |  |  |     x--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  |  +--rw unauthorized?     uint16
+    |  +--rw violation?           enumeration
+    |  +--rw linksec
+    |     +--rw policy?   enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |  |  +--rw authorize
+    |  |  |  |  |  +--rw vlan?   uint16
+    |  |  |  |  +--rw next-method?   empty
+    |  |  |  +--rw retry
+    |  |  |     +--rw value?    uint8
+    |  |  |     +--rw action
+    |  |  |        +--rw (retry-action)?
+    |  |  |           +--:(authorize)
+    |  |  |           |  +--rw authorize
+    |  |  |           |     +--rw vlan?   uint16
+    |  |  |           +--:(next-method)
+    |  |  |              +--rw next-method?   empty
+    |  |  +--rw no-response
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw linksec
+    |  |     +--rw fail
+    |  |        +--rw action
+    |  |           +--rw next-method?   empty
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config?    uint16
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config?   empty
+    |  |  |  x--rw value?                 uint16
+    |  |  |  x--rw server?                empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config
+    |  |  |  |  |     +--rw value?     uint16
+    |  |  |  |  |     +--rw dynamic?   empty
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config!
+    |  |  |  |        +--rw dynamic?   empty
+    |  |  |  x--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  x--rw dynamic?   empty
+    |  |  |  x--rw server!
+    |  |  |     x--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  |  +--rw unauthorized?     uint16
+    |  +--rw violation?           enumeration
+    |  +--rw linksec
+    |     +--rw policy?   enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:Port-channel:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |  |  +--rw authorize
+    |  |  |  |  |  +--rw vlan?   uint16
+    |  |  |  |  +--rw next-method?   empty
+    |  |  |  +--rw retry
+    |  |  |     +--rw value?    uint8
+    |  |  |     +--rw action
+    |  |  |        +--rw (retry-action)?
+    |  |  |           +--:(authorize)
+    |  |  |           |  +--rw authorize
+    |  |  |           |     +--rw vlan?   uint16
+    |  |  |           +--:(next-method)
+    |  |  |              +--rw next-method?   empty
+    |  |  +--rw no-response
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw linksec
+    |  |     +--rw fail
+    |  |        +--rw action
+    |  |           +--rw next-method?   empty
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config?    uint16
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config?   empty
+    |  |  |  x--rw value?                 uint16
+    |  |  |  x--rw server?                empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw (timer-val)?
+    |  |  |  |  +--:(value-config)
+    |  |  |  |  |  +--rw value-config
+    |  |  |  |  |     +--rw value?     uint16
+    |  |  |  |  |     +--rw dynamic?   empty
+    |  |  |  |  +--:(server-config)
+    |  |  |  |     +--rw server-config!
+    |  |  |  |        +--rw dynamic?   empty
+    |  |  |  x--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  x--rw dynamic?   empty
+    |  |  |  x--rw server!
+    |  |  |     x--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  |  +--rw unauthorized?     uint16
+    |  +--rw violation?           enumeration
+    |  +--rw linksec
+    |     +--rw policy?   enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:Virtual-Template:
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:VirtualPortGroup:
+    +--rw mab!
+       +--rw eap?   empty
+Xpaths for model: Cisco-IOS-XE-sanet.yang

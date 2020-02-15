@@ -1,0 +1,828 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-access-point-oper.yang
+module: Cisco-IOS-XE-wireless-access-point-oper
+  +--ro access-point-oper-data
+     +--ro ap-mac-ssid-info* [ap-mac wlan-id]
+     |  +--ro ssid-clients-list-data* [client-mac-address]
+     |  |  +--ro client-mac-address    yang:mac-address
+     |  +--ro ap-mac                    yang:mac-address
+     |  +--ro wlan-id                   uint32
+     +--ro ssid-counters* [wtp-mac slot-id wlan-id]
+     |  +--ro bssid-mac?              yang:mac-address
+     |  +--ro vap-id?                 uint16
+     |  +--ro tx-mgmt?                uint64
+     |  +--ro rx-mgmt?                uint64
+     |  +--ro tx-bytes-data?          uint64
+     |  +--ro tx-data-dist
+     |  |  +--ro bytes-0-64?             uint64
+     |  |  +--ro bytes-65-128?           uint64
+     |  |  +--ro bytes-129-256?          uint64
+     |  |  +--ro bytes-257-512?          uint64
+     |  |  +--ro bytes-513-1024?         uint64
+     |  |  +--ro bytes-1025-2048?        uint64
+     |  |  +--ro bytes-2049-4096?        uint64
+     |  |  +--ro bytes-4097-8192?        uint64
+     |  |  +--ro bytes-8193-16384?       uint64
+     |  |  +--ro bytes-16385-32768?      uint64
+     |  |  +--ro bytes-32769-65536?      uint64
+     |  |  +--ro bytes-65537-131072?     uint64
+     |  |  +--ro bytes-131073-262144?    uint64
+     |  |  +--ro bytes-262145-524288?    uint64
+     |  |  +--ro bytes-524289-1048576?   uint64
+     |  +--ro tx-data-wmm
+     |  |  +--ro video?         uint64
+     |  |  +--ro voice?         uint64
+     |  |  +--ro background?    uint64
+     |  |  +--ro best-effort?   uint64
+     |  +--ro tx-retries?             uint64
+     |  +--ro tx-retries-data?        uint64
+     |  +--ro tx-retries-subframes?   uint64
+     |  +--ro tx-mcs
+     |  |  +--ro mcs0?   uint64
+     |  |  +--ro mcs1?   uint64
+     |  |  +--ro mcs2?   uint64
+     |  |  +--ro mcs3?   uint64
+     |  |  +--ro mcs4?   uint64
+     |  |  +--ro mcs5?   uint64
+     |  |  +--ro mcs6?   uint64
+     |  |  +--ro mcs7?   uint64
+     |  |  +--ro mcs8?   uint64
+     |  |  +--ro mcs9?   uint64
+     |  +--ro rx-bytes-data?          uint64
+     |  +--ro rx-data-dist
+     |  |  +--ro bytes-0-64?             uint64
+     |  |  +--ro bytes-65-128?           uint64
+     |  |  +--ro bytes-129-256?          uint64
+     |  |  +--ro bytes-257-512?          uint64
+     |  |  +--ro bytes-513-1024?         uint64
+     |  |  +--ro bytes-1025-2048?        uint64
+     |  |  +--ro bytes-2049-4096?        uint64
+     |  |  +--ro bytes-4097-8192?        uint64
+     |  |  +--ro bytes-8193-16384?       uint64
+     |  |  +--ro bytes-16385-32768?      uint64
+     |  |  +--ro bytes-32769-65536?      uint64
+     |  |  +--ro bytes-65537-131072?     uint64
+     |  |  +--ro bytes-131073-262144?    uint64
+     |  |  +--ro bytes-262145-524288?    uint64
+     |  |  +--ro bytes-524289-1048576?   uint64
+     |  +--ro rx-data-wmm
+     |  |  +--ro video?         uint64
+     |  |  +--ro voice?         uint64
+     |  |  +--ro background?    uint64
+     |  |  +--ro best-effort?   uint64
+     |  +--ro rx-mcs
+     |  |  +--ro mcs0?   uint64
+     |  |  +--ro mcs1?   uint64
+     |  |  +--ro mcs2?   uint64
+     |  |  +--ro mcs3?   uint64
+     |  |  +--ro mcs4?   uint64
+     |  |  +--ro mcs5?   uint64
+     |  |  +--ro mcs6?   uint64
+     |  |  +--ro mcs7?   uint64
+     |  |  +--ro mcs8?   uint64
+     |  |  +--ro mcs9?   uint64
+     |  +--ro num-assoc-clients?      uint16
+     |  +--ro noise-floor?            uint8
+     |  +--ro wtp-mac                 yang:mac-address
+     |  +--ro slot-id                 uint8
+     |  +--ro wlan-id                 uint8
+     +--ro ap-radio-neighbor* [ap-mac slot-id bssid]
+     |  +--ro ap-mac              yang:mac-address
+     |  +--ro slot-id             uint32
+     |  +--ro bssid               yang:mac-address
+     |  +--ro ssid?               string
+     |  +--ro rssi?               int8
+     |  +--ro channel?            uint16
+     |  +--ro primary-channel?    uint16
+     |  +--ro last-update-rcvd?   yang:date-and-time
+     +--ro radio-oper-data* [wtp-mac radio-slot-id]
+     |  +--ro wtp-mac                     yang:mac-address
+     |  +--ro radio-slot-id               uint8
+     |  +--ro slot-id?                    uint8
+     |  +--ro radio-type?                 wireless-enum-types:enm-radio-type
+     |  +--ro admin-state?                wireless-access-point-oper:enum-radio-admin-state
+     |  +--ro oper-state?                 wireless-access-point-oper:enum-radio-oper-state
+     |  +--ro radio-mode?                 wireless-types:enm-ewlc-ap-radio-modes
+     |  +--ro radio-sub-mode?             wireless-types:radio-sub-mode
+     |  +--ro radio-subtype?              wireless-types:ap-radio-subtype
+     |  +--ro radio-subband?              wireless-enum-types:slot-radio-sub-band
+     |  +--ro current-band-id?            uint8
+     |  +--ro current-active-band?        wireless-types:enm-ewlc-dot11-radio-band
+     |  +--ro xor-radio-mode?             wireless-types:enum-xor-radio-mode
+     |  +--ro phy-ht-cfg
+     |  |  +--ro cfg-data
+     |  |     +--ro ht-enable?                   uint8
+     |  |     +--ro phy-ht-cfg-config-type?      wireless-types:w-config-type
+     |  |     +--ro curr-freq?                   uint16
+     |  |     +--ro chan-width?                  uint8
+     |  |     +--ro ext-chan?                    uint8
+     |  |     +--ro vht-enable?                  boolean
+     |  |     +--ro rrm-channel-change-reason?   wireless-enum-types:rrm-channel-change-reason
+     |  +--ro phy-ht-cap
+     |  |  +--ro data
+     |  |     +--ro vht-capable?   boolean
+     |  |     +--ro ht-capable?    boolean
+     |  +--ro xor-phy-ht-cap
+     |  |  +--ro data
+     |  |     +--ro vht-capable?   boolean
+     |  |     +--ro ht-capable?    boolean
+     |  +--ro phy-he-cap
+     |  |  +--ro data
+     |  |     +--ro he-enabled?   boolean
+     |  |     +--ro he-capable?   boolean
+     |  +--ro chan-pwr-info
+     |  |  +--ro data
+     |  |     +--ro antenna-gain?       uint8
+     |  |     +--ro int-antenna-gain?   uint8
+     |  |     +--ro ext-antenna-gain?   uint8
+     |  +--ro antenna-pid?                string
+     |  +--ro radio-band-info* [band-id]
+     |  |  +--ro band-id               uint8
+     |  |  +--ro regulatory-domain?    string
+     |  |  +--ro phy-tx-pwr-cfg
+     |  |  |  +--ro cfg-data
+     |  |  |     +--ro phy-tx-power-config-type?   wireless-types:w-config-type
+     |  |  |     +--ro current-tx-power-level?     uint16
+     |  |  +--ro phy-tx-pwr-lvl-cfg
+     |  |  |  +--ro cfg-data
+     |  |  |     +--ro curr-tx-power-in-dbm?   int16
+     |  |  +--ro antenna-cfg
+     |  |  |  +--ro cfg-data
+     |  |  |     +--ro diversity-selection?   wireless-enum-types:enm-antenna-selection
+     |  |  |     +--ro antenna-mode?          wireless-enum-types:enm-antenna-mode
+     |  |  |     +--ro num-of-antennas?       uint8
+     |  |  +--ro sia-params
+     |  |     +--ro is-rptnc-present?   boolean
+     |  |     +--ro is-dart-present?    boolean
+     |  +--ro reg-domain-check-status?    wireless-enum-types:reg-domain-status
+     |  +--ro slot-antenna-type?          wireless-types:radio-slot-antenna-type
+     |  +--ro radio-enable-time?          yang:date-and-time
+     |  +--ro dot11n-mcs-rates?           wireless-access-point-oper:flag-dot11n-mcs-rates
+     |  +--ro dual-radio-mode-cfg
+     |  |  +--ro dual-radio-mode?      wireless-enum-types:enum-dual-radio-mode
+     |  |  +--ro dual-radio-capable?   wireless-enum-types:enum-dual-radio-capable
+     |  |  +--ro dual-radio-mode-op?   wireless-enum-types:enum-radio-mode-op
+     |  +--ro radio-fra-capable?          wireless-enum-types:enum-radio-fra-capable
+     |  +--ro bss-color-cfg
+     |  |  +--ro bss-color-capable?       boolean
+     |  |  +--ro bss-color?               uint8
+     |  |  +--ro bss-color-config-type?   wireless-types:w-config-type
+     |  +--ro highest-throughput-proto?   wireless-enum-types:enm-radio-dot11-proto-supported
+     +--ro capwap-data* [wtp-mac]
+     |  +--ro wtp-mac                 yang:mac-address
+     |  +--ro ip-addr?                string
+     |  +--ro name?                   string
+     |  +--ro device-detail
+     |  |  +--ro static-info
+     |  |  |  +--ro board-data
+     |  |  |  |  +--ro wtp-serial-num?   string
+     |  |  |  |  +--ro wtp-enet-mac?     yang:mac-address
+     |  |  |  +--ro board-data-opt
+     |  |  |  |  +--ro join-priority?   uint8
+     |  |  |  +--ro descriptor-data
+     |  |  |  |  +--ro encryption-capabilities?   boolean
+     |  |  |  +--ro ap-prov
+     |  |  |  |  +--ro is-universal?             boolean
+     |  |  |  |  +--ro universal-prime-status?   string
+     |  |  |  +--ro ap-models
+     |  |  |  |  +--ro model?   string
+     |  |  |  +--ro num-ports?         uint8
+     |  |  |  +--ro num-slots?         uint8
+     |  |  |  +--ro wtp-model-type?    uint8
+     |  |  |  +--ro ap-capability?     wireless-access-point-oper:flag-ap-capability
+     |  |  |  +--ro is-mm-opt?         boolean
+     |  |  +--ro dynamic-info
+     |  |  |  +--ro led-state-enabled?    boolean
+     |  |  |  +--ro reset-button-state?   boolean
+     |  |  |  +--ro led-flash-enabled?    boolean
+     |  |  |  +--ro flash-sec?            uint16
+     |  |  +--ro wtp-version
+     |  |     +--ro sw-ver
+     |  |        +--ro version?   uint8
+     |  |        +--ro release?   uint8
+     |  |        +--ro maint?     uint8
+     |  |        +--ro build?     uint8
+     |  +--ro ap-lag-enabled?         boolean
+     |  +--ro ap-location
+     |  |  +--ro floor?      uint32
+     |  |  +--ro location?   string
+     |  +--ro ap-services
+     |  |  +--ro monitor-mode-opt-type?   wireless-enum-types:lomm-mode-type
+     |  +--ro tag-info
+     |  |  +--ro policy-tag-info
+     |  |  |  +--ro policy-tag-name?   string
+     |  |  +--ro site-tag
+     |  |  |  +--ro site-tag-name?   string
+     |  |  +--ro rf-tag
+     |  |  |  +--ro rf-tag-name?   string
+     |  |  +--ro filter-info
+     |  |     +--ro filter-name?   string
+     |  +--ro tunnel
+     |  |  +--ro preferred-mode?   wireless-enum-types:preferred-mode-type
+     |  |  +--ro udp-lite?         wireless-enum-types:ipv6-capwap-checksum-type
+     |  +--ro external-module-data
+     |  |  +--ro xm-data
+     |  |     +--ro is-module-present?   boolean
+     |  +--ro ipv6-joined?            uint8
+     |  +--ro ap-state
+     |  |  +--ro ap-admin-state?       wireless-enum-types:admin-state
+     |  |  +--ro ap-operation-state?   wireless-access-point-oper:enum-ap-state
+     |  +--ro ap-mode-data
+     |  |  +--ro ap-sub-mode?      ap-types:ap-sub-mode-type
+     |  |  +--ro wtp-mode?         wireless-types:enm-ewlc-spam-ap-modes
+     |  |  +--ro ap-fabric-data
+     |  |     +--ro is-fabric-ap?   boolean
+     |  +--ro ap-time-info
+     |  |  +--ro boot-time?   yang:date-and-time
+     |  |  +--ro join-time?   yang:date-and-time
+     |  +--ro country-code?           string
+     |  +--ro ap-security-data
+     |  |  +--ro cert-type?   wireless-access-point-oper:enm-cert-type
+     |  +--ro num-radio-slots?        uint8
+     |  +--ro dart-is-connected?      boolean
+     |  +--ro is-master?              boolean
+     |  +--ro cdp-enable?             boolean
+     |  +--ro ap-stationing-type?     wireless-access-point-oper:enum-ap-stationing-type
+     |  +--ro reboot-stats
+     |     +--ro reboot-reason?   wireless-types:spam-ap-reboot-reason
+     +--ro ap-name-mac-map* [wtp-name]
+     |  +--ro wtp-name    string
+     |  +--ro wtp-mac?    yang:mac-address
+     |  +--ro eth-mac?    yang:mac-address
+     +--ro ethernet-mac-wtp-mac-map* [ethernet-mac]
+     |  +--ro ethernet-mac    yang:mac-address
+     |  +--ro wtp-mac?        yang:mac-address
+     +--ro radio-oper-stats* [ap-mac slot-id]
+     |  +--ro ap-mac               yang:mac-address
+     |  +--ro slot-id              uint8
+     |  +--ro aid-user-list?       uint16
+     |  +--ro tx-fragment-count?   uint32
+     |  +--ro failed-count?        uint32
+     |  +--ro rx-fragment-count?   uint32
+     |  +--ro tx-frame-count?      uint32
+     +--ro ethernet-if-stats* [wtp-mac if-index]
+     |  +--ro if-name?    string
+     |  +--ro rx-pkts?    uint32
+     |  +--ro tx-pkts?    uint32
+     |  +--ro wtp-mac     yang:mac-address
+     |  +--ro if-index    uint16
+     +--ro iot-devices* [ap-mac device-mac]
+     |  +--ro name?               string
+     |  +--ro type?               string
+     |  +--ro protocol?           string
+     |  +--ro connection-state?   string
+     |  +--ro battery-level?      int8
+     |  +--ro ap-mac              yang:mac-address
+     |  +--ro device-mac          yang:phys-address
+     +--ro ap-iox-oper-data* [ap-mac]
+     |  +--ro ap-mac           yang:mac-address
+     |  +--ro apphost-state?   wireless-access-point-oper:enm-apphost-state
+     |  +--ro caf-token?       string
+     |  +--ro caf-port?        uint16
+     +--ro qos-radio-data* [radio-slot-id ap-mac]
+     |  +--ro wmm-voice-bw-allocated?         uint32
+     |  +--ro wmm-max-voice-bandwidth?        uint32
+     |  +--ro wmm-bw-in-use?                  uint32
+     |  +--ro wmm-cac-stats
+     |  |  +--ro calls-in-progress?              uint16
+     |  |  +--ro roam-calls-in-progress?         uint16
+     |  |  +--ro calls-accepted?                 uint16
+     |  |  +--ro roam-calls-accepted?            uint16
+     |  |  +--ro calls-rejected?                 uint16
+     |  |  +--ro roam-calls-rejected?            uint16
+     |  |  +--ro calls-rejected-insuff-bw?       uint16
+     |  |  +--ro calls-rejected-qos?             uint16
+     |  |  +--ro calls-rejected-phy-rate?        uint16
+     |  |  +--ro calls-rejected-invalid-tspec?   uint16
+     |  |  +--ro exp-bw-reqs-received?           uint16
+     |  |  +--ro exp-bw-reqs-accepted?           uint16
+     |  +--ro lbcac-measure?                  boolean
+     |  +--ro wmm-voice-roam-bw-in-use?       uint32
+     |  +--ro sip-preferred-calls-mtu-used?   uint32
+     |  +--ro cumulative-call-count?          uint32
+     |  +--ro cumulative-seconds-used?        uint32
+     |  +--ro sip-cac-stats
+     |  |  +--ro sip-calls-in-progress?              uint16
+     |  |  +--ro sip-roam-calls-in-progress?         uint16
+     |  |  +--ro sip-calls-accepted?                 uint16
+     |  |  +--ro sip-roam-calls-accepted?            uint16
+     |  |  +--ro sip-preferred-calls-received?       uint16
+     |  |  +--ro sip-preferred-calls-accepted?       uint16
+     |  |  +--ro sip-preferred-calls-ongoing?        uint16
+     |  |  +--ro sip-calls-rejected-insuf-bw?        uint16
+     |  |  +--ro sip-roam-calls-rejected-insuf-bw?   uint16
+     |  +--ro total-active-calls?             uint16
+     |  +--ro total-rejected-calls?           uint16
+     |  +--ro radio-slot-id                   uint8
+     |  +--ro ap-mac                          yang:mac-address
+     +--ro qos-global-stats!
+     |  +--ro qos-client-voice-stats
+     |     +--ro total-num-of-tspec-rcvd?          uint32
+     |     +--ro new-tspec-from-assoc-req?         uint32
+     |     +--ro tspec-renewal-from-assoc-req?     uint32
+     |     +--ro new-tspec-as-add-ts?              uint32
+     |     +--ro tspec-renewal-from-add-ts?        uint32
+     |     +--ro tspec-process-failed-get-rec?     uint32
+     |     +--ro total-sip-invite-on-caller?       uint32
+     |     +--ro total-sip-invite-on-callee?       uint32
+     |     +--ro total-num-of-call-report?         uint32
+     |     +--ro total-sip-failure-trap-send?      uint32
+     |     +--ro num-of-calls-accepted?            uint32
+     |     +--ro num-of-calls-rejected-insuf-bw?   uint32
+     |     +--ro num-of-calls-rejected-qos?        uint32
+     |     +--ro num-of-calls-rejected-phy-rate?   uint32
+     |     +--ro num-of-calls-rej-invalid-tspec?   uint32
+     |     +--ro num-of-roam-calls-accepted?       uint32
+     |     +--ro num-of-roam-calls-rejected?       uint32
+     |     +--ro num-of-active-sip-calls?          uint32
+     |     +--ro num-of-active-tspec-calls?        uint32
+     +--ro oper-data* [wtp-mac]
+     |  +--ro wtp-mac                      yang:mac-address
+     |  +--ro ap-antenna-band-mode?        wireless-enum-types:ant-band-mode
+     |  +--ro link-encryption-enabled?     boolean
+     |  +--ro ap-ip-data
+     |  |  +--ro ap-prefix?             uint32
+     |  |  +--ro mtu?                   uint32
+     |  |  +--ro is-static-ap-ipaddr?   boolean
+     |  |  +--ro domain-name?           string
+     |  |  +--ro ap-ip-addr?            inet:ipv4-address
+     |  |  +--ro ap-ipv6-addr?          inet:ipv6-address
+     |  |  +--ro ap-ip-netmask?         inet:ipv4-address
+     |  |  +--ro ap-ip-gateway?         inet:ipv4-address
+     |  |  +--ro ap-ipv6-gateway?       inet:ipv6-address
+     |  |  +--ro ap-name-server?        inet:ip-address
+     |  |  +--ro ap-name-server-type?   wireless-types:enm-ip-address-type
+     |  |  +--ro ap-ipv6-method?        wireless-types:enum-ap-ipv6-addr-method
+     |  +--ro ap-prime-info
+     |  |  +--ro primary-controller-name?        string
+     |  |  +--ro secondary-controller-name?      string
+     |  |  +--ro primary-controller-ip-addr?     inet:ip-address
+     |  |  +--ro secondary-controller-ip-addr?   inet:ip-address
+     |  |  +--ro tertiary-controller-name?       string
+     |  |  +--ro tertiary-controller-ip-addr?    inet:ip-address
+     |  |  +--ro ap-fallback-ip?                 inet:ip-address
+     |  |  +--ro fallback-enabled?               boolean
+     |  +--ro ap-mgmt
+     |  |  +--ro is-telnet-enabled?   boolean
+     |  |  +--ro is-ssh-enabled?      boolean
+     |  +--ro ap-pow
+     |  |  +--ro power-injector-sel?       wireless-enum-types:power-injector-selection
+     |  |  +--ro power-injector-macaddr?   yang:mac-address
+     |  |  +--ro pre-std-switch-enabled?   boolean
+     |  |  +--ro power-injector-enabled?   boolean
+     |  |  +--ro power-type?               wireless-enum-types:power-type
+     |  |  +--ro power-mode?               wireless-enum-types:power-mode-type
+     |  +--ro ap-sys-stats
+     |  |  +--ro cpu-usage?      uint8
+     |  |  +--ro memory-usage?   uint8
+     |  +--ro ipv4-tcp-mss
+     |  |  +--ro tcp-adjust-mss-size?   uint16
+     |  +--ro ipv6-tcp-mss
+     |  |  +--ro tcp-adjust-mss-size?   uint16
+     |  +--ro link-audit
+     |  |  +--ro linkaudit-delay-time?   uint32
+     |  |  +--ro linkaudit-max-time?     uint32
+     |  |  +--ro linkaudit-min-time?     uint32
+     |  +--ro retransmit
+     |  |  +--ro count?   uint8
+     |  +--ro ap-ntp-server-info-cfg
+     |  |  +--ro ntp-server-address?   inet:ip-address
+     |  +--ro ap-udplite-info?             wireless-enum-types:ipv6-capwap-checksum-type
+     |  +--ro accounting
+     |  |  +--ro method-list?   string
+     |  +--ro aux-client-interface-data
+     |     +--ro is-enabled?   boolean
+     |     +--ro vlan-id?      uint16
+     |     +--ro ip-addr?      inet:ip-address
+     |     +--ro ip-netmask?   inet:ipv4-address
+     +--ro rlan-oper* [wtp-mac rlan-port-id]
+     |  +--ro rlan-oper-state?    boolean
+     |  +--ro rlan-port-status?   boolean
+     |  +--ro rlan-vlan-id?       uint32
+     |  +--ro rlan-poe-state?     wireless-access-point-oper:ewlc-rlan-poe-state
+     |  +--ro power-level-id?     uint8
+     |  +--ro wtp-mac             yang:mac-address
+     |  +--ro rlan-port-id        uint8
+     +--ro cdp-cache-data* [mac-addr cdp-cache-device-id]
+        +--ro ap-name?                string
+        +--ro version?                uint8
+        +--ro cdp-cache-ap-address?   inet:ip-address
+        +--ro ip-address
+        |  +--ro ip-address-value*   inet:ip-address
+        +--ro mac-addr                yang:mac-address
+        +--ro cdp-cache-device-id     string
+        +--ro wtp-mac-addr?           yang:mac-address
+        +--ro device-index?           uint32
+Xpaths for model: Cisco-IOS-XE-wireless-access-point-oper.yang
+/wireless-access-point-oper:access-point-oper-data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-mac-ssid-info,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-mac-ssid-info/wireless-access-point-oper:ssid-clients-list-data,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-mac-ssid-info/wireless-access-point-oper:ssid-clients-list-data/wireless-access-point-oper:client-mac-address,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-mac-ssid-info/wireless-access-point-oper:ap-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-mac-ssid-info/wireless-access-point-oper:wlan-id,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:bssid-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:vap-id,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-mgmt,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-mgmt,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-bytes-data,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist/wireless-access-point-oper:bytes-0-64,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist/wireless-access-point-oper:bytes-65-128,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist/wireless-access-point-oper:bytes-129-256,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist/wireless-access-point-oper:bytes-257-512,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist/wireless-access-point-oper:bytes-513-1024,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist/wireless-access-point-oper:bytes-1025-2048,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist/wireless-access-point-oper:bytes-2049-4096,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist/wireless-access-point-oper:bytes-4097-8192,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist/wireless-access-point-oper:bytes-8193-16384,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist/wireless-access-point-oper:bytes-16385-32768,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist/wireless-access-point-oper:bytes-32769-65536,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist/wireless-access-point-oper:bytes-65537-131072,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist/wireless-access-point-oper:bytes-131073-262144,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist/wireless-access-point-oper:bytes-262145-524288,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-dist/wireless-access-point-oper:bytes-524289-1048576,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-wmm,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-wmm/wireless-access-point-oper:video,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-wmm/wireless-access-point-oper:voice,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-wmm/wireless-access-point-oper:background,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-data-wmm/wireless-access-point-oper:best-effort,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-retries,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-retries-data,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-retries-subframes,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-mcs,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-mcs/wireless-access-point-oper:mcs0,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-mcs/wireless-access-point-oper:mcs1,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-mcs/wireless-access-point-oper:mcs2,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-mcs/wireless-access-point-oper:mcs3,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-mcs/wireless-access-point-oper:mcs4,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-mcs/wireless-access-point-oper:mcs5,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-mcs/wireless-access-point-oper:mcs6,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-mcs/wireless-access-point-oper:mcs7,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-mcs/wireless-access-point-oper:mcs8,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:tx-mcs/wireless-access-point-oper:mcs9,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-bytes-data,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist/wireless-access-point-oper:bytes-0-64,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist/wireless-access-point-oper:bytes-65-128,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist/wireless-access-point-oper:bytes-129-256,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist/wireless-access-point-oper:bytes-257-512,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist/wireless-access-point-oper:bytes-513-1024,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist/wireless-access-point-oper:bytes-1025-2048,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist/wireless-access-point-oper:bytes-2049-4096,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist/wireless-access-point-oper:bytes-4097-8192,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist/wireless-access-point-oper:bytes-8193-16384,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist/wireless-access-point-oper:bytes-16385-32768,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist/wireless-access-point-oper:bytes-32769-65536,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist/wireless-access-point-oper:bytes-65537-131072,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist/wireless-access-point-oper:bytes-131073-262144,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist/wireless-access-point-oper:bytes-262145-524288,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-dist/wireless-access-point-oper:bytes-524289-1048576,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-wmm,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-wmm/wireless-access-point-oper:video,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-wmm/wireless-access-point-oper:voice,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-wmm/wireless-access-point-oper:background,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-data-wmm/wireless-access-point-oper:best-effort,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-mcs,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-mcs/wireless-access-point-oper:mcs0,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-mcs/wireless-access-point-oper:mcs1,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-mcs/wireless-access-point-oper:mcs2,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-mcs/wireless-access-point-oper:mcs3,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-mcs/wireless-access-point-oper:mcs4,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-mcs/wireless-access-point-oper:mcs5,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-mcs/wireless-access-point-oper:mcs6,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-mcs/wireless-access-point-oper:mcs7,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-mcs/wireless-access-point-oper:mcs8,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:rx-mcs/wireless-access-point-oper:mcs9,leaf,uint64
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:num-assoc-clients,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:noise-floor,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:wtp-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:slot-id,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ssid-counters/wireless-access-point-oper:wlan-id,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-radio-neighbor,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-radio-neighbor/wireless-access-point-oper:ap-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-radio-neighbor/wireless-access-point-oper:slot-id,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-radio-neighbor/wireless-access-point-oper:bssid,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-radio-neighbor/wireless-access-point-oper:ssid,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-radio-neighbor/wireless-access-point-oper:rssi,leaf,int8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-radio-neighbor/wireless-access-point-oper:channel,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-radio-neighbor/wireless-access-point-oper:primary-channel,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-radio-neighbor/wireless-access-point-oper:last-update-rcvd,leaf,yang:date-and-time
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:wtp-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-slot-id,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:slot-id,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-type,leaf,wireless-enum-types:enm-radio-type
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:admin-state,leaf,wireless-access-point-oper:enum-radio-admin-state
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:oper-state,leaf,wireless-access-point-oper:enum-radio-oper-state
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-mode,leaf,wireless-types:enm-ewlc-ap-radio-modes
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-sub-mode,leaf,wireless-types:radio-sub-mode
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-subtype,leaf,wireless-types:ap-radio-subtype
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-subband,leaf,wireless-enum-types:slot-radio-sub-band
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:current-band-id,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:current-active-band,leaf,wireless-types:enm-ewlc-dot11-radio-band
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:xor-radio-mode,leaf,wireless-types:enum-xor-radio-mode
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-ht-cfg,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-ht-cfg/wireless-access-point-oper:cfg-data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-ht-cfg/wireless-access-point-oper:cfg-data/wireless-access-point-oper:ht-enable,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-ht-cfg/wireless-access-point-oper:cfg-data/wireless-access-point-oper:phy-ht-cfg-config-type,leaf,wireless-types:w-config-type
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-ht-cfg/wireless-access-point-oper:cfg-data/wireless-access-point-oper:curr-freq,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-ht-cfg/wireless-access-point-oper:cfg-data/wireless-access-point-oper:chan-width,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-ht-cfg/wireless-access-point-oper:cfg-data/wireless-access-point-oper:ext-chan,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-ht-cfg/wireless-access-point-oper:cfg-data/wireless-access-point-oper:vht-enable,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-ht-cfg/wireless-access-point-oper:cfg-data/wireless-access-point-oper:rrm-channel-change-reason,leaf,wireless-enum-types:rrm-channel-change-reason
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-ht-cap,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-ht-cap/wireless-access-point-oper:data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-ht-cap/wireless-access-point-oper:data/wireless-access-point-oper:vht-capable,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-ht-cap/wireless-access-point-oper:data/wireless-access-point-oper:ht-capable,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:xor-phy-ht-cap,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:xor-phy-ht-cap/wireless-access-point-oper:data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:xor-phy-ht-cap/wireless-access-point-oper:data/wireless-access-point-oper:vht-capable,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:xor-phy-ht-cap/wireless-access-point-oper:data/wireless-access-point-oper:ht-capable,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-he-cap,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-he-cap/wireless-access-point-oper:data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-he-cap/wireless-access-point-oper:data/wireless-access-point-oper:he-enabled,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:phy-he-cap/wireless-access-point-oper:data/wireless-access-point-oper:he-capable,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:chan-pwr-info,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:chan-pwr-info/wireless-access-point-oper:data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:chan-pwr-info/wireless-access-point-oper:data/wireless-access-point-oper:antenna-gain,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:chan-pwr-info/wireless-access-point-oper:data/wireless-access-point-oper:int-antenna-gain,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:chan-pwr-info/wireless-access-point-oper:data/wireless-access-point-oper:ext-antenna-gain,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:antenna-pid,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:band-id,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:regulatory-domain,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:phy-tx-pwr-cfg,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:phy-tx-pwr-cfg/wireless-access-point-oper:cfg-data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:phy-tx-pwr-cfg/wireless-access-point-oper:cfg-data/wireless-access-point-oper:phy-tx-power-config-type,leaf,wireless-types:w-config-type
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:phy-tx-pwr-cfg/wireless-access-point-oper:cfg-data/wireless-access-point-oper:current-tx-power-level,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:phy-tx-pwr-lvl-cfg,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:phy-tx-pwr-lvl-cfg/wireless-access-point-oper:cfg-data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:phy-tx-pwr-lvl-cfg/wireless-access-point-oper:cfg-data/wireless-access-point-oper:curr-tx-power-in-dbm,leaf,int16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:antenna-cfg,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:antenna-cfg/wireless-access-point-oper:cfg-data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:antenna-cfg/wireless-access-point-oper:cfg-data/wireless-access-point-oper:diversity-selection,leaf,wireless-enum-types:enm-antenna-selection
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:antenna-cfg/wireless-access-point-oper:cfg-data/wireless-access-point-oper:antenna-mode,leaf,wireless-enum-types:enm-antenna-mode
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:antenna-cfg/wireless-access-point-oper:cfg-data/wireless-access-point-oper:num-of-antennas,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:sia-params,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:sia-params/wireless-access-point-oper:is-rptnc-present,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-band-info/wireless-access-point-oper:sia-params/wireless-access-point-oper:is-dart-present,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:reg-domain-check-status,leaf,wireless-enum-types:reg-domain-status
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:slot-antenna-type,leaf,wireless-types:radio-slot-antenna-type
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-enable-time,leaf,yang:date-and-time
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:dot11n-mcs-rates,leaf,wireless-access-point-oper:flag-dot11n-mcs-rates
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:dual-radio-mode-cfg,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:dual-radio-mode-cfg/wireless-access-point-oper:dual-radio-mode,leaf,wireless-enum-types:enum-dual-radio-mode
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:dual-radio-mode-cfg/wireless-access-point-oper:dual-radio-capable,leaf,wireless-enum-types:enum-dual-radio-capable
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:dual-radio-mode-cfg/wireless-access-point-oper:dual-radio-mode-op,leaf,wireless-enum-types:enum-radio-mode-op
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:radio-fra-capable,leaf,wireless-enum-types:enum-radio-fra-capable
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:bss-color-cfg,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:bss-color-cfg/wireless-access-point-oper:bss-color-capable,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:bss-color-cfg/wireless-access-point-oper:bss-color,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:bss-color-cfg/wireless-access-point-oper:bss-color-config-type,leaf,wireless-types:w-config-type
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-data/wireless-access-point-oper:highest-throughput-proto,leaf,wireless-enum-types:enm-radio-dot11-proto-supported
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:wtp-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ip-addr,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:name,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:board-data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:board-data/wireless-access-point-oper:wtp-serial-num,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:board-data/wireless-access-point-oper:wtp-enet-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:board-data-opt,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:board-data-opt/wireless-access-point-oper:join-priority,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:descriptor-data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:descriptor-data/wireless-access-point-oper:encryption-capabilities,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:ap-prov,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:ap-prov/wireless-access-point-oper:is-universal,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:ap-prov/wireless-access-point-oper:universal-prime-status,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:ap-models,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:ap-models/wireless-access-point-oper:model,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:num-ports,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:num-slots,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:wtp-model-type,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:ap-capability,leaf,wireless-access-point-oper:flag-ap-capability
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:static-info/wireless-access-point-oper:is-mm-opt,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:dynamic-info,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:dynamic-info/wireless-access-point-oper:led-state-enabled,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:dynamic-info/wireless-access-point-oper:reset-button-state,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:dynamic-info/wireless-access-point-oper:led-flash-enabled,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:dynamic-info/wireless-access-point-oper:flash-sec,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:wtp-version,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:wtp-version/wireless-access-point-oper:sw-ver,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:wtp-version/wireless-access-point-oper:sw-ver/wireless-access-point-oper:version,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:wtp-version/wireless-access-point-oper:sw-ver/wireless-access-point-oper:release,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:wtp-version/wireless-access-point-oper:sw-ver/wireless-access-point-oper:maint,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:device-detail/wireless-access-point-oper:wtp-version/wireless-access-point-oper:sw-ver/wireless-access-point-oper:build,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-lag-enabled,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-location,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-location/wireless-access-point-oper:floor,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-location/wireless-access-point-oper:location,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-services,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-services/wireless-access-point-oper:monitor-mode-opt-type,leaf,wireless-enum-types:lomm-mode-type
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:tag-info,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:tag-info/wireless-access-point-oper:policy-tag-info,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:tag-info/wireless-access-point-oper:policy-tag-info/wireless-access-point-oper:policy-tag-name,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:tag-info/wireless-access-point-oper:site-tag,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:tag-info/wireless-access-point-oper:site-tag/wireless-access-point-oper:site-tag-name,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:tag-info/wireless-access-point-oper:rf-tag,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:tag-info/wireless-access-point-oper:rf-tag/wireless-access-point-oper:rf-tag-name,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:tag-info/wireless-access-point-oper:filter-info,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:tag-info/wireless-access-point-oper:filter-info/wireless-access-point-oper:filter-name,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:tunnel,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:tunnel/wireless-access-point-oper:preferred-mode,leaf,wireless-enum-types:preferred-mode-type
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:tunnel/wireless-access-point-oper:udp-lite,leaf,wireless-enum-types:ipv6-capwap-checksum-type
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:external-module-data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:external-module-data/wireless-access-point-oper:xm-data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:external-module-data/wireless-access-point-oper:xm-data/wireless-access-point-oper:is-module-present,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ipv6-joined,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-state,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-state/wireless-access-point-oper:ap-admin-state,leaf,wireless-enum-types:admin-state
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-state/wireless-access-point-oper:ap-operation-state,leaf,wireless-access-point-oper:enum-ap-state
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-mode-data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-mode-data/wireless-access-point-oper:ap-sub-mode,leaf,ap-types:ap-sub-mode-type
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-mode-data/wireless-access-point-oper:wtp-mode,leaf,wireless-types:enm-ewlc-spam-ap-modes
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-mode-data/wireless-access-point-oper:ap-fabric-data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-mode-data/wireless-access-point-oper:ap-fabric-data/wireless-access-point-oper:is-fabric-ap,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-time-info,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-time-info/wireless-access-point-oper:boot-time,leaf,yang:date-and-time
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-time-info/wireless-access-point-oper:join-time,leaf,yang:date-and-time
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:country-code,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-security-data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-security-data/wireless-access-point-oper:cert-type,leaf,wireless-access-point-oper:enm-cert-type
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:num-radio-slots,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:dart-is-connected,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:is-master,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:cdp-enable,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:ap-stationing-type,leaf,wireless-access-point-oper:enum-ap-stationing-type
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:reboot-stats,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:capwap-data/wireless-access-point-oper:reboot-stats/wireless-access-point-oper:reboot-reason,leaf,wireless-types:spam-ap-reboot-reason
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-name-mac-map,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-name-mac-map/wireless-access-point-oper:wtp-name,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-name-mac-map/wireless-access-point-oper:wtp-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-name-mac-map/wireless-access-point-oper:eth-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ethernet-mac-wtp-mac-map,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ethernet-mac-wtp-mac-map/wireless-access-point-oper:ethernet-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ethernet-mac-wtp-mac-map/wireless-access-point-oper:wtp-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-stats,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-stats/wireless-access-point-oper:ap-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-stats/wireless-access-point-oper:slot-id,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-stats/wireless-access-point-oper:aid-user-list,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-stats/wireless-access-point-oper:tx-fragment-count,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-stats/wireless-access-point-oper:failed-count,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-stats/wireless-access-point-oper:rx-fragment-count,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:radio-oper-stats/wireless-access-point-oper:tx-frame-count,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ethernet-if-stats,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ethernet-if-stats/wireless-access-point-oper:if-name,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ethernet-if-stats/wireless-access-point-oper:rx-pkts,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ethernet-if-stats/wireless-access-point-oper:tx-pkts,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ethernet-if-stats/wireless-access-point-oper:wtp-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ethernet-if-stats/wireless-access-point-oper:if-index,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:iot-devices,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:iot-devices/wireless-access-point-oper:name,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:iot-devices/wireless-access-point-oper:type,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:iot-devices/wireless-access-point-oper:protocol,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:iot-devices/wireless-access-point-oper:connection-state,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:iot-devices/wireless-access-point-oper:battery-level,leaf,int8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:iot-devices/wireless-access-point-oper:ap-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:iot-devices/wireless-access-point-oper:device-mac,leaf,yang:phys-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-iox-oper-data,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-iox-oper-data/wireless-access-point-oper:ap-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-iox-oper-data/wireless-access-point-oper:apphost-state,leaf,wireless-access-point-oper:enm-apphost-state
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-iox-oper-data/wireless-access-point-oper:caf-token,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:ap-iox-oper-data/wireless-access-point-oper:caf-port,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-voice-bw-allocated,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-max-voice-bandwidth,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-bw-in-use,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-cac-stats,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-cac-stats/wireless-access-point-oper:calls-in-progress,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-cac-stats/wireless-access-point-oper:roam-calls-in-progress,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-cac-stats/wireless-access-point-oper:calls-accepted,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-cac-stats/wireless-access-point-oper:roam-calls-accepted,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-cac-stats/wireless-access-point-oper:calls-rejected,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-cac-stats/wireless-access-point-oper:roam-calls-rejected,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-cac-stats/wireless-access-point-oper:calls-rejected-insuff-bw,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-cac-stats/wireless-access-point-oper:calls-rejected-qos,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-cac-stats/wireless-access-point-oper:calls-rejected-phy-rate,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-cac-stats/wireless-access-point-oper:calls-rejected-invalid-tspec,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-cac-stats/wireless-access-point-oper:exp-bw-reqs-received,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-cac-stats/wireless-access-point-oper:exp-bw-reqs-accepted,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:lbcac-measure,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:wmm-voice-roam-bw-in-use,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:sip-preferred-calls-mtu-used,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:cumulative-call-count,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:cumulative-seconds-used,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:sip-cac-stats,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:sip-cac-stats/wireless-access-point-oper:sip-calls-in-progress,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:sip-cac-stats/wireless-access-point-oper:sip-roam-calls-in-progress,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:sip-cac-stats/wireless-access-point-oper:sip-calls-accepted,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:sip-cac-stats/wireless-access-point-oper:sip-roam-calls-accepted,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:sip-cac-stats/wireless-access-point-oper:sip-preferred-calls-received,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:sip-cac-stats/wireless-access-point-oper:sip-preferred-calls-accepted,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:sip-cac-stats/wireless-access-point-oper:sip-preferred-calls-ongoing,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:sip-cac-stats/wireless-access-point-oper:sip-calls-rejected-insuf-bw,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:sip-cac-stats/wireless-access-point-oper:sip-roam-calls-rejected-insuf-bw,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:total-active-calls,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:total-rejected-calls,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:radio-slot-id,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-radio-data/wireless-access-point-oper:ap-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:total-num-of-tspec-rcvd,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:new-tspec-from-assoc-req,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:tspec-renewal-from-assoc-req,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:new-tspec-as-add-ts,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:tspec-renewal-from-add-ts,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:tspec-process-failed-get-rec,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:total-sip-invite-on-caller,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:total-sip-invite-on-callee,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:total-num-of-call-report,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:total-sip-failure-trap-send,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:num-of-calls-accepted,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:num-of-calls-rejected-insuf-bw,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:num-of-calls-rejected-qos,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:num-of-calls-rejected-phy-rate,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:num-of-calls-rej-invalid-tspec,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:num-of-roam-calls-accepted,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:num-of-roam-calls-rejected,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:num-of-active-sip-calls,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:qos-global-stats/wireless-access-point-oper:qos-client-voice-stats/wireless-access-point-oper:num-of-active-tspec-calls,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:wtp-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-antenna-band-mode,leaf,wireless-enum-types:ant-band-mode
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:link-encryption-enabled,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-ip-data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-ip-data/wireless-access-point-oper:ap-prefix,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-ip-data/wireless-access-point-oper:mtu,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-ip-data/wireless-access-point-oper:is-static-ap-ipaddr,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-ip-data/wireless-access-point-oper:domain-name,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-ip-data/wireless-access-point-oper:ap-ip-addr,leaf,inet:ipv4-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-ip-data/wireless-access-point-oper:ap-ipv6-addr,leaf,inet:ipv6-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-ip-data/wireless-access-point-oper:ap-ip-netmask,leaf,inet:ipv4-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-ip-data/wireless-access-point-oper:ap-ip-gateway,leaf,inet:ipv4-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-ip-data/wireless-access-point-oper:ap-ipv6-gateway,leaf,inet:ipv6-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-ip-data/wireless-access-point-oper:ap-name-server,leaf,inet:ip-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-ip-data/wireless-access-point-oper:ap-name-server-type,leaf,wireless-types:enm-ip-address-type
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-ip-data/wireless-access-point-oper:ap-ipv6-method,leaf,wireless-types:enum-ap-ipv6-addr-method
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-prime-info,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-prime-info/wireless-access-point-oper:primary-controller-name,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-prime-info/wireless-access-point-oper:secondary-controller-name,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-prime-info/wireless-access-point-oper:primary-controller-ip-addr,leaf,inet:ip-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-prime-info/wireless-access-point-oper:secondary-controller-ip-addr,leaf,inet:ip-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-prime-info/wireless-access-point-oper:tertiary-controller-name,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-prime-info/wireless-access-point-oper:tertiary-controller-ip-addr,leaf,inet:ip-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-prime-info/wireless-access-point-oper:ap-fallback-ip,leaf,inet:ip-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-prime-info/wireless-access-point-oper:fallback-enabled,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-mgmt,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-mgmt/wireless-access-point-oper:is-telnet-enabled,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-mgmt/wireless-access-point-oper:is-ssh-enabled,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-pow,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-pow/wireless-access-point-oper:power-injector-sel,leaf,wireless-enum-types:power-injector-selection
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-pow/wireless-access-point-oper:power-injector-macaddr,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-pow/wireless-access-point-oper:pre-std-switch-enabled,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-pow/wireless-access-point-oper:power-injector-enabled,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-pow/wireless-access-point-oper:power-type,leaf,wireless-enum-types:power-type
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-pow/wireless-access-point-oper:power-mode,leaf,wireless-enum-types:power-mode-type
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-sys-stats,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-sys-stats/wireless-access-point-oper:cpu-usage,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-sys-stats/wireless-access-point-oper:memory-usage,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ipv4-tcp-mss,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ipv4-tcp-mss/wireless-access-point-oper:tcp-adjust-mss-size,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ipv6-tcp-mss,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ipv6-tcp-mss/wireless-access-point-oper:tcp-adjust-mss-size,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:link-audit,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:link-audit/wireless-access-point-oper:linkaudit-delay-time,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:link-audit/wireless-access-point-oper:linkaudit-max-time,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:link-audit/wireless-access-point-oper:linkaudit-min-time,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:retransmit,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:retransmit/wireless-access-point-oper:count,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-ntp-server-info-cfg,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-ntp-server-info-cfg/wireless-access-point-oper:ntp-server-address,leaf,inet:ip-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:ap-udplite-info,leaf,wireless-enum-types:ipv6-capwap-checksum-type
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:accounting,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:accounting/wireless-access-point-oper:method-list,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:aux-client-interface-data,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:aux-client-interface-data/wireless-access-point-oper:is-enabled,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:aux-client-interface-data/wireless-access-point-oper:vlan-id,leaf,uint16
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:aux-client-interface-data/wireless-access-point-oper:ip-addr,leaf,inet:ip-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:oper-data/wireless-access-point-oper:aux-client-interface-data/wireless-access-point-oper:ip-netmask,leaf,inet:ipv4-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:rlan-oper,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:rlan-oper/wireless-access-point-oper:rlan-oper-state,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:rlan-oper/wireless-access-point-oper:rlan-port-status,leaf,boolean
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:rlan-oper/wireless-access-point-oper:rlan-vlan-id,leaf,uint32
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:rlan-oper/wireless-access-point-oper:rlan-poe-state,leaf,wireless-access-point-oper:ewlc-rlan-poe-state
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:rlan-oper/wireless-access-point-oper:power-level-id,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:rlan-oper/wireless-access-point-oper:wtp-mac,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:rlan-oper/wireless-access-point-oper:rlan-port-id,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:cdp-cache-data,list,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:cdp-cache-data/wireless-access-point-oper:ap-name,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:cdp-cache-data/wireless-access-point-oper:version,leaf,uint8
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:cdp-cache-data/wireless-access-point-oper:cdp-cache-ap-address,leaf,inet:ip-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:cdp-cache-data/wireless-access-point-oper:ip-address,container,
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:cdp-cache-data/wireless-access-point-oper:ip-address/wireless-access-point-oper:ip-address-value,leaf-list,inet:ip-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:cdp-cache-data/wireless-access-point-oper:mac-addr,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:cdp-cache-data/wireless-access-point-oper:cdp-cache-device-id,leaf,string
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:cdp-cache-data/wireless-access-point-oper:wtp-mac-addr,leaf,yang:mac-address
+/wireless-access-point-oper:access-point-oper-data/wireless-access-point-oper:cdp-cache-data/wireless-access-point-oper:device-index,leaf,uint32

@@ -1,0 +1,54 @@
+ 
+KPI for model: openconfig-ap-manager.yang
+module: openconfig-ap-manager
+  +--rw provision-aps
+  |  +--rw provision-ap* [mac]
+  |     +--rw mac       -> ../config/mac
+  |     +--rw config
+  |     |  +--rw mac?            oc-yang:mac-address
+  |     |  +--rw hostname?       oc-inet:domain-name
+  |     |  +--rw country-code?   string
+  |     +--ro state
+  |        +--ro mac?            oc-yang:mac-address
+  |        +--ro hostname?       oc-inet:domain-name
+  |        +--ro country-code?   string
+  +--rw joined-aps
+     +--ro joined-ap* [hostname]
+        +--ro hostname    -> ../state/hostname
+        +--ro state
+           +--ro mac?            oc-yang:mac-address
+           +--ro hostname?       oc-inet:domain-name
+           +--ro opstate?        identityref
+           +--ro uptime?         uint32
+           +--ro enabled?        boolean
+           +--ro serial?         string
+           +--ro model?          string
+           +--ro ipv4?           oc-inet:ipv4-address
+           +--ro ipv6?           oc-inet:ipv6-address
+           +--ro power-source?   enumeration
+Xpaths for model: openconfig-ap-manager.yang
+/ap-manager:provision-aps,container,
+/ap-manager:provision-aps/ap-manager:provision-ap,list,
+/ap-manager:provision-aps/ap-manager:provision-ap/ap-manager:mac,leaf,leafref
+/ap-manager:provision-aps/ap-manager:provision-ap/ap-manager:config,container,
+/ap-manager:provision-aps/ap-manager:provision-ap/ap-manager:config/ap-manager:mac,leaf,oc-yang:mac-address
+/ap-manager:provision-aps/ap-manager:provision-ap/ap-manager:config/ap-manager:hostname,leaf,oc-inet:domain-name
+/ap-manager:provision-aps/ap-manager:provision-ap/ap-manager:config/ap-manager:country-code,leaf,string
+/ap-manager:provision-aps/ap-manager:provision-ap/ap-manager:state,container,
+/ap-manager:provision-aps/ap-manager:provision-ap/ap-manager:state/ap-manager:mac,leaf,oc-yang:mac-address
+/ap-manager:provision-aps/ap-manager:provision-ap/ap-manager:state/ap-manager:hostname,leaf,oc-inet:domain-name
+/ap-manager:provision-aps/ap-manager:provision-ap/ap-manager:state/ap-manager:country-code,leaf,string
+/ap-manager:joined-aps,container,
+/ap-manager:joined-aps/ap-manager:joined-ap,list,
+/ap-manager:joined-aps/ap-manager:joined-ap/ap-manager:hostname,leaf,leafref
+/ap-manager:joined-aps/ap-manager:joined-ap/ap-manager:state,container,
+/ap-manager:joined-aps/ap-manager:joined-ap/ap-manager:state/ap-manager:mac,leaf,oc-yang:mac-address
+/ap-manager:joined-aps/ap-manager:joined-ap/ap-manager:state/ap-manager:hostname,leaf,oc-inet:domain-name
+/ap-manager:joined-aps/ap-manager:joined-ap/ap-manager:state/ap-manager:opstate,leaf,identityref
+/ap-manager:joined-aps/ap-manager:joined-ap/ap-manager:state/ap-manager:uptime,leaf,uint32
+/ap-manager:joined-aps/ap-manager:joined-ap/ap-manager:state/ap-manager:enabled,leaf,boolean
+/ap-manager:joined-aps/ap-manager:joined-ap/ap-manager:state/ap-manager:serial,leaf,string
+/ap-manager:joined-aps/ap-manager:joined-ap/ap-manager:state/ap-manager:model,leaf,string
+/ap-manager:joined-aps/ap-manager:joined-ap/ap-manager:state/ap-manager:ipv4,leaf,oc-inet:ipv4-address
+/ap-manager:joined-aps/ap-manager:joined-ap/ap-manager:state/ap-manager:ipv6,leaf,oc-inet:ipv6-address
+/ap-manager:joined-aps/ap-manager:joined-ap/ap-manager:state/ap-manager:power-source,leaf,enumeration

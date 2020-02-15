@@ -1,0 +1,3 @@
+ 
+KPI for model: openconfig-system-management.yang
+Xpaths for model: openconfig-system-management.yang

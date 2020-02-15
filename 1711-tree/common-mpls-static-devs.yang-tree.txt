@@ -1,0 +1,3 @@
+ 
+KPI for model: common-mpls-static-devs.yang
+Xpaths for model: common-mpls-static-devs.yang

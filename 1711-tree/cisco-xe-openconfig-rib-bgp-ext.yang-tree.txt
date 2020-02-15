@@ -1,0 +1,348 @@
+ 
+KPI for model: cisco-xe-openconfig-rib-bgp-ext.yang
+
+module: cisco-xe-openconfig-rib-bgp-ext
+  augment /oc-ni:network-instances/oc-ni:network-instance/oc-ni:protocols/oc-ni:protocol:
+    +--ro bgp-rib
+       +--ro afi-safis
+          +--ro afi-safi* [afi-safi-name]
+             +--ro afi-safi-name    identityref
+             +--ro ipv4-unicast
+             |  +--ro loc-rib
+             |  |  +--ro num-routes?   uint64
+             |  |  +--ro routes
+             |  |     +--ro route* [prefix]
+             |  |        +--ro prefix        inet:ipv4-prefix
+             |  |        +--ro attributes
+             |  |           +--ro next-hops* [next-hop]
+             |  |              +--ro next-hop                inet:ip-address
+             |  |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+             |  |              +--ro as-path?                string
+             |  |              +--ro as4-path?               string
+             |  |              +--ro med?                    uint32
+             |  |              +--ro local-pref?             uint32
+             |  |              +--ro atomic-aggr?            boolean
+             |  |              +--ro aggregator
+             |  |              |  +--ro as?        uint32
+             |  |              |  +--ro as4?       uint32
+             |  |              |  +--ro address?   inet:ipv4-address
+             |  |              +--ro community*              oc-bgpt:bgp-std-community-type
+             |  |              +--ro originator-id?          inet:ipv4-address
+             |  |              +--ro cluster-list*           inet:ipv4-address
+             |  |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+             |  |              +--ro aigp?                   uint64
+             |  |              +--ro path-id?                uint32
+             |  |              +--ro unknown-attribute* [attr-type]
+             |  |              |  +--ro attr-type     uint16
+             |  |              |  +--ro attr-len?     uint16
+             |  |              |  +--ro attr-value?   binary
+             |  |              +--ro last-modified-date?     yang:date-and-time
+             |  |              +--ro last-update-received?   yang:date-and-time
+             |  |              +--ro valid-route?            boolean
+             |  |              +--ro invalid-reason?         identityref
+             |  |              +--ro best-path?              boolean
+             |  +--ro neighbors
+             |     +--ro neighbor* [neighbor-address]
+             |        +--ro neighbor-address    inet:ip-address
+             |        +--ro adj-rib-in-pre
+             |        |  +--ro num-routes?   uint64
+             |        |  +--ro routes
+             |        |     +--ro route* [prefix]
+             |        |        +--ro prefix        inet:ipv4-prefix
+             |        |        +--ro attributes
+             |        |           +--ro next-hops* [next-hop]
+             |        |              +--ro next-hop                inet:ip-address
+             |        |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+             |        |              +--ro as-path?                string
+             |        |              +--ro as4-path?               string
+             |        |              +--ro med?                    uint32
+             |        |              +--ro local-pref?             uint32
+             |        |              +--ro atomic-aggr?            boolean
+             |        |              +--ro aggregator
+             |        |              |  +--ro as?        uint32
+             |        |              |  +--ro as4?       uint32
+             |        |              |  +--ro address?   inet:ipv4-address
+             |        |              +--ro community*              oc-bgpt:bgp-std-community-type
+             |        |              +--ro originator-id?          inet:ipv4-address
+             |        |              +--ro cluster-list*           inet:ipv4-address
+             |        |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+             |        |              +--ro aigp?                   uint64
+             |        |              +--ro path-id?                uint32
+             |        |              +--ro unknown-attribute* [attr-type]
+             |        |              |  +--ro attr-type     uint16
+             |        |              |  +--ro attr-len?     uint16
+             |        |              |  +--ro attr-value?   binary
+             |        |              +--ro last-modified-date?     yang:date-and-time
+             |        |              +--ro last-update-received?   yang:date-and-time
+             |        |              +--ro valid-route?            boolean
+             |        |              +--ro invalid-reason?         identityref
+             |        |              +--ro best-path?              boolean
+             |        +--ro adj-rib-in-post
+             |        |  +--ro num-routes?   uint64
+             |        |  +--ro routes
+             |        |     +--ro route* [prefix]
+             |        |        +--ro prefix        inet:ipv4-prefix
+             |        |        +--ro attributes
+             |        |           +--ro next-hops* [next-hop]
+             |        |              +--ro next-hop                inet:ip-address
+             |        |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+             |        |              +--ro as-path?                string
+             |        |              +--ro as4-path?               string
+             |        |              +--ro med?                    uint32
+             |        |              +--ro local-pref?             uint32
+             |        |              +--ro atomic-aggr?            boolean
+             |        |              +--ro aggregator
+             |        |              |  +--ro as?        uint32
+             |        |              |  +--ro as4?       uint32
+             |        |              |  +--ro address?   inet:ipv4-address
+             |        |              +--ro community*              oc-bgpt:bgp-std-community-type
+             |        |              +--ro originator-id?          inet:ipv4-address
+             |        |              +--ro cluster-list*           inet:ipv4-address
+             |        |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+             |        |              +--ro aigp?                   uint64
+             |        |              +--ro path-id?                uint32
+             |        |              +--ro unknown-attribute* [attr-type]
+             |        |              |  +--ro attr-type     uint16
+             |        |              |  +--ro attr-len?     uint16
+             |        |              |  +--ro attr-value?   binary
+             |        |              +--ro last-modified-date?     yang:date-and-time
+             |        |              +--ro last-update-received?   yang:date-and-time
+             |        |              +--ro valid-route?            boolean
+             |        |              +--ro invalid-reason?         identityref
+             |        |              +--ro best-path?              boolean
+             |        +--ro adj-rib-out-pre
+             |        |  +--ro num-routes?   uint64
+             |        |  +--ro routes
+             |        |     +--ro route* [prefix]
+             |        |        +--ro prefix        inet:ipv4-prefix
+             |        |        +--ro attributes
+             |        |           +--ro next-hops* [next-hop]
+             |        |              +--ro next-hop                inet:ip-address
+             |        |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+             |        |              +--ro as-path?                string
+             |        |              +--ro as4-path?               string
+             |        |              +--ro med?                    uint32
+             |        |              +--ro local-pref?             uint32
+             |        |              +--ro atomic-aggr?            boolean
+             |        |              +--ro aggregator
+             |        |              |  +--ro as?        uint32
+             |        |              |  +--ro as4?       uint32
+             |        |              |  +--ro address?   inet:ipv4-address
+             |        |              +--ro community*              oc-bgpt:bgp-std-community-type
+             |        |              +--ro originator-id?          inet:ipv4-address
+             |        |              +--ro cluster-list*           inet:ipv4-address
+             |        |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+             |        |              +--ro aigp?                   uint64
+             |        |              +--ro path-id?                uint32
+             |        |              +--ro unknown-attribute* [attr-type]
+             |        |              |  +--ro attr-type     uint16
+             |        |              |  +--ro attr-len?     uint16
+             |        |              |  +--ro attr-value?   binary
+             |        |              +--ro last-modified-date?     yang:date-and-time
+             |        |              +--ro last-update-received?   yang:date-and-time
+             |        |              +--ro valid-route?            boolean
+             |        |              +--ro invalid-reason?         identityref
+             |        |              +--ro best-path?              boolean
+             |        +--ro adj-rib-out-post
+             |           +--ro num-routes?   uint64
+             |           +--ro routes
+             |              +--ro route* [prefix]
+             |                 +--ro prefix        inet:ipv4-prefix
+             |                 +--ro attributes
+             |                    +--ro next-hops* [next-hop]
+             |                       +--ro next-hop                inet:ip-address
+             |                       +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+             |                       +--ro as-path?                string
+             |                       +--ro as4-path?               string
+             |                       +--ro med?                    uint32
+             |                       +--ro local-pref?             uint32
+             |                       +--ro atomic-aggr?            boolean
+             |                       +--ro aggregator
+             |                       |  +--ro as?        uint32
+             |                       |  +--ro as4?       uint32
+             |                       |  +--ro address?   inet:ipv4-address
+             |                       +--ro community*              oc-bgpt:bgp-std-community-type
+             |                       +--ro originator-id?          inet:ipv4-address
+             |                       +--ro cluster-list*           inet:ipv4-address
+             |                       +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+             |                       +--ro aigp?                   uint64
+             |                       +--ro path-id?                uint32
+             |                       +--ro unknown-attribute* [attr-type]
+             |                       |  +--ro attr-type     uint16
+             |                       |  +--ro attr-len?     uint16
+             |                       |  +--ro attr-value?   binary
+             |                       +--ro last-modified-date?     yang:date-and-time
+             |                       +--ro last-update-received?   yang:date-and-time
+             |                       +--ro valid-route?            boolean
+             |                       +--ro invalid-reason?         identityref
+             |                       +--ro best-path?              boolean
+             +--ro ipv6-unicast
+                +--ro loc-rib
+                |  +--ro num-routes?   uint64
+                |  +--ro routes
+                |     +--ro route* [prefix]
+                |        +--ro prefix        inet:ipv6-prefix
+                |        +--ro attributes
+                |           +--ro next-hops* [next-hop]
+                |              +--ro next-hop                inet:ip-address
+                |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+                |              +--ro as-path?                string
+                |              +--ro as4-path?               string
+                |              +--ro med?                    uint32
+                |              +--ro local-pref?             uint32
+                |              +--ro atomic-aggr?            boolean
+                |              +--ro aggregator
+                |              |  +--ro as?        uint32
+                |              |  +--ro as4?       uint32
+                |              |  +--ro address?   inet:ipv4-address
+                |              +--ro community*              oc-bgpt:bgp-std-community-type
+                |              +--ro originator-id?          inet:ipv4-address
+                |              +--ro cluster-list*           inet:ipv4-address
+                |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+                |              +--ro aigp?                   uint64
+                |              +--ro path-id?                uint32
+                |              +--ro unknown-attribute* [attr-type]
+                |              |  +--ro attr-type     uint16
+                |              |  +--ro attr-len?     uint16
+                |              |  +--ro attr-value?   binary
+                |              +--ro last-modified-date?     yang:date-and-time
+                |              +--ro last-update-received?   yang:date-and-time
+                |              +--ro valid-route?            boolean
+                |              +--ro invalid-reason?         identityref
+                |              +--ro best-path?              boolean
+                +--ro neighbors
+                   +--ro neighbor* [neighbor-address]
+                      +--ro neighbor-address    inet:ip-address
+                      +--ro adj-rib-in-pre
+                      |  +--ro num-routes?   uint64
+                      |  +--ro routes
+                      |     +--ro route* [prefix]
+                      |        +--ro prefix        inet:ipv6-prefix
+                      |        +--ro attributes
+                      |           +--ro next-hops* [next-hop]
+                      |              +--ro next-hop                inet:ip-address
+                      |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+                      |              +--ro as-path?                string
+                      |              +--ro as4-path?               string
+                      |              +--ro med?                    uint32
+                      |              +--ro local-pref?             uint32
+                      |              +--ro atomic-aggr?            boolean
+                      |              +--ro aggregator
+                      |              |  +--ro as?        uint32
+                      |              |  +--ro as4?       uint32
+                      |              |  +--ro address?   inet:ipv4-address
+                      |              +--ro community*              oc-bgpt:bgp-std-community-type
+                      |              +--ro originator-id?          inet:ipv4-address
+                      |              +--ro cluster-list*           inet:ipv4-address
+                      |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+                      |              +--ro aigp?                   uint64
+                      |              +--ro path-id?                uint32
+                      |              +--ro unknown-attribute* [attr-type]
+                      |              |  +--ro attr-type     uint16
+                      |              |  +--ro attr-len?     uint16
+                      |              |  +--ro attr-value?   binary
+                      |              +--ro last-modified-date?     yang:date-and-time
+                      |              +--ro last-update-received?   yang:date-and-time
+                      |              +--ro valid-route?            boolean
+                      |              +--ro invalid-reason?         identityref
+                      |              +--ro best-path?              boolean
+                      +--ro adj-rib-in-post
+                      |  +--ro num-routes?   uint64
+                      |  +--ro routes
+                      |     +--ro route* [prefix]
+                      |        +--ro prefix        inet:ipv6-prefix
+                      |        +--ro attributes
+                      |           +--ro next-hops* [next-hop]
+                      |              +--ro next-hop                inet:ip-address
+                      |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+                      |              +--ro as-path?                string
+                      |              +--ro as4-path?               string
+                      |              +--ro med?                    uint32
+                      |              +--ro local-pref?             uint32
+                      |              +--ro atomic-aggr?            boolean
+                      |              +--ro aggregator
+                      |              |  +--ro as?        uint32
+                      |              |  +--ro as4?       uint32
+                      |              |  +--ro address?   inet:ipv4-address
+                      |              +--ro community*              oc-bgpt:bgp-std-community-type
+                      |              +--ro originator-id?          inet:ipv4-address
+                      |              +--ro cluster-list*           inet:ipv4-address
+                      |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+                      |              +--ro aigp?                   uint64
+                      |              +--ro path-id?                uint32
+                      |              +--ro unknown-attribute* [attr-type]
+                      |              |  +--ro attr-type     uint16
+                      |              |  +--ro attr-len?     uint16
+                      |              |  +--ro attr-value?   binary
+                      |              +--ro last-modified-date?     yang:date-and-time
+                      |              +--ro last-update-received?   yang:date-and-time
+                      |              +--ro valid-route?            boolean
+                      |              +--ro invalid-reason?         identityref
+                      |              +--ro best-path?              boolean
+                      +--ro adj-rib-out-pre
+                      |  +--ro num-routes?   uint64
+                      |  +--ro routes
+                      |     +--ro route* [prefix]
+                      |        +--ro prefix        inet:ipv6-prefix
+                      |        +--ro attributes
+                      |           +--ro next-hops* [next-hop]
+                      |              +--ro next-hop                inet:ip-address
+                      |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+                      |              +--ro as-path?                string
+                      |              +--ro as4-path?               string
+                      |              +--ro med?                    uint32
+                      |              +--ro local-pref?             uint32
+                      |              +--ro atomic-aggr?            boolean
+                      |              +--ro aggregator
+                      |              |  +--ro as?        uint32
+                      |              |  +--ro as4?       uint32
+                      |              |  +--ro address?   inet:ipv4-address
+                      |              +--ro community*              oc-bgpt:bgp-std-community-type
+                      |              +--ro originator-id?          inet:ipv4-address
+                      |              +--ro cluster-list*           inet:ipv4-address
+                      |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+                      |              +--ro aigp?                   uint64
+                      |              +--ro path-id?                uint32
+                      |              +--ro unknown-attribute* [attr-type]
+                      |              |  +--ro attr-type     uint16
+                      |              |  +--ro attr-len?     uint16
+                      |              |  +--ro attr-value?   binary
+                      |              +--ro last-modified-date?     yang:date-and-time
+                      |              +--ro last-update-received?   yang:date-and-time
+                      |              +--ro valid-route?            boolean
+                      |              +--ro invalid-reason?         identityref
+                      |              +--ro best-path?              boolean
+                      +--ro adj-rib-out-post
+                         +--ro num-routes?   uint64
+                         +--ro routes
+                            +--ro route* [prefix]
+                               +--ro prefix        inet:ipv6-prefix
+                               +--ro attributes
+                                  +--ro next-hops* [next-hop]
+                                     +--ro next-hop                inet:ip-address
+                                     +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+                                     +--ro as-path?                string
+                                     +--ro as4-path?               string
+                                     +--ro med?                    uint32
+                                     +--ro local-pref?             uint32
+                                     +--ro atomic-aggr?            boolean
+                                     +--ro aggregator
+                                     |  +--ro as?        uint32
+                                     |  +--ro as4?       uint32
+                                     |  +--ro address?   inet:ipv4-address
+                                     +--ro community*              oc-bgpt:bgp-std-community-type
+                                     +--ro originator-id?          inet:ipv4-address
+                                     +--ro cluster-list*           inet:ipv4-address
+                                     +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+                                     +--ro aigp?                   uint64
+                                     +--ro path-id?                uint32
+                                     +--ro unknown-attribute* [attr-type]
+                                     |  +--ro attr-type     uint16
+                                     |  +--ro attr-len?     uint16
+                                     |  +--ro attr-value?   binary
+                                     +--ro last-modified-date?     yang:date-and-time
+                                     +--ro last-update-received?   yang:date-and-time
+                                     +--ro valid-route?            boolean
+                                     +--ro invalid-reason?         identityref
+                                     +--ro best-path?              boolean
+Xpaths for model: cisco-xe-openconfig-rib-bgp-ext.yang

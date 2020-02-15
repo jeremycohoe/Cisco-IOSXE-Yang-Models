@@ -1,0 +1,47 @@
+ 
+KPI for model: ietf-netconf-notifications.yang
+module: ietf-netconf-notifications
+
+  notifications:
+    +---n netconf-config-change
+    |  +--ro changed-by
+    |  |  +--ro (server-or-user)
+    |  |     +--:(server)
+    |  |     |  +--ro server?        empty
+    |  |     +--:(by-user)
+    |  |        +--ro username       string
+    |  |        +--ro session-id     nc:session-id-or-zero-type
+    |  |        +--ro source-host?   inet:ip-address
+    |  +--ro datastore?    enumeration
+    |  +--ro edit* []
+    |     +--ro target?      instance-identifier
+    |     +--ro operation?   nc:edit-operation-type
+    +---n netconf-capability-change
+    |  +--ro changed-by
+    |  |  +--ro (server-or-user)
+    |  |     +--:(server)
+    |  |     |  +--ro server?        empty
+    |  |     +--:(by-user)
+    |  |        +--ro username       string
+    |  |        +--ro session-id     nc:session-id-or-zero-type
+    |  |        +--ro source-host?   inet:ip-address
+    |  +--ro added-capability*      inet:uri
+    |  +--ro deleted-capability*    inet:uri
+    |  +--ro modified-capability*   inet:uri
+    +---n netconf-session-start
+    |  +--ro username       string
+    |  +--ro session-id     nc:session-id-or-zero-type
+    |  +--ro source-host?   inet:ip-address
+    +---n netconf-session-end
+    |  +--ro username              string
+    |  +--ro session-id            nc:session-id-or-zero-type
+    |  +--ro source-host?          inet:ip-address
+    |  +--ro killed-by?            nc:session-id-type
+    |  +--ro termination-reason    enumeration
+    +---n netconf-confirmed-commit
+       +--ro username         string
+       +--ro session-id       nc:session-id-or-zero-type
+       +--ro source-host?     inet:ip-address
+       +--ro confirm-event    enumeration
+       +--ro timeout?         uint32
+Xpaths for model: ietf-netconf-notifications.yang

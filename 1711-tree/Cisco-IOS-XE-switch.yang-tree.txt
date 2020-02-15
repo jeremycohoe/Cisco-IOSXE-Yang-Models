@@ -1,0 +1,4714 @@
+ 
+KPI for model: Cisco-IOS-XE-switch.yang
+
+module: Cisco-IOS-XE-switch
+  augment /ios:native:
+    +--rw network-policy
+       +--rw profile?   uint32
+  augment /ios:native/ios:system:
+    +--rw debug
+    |  +--rw shell
+    |     +--rw switch
+    |        +--rw switch-number?   uint8
+    |        +--rw all?             empty
+    +--rw disable
+    |  +--rw password
+    |     +--rw recovery
+    |        +--rw switch
+    |           +--rw number?   uint8
+    |           +--rw all?      empty
+    +--rw environment
+    |  +--rw fan-fail-action
+    |  |  +--rw shut?   empty
+    |  +--rw temperature
+    |     +--rw threshold
+    |        +--rw yellow
+    |           +--rw delta-value?   uint8
+    |           +--rw detail?        empty
+    +--rw fnf
+    |  +--rw bytes-count
+    |     +--rw layer2?   empty
+    +--rw ignore
+    |  +--rw startupconfig
+    |     +--rw switch
+    |        +--rw number?   uint8
+    |        +--rw all?      empty
+    +--rw mode-button
+    |  +--rw reset?   empty
+    +--rw mtu
+       +--rw size?      uint16
+       +--rw jumbo?     uint16
+       +--rw routing?   uint16
+  augment /ios:native/ios:interface/ios:FastEthernet/ios:switchport:
+    +--rw access
+    |  +--rw vlan
+    |     +--rw vlan?   union
+    |     x--rw name?   string
+    +--rw block
+    |  +--rw multicast?   empty
+    |  +--rw unicast?     empty
+    +--rw mode
+    |  +--rw (mode-choice)?
+    |     +--:(access)
+    |     |  +--rw access!
+    |     +--:(dot1q-tunnel)
+    |     |  +--rw dot1q-tunnel!
+    |     +--:(dynamic)
+    |     |  +--rw dynamic?        enumeration
+    |     +--:(private-vlan)
+    |     |  +--rw private-vlan
+    |     |     +--rw trunk!
+    |     |     |  +--rw trunk-config?   enumeration
+    |     |     +--rw host?          empty
+    |     |     +--rw promiscuous?   empty
+    |     +--:(trunk)
+    |        +--rw trunk!
+    +--rw nonegotiate?          empty
+    +--rw port-security-cfg?    empty
+    +--rw port-security-conf
+    |  +--rw port-security
+    |     +--rw aging
+    |     |  +--rw static?   empty
+    |     |  +--rw time?     uint16
+    |     |  +--rw type?     enumeration
+    |     +--rw mac-address
+    |     |  +--rw sticky?       empty
+    |     |  +--rw hw-address?   yang:mac-address
+    |     |  +--rw vlan?         uint16
+    |     +--rw maxcount* [max-addresses]
+    |     |  +--rw max-addresses    uint16
+    |     |  +--rw vlan?            string
+    |     x--rw maximum
+    |     |  x--rw max-addresses?   uint16
+    |     |  x--rw vlan?            string
+    |     +--rw violation
+    |        +--rw (violation-choice)?
+    |           +--:(protect)
+    |           |  +--rw protect?    empty
+    |           +--:(restrict)
+    |           |  +--rw restrict?   empty
+    |           +--:(shutdown)
+    |              +--rw shutdown
+    |                 +--rw vlan?   empty
+    x--rw port-security!
+    |  x--rw aging
+    |  |  x--rw static?   empty
+    |  |  x--rw time?     uint16
+    |  |  x--rw type?     enumeration
+    |  x--rw mac-address
+    |  |  x--rw sticky?       empty
+    |  |  x--rw hw-address?   yang:mac-address
+    |  |  x--rw vlan?         uint16
+    |  x--rw maximum
+    |  |  x--rw max-addresses?   uint16
+    |  |  x--rw vlan?            string
+    |  x--rw violation?     enumeration
+    +--rw trunk
+    |  +--rw allowed
+    |  |  +--rw vlan
+    |  |     +--rw (vlan-choice)?
+    |  |        +--:(vlans)
+    |  |        |  +--rw vlans?    union
+    |  |        +--:(all)
+    |  |        |  x--rw all?      empty
+    |  |        +--:(none)
+    |  |        |  +--rw none?     empty
+    |  |        +--:(add)
+    |  |        |  +--rw add?      union
+    |  |        +--:(except)
+    |  |        |  +--rw except?   union
+    |  |        +--:(remove)
+    |  |           +--rw remove?   union
+    |  +--rw encapsulation?   enumeration
+    |  +--rw native
+    |  |  +--rw vlan?   union
+    |  +--rw pruning
+    |     +--rw vlan
+    |        +--rw (vlan-choice)?
+    |           +--:(vlans)
+    |           |  +--rw vlans*    union
+    |           +--:(add)
+    |           |  +--rw add?      union
+    |           +--:(except)
+    |           |  +--rw except*   union
+    |           +--:(none)
+    |           |  +--rw none?     empty
+    |           +--:(remove)
+    |              +--rw remove?   union
+    +--rw voice
+    |  +--rw vlan
+    |  |  +--rw vlan?   union
+    |  |  +--rw name?   string
+    |  +--rw detect
+    |     +--rw cisco-phone!
+    |        +--rw full-duplex?   empty
+    +--rw priority
+    |  +--rw extend
+    |     +--rw (trust-choice)?
+    |        +--:(trust)
+    |        |  +--rw trust?   empty
+    |        +--:(cos)
+    |           +--rw cos?     uint8
+    +--rw autostate
+    |  +--rw exclude?   empty
+    +--rw protected?            empty
+    +--rw host?                 empty
+    +--rw private-vlan
+    |  +--rw association
+    |  |  +--rw host
+    |  |  |  +--rw primary-range?     uint16
+    |  |  |  +--rw secondary-range?   uint16
+    |  |  +--rw mapping
+    |  |     +--rw primary-range?     uint16
+    |  |     +--rw secondary-range?   string
+    |  |     +--rw add?               string
+    |  |     +--rw remove?            string
+    |  +--rw host-association
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   uint16
+    |  +--rw mapping
+    |  |  +--rw trunk?             empty
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   string
+    |  |  x--rw add?               string
+    |  |  x--rw remove?            string
+    |  +--rw trunk
+    |     +--rw allowed
+    |     |  +--rw vlan
+    |     |     +--rw vlans?   union
+    |     +--rw native
+    |        +--rw vlan
+    |           +--rw vlans?   uint16
+    |           +--rw tag?     empty
+    +--rw vepa
+    |  +--rw enabled?   empty
+    +--rw app-interface?        empty
+    o--rw device-tracking!
+       o--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:GigabitEthernet/ios:switchport:
+    +--rw access
+    |  +--rw vlan
+    |     +--rw vlan?   union
+    |     x--rw name?   string
+    +--rw block
+    |  +--rw multicast?   empty
+    |  +--rw unicast?     empty
+    +--rw mode
+    |  +--rw (mode-choice)?
+    |     +--:(access)
+    |     |  +--rw access!
+    |     +--:(dot1q-tunnel)
+    |     |  +--rw dot1q-tunnel!
+    |     +--:(dynamic)
+    |     |  +--rw dynamic?        enumeration
+    |     +--:(private-vlan)
+    |     |  +--rw private-vlan
+    |     |     +--rw trunk!
+    |     |     |  +--rw trunk-config?   enumeration
+    |     |     +--rw host?          empty
+    |     |     +--rw promiscuous?   empty
+    |     +--:(trunk)
+    |        +--rw trunk!
+    +--rw nonegotiate?          empty
+    +--rw port-security-cfg?    empty
+    +--rw port-security-conf
+    |  +--rw port-security
+    |     +--rw aging
+    |     |  +--rw static?   empty
+    |     |  +--rw time?     uint16
+    |     |  +--rw type?     enumeration
+    |     +--rw mac-address
+    |     |  +--rw sticky?       empty
+    |     |  +--rw hw-address?   yang:mac-address
+    |     |  +--rw vlan?         uint16
+    |     +--rw maxcount* [max-addresses]
+    |     |  +--rw max-addresses    uint16
+    |     |  +--rw vlan?            string
+    |     x--rw maximum
+    |     |  x--rw max-addresses?   uint16
+    |     |  x--rw vlan?            string
+    |     +--rw violation
+    |        +--rw (violation-choice)?
+    |           +--:(protect)
+    |           |  +--rw protect?    empty
+    |           +--:(restrict)
+    |           |  +--rw restrict?   empty
+    |           +--:(shutdown)
+    |              +--rw shutdown
+    |                 +--rw vlan?   empty
+    x--rw port-security!
+    |  x--rw aging
+    |  |  x--rw static?   empty
+    |  |  x--rw time?     uint16
+    |  |  x--rw type?     enumeration
+    |  x--rw mac-address
+    |  |  x--rw sticky?       empty
+    |  |  x--rw hw-address?   yang:mac-address
+    |  |  x--rw vlan?         uint16
+    |  x--rw maximum
+    |  |  x--rw max-addresses?   uint16
+    |  |  x--rw vlan?            string
+    |  x--rw violation?     enumeration
+    +--rw trunk
+    |  +--rw allowed
+    |  |  +--rw vlan
+    |  |     +--rw (vlan-choice)?
+    |  |        +--:(vlans)
+    |  |        |  +--rw vlans?    union
+    |  |        +--:(all)
+    |  |        |  x--rw all?      empty
+    |  |        +--:(none)
+    |  |        |  +--rw none?     empty
+    |  |        +--:(add)
+    |  |        |  +--rw add?      union
+    |  |        +--:(except)
+    |  |        |  +--rw except?   union
+    |  |        +--:(remove)
+    |  |           +--rw remove?   union
+    |  +--rw encapsulation?   enumeration
+    |  +--rw native
+    |  |  +--rw vlan?   union
+    |  +--rw pruning
+    |     +--rw vlan
+    |        +--rw (vlan-choice)?
+    |           +--:(vlans)
+    |           |  +--rw vlans*    union
+    |           +--:(add)
+    |           |  +--rw add?      union
+    |           +--:(except)
+    |           |  +--rw except*   union
+    |           +--:(none)
+    |           |  +--rw none?     empty
+    |           +--:(remove)
+    |              +--rw remove?   union
+    +--rw voice
+    |  +--rw vlan
+    |  |  +--rw vlan?   union
+    |  |  +--rw name?   string
+    |  +--rw detect
+    |     +--rw cisco-phone!
+    |        +--rw full-duplex?   empty
+    +--rw priority
+    |  +--rw extend
+    |     +--rw (trust-choice)?
+    |        +--:(trust)
+    |        |  +--rw trust?   empty
+    |        +--:(cos)
+    |           +--rw cos?     uint8
+    +--rw autostate
+    |  +--rw exclude?   empty
+    +--rw protected?            empty
+    +--rw host?                 empty
+    +--rw private-vlan
+    |  +--rw association
+    |  |  +--rw host
+    |  |  |  +--rw primary-range?     uint16
+    |  |  |  +--rw secondary-range?   uint16
+    |  |  +--rw mapping
+    |  |     +--rw primary-range?     uint16
+    |  |     +--rw secondary-range?   string
+    |  |     +--rw add?               string
+    |  |     +--rw remove?            string
+    |  +--rw host-association
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   uint16
+    |  +--rw mapping
+    |  |  +--rw trunk?             empty
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   string
+    |  |  x--rw add?               string
+    |  |  x--rw remove?            string
+    |  +--rw trunk
+    |     +--rw allowed
+    |     |  +--rw vlan
+    |     |     +--rw vlans?   union
+    |     +--rw native
+    |        +--rw vlan
+    |           +--rw vlans?   uint16
+    |           +--rw tag?     empty
+    +--rw vepa
+    |  +--rw enabled?   empty
+    +--rw app-interface?        empty
+    o--rw device-tracking!
+       o--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet/ios:switchport:
+    +--rw access
+    |  +--rw vlan
+    |     +--rw vlan?   union
+    |     x--rw name?   string
+    +--rw block
+    |  +--rw multicast?   empty
+    |  +--rw unicast?     empty
+    +--rw mode
+    |  +--rw (mode-choice)?
+    |     +--:(access)
+    |     |  +--rw access!
+    |     +--:(dot1q-tunnel)
+    |     |  +--rw dot1q-tunnel!
+    |     +--:(dynamic)
+    |     |  +--rw dynamic?        enumeration
+    |     +--:(private-vlan)
+    |     |  +--rw private-vlan
+    |     |     +--rw trunk!
+    |     |     |  +--rw trunk-config?   enumeration
+    |     |     +--rw host?          empty
+    |     |     +--rw promiscuous?   empty
+    |     +--:(trunk)
+    |        +--rw trunk!
+    +--rw nonegotiate?          empty
+    +--rw port-security-cfg?    empty
+    +--rw port-security-conf
+    |  +--rw port-security
+    |     +--rw aging
+    |     |  +--rw static?   empty
+    |     |  +--rw time?     uint16
+    |     |  +--rw type?     enumeration
+    |     +--rw mac-address
+    |     |  +--rw sticky?       empty
+    |     |  +--rw hw-address?   yang:mac-address
+    |     |  +--rw vlan?         uint16
+    |     +--rw maxcount* [max-addresses]
+    |     |  +--rw max-addresses    uint16
+    |     |  +--rw vlan?            string
+    |     x--rw maximum
+    |     |  x--rw max-addresses?   uint16
+    |     |  x--rw vlan?            string
+    |     +--rw violation
+    |        +--rw (violation-choice)?
+    |           +--:(protect)
+    |           |  +--rw protect?    empty
+    |           +--:(restrict)
+    |           |  +--rw restrict?   empty
+    |           +--:(shutdown)
+    |              +--rw shutdown
+    |                 +--rw vlan?   empty
+    x--rw port-security!
+    |  x--rw aging
+    |  |  x--rw static?   empty
+    |  |  x--rw time?     uint16
+    |  |  x--rw type?     enumeration
+    |  x--rw mac-address
+    |  |  x--rw sticky?       empty
+    |  |  x--rw hw-address?   yang:mac-address
+    |  |  x--rw vlan?         uint16
+    |  x--rw maximum
+    |  |  x--rw max-addresses?   uint16
+    |  |  x--rw vlan?            string
+    |  x--rw violation?     enumeration
+    +--rw trunk
+    |  +--rw allowed
+    |  |  +--rw vlan
+    |  |     +--rw (vlan-choice)?
+    |  |        +--:(vlans)
+    |  |        |  +--rw vlans?    union
+    |  |        +--:(all)
+    |  |        |  x--rw all?      empty
+    |  |        +--:(none)
+    |  |        |  +--rw none?     empty
+    |  |        +--:(add)
+    |  |        |  +--rw add?      union
+    |  |        +--:(except)
+    |  |        |  +--rw except?   union
+    |  |        +--:(remove)
+    |  |           +--rw remove?   union
+    |  +--rw encapsulation?   enumeration
+    |  +--rw native
+    |  |  +--rw vlan?   union
+    |  +--rw pruning
+    |     +--rw vlan
+    |        +--rw (vlan-choice)?
+    |           +--:(vlans)
+    |           |  +--rw vlans*    union
+    |           +--:(add)
+    |           |  +--rw add?      union
+    |           +--:(except)
+    |           |  +--rw except*   union
+    |           +--:(none)
+    |           |  +--rw none?     empty
+    |           +--:(remove)
+    |              +--rw remove?   union
+    +--rw voice
+    |  +--rw vlan
+    |  |  +--rw vlan?   union
+    |  |  +--rw name?   string
+    |  +--rw detect
+    |     +--rw cisco-phone!
+    |        +--rw full-duplex?   empty
+    +--rw priority
+    |  +--rw extend
+    |     +--rw (trust-choice)?
+    |        +--:(trust)
+    |        |  +--rw trust?   empty
+    |        +--:(cos)
+    |           +--rw cos?     uint8
+    +--rw autostate
+    |  +--rw exclude?   empty
+    +--rw protected?            empty
+    +--rw host?                 empty
+    +--rw private-vlan
+    |  +--rw association
+    |  |  +--rw host
+    |  |  |  +--rw primary-range?     uint16
+    |  |  |  +--rw secondary-range?   uint16
+    |  |  +--rw mapping
+    |  |     +--rw primary-range?     uint16
+    |  |     +--rw secondary-range?   string
+    |  |     +--rw add?               string
+    |  |     +--rw remove?            string
+    |  +--rw host-association
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   uint16
+    |  +--rw mapping
+    |  |  +--rw trunk?             empty
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   string
+    |  |  x--rw add?               string
+    |  |  x--rw remove?            string
+    |  +--rw trunk
+    |     +--rw allowed
+    |     |  +--rw vlan
+    |     |     +--rw vlans?   union
+    |     +--rw native
+    |        +--rw vlan
+    |           +--rw vlans?   uint16
+    |           +--rw tag?     empty
+    +--rw vepa
+    |  +--rw enabled?   empty
+    +--rw app-interface?        empty
+    o--rw device-tracking!
+       o--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet/ios:switchport:
+    +--rw access
+    |  +--rw vlan
+    |     +--rw vlan?   union
+    |     x--rw name?   string
+    +--rw block
+    |  +--rw multicast?   empty
+    |  +--rw unicast?     empty
+    +--rw mode
+    |  +--rw (mode-choice)?
+    |     +--:(access)
+    |     |  +--rw access!
+    |     +--:(dot1q-tunnel)
+    |     |  +--rw dot1q-tunnel!
+    |     +--:(dynamic)
+    |     |  +--rw dynamic?        enumeration
+    |     +--:(private-vlan)
+    |     |  +--rw private-vlan
+    |     |     +--rw trunk!
+    |     |     |  +--rw trunk-config?   enumeration
+    |     |     +--rw host?          empty
+    |     |     +--rw promiscuous?   empty
+    |     +--:(trunk)
+    |        +--rw trunk!
+    +--rw nonegotiate?          empty
+    +--rw port-security-cfg?    empty
+    +--rw port-security-conf
+    |  +--rw port-security
+    |     +--rw aging
+    |     |  +--rw static?   empty
+    |     |  +--rw time?     uint16
+    |     |  +--rw type?     enumeration
+    |     +--rw mac-address
+    |     |  +--rw sticky?       empty
+    |     |  +--rw hw-address?   yang:mac-address
+    |     |  +--rw vlan?         uint16
+    |     +--rw maxcount* [max-addresses]
+    |     |  +--rw max-addresses    uint16
+    |     |  +--rw vlan?            string
+    |     x--rw maximum
+    |     |  x--rw max-addresses?   uint16
+    |     |  x--rw vlan?            string
+    |     +--rw violation
+    |        +--rw (violation-choice)?
+    |           +--:(protect)
+    |           |  +--rw protect?    empty
+    |           +--:(restrict)
+    |           |  +--rw restrict?   empty
+    |           +--:(shutdown)
+    |              +--rw shutdown
+    |                 +--rw vlan?   empty
+    x--rw port-security!
+    |  x--rw aging
+    |  |  x--rw static?   empty
+    |  |  x--rw time?     uint16
+    |  |  x--rw type?     enumeration
+    |  x--rw mac-address
+    |  |  x--rw sticky?       empty
+    |  |  x--rw hw-address?   yang:mac-address
+    |  |  x--rw vlan?         uint16
+    |  x--rw maximum
+    |  |  x--rw max-addresses?   uint16
+    |  |  x--rw vlan?            string
+    |  x--rw violation?     enumeration
+    +--rw trunk
+    |  +--rw allowed
+    |  |  +--rw vlan
+    |  |     +--rw (vlan-choice)?
+    |  |        +--:(vlans)
+    |  |        |  +--rw vlans?    union
+    |  |        +--:(all)
+    |  |        |  x--rw all?      empty
+    |  |        +--:(none)
+    |  |        |  +--rw none?     empty
+    |  |        +--:(add)
+    |  |        |  +--rw add?      union
+    |  |        +--:(except)
+    |  |        |  +--rw except?   union
+    |  |        +--:(remove)
+    |  |           +--rw remove?   union
+    |  +--rw encapsulation?   enumeration
+    |  +--rw native
+    |  |  +--rw vlan?   union
+    |  +--rw pruning
+    |     +--rw vlan
+    |        +--rw (vlan-choice)?
+    |           +--:(vlans)
+    |           |  +--rw vlans*    union
+    |           +--:(add)
+    |           |  +--rw add?      union
+    |           +--:(except)
+    |           |  +--rw except*   union
+    |           +--:(none)
+    |           |  +--rw none?     empty
+    |           +--:(remove)
+    |              +--rw remove?   union
+    +--rw voice
+    |  +--rw vlan
+    |  |  +--rw vlan?   union
+    |  |  +--rw name?   string
+    |  +--rw detect
+    |     +--rw cisco-phone!
+    |        +--rw full-duplex?   empty
+    +--rw priority
+    |  +--rw extend
+    |     +--rw (trust-choice)?
+    |        +--:(trust)
+    |        |  +--rw trust?   empty
+    |        +--:(cos)
+    |           +--rw cos?     uint8
+    +--rw autostate
+    |  +--rw exclude?   empty
+    +--rw protected?            empty
+    +--rw host?                 empty
+    +--rw private-vlan
+    |  +--rw association
+    |  |  +--rw host
+    |  |  |  +--rw primary-range?     uint16
+    |  |  |  +--rw secondary-range?   uint16
+    |  |  +--rw mapping
+    |  |     +--rw primary-range?     uint16
+    |  |     +--rw secondary-range?   string
+    |  |     +--rw add?               string
+    |  |     +--rw remove?            string
+    |  +--rw host-association
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   uint16
+    |  +--rw mapping
+    |  |  +--rw trunk?             empty
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   string
+    |  |  x--rw add?               string
+    |  |  x--rw remove?            string
+    |  +--rw trunk
+    |     +--rw allowed
+    |     |  +--rw vlan
+    |     |     +--rw vlans?   union
+    |     +--rw native
+    |        +--rw vlan
+    |           +--rw vlans?   uint16
+    |           +--rw tag?     empty
+    +--rw vepa
+    |  +--rw enabled?   empty
+    +--rw app-interface?        empty
+    o--rw device-tracking!
+       o--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:AppGigabitEthernet/ios:switchport:
+    +--rw access
+    |  +--rw vlan
+    |     +--rw vlan?   union
+    |     x--rw name?   string
+    +--rw block
+    |  +--rw multicast?   empty
+    |  +--rw unicast?     empty
+    +--rw mode
+    |  +--rw (mode-choice)?
+    |     +--:(access)
+    |     |  +--rw access!
+    |     +--:(dot1q-tunnel)
+    |     |  +--rw dot1q-tunnel!
+    |     +--:(dynamic)
+    |     |  +--rw dynamic?        enumeration
+    |     +--:(private-vlan)
+    |     |  +--rw private-vlan
+    |     |     +--rw trunk!
+    |     |     |  +--rw trunk-config?   enumeration
+    |     |     +--rw host?          empty
+    |     |     +--rw promiscuous?   empty
+    |     +--:(trunk)
+    |        +--rw trunk!
+    +--rw nonegotiate?          empty
+    +--rw port-security-cfg?    empty
+    +--rw port-security-conf
+    |  +--rw port-security
+    |     +--rw aging
+    |     |  +--rw static?   empty
+    |     |  +--rw time?     uint16
+    |     |  +--rw type?     enumeration
+    |     +--rw mac-address
+    |     |  +--rw sticky?       empty
+    |     |  +--rw hw-address?   yang:mac-address
+    |     |  +--rw vlan?         uint16
+    |     +--rw maxcount* [max-addresses]
+    |     |  +--rw max-addresses    uint16
+    |     |  +--rw vlan?            string
+    |     x--rw maximum
+    |     |  x--rw max-addresses?   uint16
+    |     |  x--rw vlan?            string
+    |     +--rw violation
+    |        +--rw (violation-choice)?
+    |           +--:(protect)
+    |           |  +--rw protect?    empty
+    |           +--:(restrict)
+    |           |  +--rw restrict?   empty
+    |           +--:(shutdown)
+    |              +--rw shutdown
+    |                 +--rw vlan?   empty
+    x--rw port-security!
+    |  x--rw aging
+    |  |  x--rw static?   empty
+    |  |  x--rw time?     uint16
+    |  |  x--rw type?     enumeration
+    |  x--rw mac-address
+    |  |  x--rw sticky?       empty
+    |  |  x--rw hw-address?   yang:mac-address
+    |  |  x--rw vlan?         uint16
+    |  x--rw maximum
+    |  |  x--rw max-addresses?   uint16
+    |  |  x--rw vlan?            string
+    |  x--rw violation?     enumeration
+    +--rw trunk
+    |  +--rw allowed
+    |  |  +--rw vlan
+    |  |     +--rw (vlan-choice)?
+    |  |        +--:(vlans)
+    |  |        |  +--rw vlans?    union
+    |  |        +--:(all)
+    |  |        |  x--rw all?      empty
+    |  |        +--:(none)
+    |  |        |  +--rw none?     empty
+    |  |        +--:(add)
+    |  |        |  +--rw add?      union
+    |  |        +--:(except)
+    |  |        |  +--rw except?   union
+    |  |        +--:(remove)
+    |  |           +--rw remove?   union
+    |  +--rw encapsulation?   enumeration
+    |  +--rw native
+    |  |  +--rw vlan?   union
+    |  +--rw pruning
+    |     +--rw vlan
+    |        +--rw (vlan-choice)?
+    |           +--:(vlans)
+    |           |  +--rw vlans*    union
+    |           +--:(add)
+    |           |  +--rw add?      union
+    |           +--:(except)
+    |           |  +--rw except*   union
+    |           +--:(none)
+    |           |  +--rw none?     empty
+    |           +--:(remove)
+    |              +--rw remove?   union
+    +--rw voice
+    |  +--rw vlan
+    |  |  +--rw vlan?   union
+    |  |  +--rw name?   string
+    |  +--rw detect
+    |     +--rw cisco-phone!
+    |        +--rw full-duplex?   empty
+    +--rw priority
+    |  +--rw extend
+    |     +--rw (trust-choice)?
+    |        +--:(trust)
+    |        |  +--rw trust?   empty
+    |        +--:(cos)
+    |           +--rw cos?     uint8
+    +--rw autostate
+    |  +--rw exclude?   empty
+    +--rw protected?            empty
+    +--rw host?                 empty
+    +--rw private-vlan
+    |  +--rw association
+    |  |  +--rw host
+    |  |  |  +--rw primary-range?     uint16
+    |  |  |  +--rw secondary-range?   uint16
+    |  |  +--rw mapping
+    |  |     +--rw primary-range?     uint16
+    |  |     +--rw secondary-range?   string
+    |  |     +--rw add?               string
+    |  |     +--rw remove?            string
+    |  +--rw host-association
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   uint16
+    |  +--rw mapping
+    |  |  +--rw trunk?             empty
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   string
+    |  |  x--rw add?               string
+    |  |  x--rw remove?            string
+    |  +--rw trunk
+    |     +--rw allowed
+    |     |  +--rw vlan
+    |     |     +--rw vlans?   union
+    |     +--rw native
+    |        +--rw vlan
+    |           +--rw vlans?   uint16
+    |           +--rw tag?     empty
+    +--rw vepa
+    |  +--rw enabled?   empty
+    +--rw app-interface?        empty
+    o--rw device-tracking!
+       o--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet/ios:switchport:
+    +--rw access
+    |  +--rw vlan
+    |     +--rw vlan?   union
+    |     x--rw name?   string
+    +--rw block
+    |  +--rw multicast?   empty
+    |  +--rw unicast?     empty
+    +--rw mode
+    |  +--rw (mode-choice)?
+    |     +--:(access)
+    |     |  +--rw access!
+    |     +--:(dot1q-tunnel)
+    |     |  +--rw dot1q-tunnel!
+    |     +--:(dynamic)
+    |     |  +--rw dynamic?        enumeration
+    |     +--:(private-vlan)
+    |     |  +--rw private-vlan
+    |     |     +--rw trunk!
+    |     |     |  +--rw trunk-config?   enumeration
+    |     |     +--rw host?          empty
+    |     |     +--rw promiscuous?   empty
+    |     +--:(trunk)
+    |        +--rw trunk!
+    +--rw nonegotiate?          empty
+    +--rw port-security-cfg?    empty
+    +--rw port-security-conf
+    |  +--rw port-security
+    |     +--rw aging
+    |     |  +--rw static?   empty
+    |     |  +--rw time?     uint16
+    |     |  +--rw type?     enumeration
+    |     +--rw mac-address
+    |     |  +--rw sticky?       empty
+    |     |  +--rw hw-address?   yang:mac-address
+    |     |  +--rw vlan?         uint16
+    |     +--rw maxcount* [max-addresses]
+    |     |  +--rw max-addresses    uint16
+    |     |  +--rw vlan?            string
+    |     x--rw maximum
+    |     |  x--rw max-addresses?   uint16
+    |     |  x--rw vlan?            string
+    |     +--rw violation
+    |        +--rw (violation-choice)?
+    |           +--:(protect)
+    |           |  +--rw protect?    empty
+    |           +--:(restrict)
+    |           |  +--rw restrict?   empty
+    |           +--:(shutdown)
+    |              +--rw shutdown
+    |                 +--rw vlan?   empty
+    x--rw port-security!
+    |  x--rw aging
+    |  |  x--rw static?   empty
+    |  |  x--rw time?     uint16
+    |  |  x--rw type?     enumeration
+    |  x--rw mac-address
+    |  |  x--rw sticky?       empty
+    |  |  x--rw hw-address?   yang:mac-address
+    |  |  x--rw vlan?         uint16
+    |  x--rw maximum
+    |  |  x--rw max-addresses?   uint16
+    |  |  x--rw vlan?            string
+    |  x--rw violation?     enumeration
+    +--rw trunk
+    |  +--rw allowed
+    |  |  +--rw vlan
+    |  |     +--rw (vlan-choice)?
+    |  |        +--:(vlans)
+    |  |        |  +--rw vlans?    union
+    |  |        +--:(all)
+    |  |        |  x--rw all?      empty
+    |  |        +--:(none)
+    |  |        |  +--rw none?     empty
+    |  |        +--:(add)
+    |  |        |  +--rw add?      union
+    |  |        +--:(except)
+    |  |        |  +--rw except?   union
+    |  |        +--:(remove)
+    |  |           +--rw remove?   union
+    |  +--rw encapsulation?   enumeration
+    |  +--rw native
+    |  |  +--rw vlan?   union
+    |  +--rw pruning
+    |     +--rw vlan
+    |        +--rw (vlan-choice)?
+    |           +--:(vlans)
+    |           |  +--rw vlans*    union
+    |           +--:(add)
+    |           |  +--rw add?      union
+    |           +--:(except)
+    |           |  +--rw except*   union
+    |           +--:(none)
+    |           |  +--rw none?     empty
+    |           +--:(remove)
+    |              +--rw remove?   union
+    +--rw voice
+    |  +--rw vlan
+    |  |  +--rw vlan?   union
+    |  |  +--rw name?   string
+    |  +--rw detect
+    |     +--rw cisco-phone!
+    |        +--rw full-duplex?   empty
+    +--rw priority
+    |  +--rw extend
+    |     +--rw (trust-choice)?
+    |        +--:(trust)
+    |        |  +--rw trust?   empty
+    |        +--:(cos)
+    |           +--rw cos?     uint8
+    +--rw autostate
+    |  +--rw exclude?   empty
+    +--rw protected?            empty
+    +--rw host?                 empty
+    +--rw private-vlan
+    |  +--rw association
+    |  |  +--rw host
+    |  |  |  +--rw primary-range?     uint16
+    |  |  |  +--rw secondary-range?   uint16
+    |  |  +--rw mapping
+    |  |     +--rw primary-range?     uint16
+    |  |     +--rw secondary-range?   string
+    |  |     +--rw add?               string
+    |  |     +--rw remove?            string
+    |  +--rw host-association
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   uint16
+    |  +--rw mapping
+    |  |  +--rw trunk?             empty
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   string
+    |  |  x--rw add?               string
+    |  |  x--rw remove?            string
+    |  +--rw trunk
+    |     +--rw allowed
+    |     |  +--rw vlan
+    |     |     +--rw vlans?   union
+    |     +--rw native
+    |        +--rw vlan
+    |           +--rw vlans?   uint16
+    |           +--rw tag?     empty
+    +--rw vepa
+    |  +--rw enabled?   empty
+    +--rw app-interface?        empty
+    o--rw device-tracking!
+       o--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:TwentyFiveGigabitEthernet/ios:switchport:
+    +--rw access
+    |  +--rw vlan
+    |     +--rw vlan?   union
+    |     x--rw name?   string
+    +--rw block
+    |  +--rw multicast?   empty
+    |  +--rw unicast?     empty
+    +--rw mode
+    |  +--rw (mode-choice)?
+    |     +--:(access)
+    |     |  +--rw access!
+    |     +--:(dot1q-tunnel)
+    |     |  +--rw dot1q-tunnel!
+    |     +--:(dynamic)
+    |     |  +--rw dynamic?        enumeration
+    |     +--:(private-vlan)
+    |     |  +--rw private-vlan
+    |     |     +--rw trunk!
+    |     |     |  +--rw trunk-config?   enumeration
+    |     |     +--rw host?          empty
+    |     |     +--rw promiscuous?   empty
+    |     +--:(trunk)
+    |        +--rw trunk!
+    +--rw nonegotiate?          empty
+    +--rw port-security-cfg?    empty
+    +--rw port-security-conf
+    |  +--rw port-security
+    |     +--rw aging
+    |     |  +--rw static?   empty
+    |     |  +--rw time?     uint16
+    |     |  +--rw type?     enumeration
+    |     +--rw mac-address
+    |     |  +--rw sticky?       empty
+    |     |  +--rw hw-address?   yang:mac-address
+    |     |  +--rw vlan?         uint16
+    |     +--rw maxcount* [max-addresses]
+    |     |  +--rw max-addresses    uint16
+    |     |  +--rw vlan?            string
+    |     x--rw maximum
+    |     |  x--rw max-addresses?   uint16
+    |     |  x--rw vlan?            string
+    |     +--rw violation
+    |        +--rw (violation-choice)?
+    |           +--:(protect)
+    |           |  +--rw protect?    empty
+    |           +--:(restrict)
+    |           |  +--rw restrict?   empty
+    |           +--:(shutdown)
+    |              +--rw shutdown
+    |                 +--rw vlan?   empty
+    x--rw port-security!
+    |  x--rw aging
+    |  |  x--rw static?   empty
+    |  |  x--rw time?     uint16
+    |  |  x--rw type?     enumeration
+    |  x--rw mac-address
+    |  |  x--rw sticky?       empty
+    |  |  x--rw hw-address?   yang:mac-address
+    |  |  x--rw vlan?         uint16
+    |  x--rw maximum
+    |  |  x--rw max-addresses?   uint16
+    |  |  x--rw vlan?            string
+    |  x--rw violation?     enumeration
+    +--rw trunk
+    |  +--rw allowed
+    |  |  +--rw vlan
+    |  |     +--rw (vlan-choice)?
+    |  |        +--:(vlans)
+    |  |        |  +--rw vlans?    union
+    |  |        +--:(all)
+    |  |        |  x--rw all?      empty
+    |  |        +--:(none)
+    |  |        |  +--rw none?     empty
+    |  |        +--:(add)
+    |  |        |  +--rw add?      union
+    |  |        +--:(except)
+    |  |        |  +--rw except?   union
+    |  |        +--:(remove)
+    |  |           +--rw remove?   union
+    |  +--rw encapsulation?   enumeration
+    |  +--rw native
+    |  |  +--rw vlan?   union
+    |  +--rw pruning
+    |     +--rw vlan
+    |        +--rw (vlan-choice)?
+    |           +--:(vlans)
+    |           |  +--rw vlans*    union
+    |           +--:(add)
+    |           |  +--rw add?      union
+    |           +--:(except)
+    |           |  +--rw except*   union
+    |           +--:(none)
+    |           |  +--rw none?     empty
+    |           +--:(remove)
+    |              +--rw remove?   union
+    +--rw voice
+    |  +--rw vlan
+    |  |  +--rw vlan?   union
+    |  |  +--rw name?   string
+    |  +--rw detect
+    |     +--rw cisco-phone!
+    |        +--rw full-duplex?   empty
+    +--rw priority
+    |  +--rw extend
+    |     +--rw (trust-choice)?
+    |        +--:(trust)
+    |        |  +--rw trust?   empty
+    |        +--:(cos)
+    |           +--rw cos?     uint8
+    +--rw autostate
+    |  +--rw exclude?   empty
+    +--rw protected?            empty
+    +--rw host?                 empty
+    +--rw private-vlan
+    |  +--rw association
+    |  |  +--rw host
+    |  |  |  +--rw primary-range?     uint16
+    |  |  |  +--rw secondary-range?   uint16
+    |  |  +--rw mapping
+    |  |     +--rw primary-range?     uint16
+    |  |     +--rw secondary-range?   string
+    |  |     +--rw add?               string
+    |  |     +--rw remove?            string
+    |  +--rw host-association
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   uint16
+    |  +--rw mapping
+    |  |  +--rw trunk?             empty
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   string
+    |  |  x--rw add?               string
+    |  |  x--rw remove?            string
+    |  +--rw trunk
+    |     +--rw allowed
+    |     |  +--rw vlan
+    |     |     +--rw vlans?   union
+    |     +--rw native
+    |        +--rw vlan
+    |           +--rw vlans?   uint16
+    |           +--rw tag?     empty
+    +--rw vepa
+    |  +--rw enabled?   empty
+    +--rw app-interface?        empty
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE/ios:switchport:
+    +--rw access
+    |  +--rw vlan
+    |     +--rw vlan?   union
+    |     x--rw name?   string
+    +--rw block
+    |  +--rw multicast?   empty
+    |  +--rw unicast?     empty
+    +--rw mode
+    |  +--rw (mode-choice)?
+    |     +--:(access)
+    |     |  +--rw access!
+    |     +--:(dot1q-tunnel)
+    |     |  +--rw dot1q-tunnel!
+    |     +--:(dynamic)
+    |     |  +--rw dynamic?        enumeration
+    |     +--:(private-vlan)
+    |     |  +--rw private-vlan
+    |     |     +--rw trunk!
+    |     |     |  +--rw trunk-config?   enumeration
+    |     |     +--rw host?          empty
+    |     |     +--rw promiscuous?   empty
+    |     +--:(trunk)
+    |        +--rw trunk!
+    +--rw nonegotiate?          empty
+    +--rw port-security-cfg?    empty
+    +--rw port-security-conf
+    |  +--rw port-security
+    |     +--rw aging
+    |     |  +--rw static?   empty
+    |     |  +--rw time?     uint16
+    |     |  +--rw type?     enumeration
+    |     +--rw mac-address
+    |     |  +--rw sticky?       empty
+    |     |  +--rw hw-address?   yang:mac-address
+    |     |  +--rw vlan?         uint16
+    |     +--rw maxcount* [max-addresses]
+    |     |  +--rw max-addresses    uint16
+    |     |  +--rw vlan?            string
+    |     x--rw maximum
+    |     |  x--rw max-addresses?   uint16
+    |     |  x--rw vlan?            string
+    |     +--rw violation
+    |        +--rw (violation-choice)?
+    |           +--:(protect)
+    |           |  +--rw protect?    empty
+    |           +--:(restrict)
+    |           |  +--rw restrict?   empty
+    |           +--:(shutdown)
+    |              +--rw shutdown
+    |                 +--rw vlan?   empty
+    x--rw port-security!
+    |  x--rw aging
+    |  |  x--rw static?   empty
+    |  |  x--rw time?     uint16
+    |  |  x--rw type?     enumeration
+    |  x--rw mac-address
+    |  |  x--rw sticky?       empty
+    |  |  x--rw hw-address?   yang:mac-address
+    |  |  x--rw vlan?         uint16
+    |  x--rw maximum
+    |  |  x--rw max-addresses?   uint16
+    |  |  x--rw vlan?            string
+    |  x--rw violation?     enumeration
+    +--rw trunk
+    |  +--rw allowed
+    |  |  +--rw vlan
+    |  |     +--rw (vlan-choice)?
+    |  |        +--:(vlans)
+    |  |        |  +--rw vlans?    union
+    |  |        +--:(all)
+    |  |        |  x--rw all?      empty
+    |  |        +--:(none)
+    |  |        |  +--rw none?     empty
+    |  |        +--:(add)
+    |  |        |  +--rw add?      union
+    |  |        +--:(except)
+    |  |        |  +--rw except?   union
+    |  |        +--:(remove)
+    |  |           +--rw remove?   union
+    |  +--rw encapsulation?   enumeration
+    |  +--rw native
+    |  |  +--rw vlan?   union
+    |  +--rw pruning
+    |     +--rw vlan
+    |        +--rw (vlan-choice)?
+    |           +--:(vlans)
+    |           |  +--rw vlans*    union
+    |           +--:(add)
+    |           |  +--rw add?      union
+    |           +--:(except)
+    |           |  +--rw except*   union
+    |           +--:(none)
+    |           |  +--rw none?     empty
+    |           +--:(remove)
+    |              +--rw remove?   union
+    +--rw voice
+    |  +--rw vlan
+    |  |  +--rw vlan?   union
+    |  |  +--rw name?   string
+    |  +--rw detect
+    |     +--rw cisco-phone!
+    |        +--rw full-duplex?   empty
+    +--rw priority
+    |  +--rw extend
+    |     +--rw (trust-choice)?
+    |        +--:(trust)
+    |        |  +--rw trust?   empty
+    |        +--:(cos)
+    |           +--rw cos?     uint8
+    +--rw autostate
+    |  +--rw exclude?   empty
+    +--rw protected?            empty
+    +--rw host?                 empty
+    +--rw private-vlan
+    |  +--rw association
+    |  |  +--rw host
+    |  |  |  +--rw primary-range?     uint16
+    |  |  |  +--rw secondary-range?   uint16
+    |  |  +--rw mapping
+    |  |     +--rw primary-range?     uint16
+    |  |     +--rw secondary-range?   string
+    |  |     +--rw add?               string
+    |  |     +--rw remove?            string
+    |  +--rw host-association
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   uint16
+    |  +--rw mapping
+    |  |  +--rw trunk?             empty
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   string
+    |  |  x--rw add?               string
+    |  |  x--rw remove?            string
+    |  +--rw trunk
+    |     +--rw allowed
+    |     |  +--rw vlan
+    |     |     +--rw vlans?   union
+    |     +--rw native
+    |        +--rw vlan
+    |           +--rw vlans?   uint16
+    |           +--rw tag?     empty
+    +--rw vepa
+    |  +--rw enabled?   empty
+    +--rw app-interface?        empty
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet/ios:switchport:
+    +--rw access
+    |  +--rw vlan
+    |     +--rw vlan?   union
+    |     x--rw name?   string
+    +--rw block
+    |  +--rw multicast?   empty
+    |  +--rw unicast?     empty
+    +--rw mode
+    |  +--rw (mode-choice)?
+    |     +--:(access)
+    |     |  +--rw access!
+    |     +--:(dot1q-tunnel)
+    |     |  +--rw dot1q-tunnel!
+    |     +--:(dynamic)
+    |     |  +--rw dynamic?        enumeration
+    |     +--:(private-vlan)
+    |     |  +--rw private-vlan
+    |     |     +--rw trunk!
+    |     |     |  +--rw trunk-config?   enumeration
+    |     |     +--rw host?          empty
+    |     |     +--rw promiscuous?   empty
+    |     +--:(trunk)
+    |        +--rw trunk!
+    +--rw nonegotiate?          empty
+    +--rw port-security-cfg?    empty
+    +--rw port-security-conf
+    |  +--rw port-security
+    |     +--rw aging
+    |     |  +--rw static?   empty
+    |     |  +--rw time?     uint16
+    |     |  +--rw type?     enumeration
+    |     +--rw mac-address
+    |     |  +--rw sticky?       empty
+    |     |  +--rw hw-address?   yang:mac-address
+    |     |  +--rw vlan?         uint16
+    |     +--rw maxcount* [max-addresses]
+    |     |  +--rw max-addresses    uint16
+    |     |  +--rw vlan?            string
+    |     x--rw maximum
+    |     |  x--rw max-addresses?   uint16
+    |     |  x--rw vlan?            string
+    |     +--rw violation
+    |        +--rw (violation-choice)?
+    |           +--:(protect)
+    |           |  +--rw protect?    empty
+    |           +--:(restrict)
+    |           |  +--rw restrict?   empty
+    |           +--:(shutdown)
+    |              +--rw shutdown
+    |                 +--rw vlan?   empty
+    x--rw port-security!
+    |  x--rw aging
+    |  |  x--rw static?   empty
+    |  |  x--rw time?     uint16
+    |  |  x--rw type?     enumeration
+    |  x--rw mac-address
+    |  |  x--rw sticky?       empty
+    |  |  x--rw hw-address?   yang:mac-address
+    |  |  x--rw vlan?         uint16
+    |  x--rw maximum
+    |  |  x--rw max-addresses?   uint16
+    |  |  x--rw vlan?            string
+    |  x--rw violation?     enumeration
+    +--rw trunk
+    |  +--rw allowed
+    |  |  +--rw vlan
+    |  |     +--rw (vlan-choice)?
+    |  |        +--:(vlans)
+    |  |        |  +--rw vlans?    union
+    |  |        +--:(all)
+    |  |        |  x--rw all?      empty
+    |  |        +--:(none)
+    |  |        |  +--rw none?     empty
+    |  |        +--:(add)
+    |  |        |  +--rw add?      union
+    |  |        +--:(except)
+    |  |        |  +--rw except?   union
+    |  |        +--:(remove)
+    |  |           +--rw remove?   union
+    |  +--rw encapsulation?   enumeration
+    |  +--rw native
+    |  |  +--rw vlan?   union
+    |  +--rw pruning
+    |     +--rw vlan
+    |        +--rw (vlan-choice)?
+    |           +--:(vlans)
+    |           |  +--rw vlans*    union
+    |           +--:(add)
+    |           |  +--rw add?      union
+    |           +--:(except)
+    |           |  +--rw except*   union
+    |           +--:(none)
+    |           |  +--rw none?     empty
+    |           +--:(remove)
+    |              +--rw remove?   union
+    +--rw voice
+    |  +--rw vlan
+    |  |  +--rw vlan?   union
+    |  |  +--rw name?   string
+    |  +--rw detect
+    |     +--rw cisco-phone!
+    |        +--rw full-duplex?   empty
+    +--rw priority
+    |  +--rw extend
+    |     +--rw (trust-choice)?
+    |        +--:(trust)
+    |        |  +--rw trust?   empty
+    |        +--:(cos)
+    |           +--rw cos?     uint8
+    +--rw autostate
+    |  +--rw exclude?   empty
+    +--rw protected?            empty
+    +--rw host?                 empty
+    +--rw private-vlan
+    |  +--rw association
+    |  |  +--rw host
+    |  |  |  +--rw primary-range?     uint16
+    |  |  |  +--rw secondary-range?   uint16
+    |  |  +--rw mapping
+    |  |     +--rw primary-range?     uint16
+    |  |     +--rw secondary-range?   string
+    |  |     +--rw add?               string
+    |  |     +--rw remove?            string
+    |  +--rw host-association
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   uint16
+    |  +--rw mapping
+    |  |  +--rw trunk?             empty
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   string
+    |  |  x--rw add?               string
+    |  |  x--rw remove?            string
+    |  +--rw trunk
+    |     +--rw allowed
+    |     |  +--rw vlan
+    |     |     +--rw vlans?   union
+    |     +--rw native
+    |        +--rw vlan
+    |           +--rw vlans?   uint16
+    |           +--rw tag?     empty
+    +--rw vepa
+    |  +--rw enabled?   empty
+    +--rw app-interface?        empty
+  augment /ios:native/ios:interface/ios:HundredGigE/ios:switchport:
+    +--rw access
+    |  +--rw vlan
+    |     +--rw vlan?   union
+    |     x--rw name?   string
+    +--rw block
+    |  +--rw multicast?   empty
+    |  +--rw unicast?     empty
+    +--rw mode
+    |  +--rw (mode-choice)?
+    |     +--:(access)
+    |     |  +--rw access!
+    |     +--:(dot1q-tunnel)
+    |     |  +--rw dot1q-tunnel!
+    |     +--:(dynamic)
+    |     |  +--rw dynamic?        enumeration
+    |     +--:(private-vlan)
+    |     |  +--rw private-vlan
+    |     |     +--rw trunk!
+    |     |     |  +--rw trunk-config?   enumeration
+    |     |     +--rw host?          empty
+    |     |     +--rw promiscuous?   empty
+    |     +--:(trunk)
+    |        +--rw trunk!
+    +--rw nonegotiate?          empty
+    +--rw port-security-cfg?    empty
+    +--rw port-security-conf
+    |  +--rw port-security
+    |     +--rw aging
+    |     |  +--rw static?   empty
+    |     |  +--rw time?     uint16
+    |     |  +--rw type?     enumeration
+    |     +--rw mac-address
+    |     |  +--rw sticky?       empty
+    |     |  +--rw hw-address?   yang:mac-address
+    |     |  +--rw vlan?         uint16
+    |     +--rw maxcount* [max-addresses]
+    |     |  +--rw max-addresses    uint16
+    |     |  +--rw vlan?            string
+    |     x--rw maximum
+    |     |  x--rw max-addresses?   uint16
+    |     |  x--rw vlan?            string
+    |     +--rw violation
+    |        +--rw (violation-choice)?
+    |           +--:(protect)
+    |           |  +--rw protect?    empty
+    |           +--:(restrict)
+    |           |  +--rw restrict?   empty
+    |           +--:(shutdown)
+    |              +--rw shutdown
+    |                 +--rw vlan?   empty
+    x--rw port-security!
+    |  x--rw aging
+    |  |  x--rw static?   empty
+    |  |  x--rw time?     uint16
+    |  |  x--rw type?     enumeration
+    |  x--rw mac-address
+    |  |  x--rw sticky?       empty
+    |  |  x--rw hw-address?   yang:mac-address
+    |  |  x--rw vlan?         uint16
+    |  x--rw maximum
+    |  |  x--rw max-addresses?   uint16
+    |  |  x--rw vlan?            string
+    |  x--rw violation?     enumeration
+    +--rw trunk
+    |  +--rw allowed
+    |  |  +--rw vlan
+    |  |     +--rw (vlan-choice)?
+    |  |        +--:(vlans)
+    |  |        |  +--rw vlans?    union
+    |  |        +--:(all)
+    |  |        |  x--rw all?      empty
+    |  |        +--:(none)
+    |  |        |  +--rw none?     empty
+    |  |        +--:(add)
+    |  |        |  +--rw add?      union
+    |  |        +--:(except)
+    |  |        |  +--rw except?   union
+    |  |        +--:(remove)
+    |  |           +--rw remove?   union
+    |  +--rw encapsulation?   enumeration
+    |  +--rw native
+    |  |  +--rw vlan?   union
+    |  +--rw pruning
+    |     +--rw vlan
+    |        +--rw (vlan-choice)?
+    |           +--:(vlans)
+    |           |  +--rw vlans*    union
+    |           +--:(add)
+    |           |  +--rw add?      union
+    |           +--:(except)
+    |           |  +--rw except*   union
+    |           +--:(none)
+    |           |  +--rw none?     empty
+    |           +--:(remove)
+    |              +--rw remove?   union
+    +--rw voice
+    |  +--rw vlan
+    |  |  +--rw vlan?   union
+    |  |  +--rw name?   string
+    |  +--rw detect
+    |     +--rw cisco-phone!
+    |        +--rw full-duplex?   empty
+    +--rw priority
+    |  +--rw extend
+    |     +--rw (trust-choice)?
+    |        +--:(trust)
+    |        |  +--rw trust?   empty
+    |        +--:(cos)
+    |           +--rw cos?     uint8
+    +--rw autostate
+    |  +--rw exclude?   empty
+    +--rw protected?            empty
+    +--rw host?                 empty
+    +--rw private-vlan
+    |  +--rw association
+    |  |  +--rw host
+    |  |  |  +--rw primary-range?     uint16
+    |  |  |  +--rw secondary-range?   uint16
+    |  |  +--rw mapping
+    |  |     +--rw primary-range?     uint16
+    |  |     +--rw secondary-range?   string
+    |  |     +--rw add?               string
+    |  |     +--rw remove?            string
+    |  +--rw host-association
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   uint16
+    |  +--rw mapping
+    |  |  +--rw trunk?             empty
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   string
+    |  |  x--rw add?               string
+    |  |  x--rw remove?            string
+    |  +--rw trunk
+    |     +--rw allowed
+    |     |  +--rw vlan
+    |     |     +--rw vlans?   union
+    |     +--rw native
+    |        +--rw vlan
+    |           +--rw vlans?   uint16
+    |           +--rw tag?     empty
+    +--rw vepa
+    |  +--rw enabled?   empty
+    +--rw app-interface?        empty
+  augment /ios:native/ios:interface/ios:Port-channel/ios:switchport:
+    +--rw access
+    |  +--rw vlan
+    |     +--rw vlan?   union
+    |     x--rw name?   string
+    +--rw block
+    |  +--rw multicast?   empty
+    |  +--rw unicast?     empty
+    +--rw mode
+    |  +--rw (mode-choice)?
+    |     +--:(access)
+    |     |  +--rw access!
+    |     +--:(dot1q-tunnel)
+    |     |  +--rw dot1q-tunnel!
+    |     +--:(dynamic)
+    |     |  +--rw dynamic?        enumeration
+    |     +--:(private-vlan)
+    |     |  +--rw private-vlan
+    |     |     +--rw trunk!
+    |     |     |  +--rw trunk-config?   enumeration
+    |     |     +--rw host?          empty
+    |     |     +--rw promiscuous?   empty
+    |     +--:(trunk)
+    |        +--rw trunk!
+    +--rw nonegotiate?          empty
+    +--rw port-security-cfg?    empty
+    +--rw port-security-conf
+    |  +--rw port-security
+    |     +--rw aging
+    |     |  +--rw static?   empty
+    |     |  +--rw time?     uint16
+    |     |  +--rw type?     enumeration
+    |     +--rw mac-address
+    |     |  +--rw sticky?       empty
+    |     |  +--rw hw-address?   yang:mac-address
+    |     |  +--rw vlan?         uint16
+    |     +--rw maxcount* [max-addresses]
+    |     |  +--rw max-addresses    uint16
+    |     |  +--rw vlan?            string
+    |     x--rw maximum
+    |     |  x--rw max-addresses?   uint16
+    |     |  x--rw vlan?            string
+    |     +--rw violation
+    |        +--rw (violation-choice)?
+    |           +--:(protect)
+    |           |  +--rw protect?    empty
+    |           +--:(restrict)
+    |           |  +--rw restrict?   empty
+    |           +--:(shutdown)
+    |              +--rw shutdown
+    |                 +--rw vlan?   empty
+    x--rw port-security!
+    |  x--rw aging
+    |  |  x--rw static?   empty
+    |  |  x--rw time?     uint16
+    |  |  x--rw type?     enumeration
+    |  x--rw mac-address
+    |  |  x--rw sticky?       empty
+    |  |  x--rw hw-address?   yang:mac-address
+    |  |  x--rw vlan?         uint16
+    |  x--rw maximum
+    |  |  x--rw max-addresses?   uint16
+    |  |  x--rw vlan?            string
+    |  x--rw violation?     enumeration
+    +--rw trunk
+    |  +--rw allowed
+    |  |  +--rw vlan
+    |  |     +--rw (vlan-choice)?
+    |  |        +--:(vlans)
+    |  |        |  +--rw vlans?    union
+    |  |        +--:(all)
+    |  |        |  x--rw all?      empty
+    |  |        +--:(none)
+    |  |        |  +--rw none?     empty
+    |  |        +--:(add)
+    |  |        |  +--rw add?      union
+    |  |        +--:(except)
+    |  |        |  +--rw except?   union
+    |  |        +--:(remove)
+    |  |           +--rw remove?   union
+    |  +--rw encapsulation?   enumeration
+    |  +--rw native
+    |  |  +--rw vlan?   union
+    |  +--rw pruning
+    |     +--rw vlan
+    |        +--rw (vlan-choice)?
+    |           +--:(vlans)
+    |           |  +--rw vlans*    union
+    |           +--:(add)
+    |           |  +--rw add?      union
+    |           +--:(except)
+    |           |  +--rw except*   union
+    |           +--:(none)
+    |           |  +--rw none?     empty
+    |           +--:(remove)
+    |              +--rw remove?   union
+    +--rw voice
+    |  +--rw vlan
+    |  |  +--rw vlan?   union
+    |  |  +--rw name?   string
+    |  +--rw detect
+    |     +--rw cisco-phone!
+    |        +--rw full-duplex?   empty
+    +--rw priority
+    |  +--rw extend
+    |     +--rw (trust-choice)?
+    |        +--:(trust)
+    |        |  +--rw trust?   empty
+    |        +--:(cos)
+    |           +--rw cos?     uint8
+    +--rw autostate
+    |  +--rw exclude?   empty
+    +--rw protected?            empty
+    +--rw host?                 empty
+    +--rw private-vlan
+    |  +--rw association
+    |  |  +--rw host
+    |  |  |  +--rw primary-range?     uint16
+    |  |  |  +--rw secondary-range?   uint16
+    |  |  +--rw mapping
+    |  |     +--rw primary-range?     uint16
+    |  |     +--rw secondary-range?   string
+    |  |     +--rw add?               string
+    |  |     +--rw remove?            string
+    |  +--rw host-association
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   uint16
+    |  +--rw mapping
+    |  |  +--rw trunk?             empty
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   string
+    |  |  x--rw add?               string
+    |  |  x--rw remove?            string
+    |  +--rw trunk
+    |     +--rw allowed
+    |     |  +--rw vlan
+    |     |     +--rw vlans?   union
+    |     +--rw native
+    |        +--rw vlan
+    |           +--rw vlans?   uint16
+    |           +--rw tag?     empty
+    +--rw vepa
+    |  +--rw enabled?   empty
+    +--rw app-interface?        empty
+    o--rw device-tracking!
+       o--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:Port-channel-subinterface/ios:Port-channel/ios:switchport:
+    +--rw access
+    |  +--rw vlan
+    |     +--rw vlan?   union
+    |     x--rw name?   string
+    +--rw block
+    |  +--rw multicast?   empty
+    |  +--rw unicast?     empty
+    +--rw mode
+    |  +--rw (mode-choice)?
+    |     +--:(access)
+    |     |  +--rw access!
+    |     +--:(dot1q-tunnel)
+    |     |  +--rw dot1q-tunnel!
+    |     +--:(dynamic)
+    |     |  +--rw dynamic?        enumeration
+    |     +--:(private-vlan)
+    |     |  +--rw private-vlan
+    |     |     +--rw trunk!
+    |     |     |  +--rw trunk-config?   enumeration
+    |     |     +--rw host?          empty
+    |     |     +--rw promiscuous?   empty
+    |     +--:(trunk)
+    |        +--rw trunk!
+    +--rw nonegotiate?          empty
+    +--rw port-security-cfg?    empty
+    +--rw port-security-conf
+    |  +--rw port-security
+    |     +--rw aging
+    |     |  +--rw static?   empty
+    |     |  +--rw time?     uint16
+    |     |  +--rw type?     enumeration
+    |     +--rw mac-address
+    |     |  +--rw sticky?       empty
+    |     |  +--rw hw-address?   yang:mac-address
+    |     |  +--rw vlan?         uint16
+    |     +--rw maxcount* [max-addresses]
+    |     |  +--rw max-addresses    uint16
+    |     |  +--rw vlan?            string
+    |     x--rw maximum
+    |     |  x--rw max-addresses?   uint16
+    |     |  x--rw vlan?            string
+    |     +--rw violation
+    |        +--rw (violation-choice)?
+    |           +--:(protect)
+    |           |  +--rw protect?    empty
+    |           +--:(restrict)
+    |           |  +--rw restrict?   empty
+    |           +--:(shutdown)
+    |              +--rw shutdown
+    |                 +--rw vlan?   empty
+    x--rw port-security!
+    |  x--rw aging
+    |  |  x--rw static?   empty
+    |  |  x--rw time?     uint16
+    |  |  x--rw type?     enumeration
+    |  x--rw mac-address
+    |  |  x--rw sticky?       empty
+    |  |  x--rw hw-address?   yang:mac-address
+    |  |  x--rw vlan?         uint16
+    |  x--rw maximum
+    |  |  x--rw max-addresses?   uint16
+    |  |  x--rw vlan?            string
+    |  x--rw violation?     enumeration
+    +--rw trunk
+    |  +--rw allowed
+    |  |  +--rw vlan
+    |  |     +--rw (vlan-choice)?
+    |  |        +--:(vlans)
+    |  |        |  +--rw vlans?    union
+    |  |        +--:(all)
+    |  |        |  x--rw all?      empty
+    |  |        +--:(none)
+    |  |        |  +--rw none?     empty
+    |  |        +--:(add)
+    |  |        |  +--rw add?      union
+    |  |        +--:(except)
+    |  |        |  +--rw except?   union
+    |  |        +--:(remove)
+    |  |           +--rw remove?   union
+    |  +--rw encapsulation?   enumeration
+    |  +--rw native
+    |  |  +--rw vlan?   union
+    |  +--rw pruning
+    |     +--rw vlan
+    |        +--rw (vlan-choice)?
+    |           +--:(vlans)
+    |           |  +--rw vlans*    union
+    |           +--:(add)
+    |           |  +--rw add?      union
+    |           +--:(except)
+    |           |  +--rw except*   union
+    |           +--:(none)
+    |           |  +--rw none?     empty
+    |           +--:(remove)
+    |              +--rw remove?   union
+    +--rw voice
+    |  +--rw vlan
+    |  |  +--rw vlan?   union
+    |  |  +--rw name?   string
+    |  +--rw detect
+    |     +--rw cisco-phone!
+    |        +--rw full-duplex?   empty
+    +--rw priority
+    |  +--rw extend
+    |     +--rw (trust-choice)?
+    |        +--:(trust)
+    |        |  +--rw trust?   empty
+    |        +--:(cos)
+    |           +--rw cos?     uint8
+    +--rw autostate
+    |  +--rw exclude?   empty
+    +--rw protected?            empty
+    +--rw host?                 empty
+    +--rw private-vlan
+    |  +--rw association
+    |  |  +--rw host
+    |  |  |  +--rw primary-range?     uint16
+    |  |  |  +--rw secondary-range?   uint16
+    |  |  +--rw mapping
+    |  |     +--rw primary-range?     uint16
+    |  |     +--rw secondary-range?   string
+    |  |     +--rw add?               string
+    |  |     +--rw remove?            string
+    |  +--rw host-association
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   uint16
+    |  +--rw mapping
+    |  |  +--rw trunk?             empty
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   string
+    |  |  x--rw add?               string
+    |  |  x--rw remove?            string
+    |  +--rw trunk
+    |     +--rw allowed
+    |     |  +--rw vlan
+    |     |     +--rw vlans?   union
+    |     +--rw native
+    |        +--rw vlan
+    |           +--rw vlans?   uint16
+    |           +--rw tag?     empty
+    +--rw vepa
+    |  +--rw enabled?   empty
+    +--rw app-interface?        empty
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw auto
+    |  +--rw qos
+    |     +--rw classify!
+    |     |  +--rw police?   empty
+    |     +--rw trust!
+    |     |  +--rw cos?    empty
+    |     |  +--rw dscp?   empty
+    |     +--rw video
+    |     |  +--rw cts?            empty
+    |     |  +--rw ip-camera?      empty
+    |     |  +--rw media-player?   empty
+    |     +--rw voip!
+    |        +--rw cisco-phone?       empty
+    |        +--rw cisco-softphone?   empty
+    |        +--rw trust?             empty
+    +--rw datalink
+    |  +--rw flow
+    |     +--rw monitor!
+    |        +--rw User-defined-flow?   string
+    |        +--rw input-output?        enumeration
+    +--rw energywise!
+    |  +--rw activitycheck?   empty
+    |  +--rw level* [range]
+    |     +--rw range         uint8
+    |     +--rw recurrence
+    |        +--rw importance* [range]
+    |           +--rw range    uint16
+    |           +--rw at
+    |              +--rw minute?    union
+    |              +--rw hour?      union
+    |              +--rw day?       union
+    |              +--rw month?     union
+    |              +--rw weekday?   union
+    +--rw location
+    |  +--rw civic-location-id
+    |     +--rw location-identifier?   string
+    |     +--rw host!
+    |     |  +--rw port-location?   string
+    |     +--rw none!
+    |        +--rw port-location?   string
+    +--rw mac
+    |  +--rw access-group* [direction]
+    |     +--rw direction    enumeration
+    |     +--rw acl-name?    string
+    +--rw macro
+    |  +--rw description?   string
+    |  +--rw auto
+    |     +--rw processing?   boolean
+    |     +--rw port
+    |     |  +--rw sticky?   empty
+    |     +--rw control
+    |        +--rw device
+    |           +--rw phone?   empty
+    +--rw dual-active
+    |  +--rw fast-hello?   empty
+    +--rw load-balancing
+    |  +--rw flow?   empty
+    |  +--rw vlan?   empty
+    +--rw vlan-range* [id]
+    |  +--rw id                union
+    |  +--rw service-policy
+    |     +--rw input?    string
+    |     +--rw output?   string
+    +--rw switch
+    |  +--rw virtual
+    |     +--rw link?   uint8
+    +--rw srr-queue
+    |  +--rw bandwidth
+    |     +--rw shape
+    |     |  +--rw weight1?   uint16
+    |     |  +--rw weight2?   uint16
+    |     |  +--rw weight3?   uint16
+    |     |  +--rw weight4?   uint16
+    |     +--rw share
+    |        +--rw weight1?   uint8
+    |        +--rw weight2?   uint8
+    |        +--rw weight3?   uint8
+    |        +--rw weight4?   uint8
+    +--rw macsec?              empty
+    +--rw macsec-option
+    |  +--rw macsec
+    |     +--rw replay-protection
+    |     |  +--rw window-size?   uint32
+    |     +--rw network-link?        empty
+    +--rw l2protocol-tunnel
+    |  +--rw drop-threshold
+    |  |  +--rw cdp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw stp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw vtp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw lldp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw point-to-point
+    |  |     +--rw lacp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw pagp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw udld
+    |  |        +--rw pps_num?   uint16
+    |  +--rw shutdown-threshold
+    |  |  +--rw cdp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw stp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw vtp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw lldp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw point-to-point
+    |  |     +--rw lacp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw pagp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw udld
+    |  |        +--rw pps_num?   uint16
+    |  +--rw cdp?                  empty
+    |  +--rw stp?                  empty
+    |  +--rw vtp?                  empty
+    |  +--rw lldp?                 empty
+    |  +--rw point-to-point
+    |     +--rw lacp?   empty
+    |     +--rw pagp?   empty
+    |     +--rw udld?   empty
+    +--rw device-tracking! {ios-features:switching-platform}?
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw auto
+    |  +--rw qos
+    |     +--rw classify!
+    |     |  +--rw police?   empty
+    |     +--rw trust!
+    |     |  +--rw cos?    empty
+    |     |  +--rw dscp?   empty
+    |     +--rw video
+    |     |  +--rw cts?            empty
+    |     |  +--rw ip-camera?      empty
+    |     |  +--rw media-player?   empty
+    |     +--rw voip!
+    |        +--rw cisco-phone?       empty
+    |        +--rw cisco-softphone?   empty
+    |        +--rw trust?             empty
+    +--rw datalink
+    |  +--rw flow
+    |     +--rw monitor!
+    |        +--rw User-defined-flow?   string
+    |        +--rw input-output?        enumeration
+    +--rw energywise!
+    |  +--rw activitycheck?   empty
+    |  +--rw level* [range]
+    |     +--rw range         uint8
+    |     +--rw recurrence
+    |        +--rw importance* [range]
+    |           +--rw range    uint16
+    |           +--rw at
+    |              +--rw minute?    union
+    |              +--rw hour?      union
+    |              +--rw day?       union
+    |              +--rw month?     union
+    |              +--rw weekday?   union
+    +--rw location
+    |  +--rw civic-location-id
+    |     +--rw location-identifier?   string
+    |     +--rw host!
+    |     |  +--rw port-location?   string
+    |     +--rw none!
+    |        +--rw port-location?   string
+    +--rw mac
+    |  +--rw access-group* [direction]
+    |     +--rw direction    enumeration
+    |     +--rw acl-name?    string
+    +--rw macro
+    |  +--rw description?   string
+    |  +--rw auto
+    |     +--rw processing?   boolean
+    |     +--rw port
+    |     |  +--rw sticky?   empty
+    |     +--rw control
+    |        +--rw device
+    |           +--rw phone?   empty
+    +--rw dual-active
+    |  +--rw fast-hello?   empty
+    +--rw load-balancing
+    |  +--rw flow?   empty
+    |  +--rw vlan?   empty
+    +--rw vlan-range* [id]
+    |  +--rw id                union
+    |  +--rw service-policy
+    |     +--rw input?    string
+    |     +--rw output?   string
+    +--rw switch
+    |  +--rw virtual
+    |     +--rw link?   uint8
+    +--rw srr-queue
+    |  +--rw bandwidth
+    |     +--rw shape
+    |     |  +--rw weight1?   uint16
+    |     |  +--rw weight2?   uint16
+    |     |  +--rw weight3?   uint16
+    |     |  +--rw weight4?   uint16
+    |     +--rw share
+    |        +--rw weight1?   uint8
+    |        +--rw weight2?   uint8
+    |        +--rw weight3?   uint8
+    |        +--rw weight4?   uint8
+    +--rw macsec?              empty
+    +--rw macsec-option
+    |  +--rw macsec
+    |     +--rw replay-protection
+    |     |  +--rw window-size?   uint32
+    |     +--rw network-link?        empty
+    +--rw l2protocol-tunnel
+    |  +--rw drop-threshold
+    |  |  +--rw cdp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw stp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw vtp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw lldp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw point-to-point
+    |  |     +--rw lacp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw pagp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw udld
+    |  |        +--rw pps_num?   uint16
+    |  +--rw shutdown-threshold
+    |  |  +--rw cdp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw stp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw vtp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw lldp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw point-to-point
+    |  |     +--rw lacp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw pagp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw udld
+    |  |        +--rw pps_num?   uint16
+    |  +--rw cdp?                  empty
+    |  +--rw stp?                  empty
+    |  +--rw vtp?                  empty
+    |  +--rw lldp?                 empty
+    |  +--rw point-to-point
+    |     +--rw lacp?   empty
+    |     +--rw pagp?   empty
+    |     +--rw udld?   empty
+    +--rw device-tracking! {ios-features:switching-platform}?
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw auto
+    |  +--rw qos
+    |     +--rw classify!
+    |     |  +--rw police?   empty
+    |     +--rw trust!
+    |     |  +--rw cos?    empty
+    |     |  +--rw dscp?   empty
+    |     +--rw video
+    |     |  +--rw cts?            empty
+    |     |  +--rw ip-camera?      empty
+    |     |  +--rw media-player?   empty
+    |     +--rw voip!
+    |        +--rw cisco-phone?       empty
+    |        +--rw cisco-softphone?   empty
+    |        +--rw trust?             empty
+    +--rw datalink
+    |  +--rw flow
+    |     +--rw monitor!
+    |        +--rw User-defined-flow?   string
+    |        +--rw input-output?        enumeration
+    +--rw energywise!
+    |  +--rw activitycheck?   empty
+    |  +--rw level* [range]
+    |     +--rw range         uint8
+    |     +--rw recurrence
+    |        +--rw importance* [range]
+    |           +--rw range    uint16
+    |           +--rw at
+    |              +--rw minute?    union
+    |              +--rw hour?      union
+    |              +--rw day?       union
+    |              +--rw month?     union
+    |              +--rw weekday?   union
+    +--rw location
+    |  +--rw civic-location-id
+    |     +--rw location-identifier?   string
+    |     +--rw host!
+    |     |  +--rw port-location?   string
+    |     +--rw none!
+    |        +--rw port-location?   string
+    +--rw mac
+    |  +--rw access-group* [direction]
+    |     +--rw direction    enumeration
+    |     +--rw acl-name?    string
+    +--rw macro
+    |  +--rw description?   string
+    |  +--rw auto
+    |     +--rw processing?   boolean
+    |     +--rw port
+    |     |  +--rw sticky?   empty
+    |     +--rw control
+    |        +--rw device
+    |           +--rw phone?   empty
+    +--rw dual-active
+    |  +--rw fast-hello?   empty
+    +--rw load-balancing
+    |  +--rw flow?   empty
+    |  +--rw vlan?   empty
+    +--rw vlan-range* [id]
+    |  +--rw id                union
+    |  +--rw service-policy
+    |     +--rw input?    string
+    |     +--rw output?   string
+    +--rw switch
+    |  +--rw virtual
+    |     +--rw link?   uint8
+    +--rw srr-queue
+    |  +--rw bandwidth
+    |     +--rw shape
+    |     |  +--rw weight1?   uint16
+    |     |  +--rw weight2?   uint16
+    |     |  +--rw weight3?   uint16
+    |     |  +--rw weight4?   uint16
+    |     +--rw share
+    |        +--rw weight1?   uint8
+    |        +--rw weight2?   uint8
+    |        +--rw weight3?   uint8
+    |        +--rw weight4?   uint8
+    +--rw macsec?              empty
+    +--rw macsec-option
+    |  +--rw macsec
+    |     +--rw replay-protection
+    |     |  +--rw window-size?   uint32
+    |     +--rw network-link?        empty
+    +--rw l2protocol-tunnel
+    |  +--rw drop-threshold
+    |  |  +--rw cdp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw stp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw vtp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw lldp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw point-to-point
+    |  |     +--rw lacp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw pagp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw udld
+    |  |        +--rw pps_num?   uint16
+    |  +--rw shutdown-threshold
+    |  |  +--rw cdp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw stp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw vtp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw lldp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw point-to-point
+    |  |     +--rw lacp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw pagp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw udld
+    |  |        +--rw pps_num?   uint16
+    |  +--rw cdp?                  empty
+    |  +--rw stp?                  empty
+    |  +--rw vtp?                  empty
+    |  +--rw lldp?                 empty
+    |  +--rw point-to-point
+    |     +--rw lacp?   empty
+    |     +--rw pagp?   empty
+    |     +--rw udld?   empty
+    +--rw device-tracking! {ios-features:switching-platform}?
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw auto
+    |  +--rw qos
+    |     +--rw classify!
+    |     |  +--rw police?   empty
+    |     +--rw trust!
+    |     |  +--rw cos?    empty
+    |     |  +--rw dscp?   empty
+    |     +--rw video
+    |     |  +--rw cts?            empty
+    |     |  +--rw ip-camera?      empty
+    |     |  +--rw media-player?   empty
+    |     +--rw voip!
+    |        +--rw cisco-phone?       empty
+    |        +--rw cisco-softphone?   empty
+    |        +--rw trust?             empty
+    +--rw datalink
+    |  +--rw flow
+    |     +--rw monitor!
+    |        +--rw User-defined-flow?   string
+    |        +--rw input-output?        enumeration
+    +--rw energywise!
+    |  +--rw activitycheck?   empty
+    |  +--rw level* [range]
+    |     +--rw range         uint8
+    |     +--rw recurrence
+    |        +--rw importance* [range]
+    |           +--rw range    uint16
+    |           +--rw at
+    |              +--rw minute?    union
+    |              +--rw hour?      union
+    |              +--rw day?       union
+    |              +--rw month?     union
+    |              +--rw weekday?   union
+    +--rw location
+    |  +--rw civic-location-id
+    |     +--rw location-identifier?   string
+    |     +--rw host!
+    |     |  +--rw port-location?   string
+    |     +--rw none!
+    |        +--rw port-location?   string
+    +--rw mac
+    |  +--rw access-group* [direction]
+    |     +--rw direction    enumeration
+    |     +--rw acl-name?    string
+    +--rw macro
+    |  +--rw description?   string
+    |  +--rw auto
+    |     +--rw processing?   boolean
+    |     +--rw port
+    |     |  +--rw sticky?   empty
+    |     +--rw control
+    |        +--rw device
+    |           +--rw phone?   empty
+    +--rw dual-active
+    |  +--rw fast-hello?   empty
+    +--rw load-balancing
+    |  +--rw flow?   empty
+    |  +--rw vlan?   empty
+    +--rw vlan-range* [id]
+    |  +--rw id                union
+    |  +--rw service-policy
+    |     +--rw input?    string
+    |     +--rw output?   string
+    +--rw switch
+    |  +--rw virtual
+    |     +--rw link?   uint8
+    +--rw srr-queue
+    |  +--rw bandwidth
+    |     +--rw shape
+    |     |  +--rw weight1?   uint16
+    |     |  +--rw weight2?   uint16
+    |     |  +--rw weight3?   uint16
+    |     |  +--rw weight4?   uint16
+    |     +--rw share
+    |        +--rw weight1?   uint8
+    |        +--rw weight2?   uint8
+    |        +--rw weight3?   uint8
+    |        +--rw weight4?   uint8
+    +--rw macsec?              empty
+    +--rw macsec-option
+    |  +--rw macsec
+    |     +--rw replay-protection
+    |     |  +--rw window-size?   uint32
+    |     +--rw network-link?        empty
+    +--rw l2protocol-tunnel
+    |  +--rw drop-threshold
+    |  |  +--rw cdp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw stp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw vtp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw lldp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw point-to-point
+    |  |     +--rw lacp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw pagp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw udld
+    |  |        +--rw pps_num?   uint16
+    |  +--rw shutdown-threshold
+    |  |  +--rw cdp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw stp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw vtp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw lldp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw point-to-point
+    |  |     +--rw lacp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw pagp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw udld
+    |  |        +--rw pps_num?   uint16
+    |  +--rw cdp?                  empty
+    |  +--rw stp?                  empty
+    |  +--rw vtp?                  empty
+    |  +--rw lldp?                 empty
+    |  +--rw point-to-point
+    |     +--rw lacp?   empty
+    |     +--rw pagp?   empty
+    |     +--rw udld?   empty
+    +--rw device-tracking! {ios-features:switching-platform}?
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:AppGigabitEthernet:
+    +--rw auto
+    |  +--rw qos
+    |     +--rw classify!
+    |     |  +--rw police?   empty
+    |     +--rw trust!
+    |     |  +--rw cos?    empty
+    |     |  +--rw dscp?   empty
+    |     +--rw video
+    |     |  +--rw cts?            empty
+    |     |  +--rw ip-camera?      empty
+    |     |  +--rw media-player?   empty
+    |     +--rw voip!
+    |        +--rw cisco-phone?       empty
+    |        +--rw cisco-softphone?   empty
+    |        +--rw trust?             empty
+    +--rw datalink
+    |  +--rw flow
+    |     +--rw monitor!
+    |        +--rw User-defined-flow?   string
+    |        +--rw input-output?        enumeration
+    +--rw energywise!
+    |  +--rw activitycheck?   empty
+    |  +--rw level* [range]
+    |     +--rw range         uint8
+    |     +--rw recurrence
+    |        +--rw importance* [range]
+    |           +--rw range    uint16
+    |           +--rw at
+    |              +--rw minute?    union
+    |              +--rw hour?      union
+    |              +--rw day?       union
+    |              +--rw month?     union
+    |              +--rw weekday?   union
+    +--rw location
+    |  +--rw civic-location-id
+    |     +--rw location-identifier?   string
+    |     +--rw host!
+    |     |  +--rw port-location?   string
+    |     +--rw none!
+    |        +--rw port-location?   string
+    +--rw mac
+    |  +--rw access-group* [direction]
+    |     +--rw direction    enumeration
+    |     +--rw acl-name?    string
+    +--rw macro
+    |  +--rw description?   string
+    |  +--rw auto
+    |     +--rw processing?   boolean
+    |     +--rw port
+    |     |  +--rw sticky?   empty
+    |     +--rw control
+    |        +--rw device
+    |           +--rw phone?   empty
+    +--rw dual-active
+    |  +--rw fast-hello?   empty
+    +--rw load-balancing
+    |  +--rw flow?   empty
+    |  +--rw vlan?   empty
+    +--rw vlan-range* [id]
+    |  +--rw id                union
+    |  +--rw service-policy
+    |     +--rw input?    string
+    |     +--rw output?   string
+    +--rw switch
+    |  +--rw virtual
+    |     +--rw link?   uint8
+    +--rw srr-queue
+    |  +--rw bandwidth
+    |     +--rw shape
+    |     |  +--rw weight1?   uint16
+    |     |  +--rw weight2?   uint16
+    |     |  +--rw weight3?   uint16
+    |     |  +--rw weight4?   uint16
+    |     +--rw share
+    |        +--rw weight1?   uint8
+    |        +--rw weight2?   uint8
+    |        +--rw weight3?   uint8
+    |        +--rw weight4?   uint8
+    +--rw macsec?              empty
+    +--rw macsec-option
+    |  +--rw macsec
+    |     +--rw replay-protection
+    |     |  +--rw window-size?   uint32
+    |     +--rw network-link?        empty
+    +--rw l2protocol-tunnel
+    |  +--rw drop-threshold
+    |  |  +--rw cdp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw stp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw vtp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw lldp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw point-to-point
+    |  |     +--rw lacp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw pagp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw udld
+    |  |        +--rw pps_num?   uint16
+    |  +--rw shutdown-threshold
+    |  |  +--rw cdp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw stp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw vtp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw lldp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw point-to-point
+    |  |     +--rw lacp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw pagp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw udld
+    |  |        +--rw pps_num?   uint16
+    |  +--rw cdp?                  empty
+    |  +--rw stp?                  empty
+    |  +--rw vtp?                  empty
+    |  +--rw lldp?                 empty
+    |  +--rw point-to-point
+    |     +--rw lacp?   empty
+    |     +--rw pagp?   empty
+    |     +--rw udld?   empty
+    +--rw device-tracking! {ios-features:switching-platform}?
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw auto
+    |  +--rw qos
+    |     +--rw classify!
+    |     |  +--rw police?   empty
+    |     +--rw trust!
+    |     |  +--rw cos?    empty
+    |     |  +--rw dscp?   empty
+    |     +--rw video
+    |     |  +--rw cts?            empty
+    |     |  +--rw ip-camera?      empty
+    |     |  +--rw media-player?   empty
+    |     +--rw voip!
+    |        +--rw cisco-phone?       empty
+    |        +--rw cisco-softphone?   empty
+    |        +--rw trust?             empty
+    +--rw datalink
+    |  +--rw flow
+    |     +--rw monitor!
+    |        +--rw User-defined-flow?   string
+    |        +--rw input-output?        enumeration
+    +--rw energywise!
+    |  +--rw activitycheck?   empty
+    |  +--rw level* [range]
+    |     +--rw range         uint8
+    |     +--rw recurrence
+    |        +--rw importance* [range]
+    |           +--rw range    uint16
+    |           +--rw at
+    |              +--rw minute?    union
+    |              +--rw hour?      union
+    |              +--rw day?       union
+    |              +--rw month?     union
+    |              +--rw weekday?   union
+    +--rw location
+    |  +--rw civic-location-id
+    |     +--rw location-identifier?   string
+    |     +--rw host!
+    |     |  +--rw port-location?   string
+    |     +--rw none!
+    |        +--rw port-location?   string
+    +--rw mac
+    |  +--rw access-group* [direction]
+    |     +--rw direction    enumeration
+    |     +--rw acl-name?    string
+    +--rw macro
+    |  +--rw description?   string
+    |  +--rw auto
+    |     +--rw processing?   boolean
+    |     +--rw port
+    |     |  +--rw sticky?   empty
+    |     +--rw control
+    |        +--rw device
+    |           +--rw phone?   empty
+    +--rw dual-active
+    |  +--rw fast-hello?   empty
+    +--rw load-balancing
+    |  +--rw flow?   empty
+    |  +--rw vlan?   empty
+    +--rw vlan-range* [id]
+    |  +--rw id                union
+    |  +--rw service-policy
+    |     +--rw input?    string
+    |     +--rw output?   string
+    +--rw switch
+    |  +--rw virtual
+    |     +--rw link?   uint8
+    +--rw srr-queue
+    |  +--rw bandwidth
+    |     +--rw shape
+    |     |  +--rw weight1?   uint16
+    |     |  +--rw weight2?   uint16
+    |     |  +--rw weight3?   uint16
+    |     |  +--rw weight4?   uint16
+    |     +--rw share
+    |        +--rw weight1?   uint8
+    |        +--rw weight2?   uint8
+    |        +--rw weight3?   uint8
+    |        +--rw weight4?   uint8
+    +--rw macsec?              empty
+    +--rw macsec-option
+    |  +--rw macsec
+    |     +--rw replay-protection
+    |     |  +--rw window-size?   uint32
+    |     +--rw network-link?        empty
+    +--rw l2protocol-tunnel
+    |  +--rw drop-threshold
+    |  |  +--rw cdp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw stp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw vtp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw lldp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw point-to-point
+    |  |     +--rw lacp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw pagp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw udld
+    |  |        +--rw pps_num?   uint16
+    |  +--rw shutdown-threshold
+    |  |  +--rw cdp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw stp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw vtp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw lldp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw point-to-point
+    |  |     +--rw lacp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw pagp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw udld
+    |  |        +--rw pps_num?   uint16
+    |  +--rw cdp?                  empty
+    |  +--rw stp?                  empty
+    |  +--rw vtp?                  empty
+    |  +--rw lldp?                 empty
+    |  +--rw point-to-point
+    |     +--rw lacp?   empty
+    |     +--rw pagp?   empty
+    |     +--rw udld?   empty
+    +--rw device-tracking! {ios-features:switching-platform}?
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:TwentyFiveGigabitEthernet:
+    +--rw auto
+    |  +--rw qos
+    |     +--rw classify!
+    |     |  +--rw police?   empty
+    |     +--rw trust!
+    |     |  +--rw cos?    empty
+    |     |  +--rw dscp?   empty
+    |     +--rw video
+    |     |  +--rw cts?            empty
+    |     |  +--rw ip-camera?      empty
+    |     |  +--rw media-player?   empty
+    |     +--rw voip!
+    |        +--rw cisco-phone?       empty
+    |        +--rw cisco-softphone?   empty
+    |        +--rw trust?             empty
+    +--rw datalink
+    |  +--rw flow
+    |     +--rw monitor!
+    |        +--rw User-defined-flow?   string
+    |        +--rw input-output?        enumeration
+    +--rw energywise!
+    |  +--rw activitycheck?   empty
+    |  +--rw level* [range]
+    |     +--rw range         uint8
+    |     +--rw recurrence
+    |        +--rw importance* [range]
+    |           +--rw range    uint16
+    |           +--rw at
+    |              +--rw minute?    union
+    |              +--rw hour?      union
+    |              +--rw day?       union
+    |              +--rw month?     union
+    |              +--rw weekday?   union
+    +--rw location
+    |  +--rw civic-location-id
+    |     +--rw location-identifier?   string
+    |     +--rw host!
+    |     |  +--rw port-location?   string
+    |     +--rw none!
+    |        +--rw port-location?   string
+    +--rw mac
+    |  +--rw access-group* [direction]
+    |     +--rw direction    enumeration
+    |     +--rw acl-name?    string
+    +--rw macro
+    |  +--rw description?   string
+    |  +--rw auto
+    |     +--rw processing?   boolean
+    |     +--rw port
+    |     |  +--rw sticky?   empty
+    |     +--rw control
+    |        +--rw device
+    |           +--rw phone?   empty
+    +--rw dual-active
+    |  +--rw fast-hello?   empty
+    +--rw load-balancing
+    |  +--rw flow?   empty
+    |  +--rw vlan?   empty
+    +--rw vlan-range* [id]
+    |  +--rw id                union
+    |  +--rw service-policy
+    |     +--rw input?    string
+    |     +--rw output?   string
+    +--rw switch
+    |  +--rw virtual
+    |     +--rw link?   uint8
+    +--rw srr-queue
+    |  +--rw bandwidth
+    |     +--rw shape
+    |     |  +--rw weight1?   uint16
+    |     |  +--rw weight2?   uint16
+    |     |  +--rw weight3?   uint16
+    |     |  +--rw weight4?   uint16
+    |     +--rw share
+    |        +--rw weight1?   uint8
+    |        +--rw weight2?   uint8
+    |        +--rw weight3?   uint8
+    |        +--rw weight4?   uint8
+    +--rw macsec?              empty
+    +--rw macsec-option
+    |  +--rw macsec
+    |     +--rw replay-protection
+    |     |  +--rw window-size?   uint32
+    |     +--rw network-link?        empty
+    +--rw l2protocol-tunnel
+       +--rw drop-threshold
+       |  +--rw cdp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw stp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw vtp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw lldp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw point-to-point
+       |     +--rw lacp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw pagp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw udld
+       |        +--rw pps_num?   uint16
+       +--rw shutdown-threshold
+       |  +--rw cdp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw stp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw vtp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw lldp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw point-to-point
+       |     +--rw lacp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw pagp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw udld
+       |        +--rw pps_num?   uint16
+       +--rw cdp?                  empty
+       +--rw stp?                  empty
+       +--rw vtp?                  empty
+       +--rw lldp?                 empty
+       +--rw point-to-point
+          +--rw lacp?   empty
+          +--rw pagp?   empty
+          +--rw udld?   empty
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw auto
+    |  +--rw qos
+    |     +--rw classify!
+    |     |  +--rw police?   empty
+    |     +--rw trust!
+    |     |  +--rw cos?    empty
+    |     |  +--rw dscp?   empty
+    |     +--rw video
+    |     |  +--rw cts?            empty
+    |     |  +--rw ip-camera?      empty
+    |     |  +--rw media-player?   empty
+    |     +--rw voip!
+    |        +--rw cisco-phone?       empty
+    |        +--rw cisco-softphone?   empty
+    |        +--rw trust?             empty
+    +--rw datalink
+    |  +--rw flow
+    |     +--rw monitor!
+    |        +--rw User-defined-flow?   string
+    |        +--rw input-output?        enumeration
+    +--rw energywise!
+    |  +--rw activitycheck?   empty
+    |  +--rw level* [range]
+    |     +--rw range         uint8
+    |     +--rw recurrence
+    |        +--rw importance* [range]
+    |           +--rw range    uint16
+    |           +--rw at
+    |              +--rw minute?    union
+    |              +--rw hour?      union
+    |              +--rw day?       union
+    |              +--rw month?     union
+    |              +--rw weekday?   union
+    +--rw location
+    |  +--rw civic-location-id
+    |     +--rw location-identifier?   string
+    |     +--rw host!
+    |     |  +--rw port-location?   string
+    |     +--rw none!
+    |        +--rw port-location?   string
+    +--rw mac
+    |  +--rw access-group* [direction]
+    |     +--rw direction    enumeration
+    |     +--rw acl-name?    string
+    +--rw macro
+    |  +--rw description?   string
+    |  +--rw auto
+    |     +--rw processing?   boolean
+    |     +--rw port
+    |     |  +--rw sticky?   empty
+    |     +--rw control
+    |        +--rw device
+    |           +--rw phone?   empty
+    +--rw dual-active
+    |  +--rw fast-hello?   empty
+    +--rw load-balancing
+    |  +--rw flow?   empty
+    |  +--rw vlan?   empty
+    +--rw vlan-range* [id]
+    |  +--rw id                union
+    |  +--rw service-policy
+    |     +--rw input?    string
+    |     +--rw output?   string
+    +--rw switch
+    |  +--rw virtual
+    |     +--rw link?   uint8
+    +--rw srr-queue
+    |  +--rw bandwidth
+    |     +--rw shape
+    |     |  +--rw weight1?   uint16
+    |     |  +--rw weight2?   uint16
+    |     |  +--rw weight3?   uint16
+    |     |  +--rw weight4?   uint16
+    |     +--rw share
+    |        +--rw weight1?   uint8
+    |        +--rw weight2?   uint8
+    |        +--rw weight3?   uint8
+    |        +--rw weight4?   uint8
+    +--rw macsec?              empty
+    +--rw macsec-option
+    |  +--rw macsec
+    |     +--rw replay-protection
+    |     |  +--rw window-size?   uint32
+    |     +--rw network-link?        empty
+    +--rw l2protocol-tunnel
+       +--rw drop-threshold
+       |  +--rw cdp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw stp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw vtp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw lldp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw point-to-point
+       |     +--rw lacp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw pagp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw udld
+       |        +--rw pps_num?   uint16
+       +--rw shutdown-threshold
+       |  +--rw cdp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw stp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw vtp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw lldp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw point-to-point
+       |     +--rw lacp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw pagp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw udld
+       |        +--rw pps_num?   uint16
+       +--rw cdp?                  empty
+       +--rw stp?                  empty
+       +--rw vtp?                  empty
+       +--rw lldp?                 empty
+       +--rw point-to-point
+          +--rw lacp?   empty
+          +--rw pagp?   empty
+          +--rw udld?   empty
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw auto
+    |  +--rw qos
+    |     +--rw classify!
+    |     |  +--rw police?   empty
+    |     +--rw trust!
+    |     |  +--rw cos?    empty
+    |     |  +--rw dscp?   empty
+    |     +--rw video
+    |     |  +--rw cts?            empty
+    |     |  +--rw ip-camera?      empty
+    |     |  +--rw media-player?   empty
+    |     +--rw voip!
+    |        +--rw cisco-phone?       empty
+    |        +--rw cisco-softphone?   empty
+    |        +--rw trust?             empty
+    +--rw datalink
+    |  +--rw flow
+    |     +--rw monitor!
+    |        +--rw User-defined-flow?   string
+    |        +--rw input-output?        enumeration
+    +--rw energywise!
+    |  +--rw activitycheck?   empty
+    |  +--rw level* [range]
+    |     +--rw range         uint8
+    |     +--rw recurrence
+    |        +--rw importance* [range]
+    |           +--rw range    uint16
+    |           +--rw at
+    |              +--rw minute?    union
+    |              +--rw hour?      union
+    |              +--rw day?       union
+    |              +--rw month?     union
+    |              +--rw weekday?   union
+    +--rw location
+    |  +--rw civic-location-id
+    |     +--rw location-identifier?   string
+    |     +--rw host!
+    |     |  +--rw port-location?   string
+    |     +--rw none!
+    |        +--rw port-location?   string
+    +--rw mac
+    |  +--rw access-group* [direction]
+    |     +--rw direction    enumeration
+    |     +--rw acl-name?    string
+    +--rw macro
+    |  +--rw description?   string
+    |  +--rw auto
+    |     +--rw processing?   boolean
+    |     +--rw port
+    |     |  +--rw sticky?   empty
+    |     +--rw control
+    |        +--rw device
+    |           +--rw phone?   empty
+    +--rw dual-active
+    |  +--rw fast-hello?   empty
+    +--rw load-balancing
+    |  +--rw flow?   empty
+    |  +--rw vlan?   empty
+    +--rw vlan-range* [id]
+    |  +--rw id                union
+    |  +--rw service-policy
+    |     +--rw input?    string
+    |     +--rw output?   string
+    +--rw switch
+    |  +--rw virtual
+    |     +--rw link?   uint8
+    +--rw srr-queue
+    |  +--rw bandwidth
+    |     +--rw shape
+    |     |  +--rw weight1?   uint16
+    |     |  +--rw weight2?   uint16
+    |     |  +--rw weight3?   uint16
+    |     |  +--rw weight4?   uint16
+    |     +--rw share
+    |        +--rw weight1?   uint8
+    |        +--rw weight2?   uint8
+    |        +--rw weight3?   uint8
+    |        +--rw weight4?   uint8
+    +--rw macsec?              empty
+    +--rw macsec-option
+    |  +--rw macsec
+    |     +--rw replay-protection
+    |     |  +--rw window-size?   uint32
+    |     +--rw network-link?        empty
+    +--rw l2protocol-tunnel
+       +--rw drop-threshold
+       |  +--rw cdp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw stp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw vtp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw lldp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw point-to-point
+       |     +--rw lacp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw pagp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw udld
+       |        +--rw pps_num?   uint16
+       +--rw shutdown-threshold
+       |  +--rw cdp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw stp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw vtp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw lldp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw point-to-point
+       |     +--rw lacp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw pagp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw udld
+       |        +--rw pps_num?   uint16
+       +--rw cdp?                  empty
+       +--rw stp?                  empty
+       +--rw vtp?                  empty
+       +--rw lldp?                 empty
+       +--rw point-to-point
+          +--rw lacp?   empty
+          +--rw pagp?   empty
+          +--rw udld?   empty
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw auto
+    |  +--rw qos
+    |     +--rw classify!
+    |     |  +--rw police?   empty
+    |     +--rw trust!
+    |     |  +--rw cos?    empty
+    |     |  +--rw dscp?   empty
+    |     +--rw video
+    |     |  +--rw cts?            empty
+    |     |  +--rw ip-camera?      empty
+    |     |  +--rw media-player?   empty
+    |     +--rw voip!
+    |        +--rw cisco-phone?       empty
+    |        +--rw cisco-softphone?   empty
+    |        +--rw trust?             empty
+    +--rw datalink
+    |  +--rw flow
+    |     +--rw monitor!
+    |        +--rw User-defined-flow?   string
+    |        +--rw input-output?        enumeration
+    +--rw energywise!
+    |  +--rw activitycheck?   empty
+    |  +--rw level* [range]
+    |     +--rw range         uint8
+    |     +--rw recurrence
+    |        +--rw importance* [range]
+    |           +--rw range    uint16
+    |           +--rw at
+    |              +--rw minute?    union
+    |              +--rw hour?      union
+    |              +--rw day?       union
+    |              +--rw month?     union
+    |              +--rw weekday?   union
+    +--rw location
+    |  +--rw civic-location-id
+    |     +--rw location-identifier?   string
+    |     +--rw host!
+    |     |  +--rw port-location?   string
+    |     +--rw none!
+    |        +--rw port-location?   string
+    +--rw mac
+    |  +--rw access-group* [direction]
+    |     +--rw direction    enumeration
+    |     +--rw acl-name?    string
+    +--rw macro
+    |  +--rw description?   string
+    |  +--rw auto
+    |     +--rw processing?   boolean
+    |     +--rw port
+    |     |  +--rw sticky?   empty
+    |     +--rw control
+    |        +--rw device
+    |           +--rw phone?   empty
+    +--rw dual-active
+    |  +--rw fast-hello?   empty
+    +--rw load-balancing
+    |  +--rw flow?   empty
+    |  +--rw vlan?   empty
+    +--rw vlan-range* [id]
+    |  +--rw id                union
+    |  +--rw service-policy
+    |     +--rw input?    string
+    |     +--rw output?   string
+    +--rw switch
+    |  +--rw virtual
+    |     +--rw link?   uint8
+    +--rw srr-queue
+    |  +--rw bandwidth
+    |     +--rw shape
+    |     |  +--rw weight1?   uint16
+    |     |  +--rw weight2?   uint16
+    |     |  +--rw weight3?   uint16
+    |     |  +--rw weight4?   uint16
+    |     +--rw share
+    |        +--rw weight1?   uint8
+    |        +--rw weight2?   uint8
+    |        +--rw weight3?   uint8
+    |        +--rw weight4?   uint8
+    +--rw macsec?              empty
+    +--rw macsec-option
+    |  +--rw macsec
+    |     +--rw replay-protection
+    |     |  +--rw window-size?   uint32
+    |     +--rw network-link?        empty
+    +--rw l2protocol-tunnel
+       +--rw drop-threshold
+       |  +--rw cdp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw stp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw vtp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw lldp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw point-to-point
+       |     +--rw lacp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw pagp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw udld
+       |        +--rw pps_num?   uint16
+       +--rw shutdown-threshold
+       |  +--rw cdp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw stp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw vtp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw lldp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw point-to-point
+       |     +--rw lacp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw pagp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw udld
+       |        +--rw pps_num?   uint16
+       +--rw cdp?                  empty
+       +--rw stp?                  empty
+       +--rw vtp?                  empty
+       +--rw lldp?                 empty
+       +--rw point-to-point
+          +--rw lacp?   empty
+          +--rw pagp?   empty
+          +--rw udld?   empty
+  augment /ios:native/ios:interface/ios:Port-channel:
+    +--rw auto
+    |  +--rw qos
+    |     +--rw classify!
+    |     |  +--rw police?   empty
+    |     +--rw trust!
+    |     |  +--rw cos?    empty
+    |     |  +--rw dscp?   empty
+    |     +--rw video
+    |     |  +--rw cts?            empty
+    |     |  +--rw ip-camera?      empty
+    |     |  +--rw media-player?   empty
+    |     +--rw voip!
+    |        +--rw cisco-phone?       empty
+    |        +--rw cisco-softphone?   empty
+    |        +--rw trust?             empty
+    +--rw datalink
+    |  +--rw flow
+    |     +--rw monitor!
+    |        +--rw User-defined-flow?   string
+    |        +--rw input-output?        enumeration
+    +--rw energywise!
+    |  +--rw activitycheck?   empty
+    |  +--rw level* [range]
+    |     +--rw range         uint8
+    |     +--rw recurrence
+    |        +--rw importance* [range]
+    |           +--rw range    uint16
+    |           +--rw at
+    |              +--rw minute?    union
+    |              +--rw hour?      union
+    |              +--rw day?       union
+    |              +--rw month?     union
+    |              +--rw weekday?   union
+    +--rw location
+    |  +--rw civic-location-id
+    |     +--rw location-identifier?   string
+    |     +--rw host!
+    |     |  +--rw port-location?   string
+    |     +--rw none!
+    |        +--rw port-location?   string
+    +--rw mac
+    |  +--rw access-group* [direction]
+    |     +--rw direction    enumeration
+    |     +--rw acl-name?    string
+    +--rw macro
+    |  +--rw description?   string
+    |  +--rw auto
+    |     +--rw processing?   boolean
+    |     +--rw port
+    |     |  +--rw sticky?   empty
+    |     +--rw control
+    |        +--rw device
+    |           +--rw phone?   empty
+    +--rw dual-active
+    |  +--rw fast-hello?   empty
+    +--rw load-balancing
+    |  +--rw flow?   empty
+    |  +--rw vlan?   empty
+    +--rw vlan-range* [id]
+    |  +--rw id                union
+    |  +--rw service-policy
+    |     +--rw input?    string
+    |     +--rw output?   string
+    +--rw switch
+    |  +--rw virtual
+    |     +--rw link?   uint8
+    +--rw srr-queue
+    |  +--rw bandwidth
+    |     +--rw shape
+    |     |  +--rw weight1?   uint16
+    |     |  +--rw weight2?   uint16
+    |     |  +--rw weight3?   uint16
+    |     |  +--rw weight4?   uint16
+    |     +--rw share
+    |        +--rw weight1?   uint8
+    |        +--rw weight2?   uint8
+    |        +--rw weight3?   uint8
+    |        +--rw weight4?   uint8
+    +--rw macsec?              empty
+    +--rw macsec-option
+    |  +--rw macsec
+    |     +--rw replay-protection
+    |     |  +--rw window-size?   uint32
+    |     +--rw network-link?        empty
+    +--rw l2protocol-tunnel
+    |  +--rw drop-threshold
+    |  |  +--rw cdp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw stp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw vtp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw lldp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw point-to-point
+    |  |     +--rw lacp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw pagp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw udld
+    |  |        +--rw pps_num?   uint16
+    |  +--rw shutdown-threshold
+    |  |  +--rw cdp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw stp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw vtp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw lldp
+    |  |  |  +--rw pps_num?   uint16
+    |  |  +--rw point-to-point
+    |  |     +--rw lacp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw pagp
+    |  |     |  +--rw pps_num?   uint16
+    |  |     +--rw udld
+    |  |        +--rw pps_num?   uint16
+    |  +--rw cdp?                  empty
+    |  +--rw stp?                  empty
+    |  +--rw vtp?                  empty
+    |  +--rw lldp?                 empty
+    |  +--rw point-to-point
+    |     +--rw lacp?   empty
+    |     +--rw pagp?   empty
+    |     +--rw udld?   empty
+    +--rw device-tracking! {ios-features:switching-platform}?
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:Port-channel-subinterface/ios:Port-channel:
+    +--rw auto
+    |  +--rw qos
+    |     +--rw classify!
+    |     |  +--rw police?   empty
+    |     +--rw trust!
+    |     |  +--rw cos?    empty
+    |     |  +--rw dscp?   empty
+    |     +--rw video
+    |     |  +--rw cts?            empty
+    |     |  +--rw ip-camera?      empty
+    |     |  +--rw media-player?   empty
+    |     +--rw voip!
+    |        +--rw cisco-phone?       empty
+    |        +--rw cisco-softphone?   empty
+    |        +--rw trust?             empty
+    +--rw datalink
+    |  +--rw flow
+    |     +--rw monitor!
+    |        +--rw User-defined-flow?   string
+    |        +--rw input-output?        enumeration
+    +--rw energywise!
+    |  +--rw activitycheck?   empty
+    |  +--rw level* [range]
+    |     +--rw range         uint8
+    |     +--rw recurrence
+    |        +--rw importance* [range]
+    |           +--rw range    uint16
+    |           +--rw at
+    |              +--rw minute?    union
+    |              +--rw hour?      union
+    |              +--rw day?       union
+    |              +--rw month?     union
+    |              +--rw weekday?   union
+    +--rw location
+    |  +--rw civic-location-id
+    |     +--rw location-identifier?   string
+    |     +--rw host!
+    |     |  +--rw port-location?   string
+    |     +--rw none!
+    |        +--rw port-location?   string
+    +--rw mac
+    |  +--rw access-group* [direction]
+    |     +--rw direction    enumeration
+    |     +--rw acl-name?    string
+    +--rw macro
+    |  +--rw description?   string
+    |  +--rw auto
+    |     +--rw processing?   boolean
+    |     +--rw port
+    |     |  +--rw sticky?   empty
+    |     +--rw control
+    |        +--rw device
+    |           +--rw phone?   empty
+    +--rw dual-active
+    |  +--rw fast-hello?   empty
+    +--rw load-balancing
+    |  +--rw flow?   empty
+    |  +--rw vlan?   empty
+    +--rw vlan-range* [id]
+    |  +--rw id                union
+    |  +--rw service-policy
+    |     +--rw input?    string
+    |     +--rw output?   string
+    +--rw switch
+    |  +--rw virtual
+    |     +--rw link?   uint8
+    +--rw srr-queue
+    |  +--rw bandwidth
+    |     +--rw shape
+    |     |  +--rw weight1?   uint16
+    |     |  +--rw weight2?   uint16
+    |     |  +--rw weight3?   uint16
+    |     |  +--rw weight4?   uint16
+    |     +--rw share
+    |        +--rw weight1?   uint8
+    |        +--rw weight2?   uint8
+    |        +--rw weight3?   uint8
+    |        +--rw weight4?   uint8
+    +--rw macsec?              empty
+    +--rw macsec-option
+    |  +--rw macsec
+    |     +--rw replay-protection
+    |     |  +--rw window-size?   uint32
+    |     +--rw network-link?        empty
+    +--rw l2protocol-tunnel
+       +--rw drop-threshold
+       |  +--rw cdp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw stp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw vtp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw lldp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw point-to-point
+       |     +--rw lacp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw pagp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw udld
+       |        +--rw pps_num?   uint16
+       +--rw shutdown-threshold
+       |  +--rw cdp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw stp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw vtp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw lldp
+       |  |  +--rw pps_num?   uint16
+       |  +--rw point-to-point
+       |     +--rw lacp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw pagp
+       |     |  +--rw pps_num?   uint16
+       |     +--rw udld
+       |        +--rw pps_num?   uint16
+       +--rw cdp?                  empty
+       +--rw stp?                  empty
+       +--rw vtp?                  empty
+       +--rw lldp?                 empty
+       +--rw point-to-point
+          +--rw lacp?   empty
+          +--rw pagp?   empty
+          +--rw udld?   empty
+  augment /ios:native/ios:interface/ios:ucse/ios:switchport:
+    +--rw access
+    |  +--rw vlan
+    |     +--rw vlan?   union
+    |     x--rw name?   string
+    +--rw block
+    |  +--rw multicast?   empty
+    |  +--rw unicast?     empty
+    +--rw mode
+    |  +--rw (mode-choice)?
+    |     +--:(access)
+    |     |  +--rw access!
+    |     +--:(dot1q-tunnel)
+    |     |  +--rw dot1q-tunnel!
+    |     +--:(dynamic)
+    |     |  +--rw dynamic?        enumeration
+    |     +--:(private-vlan)
+    |     |  +--rw private-vlan
+    |     |     +--rw trunk!
+    |     |     |  +--rw trunk-config?   enumeration
+    |     |     +--rw host?          empty
+    |     |     +--rw promiscuous?   empty
+    |     +--:(trunk)
+    |        +--rw trunk!
+    +--rw nonegotiate?          empty
+    +--rw port-security-cfg?    empty
+    +--rw port-security-conf
+    |  +--rw port-security
+    |     +--rw aging
+    |     |  +--rw static?   empty
+    |     |  +--rw time?     uint16
+    |     |  +--rw type?     enumeration
+    |     +--rw mac-address
+    |     |  +--rw sticky?       empty
+    |     |  +--rw hw-address?   yang:mac-address
+    |     |  +--rw vlan?         uint16
+    |     +--rw maxcount* [max-addresses]
+    |     |  +--rw max-addresses    uint16
+    |     |  +--rw vlan?            string
+    |     x--rw maximum
+    |     |  x--rw max-addresses?   uint16
+    |     |  x--rw vlan?            string
+    |     +--rw violation
+    |        +--rw (violation-choice)?
+    |           +--:(protect)
+    |           |  +--rw protect?    empty
+    |           +--:(restrict)
+    |           |  +--rw restrict?   empty
+    |           +--:(shutdown)
+    |              +--rw shutdown
+    |                 +--rw vlan?   empty
+    x--rw port-security!
+    |  x--rw aging
+    |  |  x--rw static?   empty
+    |  |  x--rw time?     uint16
+    |  |  x--rw type?     enumeration
+    |  x--rw mac-address
+    |  |  x--rw sticky?       empty
+    |  |  x--rw hw-address?   yang:mac-address
+    |  |  x--rw vlan?         uint16
+    |  x--rw maximum
+    |  |  x--rw max-addresses?   uint16
+    |  |  x--rw vlan?            string
+    |  x--rw violation?     enumeration
+    +--rw trunk
+    |  +--rw allowed
+    |  |  +--rw vlan
+    |  |     +--rw (vlan-choice)?
+    |  |        +--:(vlans)
+    |  |        |  +--rw vlans?    union
+    |  |        +--:(all)
+    |  |        |  x--rw all?      empty
+    |  |        +--:(none)
+    |  |        |  +--rw none?     empty
+    |  |        +--:(add)
+    |  |        |  +--rw add?      union
+    |  |        +--:(except)
+    |  |        |  +--rw except?   union
+    |  |        +--:(remove)
+    |  |           +--rw remove?   union
+    |  +--rw encapsulation?   enumeration
+    |  +--rw native
+    |  |  +--rw vlan?   union
+    |  +--rw pruning
+    |     +--rw vlan
+    |        +--rw (vlan-choice)?
+    |           +--:(vlans)
+    |           |  +--rw vlans*    union
+    |           +--:(add)
+    |           |  +--rw add?      union
+    |           +--:(except)
+    |           |  +--rw except*   union
+    |           +--:(none)
+    |           |  +--rw none?     empty
+    |           +--:(remove)
+    |              +--rw remove?   union
+    +--rw voice
+    |  +--rw vlan
+    |  |  +--rw vlan?   union
+    |  |  +--rw name?   string
+    |  +--rw detect
+    |     +--rw cisco-phone!
+    |        +--rw full-duplex?   empty
+    +--rw priority
+    |  +--rw extend
+    |     +--rw (trust-choice)?
+    |        +--:(trust)
+    |        |  +--rw trust?   empty
+    |        +--:(cos)
+    |           +--rw cos?     uint8
+    +--rw autostate
+    |  +--rw exclude?   empty
+    +--rw protected?            empty
+    +--rw host?                 empty
+    +--rw private-vlan
+    |  +--rw association
+    |  |  +--rw host
+    |  |  |  +--rw primary-range?     uint16
+    |  |  |  +--rw secondary-range?   uint16
+    |  |  +--rw mapping
+    |  |     +--rw primary-range?     uint16
+    |  |     +--rw secondary-range?   string
+    |  |     +--rw add?               string
+    |  |     +--rw remove?            string
+    |  +--rw host-association
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   uint16
+    |  +--rw mapping
+    |  |  +--rw trunk?             empty
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   string
+    |  |  x--rw add?               string
+    |  |  x--rw remove?            string
+    |  +--rw trunk
+    |     +--rw allowed
+    |     |  +--rw vlan
+    |     |     +--rw vlans?   union
+    |     +--rw native
+    |        +--rw vlan
+    |           +--rw vlans?   uint16
+    |           +--rw tag?     empty
+    +--rw vepa
+    |  +--rw enabled?   empty
+    +--rw app-interface?        empty
+  augment /ios:native/ios:interface/ios:Ethernet-Internal/ios:switchport:
+    +--rw access
+    |  +--rw vlan
+    |     +--rw vlan?   union
+    |     x--rw name?   string
+    +--rw block
+    |  +--rw multicast?   empty
+    |  +--rw unicast?     empty
+    +--rw mode
+    |  +--rw (mode-choice)?
+    |     +--:(access)
+    |     |  +--rw access!
+    |     +--:(dot1q-tunnel)
+    |     |  +--rw dot1q-tunnel!
+    |     +--:(dynamic)
+    |     |  +--rw dynamic?        enumeration
+    |     +--:(private-vlan)
+    |     |  +--rw private-vlan
+    |     |     +--rw trunk!
+    |     |     |  +--rw trunk-config?   enumeration
+    |     |     +--rw host?          empty
+    |     |     +--rw promiscuous?   empty
+    |     +--:(trunk)
+    |        +--rw trunk!
+    +--rw nonegotiate?          empty
+    +--rw port-security-cfg?    empty
+    +--rw port-security-conf
+    |  +--rw port-security
+    |     +--rw aging
+    |     |  +--rw static?   empty
+    |     |  +--rw time?     uint16
+    |     |  +--rw type?     enumeration
+    |     +--rw mac-address
+    |     |  +--rw sticky?       empty
+    |     |  +--rw hw-address?   yang:mac-address
+    |     |  +--rw vlan?         uint16
+    |     +--rw maxcount* [max-addresses]
+    |     |  +--rw max-addresses    uint16
+    |     |  +--rw vlan?            string
+    |     x--rw maximum
+    |     |  x--rw max-addresses?   uint16
+    |     |  x--rw vlan?            string
+    |     +--rw violation
+    |        +--rw (violation-choice)?
+    |           +--:(protect)
+    |           |  +--rw protect?    empty
+    |           +--:(restrict)
+    |           |  +--rw restrict?   empty
+    |           +--:(shutdown)
+    |              +--rw shutdown
+    |                 +--rw vlan?   empty
+    x--rw port-security!
+    |  x--rw aging
+    |  |  x--rw static?   empty
+    |  |  x--rw time?     uint16
+    |  |  x--rw type?     enumeration
+    |  x--rw mac-address
+    |  |  x--rw sticky?       empty
+    |  |  x--rw hw-address?   yang:mac-address
+    |  |  x--rw vlan?         uint16
+    |  x--rw maximum
+    |  |  x--rw max-addresses?   uint16
+    |  |  x--rw vlan?            string
+    |  x--rw violation?     enumeration
+    +--rw trunk
+    |  +--rw allowed
+    |  |  +--rw vlan
+    |  |     +--rw (vlan-choice)?
+    |  |        +--:(vlans)
+    |  |        |  +--rw vlans?    union
+    |  |        +--:(all)
+    |  |        |  x--rw all?      empty
+    |  |        +--:(none)
+    |  |        |  +--rw none?     empty
+    |  |        +--:(add)
+    |  |        |  +--rw add?      union
+    |  |        +--:(except)
+    |  |        |  +--rw except?   union
+    |  |        +--:(remove)
+    |  |           +--rw remove?   union
+    |  +--rw encapsulation?   enumeration
+    |  +--rw native
+    |  |  +--rw vlan?   union
+    |  +--rw pruning
+    |     +--rw vlan
+    |        +--rw (vlan-choice)?
+    |           +--:(vlans)
+    |           |  +--rw vlans*    union
+    |           +--:(add)
+    |           |  +--rw add?      union
+    |           +--:(except)
+    |           |  +--rw except*   union
+    |           +--:(none)
+    |           |  +--rw none?     empty
+    |           +--:(remove)
+    |              +--rw remove?   union
+    +--rw voice
+    |  +--rw vlan
+    |  |  +--rw vlan?   union
+    |  |  +--rw name?   string
+    |  +--rw detect
+    |     +--rw cisco-phone!
+    |        +--rw full-duplex?   empty
+    +--rw priority
+    |  +--rw extend
+    |     +--rw (trust-choice)?
+    |        +--:(trust)
+    |        |  +--rw trust?   empty
+    |        +--:(cos)
+    |           +--rw cos?     uint8
+    +--rw autostate
+    |  +--rw exclude?   empty
+    +--rw protected?            empty
+    +--rw host?                 empty
+    +--rw private-vlan
+    |  +--rw association
+    |  |  +--rw host
+    |  |  |  +--rw primary-range?     uint16
+    |  |  |  +--rw secondary-range?   uint16
+    |  |  +--rw mapping
+    |  |     +--rw primary-range?     uint16
+    |  |     +--rw secondary-range?   string
+    |  |     +--rw add?               string
+    |  |     +--rw remove?            string
+    |  +--rw host-association
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   uint16
+    |  +--rw mapping
+    |  |  +--rw trunk?             empty
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   string
+    |  |  x--rw add?               string
+    |  |  x--rw remove?            string
+    |  +--rw trunk
+    |     +--rw allowed
+    |     |  +--rw vlan
+    |     |     +--rw vlans?   union
+    |     +--rw native
+    |        +--rw vlan
+    |           +--rw vlans?   uint16
+    |           +--rw tag?     empty
+    +--rw vepa
+    |  +--rw enabled?   empty
+    +--rw app-interface?        empty
+  augment /ios:native/ios:interface/ios:Wlan-GigabitEthernet/ios:switchport:
+    +--rw access
+    |  +--rw vlan
+    |     +--rw vlan?   union
+    |     x--rw name?   string
+    +--rw block
+    |  +--rw multicast?   empty
+    |  +--rw unicast?     empty
+    +--rw mode
+    |  +--rw (mode-choice)?
+    |     +--:(access)
+    |     |  +--rw access!
+    |     +--:(dot1q-tunnel)
+    |     |  +--rw dot1q-tunnel!
+    |     +--:(dynamic)
+    |     |  +--rw dynamic?        enumeration
+    |     +--:(private-vlan)
+    |     |  +--rw private-vlan
+    |     |     +--rw trunk!
+    |     |     |  +--rw trunk-config?   enumeration
+    |     |     +--rw host?          empty
+    |     |     +--rw promiscuous?   empty
+    |     +--:(trunk)
+    |        +--rw trunk!
+    +--rw nonegotiate?          empty
+    +--rw port-security-cfg?    empty
+    +--rw port-security-conf
+    |  +--rw port-security
+    |     +--rw aging
+    |     |  +--rw static?   empty
+    |     |  +--rw time?     uint16
+    |     |  +--rw type?     enumeration
+    |     +--rw mac-address
+    |     |  +--rw sticky?       empty
+    |     |  +--rw hw-address?   yang:mac-address
+    |     |  +--rw vlan?         uint16
+    |     +--rw maxcount* [max-addresses]
+    |     |  +--rw max-addresses    uint16
+    |     |  +--rw vlan?            string
+    |     x--rw maximum
+    |     |  x--rw max-addresses?   uint16
+    |     |  x--rw vlan?            string
+    |     +--rw violation
+    |        +--rw (violation-choice)?
+    |           +--:(protect)
+    |           |  +--rw protect?    empty
+    |           +--:(restrict)
+    |           |  +--rw restrict?   empty
+    |           +--:(shutdown)
+    |              +--rw shutdown
+    |                 +--rw vlan?   empty
+    x--rw port-security!
+    |  x--rw aging
+    |  |  x--rw static?   empty
+    |  |  x--rw time?     uint16
+    |  |  x--rw type?     enumeration
+    |  x--rw mac-address
+    |  |  x--rw sticky?       empty
+    |  |  x--rw hw-address?   yang:mac-address
+    |  |  x--rw vlan?         uint16
+    |  x--rw maximum
+    |  |  x--rw max-addresses?   uint16
+    |  |  x--rw vlan?            string
+    |  x--rw violation?     enumeration
+    +--rw trunk
+    |  +--rw allowed
+    |  |  +--rw vlan
+    |  |     +--rw (vlan-choice)?
+    |  |        +--:(vlans)
+    |  |        |  +--rw vlans?    union
+    |  |        +--:(all)
+    |  |        |  x--rw all?      empty
+    |  |        +--:(none)
+    |  |        |  +--rw none?     empty
+    |  |        +--:(add)
+    |  |        |  +--rw add?      union
+    |  |        +--:(except)
+    |  |        |  +--rw except?   union
+    |  |        +--:(remove)
+    |  |           +--rw remove?   union
+    |  +--rw encapsulation?   enumeration
+    |  +--rw native
+    |  |  +--rw vlan?   union
+    |  +--rw pruning
+    |     +--rw vlan
+    |        +--rw (vlan-choice)?
+    |           +--:(vlans)
+    |           |  +--rw vlans*    union
+    |           +--:(add)
+    |           |  +--rw add?      union
+    |           +--:(except)
+    |           |  +--rw except*   union
+    |           +--:(none)
+    |           |  +--rw none?     empty
+    |           +--:(remove)
+    |              +--rw remove?   union
+    +--rw voice
+    |  +--rw vlan
+    |  |  +--rw vlan?   union
+    |  |  +--rw name?   string
+    |  +--rw detect
+    |     +--rw cisco-phone!
+    |        +--rw full-duplex?   empty
+    +--rw priority
+    |  +--rw extend
+    |     +--rw (trust-choice)?
+    |        +--:(trust)
+    |        |  +--rw trust?   empty
+    |        +--:(cos)
+    |           +--rw cos?     uint8
+    +--rw autostate
+    |  +--rw exclude?   empty
+    +--rw protected?            empty
+    +--rw host?                 empty
+    +--rw private-vlan
+    |  +--rw association
+    |  |  +--rw host
+    |  |  |  +--rw primary-range?     uint16
+    |  |  |  +--rw secondary-range?   uint16
+    |  |  +--rw mapping
+    |  |     +--rw primary-range?     uint16
+    |  |     +--rw secondary-range?   string
+    |  |     +--rw add?               string
+    |  |     +--rw remove?            string
+    |  +--rw host-association
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   uint16
+    |  +--rw mapping
+    |  |  +--rw trunk?             empty
+    |  |  +--rw primary-range?     uint16
+    |  |  +--rw secondary-range?   string
+    |  |  x--rw add?               string
+    |  |  x--rw remove?            string
+    |  +--rw trunk
+    |     +--rw allowed
+    |     |  +--rw vlan
+    |     |     +--rw vlans?   union
+    |     +--rw native
+    |        +--rw vlan
+    |           +--rw vlans?   uint16
+    |           +--rw tag?     empty
+    +--rw vepa
+    |  +--rw enabled?   empty
+    +--rw app-interface?        empty
+  augment /ios:native/ios:macro/ios:auto:
+    +--rw execute* [trigger-event]
+    |  +--rw trigger-event    string
+    |  +--rw builtin
+    |     +--rw smart-port-configuration?   enumeration
+    |     +--rw parameters?                 string
+    +--rw device
+    |  +--rw media-player?   string
+    |  +--rw ip-camera?      string
+    +--rw global
+       +--rw processing?   empty
+  augment /ios:native/ios:boot/ios:system:
+    +--rw switch
+       +--rw switch-number* [range]
+       |  +--rw range           uint8
+       |  +--rw flash-1-path?   string
+       |  +--rw flash-path?     string
+       |  +--rw tftp-path?      string
+       +--rw all
+          +--rw flash-1?   string
+          +--rw flash?     string
+          +--rw tftp?      string
+  augment /ios:native/ios:boot:
+    +--rw enable-break!
+    |  +--rw switch?   uint8
+    +--rw manual!
+       +--rw switch?   uint8
+  augment /ios:native/ios:module:
+    +--rw provision {ios-features:module}?
+       +--rw switch* [number]
+          +--rw number     uint8
+          +--rw chassis
+          |  +--rw chassis-type?   uint32
+          |  +--rw base-mac?       string
+          +--rw slot* [number]
+             +--rw number       uint8
+             +--rw slot-type?   uint32
+             +--rw base-mac?    string
+  augment /ios:native/ios:sdm:
+    +--rw prefer!
+       +--rw (sdm-prefer-choice)?
+          +--:(default)
+          |  +--rw default?   empty
+          +--:(qos)
+             +--rw qos?       empty
+  augment /ios:native/ios:setup:
+    +--rw express?   boolean {ios-features:setup}?
+  augment /ios:native:
+    +--rw energywise
+       +--rw domain* [word]
+          +--rw word        string
+          +--rw security
+             +--rw shared-secret
+                +--rw zero* [word]
+                   +--rw word        string
+                   +--rw protocol
+                      +--rw udp
+                         +--rw port?   uint16
+                         +--rw ip?     inet:ipv4-address
+  augment /ios:native:
+    +--rw service-template* [word]
+       +--rw word                   string
+       +--rw access-group-config* [name]
+       |  +--rw name    string
+       x--rw access-group?          string
+       +--rw inactivity-timer
+       |  +--rw value?   uint16
+       |  +--rw probe?   empty
+       +--rw vlan?                  uint16
+       +--rw linksec
+       |  +--rw policy?   enumeration
+       +--rw mdns-service-policy?   string
+       +--rw voice
+       |  +--rw vlan?   empty
+       +--rw sgt?                   uint16
+       +--rw absolute-timer?        uint16
+       +--rw description?           string
+       +--rw interface-template* [name]
+       |  +--rw name    string
+       +--rw tunnel
+       |  +--rw type
+       |     +--rw capwap
+       |        +--rw name?   string
+       +--rw vnid?                  string
+       +--rw redirect
+       |  +--rw append
+       |  |  +--rw client-mac?   string
+       |  |  +--rw switch-mac?   string
+       |  +--rw url
+       |     +--rw url_name?   string
+       |     +--rw match
+       |        +--rw acl_name?   string
+       |        +--rw action?     enumeration
+       +--rw dns-acl
+       |  +--rw preauth?   string
+       +--rw service-policy
+       |  +--rw qos
+       |     +--rw input?    string
+       |     +--rw output?   string
+       +--rw tag?                   string
+  augment /ios:native/ios-arp:arp:
+    +--rw access-list* [name]
+       +--rw name       string
+       +--rw permit
+       |  +--rw ip
+       |  |  +--rw sender-ip-address* [ip-address]
+       |  |  |  +--rw ip-address         string
+       |  |  |  +--rw ip-address-mask?   string
+       |  |  |  +--rw mac
+       |  |  |     +--rw sender-mac-address* [mac-address]
+       |  |  |     |  +--rw mac-address         string
+       |  |  |     |  +--rw mac-address-mask?   string
+       |  |  |     |  +--rw log?                empty
+       |  |  |     +--rw any!
+       |  |  |     |  +--rw log?   empty
+       |  |  |     +--rw host
+       |  |  |        +--rw sender-mac-address* [mac-address]
+       |  |  |           +--rw mac-address    string
+       |  |  |           +--rw log?           empty
+       |  |  +--rw any
+       |  |  |  +--rw mac
+       |  |  |     +--rw sender-mac-address* [mac-address]
+       |  |  |     |  +--rw mac-address         string
+       |  |  |     |  +--rw mac-address-mask?   string
+       |  |  |     |  +--rw log?                empty
+       |  |  |     +--rw any!
+       |  |  |     |  +--rw log?   empty
+       |  |  |     +--rw host
+       |  |  |        +--rw sender-mac-address* [mac-address]
+       |  |  |           +--rw mac-address    string
+       |  |  |           +--rw log?           empty
+       |  |  +--rw host
+       |  |     +--rw ip-address* [ip-address]
+       |  |        +--rw ip-address    string
+       |  |        +--rw mac
+       |  |           +--rw sender-mac-address* [mac-address]
+       |  |           |  +--rw mac-address         string
+       |  |           |  +--rw mac-address-mask?   string
+       |  |           |  +--rw log?                empty
+       |  |           +--rw any!
+       |  |           |  +--rw log?   empty
+       |  |           +--rw host
+       |  |              +--rw sender-mac-address* [mac-address]
+       |  |                 +--rw mac-address    string
+       |  |                 +--rw log?           empty
+       |  +--rw request
+       |  |  +--rw ip
+       |  |     +--rw sender-ip-address* [ip-address]
+       |  |     |  +--rw ip-address         string
+       |  |     |  +--rw ip-address-mask?   string
+       |  |     |  +--rw mac
+       |  |     |     +--rw sender-mac-address* [mac-address]
+       |  |     |     |  +--rw mac-address         string
+       |  |     |     |  +--rw mac-address-mask?   string
+       |  |     |     |  +--rw log?                empty
+       |  |     |     +--rw any!
+       |  |     |     |  +--rw log?   empty
+       |  |     |     +--rw host
+       |  |     |        +--rw sender-mac-address* [mac-address]
+       |  |     |           +--rw mac-address    string
+       |  |     |           +--rw log?           empty
+       |  |     +--rw any
+       |  |     |  +--rw mac
+       |  |     |     +--rw sender-mac-address* [mac-address]
+       |  |     |     |  +--rw mac-address         string
+       |  |     |     |  +--rw mac-address-mask?   string
+       |  |     |     |  +--rw log?                empty
+       |  |     |     +--rw any!
+       |  |     |     |  +--rw log?   empty
+       |  |     |     +--rw host
+       |  |     |        +--rw sender-mac-address* [mac-address]
+       |  |     |           +--rw mac-address    string
+       |  |     |           +--rw log?           empty
+       |  |     +--rw host
+       |  |        +--rw ip-address* [ip-address]
+       |  |           +--rw ip-address    string
+       |  |           +--rw mac
+       |  |              +--rw sender-mac-address* [mac-address]
+       |  |              |  +--rw mac-address         string
+       |  |              |  +--rw mac-address-mask?   string
+       |  |              |  +--rw log?                empty
+       |  |              +--rw any!
+       |  |              |  +--rw log?   empty
+       |  |              +--rw host
+       |  |                 +--rw sender-mac-address* [mac-address]
+       |  |                    +--rw mac-address    string
+       |  |                    +--rw log?           empty
+       |  +--rw response
+       |     +--rw ip
+       |        +--rw sender-ip-address* [ip-address]
+       |        |  +--rw ip-address         string
+       |        |  +--rw ip-address-mask?   string
+       |        |  +--rw mac
+       |        |     +--rw sender-mac-address* [mac-address]
+       |        |     |  +--rw mac-address         string
+       |        |     |  +--rw mac-address-mask?   string
+       |        |     |  +--rw log?                empty
+       |        |     +--rw any!
+       |        |     |  +--rw log?   empty
+       |        |     +--rw host
+       |        |        +--rw sender-mac-address* [mac-address]
+       |        |           +--rw mac-address    string
+       |        |           +--rw log?           empty
+       |        +--rw any
+       |        |  +--rw mac
+       |        |     +--rw sender-mac-address* [mac-address]
+       |        |     |  +--rw mac-address         string
+       |        |     |  +--rw mac-address-mask?   string
+       |        |     |  +--rw log?                empty
+       |        |     +--rw any!
+       |        |     |  +--rw log?   empty
+       |        |     +--rw host
+       |        |        +--rw sender-mac-address* [mac-address]
+       |        |           +--rw mac-address    string
+       |        |           +--rw log?           empty
+       |        +--rw host
+       |           +--rw ip-address* [ip-address]
+       |              +--rw ip-address    string
+       |              +--rw mac
+       |                 +--rw sender-mac-address* [mac-address]
+       |                 |  +--rw mac-address         string
+       |                 |  +--rw mac-address-mask?   string
+       |                 |  +--rw log?                empty
+       |                 +--rw any!
+       |                 |  +--rw log?   empty
+       |                 +--rw host
+       |                    +--rw sender-mac-address* [mac-address]
+       |                       +--rw mac-address    string
+       |                       +--rw log?           empty
+       +--rw deny
+       |  +--rw ip
+       |  |  +--rw sender-ip-address* [ip-address]
+       |  |  |  +--rw ip-address         string
+       |  |  |  +--rw ip-address-mask?   string
+       |  |  |  +--rw mac
+       |  |  |     +--rw sender-mac-address* [mac-address]
+       |  |  |     |  +--rw mac-address         string
+       |  |  |     |  +--rw mac-address-mask?   string
+       |  |  |     |  +--rw log?                empty
+       |  |  |     +--rw any!
+       |  |  |     |  +--rw log?   empty
+       |  |  |     +--rw host
+       |  |  |        +--rw sender-mac-address* [mac-address]
+       |  |  |           +--rw mac-address    string
+       |  |  |           +--rw log?           empty
+       |  |  +--rw any
+       |  |  |  +--rw mac
+       |  |  |     +--rw sender-mac-address* [mac-address]
+       |  |  |     |  +--rw mac-address         string
+       |  |  |     |  +--rw mac-address-mask?   string
+       |  |  |     |  +--rw log?                empty
+       |  |  |     +--rw any!
+       |  |  |     |  +--rw log?   empty
+       |  |  |     +--rw host
+       |  |  |        +--rw sender-mac-address* [mac-address]
+       |  |  |           +--rw mac-address    string
+       |  |  |           +--rw log?           empty
+       |  |  +--rw host
+       |  |     +--rw ip-address* [ip-address]
+       |  |        +--rw ip-address    string
+       |  |        +--rw mac
+       |  |           +--rw sender-mac-address* [mac-address]
+       |  |           |  +--rw mac-address         string
+       |  |           |  +--rw mac-address-mask?   string
+       |  |           |  +--rw log?                empty
+       |  |           +--rw any!
+       |  |           |  +--rw log?   empty
+       |  |           +--rw host
+       |  |              +--rw sender-mac-address* [mac-address]
+       |  |                 +--rw mac-address    string
+       |  |                 +--rw log?           empty
+       |  +--rw request
+       |  |  +--rw ip
+       |  |     +--rw sender-ip-address* [ip-address]
+       |  |     |  +--rw ip-address         string
+       |  |     |  +--rw ip-address-mask?   string
+       |  |     |  +--rw mac
+       |  |     |     +--rw sender-mac-address* [mac-address]
+       |  |     |     |  +--rw mac-address         string
+       |  |     |     |  +--rw mac-address-mask?   string
+       |  |     |     |  +--rw log?                empty
+       |  |     |     +--rw any!
+       |  |     |     |  +--rw log?   empty
+       |  |     |     +--rw host
+       |  |     |        +--rw sender-mac-address* [mac-address]
+       |  |     |           +--rw mac-address    string
+       |  |     |           +--rw log?           empty
+       |  |     +--rw any
+       |  |     |  +--rw mac
+       |  |     |     +--rw sender-mac-address* [mac-address]
+       |  |     |     |  +--rw mac-address         string
+       |  |     |     |  +--rw mac-address-mask?   string
+       |  |     |     |  +--rw log?                empty
+       |  |     |     +--rw any!
+       |  |     |     |  +--rw log?   empty
+       |  |     |     +--rw host
+       |  |     |        +--rw sender-mac-address* [mac-address]
+       |  |     |           +--rw mac-address    string
+       |  |     |           +--rw log?           empty
+       |  |     +--rw host
+       |  |        +--rw ip-address* [ip-address]
+       |  |           +--rw ip-address    string
+       |  |           +--rw mac
+       |  |              +--rw sender-mac-address* [mac-address]
+       |  |              |  +--rw mac-address         string
+       |  |              |  +--rw mac-address-mask?   string
+       |  |              |  +--rw log?                empty
+       |  |              +--rw any!
+       |  |              |  +--rw log?   empty
+       |  |              +--rw host
+       |  |                 +--rw sender-mac-address* [mac-address]
+       |  |                    +--rw mac-address    string
+       |  |                    +--rw log?           empty
+       |  +--rw response
+       |     +--rw ip
+       |        +--rw sender-ip-address* [ip-address]
+       |        |  +--rw ip-address         string
+       |        |  +--rw ip-address-mask?   string
+       |        |  +--rw mac
+       |        |     +--rw sender-mac-address* [mac-address]
+       |        |     |  +--rw mac-address         string
+       |        |     |  +--rw mac-address-mask?   string
+       |        |     |  +--rw log?                empty
+       |        |     +--rw any!
+       |        |     |  +--rw log?   empty
+       |        |     +--rw host
+       |        |        +--rw sender-mac-address* [mac-address]
+       |        |           +--rw mac-address    string
+       |        |           +--rw log?           empty
+       |        +--rw any
+       |        |  +--rw mac
+       |        |     +--rw sender-mac-address* [mac-address]
+       |        |     |  +--rw mac-address         string
+       |        |     |  +--rw mac-address-mask?   string
+       |        |     |  +--rw log?                empty
+       |        |     +--rw any!
+       |        |     |  +--rw log?   empty
+       |        |     +--rw host
+       |        |        +--rw sender-mac-address* [mac-address]
+       |        |           +--rw mac-address    string
+       |        |           +--rw log?           empty
+       |        +--rw host
+       |           +--rw ip-address* [ip-address]
+       |              +--rw ip-address    string
+       |              +--rw mac
+       |                 +--rw sender-mac-address* [mac-address]
+       |                 |  +--rw mac-address         string
+       |                 |  +--rw mac-address-mask?   string
+       |                 |  +--rw log?                empty
+       |                 +--rw any!
+       |                 |  +--rw log?   empty
+       |                 +--rw host
+       |                    +--rw sender-mac-address* [mac-address]
+       |                       +--rw mac-address    string
+       |                       +--rw log?           empty
+       +--rw default
+       |  +--rw permit
+       |  |  +--rw ip
+       |  |  |  +--rw sender-ip-address* [ip-address]
+       |  |  |  |  +--rw ip-address         string
+       |  |  |  |  +--rw ip-address-mask?   string
+       |  |  |  |  +--rw mac
+       |  |  |  |     +--rw sender-mac-address* [mac-address]
+       |  |  |  |     |  +--rw mac-address         string
+       |  |  |  |     |  +--rw mac-address-mask?   string
+       |  |  |  |     |  +--rw log?                empty
+       |  |  |  |     +--rw any!
+       |  |  |  |     |  +--rw log?   empty
+       |  |  |  |     +--rw host
+       |  |  |  |        +--rw sender-mac-address* [mac-address]
+       |  |  |  |           +--rw mac-address    string
+       |  |  |  |           +--rw log?           empty
+       |  |  |  +--rw any
+       |  |  |  |  +--rw mac
+       |  |  |  |     +--rw sender-mac-address* [mac-address]
+       |  |  |  |     |  +--rw mac-address         string
+       |  |  |  |     |  +--rw mac-address-mask?   string
+       |  |  |  |     |  +--rw log?                empty
+       |  |  |  |     +--rw any!
+       |  |  |  |     |  +--rw log?   empty
+       |  |  |  |     +--rw host
+       |  |  |  |        +--rw sender-mac-address* [mac-address]
+       |  |  |  |           +--rw mac-address    string
+       |  |  |  |           +--rw log?           empty
+       |  |  |  +--rw host
+       |  |  |     +--rw ip-address* [ip-address]
+       |  |  |        +--rw ip-address    string
+       |  |  |        +--rw mac
+       |  |  |           +--rw sender-mac-address* [mac-address]
+       |  |  |           |  +--rw mac-address         string
+       |  |  |           |  +--rw mac-address-mask?   string
+       |  |  |           |  +--rw log?                empty
+       |  |  |           +--rw any!
+       |  |  |           |  +--rw log?   empty
+       |  |  |           +--rw host
+       |  |  |              +--rw sender-mac-address* [mac-address]
+       |  |  |                 +--rw mac-address    string
+       |  |  |                 +--rw log?           empty
+       |  |  +--rw request
+       |  |  |  +--rw ip
+       |  |  |     +--rw sender-ip-address* [ip-address]
+       |  |  |     |  +--rw ip-address         string
+       |  |  |     |  +--rw ip-address-mask?   string
+       |  |  |     |  +--rw mac
+       |  |  |     |     +--rw sender-mac-address* [mac-address]
+       |  |  |     |     |  +--rw mac-address         string
+       |  |  |     |     |  +--rw mac-address-mask?   string
+       |  |  |     |     |  +--rw log?                empty
+       |  |  |     |     +--rw any!
+       |  |  |     |     |  +--rw log?   empty
+       |  |  |     |     +--rw host
+       |  |  |     |        +--rw sender-mac-address* [mac-address]
+       |  |  |     |           +--rw mac-address    string
+       |  |  |     |           +--rw log?           empty
+       |  |  |     +--rw any
+       |  |  |     |  +--rw mac
+       |  |  |     |     +--rw sender-mac-address* [mac-address]
+       |  |  |     |     |  +--rw mac-address         string
+       |  |  |     |     |  +--rw mac-address-mask?   string
+       |  |  |     |     |  +--rw log?                empty
+       |  |  |     |     +--rw any!
+       |  |  |     |     |  +--rw log?   empty
+       |  |  |     |     +--rw host
+       |  |  |     |        +--rw sender-mac-address* [mac-address]
+       |  |  |     |           +--rw mac-address    string
+       |  |  |     |           +--rw log?           empty
+       |  |  |     +--rw host
+       |  |  |        +--rw ip-address* [ip-address]
+       |  |  |           +--rw ip-address    string
+       |  |  |           +--rw mac
+       |  |  |              +--rw sender-mac-address* [mac-address]
+       |  |  |              |  +--rw mac-address         string
+       |  |  |              |  +--rw mac-address-mask?   string
+       |  |  |              |  +--rw log?                empty
+       |  |  |              +--rw any!
+       |  |  |              |  +--rw log?   empty
+       |  |  |              +--rw host
+       |  |  |                 +--rw sender-mac-address* [mac-address]
+       |  |  |                    +--rw mac-address    string
+       |  |  |                    +--rw log?           empty
+       |  |  +--rw response
+       |  |     +--rw ip
+       |  |        +--rw sender-ip-address* [ip-address]
+       |  |        |  +--rw ip-address         string
+       |  |        |  +--rw ip-address-mask?   string
+       |  |        |  +--rw mac
+       |  |        |     +--rw sender-mac-address* [mac-address]
+       |  |        |     |  +--rw mac-address         string
+       |  |        |     |  +--rw mac-address-mask?   string
+       |  |        |     |  +--rw log?                empty
+       |  |        |     +--rw any!
+       |  |        |     |  +--rw log?   empty
+       |  |        |     +--rw host
+       |  |        |        +--rw sender-mac-address* [mac-address]
+       |  |        |           +--rw mac-address    string
+       |  |        |           +--rw log?           empty
+       |  |        +--rw any
+       |  |        |  +--rw mac
+       |  |        |     +--rw sender-mac-address* [mac-address]
+       |  |        |     |  +--rw mac-address         string
+       |  |        |     |  +--rw mac-address-mask?   string
+       |  |        |     |  +--rw log?                empty
+       |  |        |     +--rw any!
+       |  |        |     |  +--rw log?   empty
+       |  |        |     +--rw host
+       |  |        |        +--rw sender-mac-address* [mac-address]
+       |  |        |           +--rw mac-address    string
+       |  |        |           +--rw log?           empty
+       |  |        +--rw host
+       |  |           +--rw ip-address* [ip-address]
+       |  |              +--rw ip-address    string
+       |  |              +--rw mac
+       |  |                 +--rw sender-mac-address* [mac-address]
+       |  |                 |  +--rw mac-address         string
+       |  |                 |  +--rw mac-address-mask?   string
+       |  |                 |  +--rw log?                empty
+       |  |                 +--rw any!
+       |  |                 |  +--rw log?   empty
+       |  |                 +--rw host
+       |  |                    +--rw sender-mac-address* [mac-address]
+       |  |                       +--rw mac-address    string
+       |  |                       +--rw log?           empty
+       |  +--rw deny
+       |     +--rw ip
+       |     |  +--rw sender-ip-address* [ip-address]
+       |     |  |  +--rw ip-address         string
+       |     |  |  +--rw ip-address-mask?   string
+       |     |  |  +--rw mac
+       |     |  |     +--rw sender-mac-address* [mac-address]
+       |     |  |     |  +--rw mac-address         string
+       |     |  |     |  +--rw mac-address-mask?   string
+       |     |  |     |  +--rw log?                empty
+       |     |  |     +--rw any!
+       |     |  |     |  +--rw log?   empty
+       |     |  |     +--rw host
+       |     |  |        +--rw sender-mac-address* [mac-address]
+       |     |  |           +--rw mac-address    string
+       |     |  |           +--rw log?           empty
+       |     |  +--rw any
+       |     |  |  +--rw mac
+       |     |  |     +--rw sender-mac-address* [mac-address]
+       |     |  |     |  +--rw mac-address         string
+       |     |  |     |  +--rw mac-address-mask?   string
+       |     |  |     |  +--rw log?                empty
+       |     |  |     +--rw any!
+       |     |  |     |  +--rw log?   empty
+       |     |  |     +--rw host
+       |     |  |        +--rw sender-mac-address* [mac-address]
+       |     |  |           +--rw mac-address    string
+       |     |  |           +--rw log?           empty
+       |     |  +--rw host
+       |     |     +--rw ip-address* [ip-address]
+       |     |        +--rw ip-address    string
+       |     |        +--rw mac
+       |     |           +--rw sender-mac-address* [mac-address]
+       |     |           |  +--rw mac-address         string
+       |     |           |  +--rw mac-address-mask?   string
+       |     |           |  +--rw log?                empty
+       |     |           +--rw any!
+       |     |           |  +--rw log?   empty
+       |     |           +--rw host
+       |     |              +--rw sender-mac-address* [mac-address]
+       |     |                 +--rw mac-address    string
+       |     |                 +--rw log?           empty
+       |     +--rw request
+       |     |  +--rw ip
+       |     |     +--rw sender-ip-address* [ip-address]
+       |     |     |  +--rw ip-address         string
+       |     |     |  +--rw ip-address-mask?   string
+       |     |     |  +--rw mac
+       |     |     |     +--rw sender-mac-address* [mac-address]
+       |     |     |     |  +--rw mac-address         string
+       |     |     |     |  +--rw mac-address-mask?   string
+       |     |     |     |  +--rw log?                empty
+       |     |     |     +--rw any!
+       |     |     |     |  +--rw log?   empty
+       |     |     |     +--rw host
+       |     |     |        +--rw sender-mac-address* [mac-address]
+       |     |     |           +--rw mac-address    string
+       |     |     |           +--rw log?           empty
+       |     |     +--rw any
+       |     |     |  +--rw mac
+       |     |     |     +--rw sender-mac-address* [mac-address]
+       |     |     |     |  +--rw mac-address         string
+       |     |     |     |  +--rw mac-address-mask?   string
+       |     |     |     |  +--rw log?                empty
+       |     |     |     +--rw any!
+       |     |     |     |  +--rw log?   empty
+       |     |     |     +--rw host
+       |     |     |        +--rw sender-mac-address* [mac-address]
+       |     |     |           +--rw mac-address    string
+       |     |     |           +--rw log?           empty
+       |     |     +--rw host
+       |     |        +--rw ip-address* [ip-address]
+       |     |           +--rw ip-address    string
+       |     |           +--rw mac
+       |     |              +--rw sender-mac-address* [mac-address]
+       |     |              |  +--rw mac-address         string
+       |     |              |  +--rw mac-address-mask?   string
+       |     |              |  +--rw log?                empty
+       |     |              +--rw any!
+       |     |              |  +--rw log?   empty
+       |     |              +--rw host
+       |     |                 +--rw sender-mac-address* [mac-address]
+       |     |                    +--rw mac-address    string
+       |     |                    +--rw log?           empty
+       |     +--rw response
+       |        +--rw ip
+       |           +--rw sender-ip-address* [ip-address]
+       |           |  +--rw ip-address         string
+       |           |  +--rw ip-address-mask?   string
+       |           |  +--rw mac
+       |           |     +--rw sender-mac-address* [mac-address]
+       |           |     |  +--rw mac-address         string
+       |           |     |  +--rw mac-address-mask?   string
+       |           |     |  +--rw log?                empty
+       |           |     +--rw any!
+       |           |     |  +--rw log?   empty
+       |           |     +--rw host
+       |           |        +--rw sender-mac-address* [mac-address]
+       |           |           +--rw mac-address    string
+       |           |           +--rw log?           empty
+       |           +--rw any
+       |           |  +--rw mac
+       |           |     +--rw sender-mac-address* [mac-address]
+       |           |     |  +--rw mac-address         string
+       |           |     |  +--rw mac-address-mask?   string
+       |           |     |  +--rw log?                empty
+       |           |     +--rw any!
+       |           |     |  +--rw log?   empty
+       |           |     +--rw host
+       |           |        +--rw sender-mac-address* [mac-address]
+       |           |           +--rw mac-address    string
+       |           |           +--rw log?           empty
+       |           +--rw host
+       |              +--rw ip-address* [ip-address]
+       |                 +--rw ip-address    string
+       |                 +--rw mac
+       |                    +--rw sender-mac-address* [mac-address]
+       |                    |  +--rw mac-address         string
+       |                    |  +--rw mac-address-mask?   string
+       |                    |  +--rw log?                empty
+       |                    +--rw any!
+       |                    |  +--rw log?   empty
+       |                    +--rw host
+       |                       +--rw sender-mac-address* [mac-address]
+       |                          +--rw mac-address    string
+       |                          +--rw log?           empty
+       +--rw no
+          +--rw permit
+          |  +--rw ip
+          |  |  +--rw sender-ip-address* [ip-address]
+          |  |  |  +--rw ip-address         string
+          |  |  |  +--rw ip-address-mask?   string
+          |  |  |  +--rw mac
+          |  |  |     +--rw sender-mac-address* [mac-address]
+          |  |  |     |  +--rw mac-address         string
+          |  |  |     |  +--rw mac-address-mask?   string
+          |  |  |     |  +--rw log?                empty
+          |  |  |     +--rw any!
+          |  |  |     |  +--rw log?   empty
+          |  |  |     +--rw host
+          |  |  |        +--rw sender-mac-address* [mac-address]
+          |  |  |           +--rw mac-address    string
+          |  |  |           +--rw log?           empty
+          |  |  +--rw any
+          |  |  |  +--rw mac
+          |  |  |     +--rw sender-mac-address* [mac-address]
+          |  |  |     |  +--rw mac-address         string
+          |  |  |     |  +--rw mac-address-mask?   string
+          |  |  |     |  +--rw log?                empty
+          |  |  |     +--rw any!
+          |  |  |     |  +--rw log?   empty
+          |  |  |     +--rw host
+          |  |  |        +--rw sender-mac-address* [mac-address]
+          |  |  |           +--rw mac-address    string
+          |  |  |           +--rw log?           empty
+          |  |  +--rw host
+          |  |     +--rw ip-address* [ip-address]
+          |  |        +--rw ip-address    string
+          |  |        +--rw mac
+          |  |           +--rw sender-mac-address* [mac-address]
+          |  |           |  +--rw mac-address         string
+          |  |           |  +--rw mac-address-mask?   string
+          |  |           |  +--rw log?                empty
+          |  |           +--rw any!
+          |  |           |  +--rw log?   empty
+          |  |           +--rw host
+          |  |              +--rw sender-mac-address* [mac-address]
+          |  |                 +--rw mac-address    string
+          |  |                 +--rw log?           empty
+          |  +--rw request
+          |  |  +--rw ip
+          |  |     +--rw sender-ip-address* [ip-address]
+          |  |     |  +--rw ip-address         string
+          |  |     |  +--rw ip-address-mask?   string
+          |  |     |  +--rw mac
+          |  |     |     +--rw sender-mac-address* [mac-address]
+          |  |     |     |  +--rw mac-address         string
+          |  |     |     |  +--rw mac-address-mask?   string
+          |  |     |     |  +--rw log?                empty
+          |  |     |     +--rw any!
+          |  |     |     |  +--rw log?   empty
+          |  |     |     +--rw host
+          |  |     |        +--rw sender-mac-address* [mac-address]
+          |  |     |           +--rw mac-address    string
+          |  |     |           +--rw log?           empty
+          |  |     +--rw any
+          |  |     |  +--rw mac
+          |  |     |     +--rw sender-mac-address* [mac-address]
+          |  |     |     |  +--rw mac-address         string
+          |  |     |     |  +--rw mac-address-mask?   string
+          |  |     |     |  +--rw log?                empty
+          |  |     |     +--rw any!
+          |  |     |     |  +--rw log?   empty
+          |  |     |     +--rw host
+          |  |     |        +--rw sender-mac-address* [mac-address]
+          |  |     |           +--rw mac-address    string
+          |  |     |           +--rw log?           empty
+          |  |     +--rw host
+          |  |        +--rw ip-address* [ip-address]
+          |  |           +--rw ip-address    string
+          |  |           +--rw mac
+          |  |              +--rw sender-mac-address* [mac-address]
+          |  |              |  +--rw mac-address         string
+          |  |              |  +--rw mac-address-mask?   string
+          |  |              |  +--rw log?                empty
+          |  |              +--rw any!
+          |  |              |  +--rw log?   empty
+          |  |              +--rw host
+          |  |                 +--rw sender-mac-address* [mac-address]
+          |  |                    +--rw mac-address    string
+          |  |                    +--rw log?           empty
+          |  +--rw response
+          |     +--rw ip
+          |        +--rw sender-ip-address* [ip-address]
+          |        |  +--rw ip-address         string
+          |        |  +--rw ip-address-mask?   string
+          |        |  +--rw mac
+          |        |     +--rw sender-mac-address* [mac-address]
+          |        |     |  +--rw mac-address         string
+          |        |     |  +--rw mac-address-mask?   string
+          |        |     |  +--rw log?                empty
+          |        |     +--rw any!
+          |        |     |  +--rw log?   empty
+          |        |     +--rw host
+          |        |        +--rw sender-mac-address* [mac-address]
+          |        |           +--rw mac-address    string
+          |        |           +--rw log?           empty
+          |        +--rw any
+          |        |  +--rw mac
+          |        |     +--rw sender-mac-address* [mac-address]
+          |        |     |  +--rw mac-address         string
+          |        |     |  +--rw mac-address-mask?   string
+          |        |     |  +--rw log?                empty
+          |        |     +--rw any!
+          |        |     |  +--rw log?   empty
+          |        |     +--rw host
+          |        |        +--rw sender-mac-address* [mac-address]
+          |        |           +--rw mac-address    string
+          |        |           +--rw log?           empty
+          |        +--rw host
+          |           +--rw ip-address* [ip-address]
+          |              +--rw ip-address    string
+          |              +--rw mac
+          |                 +--rw sender-mac-address* [mac-address]
+          |                 |  +--rw mac-address         string
+          |                 |  +--rw mac-address-mask?   string
+          |                 |  +--rw log?                empty
+          |                 +--rw any!
+          |                 |  +--rw log?   empty
+          |                 +--rw host
+          |                    +--rw sender-mac-address* [mac-address]
+          |                       +--rw mac-address    string
+          |                       +--rw log?           empty
+          +--rw deny
+             +--rw ip
+             |  +--rw sender-ip-address* [ip-address]
+             |  |  +--rw ip-address         string
+             |  |  +--rw ip-address-mask?   string
+             |  |  +--rw mac
+             |  |     +--rw sender-mac-address* [mac-address]
+             |  |     |  +--rw mac-address         string
+             |  |     |  +--rw mac-address-mask?   string
+             |  |     |  +--rw log?                empty
+             |  |     +--rw any!
+             |  |     |  +--rw log?   empty
+             |  |     +--rw host
+             |  |        +--rw sender-mac-address* [mac-address]
+             |  |           +--rw mac-address    string
+             |  |           +--rw log?           empty
+             |  +--rw any
+             |  |  +--rw mac
+             |  |     +--rw sender-mac-address* [mac-address]
+             |  |     |  +--rw mac-address         string
+             |  |     |  +--rw mac-address-mask?   string
+             |  |     |  +--rw log?                empty
+             |  |     +--rw any!
+             |  |     |  +--rw log?   empty
+             |  |     +--rw host
+             |  |        +--rw sender-mac-address* [mac-address]
+             |  |           +--rw mac-address    string
+             |  |           +--rw log?           empty
+             |  +--rw host
+             |     +--rw ip-address* [ip-address]
+             |        +--rw ip-address    string
+             |        +--rw mac
+             |           +--rw sender-mac-address* [mac-address]
+             |           |  +--rw mac-address         string
+             |           |  +--rw mac-address-mask?   string
+             |           |  +--rw log?                empty
+             |           +--rw any!
+             |           |  +--rw log?   empty
+             |           +--rw host
+             |              +--rw sender-mac-address* [mac-address]
+             |                 +--rw mac-address    string
+             |                 +--rw log?           empty
+             +--rw request
+             |  +--rw ip
+             |     +--rw sender-ip-address* [ip-address]
+             |     |  +--rw ip-address         string
+             |     |  +--rw ip-address-mask?   string
+             |     |  +--rw mac
+             |     |     +--rw sender-mac-address* [mac-address]
+             |     |     |  +--rw mac-address         string
+             |     |     |  +--rw mac-address-mask?   string
+             |     |     |  +--rw log?                empty
+             |     |     +--rw any!
+             |     |     |  +--rw log?   empty
+             |     |     +--rw host
+             |     |        +--rw sender-mac-address* [mac-address]
+             |     |           +--rw mac-address    string
+             |     |           +--rw log?           empty
+             |     +--rw any
+             |     |  +--rw mac
+             |     |     +--rw sender-mac-address* [mac-address]
+             |     |     |  +--rw mac-address         string
+             |     |     |  +--rw mac-address-mask?   string
+             |     |     |  +--rw log?                empty
+             |     |     +--rw any!
+             |     |     |  +--rw log?   empty
+             |     |     +--rw host
+             |     |        +--rw sender-mac-address* [mac-address]
+             |     |           +--rw mac-address    string
+             |     |           +--rw log?           empty
+             |     +--rw host
+             |        +--rw ip-address* [ip-address]
+             |           +--rw ip-address    string
+             |           +--rw mac
+             |              +--rw sender-mac-address* [mac-address]
+             |              |  +--rw mac-address         string
+             |              |  +--rw mac-address-mask?   string
+             |              |  +--rw log?                empty
+             |              +--rw any!
+             |              |  +--rw log?   empty
+             |              +--rw host
+             |                 +--rw sender-mac-address* [mac-address]
+             |                    +--rw mac-address    string
+             |                    +--rw log?           empty
+             +--rw response
+                +--rw ip
+                   +--rw sender-ip-address* [ip-address]
+                   |  +--rw ip-address         string
+                   |  +--rw ip-address-mask?   string
+                   |  +--rw mac
+                   |     +--rw sender-mac-address* [mac-address]
+                   |     |  +--rw mac-address         string
+                   |     |  +--rw mac-address-mask?   string
+                   |     |  +--rw log?                empty
+                   |     +--rw any!
+                   |     |  +--rw log?   empty
+                   |     +--rw host
+                   |        +--rw sender-mac-address* [mac-address]
+                   |           +--rw mac-address    string
+                   |           +--rw log?           empty
+                   +--rw any
+                   |  +--rw mac
+                   |     +--rw sender-mac-address* [mac-address]
+                   |     |  +--rw mac-address         string
+                   |     |  +--rw mac-address-mask?   string
+                   |     |  +--rw log?                empty
+                   |     +--rw any!
+                   |     |  +--rw log?   empty
+                   |     +--rw host
+                   |        +--rw sender-mac-address* [mac-address]
+                   |           +--rw mac-address    string
+                   |           +--rw log?           empty
+                   +--rw host
+                      +--rw ip-address* [ip-address]
+                         +--rw ip-address    string
+                         +--rw mac
+                            +--rw sender-mac-address* [mac-address]
+                            |  +--rw mac-address         string
+                            |  +--rw mac-address-mask?   string
+                            |  +--rw log?                empty
+                            +--rw any!
+                            |  +--rw log?   empty
+                            +--rw host
+                               +--rw sender-mac-address* [mac-address]
+                                  +--rw mac-address    string
+                                  +--rw log?           empty
+  augment /ios:native/ios:ip/ios-igmp:igmp/ios-igmp:snooping:
+    +--rw vlan
+       +--rw range* [range]
+          +--rw range                         uint16
+          +--rw immediate-leave?              empty
+          +--rw last-member-query-count?      uint8
+          +--rw last-member-query-interval?   uint16
+          +--rw mrouter
+          |  +--rw interface?   string
+          |  +--rw learn
+          |     +--rw cgmp?        empty
+          |     +--rw pim-dvmrp?   empty
+          +--rw querier!
+          |  +--rw address?             inet:ipv4-address
+          |  +--rw max-response-time?   uint8
+          |  +--rw query-interval?      uint16
+          |  +--rw tcn
+          |  |  +--rw query
+          |  |     +--rw count?      uint8
+          |  |     +--rw interval?   uint8
+          |  +--rw timer
+          |  |  +--rw expiry?   uint16
+          |  +--rw version?             uint8
+          +--rw robustness-variable?          uint8
+          +--rw static
+             +--rw ipv4* [ipv4]
+                +--rw ipv4         inet:ipv4-address
+                +--rw interface?   string
+  augment /ios:native:
+    +--rw switch* [number]
+    |  +--rw number       uint8
+    |  +--rw provision?   enumeration
+    o--rw switch-virtual* [domain] {ios-features:switch-virtual}?
+    |  o--rw domain         uint32
+    |  o--rw virtual?       empty
+    |  o--rw switch
+    |  |  o--rw switch-number?   uint32
+    |  |  o--rw priority?        uint32
+    |  |  o--rw mode?            enumeration
+    |  o--rw mac-address
+    |  |  o--rw use-virtual?   empty
+    |  o--rw dual-active
+    |     o--rw recovery
+    |     |  o--rw switch?   uint8
+    |     |  o--rw ip
+    |     |     o--rw address?   inet:ipv4-address
+    |     |     o--rw mask?      inet:ipv4-address
+    |     o--rw detection
+    |        o--rw pagp!
+    |           o--rw trust
+    |              o--rw channel-group?   uint8
+    +--rw device
+    |  +--rw classifier?   empty
+    +--rw stack-mac
+    |  +--rw persistent
+    |     +--rw timer?   uint8
+    +--rw l2protocol-tunnel
+    |  +--rw cos?      uint8
+    |  +--rw global
+    |     +--rw drop-threshold?   uint16
+    +--rw rep
+    |  +--rw admin
+    |     +--rw vlan* [name]
+    |        +--rw name    uint16
+    +--rw hw-switch
+    |  +--rw switch
+    |     +--rw switch-number* [switch-number]
+    |        +--rw switch-number    uint8
+    |        +--rw logging
+    |           +--rw onboard!
+    |              +--rw counter?       empty
+    |              +--rw environment?   empty
+    |              +--rw message?       empty
+    |              +--rw poe?           empty
+    |              +--rw temperature?   empty
+    |              +--rw voltage?       empty
+    +--rw feature
+    |  +--rw openflow?   empty
+    +--rw openflow
+       +--rw switch* [number]
+          +--rw number               uint32
+          +--rw pipeline?            uint32
+          +--rw controller
+          |  +--rw ipv4* [address]
+          |     +--rw address    inet:ipv4-address
+          |     +--rw port* [number]
+          |        +--rw number    uint16
+          |        +--rw vrf* [name]
+          |           +--rw name        string
+          |           +--rw security?   enumeration
+          +--rw of-port
+          |  +--rw interface* [name]
+          |     +--rw name    string
+          +--rw datapath-id?         string
+          +--rw protocol-version?    enumeration
+          +--rw max-backoff?         uint16
+          +--rw probe-interval?      uint16
+          +--rw rate-limit
+          |  +--rw packet_in?   uint16
+          |  +--rw burst?       uint16
+          +--rw shutdown?            empty
+          +--rw statistics
+          |  +--rw collection-interval?   uint8
+          +--rw dataplane-default?   enumeration
+          +--rw default-miss?        enumeration
+          +--rw logging
+          |  +--rw flow-modify?   empty
+          +--rw tls
+             +--rw trustpoint
+                +--rw local?    string
+                +--rw remote?   string
+Xpaths for model: Cisco-IOS-XE-switch.yang

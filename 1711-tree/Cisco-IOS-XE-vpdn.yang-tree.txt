@@ -1,0 +1,10 @@
+ 
+KPI for model: Cisco-IOS-XE-vpdn.yang
+
+module: Cisco-IOS-XE-vpdn
+  augment /ios:native:
+    +--rw vpdn
+       +--rw authen-before-forward?   empty
+       +--rw enable?                  empty
+       +--rw search-order*            enumeration
+Xpaths for model: Cisco-IOS-XE-vpdn.yang

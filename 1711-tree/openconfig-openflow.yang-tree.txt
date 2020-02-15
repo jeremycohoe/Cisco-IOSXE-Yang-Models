@@ -1,0 +1,47 @@
+ 
+KPI for model: openconfig-openflow.yang
+
+module: openconfig-openflow
+  augment /oc-sys:system:
+    +--rw openflow
+       +--rw controllers
+       |  +--rw controller* [name]
+       |     +--rw name           -> ../config/name
+       |     +--rw config
+       |     |  +--rw name?   string
+       |     +--ro state
+       |     |  +--ro name?   string
+       |     +--rw connections
+       |        +--rw connection* [aux-id]
+       |           +--rw aux-id    -> ../config/aux-id
+       |           +--rw config
+       |           |  +--rw aux-id?             of-types:auxiliary-id
+       |           |  +--rw priority?           uint8
+       |           |  +--rw enable-ports?       boolean
+       |           |  +--rw address?            oc-inet:ip-address
+       |           |  +--rw port?               oc-inet:port-number
+       |           |  +--rw transport?          of-types:transport
+       |           |  +--rw source-interface?   oc-if:base-interface-ref
+       |           +--ro state
+       |              +--ro aux-id?             of-types:auxiliary-id
+       |              +--ro priority?           uint8
+       |              +--ro enable-ports?       boolean
+       |              +--ro address?            oc-inet:ip-address
+       |              +--ro port?               oc-inet:port-number
+       |              +--ro transport?          of-types:transport
+       |              +--ro source-interface?   oc-if:base-interface-ref
+       |              +--ro connected?          boolean
+       +--rw agent
+          +--rw config
+          |  +--rw datapath-id?        of-types:datapath-id
+          |  +--rw failure-mode?       of-types:failure-mode
+          |  +--rw backoff-interval?   uint32
+          |  +--rw max-backoff?        uint32
+          |  +--rw inactivity-probe?   uint32
+          +--ro state
+             +--ro datapath-id?        of-types:datapath-id
+             +--ro failure-mode?       of-types:failure-mode
+             +--ro backoff-interval?   uint32
+             +--ro max-backoff?        uint32
+             +--ro inactivity-probe?   uint32
+Xpaths for model: openconfig-openflow.yang

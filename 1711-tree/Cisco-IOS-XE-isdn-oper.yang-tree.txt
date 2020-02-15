@@ -1,0 +1,52 @@
+ 
+KPI for model: Cisco-IOS-XE-isdn-oper.yang
+module: Cisco-IOS-XE-isdn-oper
+  +--ro isdn-oper-data
+     +--ro isdn-status!
+        +--ro global-switch-type?   isdn-ios-xe-oper:isdn-switch-type
+        +--ro total-intf?           uint32
+        +--ro isdn-intf-entry* [key-id]
+           +--ro key-id                    uint32
+           +--ro intf-name?                string
+           +--ro proto-emul-config?        isdn-ios-xe-oper:isdn-protocol-emul-config
+           +--ro dsl-number?               uint32
+           +--ro switch-type?              isdn-ios-xe-oper:isdn-switch-type
+           +--ro l1-status?                isdn-ios-xe-oper:isdn-l1-status
+           +--ro l2-status?                isdn-ios-xe-oper:isdn-l2-status
+           +--ro l2-tei-config?            uint32
+           +--ro l2-ces-config?            uint32
+           +--ro l2-sapi-config?           uint32
+           +--ro free-channel-mask?        uint32
+           +--ro num-active-calls?         uint32
+           +--ro isdn-active-call-entry* [key-id]
+              +--ro key-id           uint32
+              +--ro call-id?         uint64
+              +--ro sapi?            uint32
+              +--ro ces?             uint32
+              +--ro b-channel-num?   uint32
+              +--ro call-type?       isdn-ios-xe-oper:isdn-active-call-type
+Xpaths for model: Cisco-IOS-XE-isdn-oper.yang
+/isdn-ios-xe-oper:isdn-oper-data,container,
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status,container,
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:global-switch-type,leaf,isdn-ios-xe-oper:isdn-switch-type
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:total-intf,leaf,uint32
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry,list,
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:key-id,leaf,uint32
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:intf-name,leaf,string
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:proto-emul-config,leaf,isdn-ios-xe-oper:isdn-protocol-emul-config
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:dsl-number,leaf,uint32
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:switch-type,leaf,isdn-ios-xe-oper:isdn-switch-type
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:l1-status,leaf,isdn-ios-xe-oper:isdn-l1-status
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:l2-status,leaf,isdn-ios-xe-oper:isdn-l2-status
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:l2-tei-config,leaf,uint32
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:l2-ces-config,leaf,uint32
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:l2-sapi-config,leaf,uint32
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:free-channel-mask,leaf,uint32
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:num-active-calls,leaf,uint32
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:isdn-active-call-entry,list,
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:isdn-active-call-entry/isdn-ios-xe-oper:key-id,leaf,uint32
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:isdn-active-call-entry/isdn-ios-xe-oper:call-id,leaf,uint64
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:isdn-active-call-entry/isdn-ios-xe-oper:sapi,leaf,uint32
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:isdn-active-call-entry/isdn-ios-xe-oper:ces,leaf,uint32
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:isdn-active-call-entry/isdn-ios-xe-oper:b-channel-num,leaf,uint32
+/isdn-ios-xe-oper:isdn-oper-data/isdn-ios-xe-oper:isdn-status/isdn-ios-xe-oper:isdn-intf-entry/isdn-ios-xe-oper:isdn-active-call-entry/isdn-ios-xe-oper:call-type,leaf,isdn-ios-xe-oper:isdn-active-call-type

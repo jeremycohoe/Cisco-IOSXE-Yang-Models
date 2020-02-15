@@ -1,0 +1,128 @@
+ 
+KPI for model: Cisco-IOS-XE-platform.yang
+module: Cisco-IOS-XE-platform
+  +--rw flexvpn-bypass-tcam?      empty
+  +--rw modexp-throttle-window?   uint8
+
+  augment /ios:native/ios:platform:
+    +--rw atm-cdvt?            boolean
+    +--rw cfm?                 empty
+    +--rw icmp
+    |  +--rw rate-limit
+    |     +--rw packet?     uint32
+    |     +--rw duration?   uint32
+    +--rw ip-ports
+    |  +--rw ephemeral-max?   uint16
+    +--rw bfd
+    |  +--rw disable-offload?   empty
+    |  +--rw allow-svi?         empty
+    |  +--rw enable-offload?    empty
+    +--rw bfd-debug-trace?     uint8
+    +--rw time-source
+    |  +--rw ntp!
+    |     +--rw time-scale?   enumeration
+    +--rw console!
+    |  +--rw output?   enumeration
+    +--rw enable
+    |  +--rw controller* [SONET]
+    |     +--rw SONET    string
+    +--rw external-alarm
+    |  +--rw line?    uint32
+    |  +--rw alarm?   ios:logging-level-type
+    +--rw hardware
+    |  +--rw lite
+    |  |  +--rw license?   enumeration
+    |  +--rw throughput
+    |  |  +--rw (throughput-choice)?
+    |  |     +--:(throughput-disable)
+    |  |     |  +--rw disable?   enumeration
+    |  |     +--:(throughput-level)
+    |  |     |  +--rw level
+    |  |     |     +--rw kbps?        enumeration
+    |  |     |     +--rw MB?          enumeration
+    |  |     |     +--rw eval-only?   empty
+    |  |     +--:(throughput-crypto)
+    |  |        +--rw crypto?    union
+    |  +--rw crypto-offload
+    |     +--rw enable?   empty
+    +--rw ipsec
+    |  +--rw arlog-supress?            empty
+    |  +--rw fips-mode?                empty
+    |  +--rw gdoi?                     enumeration
+    |  +--rw llq
+    |  |  +--rw qos-group?   uint8
+    |  +--rw reassemble
+    |  |  +--rw transit?   empty
+    |  +--rw flexvpn-bypass-tcam?      empty
+    |  +--rw modexp-throttle-window?   uint8
+    |  +--rw control-plane?            enumeration
+    +--rw l2vpn
+    |  +--rw hdlc-pass-through?   empty
+    |  +--rw statistics
+    |     +--rw enable?   empty
+    +--rw multicast
+    |  +--rw lre?    enumeration
+    |  +--rw mgre
+    |  |  +--rw injection?   empty
+    |  +--rw oce
+    |     +--rw flag
+    |        +--rw suppress?   empty
+    +--rw qfp!
+    |  +--rw utilization
+    |     +--rw monitor
+    |        +--rw load?   uint16
+    +--rw punt-keepalive!
+    |  +--rw disable-kernel-core?   boolean
+    |  +--rw settings
+    |     +--rw fatal-count?         uint16
+    |     +--rw transmit-interval?   uint16
+    |     +--rw warning-count?       uint16
+    +--rw punt-policer
+    |  +--rw punt-num* [cause] {ios-features:punt-num}?
+    |     +--rw cause       uint8
+    |     +--rw max-rate?   uint16
+    |     +--rw high?       empty
+    +--rw qos
+    |  +--rw cac-policer?              uint16
+    |  +--rw count-l3-length?          empty
+    |  +--rw marker-statistics?        empty
+    |  +--rw match-statistics
+    |  |  +--rw per-filter?   empty
+    |  |  +--rw per-ace?      empty
+    |  +--rw optimize-rate-ratios?     empty
+    |  +--rw performance-monitor?      empty
+    |  +--rw port-channel-aggregate?   uint8
+    |  +--rw punt-path-matching?       empty
+    +--rw reload
+    |  +--rw immediate?   empty
+    +--rw resource?            enumeration
+    +--rw shell?               boolean
+    +--rw tcam-parity-error?   enumeration
+    +--rw urpf
+    |  +--rw loose
+    |     +--rw counter
+    |        +--rw ipv4
+    |        |  +--rw supress
+    |        |     +--rw asymmetric_only?   empty
+    |        +--rw ipv6
+    |           +--rw supress
+    |              +--rw asymmetric_only?   empty
+    +--rw tcam-threshold
+    |  +--rw alarm-frequency?   uint32
+    +--rw usb
+    |  +--rw disable?   empty
+    +--rw trace
+       +--rw runtime* [slot bay]
+          +--rw slot       uint8
+          +--rw bay        uint8
+          +--rw process?   enumeration
+          +--rw module?    enumeration
+          +--rw level?     enumeration
+  augment /ios:native:
+    +--rw shell
+       +--rw trigger* [word]
+          +--rw word    string
+          +--rw line?   string
+Xpaths for model: Cisco-IOS-XE-platform.yang
+/ios-plt:flexvpn-bypass-tcam,leaf,empty
+/ios-plt:modexp-throttle-window,leaf,uint8

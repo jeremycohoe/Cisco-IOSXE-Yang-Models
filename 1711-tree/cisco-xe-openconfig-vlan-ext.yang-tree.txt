@@ -1,0 +1,13 @@
+ 
+KPI for model: cisco-xe-openconfig-vlan-ext.yang
+
+module: cisco-xe-openconfig-vlan-ext
+  augment /oc-vlan:vlans:
+    +--ro default-vlan* [vlan-id]
+       +--ro vlan-id    uint16
+       +--ro name?      string
+       +--ro status?    enumeration
+       +--ro ports* []
+          +--ro interface?      string
+          +--ro subinterface?   uint32
+Xpaths for model: cisco-xe-openconfig-vlan-ext.yang

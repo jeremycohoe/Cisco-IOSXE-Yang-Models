@@ -1,0 +1,46 @@
+ 
+KPI for model: Cisco-IOS-XE-serial.yang
+
+module: Cisco-IOS-XE-serial
+  augment /ios:native/ios:interface/ios:Serial/ios:encapsulation/ios:encap-choice:
+    +--rw hdlc?   boolean
+  augment /ios:native/ios:interface/ios:Serial:
+    +--rw nrzi-encoding?           empty
+    +--rw transmitter-delay?       uint8
+    +--rw pulse-time
+    |  +--rw (pulse-time-choice)?
+    |     +--:(seconds)
+    |     |  +--rw seconds?   uint8
+    |     +--:(msec)
+    |        +--rw msec?      uint16
+    +--rw loopback?                empty
+    +--rw carrier-delay
+    |  +--rw (carrier-delay-choice)?
+    |     +--:(seconds)
+    |     |  +--rw seconds?   uint8
+    |     +--:(msec)
+    |        +--rw msec?      uint16
+    +--rw idle-character?          enumeration
+    +--rw serial
+    |  +--rw restart-delay?   uint16
+    +--rw (serial-mode)?
+       +--:(DCE-mode)
+       |  +--rw DCE-mode-config
+       |     +--rw dce-terminal-timing-enable?   empty
+       |     +--rw clock
+       |     |  +--rw rate?   enumeration
+       |     +--rw ignore
+       |        +--rw dtr?   empty
+       |        +--rw rts?   empty
+       +--:(DTE-mode)
+          +--rw DTE-mode-config
+             +--rw invert
+             |  +--rw txclock?   empty
+             +--rw clock
+             |  +--rw rate
+             |     +--rw threshold?   uint32
+             +--rw ignore
+                +--rw dcd?   empty
+                +--rw cts?   empty
+                +--rw dsr?   empty
+Xpaths for model: Cisco-IOS-XE-serial.yang

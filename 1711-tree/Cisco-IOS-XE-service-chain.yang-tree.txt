@@ -1,0 +1,43 @@
+ 
+KPI for model: Cisco-IOS-XE-service-chain.yang
+
+module: Cisco-IOS-XE-service-chain
+  augment /ios:native/ios:service-chain:
+    +--rw service-function* [name]
+    |  +--rw name                            string
+    |  +--rw config-service-chain-sf-mode
+    |     +--rw description?     string
+    |     +--rw encapsulation
+    |     |  +--rw (mode-choice)?
+    |     |     +--:(gre)
+    |     |     |  +--rw gre!
+    |     |     |     +--rw enhanced?   enumeration
+    |     |     +--:(none)
+    |     |        +--rw none?   empty
+    |     +--rw ip
+    |        +--rw address?   inet:ipv4-address
+    +--rw service-function-forwarder
+    |  +--rw service-ff-name* [name]
+    |  |  +--rw name           string
+    |  |  +--rw description?   string
+    |  |  +--rw ip
+    |  |     +--rw address?   inet:ipv4-address
+    |  +--rw local!
+    |     +--rw description?   string
+    |     +--rw ip
+    |        +--rw address?   inet:ipv4-address
+    +--rw service-path* [service-path-id]
+       +--rw service-path-id                   uint32
+       +--rw config-service-chain-path-mode
+          +--rw description?     string
+          +--rw service-index
+             +--rw services* [service-index-id]
+                +--rw service-index-id                    uint8
+                +--rw (service-type-choice)?
+                   +--:(service-function)
+                   |  +--rw service-function?             string
+                   +--:(service-function-forwarder)
+                   |  +--rw service-function-forwarder?   string
+                   +--:(terminate)
+                      +--rw terminate?                    empty
+Xpaths for model: Cisco-IOS-XE-service-chain.yang

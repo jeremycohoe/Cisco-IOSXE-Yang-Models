@@ -1,0 +1,28 @@
+ 
+KPI for model: Cisco-IOS-XE-umbrella-oper.yang
+module: Cisco-IOS-XE-umbrella-oper
+  +--ro umbrella-ios-oper-data
+     +--ro umbrella-dev-reg-data* [name]
+     |  +--ro name           string
+     |  +--ro status?        string
+     |  +--ro tag?           string
+     |  +--ro device-id?     string
+     |  +--ro description?   string
+     +--ro umbrella-overview!
+        +--ro registrations-completed?   uint16
+        +--ro registrations-requested?   uint16
+        +--ro dnscrypt?                  boolean
+        +--ro last-success-attempt?      yang:date-and-time
+Xpaths for model: Cisco-IOS-XE-umbrella-oper.yang
+/umbrella-ios-xe-oper:umbrella-ios-oper-data,container,
+/umbrella-ios-xe-oper:umbrella-ios-oper-data/umbrella-ios-xe-oper:umbrella-dev-reg-data,list,
+/umbrella-ios-xe-oper:umbrella-ios-oper-data/umbrella-ios-xe-oper:umbrella-dev-reg-data/umbrella-ios-xe-oper:name,leaf,string
+/umbrella-ios-xe-oper:umbrella-ios-oper-data/umbrella-ios-xe-oper:umbrella-dev-reg-data/umbrella-ios-xe-oper:status,leaf,string
+/umbrella-ios-xe-oper:umbrella-ios-oper-data/umbrella-ios-xe-oper:umbrella-dev-reg-data/umbrella-ios-xe-oper:tag,leaf,string
+/umbrella-ios-xe-oper:umbrella-ios-oper-data/umbrella-ios-xe-oper:umbrella-dev-reg-data/umbrella-ios-xe-oper:device-id,leaf,string
+/umbrella-ios-xe-oper:umbrella-ios-oper-data/umbrella-ios-xe-oper:umbrella-dev-reg-data/umbrella-ios-xe-oper:description,leaf,string
+/umbrella-ios-xe-oper:umbrella-ios-oper-data/umbrella-ios-xe-oper:umbrella-overview,container,
+/umbrella-ios-xe-oper:umbrella-ios-oper-data/umbrella-ios-xe-oper:umbrella-overview/umbrella-ios-xe-oper:registrations-completed,leaf,uint16
+/umbrella-ios-xe-oper:umbrella-ios-oper-data/umbrella-ios-xe-oper:umbrella-overview/umbrella-ios-xe-oper:registrations-requested,leaf,uint16
+/umbrella-ios-xe-oper:umbrella-ios-oper-data/umbrella-ios-xe-oper:umbrella-overview/umbrella-ios-xe-oper:dnscrypt,leaf,boolean
+/umbrella-ios-xe-oper:umbrella-ios-oper-data/umbrella-ios-xe-oper:umbrella-overview/umbrella-ios-xe-oper:last-success-attempt,leaf,yang:date-and-time

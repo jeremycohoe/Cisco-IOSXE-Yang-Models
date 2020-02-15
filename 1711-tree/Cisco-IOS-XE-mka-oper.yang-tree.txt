@@ -1,0 +1,56 @@
+ 
+KPI for model: Cisco-IOS-XE-mka-oper.yang
+module: Cisco-IOS-XE-mka-oper
+  +--ro mka-oper-data
+     +--ro mka-statistics* [if-name]
+     |  +--ro if-name                   string
+     |  +--ro mkpdu-stats-rx?           uint32
+     |  +--ro mkpdu-stats-rx-distsak?   uint32
+     |  +--ro mkpdu-stats-rx-distcak?   uint32
+     |  +--ro mkpdu-stats-tx?           uint32
+     |  +--ro mkpdu-stats-tx-distsak?   uint32
+     |  +--ro mkpdu-stats-tx-distcak?   uint32
+     +--ro mka-statistics-global!
+        +--ro mkpdu-stats-rx?                uint32
+        +--ro mkpdu-stats-rx-distsak?        uint32
+        +--ro mkpdu-stats-rx-distcak?        uint32
+        +--ro mkpdu-stats-tx?                uint32
+        +--ro mkpdu-stats-tx-distsak?        uint32
+        +--ro mkpdu-stats-tx-distcak?        uint32
+        +--ro mka-err-sak-gen?               uint32
+        +--ro mka-err-hash-gen?              uint32
+        +--ro mka-err-sak-encryption?        uint32
+        +--ro mka-err-sak-decryption?        uint32
+        +--ro mka-err-sak-cipher-mismatch?   uint32
+        +--ro mkpdu-err-tx?                  uint32
+        +--ro mkpdu-err-rx-icv-verify?       uint32
+        +--ro mkpdu-err-rx-validation?       uint32
+        +--ro mkpdu-err-rx-badpeer-mn?       uint32
+        +--ro mkpdu-err-rx-peer-list?        uint32
+Xpaths for model: Cisco-IOS-XE-mka-oper.yang
+/mka-ios-xe-oper:mka-oper-data,container,
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics,list,
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics/mka-ios-xe-oper:if-name,leaf,string
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics/mka-ios-xe-oper:mkpdu-stats-rx,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics/mka-ios-xe-oper:mkpdu-stats-rx-distsak,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics/mka-ios-xe-oper:mkpdu-stats-rx-distcak,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics/mka-ios-xe-oper:mkpdu-stats-tx,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics/mka-ios-xe-oper:mkpdu-stats-tx-distsak,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics/mka-ios-xe-oper:mkpdu-stats-tx-distcak,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global,container,
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mkpdu-stats-rx,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mkpdu-stats-rx-distsak,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mkpdu-stats-rx-distcak,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mkpdu-stats-tx,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mkpdu-stats-tx-distsak,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mkpdu-stats-tx-distcak,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mka-err-sak-gen,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mka-err-hash-gen,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mka-err-sak-encryption,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mka-err-sak-decryption,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mka-err-sak-cipher-mismatch,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mkpdu-err-tx,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mkpdu-err-rx-icv-verify,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mkpdu-err-rx-validation,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mkpdu-err-rx-badpeer-mn,leaf,uint32
+/mka-ios-xe-oper:mka-oper-data/mka-ios-xe-oper:mka-statistics-global/mka-ios-xe-oper:mkpdu-err-rx-peer-list,leaf,uint32

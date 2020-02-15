@@ -1,0 +1,66 @@
+ 
+KPI for model: ietf-diffserv-classifier.yang
+module: ietf-diffserv-classifier
+  +--rw classifiers
+     +--rw classifier-entry* [classifier-entry-name]
+        +--rw classifier-entry-name                string
+        +--rw classifier-entry-descr?              string
+        +--rw classifier-entry-filter-operation?   identityref
+        +--rw filter-entry* [filter-type filter-logical-not]
+           +--rw filter-type                         identityref
+           +--rw filter-logical-not                  boolean
+           +--rw (filter-param)?
+              +--:(dscp)
+              |  +--rw dscp-cfg* [dscp-min dscp-max]
+              |     +--rw dscp-min    inet:dscp
+              |     +--rw dscp-max    inet:dscp
+              +--:(source-ip-address)
+              |  +--rw source-ip-address-cfg* [source-ip-addr]
+              |     +--rw source-ip-addr    inet:ip-prefix
+              +--:(destination-ip-address)
+              |  +--rw destination-ip-address-cfg* [destination-ip-addr]
+              |     +--rw destination-ip-addr    inet:ip-prefix
+              +--:(source-port)
+              |  +--rw source-port-cfg* [source-port-min source-port-max]
+              |     +--rw source-port-min    inet:port-number
+              |     +--rw source-port-max    inet:port-number
+              +--:(destination-port)
+              |  +--rw destination-port-cfg* [destination-port-min destination-port-max]
+              |     +--rw destination-port-min    inet:port-number
+              |     +--rw destination-port-max    inet:port-number
+              +--:(protocol)
+                 +--rw protocol-cfg* [protocol-min protocol-max]
+                    +--rw protocol-min    uint8
+                    +--rw protocol-max    uint8
+Xpaths for model: ietf-diffserv-classifier.yang
+/classifier:classifiers,container,
+/classifier:classifiers/classifier:classifier-entry,list,
+/classifier:classifiers/classifier:classifier-entry/classifier:classifier-entry-name,leaf,string
+/classifier:classifiers/classifier:classifier-entry/classifier:classifier-entry-descr,leaf,string
+/classifier:classifiers/classifier:classifier-entry/classifier:classifier-entry-filter-operation,leaf,identityref
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry,list,
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:filter-type,leaf,identityref
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:filter-logical-not,leaf,boolean
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry,choice,
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry,case,
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:dscp-cfg,list,
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:dscp-cfg/classifier:dscp-min,leaf,inet:dscp
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:dscp-cfg/classifier:dscp-max,leaf,inet:dscp
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry,case,
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:source-ip-address-cfg,list,
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:source-ip-address-cfg/classifier:source-ip-addr,leaf,inet:ip-prefix
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry,case,
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:destination-ip-address-cfg,list,
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:destination-ip-address-cfg/classifier:destination-ip-addr,leaf,inet:ip-prefix
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry,case,
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:source-port-cfg,list,
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:source-port-cfg/classifier:source-port-min,leaf,inet:port-number
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:source-port-cfg/classifier:source-port-max,leaf,inet:port-number
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry,case,
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:destination-port-cfg,list,
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:destination-port-cfg/classifier:destination-port-min,leaf,inet:port-number
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:destination-port-cfg/classifier:destination-port-max,leaf,inet:port-number
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry,case,
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:protocol-cfg,list,
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:protocol-cfg/classifier:protocol-min,leaf,uint8
+/classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:protocol-cfg/classifier:protocol-max,leaf,uint8

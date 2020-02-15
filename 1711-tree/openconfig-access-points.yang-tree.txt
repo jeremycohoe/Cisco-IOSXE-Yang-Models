@@ -1,0 +1,1364 @@
+ 
+KPI for model: openconfig-access-points.yang
+module: openconfig-access-points
+  +--rw access-points
+     +--rw access-point* [hostname]
+        +--rw hostname                oc-inet:domain-name
+        +--rw radios
+        |  +--rw radio* [id]
+        |     +--rw id           -> ../config/id
+        |     +--rw config
+        |     |  +--rw id?                       uint8
+        |     |  +--rw operating-frequency?      identityref
+        |     |  +--rw enabled?                  boolean
+        |     |  +--rw transmit-power?           uint8
+        |     |  +--rw channel?                  uint8
+        |     |  +--rw channel-width?            uint8
+        |     |  +--rw dca?                      boolean
+        |     |  +--rw allowed-channels*         oc-wifi-types:channels-type
+        |     |  +--rw dtp?                      boolean
+        |     |  +--rw dtp-min?                  int8
+        |     |  +--rw dtp-max?                  int8
+        |     |  +--rw antenna-gain?             int8
+        |     |  +--rw scanning?                 boolean
+        |     |  +--rw scanning-interval?        uint8
+        |     |  +--rw scanning-dwell-time?      uint16
+        |     |  +--rw scanning-defer-clients?   uint8
+        |     |  +--rw scanning-defer-traffic?   boolean
+        |     +--ro state
+        |     |  +--ro id?                             uint8
+        |     |  +--ro operating-frequency?            identityref
+        |     |  +--ro enabled?                        boolean
+        |     |  +--ro transmit-power?                 uint8
+        |     |  +--ro channel?                        uint8
+        |     |  +--ro channel-width?                  uint8
+        |     |  +--ro dca?                            boolean
+        |     |  +--ro allowed-channels*               oc-wifi-types:channels-type
+        |     |  +--ro dtp?                            boolean
+        |     |  +--ro dtp-min?                        int8
+        |     |  +--ro dtp-max?                        int8
+        |     |  +--ro antenna-gain?                   int8
+        |     |  +--ro scanning?                       boolean
+        |     |  +--ro scanning-interval?              uint8
+        |     |  +--ro scanning-dwell-time?            uint16
+        |     |  +--ro scanning-defer-clients?         uint8
+        |     |  +--ro scanning-defer-traffic?         boolean
+        |     |  +--ro base-radio-mac?                 oc-yang:mac-address
+        |     |  +--ro dfs-hit-time?                   oc-types:timeticks64
+        |     |  +--ro channel-change-reason?          identityref
+        |     |  +--ro total-channel-utilization?      oc-types:percentage
+        |     |  +--ro rx-dot11-channel-utilization?   oc-types:percentage
+        |     |  +--ro rx-noise-channel-utilization?   oc-types:percentage
+        |     |  +--ro tx-dot11-channel-utilization?   oc-types:percentage
+        |     |  +--ro counters
+        |     |     +--ro failed-fcs-frames?   oc-yang:counter64
+        |     |     +--ro noise-floor?         int8
+        |     +--rw neighbors
+        |        +--ro neighbor* [bssid]
+        |           +--ro bssid    -> ../state/bssid
+        |           +--ro state
+        |              +--ro bssid?             oc-yang:mac-address
+        |              +--ro ssid?              string
+        |              +--ro rssi?              int8
+        |              +--ro channel?           uint16
+        |              +--ro primary-channel?   uint16
+        |              +--ro last-seen?         oc-types:timeticks64
+        +--rw ssids
+        |  +--rw ssid* [name]
+        |     +--rw name             -> ../config/name
+        |     +--rw config
+        |     |  +--rw name?                    string
+        |     |  +--rw enabled?                 boolean
+        |     |  +--rw hidden?                  boolean
+        |     |  +--rw default-vlan?            oc-vlan-types:vlan-id
+        |     |  +--rw vlan-list*               oc-vlan-types:vlan-id
+        |     |  +--rw operating-frequency?     identityref
+        |     |  +--rw basic-data-rates*        identityref
+        |     |  +--rw supported-data-rates*    identityref
+        |     |  +--rw broadcast-filter?        boolean
+        |     |  +--rw multicast-filter?        boolean
+        |     |  +--rw ipv6-ndp-filter?         boolean
+        |     |  +--rw ipv6-ndp-filter-timer?   uint16
+        |     |  +--rw station-isolation?       boolean
+        |     |  +--rw opmode?                  enumeration
+        |     |  +--rw wpa2-psk?                string
+        |     |  +--rw server-group?            string
+        |     |  +--rw dva?                     boolean
+        |     |  +--rw mobility-domain?         string
+        |     |  +--rw dhcp-required?           boolean
+        |     |  +--rw qbss-load?               boolean
+        |     |  +--rw advertise-apname?        boolean
+        |     |  +--rw csa?                     boolean
+        |     |  +--rw ptk-timeout?             uint16
+        |     |  +--rw gtk-timeout?             uint16
+        |     |  +--rw dot11k?                  boolean
+        |     |  +--rw okc?                     boolean
+        |     +--ro state
+        |     |  +--ro name?                    string
+        |     |  +--ro enabled?                 boolean
+        |     |  +--ro hidden?                  boolean
+        |     |  +--ro default-vlan?            oc-vlan-types:vlan-id
+        |     |  +--ro vlan-list*               oc-vlan-types:vlan-id
+        |     |  +--ro operating-frequency?     identityref
+        |     |  +--ro basic-data-rates*        identityref
+        |     |  +--ro supported-data-rates*    identityref
+        |     |  +--ro broadcast-filter?        boolean
+        |     |  +--ro multicast-filter?        boolean
+        |     |  +--ro ipv6-ndp-filter?         boolean
+        |     |  +--ro ipv6-ndp-filter-timer?   uint16
+        |     |  +--ro station-isolation?       boolean
+        |     |  +--ro opmode?                  enumeration
+        |     |  +--ro wpa2-psk?                string
+        |     |  +--ro server-group?            string
+        |     |  +--ro dva?                     boolean
+        |     |  +--ro mobility-domain?         string
+        |     |  +--ro dhcp-required?           boolean
+        |     |  +--ro qbss-load?               boolean
+        |     |  +--ro advertise-apname?        boolean
+        |     |  +--ro csa?                     boolean
+        |     |  +--ro ptk-timeout?             uint16
+        |     |  +--ro gtk-timeout?             uint16
+        |     |  +--ro dot11k?                  boolean
+        |     |  +--ro okc?                     boolean
+        |     |  +--ro bssids
+        |     |     +--ro bssid* [radio-id bssid]
+        |     |        +--ro bssid       -> ../state/bssid
+        |     |        +--ro radio-id    -> ../state/radio-id
+        |     |        +--ro state
+        |     |           +--ro bssid?                    oc-yang:mac-address
+        |     |           +--ro radio-id?                 uint8
+        |     |           +--ro num-associated-clients?   uint8
+        |     |           +--ro counters
+        |     |              +--ro rx-bss-dot11-channel-utilization?   oc-types:percentage
+        |     |              +--ro rx-mgmt?                            oc-yang:counter64
+        |     |              +--ro rx-control?                         oc-yang:counter64
+        |     |              +--ro rx-data-dist
+        |     |              |  +--ro rx-0-64?             oc-yang:counter64
+        |     |              |  +--ro rx-65-128?           oc-yang:counter64
+        |     |              |  +--ro rx-129-256?          oc-yang:counter64
+        |     |              |  +--ro rx-257-512?          oc-yang:counter64
+        |     |              |  +--ro rx-513-1024?         oc-yang:counter64
+        |     |              |  +--ro rx-1025-2048?        oc-yang:counter64
+        |     |              |  +--ro rx-2049-4096?        oc-yang:counter64
+        |     |              |  +--ro rx-4097-8192?        oc-yang:counter64
+        |     |              |  +--ro rx-8193-16384?       oc-yang:counter64
+        |     |              |  +--ro rx-16385-32768?      oc-yang:counter64
+        |     |              |  +--ro rx-32769-65536?      oc-yang:counter64
+        |     |              |  +--ro rx-65537-131072?     oc-yang:counter64
+        |     |              |  +--ro rx-131073-262144?    oc-yang:counter64
+        |     |              |  +--ro rx-262145-524288?    oc-yang:counter64
+        |     |              |  +--ro rx-524289-1048576?   oc-yang:counter64
+        |     |              +--ro rx-data-wmm
+        |     |              |  +--ro vi?   oc-yang:counter64
+        |     |              |  +--ro vo?   oc-yang:counter64
+        |     |              |  +--ro be?   oc-yang:counter64
+        |     |              |  +--ro bk?   oc-yang:counter64
+        |     |              +--ro rx-mcs
+        |     |              |  +--ro mcs0?   oc-yang:counter64
+        |     |              |  +--ro mcs1?   oc-yang:counter64
+        |     |              |  +--ro mcs2?   oc-yang:counter64
+        |     |              |  +--ro mcs3?   oc-yang:counter64
+        |     |              |  +--ro mcs4?   oc-yang:counter64
+        |     |              |  +--ro mcs5?   oc-yang:counter64
+        |     |              |  +--ro mcs6?   oc-yang:counter64
+        |     |              |  +--ro mcs7?   oc-yang:counter64
+        |     |              |  +--ro mcs8?   oc-yang:counter64
+        |     |              |  +--ro mcs9?   oc-yang:counter64
+        |     |              +--ro rx-retries?                         oc-yang:counter64
+        |     |              +--ro rx-retries-data?                    oc-yang:counter64
+        |     |              +--ro rx-retries-subframe?                oc-yang:counter64
+        |     |              +--ro rx-bytes-data?                      oc-yang:counter64
+        |     |              +--ro tx-bss-dot11-channel-utilization?   oc-types:percentage
+        |     |              +--ro tx-mgmt?                            oc-yang:counter64
+        |     |              +--ro tx-control?                         oc-yang:counter64
+        |     |              +--ro tx-data-dist
+        |     |              |  +--ro tx-0-64?             oc-yang:counter64
+        |     |              |  +--ro tx-65-128?           oc-yang:counter64
+        |     |              |  +--ro tx-129-256?          oc-yang:counter64
+        |     |              |  +--ro tx-257-512?          oc-yang:counter64
+        |     |              |  +--ro tx-513-1024?         oc-yang:counter64
+        |     |              |  +--ro tx-1025-2048?        oc-yang:counter64
+        |     |              |  +--ro tx-2049-4096?        oc-yang:counter64
+        |     |              |  +--ro tx-4097-8192?        oc-yang:counter64
+        |     |              |  +--ro tx-8193-16384?       oc-yang:counter64
+        |     |              |  +--ro tx-16385-32768?      oc-yang:counter64
+        |     |              |  +--ro tx-32769-65536?      oc-yang:counter64
+        |     |              |  +--ro tx-65537-131072?     oc-yang:counter64
+        |     |              |  +--ro tx-131073-262144?    oc-yang:counter64
+        |     |              |  +--ro tx-262145-524288?    oc-yang:counter64
+        |     |              |  +--ro tx-524289-1048576?   oc-yang:counter64
+        |     |              +--ro tx-data-wmm
+        |     |              |  +--ro vi?   oc-yang:counter64
+        |     |              |  +--ro vo?   oc-yang:counter64
+        |     |              |  +--ro bk?   oc-yang:counter64
+        |     |              |  +--ro be?   oc-yang:counter64
+        |     |              +--ro tx-mcs
+        |     |              |  +--ro mcs0?   oc-yang:counter64
+        |     |              |  +--ro mcs1?   oc-yang:counter64
+        |     |              |  +--ro mcs2?   oc-yang:counter64
+        |     |              |  +--ro mcs3?   oc-yang:counter64
+        |     |              |  +--ro mcs4?   oc-yang:counter64
+        |     |              |  +--ro mcs5?   oc-yang:counter64
+        |     |              |  +--ro mcs6?   oc-yang:counter64
+        |     |              |  +--ro mcs7?   oc-yang:counter64
+        |     |              |  +--ro mcs8?   oc-yang:counter64
+        |     |              |  +--ro mcs9?   oc-yang:counter64
+        |     |              +--ro tx-retries?                         oc-yang:counter64
+        |     |              +--ro tx-retries-data?                    oc-yang:counter64
+        |     |              +--ro tx-retries-subframe?                oc-yang:counter64
+        |     |              +--ro tx-bytes-data?                      oc-yang:counter64
+        |     |              +--ro bss-channel-utilization?            oc-types:percentage
+        |     +--rw wmm
+        |     |  +--rw config
+        |     |  |  +--rw trust-dscp?      boolean
+        |     |  |  +--rw wmm-vo-remark*   uint8
+        |     |  |  +--rw wmm-vi-remark*   uint8
+        |     |  |  +--rw wmm-be-remark*   uint8
+        |     |  |  +--rw wmm-bk-remark*   uint8
+        |     |  +--ro state
+        |     |     +--ro trust-dscp?      boolean
+        |     |     +--ro wmm-vo-remark*   uint8
+        |     |     +--ro wmm-vi-remark*   uint8
+        |     |     +--ro wmm-be-remark*   uint8
+        |     |     +--ro wmm-bk-remark*   uint8
+        |     +--rw dot11r
+        |     |  +--rw config
+        |     |  |  +--rw dot11r?                 boolean
+        |     |  |  +--rw dot11r-domainid?        uint16
+        |     |  |  +--rw dot11r-method?          enumeration
+        |     |  |  +--rw dot11r-r1key-timeout?   uint16
+        |     |  +--ro state
+        |     |     +--ro dot11r?                 boolean
+        |     |     +--ro dot11r-domainid?        uint16
+        |     |     +--ro dot11r-method?          enumeration
+        |     |     +--ro dot11r-r1key-timeout?   uint16
+        |     +--rw dot11v
+        |     |  +--rw config
+        |     |  |  +--rw dot11v-dms?               boolean
+        |     |  |  +--rw dot11v-bssidle?           boolean
+        |     |  |  +--rw dot11v-bssidle-timeout?   uint16
+        |     |  |  +--rw dot11v-bsstransition?     boolean
+        |     |  +--ro state
+        |     |     +--ro dot11v-dms?               boolean
+        |     |     +--ro dot11v-bssidle?           boolean
+        |     |     +--ro dot11v-bssidle-timeout?   uint16
+        |     |     +--ro dot11v-bsstransition?     boolean
+        |     +--rw clients
+        |     |  +--ro client* [mac]
+        |     |     +--ro mac                    -> ../state/mac
+        |     |     +--ro state
+        |     |     |  +--ro mac?        oc-yang:mac-address
+        |     |     |  +--ro counters
+        |     |     |     +--ro tx-bytes?     oc-yang:counter64
+        |     |     |     +--ro rx-bytes?     oc-yang:counter64
+        |     |     |     +--ro rx-retries?   oc-yang:counter64
+        |     |     |     +--ro tx-retries?   oc-yang:counter64
+        |     |     +--ro client-rf
+        |     |     |  +--ro state
+        |     |     |     +--ro rssi?              int8
+        |     |     |     +--ro snr?               uint8
+        |     |     |     +--ro ss?                uint8
+        |     |     |     +--ro phy-rate?          uint16
+        |     |     |     +--ro connection-mode?   enumeration
+        |     |     |     +--ro frequency?         uint8
+        |     |     +--ro client-capabilities
+        |     |     |  +--ro state
+        |     |     |     +--ro client-capabilities*   identityref
+        |     |     |     +--ro channel-support*       uint8
+        |     |     +--ro dot11k-neighbors
+        |     |     |  +--ro state
+        |     |     |     +--ro neighbor-bssid?        oc-yang:mac-address
+        |     |     |     +--ro neighbor-channel?      uint8
+        |     |     |     +--ro neighbor-rssi?         int8
+        |     |     |     +--ro neighbor-antenna?      uint8
+        |     |     |     +--ro channel-load-report?   uint8
+        |     |     +--ro client-connection
+        |     |        +--ro state
+        |     |           +--ro client-state?       identityref
+        |     |           +--ro connection-time?    uint16
+        |     |           +--ro username?           string
+        |     |           +--ro hostname?           string
+        |     |           +--ro ipv4-address?       oc-inet:ipv4-address
+        |     |           +--ro ipv6-address*       oc-inet:ipv6-address
+        |     |           +--ro operating-system?   string
+        |     +--rw dot1x-timers
+        |     |  +--rw config
+        |     |  |  +--rw max-auth-failures?   uint8
+        |     |  |  +--rw blacklist-time?      uint16
+        |     |  +--ro state
+        |     |     +--ro max-auth-failures?   uint8
+        |     |     +--ro blacklist-time?      uint16
+        |     +--rw band-steering
+        |        +--rw config
+        |        |  +--rw band-steering?   boolean
+        |        |  +--rw steering-rssi?   int8
+        |        +--ro state
+        |           +--ro band-steering?   boolean
+        |           +--ro steering-rssi?   int8
+        +--rw system
+        |  +--rw config
+        |  |  +--rw hostname?       oc-inet:domain-name
+        |  |  +--rw domain-name?    oc-inet:domain-name
+        |  |  +--rw login-banner?   string
+        |  |  +--rw motd-banner?    string
+        |  +--ro state
+        |  |  +--ro hostname?           oc-inet:domain-name
+        |  |  +--ro domain-name?        oc-inet:domain-name
+        |  |  +--ro login-banner?       string
+        |  |  +--ro motd-banner?        string
+        |  |  +--ro current-datetime?   oc-yang:date-and-time
+        |  |  +--ro boot-time?          oc-types:timeticks64
+        |  +--rw clock
+        |  |  +--rw config
+        |  |  |  +--rw timezone-name?   timezone-name-type
+        |  |  +--ro state
+        |  |     +--ro timezone-name?   timezone-name-type
+        |  +--rw dns
+        |  |  +--rw config
+        |  |  |  +--rw search*   oc-inet:domain-name
+        |  |  +--ro state
+        |  |  |  +--ro search*   oc-inet:domain-name
+        |  |  +--rw servers
+        |  |  |  +--rw server* [address]
+        |  |  |     +--rw address    -> ../config/address
+        |  |  |     +--rw config
+        |  |  |     |  +--rw address?   oc-inet:ip-address
+        |  |  |     |  +--rw port?      oc-inet:port-number
+        |  |  |     +--ro state
+        |  |  |        +--ro address?   oc-inet:ip-address
+        |  |  |        +--ro port?      oc-inet:port-number
+        |  |  +--rw host-entries
+        |  |     +--rw host-entry* [hostname]
+        |  |        +--rw hostname    -> ../config/hostname
+        |  |        +--rw config
+        |  |        |  +--rw hostname?       string
+        |  |        |  +--rw alias*          string
+        |  |        |  +--rw ipv4-address*   oc-inet:ipv4-address
+        |  |        |  +--rw ipv6-address*   oc-inet:ipv6-address
+        |  |        +--ro state
+        |  |           +--ro hostname?       string
+        |  |           +--ro alias*          string
+        |  |           +--ro ipv4-address*   oc-inet:ipv4-address
+        |  |           +--ro ipv6-address*   oc-inet:ipv6-address
+        |  +--rw ntp
+        |  |  +--rw config
+        |  |  |  +--rw enabled?              boolean
+        |  |  |  +--rw ntp-source-address?   oc-inet:ip-address
+        |  |  |  +--rw enable-ntp-auth?      boolean
+        |  |  +--ro state
+        |  |  |  +--ro enabled?              boolean
+        |  |  |  +--ro ntp-source-address?   oc-inet:ip-address
+        |  |  |  +--ro enable-ntp-auth?      boolean
+        |  |  |  +--ro auth-mismatch?        oc-yang:counter64
+        |  |  +--rw ntp-keys
+        |  |  |  +--rw ntp-key* [key-id]
+        |  |  |     +--rw key-id    -> ../config/key-id
+        |  |  |     +--rw config
+        |  |  |     |  +--rw key-id?      uint16
+        |  |  |     |  +--rw key-type?    identityref
+        |  |  |     |  +--rw key-value?   string
+        |  |  |     +--ro state
+        |  |  |        +--ro key-id?      uint16
+        |  |  |        +--ro key-type?    identityref
+        |  |  |        +--ro key-value?   string
+        |  |  +--rw servers
+        |  |     +--rw server* [address]
+        |  |        +--rw address    -> ../config/address
+        |  |        +--rw config
+        |  |        |  +--rw address?            oc-inet:host
+        |  |        |  +--rw port?               oc-inet:port-number
+        |  |        |  +--rw version?            uint8
+        |  |        |  +--rw association-type?   enumeration
+        |  |        |  +--rw iburst?             boolean
+        |  |        |  +--rw prefer?             boolean
+        |  |        +--ro state
+        |  |           +--ro address?            oc-inet:host
+        |  |           +--ro port?               oc-inet:port-number
+        |  |           +--ro version?            uint8
+        |  |           +--ro association-type?   enumeration
+        |  |           +--ro iburst?             boolean
+        |  |           +--ro prefer?             boolean
+        |  |           +--ro stratum?            uint8
+        |  |           +--ro root-delay?         uint32
+        |  |           +--ro root-dispersion?    uint64
+        |  |           +--ro offset?             uint64
+        |  |           +--ro poll-interval?      uint32
+        |  +--rw grpc-server
+        |  |  +--rw config
+        |  |  |  +--rw enable?               boolean
+        |  |  |  +--rw port?                 oc-inet:port-number
+        |  |  |  +--rw transport-security?   boolean
+        |  |  |  +--rw certificate-id?       string
+        |  |  |  +--rw listen-addresses*     union
+        |  |  +--ro state
+        |  |     +--ro enable?               boolean
+        |  |     +--ro port?                 oc-inet:port-number
+        |  |     +--ro transport-security?   boolean
+        |  |     +--ro certificate-id?       string
+        |  |     +--ro listen-addresses*     union
+        |  +--rw ssh-server
+        |  |  +--rw config
+        |  |  |  +--rw enable?             boolean
+        |  |  |  +--rw protocol-version?   enumeration
+        |  |  |  +--rw timeout?            uint16
+        |  |  |  +--rw rate-limit?         uint16
+        |  |  |  +--rw session-limit?      uint16
+        |  |  +--ro state
+        |  |     +--ro enable?             boolean
+        |  |     +--ro protocol-version?   enumeration
+        |  |     +--ro timeout?            uint16
+        |  |     +--ro rate-limit?         uint16
+        |  |     +--ro session-limit?      uint16
+        |  +--rw telnet-server
+        |  |  +--rw config
+        |  |  |  +--rw enable?          boolean
+        |  |  |  +--rw timeout?         uint16
+        |  |  |  +--rw rate-limit?      uint16
+        |  |  |  +--rw session-limit?   uint16
+        |  |  +--ro state
+        |  |     +--ro enable?          boolean
+        |  |     +--ro timeout?         uint16
+        |  |     +--ro rate-limit?      uint16
+        |  |     +--ro session-limit?   uint16
+        |  +--rw logging
+        |  |  +--rw console
+        |  |  |  +--rw config
+        |  |  |  +--ro state
+        |  |  |  +--rw selectors
+        |  |  |     +--rw selector* [facility severity]
+        |  |  |        +--rw facility    -> ../config/facility
+        |  |  |        +--rw severity    -> ../config/severity
+        |  |  |        +--rw config
+        |  |  |        |  +--rw facility?   identityref
+        |  |  |        |  +--rw severity?   syslog-severity
+        |  |  |        +--ro state
+        |  |  |           +--ro facility?   identityref
+        |  |  |           +--ro severity?   syslog-severity
+        |  |  +--rw remote-servers
+        |  |     +--rw remote-server* [host]
+        |  |        +--rw host         -> ../config/host
+        |  |        +--rw config
+        |  |        |  +--rw host?             oc-inet:host
+        |  |        |  +--rw source-address?   oc-inet:ip-address
+        |  |        |  +--rw remote-port?      oc-inet:port-number
+        |  |        +--ro state
+        |  |        |  +--ro host?             oc-inet:host
+        |  |        |  +--ro source-address?   oc-inet:ip-address
+        |  |        |  +--ro remote-port?      oc-inet:port-number
+        |  |        +--rw selectors
+        |  |           +--rw selector* [facility severity]
+        |  |              +--rw facility    -> ../config/facility
+        |  |              +--rw severity    -> ../config/severity
+        |  |              +--rw config
+        |  |              |  +--rw facility?   identityref
+        |  |              |  +--rw severity?   syslog-severity
+        |  |              +--ro state
+        |  |                 +--ro facility?   identityref
+        |  |                 +--ro severity?   syslog-severity
+        |  +--rw aaa
+        |  |  +--rw config
+        |  |  +--ro state
+        |  |  +--rw authentication
+        |  |  |  +--rw config
+        |  |  |  |  +--rw authentication-method*   union
+        |  |  |  +--ro state
+        |  |  |  |  +--ro authentication-method*   union
+        |  |  |  +--rw admin-user
+        |  |  |  |  +--rw config
+        |  |  |  |  |  +--rw admin-password?          string
+        |  |  |  |  |  +--rw admin-password-hashed?   oc-aaa-types:crypt-password-type
+        |  |  |  |  +--ro state
+        |  |  |  |     +--ro admin-password?          string
+        |  |  |  |     +--ro admin-password-hashed?   oc-aaa-types:crypt-password-type
+        |  |  |  |     +--ro admin-username?          string
+        |  |  |  +--rw users
+        |  |  |     +--rw user* [username]
+        |  |  |        +--rw username    -> ../config/username
+        |  |  |        +--rw config
+        |  |  |        |  +--rw username?          string
+        |  |  |        |  +--rw password?          string
+        |  |  |        |  +--rw password-hashed?   oc-aaa-types:crypt-password-type
+        |  |  |        |  +--rw ssh-key?           string
+        |  |  |        |  +--rw role?              union
+        |  |  |        +--ro state
+        |  |  |           +--ro username?          string
+        |  |  |           +--ro password?          string
+        |  |  |           +--ro password-hashed?   oc-aaa-types:crypt-password-type
+        |  |  |           +--ro ssh-key?           string
+        |  |  |           +--ro role?              union
+        |  |  +--rw authorization
+        |  |  |  +--rw config
+        |  |  |  |  +--rw authorization-method*   union
+        |  |  |  +--ro state
+        |  |  |  |  +--ro authorization-method*   union
+        |  |  |  +--rw events
+        |  |  |     +--rw event* [event-type]
+        |  |  |        +--rw event-type    -> ../config/event-type
+        |  |  |        +--rw config
+        |  |  |        |  +--rw event-type?   identityref
+        |  |  |        +--ro state
+        |  |  |           +--ro event-type?   identityref
+        |  |  +--rw accounting
+        |  |  |  +--rw config
+        |  |  |  |  +--rw accounting-method*   union
+        |  |  |  +--ro state
+        |  |  |  |  +--ro accounting-method*   union
+        |  |  |  +--rw events
+        |  |  |     +--rw event* [event-type]
+        |  |  |        +--rw event-type    -> ../config/event-type
+        |  |  |        +--rw config
+        |  |  |        |  +--rw event-type?   identityref
+        |  |  |        |  +--rw record?       enumeration
+        |  |  |        +--ro state
+        |  |  |           +--ro event-type?   identityref
+        |  |  |           +--ro record?       enumeration
+        |  |  +--rw server-groups
+        |  |     +--rw server-group* [name]
+        |  |        +--rw name       -> ../config/name
+        |  |        +--rw config
+        |  |        |  +--rw name?   string
+        |  |        |  +--rw type?   identityref
+        |  |        +--ro state
+        |  |        |  +--ro name?   string
+        |  |        |  +--ro type?   identityref
+        |  |        +--rw servers
+        |  |           +--rw server* [address]
+        |  |              +--rw address    -> ../config/address
+        |  |              +--rw config
+        |  |              |  +--rw name?      string
+        |  |              |  +--rw address?   oc-inet:ip-address
+        |  |              |  +--rw timeout?   uint16
+        |  |              +--ro state
+        |  |              |  +--ro name?                  string
+        |  |              |  +--ro address?               oc-inet:ip-address
+        |  |              |  +--ro timeout?               uint16
+        |  |              |  +--ro connection-opens?      oc-yang:counter64
+        |  |              |  +--ro connection-closes?     oc-yang:counter64
+        |  |              |  +--ro connection-aborts?     oc-yang:counter64
+        |  |              |  +--ro connection-failures?   oc-yang:counter64
+        |  |              |  +--ro connection-timeouts?   oc-yang:counter64
+        |  |              |  +--ro messages-sent?         oc-yang:counter64
+        |  |              |  +--ro messages-received?     oc-yang:counter64
+        |  |              |  +--ro errors-received?       oc-yang:counter64
+        |  |              +--rw tacacs
+        |  |              |  +--rw config
+        |  |              |  |  +--rw port?             oc-inet:port-number
+        |  |              |  |  +--rw secret-key?       oc-types:routing-password
+        |  |              |  |  +--rw source-address?   oc-inet:ip-address
+        |  |              |  +--ro state
+        |  |              |     +--ro port?             oc-inet:port-number
+        |  |              |     +--ro secret-key?       oc-types:routing-password
+        |  |              |     +--ro source-address?   oc-inet:ip-address
+        |  |              +--rw radius
+        |  |                 +--rw config
+        |  |                 |  +--rw auth-port?             oc-inet:port-number
+        |  |                 |  +--rw acct-port?             oc-inet:port-number
+        |  |                 |  +--rw secret-key?            oc-types:routing-password
+        |  |                 |  +--rw source-address?        oc-inet:ip-address
+        |  |                 |  +--rw retransmit-attempts?   uint8
+        |  |                 +--ro state
+        |  |                    +--ro auth-port?             oc-inet:port-number
+        |  |                    +--ro acct-port?             oc-inet:port-number
+        |  |                    +--ro secret-key?            oc-types:routing-password
+        |  |                    +--ro source-address?        oc-inet:ip-address
+        |  |                    +--ro retransmit-attempts?   uint8
+        |  |                    +--ro counters
+        |  |                       +--ro retried-access-requests?   oc-yang:counter64
+        |  |                       +--ro access-accepts?            oc-yang:counter64
+        |  |                       +--ro access-rejects?            oc-yang:counter64
+        |  |                       +--ro timeout-access-requests?   oc-yang:counter64
+        |  +--rw memory
+        |  |  +--rw config
+        |  |  +--ro state
+        |  |     +--ro physical?   uint64
+        |  |     +--ro reserved?   uint64
+        |  +--ro cpus
+        |  |  +--ro cpu* [index]
+        |  |     +--ro index    -> ../state/index
+        |  |     +--ro state
+        |  |        +--ro index?                union
+        |  |        +--ro total
+        |  |        |  +--ro instant?    oc-types:percentage
+        |  |        |  +--ro avg?        oc-types:percentage
+        |  |        |  +--ro min?        oc-types:percentage
+        |  |        |  +--ro max?        oc-types:percentage
+        |  |        |  +--ro interval?   oc-types:stat-interval
+        |  |        |  +--ro min-time?   oc-types:timeticks64
+        |  |        |  +--ro max-time?   oc-types:timeticks64
+        |  |        +--ro user
+        |  |        |  +--ro instant?    oc-types:percentage
+        |  |        |  +--ro avg?        oc-types:percentage
+        |  |        |  +--ro min?        oc-types:percentage
+        |  |        |  +--ro max?        oc-types:percentage
+        |  |        |  +--ro interval?   oc-types:stat-interval
+        |  |        |  +--ro min-time?   oc-types:timeticks64
+        |  |        |  +--ro max-time?   oc-types:timeticks64
+        |  |        +--ro kernel
+        |  |        |  +--ro instant?    oc-types:percentage
+        |  |        |  +--ro avg?        oc-types:percentage
+        |  |        |  +--ro min?        oc-types:percentage
+        |  |        |  +--ro max?        oc-types:percentage
+        |  |        |  +--ro interval?   oc-types:stat-interval
+        |  |        |  +--ro min-time?   oc-types:timeticks64
+        |  |        |  +--ro max-time?   oc-types:timeticks64
+        |  |        +--ro nice
+        |  |        |  +--ro instant?    oc-types:percentage
+        |  |        |  +--ro avg?        oc-types:percentage
+        |  |        |  +--ro min?        oc-types:percentage
+        |  |        |  +--ro max?        oc-types:percentage
+        |  |        |  +--ro interval?   oc-types:stat-interval
+        |  |        |  +--ro min-time?   oc-types:timeticks64
+        |  |        |  +--ro max-time?   oc-types:timeticks64
+        |  |        +--ro idle
+        |  |        |  +--ro instant?    oc-types:percentage
+        |  |        |  +--ro avg?        oc-types:percentage
+        |  |        |  +--ro min?        oc-types:percentage
+        |  |        |  +--ro max?        oc-types:percentage
+        |  |        |  +--ro interval?   oc-types:stat-interval
+        |  |        |  +--ro min-time?   oc-types:timeticks64
+        |  |        |  +--ro max-time?   oc-types:timeticks64
+        |  |        +--ro wait
+        |  |        |  +--ro instant?    oc-types:percentage
+        |  |        |  +--ro avg?        oc-types:percentage
+        |  |        |  +--ro min?        oc-types:percentage
+        |  |        |  +--ro max?        oc-types:percentage
+        |  |        |  +--ro interval?   oc-types:stat-interval
+        |  |        |  +--ro min-time?   oc-types:timeticks64
+        |  |        |  +--ro max-time?   oc-types:timeticks64
+        |  |        +--ro hardware-interrupt
+        |  |        |  +--ro instant?    oc-types:percentage
+        |  |        |  +--ro avg?        oc-types:percentage
+        |  |        |  +--ro min?        oc-types:percentage
+        |  |        |  +--ro max?        oc-types:percentage
+        |  |        |  +--ro interval?   oc-types:stat-interval
+        |  |        |  +--ro min-time?   oc-types:timeticks64
+        |  |        |  +--ro max-time?   oc-types:timeticks64
+        |  |        +--ro software-interrupt
+        |  |           +--ro instant?    oc-types:percentage
+        |  |           +--ro avg?        oc-types:percentage
+        |  |           +--ro min?        oc-types:percentage
+        |  |           +--ro max?        oc-types:percentage
+        |  |           +--ro interval?   oc-types:stat-interval
+        |  |           +--ro min-time?   oc-types:timeticks64
+        |  |           +--ro max-time?   oc-types:timeticks64
+        |  +--rw processes
+        |  |  +--ro process* [pid]
+        |  |     +--ro pid      -> ../state/pid
+        |  |     +--ro state
+        |  |        +--ro pid?                  uint64
+        |  |        +--ro name?                 string
+        |  |        +--ro args*                 string
+        |  |        +--ro start-time?           uint64
+        |  |        +--ro uptime?               oc-types:timeticks64
+        |  |        +--ro cpu-usage-user?       oc-types:timeticks64
+        |  |        +--ro cpu-usage-system?     oc-types:timeticks64
+        |  |        +--ro cpu-utilization?      oc-types:percentage
+        |  |        +--ro memory-usage?         uint64
+        |  |        +--ro memory-utilization?   oc-types:percentage
+        |  +--rw alarms
+        |     +--rw alarm* [id]
+        |        +--rw id        -> ../config/id
+        |        +--rw config
+        |        |  +--rw id?   string
+        |        +--ro state
+        |           +--ro id?             string
+        |           +--ro resource?       string
+        |           +--ro text?           string
+        |           +--ro time-created?   oc-types:timeticks64
+        |           +--ro severity?       identityref
+        |           +--ro type-id?        union
+        +--rw assigned-ap-managers
+           +--rw ap-manager* [id]
+              +--rw id        -> ../config/id
+              +--rw config
+              |  +--rw id?                        string
+              |  +--rw fqdn?                      oc-inet:domain-name
+              |  +--rw ap-manager-ipv4-address?   oc-inet:ipv4-address
+              |  +--rw ap-manager-ipv6-address?   oc-inet:ipv6-address
+              +--ro state
+                 +--ro id?                        string
+                 +--ro fqdn?                      oc-inet:domain-name
+                 +--ro ap-manager-ipv4-address?   oc-inet:ipv4-address
+                 +--ro ap-manager-ipv6-address?   oc-inet:ipv6-address
+                 +--ro joined?                    boolean
+Xpaths for model: openconfig-access-points.yang
+/access-points:access-points,container,
+/access-points:access-points/access-points:access-point,list,
+/access-points:access-points/access-points:access-point/access-points:hostname,leaf,oc-inet:domain-name
+/access-points:access-points/access-points:access-point/access-points:radios,container,
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio,list,
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:id,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:id,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:operating-frequency,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:enabled,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:transmit-power,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:channel,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:channel-width,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:dca,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:allowed-channels,leaf-list,oc-wifi-types:channels-type
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:dtp,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:dtp-min,leaf,int8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:dtp-max,leaf,int8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:antenna-gain,leaf,int8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:scanning,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:scanning-interval,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:scanning-dwell-time,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:scanning-defer-clients,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:config/access-points:scanning-defer-traffic,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:id,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:operating-frequency,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:enabled,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:transmit-power,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:channel,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:channel-width,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:dca,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:allowed-channels,leaf-list,oc-wifi-types:channels-type
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:dtp,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:dtp-min,leaf,int8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:dtp-max,leaf,int8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:antenna-gain,leaf,int8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:scanning,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:scanning-interval,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:scanning-dwell-time,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:scanning-defer-clients,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:scanning-defer-traffic,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:base-radio-mac,leaf,oc-yang:mac-address
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:dfs-hit-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:channel-change-reason,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:total-channel-utilization,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:rx-dot11-channel-utilization,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:rx-noise-channel-utilization,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:tx-dot11-channel-utilization,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:counters,container,
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:counters/access-points:failed-fcs-frames,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:state/access-points:counters/access-points:noise-floor,leaf,int8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:neighbors,container,
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:neighbors/access-points:neighbor,list,
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:neighbors/access-points:neighbor/access-points:bssid,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:neighbors/access-points:neighbor/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:neighbors/access-points:neighbor/access-points:state/access-points:bssid,leaf,oc-yang:mac-address
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:neighbors/access-points:neighbor/access-points:state/access-points:ssid,leaf,string
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:neighbors/access-points:neighbor/access-points:state/access-points:rssi,leaf,int8
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:neighbors/access-points:neighbor/access-points:state/access-points:channel,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:neighbors/access-points:neighbor/access-points:state/access-points:primary-channel,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:radios/access-points:radio/access-points:neighbors/access-points:neighbor/access-points:state/access-points:last-seen,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:ssids,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid,list,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:name,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:name,leaf,string
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:enabled,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:hidden,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:default-vlan,leaf,oc-vlan-types:vlan-id
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:vlan-list,leaf-list,oc-vlan-types:vlan-id
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:operating-frequency,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:basic-data-rates,leaf-list,identityref
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:supported-data-rates,leaf-list,identityref
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:broadcast-filter,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:multicast-filter,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:ipv6-ndp-filter,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:ipv6-ndp-filter-timer,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:station-isolation,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:opmode,leaf,enumeration
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:wpa2-psk,leaf,string
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:server-group,leaf,string
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:dva,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:mobility-domain,leaf,string
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:dhcp-required,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:qbss-load,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:advertise-apname,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:csa,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:ptk-timeout,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:gtk-timeout,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:dot11k,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:config/access-points:okc,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:name,leaf,string
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:enabled,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:hidden,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:default-vlan,leaf,oc-vlan-types:vlan-id
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:vlan-list,leaf-list,oc-vlan-types:vlan-id
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:operating-frequency,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:basic-data-rates,leaf-list,identityref
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:supported-data-rates,leaf-list,identityref
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:broadcast-filter,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:multicast-filter,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:ipv6-ndp-filter,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:ipv6-ndp-filter-timer,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:station-isolation,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:opmode,leaf,enumeration
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:wpa2-psk,leaf,string
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:server-group,leaf,string
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:dva,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:mobility-domain,leaf,string
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:dhcp-required,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:qbss-load,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:advertise-apname,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:csa,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:ptk-timeout,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:gtk-timeout,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:dot11k,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:okc,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid,list,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:bssid,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:radio-id,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:bssid,leaf,oc-yang:mac-address
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:radio-id,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:num-associated-clients,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-bss-dot11-channel-utilization,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-mgmt,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-control,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist/access-points:rx-0-64,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist/access-points:rx-65-128,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist/access-points:rx-129-256,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist/access-points:rx-257-512,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist/access-points:rx-513-1024,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist/access-points:rx-1025-2048,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist/access-points:rx-2049-4096,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist/access-points:rx-4097-8192,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist/access-points:rx-8193-16384,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist/access-points:rx-16385-32768,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist/access-points:rx-32769-65536,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist/access-points:rx-65537-131072,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist/access-points:rx-131073-262144,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist/access-points:rx-262145-524288,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-dist/access-points:rx-524289-1048576,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-wmm,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-wmm/access-points:vi,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-wmm/access-points:vo,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-wmm/access-points:be,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-data-wmm/access-points:bk,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-mcs,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-mcs/access-points:mcs0,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-mcs/access-points:mcs1,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-mcs/access-points:mcs2,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-mcs/access-points:mcs3,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-mcs/access-points:mcs4,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-mcs/access-points:mcs5,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-mcs/access-points:mcs6,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-mcs/access-points:mcs7,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-mcs/access-points:mcs8,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-mcs/access-points:mcs9,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-retries,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-retries-data,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-retries-subframe,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:rx-bytes-data,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-bss-dot11-channel-utilization,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-mgmt,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-control,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist/access-points:tx-0-64,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist/access-points:tx-65-128,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist/access-points:tx-129-256,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist/access-points:tx-257-512,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist/access-points:tx-513-1024,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist/access-points:tx-1025-2048,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist/access-points:tx-2049-4096,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist/access-points:tx-4097-8192,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist/access-points:tx-8193-16384,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist/access-points:tx-16385-32768,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist/access-points:tx-32769-65536,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist/access-points:tx-65537-131072,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist/access-points:tx-131073-262144,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist/access-points:tx-262145-524288,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-dist/access-points:tx-524289-1048576,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-wmm,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-wmm/access-points:vi,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-wmm/access-points:vo,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-wmm/access-points:bk,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-data-wmm/access-points:be,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-mcs,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-mcs/access-points:mcs0,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-mcs/access-points:mcs1,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-mcs/access-points:mcs2,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-mcs/access-points:mcs3,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-mcs/access-points:mcs4,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-mcs/access-points:mcs5,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-mcs/access-points:mcs6,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-mcs/access-points:mcs7,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-mcs/access-points:mcs8,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-mcs/access-points:mcs9,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-retries,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-retries-data,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-retries-subframe,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:tx-bytes-data,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:state/access-points:bssids/access-points:bssid/access-points:state/access-points:counters/access-points:bss-channel-utilization,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:wmm,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:wmm/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:wmm/access-points:config/access-points:trust-dscp,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:wmm/access-points:config/access-points:wmm-vo-remark,leaf-list,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:wmm/access-points:config/access-points:wmm-vi-remark,leaf-list,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:wmm/access-points:config/access-points:wmm-be-remark,leaf-list,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:wmm/access-points:config/access-points:wmm-bk-remark,leaf-list,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:wmm/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:wmm/access-points:state/access-points:trust-dscp,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:wmm/access-points:state/access-points:wmm-vo-remark,leaf-list,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:wmm/access-points:state/access-points:wmm-vi-remark,leaf-list,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:wmm/access-points:state/access-points:wmm-be-remark,leaf-list,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:wmm/access-points:state/access-points:wmm-bk-remark,leaf-list,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11r,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11r/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11r/access-points:config/access-points:dot11r,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11r/access-points:config/access-points:dot11r-domainid,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11r/access-points:config/access-points:dot11r-method,leaf,enumeration
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11r/access-points:config/access-points:dot11r-r1key-timeout,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11r/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11r/access-points:state/access-points:dot11r,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11r/access-points:state/access-points:dot11r-domainid,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11r/access-points:state/access-points:dot11r-method,leaf,enumeration
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11r/access-points:state/access-points:dot11r-r1key-timeout,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11v,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11v/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11v/access-points:config/access-points:dot11v-dms,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11v/access-points:config/access-points:dot11v-bssidle,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11v/access-points:config/access-points:dot11v-bssidle-timeout,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11v/access-points:config/access-points:dot11v-bsstransition,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11v/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11v/access-points:state/access-points:dot11v-dms,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11v/access-points:state/access-points:dot11v-bssidle,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11v/access-points:state/access-points:dot11v-bssidle-timeout,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot11v/access-points:state/access-points:dot11v-bsstransition,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client,list,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:mac,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:state/access-points:mac,leaf,oc-yang:mac-address
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:state/access-points:counters,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:state/access-points:counters/access-points:tx-bytes,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:state/access-points:counters/access-points:rx-bytes,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:state/access-points:counters/access-points:rx-retries,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:state/access-points:counters/access-points:tx-retries,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-rf,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-rf/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-rf/access-points:state/access-points:rssi,leaf,int8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-rf/access-points:state/access-points:snr,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-rf/access-points:state/access-points:ss,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-rf/access-points:state/access-points:phy-rate,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-rf/access-points:state/access-points:connection-mode,leaf,enumeration
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-rf/access-points:state/access-points:frequency,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-capabilities,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-capabilities/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-capabilities/access-points:state/access-points:client-capabilities,leaf-list,identityref
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-capabilities/access-points:state/access-points:channel-support,leaf-list,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:dot11k-neighbors,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:dot11k-neighbors/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:dot11k-neighbors/access-points:state/access-points:neighbor-bssid,leaf,oc-yang:mac-address
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:dot11k-neighbors/access-points:state/access-points:neighbor-channel,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:dot11k-neighbors/access-points:state/access-points:neighbor-rssi,leaf,int8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:dot11k-neighbors/access-points:state/access-points:neighbor-antenna,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:dot11k-neighbors/access-points:state/access-points:channel-load-report,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-connection,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-connection/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-connection/access-points:state/access-points:client-state,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-connection/access-points:state/access-points:connection-time,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-connection/access-points:state/access-points:username,leaf,string
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-connection/access-points:state/access-points:hostname,leaf,string
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-connection/access-points:state/access-points:ipv4-address,leaf,oc-inet:ipv4-address
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-connection/access-points:state/access-points:ipv6-address,leaf-list,oc-inet:ipv6-address
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:clients/access-points:client/access-points:client-connection/access-points:state/access-points:operating-system,leaf,string
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot1x-timers,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot1x-timers/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot1x-timers/access-points:config/access-points:max-auth-failures,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot1x-timers/access-points:config/access-points:blacklist-time,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot1x-timers/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot1x-timers/access-points:state/access-points:max-auth-failures,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:dot1x-timers/access-points:state/access-points:blacklist-time,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:band-steering,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:band-steering/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:band-steering/access-points:config/access-points:band-steering,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:band-steering/access-points:config/access-points:steering-rssi,leaf,int8
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:band-steering/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:band-steering/access-points:state/access-points:band-steering,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:ssids/access-points:ssid/access-points:band-steering/access-points:state/access-points:steering-rssi,leaf,int8
+/access-points:access-points/access-points:access-point/access-points:system,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:config/access-points:hostname,leaf,oc-inet:domain-name
+/access-points:access-points/access-points:access-point/access-points:system/access-points:config/access-points:domain-name,leaf,oc-inet:domain-name
+/access-points:access-points/access-points:access-point/access-points:system/access-points:config/access-points:login-banner,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:config/access-points:motd-banner,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:state/access-points:hostname,leaf,oc-inet:domain-name
+/access-points:access-points/access-points:access-point/access-points:system/access-points:state/access-points:domain-name,leaf,oc-inet:domain-name
+/access-points:access-points/access-points:access-point/access-points:system/access-points:state/access-points:login-banner,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:state/access-points:motd-banner,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:state/access-points:current-datetime,leaf,oc-yang:date-and-time
+/access-points:access-points/access-points:access-point/access-points:system/access-points:state/access-points:boot-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:clock,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:clock/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:clock/access-points:config/access-points:timezone-name,leaf,timezone-name-type
+/access-points:access-points/access-points:access-point/access-points:system/access-points:clock/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:clock/access-points:state/access-points:timezone-name,leaf,timezone-name-type
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:config/access-points:search,leaf-list,oc-inet:domain-name
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:state/access-points:search,leaf-list,oc-inet:domain-name
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:servers,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:servers/access-points:server,list,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:servers/access-points:server/access-points:address,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:servers/access-points:server/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:servers/access-points:server/access-points:config/access-points:address,leaf,oc-inet:ip-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:servers/access-points:server/access-points:config/access-points:port,leaf,oc-inet:port-number
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:servers/access-points:server/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:servers/access-points:server/access-points:state/access-points:address,leaf,oc-inet:ip-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:servers/access-points:server/access-points:state/access-points:port,leaf,oc-inet:port-number
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:host-entries,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:host-entries/access-points:host-entry,list,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:host-entries/access-points:host-entry/access-points:hostname,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:host-entries/access-points:host-entry/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:host-entries/access-points:host-entry/access-points:config/access-points:hostname,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:host-entries/access-points:host-entry/access-points:config/access-points:alias,leaf-list,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:host-entries/access-points:host-entry/access-points:config/access-points:ipv4-address,leaf-list,oc-inet:ipv4-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:host-entries/access-points:host-entry/access-points:config/access-points:ipv6-address,leaf-list,oc-inet:ipv6-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:host-entries/access-points:host-entry/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:host-entries/access-points:host-entry/access-points:state/access-points:hostname,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:host-entries/access-points:host-entry/access-points:state/access-points:alias,leaf-list,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:host-entries/access-points:host-entry/access-points:state/access-points:ipv4-address,leaf-list,oc-inet:ipv4-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:dns/access-points:host-entries/access-points:host-entry/access-points:state/access-points:ipv6-address,leaf-list,oc-inet:ipv6-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:config/access-points:enabled,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:config/access-points:ntp-source-address,leaf,oc-inet:ip-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:config/access-points:enable-ntp-auth,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:state/access-points:enabled,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:state/access-points:ntp-source-address,leaf,oc-inet:ip-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:state/access-points:enable-ntp-auth,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:state/access-points:auth-mismatch,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:ntp-keys,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:ntp-keys/access-points:ntp-key,list,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:ntp-keys/access-points:ntp-key/access-points:key-id,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:ntp-keys/access-points:ntp-key/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:ntp-keys/access-points:ntp-key/access-points:config/access-points:key-id,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:ntp-keys/access-points:ntp-key/access-points:config/access-points:key-type,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:ntp-keys/access-points:ntp-key/access-points:config/access-points:key-value,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:ntp-keys/access-points:ntp-key/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:ntp-keys/access-points:ntp-key/access-points:state/access-points:key-id,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:ntp-keys/access-points:ntp-key/access-points:state/access-points:key-type,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:ntp-keys/access-points:ntp-key/access-points:state/access-points:key-value,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server,list,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:address,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:config/access-points:address,leaf,oc-inet:host
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:config/access-points:port,leaf,oc-inet:port-number
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:config/access-points:version,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:config/access-points:association-type,leaf,enumeration
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:config/access-points:iburst,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:config/access-points:prefer,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:state/access-points:address,leaf,oc-inet:host
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:state/access-points:port,leaf,oc-inet:port-number
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:state/access-points:version,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:state/access-points:association-type,leaf,enumeration
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:state/access-points:iburst,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:state/access-points:prefer,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:state/access-points:stratum,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:state/access-points:root-delay,leaf,uint32
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:state/access-points:root-dispersion,leaf,uint64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:state/access-points:offset,leaf,uint64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ntp/access-points:servers/access-points:server/access-points:state/access-points:poll-interval,leaf,uint32
+/access-points:access-points/access-points:access-point/access-points:system/access-points:grpc-server,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:grpc-server/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:grpc-server/access-points:config/access-points:enable,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:grpc-server/access-points:config/access-points:port,leaf,oc-inet:port-number
+/access-points:access-points/access-points:access-point/access-points:system/access-points:grpc-server/access-points:config/access-points:transport-security,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:grpc-server/access-points:config/access-points:certificate-id,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:grpc-server/access-points:config/access-points:listen-addresses,leaf-list,union
+/access-points:access-points/access-points:access-point/access-points:system/access-points:grpc-server/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:grpc-server/access-points:state/access-points:enable,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:grpc-server/access-points:state/access-points:port,leaf,oc-inet:port-number
+/access-points:access-points/access-points:access-point/access-points:system/access-points:grpc-server/access-points:state/access-points:transport-security,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:grpc-server/access-points:state/access-points:certificate-id,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:grpc-server/access-points:state/access-points:listen-addresses,leaf-list,union
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ssh-server,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ssh-server/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ssh-server/access-points:config/access-points:enable,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ssh-server/access-points:config/access-points:protocol-version,leaf,enumeration
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ssh-server/access-points:config/access-points:timeout,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ssh-server/access-points:config/access-points:rate-limit,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ssh-server/access-points:config/access-points:session-limit,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ssh-server/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ssh-server/access-points:state/access-points:enable,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ssh-server/access-points:state/access-points:protocol-version,leaf,enumeration
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ssh-server/access-points:state/access-points:timeout,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ssh-server/access-points:state/access-points:rate-limit,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:ssh-server/access-points:state/access-points:session-limit,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:telnet-server,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:telnet-server/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:telnet-server/access-points:config/access-points:enable,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:telnet-server/access-points:config/access-points:timeout,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:telnet-server/access-points:config/access-points:rate-limit,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:telnet-server/access-points:config/access-points:session-limit,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:telnet-server/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:telnet-server/access-points:state/access-points:enable,leaf,boolean
+/access-points:access-points/access-points:access-point/access-points:system/access-points:telnet-server/access-points:state/access-points:timeout,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:telnet-server/access-points:state/access-points:rate-limit,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:telnet-server/access-points:state/access-points:session-limit,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:console,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:console/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:console/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:console/access-points:selectors,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:console/access-points:selectors/access-points:selector,list,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:console/access-points:selectors/access-points:selector/access-points:facility,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:console/access-points:selectors/access-points:selector/access-points:severity,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:console/access-points:selectors/access-points:selector/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:console/access-points:selectors/access-points:selector/access-points:config/access-points:facility,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:console/access-points:selectors/access-points:selector/access-points:config/access-points:severity,leaf,syslog-severity
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:console/access-points:selectors/access-points:selector/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:console/access-points:selectors/access-points:selector/access-points:state/access-points:facility,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:console/access-points:selectors/access-points:selector/access-points:state/access-points:severity,leaf,syslog-severity
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server,list,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:host,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:config/access-points:host,leaf,oc-inet:host
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:config/access-points:source-address,leaf,oc-inet:ip-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:config/access-points:remote-port,leaf,oc-inet:port-number
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:state/access-points:host,leaf,oc-inet:host
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:state/access-points:source-address,leaf,oc-inet:ip-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:state/access-points:remote-port,leaf,oc-inet:port-number
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:selectors,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:selectors/access-points:selector,list,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:selectors/access-points:selector/access-points:facility,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:selectors/access-points:selector/access-points:severity,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:selectors/access-points:selector/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:selectors/access-points:selector/access-points:config/access-points:facility,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:selectors/access-points:selector/access-points:config/access-points:severity,leaf,syslog-severity
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:selectors/access-points:selector/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:selectors/access-points:selector/access-points:state/access-points:facility,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:logging/access-points:remote-servers/access-points:remote-server/access-points:selectors/access-points:selector/access-points:state/access-points:severity,leaf,syslog-severity
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:config/access-points:authentication-method,leaf-list,union
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:state/access-points:authentication-method,leaf-list,union
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:admin-user,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:admin-user/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:admin-user/access-points:config/access-points:admin-password,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:admin-user/access-points:config/access-points:admin-password-hashed,leaf,oc-aaa-types:crypt-password-type
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:admin-user/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:admin-user/access-points:state/access-points:admin-password,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:admin-user/access-points:state/access-points:admin-password-hashed,leaf,oc-aaa-types:crypt-password-type
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:admin-user/access-points:state/access-points:admin-username,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:users,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:users/access-points:user,list,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:users/access-points:user/access-points:username,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:users/access-points:user/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:users/access-points:user/access-points:config/access-points:username,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:users/access-points:user/access-points:config/access-points:password,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:users/access-points:user/access-points:config/access-points:password-hashed,leaf,oc-aaa-types:crypt-password-type
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:users/access-points:user/access-points:config/access-points:ssh-key,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:users/access-points:user/access-points:config/access-points:role,leaf,union
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:users/access-points:user/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:users/access-points:user/access-points:state/access-points:username,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:users/access-points:user/access-points:state/access-points:password,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:users/access-points:user/access-points:state/access-points:password-hashed,leaf,oc-aaa-types:crypt-password-type
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:users/access-points:user/access-points:state/access-points:ssh-key,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authentication/access-points:users/access-points:user/access-points:state/access-points:role,leaf,union
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authorization,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authorization/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authorization/access-points:config/access-points:authorization-method,leaf-list,union
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authorization/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authorization/access-points:state/access-points:authorization-method,leaf-list,union
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authorization/access-points:events,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authorization/access-points:events/access-points:event,list,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authorization/access-points:events/access-points:event/access-points:event-type,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authorization/access-points:events/access-points:event/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authorization/access-points:events/access-points:event/access-points:config/access-points:event-type,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authorization/access-points:events/access-points:event/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:authorization/access-points:events/access-points:event/access-points:state/access-points:event-type,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:accounting,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:accounting/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:accounting/access-points:config/access-points:accounting-method,leaf-list,union
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:accounting/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:accounting/access-points:state/access-points:accounting-method,leaf-list,union
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:accounting/access-points:events,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:accounting/access-points:events/access-points:event,list,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:accounting/access-points:events/access-points:event/access-points:event-type,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:accounting/access-points:events/access-points:event/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:accounting/access-points:events/access-points:event/access-points:config/access-points:event-type,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:accounting/access-points:events/access-points:event/access-points:config/access-points:record,leaf,enumeration
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:accounting/access-points:events/access-points:event/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:accounting/access-points:events/access-points:event/access-points:state/access-points:event-type,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:accounting/access-points:events/access-points:event/access-points:state/access-points:record,leaf,enumeration
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group,list,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:name,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:config/access-points:name,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:config/access-points:type,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:state/access-points:name,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:state/access-points:type,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server,list,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:address,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:config/access-points:name,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:config/access-points:address,leaf,oc-inet:ip-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:config/access-points:timeout,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:state/access-points:name,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:state/access-points:address,leaf,oc-inet:ip-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:state/access-points:timeout,leaf,uint16
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:state/access-points:connection-opens,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:state/access-points:connection-closes,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:state/access-points:connection-aborts,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:state/access-points:connection-failures,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:state/access-points:connection-timeouts,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:state/access-points:messages-sent,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:state/access-points:messages-received,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:state/access-points:errors-received,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:tacacs,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:tacacs/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:tacacs/access-points:config/access-points:port,leaf,oc-inet:port-number
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:tacacs/access-points:config/access-points:secret-key,leaf,oc-types:routing-password
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:tacacs/access-points:config/access-points:source-address,leaf,oc-inet:ip-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:tacacs/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:tacacs/access-points:state/access-points:port,leaf,oc-inet:port-number
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:tacacs/access-points:state/access-points:secret-key,leaf,oc-types:routing-password
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:tacacs/access-points:state/access-points:source-address,leaf,oc-inet:ip-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:config/access-points:auth-port,leaf,oc-inet:port-number
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:config/access-points:acct-port,leaf,oc-inet:port-number
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:config/access-points:secret-key,leaf,oc-types:routing-password
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:config/access-points:source-address,leaf,oc-inet:ip-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:config/access-points:retransmit-attempts,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:state/access-points:auth-port,leaf,oc-inet:port-number
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:state/access-points:acct-port,leaf,oc-inet:port-number
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:state/access-points:secret-key,leaf,oc-types:routing-password
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:state/access-points:source-address,leaf,oc-inet:ip-address
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:state/access-points:retransmit-attempts,leaf,uint8
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:state/access-points:counters,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:state/access-points:counters/access-points:retried-access-requests,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:state/access-points:counters/access-points:access-accepts,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:state/access-points:counters/access-points:access-rejects,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:aaa/access-points:server-groups/access-points:server-group/access-points:servers/access-points:server/access-points:radius/access-points:state/access-points:counters/access-points:timeout-access-requests,leaf,oc-yang:counter64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:memory,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:memory/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:memory/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:memory/access-points:state/access-points:physical,leaf,uint64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:memory/access-points:state/access-points:reserved,leaf,uint64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu,list,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:index,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:index,leaf,union
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:total,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:total/access-points:instant,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:total/access-points:avg,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:total/access-points:min,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:total/access-points:max,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:total/access-points:interval,leaf,oc-types:stat-interval
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:total/access-points:min-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:total/access-points:max-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:user,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:user/access-points:instant,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:user/access-points:avg,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:user/access-points:min,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:user/access-points:max,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:user/access-points:interval,leaf,oc-types:stat-interval
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:user/access-points:min-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:user/access-points:max-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:kernel,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:kernel/access-points:instant,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:kernel/access-points:avg,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:kernel/access-points:min,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:kernel/access-points:max,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:kernel/access-points:interval,leaf,oc-types:stat-interval
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:kernel/access-points:min-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:kernel/access-points:max-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:nice,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:nice/access-points:instant,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:nice/access-points:avg,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:nice/access-points:min,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:nice/access-points:max,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:nice/access-points:interval,leaf,oc-types:stat-interval
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:nice/access-points:min-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:nice/access-points:max-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:idle,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:idle/access-points:instant,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:idle/access-points:avg,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:idle/access-points:min,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:idle/access-points:max,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:idle/access-points:interval,leaf,oc-types:stat-interval
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:idle/access-points:min-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:idle/access-points:max-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:wait,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:wait/access-points:instant,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:wait/access-points:avg,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:wait/access-points:min,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:wait/access-points:max,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:wait/access-points:interval,leaf,oc-types:stat-interval
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:wait/access-points:min-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:wait/access-points:max-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:hardware-interrupt,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:hardware-interrupt/access-points:instant,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:hardware-interrupt/access-points:avg,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:hardware-interrupt/access-points:min,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:hardware-interrupt/access-points:max,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:hardware-interrupt/access-points:interval,leaf,oc-types:stat-interval
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:hardware-interrupt/access-points:min-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:hardware-interrupt/access-points:max-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:software-interrupt,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:software-interrupt/access-points:instant,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:software-interrupt/access-points:avg,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:software-interrupt/access-points:min,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:software-interrupt/access-points:max,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:software-interrupt/access-points:interval,leaf,oc-types:stat-interval
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:software-interrupt/access-points:min-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:cpus/access-points:cpu/access-points:state/access-points:software-interrupt/access-points:max-time,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:processes,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:processes/access-points:process,list,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:processes/access-points:process/access-points:pid,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:processes/access-points:process/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:processes/access-points:process/access-points:state/access-points:pid,leaf,uint64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:processes/access-points:process/access-points:state/access-points:name,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:processes/access-points:process/access-points:state/access-points:args,leaf-list,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:processes/access-points:process/access-points:state/access-points:start-time,leaf,uint64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:processes/access-points:process/access-points:state/access-points:uptime,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:processes/access-points:process/access-points:state/access-points:cpu-usage-user,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:processes/access-points:process/access-points:state/access-points:cpu-usage-system,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:processes/access-points:process/access-points:state/access-points:cpu-utilization,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:processes/access-points:process/access-points:state/access-points:memory-usage,leaf,uint64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:processes/access-points:process/access-points:state/access-points:memory-utilization,leaf,oc-types:percentage
+/access-points:access-points/access-points:access-point/access-points:system/access-points:alarms,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:alarms/access-points:alarm,list,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:alarms/access-points:alarm/access-points:id,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:alarms/access-points:alarm/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:alarms/access-points:alarm/access-points:config/access-points:id,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:alarms/access-points:alarm/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:system/access-points:alarms/access-points:alarm/access-points:state/access-points:id,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:alarms/access-points:alarm/access-points:state/access-points:resource,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:alarms/access-points:alarm/access-points:state/access-points:text,leaf,string
+/access-points:access-points/access-points:access-point/access-points:system/access-points:alarms/access-points:alarm/access-points:state/access-points:time-created,leaf,oc-types:timeticks64
+/access-points:access-points/access-points:access-point/access-points:system/access-points:alarms/access-points:alarm/access-points:state/access-points:severity,leaf,identityref
+/access-points:access-points/access-points:access-point/access-points:system/access-points:alarms/access-points:alarm/access-points:state/access-points:type-id,leaf,union
+/access-points:access-points/access-points:access-point/access-points:assigned-ap-managers,container,
+/access-points:access-points/access-points:access-point/access-points:assigned-ap-managers/access-points:ap-manager,list,
+/access-points:access-points/access-points:access-point/access-points:assigned-ap-managers/access-points:ap-manager/access-points:id,leaf,leafref
+/access-points:access-points/access-points:access-point/access-points:assigned-ap-managers/access-points:ap-manager/access-points:config,container,
+/access-points:access-points/access-points:access-point/access-points:assigned-ap-managers/access-points:ap-manager/access-points:config/access-points:id,leaf,string
+/access-points:access-points/access-points:access-point/access-points:assigned-ap-managers/access-points:ap-manager/access-points:config/access-points:fqdn,leaf,oc-inet:domain-name
+/access-points:access-points/access-points:access-point/access-points:assigned-ap-managers/access-points:ap-manager/access-points:config/access-points:ap-manager-ipv4-address,leaf,oc-inet:ipv4-address
+/access-points:access-points/access-points:access-point/access-points:assigned-ap-managers/access-points:ap-manager/access-points:config/access-points:ap-manager-ipv6-address,leaf,oc-inet:ipv6-address
+/access-points:access-points/access-points:access-point/access-points:assigned-ap-managers/access-points:ap-manager/access-points:state,container,
+/access-points:access-points/access-points:access-point/access-points:assigned-ap-managers/access-points:ap-manager/access-points:state/access-points:id,leaf,string
+/access-points:access-points/access-points:access-point/access-points:assigned-ap-managers/access-points:ap-manager/access-points:state/access-points:fqdn,leaf,oc-inet:domain-name
+/access-points:access-points/access-points:access-point/access-points:assigned-ap-managers/access-points:ap-manager/access-points:state/access-points:ap-manager-ipv4-address,leaf,oc-inet:ipv4-address
+/access-points:access-points/access-points:access-point/access-points:assigned-ap-managers/access-points:ap-manager/access-points:state/access-points:ap-manager-ipv6-address,leaf,oc-inet:ipv6-address
+/access-points:access-points/access-points:access-point/access-points:assigned-ap-managers/access-points:ap-manager/access-points:state/access-points:joined,leaf,boolean

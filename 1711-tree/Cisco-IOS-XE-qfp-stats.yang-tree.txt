@@ -1,0 +1,1962 @@
+ 
+KPI for model: Cisco-IOS-XE-qfp-stats.yang
+module: Cisco-IOS-XE-qfp-stats
+  +--ro global-drop-statistics
+     +--ro uidb-not-cfgd-pkts?                              yang:counter64
+     +--ro uidb-not-cfgd-octets?                            yang:counter64
+     +--ro bad-uidb-idx-pkts?                               yang:counter64
+     +--ro bad-uidb-idx-octets?                             yang:counter64
+     +--ro bad-uidb-sub-idx-pkts?                           yang:counter64
+     +--ro bad-uidb-sub-idx-octets?                         yang:counter64
+     +--ro unknown-encap-pkts?                              yang:counter64
+     +--ro unknown-encap-octets?                            yang:counter64
+     +--ro inv-l2-hdr-pkts?                                 yang:counter64
+     +--ro inv-l2-hdr-octets?                               yang:counter64
+     +--ro bad-len-pkts?                                    yang:counter64
+     +--ro bad-len-octets?                                  yang:counter64
+     +--ro tcp-badfrag-pkts?                                yang:counter64
+     +--ro tcp-badfrag-octets?                              yang:counter64
+     +--ro ipv4-acl-pkts?                                   yang:counter64
+     +--ro ipv4-acl-octets?                                 yang:counter64
+     +--ro ipv4-acl-lookup-miss-pkts?                       yang:counter64
+     +--ro ipv4-acl-lookup-miss-octets?                     yang:counter64
+     +--ro bad-ip-checksum-pkts?                            yang:counter64
+     +--ro bad-ip-checksum-octets?                          yang:counter64
+     +--ro ip-format-err-pkts?                              yang:counter64
+     +--ro ip-format-err-octets?                            yang:counter64
+     +--ro ip-bad-options-pkts?                             yang:counter64
+     +--ro ip-bad-options-octets?                           yang:counter64
+     +--ro ipv4-martian-pkts?                               yang:counter64
+     +--ro ipv4-martian-octets?                             yang:counter64
+     +--ro mpass-err-pkts?                                  yang:counter64
+     +--ro mpass-err-octets?                                yang:counter64
+     +--ro ipv4-pbr-pkts?                                   yang:counter64
+     +--ro ipv4-pbr-octets?                                 yang:counter64
+     +--ro inv-hdr-err-pkts?                                yang:counter64
+     +--ro inv-hdr-err-octets?                              yang:counter64
+     +--ro punt-err-pkts?                                   yang:counter64
+     +--ro punt-err-octets?                                 yang:counter64
+     +--ro inject-err-pkts?                                 yang:counter64
+     +--ro inject-err-octets?                               yang:counter64
+     +--ro ipv4-no-route-pkts?                              yang:counter64
+     +--ro ipv4-no-route-octets?                            yang:counter64
+     +--ro qos-policing-pkts?                               yang:counter64
+     +--ro qos-policing-octets?                             yang:counter64
+     +--ro qos-actions-pkts?                                yang:counter64
+     +--ro qos-actions-octets?                              yang:counter64
+     +--ro null-jib-hdr-tbl-pkts?                           yang:counter64
+     +--ro null-jib-hdr-tbl-octets?                         yang:counter64
+     +--ro tail-drop-pkts?                                  yang:counter64
+     +--ro tail-drop-octets?                                yang:counter64
+     +--ro wred-pkts?                                       yang:counter64
+     +--ro wred-octets?                                     yang:counter64
+     +--ro invalid-queue-pkts?                              yang:counter64
+     +--ro invalid-queue-octets?                            yang:counter64
+     +--ro invalid-wred-pkts?                               yang:counter64
+     +--ro invalid-wred-octets?                             yang:counter64
+     +--ro mpls-pkts?                                       yang:counter64
+     +--ro mpls-octets?                                     yang:counter64
+     +--ro ipv6-truncatedpkts-pkts?                         yang:counter64
+     +--ro ipv6-truncatedpkts-octets?                       yang:counter64
+     +--ro ipv6-formaterr-pkts?                             yang:counter64
+     +--ro ipv6-formaterr-octets?                           yang:counter64
+     +--ro ipv6-badsource-pkts?                             yang:counter64
+     +--ro ipv6-badsource-octets?                           yang:counter64
+     +--ro ipv6-badhop-pkts?                                yang:counter64
+     +--ro ipv6-badhop-octets?                              yang:counter64
+     +--ro ipv6-toobigpacket-pkts?                          yang:counter64
+     +--ro ipv6-toobigpacket-octets?                        yang:counter64
+     +--ro ipv6-no-route-pkts?                              yang:counter64
+     +--ro ipv6-no-route-octets?                            yang:counter64
+     +--ro ipv6-acl-lookup-miss-pkts?                       yang:counter64
+     +--ro ipv6-acl-lookup-miss-octets?                     yang:counter64
+     +--ro ipv6-acl-pkts?                                   yang:counter64
+     +--ro ipv6-acl-octets?                                 yang:counter64
+     +--ro ip-acl-err-pkts?                                 yang:counter64
+     +--ro ip-acl-err-octets?                               yang:counter64
+     +--ro mac-acl-pkts?                                    yang:counter64
+     +--ro mac-acl-octets?                                  yang:counter64
+     +--ro mac-acl-lookup-miss-pkts?                        yang:counter64
+     +--ro mac-acl-lookup-miss-octets?                      yang:counter64
+     +--ro ipv4mc-no-route-pkts?                            yang:counter64
+     +--ro ipv4mc-no-route-octets?                          yang:counter64
+     +--ro unknown-ext-header-pkts?                         yang:counter64
+     +--ro unknown-ext-header-octets?                       yang:counter64
+     +--ro ipv4mc-rpf-failed-pkts?                          yang:counter64
+     +--ro ipv4mc-rpf-failed-octets?                        yang:counter64
+     +--ro ipv4mc-invalid-replica-record-pkts?              yang:counter64
+     +--ro ipv4mc-invalid-replica-record-octets?            yang:counter64
+     +--ro ipv4mc-ttl-threshold-chk-failed-pkts?            yang:counter64
+     +--ro ipv4mc-ttl-threshold-chk-failed-octets?          yang:counter64
+     +--ro ipv4mc-extra-replicae-pkts?                      yang:counter64
+     +--ro ipv4mc-extra-replicae-octets?                    yang:counter64
+     +--ro ipv4-mtr-pkts?                                   yang:counter64
+     +--ro ipv4-mtr-octets?                                 yang:counter64
+     +--ro internal-ctl-pkts?                               yang:counter64
+     +--ro internal-ctl-octets?                             yang:counter64
+     +--ro bad-dist-fifo-pkts?                              yang:counter64
+     +--ro bad-dist-fifo-octets?                            yang:counter64
+     +--ro frfab-wred-drop-pkts?                            yang:counter64
+     +--ro frfab-wred-drop-octets?                          yang:counter64
+     +--ro firewall-nonsession-pkts?                        yang:counter64
+     +--ro firewall-nonsession-octets?                      yang:counter64
+     +--ro firewall-invalid-zone-pkts?                      yang:counter64
+     +--ro firewall-invalid-zone-octets?                    yang:counter64
+     +--ro firewall-backpressure-pkts?                      yang:counter64
+     +--ro firewall-backpressure-octets?                    yang:counter64
+     +--ro firewall-l4-insp-pkts?                           yang:counter64
+     +--ro firewall-l4-insp-octets?                         yang:counter64
+     +--ro ip-frag-err-pkts?                                yang:counter64
+     +--ro ip-frag-err-octets?                              yang:counter64
+     +--ro no-gpm-memory-err-pkts?                          yang:counter64
+     +--ro no-gpm-memory-err-octets?                        yang:counter64
+     +--ro for-us-pkts?                                     yang:counter64
+     +--ro for-us-octets?                                   yang:counter64
+     +--ro ipsec-input-pkts?                                yang:counter64
+     +--ro ipsec-input-octets?                              yang:counter64
+     +--ro ipsec-ike-indicate-pkts?                         yang:counter64
+     +--ro ipsec-ike-indicate-octets?                       yang:counter64
+     +--ro ipsec-invalid-sa-pkts?                           yang:counter64
+     +--ro ipsec-invalid-sa-octets?                         yang:counter64
+     +--ro ipsec-tail-drop-pkts?                            yang:counter64
+     +--ro ipsec-tail-drop-octets?                          yang:counter64
+     +--ro layer2-no-route-pkts?                            yang:counter64
+     +--ro layer2-no-route-octets?                          yang:counter64
+     +--ro icmp-pkts?                                       yang:counter64
+     +--ro icmp-octets?                                     yang:counter64
+     +--ro ip-ttl-exceeded-pkts?                            yang:counter64
+     +--ro ip-ttl-exceeded-octets?                          yang:counter64
+     +--ro tunnel-bad-gre-checksum-pkts?                    yang:counter64
+     +--ro tunnel-bad-gre-checksum-octets?                  yang:counter64
+     +--ro tunnel-misconfiguration-pkts?                    yang:counter64
+     +--ro tunnel-misconfiguration-octets?                  yang:counter64
+     +--ro gre-bad-options-pkts?                            yang:counter64
+     +--ro gre-bad-options-octets?                          yang:counter64
+     +--ro frag-tail-drop-pkts?                             yang:counter64
+     +--ro frag-tail-drop-octets?                           yang:counter64
+     +--ro unconfigured-fia-pkts?                           yang:counter64
+     +--ro unconfigured-fia-octets?                         yang:counter64
+     +--ro ipv4-fpm-pkts?                                   yang:counter64
+     +--ro ipv4-fpm-octets?                                 yang:counter64
+     +--ro nat-in2out-pkts?                                 yang:counter64
+     +--ro nat-in2out-octets?                               yang:counter64
+     +--ro nat-out2in-pkts?                                 yang:counter64
+     +--ro nat-out2in-octets?                               yang:counter64
+     +--ro pa-walk-err-pkts?                                yang:counter64
+     +--ro pa-walk-err-octets?                              yang:counter64
+     +--ro ipv4-routing-err-pkts?                           yang:counter64
+     +--ro ipv4-routing-err-octets?                         yang:counter64
+     +--ro ipv6-routing-err-pkts?                           yang:counter64
+     +--ro ipv6-routing-err-octets?                         yang:counter64
+     +--ro mpass-invalid-fs-vector-pkts?                    yang:counter64
+     +--ro mpass-invalid-fs-vector-octets?                  yang:counter64
+     +--ro reass-drop-pkts?                                 yang:counter64
+     +--ro reass-drop-octets?                               yang:counter64
+     +--ro reass-frag-too-big-pkts?                         yang:counter64
+     +--ro reass-frag-too-big-octets?                       yang:counter64
+     +--ro reass-no-frag-info-pkts?                         yang:counter64
+     +--ro reass-no-frag-info-octets?                       yang:counter64
+     +--ro reass-no-frag-info-low-pkts?                     yang:counter64
+     +--ro reass-no-frag-info-low-octets?                   yang:counter64
+     +--ro reass-bad-len-pkts?                              yang:counter64
+     +--ro reass-bad-len-octets?                            yang:counter64
+     +--ro reass-too-many-frags-pkts?                       yang:counter64
+     +--ro reass-too-many-frags-octets?                     yang:counter64
+     +--ro reass-no-frags-left-pkts?                        yang:counter64
+     +--ro reass-no-frags-left-octets?                      yang:counter64
+     +--ro reass-overlap-pkts?                              yang:counter64
+     +--ro reass-overlap-octets?                            yang:counter64
+     +--ro reass-timeout-pkts?                              yang:counter64
+     +--ro reass-timeout-octets?                            yang:counter64
+     +--ro no-mem-pkts?                                     yang:counter64
+     +--ro no-mem-octets?                                   yang:counter64
+     +--ro vfr-err-pkts?                                    yang:counter64
+     +--ro vfr-err-octets?                                  yang:counter64
+     +--ro vfr-tail-drop-pkts?                              yang:counter64
+     +--ro vfr-tail-drop-octets?                            yang:counter64
+     +--ro iphc-pkts?                                       yang:counter64
+     +--ro iphc-octets?                                     yang:counter64
+     +--ro multilink-cfg-pkts?                              yang:counter64
+     +--ro multilink-cfg-octets?                            yang:counter64
+     +--ro mlp-pkts?                                        yang:counter64
+     +--ro mlp-octets?                                      yang:counter64
+     +--ro min-tu-pkts?                                     yang:counter64
+     +--ro min-tu-octets?                                   yang:counter64
+     +--ro max-tu-pkts?                                     yang:counter64
+     +--ro max-tu-octets?                                   yang:counter64
+     +--ro ipv4-unclassified-pkts?                          yang:counter64
+     +--ro ipv4-unclassified-octets?                        yang:counter64
+     +--ro ipv6-unclassified-pkts?                          yang:counter64
+     +--ro ipv6-unclassified-octets?                        yang:counter64
+     +--ro ipv4-no-adj-pkts?                                yang:counter64
+     +--ro ipv4-no-adj-octets?                              yang:counter64
+     +--ro ipv4-null0-pkts?                                 yang:counter64
+     +--ro ipv4-null0-octets?                               yang:counter64
+     +--ro ipv6-null0-pkts?                                 yang:counter64
+     +--ro ipv6-null0-octets?                               yang:counter64
+     +--ro mpls-mismatch-linktype-pkts?                     yang:counter64
+     +--ro mpls-mismatch-linktype-octets?                   yang:counter64
+     +--ro mpls-frag-req-pkts?                              yang:counter64
+     +--ro mpls-frag-req-octets?                            yang:counter64
+     +--ro choice-oce-pkts?                                 yang:counter64
+     +--ro choice-oce-octets?                               yang:counter64
+     +--ro unsupported-oce-pkts?                            yang:counter64
+     +--ro unsupported-oce-octets?                          yang:counter64
+     +--ro attn-invalid-spid-pkts?                          yang:counter64
+     +--ro attn-invalid-spid-octets?                        yang:counter64
+     +--ro inv-common-preamble-pkts?                        yang:counter64
+     +--ro inv-common-preamble-octets?                      yang:counter64
+     +--ro ext-drop-path-pkts?                              yang:counter64
+     +--ro ext-drop-path-octets?                            yang:counter64
+     +--ro frr-oce-no-backup-pkts?                          yang:counter64
+     +--ro frr-oce-no-backup-octets?                        yang:counter64
+     +--ro frr-oce-invalid-state-pkts?                      yang:counter64
+     +--ro frr-oce-invalid-state-octets?                    yang:counter64
+     +--ro bqs-oor-pkts?                                    yang:counter64
+     +--ro bqs-oor-octets?                                  yang:counter64
+     +--ro ess-bad-sess-uidb-pkts?                          yang:counter64
+     +--ro ess-bad-sess-uidb-octets?                        yang:counter64
+     +--ro ess-pktsb-missed-pkts?                           yang:counter64
+     +--ro ess-pktsb-missed-octets?                         yang:counter64
+     +--ro ess-unsup-pkt-type-pkts?                         yang:counter64
+     +--ro ess-unsup-pkt-type-octets?                       yang:counter64
+     +--ro ess-no-encap-info-pkts?                          yang:counter64
+     +--ro ess-no-encap-info-octets?                        yang:counter64
+     +--ro ess-inv-switch-mode-pkts?                        yang:counter64
+     +--ro ess-inv-switch-mode-octets?                      yang:counter64
+     +--ro inv-ppp-cp-pkt-pkts?                             yang:counter64
+     +--ro inv-ppp-cp-pkt-octets?                           yang:counter64
+     +--ro ppp-cxt-missed-pkts?                             yang:counter64
+     +--ro ppp-cxt-missed-octets?                           yang:counter64
+     +--ro ess-unbound-session-pkts?                        yang:counter64
+     +--ro ess-unbound-session-octets?                      yang:counter64
+     +--ro ess-pi-inv-subtype-pkts?                         yang:counter64
+     +--ro ess-pi-inv-subtype-octets?                       yang:counter64
+     +--ro ess-pi-state-err-pkts?                           yang:counter64
+     +--ro ess-pi-state-err-octets?                         yang:counter64
+     +--ro ess-inject-bad-hdr-pkts?                         yang:counter64
+     +--ro ess-inject-bad-hdr-octets?                       yang:counter64
+     +--ro ess-l2-hdr-too-big-pkts?                         yang:counter64
+     +--ro ess-l2-hdr-too-big-octets?                       yang:counter64
+     +--ro pppox-unconfigured-pkts?                         yang:counter64
+     +--ro pppox-unconfigured-octets?                       yang:counter64
+     +--ro pppoe-pkt-inv-hdr-pkts?                          yang:counter64
+     +--ro pppoe-pkt-inv-hdr-octets?                        yang:counter64
+     +--ro pppoe-pkt-bad-len-pkts?                          yang:counter64
+     +--ro pppoe-pkt-bad-len-octets?                        yang:counter64
+     +--ro pppoe-no-session-pkts?                           yang:counter64
+     +--ro pppoe-no-session-octets?                         yang:counter64
+     +--ro pppoe-inv-encap-info-pkts?                       yang:counter64
+     +--ro pppoe-inv-encap-info-octets?                     yang:counter64
+     +--ro ess-cac-pkts?                                    yang:counter64
+     +--ro ess-cac-octets?                                  yang:counter64
+     +--ro l2tp-unconfigured-pkts?                          yang:counter64
+     +--ro l2tp-unconfigured-octets?                        yang:counter64
+     +--ro l2tp-pkt-inv-hdr-pkts?                           yang:counter64
+     +--ro l2tp-pkt-inv-hdr-octets?                         yang:counter64
+     +--ro l2tp-pkt-bad-len-pkts?                           yang:counter64
+     +--ro l2tp-pkt-bad-len-octets?                         yang:counter64
+     +--ro l2tp-no-session-pkts?                            yang:counter64
+     +--ro l2tp-no-session-octets?                          yang:counter64
+     +--ro l2tp-pktsb-missed-pkts?                          yang:counter64
+     +--ro l2tp-pktsb-missed-octets?                        yang:counter64
+     +--ro l2tp-security-check-pkts?                        yang:counter64
+     +--ro l2tp-security-check-octets?                      yang:counter64
+     +--ro l2tp-bad-udp-chksum-pkts?                        yang:counter64
+     +--ro l2tp-bad-udp-chksum-octets?                      yang:counter64
+     +--ro l2tp-ooo-rx-pkt-pkts?                            yang:counter64
+     +--ro l2tp-ooo-rx-pkt-octets?                          yang:counter64
+     +--ro l2tp-exceed-tx-mtu-pkts?                         yang:counter64
+     +--ro l2tp-exceed-tx-mtu-octets?                       yang:counter64
+     +--ro ipsec-output-pkts?                               yang:counter64
+     +--ro ipsec-output-octets?                             yang:counter64
+     +--ro ipsec-ted-indicate-pkts?                         yang:counter64
+     +--ro ipsec-ted-indicate-octets?                       yang:counter64
+     +--ro ipsec-deny-drop-pkts?                            yang:counter64
+     +--ro ipsec-deny-drop-octets?                          yang:counter64
+     +--ro l2tp-cxt-missed-pkts?                            yang:counter64
+     +--ro l2tp-cxt-missed-octets?                          yang:counter64
+     +--ro l2tp-tx-seq-missed-pkts?                         yang:counter64
+     +--ro l2tp-tx-seq-missed-octets?                       yang:counter64
+     +--ro disabled-pkts?                                   yang:counter64
+     +--ro disabled-octets?                                 yang:counter64
+     +--ro ipv6-no-adj-pkts?                                yang:counter64
+     +--ro ipv6-no-adj-octets?                              yang:counter64
+     +--ro not-enabled-pkts?                                yang:counter64
+     +--ro not-enabled-octets?                              yang:counter64
+     +--ro special-multicast-obj-pkts?                      yang:counter64
+     +--ro special-multicast-obj-octets?                    yang:counter64
+     +--ro illegal-obj-pkts?                                yang:counter64
+     +--ro illegal-obj-octets?                              yang:counter64
+     +--ro unresolved-pkts?                                 yang:counter64
+     +--ro unresolved-octets?                               yang:counter64
+     +--ro discard-pkts?                                    yang:counter64
+     +--ro discard-octets?                                  yang:counter64
+     +--ro ipv6mc-no-route-pkts?                            yang:counter64
+     +--ro ipv6mc-no-route-octets?                          yang:counter64
+     +--ro ipv6mc-rpf-failed-pkts?                          yang:counter64
+     +--ro ipv6mc-rpf-failed-octets?                        yang:counter64
+     +--ro ipv6mc-invalid-replica-record-pkts?              yang:counter64
+     +--ro ipv6mc-invalid-replica-record-octets?            yang:counter64
+     +--ro ipv6mc-ttl-threshold-chk-failed-pkts?            yang:counter64
+     +--ro ipv6mc-ttl-threshold-chk-failed-octets?          yang:counter64
+     +--ro ipv6mc-extra-replica-pkts?                       yang:counter64
+     +--ro ipv6mc-extra-replica-octets?                     yang:counter64
+     +--ro layer2-switching-pkts?                           yang:counter64
+     +--ro layer2-switching-octets?                         yang:counter64
+     +--ro internal-intf-err-pkts?                          yang:counter64
+     +--ro internal-intf-err-octets?                        yang:counter64
+     +--ro sbc-police-punt-pkts?                            yang:counter64
+     +--ro sbc-police-punt-octets?                          yang:counter64
+     +--ro sbc-uidb-pkts?                                   yang:counter64
+     +--ro sbc-uidb-octets?                                 yang:counter64
+     +--ro sbc-sess-pkts?                                   yang:counter64
+     +--ro sbc-sess-octets?                                 yang:counter64
+     +--ro sbc-mmoh-invalid-replica-record-pkts?            yang:counter64
+     +--ro sbc-mmoh-invalid-replica-record-octets?          yang:counter64
+     +--ro mpls-ipv6-frag-req-pkts?                         yang:counter64
+     +--ro mpls-ipv6-frag-req-octets?                       yang:counter64
+     +--ro sw-mac-filter-pkts?                              yang:counter64
+     +--ro sw-mac-filter-octets?                            yang:counter64
+     +--ro tunnel-bad-pim-checksum-pkts?                    yang:counter64
+     +--ro tunnel-bad-pim-checksum-octets?                  yang:counter64
+     +--ro tunnel-unsupported-config-pkts?                  yang:counter64
+     +--ro tunnel-unsupported-config-octets?                yang:counter64
+     +--ro firewall-no-forwarding-pkts?                     yang:counter64
+     +--ro firewall-no-forwarding-octets?                   yang:counter64
+     +--ro erspan-pkts?                                     yang:counter64
+     +--ro erspan-octets?                                   yang:counter64
+     +--ro ipv4-urpf-null-path-list-pkts?                   yang:counter64
+     +--ro ipv4-urpf-null-path-list-octets?                 yang:counter64
+     +--ro mpls-unclassified-pkts?                          yang:counter64
+     +--ro mpls-unclassified-octets?                        yang:counter64
+     +--ro mpls-eos-invalid-pkts?                           yang:counter64
+     +--ro mpls-eos-invalid-octets?                         yang:counter64
+     +--ro glean-adj-unsupport-linktype-pkts?               yang:counter64
+     +--ro glean-adj-unsupport-linktype-octets?             yang:counter64
+     +--ro mpls-label-oce-ptr-null-pkts?                    yang:counter64
+     +--ro mpls-label-oce-ptr-null-octets?                  yang:counter64
+     +--ro mpls-label-oce-invalid-label-pkts?               yang:counter64
+     +--ro mpls-label-oce-invalid-label-octets?             yang:counter64
+     +--ro mpls-label-oce-unsupport-linktype-pkts?          yang:counter64
+     +--ro mpls-label-oce-unsupport-linktype-octets?        yang:counter64
+     +--ro lookup-oce-should-drop-pkts?                     yang:counter64
+     +--ro lookup-oce-should-drop-octets?                   yang:counter64
+     +--ro lookup-oce-unsupport-linktype-pkts?              yang:counter64
+     +--ro lookup-oce-unsupport-linktype-octets?            yang:counter64
+     +--ro unsupport-linktype-no-route-pkts?                yang:counter64
+     +--ro unsupport-linktype-no-route-octets?              yang:counter64
+     +--ro unsupport-linktype-null0-pkts?                   yang:counter64
+     +--ro unsupport-linktype-null0-octets?                 yang:counter64
+     +--ro sr-te-remote-error-pkts?                         yang:counter64
+     +--ro sr-te-remote-error-octets?                       yang:counter64
+     +--ro ipv4-pop-pipe-php-ttl-expire-pkts?               yang:counter64
+     +--ro ipv4-pop-pipe-php-ttl-expire-octets?             yang:counter64
+     +--ro ipv4-pop-unf-uhp-ttl-expire-pkts?                yang:counter64
+     +--ro ipv4-pop-unf-uhp-ttl-expire-octets?              yang:counter64
+     +--ro ipv4-pop-unf-php-ttl-expire-pkts?                yang:counter64
+     +--ro ipv4-pop-unf-php-ttl-expire-octets?              yang:counter64
+     +--ro mpls-pop-pipe-ttl-expire-pkts?                   yang:counter64
+     +--ro mpls-pop-pipe-ttl-expire-octets?                 yang:counter64
+     +--ro mpls-pop-unf-uhp-ttl-expire-pkts?                yang:counter64
+     +--ro mpls-pop-unf-uhp-ttl-expire-octets?              yang:counter64
+     +--ro mpls-pop-unf-php-ttl-expire-pkts?                yang:counter64
+     +--ro mpls-pop-unf-php-ttl-expire-octets?              yang:counter64
+     +--ro label-pop-unsupport-linktype-pkts?               yang:counter64
+     +--ro label-pop-unsupport-linktype-octets?             yang:counter64
+     +--ro mpls-no-route-pkts?                              yang:counter64
+     +--ro mpls-no-route-octets?                            yang:counter64
+     +--ro mpls-icmp-invalid-hdr-pkts?                      yang:counter64
+     +--ro mpls-icmp-invalid-hdr-octets?                    yang:counter64
+     +--ro mpls-sanity-echo-req-pkts?                       yang:counter64
+     +--ro mpls-sanity-echo-req-octets?                     yang:counter64
+     +--ro mpls-sanity-drop-pkts?                           yang:counter64
+     +--ro mpls-sanity-drop-octets?                         yang:counter64
+     +--ro ess-unprov-session-pkts?                         yang:counter64
+     +--ro ess-unprov-session-octets?                       yang:counter64
+     +--ro firewall-policy-pkts?                            yang:counter64
+     +--ro firewall-policy-octets?                          yang:counter64
+     +--ro firewall-l4-pkts?                                yang:counter64
+     +--ro firewall-l4-octets?                              yang:counter64
+     +--ro firewall-l7-pkts?                                yang:counter64
+     +--ro firewall-l7-octets?                              yang:counter64
+     +--ro firewall-no-new-sessions-pkts?                   yang:counter64
+     +--ro firewall-no-new-sessions-octets?                 yang:counter64
+     +--ro firewall-not-initiator-pkts?                     yang:counter64
+     +--ro firewall-not-initiator-octets?                   yang:counter64
+     +--ro firewall-not-from-init-pkts?                     yang:counter64
+     +--ro firewall-not-from-init-octets?                   yang:counter64
+     +--ro gen-pkt-replication-pkts?                        yang:counter64
+     +--ro gen-pkt-replication-octets?                      yang:counter64
+     +--ro esf-l4r-bad-config-pkts?                         yang:counter64
+     +--ro esf-l4r-bad-config-octets?                       yang:counter64
+     +--ro esf-l4r-trans-unavail-pkts?                      yang:counter64
+     +--ro esf-l4r-trans-unavail-octets?                    yang:counter64
+     +--ro esf-pbhk-bad-config-pkts?                        yang:counter64
+     +--ro esf-pbhk-bad-config-octets?                      yang:counter64
+     +--ro esf-pbhk-unalloc-pkts?                           yang:counter64
+     +--ro esf-pbhk-unalloc-octets?                         yang:counter64
+     +--ro esf-pbhk-port-unavail-pkts?                      yang:counter64
+     +--ro esf-pbhk-port-unavail-octets?                    yang:counter64
+     +--ro esf-pbhk-port-notfound-pkts?                     yang:counter64
+     +--ro esf-pbhk-port-notfound-octets?                   yang:counter64
+     +--ro esf-pbhk-port-removed-pkts?                      yang:counter64
+     +--ro esf-pbhk-port-removed-octets?                    yang:counter64
+     +--ro mpls-no-adj-pkts?                                yang:counter64
+     +--ro mpls-no-adj-octets?                              yang:counter64
+     +--ro ipv4-adj-drop-pkts?                              yang:counter64
+     +--ro ipv4-adj-drop-octets?                            yang:counter64
+     +--ro ipv6-adj-drop-pkts?                              yang:counter64
+     +--ro ipv6-adj-drop-octets?                            yang:counter64
+     +--ro mpls-adj-drop-pkts?                              yang:counter64
+     +--ro mpls-adj-drop-octets?                            yang:counter64
+     +--ro bad-adj-pkts?                                    yang:counter64
+     +--ro bad-adj-octets?                                  yang:counter64
+     +--ro punt-policer-drop-pkts?                          yang:counter64
+     +--ro punt-policer-drop-octets?                        yang:counter64
+     +--ro punt-global-policer-drop-pkts?                   yang:counter64
+     +--ro punt-global-policer-drop-octets?                 yang:counter64
+     +--ro esf-tc-drop-pkts?                                yang:counter64
+     +--ro esf-tc-drop-octets?                              yang:counter64
+     +--ro esf-drl-drop-pkts?                               yang:counter64
+     +--ro esf-drl-drop-octets?                             yang:counter64
+     +--ro ess-ipsub-drop-pkts?                             yang:counter64
+     +--ro ess-ipsub-drop-octets?                           yang:counter64
+     +--ro ess-ipsub-fsol-drop-pkts?                        yang:counter64
+     +--ro ess-ipsub-fsol-drop-octets?                      yang:counter64
+     +--ro ess-ipsub-classifier-drop-pkts?                  yang:counter64
+     +--ro ess-ipsub-classifier-drop-octets?                yang:counter64
+     +--ro ess-ipsub-ka-drop-pkts?                          yang:counter64
+     +--ro ess-ipsub-ka-drop-octets?                        yang:counter64
+     +--ro oam-loopback-pkts?                               yang:counter64
+     +--ro oam-loopback-octets?                             yang:counter64
+     +--ro unconfigured-ipv4-fia-pkts?                      yang:counter64
+     +--ro unconfigured-ipv4-fia-octets?                    yang:counter64
+     +--ro unconfigured-ipv6-fia-pkts?                      yang:counter64
+     +--ro unconfigured-ipv6-fia-octets?                    yang:counter64
+     +--ro unconfigured-mpls-fia-pkts?                      yang:counter64
+     +--ro unconfigured-mpls-fia-octets?                    yang:counter64
+     +--ro smi-disabled-pkts?                               yang:counter64
+     +--ro smi-disabled-octets?                             yang:counter64
+     +--ro oce-drop-adj-pkts?                               yang:counter64
+     +--ro oce-drop-adj-octets?                             yang:counter64
+     +--ro internal-pkts?                                   yang:counter64
+     +--ro internal-octets?                                 yang:counter64
+     +--ro inv-spa-hdr-pkts?                                yang:counter64
+     +--ro inv-spa-hdr-octets?                              yang:counter64
+     +--ro ppe-exception-pkts?                              yang:counter64
+     +--ro ppe-exception-octets?                            yang:counter64
+     +--ro internal-replication-pkts?                       yang:counter64
+     +--ro internal-replication-octets?                     yang:counter64
+     +--ro internal-recycle-tail-pkts?                      yang:counter64
+     +--ro internal-recycle-tail-octets?                    yang:counter64
+     +--ro internal-no-gpm-pkts?                            yang:counter64
+     +--ro internal-no-gpm-octets?                          yang:counter64
+     +--ro internal-no-channel-mem-pkts?                    yang:counter64
+     +--ro internal-no-channel-mem-octets?                  yang:counter64
+     +--ro ip-sia-hdr-err-pkts?                             yang:counter64
+     +--ro ip-sia-hdr-err-octets?                           yang:counter64
+     +--ro ip-sia-hop-limit-exceeded-pkts?                  yang:counter64
+     +--ro ip-sia-hop-limit-exceeded-octets?                yang:counter64
+     +--ro ip-sia-processing-err-pkts?                      yang:counter64
+     +--ro ip-sia-processing-err-octets?                    yang:counter64
+     +--ro sslvpn-svi-invalid-h-pkts?                       yang:counter64
+     +--ro sslvpn-svi-invalid-h-octets?                     yang:counter64
+     +--ro esf-acct-exceed-drop-pkts?                       yang:counter64
+     +--ro esf-acct-exceed-drop-octets?                     yang:counter64
+     +--ro tcp-pkts?                                        yang:counter64
+     +--ro tcp-octets?                                      yang:counter64
+     +--ro invalid-encap-pkts?                              yang:counter64
+     +--ro invalid-encap-octets?                            yang:counter64
+     +--ro dsp-pkts?                                        yang:counter64
+     +--ro dsp-octets?                                      yang:counter64
+     +--ro mpls-csc-drop-pkts?                              yang:counter64
+     +--ro mpls-csc-drop-octets?                            yang:counter64
+     +--ro cstp-cdtp-inv-frame-pkts?                        yang:counter64
+     +--ro cstp-cdtp-inv-frame-octets?                      yang:counter64
+     +--ro cstp-cdtp-no-tunnel-pkts?                        yang:counter64
+     +--ro cstp-cdtp-no-tunnel-octets?                      yang:counter64
+     +--ro cstp-cdtp-unsup-frame-pkts?                      yang:counter64
+     +--ro cstp-cdtp-unsup-frame-octets?                    yang:counter64
+     +--ro esf-l4r-trans-sess-limit-pkts?                   yang:counter64
+     +--ro esf-l4r-trans-sess-limit-octets?                 yang:counter64
+     +--ro lisp-elig-oce-pkts?                              yang:counter64
+     +--ro lisp-elig-oce-octets?                            yang:counter64
+     +--ro lisp-misconfiguration-pkts?                      yang:counter64
+     +--ro lisp-misconfiguration-octets?                    yang:counter64
+     +--ro lisp-disabled-pkts?                              yang:counter64
+     +--ro lisp-disabled-octets?                            yang:counter64
+     +--ro lisp-decap-failed-pkts?                          yang:counter64
+     +--ro lisp-decap-failed-octets?                        yang:counter64
+     +--ro lisp-hash-lkup-failed-pkts?                      yang:counter64
+     +--ro lisp-hash-lkup-failed-octets?                    yang:counter64
+     +--ro lisp-failed-to-punt-lsb-mismatch-pkts?           yang:counter64
+     +--ro lisp-failed-to-punt-lsb-mismatch-octets?         yang:counter64
+     +--ro nat64-v6tov4-pkts?                               yang:counter64
+     +--ro nat64-v6tov4-octets?                             yang:counter64
+     +--ro nat64-v4tov6-pkts?                               yang:counter64
+     +--ro nat64-v4tov6-octets?                             yang:counter64
+     +--ro tunnel-sec-chk-fail-pkts?                        yang:counter64
+     +--ro tunnel-sec-chk-fail-octets?                      yang:counter64
+     +--ro servicewire-hdr-err-pkts?                        yang:counter64
+     +--ro servicewire-hdr-err-octets?                      yang:counter64
+     +--ro servicewire-hop-limit-exceeded-pkts?             yang:counter64
+     +--ro servicewire-hop-limit-exceeded-octets?           yang:counter64
+     +--ro servicewire-processing-err-pkts?                 yang:counter64
+     +--ro servicewire-processing-err-octets?               yang:counter64
+     +--ro l2bd-pkts?                                       yang:counter64
+     +--ro l2bd-octets?                                     yang:counter64
+     +--ro tcp-bp-sslvpn-pkts?                              yang:counter64
+     +--ro tcp-bp-sslvpn-octets?                            yang:counter64
+     +--ro evc-efp-egress-filter-pkts?                      yang:counter64
+     +--ro evc-efp-egress-filter-octets?                    yang:counter64
+     +--ro sslvpn-svi-if-err-pkts?                          yang:counter64
+     +--ro sslvpn-svi-if-err-octets?                        yang:counter64
+     +--ro sslvpn-ctx-null-pkts?                            yang:counter64
+     +--ro sslvpn-ctx-null-octets?                          yang:counter64
+     +--ro sslvpn-ctx-not-alive-pkts?                       yang:counter64
+     +--ro sslvpn-ctx-not-alive-octets?                     yang:counter64
+     +--ro sslvpn-invalid-pkt-pkts?                         yang:counter64
+     +--ro sslvpn-invalid-pkt-octets?                       yang:counter64
+     +--ro sslvpn-socket-wr-err-pkts?                       yang:counter64
+     +--ro sslvpn-socket-wr-err-octets?                     yang:counter64
+     +--ro sslvpn-pkt-rc-err-pkts?                          yang:counter64
+     +--ro sslvpn-pkt-rc-err-octets?                        yang:counter64
+     +--ro sslvpn-null-rc-pkts?                             yang:counter64
+     +--ro sslvpn-null-rc-octets?                           yang:counter64
+     +--ro sslvpn-wrong-pkt-type-pkts?                      yang:counter64
+     +--ro sslvpn-wrong-pkt-type-octets?                    yang:counter64
+     +--ro sslvpn-not-ssl-record-pkts?                      yang:counter64
+     +--ro sslvpn-not-ssl-record-octets?                    yang:counter64
+     +--ro firewall-syncookie-pkts?                         yang:counter64
+     +--ro firewall-syncookie-octets?                       yang:counter64
+     +--ro l2bd-mac-security-violation-pkts?                yang:counter64
+     +--ro l2bd-mac-security-violation-octets?              yang:counter64
+     +--ro l2bd-src-filter-pkts?                            yang:counter64
+     +--ro l2bd-src-filter-octets?                          yang:counter64
+     +--ro l2bd-policy-pkts?                                yang:counter64
+     +--ro l2bd-policy-octets?                              yang:counter64
+     +--ro l2bd-repl-start-pkts?                            yang:counter64
+     +--ro l2bd-repl-start-octets?                          yang:counter64
+     +--ro l2bd-repl-end-pkts?                              yang:counter64
+     +--ro l2bd-repl-end-octets?                            yang:counter64
+     +--ro l2bd-recycle-tail-pkts?                          yang:counter64
+     +--ro l2bd-recycle-tail-octets?                        yang:counter64
+     +--ro l2bd-static-mac-move-pkts?                       yang:counter64
+     +--ro l2bd-static-mac-move-octets?                     yang:counter64
+     +--ro l2bd-bd-disabled-pkts?                           yang:counter64
+     +--ro l2bd-bd-disabled-octets?                         yang:counter64
+     +--ro l2bd-inject-no-sb-pkts?                          yang:counter64
+     +--ro l2bd-inject-no-sb-octets?                        yang:counter64
+     +--ro l2bd-inject-invalid-pkts?                        yang:counter64
+     +--ro l2bd-inject-invalid-octets?                      yang:counter64
+     +--ro l2bd-stp-state-pkts?                             yang:counter64
+     +--ro l2bd-stp-state-octets?                           yang:counter64
+     +--ro l2bd-storm-ctrl-pkts?                            yang:counter64
+     +--ro l2bd-storm-ctrl-octets?                          yang:counter64
+     +--ro sslvpn-coprocessor-err-pkts?                     yang:counter64
+     +--ro sslvpn-coprocessor-err-octets?                   yang:counter64
+     +--ro sslvpn-tail-drop-pkts?                           yang:counter64
+     +--ro sslvpn-tail-drop-octets?                         yang:counter64
+     +--ro ecfm-pkts?                                       yang:counter64
+     +--ro ecfm-octets?                                     yang:counter64
+     +--ro ipv4mc-oif-rpf-failed-pkts?                      yang:counter64
+     +--ro ipv4mc-oif-rpf-failed-octets?                    yang:counter64
+     +--ro ipv6mc-oif-rpf-failed-pkts?                      yang:counter64
+     +--ro ipv6mc-oif-rpf-failed-octets?                    yang:counter64
+     +--ro ipv6-pbr-pkts?                                   yang:counter64
+     +--ro ipv6-pbr-octets?                                 yang:counter64
+     +--ro sslvpn-coprocessor-state-not-set-pkts?           yang:counter64
+     +--ro sslvpn-coprocessor-state-not-set-octets?         yang:counter64
+     +--ro sslvpn-coprocessor-state-reply-not-set-pkts?     yang:counter64
+     +--ro sslvpn-coprocessor-state-reply-not-set-octets?   yang:counter64
+     +--ro sslvpn-neg-ssl-rec-pad-len-pkts?                 yang:counter64
+     +--ro sslvpn-neg-ssl-rec-pad-len-octets?               yang:counter64
+     +--ro sslvpn-inv-ssl-rec-pkts?                         yang:counter64
+     +--ro sslvpn-inv-ssl-rec-octets?                       yang:counter64
+     +--ro sslvpn-not-ssl-rec-rc-pkts?                      yang:counter64
+     +--ro sslvpn-not-ssl-rec-rc-octets?                    yang:counter64
+     +--ro sslvpn-ssl-rec-not-pkt-pkts?                     yang:counter64
+     +--ro sslvpn-ssl-rec-not-pkt-octets?                   yang:counter64
+     +--ro sslvpn-add-ssl-rec-hdr-err-pkts?                 yang:counter64
+     +--ro sslvpn-add-ssl-rec-hdr-err-octets?               yang:counter64
+     +--ro sslvpn-null-session-pkts?                        yang:counter64
+     +--ro sslvpn-null-session-octets?                      yang:counter64
+     +--ro sslvpn-invalid-session-pkts?                     yang:counter64
+     +--ro sslvpn-invalid-session-octets?                   yang:counter64
+     +--ro sslvpn-empty-pkt-pkts?                           yang:counter64
+     +--ro sslvpn-empty-pkt-octets?                         yang:counter64
+     +--ro ipv4-reass-tail-drop-pkts?                       yang:counter64
+     +--ro ipv4-reass-tail-drop-octets?                     yang:counter64
+     +--ro ipv6-reass-tail-drop-pkts?                       yang:counter64
+     +--ro ipv6-reass-tail-drop-octets?                     yang:counter64
+     +--ro ipv4mc-nat-in2out-pkts?                          yang:counter64
+     +--ro ipv4mc-nat-in2out-octets?                        yang:counter64
+     +--ro ipv4mc-nat-out2in-pkts?                          yang:counter64
+     +--ro ipv4mc-nat-out2in-octets?                        yang:counter64
+     +--ro fia-error-pkts?                                  yang:counter64
+     +--ro fia-error-octets?                                yang:counter64
+     +--ro firewall-syncookie-max-dst-pkts?                 yang:counter64
+     +--ro firewall-syncookie-max-dst-octets?               yang:counter64
+     +--ro ipv4-urpf-loose-failed-pkts?                     yang:counter64
+     +--ro ipv4-urpf-loose-failed-octets?                   yang:counter64
+     +--ro ipv4-urpf-strict-failed-pkts?                    yang:counter64
+     +--ro ipv4-urpf-strict-failed-octets?                  yang:counter64
+     +--ro ipv6-urpf-loose-failed-pkts?                     yang:counter64
+     +--ro ipv6-urpf-loose-failed-octets?                   yang:counter64
+     +--ro ipv6-urpf-strict-failed-pkts?                    yang:counter64
+     +--ro ipv6-urpf-strict-failed-octets?                  yang:counter64
+     +--ro ipv6-urpf-null-path-list-pkts?                   yang:counter64
+     +--ro ipv6-urpf-null-path-list-octets?                 yang:counter64
+     +--ro ipv6-urpf-no-fib-pkts?                           yang:counter64
+     +--ro ipv6-urpf-no-fib-octets?                         yang:counter64
+     +--ro unknown-mcast-pkt-type-pkts?                     yang:counter64
+     +--ro unknown-mcast-pkt-type-octets?                   yang:counter64
+     +--ro l2v4mc-invalid-replica-record-pkts?              yang:counter64
+     +--ro l2v4mc-invalid-replica-record-octets?            yang:counter64
+     +--ro l2v6mc-invalid-replica-record-pkts?              yang:counter64
+     +--ro l2v6mc-invalid-replica-record-octets?            yang:counter64
+     +--ro l2mc-invalid-replica-record-pkts?                yang:counter64
+     +--ro l2mc-invalid-replica-record-octets?              yang:counter64
+     +--ro lsm-invalid-replica-record-pkts?                 yang:counter64
+     +--ro lsm-invalid-replica-record-octets?               yang:counter64
+     +--ro cts-format-pkts?                                 yang:counter64
+     +--ro cts-format-octets?                               yang:counter64
+     +--ro cts-not-enable-pkts?                             yang:counter64
+     +--ro cts-not-enable-octets?                           yang:counter64
+     +--ro idle-packet-pkts?                                yang:counter64
+     +--ro idle-packet-octets?                              yang:counter64
+     +--ro mfr-pkts?                                        yang:counter64
+     +--ro mfr-octets?                                      yang:counter64
+     +--ro ar-tx-pkts?                                      yang:counter64
+     +--ro ar-tx-octets?                                    yang:counter64
+     +--ro ar-rx-pkts?                                      yang:counter64
+     +--ro ar-rx-octets?                                    yang:counter64
+     +--ro ar-standby-pkts?                                 yang:counter64
+     +--ro ar-standby-octets?                               yang:counter64
+     +--ro ar-fnf-clnup-pkts?                               yang:counter64
+     +--ro ar-fnf-clnup-octets?                             yang:counter64
+     +--ro mac-mcast-ip-nonmcast-pkts?                      yang:counter64
+     +--ro mac-mcast-ip-nonmcast-octets?                    yang:counter64
+     +--ro bfd-pkts?                                        yang:counter64
+     +--ro bfd-octets?                                      yang:counter64
+     +--ro bundle-oce-pkts?                                 yang:counter64
+     +--ro bundle-oce-octets?                               yang:counter64
+     +--ro bqs-oor-pri-pkts?                                yang:counter64
+     +--ro bqs-oor-pri-octets?                              yang:counter64
+     +--ro bqs-oor-pak-pri-pkts?                            yang:counter64
+     +--ro bqs-oor-pak-pri-octets?                          yang:counter64
+     +--ro bqs-oor-vital-pkts?                              yang:counter64
+     +--ro bqs-oor-vital-octets?                            yang:counter64
+     +--ro epc-pkts?                                        yang:counter64
+     +--ro epc-octets?                                      yang:counter64
+     +--ro lisp-failed-to-punt-dynmaic-eid-config-pkts?     yang:counter64
+     +--ro lisp-failed-to-punt-dynmaic-eid-config-octets?   yang:counter64
+     +--ro sv-match-fail-pkts?                              yang:counter64
+     +--ro sv-match-fail-octets?                            yang:counter64
+     +--ro cblbf-null-repllist-pkts?                        yang:counter64
+     +--ro cblbf-null-repllist-octets?                      yang:counter64
+     +--ro cblbf-repl-fail-pkts?                            yang:counter64
+     +--ro cblbf-repl-fail-octets?                          yang:counter64
+     +--ro cblbf-repl-start-pkts?                           yang:counter64
+     +--ro cblbf-repl-start-octets?                         yang:counter64
+     +--ro cblbf-repl-end-pkts?                             yang:counter64
+     +--ro cblbf-repl-end-octets?                           yang:counter64
+     +--ro cblbf-recycle-tail-pkts?                         yang:counter64
+     +--ro cblbf-recycle-tail-octets?                       yang:counter64
+     +--ro cblbf-fwdint-down-pkts?                          yang:counter64
+     +--ro cblbf-fwdint-down-octets?                        yang:counter64
+     +--ro cable-p2pl-oce-ptr-null-pkts?                    yang:counter64
+     +--ro cable-p2pl-oce-ptr-null-octets?                  yang:counter64
+     +--ro cable-mc-invalid-replica-record-pkts?            yang:counter64
+     +--ro cable-mc-invalid-replica-record-octets?          yang:counter64
+     +--ro no-def-jib-pkts?                                 yang:counter64
+     +--ro no-def-jib-octets?                               yang:counter64
+     +--ro no-inj-jib-pkts?                                 yang:counter64
+     +--ro no-inj-jib-octets?                               yang:counter64
+     +--ro onefw-pkts?                                      yang:counter64
+     +--ro onefw-octets?                                    yang:counter64
+     +--ro ccm-tx-pkts?                                     yang:counter64
+     +--ro ccm-tx-octets?                                   yang:counter64
+     +--ro appnav-sn-pkt-invalid-pkts?                      yang:counter64
+     +--ro appnav-sn-pkt-invalid-octets?                    yang:counter64
+     +--ro appnav-internal-err-pkts?                        yang:counter64
+     +--ro appnav-internal-err-octets?                      yang:counter64
+     +--ro appnav-badroute-pkts?                            yang:counter64
+     +--ro appnav-badroute-octets?                          yang:counter64
+     +--ro appnav-notunnel-pkts?                            yang:counter64
+     +--ro appnav-notunnel-octets?                          yang:counter64
+     +--ro appnav-nosvcctx-pkts?                            yang:counter64
+     +--ro appnav-nosvcctx-octets?                          yang:counter64
+     +--ro appnav-inv-flow-state-pkts?                      yang:counter64
+     +--ro appnav-inv-flow-state-octets?                    yang:counter64
+     +--ro appnav-unexpected-pkt-pkts?                      yang:counter64
+     +--ro appnav-unexpected-pkt-octets?                    yang:counter64
+     +--ro rl2gp-non-tcb-pkts?                              yang:counter64
+     +--ro rl2gp-non-tcb-octets?                            yang:counter64
+     +--ro tunnel-pkt-sb-missed-pkts?                       yang:counter64
+     +--ro tunnel-pkt-sb-missed-octets?                     yang:counter64
+     +--ro fhs-pkt-invalid-pkts?                            yang:counter64
+     +--ro fhs-pkt-invalid-octets?                          yang:counter64
+     +--ro fhs-pkt-dropped-pkts?                            yang:counter64
+     +--ro fhs-pkt-dropped-octets?                          yang:counter64
+     +--ro tunnel-sgre-virtual-mac-mismatch-pkts?           yang:counter64
+     +--ro tunnel-sgre-virtual-mac-mismatch-octets?         yang:counter64
+     +--ro tunnel-sgre-unsupported-proto-pkts?              yang:counter64
+     +--ro tunnel-sgre-unsupported-proto-octets?            yang:counter64
+     +--ro mpls-gal-check-non-gal-dropped-pkts?             yang:counter64
+     +--ro mpls-gal-check-non-gal-dropped-octets?           yang:counter64
+     +--ro mpls-gal-check-non-eos-dropped-pkts?             yang:counter64
+     +--ro mpls-gal-check-non-eos-dropped-octets?           yang:counter64
+     +--ro mpls-gal-check-invalid-pkts?                     yang:counter64
+     +--ro mpls-gal-check-invalid-octets?                   yang:counter64
+     +--ro mpls-gal-exception-non-eos-dropped-pkts?         yang:counter64
+     +--ro mpls-gal-exception-non-eos-dropped-octets?       yang:counter64
+     +--ro mpls-gal-exception-non-gach-dropped-pkts?        yang:counter64
+     +--ro mpls-gal-exception-non-gach-dropped-octets?      yang:counter64
+     +--ro conf-sw-sess-pkts?                               yang:counter64
+     +--ro conf-sw-sess-octets?                             yang:counter64
+     +--ro tunnel-decap-too-many-times-pkts?                yang:counter64
+     +--ro tunnel-decap-too-many-times-octets?              yang:counter64
+     +--ro loadbalance-null0-pkts?                          yang:counter64
+     +--ro loadbalance-null0-octets?                        yang:counter64
+     +--ro gpm-tx-len-exceed-pkts?                          yang:counter64
+     +--ro gpm-tx-len-exceed-octets?                        yang:counter64
+     +--ro esf-ffr-drop-pkts?                               yang:counter64
+     +--ro esf-ffr-drop-octets?                             yang:counter64
+     +--ro ec-bundle-enq-pkts?                              yang:counter64
+     +--ro ec-bundle-enq-octets?                            yang:counter64
+     +--ro ec-link-tx-pkts?                                 yang:counter64
+     +--ro ec-link-tx-octets?                               yang:counter64
+     +--ro pfrv3-probe-err-pkts?                            yang:counter64
+     +--ro pfrv3-probe-err-octets?                          yang:counter64
+     +--ro ovl-bad-pkt-pkts?                                yang:counter64
+     +--ro ovl-bad-pkt-octets?                              yang:counter64
+     +--ro ovl-l2-filter-pkts?                              yang:counter64
+     +--ro ovl-l2-filter-octets?                            yang:counter64
+     +--ro dpss-pkts?                                       yang:counter64
+     +--ro dpss-octets?                                     yang:counter64
+     +--ro tunnel-invalid-protocol-pkts?                    yang:counter64
+     +--ro tunnel-invalid-protocol-octets?                  yang:counter64
+     +--ro pfrv3-at-failure-pkts?                           yang:counter64
+     +--ro pfrv3-at-failure-octets?                         yang:counter64
+     +--ro ipv4-mcast-acl-pkts?                             yang:counter64
+     +--ro ipv4-mcast-acl-octets?                           yang:counter64
+     +--ro ipv6-mcast-acl-pkts?                             yang:counter64
+     +--ro ipv6-mcast-acl-octets?                           yang:counter64
+     +--ro pprl-sbrl-drop-pkts?                             yang:counter64
+     +--ro pprl-sbrl-drop-octets?                           yang:counter64
+     +--ro cbl-req-arl-drop-pkts?                           yang:counter64
+     +--ro cbl-req-arl-drop-octets?                         yang:counter64
+     +--ro cbl-rep-arl-drop-pkts?                           yang:counter64
+     +--ro cbl-rep-arl-drop-octets?                         yang:counter64
+     +--ro appnav-acgreloaddelay-pkts?                      yang:counter64
+     +--ro appnav-acgreloaddelay-octets?                    yang:counter64
+     +--ro ngfw-policy-pkts?                                yang:counter64
+     +--ro ngfw-policy-octets?                              yang:counter64
+     +--ro ngfw-divert-pkts?                                yang:counter64
+     +--ro ngfw-divert-octets?                              yang:counter64
+     +--ro pfrv3-blackhole-pkts?                            yang:counter64
+     +--ro pfrv3-blackhole-octets?                          yang:counter64
+     +--ro pppoe-fctl-pkts?                                 yang:counter64
+     +--ro pppoe-fctl-octets?                               yang:counter64
+     +--ro lisp-sfltr-pkts?                                 yang:counter64
+     +--ro lisp-sfltr-octets?                               yang:counter64
+     +--ro flowspec-pkts?                                   yang:counter64
+     +--ro flowspec-octets?                                 yang:counter64
+     +--ro identity-cft-error-pkts?                         yang:counter64
+     +--ro identity-cft-error-octets?                       yang:counter64
+     +--ro bad-us-jib-hdr-pkts?                             yang:counter64
+     +--ro bad-us-jib-hdr-octets?                           yang:counter64
+     +--ro too-many-mpls-lookup-oce-pkts?                   yang:counter64
+     +--ro too-many-mpls-lookup-oce-octets?                 yang:counter64
+     +--ro cable-prereg-not-cm-pkts?                        yang:counter64
+     +--ro cable-prereg-not-cm-octets?                      yang:counter64
+     +--ro invalid-virtual-id-pkts?                         yang:counter64
+     +--ro invalid-virtual-id-octets?                       yang:counter64
+     +--ro flow-queue-failure-id-pkts?                      yang:counter64
+     +--ro flow-queue-failure-id-octets?                    yang:counter64
+     +--ro l2es-input-invalid-tag-pkts?                     yang:counter64
+     +--ro l2es-input-invalid-tag-octets?                   yang:counter64
+     +--ro l2es-input-invalid-svi-pkts?                     yang:counter64
+     +--ro l2es-input-invalid-svi-octets?                   yang:counter64
+     +--ro svi-output-invalid-l2sb-pkts?                    yang:counter64
+     +--ro svi-output-invalid-l2sb-octets?                  yang:counter64
+     +--ro svi-input-invalid-mac-pkts?                      yang:counter64
+     +--ro svi-input-invalid-mac-octets?                    yang:counter64
+     +--ro svi-output-recycle-tail-pkts?                    yang:counter64
+     +--ro svi-output-recycle-tail-octets?                  yang:counter64
+     +--ro svi-output-repl-pkts?                            yang:counter64
+     +--ro svi-output-repl-octets?                          yang:counter64
+     +--ro svi-repl-end-pkts?                               yang:counter64
+     +--ro svi-repl-end-octets?                             yang:counter64
+     +--ro cws-ctx-id-not-found-mob-pkts?                   yang:counter64
+     +--ro cws-ctx-id-not-found-mob-octets?                 yang:counter64
+     +--ro cws-ctx-id-not-found-conn-pkts?                  yang:counter64
+     +--ro cws-ctx-id-not-found-conn-octets?                yang:counter64
+     +--ro l2cp-cfg-action-pkts?                            yang:counter64
+     +--ro l2cp-cfg-action-octets?                          yang:counter64
+     +--ro perf-lic-policer-lo-pkts?                        yang:counter64
+     +--ro perf-lic-policer-lo-octets?                      yang:counter64
+     +--ro perf-lic-policer-hi-pkts?                        yang:counter64
+     +--ro perf-lic-policer-hi-octets?                      yang:counter64
+     +--ro hqf-tx-error-pkts?                               yang:counter64
+     +--ro hqf-tx-error-octets?                             yang:counter64
+     +--ro cmd-format-pkts?                                 yang:counter64
+     +--ro cmd-format-octets?                               yang:counter64
+     +--ro utd-pkts?                                        yang:counter64
+     +--ro utd-octets?                                      yang:counter64
+     +--ro nat66-in2out-pkts?                               yang:counter64
+     +--ro nat66-in2out-octets?                             yang:counter64
+     +--ro nat66-out2in-pkts?                               yang:counter64
+     +--ro nat66-out2in-octets?                             yang:counter64
+     +--ro dsa-no-ip-pkts?                                  yang:counter64
+     +--ro dsa-no-ip-octets?                                yang:counter64
+     +--ro cws-inter-error-pkts?                            yang:counter64
+     +--ro cws-inter-error-octets?                          yang:counter64
+     +--ro utd-sn-pkts?                                     yang:counter64
+     +--ro utd-sn-octets?                                   yang:counter64
+     +--ro mpls-el-invalid-tag-pkts?                        yang:counter64
+     +--ro mpls-el-invalid-tag-octets?                      yang:counter64
+     +--ro lisp-failed-to-punt-gsmr-enabled-pkts?           yang:counter64
+     +--ro lisp-failed-to-punt-gsmr-enabled-octets?         yang:counter64
+     +--ro schain-flow-action-pkts?                         yang:counter64
+     +--ro schain-flow-action-octets?                       yang:counter64
+     +--ro opendns-pkts?                                    yang:counter64
+     +--ro opendns-octets?                                  yang:counter64
+     +--ro capwap-err-pkts?                                 yang:counter64
+     +--ro capwap-err-octets?                               yang:counter64
+     +--ro capwap-no-uidb-pkts?                             yang:counter64
+     +--ro capwap-no-uidb-octets?                           yang:counter64
+     +--ro dtls-err-pkts?                                   yang:counter64
+     +--ro dtls-err-octets?                                 yang:counter64
+     +--ro wlclnt-err-pkts?                                 yang:counter64
+     +--ro wlclnt-err-octets?                               yang:counter64
+     +--ro wlclnt-fnf-v9-report-pkts?                       yang:counter64
+     +--ro wlclnt-fnf-v9-report-octets?                     yang:counter64
+     +--ro wlclnt-fnf-v9-err-pkts?                          yang:counter64
+     +--ro wlclnt-fnf-v9-err-octets?                        yang:counter64
+     +--ro cgacl-err-pkts?                                  yang:counter64
+     +--ro cgacl-err-octets?                                yang:counter64
+     +--ro cgacl-lookup-miss-pkts?                          yang:counter64
+     +--ro cgacl-lookup-miss-octets?                        yang:counter64
+     +--ro cgacl-match-pkts?                                yang:counter64
+     +--ro cgacl-match-octets?                              yang:counter64
+     +--ro cgacl-action-pkts?                               yang:counter64
+     +--ro cgacl-action-octets?                             yang:counter64
+     +--ro cwfrag-err-pkts?                                 yang:counter64
+     +--ro cwfrag-err-octets?                               yang:counter64
+     +--ro pathmgr-measurement-err-pkts?                    yang:counter64
+     +--ro pathmgr-measurement-err-octets?                  yang:counter64
+     +--ro pathmgr-select-err-pkts?                         yang:counter64
+     +--ro pathmgr-select-err-octets?                       yang:counter64
+     +--ro capwap-reass-frag-consm-pkts?                    yang:counter64
+     +--ro capwap-reass-frag-consm-octets?                  yang:counter64
+     +--ro capwap-reass-alloc-err-pkts?                     yang:counter64
+     +--ro capwap-reass-alloc-err-octets?                   yang:counter64
+     +--ro capwap-reass-frag-err-pkts?                      yang:counter64
+     +--ro capwap-reass-frag-err-octets?                    yang:counter64
+     +--ro redistrib-err-bad-dst-pkts?                      yang:counter64
+     +--ro redistrib-err-bad-dst-octets?                    yang:counter64
+     +--ro redistrib-err-sb-trans-fail-pkts?                yang:counter64
+     +--ro redistrib-err-sb-trans-fail-octets?              yang:counter64
+     +--ro redistrib-err-ph-alc-fail-pkts?                  yang:counter64
+     +--ro redistrib-err-ph-alc-fail-octets?                yang:counter64
+     +--ro redistrib-err-not-sup-pkts?                      yang:counter64
+     +--ro redistrib-err-not-sup-octets?                    yang:counter64
+     +--ro redistrib-fifo-tail-drop-pkts?                   yang:counter64
+     +--ro redistrib-fifo-tail-drop-octets?                 yang:counter64
+     +--ro redistrib-no-credits-pkts?                       yang:counter64
+     +--ro redistrib-no-credits-octets?                     yang:counter64
+     +--ro max-indirect-exceeded-pkts?                      yang:counter64
+     +--ro max-indirect-exceeded-octets?                    yang:counter64
+     +--ro punt-intf-drop-pkts?                             yang:counter64
+     +--ro punt-intf-drop-octets?                           yang:counter64
+     +--ro srh-pkt-truncated-in-gpm-pkts?                   yang:counter64
+     +--ro srh-pkt-truncated-in-gpm-octets?                 yang:counter64
+     +--ro srh-invalid-extension-pkts?                      yang:counter64
+     +--ro srh-invalid-extension-octets?                    yang:counter64
+     +--ro swport-pkts?                                     yang:counter64
+     +--ro swport-octets?                                   yang:counter64
+     +--ro swport-disabled-pkts?                            yang:counter64
+     +--ro swport-disabled-octets?                          yang:counter64
+     +--ro swport-sanity-check-pkts?                        yang:counter64
+     +--ro swport-sanity-check-octets?                      yang:counter64
+     +--ro swport-vp-state-pkts?                            yang:counter64
+     +--ro swport-vp-state-octets?                          yang:counter64
+     +--ro swport-mac-conflict-pkts?                        yang:counter64
+     +--ro swport-mac-conflict-octets?                      yang:counter64
+     +--ro swport-stby-pkts?                                yang:counter64
+     +--ro swport-stby-octets?                              yang:counter64
+     +--ro swport-tx-stby-pkts?                             yang:counter64
+     +--ro swport-tx-stby-octets?                           yang:counter64
+     +--ro switch-l2m-pkts?                                 yang:counter64
+     +--ro switch-l2m-octets?                               yang:counter64
+     +--ro switch-l2m-igmp-pkts?                            yang:counter64
+     +--ro switch-l2m-igmp-octets?                          yang:counter64
+     +--ro switch-l2m-mld-pkts?                             yang:counter64
+     +--ro switch-l2m-mld-octets?                           yang:counter64
+     +--ro switch-l2m-lookup-miss-pkts?                     yang:counter64
+     +--ro switch-l2m-lookup-miss-octets?                   yang:counter64
+     +--ro switch-l2m-sanity-check-pkts?                    yang:counter64
+     +--ro switch-l2m-sanity-check-octets?                  yang:counter64
+     +--ro bier-invalid-replica-record-pkts?                yang:counter64
+     +--ro bier-invalid-replica-record-octets?              yang:counter64
+     +--ro bier-snaity-pkts?                                yang:counter64
+     +--ro bier-snaity-octets?                              yang:counter64
+     +--ro cable-oob-us-sess-invalid-pkts?                  yang:counter64
+     +--ro cable-oob-us-sess-invalid-octets?                yang:counter64
+     +--ro cable-oob-us-src-id-invalid-pkts?                yang:counter64
+     +--ro cable-oob-us-src-id-invalid-octets?              yang:counter64
+     +--ro cable-oob-us-pkt-invalid-pkts?                   yang:counter64
+     +--ro cable-oob-us-pkt-invalid-octets?                 yang:counter64
+     +--ro cbl-oob-null-repllist-pkts?                      yang:counter64
+     +--ro cbl-oob-null-repllist-octets?                    yang:counter64
+     +--ro cbl-oob-repl-fail-pkts?                          yang:counter64
+     +--ro cbl-oob-repl-fail-octets?                        yang:counter64
+     +--ro cbl-oob-add-hdr-fail-pkts?                       yang:counter64
+     +--ro cbl-oob-add-hdr-fail-octets?                     yang:counter64
+     +--ro cbl-oob-repl-end-pkts?                           yang:counter64
+     +--ro cbl-oob-repl-end-octets?                         yang:counter64
+     +--ro cbl-oob-recycle-tail-pkts?                       yang:counter64
+     +--ro cbl-oob-recycle-tail-octets?                     yang:counter64
+     +--ro cbl-oob-repl-uidb-invalid-pkts?                  yang:counter64
+     +--ro cbl-oob-repl-uidb-invalid-octets?                yang:counter64
+     +--ro cbl-oob-repl-sess-invalid-pkts?                  yang:counter64
+     +--ro cbl-oob-repl-sess-invalid-octets?                yang:counter64
+     +--ro cbl-oob-null-repl-info-pkts?                     yang:counter64
+     +--ro cbl-oob-null-repl-info-octets?                   yang:counter64
+     +--ro nid-vlan-mismatch-pkts?                          yang:counter64
+     +--ro nid-vlan-mismatch-octets?                        yang:counter64
+     +--ro pfrv3-loop-pkts?                                 yang:counter64
+     +--ro pfrv3-loop-octets?                               yang:counter64
+     +--ro dialer-list-pkts?                                yang:counter64
+     +--ro dialer-list-octets?                              yang:counter64
+     +--ro udp-pkts?                                        yang:counter64
+     +--ro udp-octets?                                      yang:counter64
+     +--ro tunnel-l2tpv3oipv6-cookie-mismatch-pkts?         yang:counter64
+     +--ro tunnel-l2tpv3oipv6-cookie-mismatch-octets?       yang:counter64
+     +--ro tunnel-l2tpv3oipv6-minmtu-error-pkts?            yang:counter64
+     +--ro tunnel-l2tpv3oipv6-minmtu-error-octets?          yang:counter64
+     +--ro tunnel-l2tpv3oipv6-cookieflag-error-pkts?        yang:counter64
+     +--ro tunnel-l2tpv3oipv6-cookieflag-error-octets?      yang:counter64
+     +--ro tunnel-l2tpv3oipv6-mac-mismatch-pkts?            yang:counter64
+     +--ro tunnel-l2tpv3oipv6-mac-mismatch-octets?          yang:counter64
+     +--ro tunnel-l2tpv3oipv6-vlanid-mismatch-pkts?         yang:counter64
+     +--ro tunnel-l2tpv3oipv6-vlanid-mismatch-octets?       yang:counter64
+     +--ro tunnel-l2tpv3oipv6-unsupported-proto-pkts?       yang:counter64
+     +--ro tunnel-l2tpv3oipv6-unsupported-proto-octets?     yang:counter64
+     +--ro pfrv3-stickiness-pkts?                           yang:counter64
+     +--ro pfrv3-stickiness-octets?                         yang:counter64
+     +--ro cbl-sid-exceed-pkts?                             yang:counter64
+     +--ro cbl-sid-exceed-octets?                           yang:counter64
+     +--ro sdwan-pkts?                                      yang:counter64
+     +--ro sdwan-octets?                                    yang:counter64
+     +--ro sdwan-generic-pkts?                              yang:counter64
+     +--ro sdwan-generic-octets?                            yang:counter64
+     +--ro sdwan-implicit-acl-pkts?                         yang:counter64
+     +--ro sdwan-implicit-acl-octets?                       yang:counter64
+     +--ro sdwan-acl-pkts?                                  yang:counter64
+     +--ro sdwan-acl-octets?                                yang:counter64
+     +--ro sdwan-bfd-pkts?                                  yang:counter64
+     +--ro sdwan-bfd-octets?                                yang:counter64
+     +--ro sdwan-app-route-policy-pkts?                     yang:counter64
+     +--ro sdwan-app-route-policy-octets?                   yang:counter64
+     +--ro sdwan-data-policy-pkts?                          yang:counter64
+     +--ro sdwan-data-policy-octets?                        yang:counter64
+     +--ro sdwan-interface-policy-pkts?                     yang:counter64
+     +--ro sdwan-interface-policy-octets?                   yang:counter64
+     +--ro sdwan-tunnel-lkup-pkts?                          yang:counter64
+     +--ro sdwan-tunnel-lkup-octets?                        yang:counter64
+     +--ro sdwan-tloc-ext-pkts?                             yang:counter64
+     +--ro sdwan-tloc-ext-octets?                           yang:counter64
+     +--ro tunnel-vxlan-mismatch-pkts?                      yang:counter64
+     +--ro tunnel-vxlan-mismatch-octets?                    yang:counter64
+     +--ro l2bd-mac-security-move-pkts?                     yang:counter64
+     +--ro l2bd-mac-security-move-octets?                   yang:counter64
+     +--ro l2bd-mac-security-unknown-pkts?                  yang:counter64
+     +--ro l2bd-mac-security-unknown-octets?                yang:counter64
+     +--ro dapr-noroute-pkts?                               yang:counter64
+     +--ro dapr-noroute-octets?                             yang:counter64
+     +--ro epbr-pkts?                                       yang:counter64
+     +--ro epbr-octets?                                     yang:counter64
+Xpaths for model: Cisco-IOS-XE-qfp-stats.yang
+/ios-xe-qfp-stats:global-drop-statistics,container,
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:uidb-not-cfgd-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:uidb-not-cfgd-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bad-uidb-idx-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bad-uidb-idx-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bad-uidb-sub-idx-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bad-uidb-sub-idx-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unknown-encap-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unknown-encap-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:inv-l2-hdr-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:inv-l2-hdr-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bad-len-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bad-len-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tcp-badfrag-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tcp-badfrag-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-acl-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-acl-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-acl-lookup-miss-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-acl-lookup-miss-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bad-ip-checksum-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bad-ip-checksum-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-format-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-format-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-bad-options-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-bad-options-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-martian-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-martian-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpass-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpass-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-pbr-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-pbr-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:inv-hdr-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:inv-hdr-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:punt-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:punt-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:inject-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:inject-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-no-route-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-no-route-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:qos-policing-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:qos-policing-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:qos-actions-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:qos-actions-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:null-jib-hdr-tbl-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:null-jib-hdr-tbl-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tail-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tail-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:wred-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:wred-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:invalid-queue-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:invalid-queue-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:invalid-wred-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:invalid-wred-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-truncatedpkts-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-truncatedpkts-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-formaterr-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-formaterr-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-badsource-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-badsource-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-badhop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-badhop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-toobigpacket-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-toobigpacket-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-no-route-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-no-route-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-acl-lookup-miss-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-acl-lookup-miss-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-acl-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-acl-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-acl-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-acl-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mac-acl-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mac-acl-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mac-acl-lookup-miss-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mac-acl-lookup-miss-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-no-route-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-no-route-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unknown-ext-header-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unknown-ext-header-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-rpf-failed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-rpf-failed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-invalid-replica-record-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-invalid-replica-record-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-ttl-threshold-chk-failed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-ttl-threshold-chk-failed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-extra-replicae-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-extra-replicae-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-mtr-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-mtr-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:internal-ctl-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:internal-ctl-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bad-dist-fifo-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bad-dist-fifo-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:frfab-wred-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:frfab-wred-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-nonsession-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-nonsession-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-invalid-zone-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-invalid-zone-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-backpressure-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-backpressure-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-l4-insp-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-l4-insp-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-frag-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-frag-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:no-gpm-memory-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:no-gpm-memory-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:for-us-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:for-us-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipsec-input-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipsec-input-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipsec-ike-indicate-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipsec-ike-indicate-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipsec-invalid-sa-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipsec-invalid-sa-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipsec-tail-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipsec-tail-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:layer2-no-route-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:layer2-no-route-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:icmp-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:icmp-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-ttl-exceeded-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-ttl-exceeded-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-bad-gre-checksum-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-bad-gre-checksum-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-misconfiguration-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-misconfiguration-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:gre-bad-options-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:gre-bad-options-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:frag-tail-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:frag-tail-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unconfigured-fia-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unconfigured-fia-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-fpm-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-fpm-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:nat-in2out-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:nat-in2out-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:nat-out2in-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:nat-out2in-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pa-walk-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pa-walk-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-routing-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-routing-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-routing-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-routing-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpass-invalid-fs-vector-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpass-invalid-fs-vector-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-frag-too-big-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-frag-too-big-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-no-frag-info-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-no-frag-info-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-no-frag-info-low-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-no-frag-info-low-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-bad-len-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-bad-len-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-too-many-frags-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-too-many-frags-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-no-frags-left-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-no-frags-left-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-overlap-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-overlap-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-timeout-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:reass-timeout-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:no-mem-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:no-mem-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:vfr-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:vfr-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:vfr-tail-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:vfr-tail-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:iphc-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:iphc-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:multilink-cfg-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:multilink-cfg-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mlp-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mlp-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:min-tu-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:min-tu-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:max-tu-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:max-tu-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-unclassified-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-unclassified-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-unclassified-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-unclassified-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-no-adj-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-no-adj-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-null0-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-null0-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-null0-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-null0-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-mismatch-linktype-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-mismatch-linktype-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-frag-req-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-frag-req-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:choice-oce-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:choice-oce-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unsupported-oce-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unsupported-oce-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:attn-invalid-spid-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:attn-invalid-spid-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:inv-common-preamble-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:inv-common-preamble-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ext-drop-path-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ext-drop-path-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:frr-oce-no-backup-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:frr-oce-no-backup-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:frr-oce-invalid-state-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:frr-oce-invalid-state-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bqs-oor-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bqs-oor-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-bad-sess-uidb-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-bad-sess-uidb-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-pktsb-missed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-pktsb-missed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-unsup-pkt-type-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-unsup-pkt-type-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-no-encap-info-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-no-encap-info-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-inv-switch-mode-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-inv-switch-mode-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:inv-ppp-cp-pkt-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:inv-ppp-cp-pkt-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ppp-cxt-missed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ppp-cxt-missed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-unbound-session-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-unbound-session-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-pi-inv-subtype-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-pi-inv-subtype-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-pi-state-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-pi-state-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-inject-bad-hdr-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-inject-bad-hdr-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-l2-hdr-too-big-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-l2-hdr-too-big-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pppox-unconfigured-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pppox-unconfigured-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pppoe-pkt-inv-hdr-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pppoe-pkt-inv-hdr-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pppoe-pkt-bad-len-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pppoe-pkt-bad-len-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pppoe-no-session-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pppoe-no-session-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pppoe-inv-encap-info-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pppoe-inv-encap-info-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-cac-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-cac-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-unconfigured-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-unconfigured-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-pkt-inv-hdr-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-pkt-inv-hdr-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-pkt-bad-len-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-pkt-bad-len-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-no-session-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-no-session-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-pktsb-missed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-pktsb-missed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-security-check-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-security-check-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-bad-udp-chksum-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-bad-udp-chksum-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-ooo-rx-pkt-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-ooo-rx-pkt-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-exceed-tx-mtu-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-exceed-tx-mtu-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipsec-output-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipsec-output-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipsec-ted-indicate-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipsec-ted-indicate-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipsec-deny-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipsec-deny-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-cxt-missed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-cxt-missed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-tx-seq-missed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2tp-tx-seq-missed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:disabled-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:disabled-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-no-adj-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-no-adj-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:not-enabled-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:not-enabled-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:special-multicast-obj-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:special-multicast-obj-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:illegal-obj-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:illegal-obj-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unresolved-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unresolved-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:discard-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:discard-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6mc-no-route-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6mc-no-route-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6mc-rpf-failed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6mc-rpf-failed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6mc-invalid-replica-record-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6mc-invalid-replica-record-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6mc-ttl-threshold-chk-failed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6mc-ttl-threshold-chk-failed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6mc-extra-replica-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6mc-extra-replica-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:layer2-switching-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:layer2-switching-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:internal-intf-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:internal-intf-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sbc-police-punt-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sbc-police-punt-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sbc-uidb-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sbc-uidb-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sbc-sess-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sbc-sess-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sbc-mmoh-invalid-replica-record-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sbc-mmoh-invalid-replica-record-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-ipv6-frag-req-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-ipv6-frag-req-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sw-mac-filter-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sw-mac-filter-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-bad-pim-checksum-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-bad-pim-checksum-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-unsupported-config-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-unsupported-config-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-no-forwarding-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-no-forwarding-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:erspan-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:erspan-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-urpf-null-path-list-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-urpf-null-path-list-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-unclassified-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-unclassified-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-eos-invalid-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-eos-invalid-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:glean-adj-unsupport-linktype-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:glean-adj-unsupport-linktype-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-label-oce-ptr-null-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-label-oce-ptr-null-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-label-oce-invalid-label-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-label-oce-invalid-label-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-label-oce-unsupport-linktype-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-label-oce-unsupport-linktype-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lookup-oce-should-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lookup-oce-should-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lookup-oce-unsupport-linktype-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lookup-oce-unsupport-linktype-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unsupport-linktype-no-route-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unsupport-linktype-no-route-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unsupport-linktype-null0-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unsupport-linktype-null0-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sr-te-remote-error-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sr-te-remote-error-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-pop-pipe-php-ttl-expire-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-pop-pipe-php-ttl-expire-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-pop-unf-uhp-ttl-expire-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-pop-unf-uhp-ttl-expire-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-pop-unf-php-ttl-expire-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-pop-unf-php-ttl-expire-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-pop-pipe-ttl-expire-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-pop-pipe-ttl-expire-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-pop-unf-uhp-ttl-expire-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-pop-unf-uhp-ttl-expire-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-pop-unf-php-ttl-expire-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-pop-unf-php-ttl-expire-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:label-pop-unsupport-linktype-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:label-pop-unsupport-linktype-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-no-route-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-no-route-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-icmp-invalid-hdr-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-icmp-invalid-hdr-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-sanity-echo-req-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-sanity-echo-req-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-sanity-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-sanity-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-unprov-session-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-unprov-session-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-policy-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-policy-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-l4-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-l4-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-l7-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-l7-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-no-new-sessions-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-no-new-sessions-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-not-initiator-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-not-initiator-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-not-from-init-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-not-from-init-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:gen-pkt-replication-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:gen-pkt-replication-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-l4r-bad-config-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-l4r-bad-config-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-l4r-trans-unavail-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-l4r-trans-unavail-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-pbhk-bad-config-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-pbhk-bad-config-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-pbhk-unalloc-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-pbhk-unalloc-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-pbhk-port-unavail-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-pbhk-port-unavail-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-pbhk-port-notfound-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-pbhk-port-notfound-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-pbhk-port-removed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-pbhk-port-removed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-no-adj-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-no-adj-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-adj-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-adj-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-adj-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-adj-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-adj-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-adj-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bad-adj-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bad-adj-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:punt-policer-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:punt-policer-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:punt-global-policer-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:punt-global-policer-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-tc-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-tc-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-drl-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-drl-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-ipsub-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-ipsub-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-ipsub-fsol-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-ipsub-fsol-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-ipsub-classifier-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-ipsub-classifier-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-ipsub-ka-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ess-ipsub-ka-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:oam-loopback-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:oam-loopback-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unconfigured-ipv4-fia-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unconfigured-ipv4-fia-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unconfigured-ipv6-fia-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unconfigured-ipv6-fia-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unconfigured-mpls-fia-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unconfigured-mpls-fia-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:smi-disabled-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:smi-disabled-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:oce-drop-adj-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:oce-drop-adj-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:internal-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:internal-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:inv-spa-hdr-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:inv-spa-hdr-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ppe-exception-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ppe-exception-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:internal-replication-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:internal-replication-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:internal-recycle-tail-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:internal-recycle-tail-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:internal-no-gpm-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:internal-no-gpm-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:internal-no-channel-mem-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:internal-no-channel-mem-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-sia-hdr-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-sia-hdr-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-sia-hop-limit-exceeded-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-sia-hop-limit-exceeded-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-sia-processing-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ip-sia-processing-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-svi-invalid-h-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-svi-invalid-h-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-acct-exceed-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-acct-exceed-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tcp-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tcp-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:invalid-encap-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:invalid-encap-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:dsp-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:dsp-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-csc-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-csc-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cstp-cdtp-inv-frame-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cstp-cdtp-inv-frame-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cstp-cdtp-no-tunnel-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cstp-cdtp-no-tunnel-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cstp-cdtp-unsup-frame-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cstp-cdtp-unsup-frame-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-l4r-trans-sess-limit-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-l4r-trans-sess-limit-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-elig-oce-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-elig-oce-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-misconfiguration-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-misconfiguration-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-disabled-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-disabled-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-decap-failed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-decap-failed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-hash-lkup-failed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-hash-lkup-failed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-failed-to-punt-lsb-mismatch-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-failed-to-punt-lsb-mismatch-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:nat64-v6tov4-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:nat64-v6tov4-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:nat64-v4tov6-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:nat64-v4tov6-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-sec-chk-fail-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-sec-chk-fail-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:servicewire-hdr-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:servicewire-hdr-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:servicewire-hop-limit-exceeded-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:servicewire-hop-limit-exceeded-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:servicewire-processing-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:servicewire-processing-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tcp-bp-sslvpn-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tcp-bp-sslvpn-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:evc-efp-egress-filter-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:evc-efp-egress-filter-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-svi-if-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-svi-if-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-ctx-null-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-ctx-null-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-ctx-not-alive-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-ctx-not-alive-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-invalid-pkt-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-invalid-pkt-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-socket-wr-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-socket-wr-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-pkt-rc-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-pkt-rc-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-null-rc-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-null-rc-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-wrong-pkt-type-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-wrong-pkt-type-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-not-ssl-record-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-not-ssl-record-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-syncookie-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-syncookie-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-mac-security-violation-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-mac-security-violation-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-src-filter-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-src-filter-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-policy-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-policy-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-repl-start-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-repl-start-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-repl-end-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-repl-end-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-recycle-tail-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-recycle-tail-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-static-mac-move-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-static-mac-move-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-bd-disabled-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-bd-disabled-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-inject-no-sb-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-inject-no-sb-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-inject-invalid-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-inject-invalid-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-stp-state-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-stp-state-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-storm-ctrl-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-storm-ctrl-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-coprocessor-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-coprocessor-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-tail-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-tail-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ecfm-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ecfm-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-oif-rpf-failed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-oif-rpf-failed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6mc-oif-rpf-failed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6mc-oif-rpf-failed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-pbr-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-pbr-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-coprocessor-state-not-set-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-coprocessor-state-not-set-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-coprocessor-state-reply-not-set-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-coprocessor-state-reply-not-set-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-neg-ssl-rec-pad-len-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-neg-ssl-rec-pad-len-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-inv-ssl-rec-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-inv-ssl-rec-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-not-ssl-rec-rc-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-not-ssl-rec-rc-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-ssl-rec-not-pkt-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-ssl-rec-not-pkt-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-add-ssl-rec-hdr-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-add-ssl-rec-hdr-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-null-session-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-null-session-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-invalid-session-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-invalid-session-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-empty-pkt-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sslvpn-empty-pkt-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-reass-tail-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-reass-tail-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-reass-tail-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-reass-tail-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-nat-in2out-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-nat-in2out-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-nat-out2in-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4mc-nat-out2in-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:fia-error-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:fia-error-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-syncookie-max-dst-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:firewall-syncookie-max-dst-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-urpf-loose-failed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-urpf-loose-failed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-urpf-strict-failed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-urpf-strict-failed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-urpf-loose-failed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-urpf-loose-failed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-urpf-strict-failed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-urpf-strict-failed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-urpf-null-path-list-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-urpf-null-path-list-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-urpf-no-fib-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-urpf-no-fib-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unknown-mcast-pkt-type-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:unknown-mcast-pkt-type-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2v4mc-invalid-replica-record-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2v4mc-invalid-replica-record-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2v6mc-invalid-replica-record-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2v6mc-invalid-replica-record-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2mc-invalid-replica-record-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2mc-invalid-replica-record-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lsm-invalid-replica-record-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lsm-invalid-replica-record-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cts-format-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cts-format-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cts-not-enable-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cts-not-enable-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:idle-packet-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:idle-packet-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mfr-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mfr-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ar-tx-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ar-tx-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ar-rx-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ar-rx-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ar-standby-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ar-standby-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ar-fnf-clnup-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ar-fnf-clnup-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mac-mcast-ip-nonmcast-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mac-mcast-ip-nonmcast-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bfd-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bfd-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bundle-oce-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bundle-oce-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bqs-oor-pri-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bqs-oor-pri-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bqs-oor-pak-pri-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bqs-oor-pak-pri-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bqs-oor-vital-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bqs-oor-vital-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:epc-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:epc-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-failed-to-punt-dynmaic-eid-config-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-failed-to-punt-dynmaic-eid-config-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sv-match-fail-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sv-match-fail-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cblbf-null-repllist-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cblbf-null-repllist-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cblbf-repl-fail-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cblbf-repl-fail-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cblbf-repl-start-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cblbf-repl-start-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cblbf-repl-end-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cblbf-repl-end-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cblbf-recycle-tail-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cblbf-recycle-tail-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cblbf-fwdint-down-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cblbf-fwdint-down-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cable-p2pl-oce-ptr-null-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cable-p2pl-oce-ptr-null-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cable-mc-invalid-replica-record-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cable-mc-invalid-replica-record-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:no-def-jib-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:no-def-jib-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:no-inj-jib-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:no-inj-jib-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:onefw-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:onefw-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ccm-tx-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ccm-tx-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-sn-pkt-invalid-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-sn-pkt-invalid-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-internal-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-internal-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-badroute-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-badroute-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-notunnel-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-notunnel-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-nosvcctx-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-nosvcctx-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-inv-flow-state-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-inv-flow-state-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-unexpected-pkt-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-unexpected-pkt-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:rl2gp-non-tcb-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:rl2gp-non-tcb-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-pkt-sb-missed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-pkt-sb-missed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:fhs-pkt-invalid-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:fhs-pkt-invalid-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:fhs-pkt-dropped-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:fhs-pkt-dropped-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-sgre-virtual-mac-mismatch-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-sgre-virtual-mac-mismatch-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-sgre-unsupported-proto-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-sgre-unsupported-proto-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-gal-check-non-gal-dropped-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-gal-check-non-gal-dropped-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-gal-check-non-eos-dropped-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-gal-check-non-eos-dropped-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-gal-check-invalid-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-gal-check-invalid-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-gal-exception-non-eos-dropped-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-gal-exception-non-eos-dropped-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-gal-exception-non-gach-dropped-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-gal-exception-non-gach-dropped-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:conf-sw-sess-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:conf-sw-sess-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-decap-too-many-times-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-decap-too-many-times-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:loadbalance-null0-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:loadbalance-null0-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:gpm-tx-len-exceed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:gpm-tx-len-exceed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-ffr-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:esf-ffr-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ec-bundle-enq-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ec-bundle-enq-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ec-link-tx-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ec-link-tx-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pfrv3-probe-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pfrv3-probe-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ovl-bad-pkt-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ovl-bad-pkt-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ovl-l2-filter-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ovl-l2-filter-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:dpss-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:dpss-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-invalid-protocol-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-invalid-protocol-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pfrv3-at-failure-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pfrv3-at-failure-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-mcast-acl-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv4-mcast-acl-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-mcast-acl-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ipv6-mcast-acl-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pprl-sbrl-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pprl-sbrl-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-req-arl-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-req-arl-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-rep-arl-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-rep-arl-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-acgreloaddelay-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:appnav-acgreloaddelay-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ngfw-policy-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ngfw-policy-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ngfw-divert-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:ngfw-divert-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pfrv3-blackhole-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pfrv3-blackhole-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pppoe-fctl-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pppoe-fctl-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-sfltr-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-sfltr-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:flowspec-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:flowspec-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:identity-cft-error-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:identity-cft-error-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bad-us-jib-hdr-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bad-us-jib-hdr-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:too-many-mpls-lookup-oce-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:too-many-mpls-lookup-oce-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cable-prereg-not-cm-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cable-prereg-not-cm-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:invalid-virtual-id-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:invalid-virtual-id-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:flow-queue-failure-id-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:flow-queue-failure-id-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2es-input-invalid-tag-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2es-input-invalid-tag-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2es-input-invalid-svi-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2es-input-invalid-svi-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:svi-output-invalid-l2sb-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:svi-output-invalid-l2sb-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:svi-input-invalid-mac-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:svi-input-invalid-mac-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:svi-output-recycle-tail-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:svi-output-recycle-tail-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:svi-output-repl-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:svi-output-repl-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:svi-repl-end-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:svi-repl-end-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cws-ctx-id-not-found-mob-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cws-ctx-id-not-found-mob-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cws-ctx-id-not-found-conn-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cws-ctx-id-not-found-conn-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2cp-cfg-action-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2cp-cfg-action-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:perf-lic-policer-lo-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:perf-lic-policer-lo-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:perf-lic-policer-hi-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:perf-lic-policer-hi-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:hqf-tx-error-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:hqf-tx-error-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cmd-format-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cmd-format-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:utd-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:utd-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:nat66-in2out-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:nat66-in2out-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:nat66-out2in-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:nat66-out2in-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:dsa-no-ip-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:dsa-no-ip-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cws-inter-error-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cws-inter-error-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:utd-sn-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:utd-sn-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-el-invalid-tag-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:mpls-el-invalid-tag-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-failed-to-punt-gsmr-enabled-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:lisp-failed-to-punt-gsmr-enabled-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:schain-flow-action-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:schain-flow-action-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:opendns-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:opendns-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:capwap-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:capwap-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:capwap-no-uidb-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:capwap-no-uidb-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:dtls-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:dtls-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:wlclnt-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:wlclnt-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:wlclnt-fnf-v9-report-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:wlclnt-fnf-v9-report-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:wlclnt-fnf-v9-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:wlclnt-fnf-v9-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cgacl-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cgacl-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cgacl-lookup-miss-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cgacl-lookup-miss-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cgacl-match-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cgacl-match-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cgacl-action-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cgacl-action-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cwfrag-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cwfrag-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pathmgr-measurement-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pathmgr-measurement-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pathmgr-select-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pathmgr-select-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:capwap-reass-frag-consm-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:capwap-reass-frag-consm-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:capwap-reass-alloc-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:capwap-reass-alloc-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:capwap-reass-frag-err-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:capwap-reass-frag-err-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:redistrib-err-bad-dst-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:redistrib-err-bad-dst-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:redistrib-err-sb-trans-fail-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:redistrib-err-sb-trans-fail-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:redistrib-err-ph-alc-fail-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:redistrib-err-ph-alc-fail-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:redistrib-err-not-sup-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:redistrib-err-not-sup-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:redistrib-fifo-tail-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:redistrib-fifo-tail-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:redistrib-no-credits-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:redistrib-no-credits-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:max-indirect-exceeded-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:max-indirect-exceeded-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:punt-intf-drop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:punt-intf-drop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:srh-pkt-truncated-in-gpm-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:srh-pkt-truncated-in-gpm-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:srh-invalid-extension-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:srh-invalid-extension-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:swport-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:swport-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:swport-disabled-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:swport-disabled-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:swport-sanity-check-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:swport-sanity-check-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:swport-vp-state-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:swport-vp-state-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:swport-mac-conflict-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:swport-mac-conflict-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:swport-stby-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:swport-stby-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:swport-tx-stby-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:swport-tx-stby-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:switch-l2m-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:switch-l2m-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:switch-l2m-igmp-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:switch-l2m-igmp-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:switch-l2m-mld-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:switch-l2m-mld-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:switch-l2m-lookup-miss-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:switch-l2m-lookup-miss-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:switch-l2m-sanity-check-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:switch-l2m-sanity-check-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bier-invalid-replica-record-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bier-invalid-replica-record-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bier-snaity-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:bier-snaity-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cable-oob-us-sess-invalid-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cable-oob-us-sess-invalid-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cable-oob-us-src-id-invalid-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cable-oob-us-src-id-invalid-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cable-oob-us-pkt-invalid-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cable-oob-us-pkt-invalid-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-null-repllist-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-null-repllist-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-repl-fail-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-repl-fail-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-add-hdr-fail-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-add-hdr-fail-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-repl-end-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-repl-end-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-recycle-tail-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-recycle-tail-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-repl-uidb-invalid-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-repl-uidb-invalid-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-repl-sess-invalid-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-repl-sess-invalid-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-null-repl-info-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-oob-null-repl-info-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:nid-vlan-mismatch-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:nid-vlan-mismatch-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pfrv3-loop-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pfrv3-loop-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:dialer-list-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:dialer-list-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:udp-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:udp-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-l2tpv3oipv6-cookie-mismatch-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-l2tpv3oipv6-cookie-mismatch-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-l2tpv3oipv6-minmtu-error-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-l2tpv3oipv6-minmtu-error-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-l2tpv3oipv6-cookieflag-error-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-l2tpv3oipv6-cookieflag-error-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-l2tpv3oipv6-mac-mismatch-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-l2tpv3oipv6-mac-mismatch-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-l2tpv3oipv6-vlanid-mismatch-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-l2tpv3oipv6-vlanid-mismatch-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-l2tpv3oipv6-unsupported-proto-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-l2tpv3oipv6-unsupported-proto-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pfrv3-stickiness-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:pfrv3-stickiness-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-sid-exceed-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:cbl-sid-exceed-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-generic-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-generic-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-implicit-acl-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-implicit-acl-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-acl-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-acl-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-bfd-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-bfd-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-app-route-policy-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-app-route-policy-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-data-policy-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-data-policy-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-interface-policy-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-interface-policy-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-tunnel-lkup-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-tunnel-lkup-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-tloc-ext-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:sdwan-tloc-ext-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-vxlan-mismatch-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:tunnel-vxlan-mismatch-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-mac-security-move-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-mac-security-move-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-mac-security-unknown-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:l2bd-mac-security-unknown-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:dapr-noroute-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:dapr-noroute-octets,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:epbr-pkts,leaf,yang:counter64
+/ios-xe-qfp-stats:global-drop-statistics/ios-xe-qfp-stats:epbr-octets,leaf,yang:counter64

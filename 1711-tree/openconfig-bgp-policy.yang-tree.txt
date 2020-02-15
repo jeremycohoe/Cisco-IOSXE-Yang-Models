@@ -1,0 +1,136 @@
+ 
+KPI for model: openconfig-bgp-policy.yang
+
+module: openconfig-bgp-policy
+  augment /oc-rpol:routing-policy/oc-rpol:defined-sets:
+    +--rw bgp-defined-sets
+       +--rw community-sets
+       |  +--rw community-set* [community-set-name]
+       |     +--rw community-set-name    -> ../config/community-set-name
+       |     +--rw config
+       |     |  +--rw community-set-name    string
+       |     |  +--rw community-member*     union
+       |     +--ro state
+       |        +--ro community-set-name    string
+       |        +--ro community-member*     union
+       +--rw ext-community-sets
+       |  +--rw ext-community-set* [ext-community-set-name]
+       |     +--rw ext-community-set-name    -> ../config/ext-community-set-name
+       |     +--rw config
+       |     |  +--rw ext-community-set-name?   string
+       |     |  +--rw ext-community-member*     union
+       |     +--ro state
+       |        +--ro ext-community-set-name?   string
+       |        +--ro ext-community-member*     union
+       +--rw as-path-sets
+          +--rw as-path-set* [as-path-set-name]
+             +--rw as-path-set-name    -> ../config/as-path-set-name
+             +--rw config
+             |  +--rw as-path-set-name?     string
+             |  +--rw as-path-set-member*   string
+             +--ro state
+                +--ro as-path-set-name?     string
+                +--ro as-path-set-member*   string
+  augment /oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions:
+    +--rw bgp-conditions
+       +--rw config
+       |  +--rw med-eq?          uint32
+       |  +--rw origin-eq?       oc-bgp-types:bgp-origin-attr-type
+       |  +--rw next-hop-in*     inet:ip-address-no-zone
+       |  +--rw afi-safi-in*     identityref
+       |  +--rw local-pref-eq?   uint32
+       |  +--rw route-type?      enumeration
+       +--ro state
+       |  +--ro med-eq?          uint32
+       |  +--ro origin-eq?       oc-bgp-types:bgp-origin-attr-type
+       |  +--ro next-hop-in*     inet:ip-address-no-zone
+       |  +--ro afi-safi-in*     identityref
+       |  +--ro local-pref-eq?   uint32
+       |  +--ro route-type?      enumeration
+       +--rw community-count
+       |  +--rw config
+       |  |  +--rw operator?   identityref
+       |  |  +--rw value?      uint32
+       |  +--ro state
+       |     +--ro operator?   identityref
+       |     +--ro value?      uint32
+       +--rw as-path-length
+       |  +--rw config
+       |  |  +--rw operator?   identityref
+       |  |  +--rw value?      uint32
+       |  +--ro state
+       |     +--ro operator?   identityref
+       |     +--ro value?      uint32
+       +--rw match-community-set
+       |  +--rw config
+       |  |  +--rw community-set?       -> /oc-rpol:routing-policy/defined-sets/oc-bgp-pol:bgp-defined-sets/community-sets/community-set/community-set-name
+       |  |  +--rw match-set-options?   oc-pol-types:match-set-options-type
+       |  +--ro state
+       |     +--ro community-set?       -> /oc-rpol:routing-policy/defined-sets/oc-bgp-pol:bgp-defined-sets/community-sets/community-set/community-set-name
+       |     +--ro match-set-options?   oc-pol-types:match-set-options-type
+       +--rw match-ext-community-set
+       |  +--rw config
+       |  |  +--rw ext-community-set?   -> /oc-rpol:routing-policy/defined-sets/oc-bgp-pol:bgp-defined-sets/ext-community-sets/ext-community-set/ext-community-set-name
+       |  |  +--rw match-set-options?   oc-pol-types:match-set-options-type
+       |  +--ro state
+       |     +--ro ext-community-set?   -> /oc-rpol:routing-policy/defined-sets/oc-bgp-pol:bgp-defined-sets/ext-community-sets/ext-community-set/ext-community-set-name
+       |     +--ro match-set-options?   oc-pol-types:match-set-options-type
+       +--rw match-as-path-set
+          +--rw config
+          |  +--rw as-path-set?         -> /oc-rpol:routing-policy/defined-sets/oc-bgp-pol:bgp-defined-sets/as-path-sets/as-path-set/as-path-set-name
+          |  +--rw match-set-options?   oc-pol-types:match-set-options-type
+          +--ro state
+             +--ro as-path-set?         -> /oc-rpol:routing-policy/defined-sets/oc-bgp-pol:bgp-defined-sets/as-path-sets/as-path-set/as-path-set-name
+             +--ro match-set-options?   oc-pol-types:match-set-options-type
+  augment /oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions:
+    +--rw bgp-actions
+       +--rw config
+       |  +--rw set-route-origin?   oc-bgp-types:bgp-origin-attr-type
+       |  +--rw set-local-pref?     uint32
+       |  +--rw set-next-hop?       bgp-next-hop-type
+       |  +--rw set-med?            bgp-set-med-type
+       +--ro state
+       |  +--ro set-route-origin?   oc-bgp-types:bgp-origin-attr-type
+       |  +--ro set-local-pref?     uint32
+       |  +--ro set-next-hop?       bgp-next-hop-type
+       |  +--ro set-med?            bgp-set-med-type
+       +--rw set-as-path-prepend
+       |  +--rw config
+       |  |  +--rw repeat-n?   uint8
+       |  +--ro state
+       |     +--ro repeat-n?   uint8
+       +--rw set-community
+       |  +--rw config
+       |  |  +--rw method?    enumeration
+       |  |  +--rw options?   bgp-set-community-option-type
+       |  +--ro state
+       |  |  +--ro method?    enumeration
+       |  |  +--ro options?   bgp-set-community-option-type
+       |  +--rw inline
+       |  |  +--rw config
+       |  |  |  +--rw communities*   union
+       |  |  +--ro state
+       |  |     +--ro communities*   union
+       |  +--rw reference
+       |     +--rw config
+       |     |  +--rw community-set-ref?   -> /oc-rpol:routing-policy/defined-sets/oc-bgp-pol:bgp-defined-sets/community-sets/community-set/community-set-name
+       |     +--ro state
+       |        +--ro community-set-ref?   -> /oc-rpol:routing-policy/defined-sets/oc-bgp-pol:bgp-defined-sets/community-sets/community-set/community-set-name
+       +--rw set-ext-community
+          +--rw config
+          |  +--rw method?    enumeration
+          |  +--rw options?   bgp-set-community-option-type
+          +--ro state
+          |  +--ro method?    enumeration
+          |  +--ro options?   bgp-set-community-option-type
+          +--rw inline
+          |  +--rw config
+          |  |  +--rw communities*   union
+          |  +--ro state
+          |     +--ro communities*   union
+          +--rw reference
+             +--rw config
+             |  +--rw ext-community-set-ref?   -> /oc-rpol:routing-policy/defined-sets/oc-bgp-pol:bgp-defined-sets/ext-community-sets/ext-community-set/ext-community-set-name
+             +--ro state
+                +--ro ext-community-set-ref?   -> /oc-rpol:routing-policy/defined-sets/oc-bgp-pol:bgp-defined-sets/ext-community-sets/ext-community-set/ext-community-set-name
+Xpaths for model: openconfig-bgp-policy.yang

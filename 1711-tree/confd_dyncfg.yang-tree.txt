@@ -1,0 +1,1234 @@
+ 
+KPI for model: confd_dyncfg.yang
+module: confd_dyncfg
+  +--rw confdConfig
+     +--rw subagents!
+     |  +--rw subagent* [name]
+     |     +--rw name                          subagentNameType
+     |     +--rw enabled?                      boolean
+     |     +--rw tcp!
+     |     |  +--rw ip           inet:ip-address
+     |     |  +--rw port?        inet:port-number
+     |     |  +--rw confdAuth
+     |     |     +--rw user     string
+     |     |     +--rw group    string
+     |     +--rw ssh!
+     |     |  +--rw ip          inet:ip-address
+     |     |  +--rw port?       inet:port-number
+     |     |  +--rw user        string
+     |     |  +--rw password    string
+     |     +--rw mount
+     |     |  +--rw path    string
+     |     |  +--rw node*   xs:QName
+     |     +--rw disableSubtreeOptimization?   boolean
+     +--rw notifications!
+     |  +--rw eventStreams
+     |     +--rw stream* [name]
+     |        +--rw name                  xs:token
+     |        +--rw description           string
+     |        +--rw replaySupport         boolean
+     |        +--rw builtinReplayStore!
+     |           +--rw enabled?    boolean
+     |           +--rw dir         string
+     |           +--rw maxSize     tailf:size
+     |           +--rw maxFiles    maxFilesType
+     +--rw opcache!
+     |  +--rw enabled?   boolean
+     |  +--rw timeout    uint64
+     +--rw snmpgw!
+     |  +--rw enabled?           boolean
+     |  +--rw trapPort?          inet:port-number
+     |  +--rw rowCacheMaxAge?    xs:duration
+     |  +--rw rowCacheMaxSize?   uint16
+     |  +--rw agent* [name]
+     |     +--rw name                  SNMPAgentNameType
+     |     +--rw subscriptionId?       xs:token
+     |     +--rw forwardNotifStream?   xs:token
+     |     +--rw enabled?              boolean
+     |     +--rw community?            string
+     |     +--rw community_bin?        xs:hexBinary
+     |     +--rw version?              snmpVersionType
+     |     +--rw timeout?              xs:duration
+     |     +--rw retries?              uint8
+     |     +--rw ip                    inet:ip-address
+     |     +--rw port?                 inet:port-number
+     |     +--rw module*               string
+     +--rw hideGroup* [name]
+     |  +--rw name        string
+     |  +--rw password?   tailf:md5-digest-string
+     |  +--rw callback?   string
+     +--rw encryptedStrings!
+     |  +--rw DES3CBC!
+     |  |  +--rw key1          hex8ValueType
+     |  |  +--rw key2          hex8ValueType
+     |  |  +--rw key3          hex8ValueType
+     |  |  +--rw initVector?   hex8ValueType
+     |  +--rw AESCFB128!
+     |     +--rw key           hex16ValueType
+     |     +--rw initVector?   hex16ValueType
+     +--rw logs!
+     |  +--rw syslogConfig!
+     |  |  +--rw version?         syslogVersionType
+     |  |  +--rw facility?        syslogFacilityType
+     |  |  +--rw udp!
+     |  |  |  +--rw enabled?   boolean
+     |  |  |  +--rw host       inet:host
+     |  |  |  +--rw port?      inet:port-number
+     |  |  +--rw syslogServers!
+     |  |     +--rw server* [host]
+     |  |        +--rw host        inet:host
+     |  |        +--rw port?       inet:port-number
+     |  |        +--rw version?    syslogVersionType
+     |  |        +--rw facility?   syslogFacilityType
+     |  |        +--rw enabled?    boolean
+     |  +--rw confdLog!
+     |  |  +--rw enabled?   boolean
+     |  |  +--rw file!
+     |  |  |  +--rw enabled?   boolean
+     |  |  |  +--rw name       string
+     |  |  +--rw syslog!
+     |  |     +--rw enabled?    boolean
+     |  |     +--rw facility?   syslogFacilityType
+     |  +--rw developerLog!
+     |  |  +--rw enabled?   boolean
+     |  |  +--rw file!
+     |  |  |  +--rw enabled?   boolean
+     |  |  |  +--rw name       string
+     |  |  +--rw syslog!
+     |  |     +--rw enabled?    boolean
+     |  |     +--rw facility?   syslogFacilityType
+     |  +--rw developerLogLevel?   developerLogLevelType
+     |  +--rw auditLog!
+     |  |  +--rw enabled?   boolean
+     |  |  +--rw file!
+     |  |  |  +--rw enabled?   boolean
+     |  |  |  +--rw name       string
+     |  |  +--rw syslog!
+     |  |     +--rw enabled?    boolean
+     |  |     +--rw facility?   syslogFacilityType
+     |  +--rw auditLogCommit?      boolean
+     |  +--rw auditNetworkLog!
+     |  |  +--rw enabled?   boolean
+     |  |  +--rw file!
+     |  |  |  +--rw enabled?   boolean
+     |  |  |  +--rw name       string
+     |  |  +--rw syslog!
+     |  |     +--rw enabled?    boolean
+     |  |     +--rw facility?   syslogFacilityType
+     |  +--rw netconfLog!
+     |  |  +--rw enabled?          boolean
+     |  |  +--rw file!
+     |  |  |  +--rw enabled?   boolean
+     |  |  |  +--rw name       string
+     |  |  +--rw syslog!
+     |  |  |  +--rw enabled?    boolean
+     |  |  |  +--rw facility?   syslogFacilityType
+     |  |  +--rw logReplyStatus?   boolean
+     |  +--rw snmpLog!
+     |  |  +--rw enabled?   boolean
+     |  |  +--rw file!
+     |  |  |  +--rw enabled?   boolean
+     |  |  |  +--rw name       string
+     |  |  +--rw syslog!
+     |  |     +--rw enabled?    boolean
+     |  |     +--rw facility?   syslogFacilityType
+     |  +--rw snmpLogLevel?        snmpLogLevelType
+     |  +--rw snmpGatewayLog!
+     |  |  +--rw enabled?      boolean
+     |  |  +--rw northbound?   boolean
+     |  |  +--rw southbound?   boolean
+     |  |  +--rw filename      string
+     |  +--rw webuiBrowserLog!
+     |  |  +--rw enabled?    boolean
+     |  |  +--rw filename    string
+     |  +--rw webuiAccessLog!
+     |  |  +--rw enabled?      boolean
+     |  |  +--rw trafficLog?   boolean
+     |  |  +--rw dir           string
+     |  +--rw netconfTraceLog!
+     |  |  +--rw enabled?    boolean
+     |  |  +--rw filename    string
+     |  |  +--rw format?     netconfTraceFormatType
+     |  +--rw xpathTraceLog!
+     |  |  +--rw enabled?    boolean
+     |  |  +--rw filename    string
+     |  +--rw errorLog!
+     |  |  +--rw enabled?    boolean
+     |  |  +--rw filename    string
+     |  |  +--rw maxSize?    tailf:size
+     |  |  +--rw debug!
+     |  |     +--rw enabled?   boolean
+     |  |     +--rw level?     uint16
+     |  |     +--rw tag*       xs:token
+     |  +--rw progressTrace!
+     |     +--rw enabled?   boolean
+     |     +--rw dir        string
+     +--rw sessionLimits!
+     |  +--rw maxSessions?          limitType
+     |  +--rw sessionLimit* [context]
+     |  |  +--rw context        xs:token
+     |  |  +--rw maxSessions    limitType
+     |  +--rw maxConfigSessions?    limitType
+     |  +--rw configSessionLimit* [context]
+     |     +--rw context        xs:token
+     |     +--rw maxSessions    limitType
+     +--rw parserLimits!
+     |  +--rw maxTagLength?              parserLimitType
+     |  +--rw maxAttributeLength?        parserLimitType
+     |  +--rw maxAttributeValueLength?   limitType
+     |  +--rw maxAttributeCount?         parserLimitType
+     |  +--rw maxXmlnsPrefixLength?      limitType
+     |  +--rw maxXmlnsValueLength?       parserLimitType
+     |  +--rw maxXmlnsCount?             limitType
+     |  +--rw maxDataLength?             limitType
+     +--rw aaa!
+     |  +--rw sshPubkeyAuthentication?   pubkeyAuthenticationType
+     |  +--rw sshLoginGraceTime?         xs:duration
+     |  +--rw sshMaxAuthTries?           limitType
+     |  +--rw defaultGroup?              string
+     |  +--rw authOrder?                 string
+     |  +--rw validationOrder?           string
+     |  +--rw expirationWarning?         expirationWarningType
+     |  +--rw auditUserName?             auditUserNameType
+     |  +--rw pam!
+     |  |  +--rw enabled?   boolean
+     |  |  +--rw service?   string
+     |  |  +--rw timeout?   xs:duration
+     |  +--rw rest!
+     |  |  +--rw authCacheTTL?              xs:duration
+     |  |  +--rw enableAuthCacheClientIp?   boolean
+     |  +--rw externalAuthentication!
+     |  |  +--rw enabled?        boolean
+     |  |  +--rw executable?     string
+     |  |  +--rw useBase64?      boolean
+     |  |  +--rw includeExtra?   boolean
+     |  +--rw localAuthentication!
+     |  |  +--rw enabled?   boolean
+     |  +--rw authenticationCallback!
+     |  |  +--rw enabled?   boolean
+     |  +--rw externalValidation!
+     |  |  +--rw enabled?        boolean
+     |  |  +--rw executable?     string
+     |  |  +--rw useBase64?      boolean
+     |  |  +--rw includeExtra?   boolean
+     |  +--rw validationCallback!
+     |  |  +--rw enabled?   boolean
+     |  +--rw authorization!
+     |     +--rw enabled?         boolean
+     |     +--rw callback!
+     |     |  +--rw enabled?   boolean
+     |     +--rw nacmCompliant?   boolean
+     +--rw ssh!
+     |  +--rw idleConnectionTimeout?   xs:duration
+     |  +--rw algorithms!
+     |  |  +--rw serverHostKey?   string
+     |  |  +--rw kex?             string
+     |  |  +--rw dhGroup!
+     |  |  |  +--rw minSize?   dhGroupSizeType
+     |  |  |  +--rw maxSize?   dhGroupSizeType
+     |  |  +--rw mac?             string
+     |  |  +--rw encryption?      string
+     |  +--rw clientAliveInterval?     timeoutType
+     |  +--rw clientAliveCountMax?     uint32
+     +--rw cli!
+     |  +--rw enabled?                        boolean
+     |  +--rw maxLineLength?                  uint32
+     |  +--rw allowImplicitWildcard?          boolean
+     |  +--rw startupScriptNonInteractive?    boolean
+     |  +--rw modeNameStyle?                  cliModeNameStyleType
+     |  +--rw allowOverwriteOnCopy?           boolean
+     |  +--rw inheritPaginate?                boolean
+     |  +--rw safeScriptExecution?            boolean
+     |  +--rw exitConfigModeOnCtrlC?          boolean
+     |  +--rw execNavigationCmds?             boolean
+     |  +--rw allowOldStyleModeCmds?          boolean
+     |  +--rw continueOnErrorCmdStack?        boolean
+     |  +--rw topLevelCmdsInSubMode?          boolean
+     |  +--rw mixedMode?                      boolean
+     |  +--rw completionShowOldVal?           boolean
+     |  +--rw completionMetaInfo?             completionMetaInfoType
+     |  +--rw reportInvalidCompletionInput?   boolean
+     |  +--rw useShortEnabled?                boolean
+     |  +--rw smartRenameFiltering?           boolean
+     |  +--rw allowParenQuotes?               boolean
+     |  +--rw singleElemPattern?              boolean
+     |  +--rw multiPatternOperation?          multiPatternOperationType
+     |  +--rw sortSubmodeCmds?                boolean
+     |  +--rw sortLocalCmds?                  boolean
+     |  +--rw displayEmptyConfigContainers?   boolean
+     |  +--rw displayNonPresenceAttributes?   boolean
+     |  +--rw showEditors?                    boolean
+     |  +--rw whoShowMode?                    boolean
+     |  +--rw whoHistoryDateTimeFormat?       whoHistoryDateTimeFormatType
+     |  +--rw resetScreenAfterMore?           boolean
+     |  +--rw editWrapMode?                   editWrapModeType
+     |  +--rw supportQuotedEOL?               boolean
+     |  +--rw allowWildcard?                  boolean
+     |  +--rw allowAllAsWildcard?             boolean
+     |  +--rw allowRangeExpression?           boolean
+     |  +--rw allowRangeExpressionAllTypes?   boolean
+     |  +--rw useDoubleDotRanges?             boolean
+     |  +--rw addExtraTableSpacing?           boolean
+     |  +--rw suppressRangeKeyword?           boolean
+     |  +--rw exitModeOnEmptyRange?           boolean
+     |  +--rw tableLabel?                     boolean
+     |  +--rw tableLookAhead?                 uint64
+     |  +--rw moreBufferLines?                limitType
+     |  +--rw showTableLabelsIfMultiple?      boolean
+     |  +--rw defaultTableBehavior?           tableBehaviorType
+     |  +--rw allowTableOverflow?             boolean
+     |  +--rw tableOverflowTruncate?          boolean
+     |  +--rw allowTableCellWrap?             boolean
+     |  +--rw showAllNs?                      boolean
+     |  +--rw useExposeNsPrefix?              boolean
+     |  +--rw orderedShowConfig?              boolean
+     |  +--rw suppressFastShow?               boolean
+     |  +--rw leafPrompting?                  boolean
+     |  +--rw modeInfoInAudit?                modeInfoInAuditType
+     |  +--rw auditLogMode?                   cliAuditLogType
+     |  +--rw transactions?                   boolean
+     |  +--rw transactionCtrlCmds?            boolean
+     |  +--rw actionCallNoListInstance?       cliActionNoListInst
+     |  +--rw style?                          cliStyle
+     |  +--rw completionShowMax?              cliMax
+     |  +--rw rollbackAAA?                    boolean
+     |  +--rw rollbackMax?                    rollMax
+     |  +--rw rollbackNumbering?              rollNumbering
+     |  +--rw rollbackNumberingInitial?       int64
+     |  +--rw inconsistentDatabaseSuffix?     string
+     |  +--rw showDefaults?                   boolean
+     |  +--rw reallocateOperTrans?            boolean
+     |  +--rw quickSshTeardown?               boolean
+     |  +--rw cAlignLeafValues?               boolean
+     |  +--rw jAlignLeafValues?               boolean
+     |  +--rw defaultPrefix?                  string
+     |  +--rw jWarningPrefix?                 string
+     |  +--rw jAbortedPrefix?                 string
+     |  +--rw jErrorPrefix?                   string
+     |  +--rw cWarningPrefix?                 string
+     |  +--rw cAbortedPrefix?                 string
+     |  +--rw cErrorPrefix?                   string
+     |  +--rw invalidDataString?              string
+     |  +--rw noEmbeddedComments?             boolean
+     |  +--rw showKeyName?                    boolean
+     |  +--rw commitRetryTimeout?             timeoutType
+     |  +--rw timezone?                       cliTimezoneType
+     |  +--rw utcOffset?                      int64
+     |  +--rw oldDetailsArg?                  boolean
+     |  +--rw withDefaults?                   boolean
+     |  +--rw ignoreShowWithDefaultOnDiff?    boolean
+     |  +--rw trimDefaultShow?                boolean
+     |  +--rw trimDefaultSave?                boolean
+     |  +--rw banner?                         string
+     |  +--rw bannerFile?                     string
+     |  +--rw prompt1?                        string
+     |  +--rw prompt2?                        string
+     |  +--rw cPrompt1?                       string
+     |  +--rw cPrompt2?                       string
+     |  +--rw cStylePromptInJStyle?           boolean
+     |  +--rw waitLockedConfigMode?           boolean
+     |  +--rw promptHostnameDelimiter?        string
+     |  +--rw asyncPromptRefresh?             boolean
+     |  +--rw showLogDirectory?               string
+     |  +--rw idleTimeout?                    xs:duration
+     |  +--rw promptSessionsCLI?              boolean
+     |  +--rw disableIdleTimeoutOnCmd?        boolean
+     |  +--rw commandTimeout?                 timeoutType
+     |  +--rw spaceCompletion!
+     |  |  +--rw enabled?   boolean
+     |  +--rw timestamp!
+     |  |  +--rw enabled?   boolean
+     |  |  +--rw clock24?   boolean
+     |  |  +--rw format?    string
+     |  +--rw autoWizard!
+     |  |  +--rw enabled?   boolean
+     |  +--rw ssh!
+     |  |  +--rw enabled?        boolean
+     |  |  +--rw ip?             inet:ip-address
+     |  |  +--rw port?           inet:port-number
+     |  |  +--rw extraIpPorts*   xs:token
+     |  |  +--rw dscp?           dscpType
+     |  |  +--rw banner?         string
+     |  |  +--rw bannerFile?     string
+     |  +--rw commitMessage?                  boolean
+     |  +--rw commitMessageFormat?            string
+     |  +--rw suppressCommitMessages!
+     |  |  +--rw context*   string
+     |  +--rw jShowCR?                        boolean
+     |  +--rw showPipe?                       boolean
+     |  +--rw showPipeConfig?                 boolean
+     |  +--rw disablePipe?                    boolean
+     |  +--rw disablePipeConfig?              boolean
+     |  +--rw pipeHelpMode?                   pipeHelpModeType
+     |  +--rw jAllowDeleteAll?                boolean
+     |  +--rw cSilentNo?                      boolean
+     |  +--rw noFollowIncompleteCommand?      boolean
+     |  +--rw cRestrictiveNo?                 boolean
+     |  +--rw prioritizeSubmodeCmds?          boolean
+     |  +--rw cExtendedCmdSearch?             boolean
+     |  +--rw cSuppressCmdSearch?             boolean
+     |  +--rw enterSubmodeOnLeaf?             boolean
+     |  +--rw jExtendedShow?                  boolean
+     |  +--rw jShowUnset?                     boolean
+     |  +--rw jShowUnsetText?                 string
+     |  +--rw jStatusFormat?                  string
+     |  +--rw cModeExitFormat?                string
+     |  +--rw forcedExitFormat?               string
+     |  +--rw showSubsystemMessages?          boolean
+     |  +--rw ignoreSubsystemFailures?        boolean
+     |  +--rw showEmptyContainers?            boolean
+     |  +--rw showTags?                       boolean
+     |  +--rw showAnnotations?                boolean
+     |  +--rw showServiceMetaData?            boolean
+     |  +--rw suppressNedErrors?              boolean
+     |  +--rw jShowTableRecursive?            boolean
+     |  +--rw cPrivate?                       boolean
+     |  +--rw cTab?                           boolean
+     |  +--rw cTabInfo?                       boolean
+     |  +--rw tabExtend?                      boolean
+     |  +--rw cHelp?                          boolean
+     |  +--rw jHideHelp?                      boolean
+     |  +--rw restrictedFileAccess?           boolean
+     |  +--rw hideDotFiles?                   boolean
+     |  +--rw restrictedFileRegexp?           string
+     |  +--rw historySave?                    boolean
+     |  +--rw historyRemoveDuplicates?        boolean
+     |  +--rw historyMaxSize?                 int64
+     |  +--rw messageMaxSize?                 int64
+     |  +--rw mapActions?                     cliActionMapType
+     |  +--rw compactTable?                   boolean
+     |  +--rw compactShow?                    boolean
+     |  +--rw compactStatsShow?               boolean
+     |  +--rw prettifyStatsName?              boolean
+     |  +--rw showCommitProgress?             boolean
+     |  +--rw commitActivityClock?            boolean
+     |  +--rw confirmUncommitedOnExit?        confirmUncommitedOnExitType
+     |  +--rw reconfirmHidden?                boolean
+     |  +--rw dequoteHidden?                  boolean
+     |  +--rw enumKeyInfo?                    boolean
+     |  +--rw columnStats?                    boolean
+     |  +--rw allowAbbrevCmds?                boolean
+     |  +--rw allowAbbrevCmdsOnLoad?          boolean
+     |  +--rw allowAbbrevKeys?                boolean
+     |  +--rw allowAbbrevParamNames?          boolean
+     |  +--rw allowAbbrevEnums?               boolean
+     |  +--rw allowCaseInsensitiveEnums?      boolean
+     |  +--rw strictRefsOnLoad?               boolean
+     |  +--rw stopLoadOnError?                boolean
+     |  +--rw suppressBurstErrors?            boolean
+     |  +--rw allOrNothingLoad?               boolean
+     |  +--rw autocommitLoad?                 boolean
+     |  +--rw autocommitLoadChunkSize?        uint64
+     |  +--rw enableLoadMerge?                boolean
+     |  +--rw loadActivityClock?              boolean
+     |  +--rw instanceDescription?            boolean
+     |  +--rw addErrorPrefixSuffix?           boolean
+     |  +--rw compListCompact?                boolean
+     |  +--rw completionListLine?             boolean
+     |  +--rw infoOnMatch?                    boolean
+     |  +--rw externalActionErrorMsg?         string
+     |  +--rw enableDisplayLevel?             enableDisplayLevelType
+     |  +--rw defaultDisplayLevel?            int64
+     |  +--rw enableDisplayGroups?            boolean
+     |  +--rw unifiedHistory?                 boolean
+     |  +--rw modeInfoInAAA?                  modeInfoInAAAType
+     |  +--rw cmdAAAForAutowizard?            boolean
+     |  +--rw cStrictAAA?                     boolean
+     |  +--rw quoteStyle?                     quoteStyleType
+     |  +--rw laxBarQuoting?                  boolean
+     |  +--rw expandAliasOnCompletion?        boolean
+     |  +--rw expandAliasEscape?              aliasQuoteType
+     |  +--rw docWrap?                        boolean
+     |  +--rw infoOnTab?                      boolean
+     |  +--rw infoOnSpace?                    boolean
+     |  +--rw newLogout?                      boolean
+     |  +--rw newInsert?                      boolean
+     |  +--rw messageFormat?                  string
+     |  +--rw messageWordWrap?                boolean
+     |  +--rw messageQueueSize?               int64
+     |  +--rw promptEnumLimit?                uint64
+     |  +--rw caseInsensitive?                boolean
+     |  +--rw caseInsensitiveKeys?            boolean
+     |  +--rw ignoreLeadingWhitespace?        boolean
+     |  +--rw indentTemplates?                boolean
+     |  +--rw wrapInfo?                       boolean
+     |  +--rw wrapPrompt?                     boolean
+     |  +--rw sortShowElems?                  boolean
+     |  +--rw showMatchBeforePossible?        boolean
+     |  +--rw possibleCompletionsFormat?      string
+     |  +--rw matchCompletionsFormat?         string
+     |  +--rw noMatchCompletionsFormat?       string
+     |  +--rw showDescription?                boolean
+     |  +--rw explicitSetCreate?              boolean
+     |  +--rw templateFilter* [name]
+     |  |  +--rw name        string
+     |  |  +--rw callback?   string
+     |  +--rw escapeBackslash?                boolean
+     |  +--rw showNedErrorAsInfo?             boolean
+     |  +--rw defaultLeafListStyle?           cliLeafListStyleType
+     |  +--rw bypassAllowAbbrevKeys?          boolean
+     |  +--rw jEnableLoadMergeLeafList?       boolean
+     |  +--rw enableLoadMergeLeafList?        boolean
+     |  +--rw enableCliCache?                 boolean
+     +--rw webui!
+     |  +--rw enabled?            boolean
+     |  +--rw serverName?         xs:token
+     |  +--rw matchHostName?      boolean
+     |  +--rw cacheRefreshSecs?   uint64
+     |  +--rw maxRefEntries?      uint64
+     |  +--rw docroot?            string
+     |  +--rw webuiIndexUrl?      string
+     |  +--rw loginDir?           string
+     |  +--rw customDir?          string
+     |  +--rw customHeaders!
+     |  |  +--rw header* [name]
+     |  |     +--rw name     string
+     |  |     +--rw value    string
+     |  +--rw X-Frame-Options?    X-Frame-OptionsType
+     |  +--rw disableAuth!
+     |  |  +--rw dir*   string
+     |  +--rw allowSymlinks?      boolean
+     |  +--rw transport!
+     |  |  +--rw tcp!
+     |  |  |  +--rw enabled?                  boolean
+     |  |  |  +--rw disableNonAuthRedirect?   boolean
+     |  |  |  +--rw redirect?                 string
+     |  |  |  +--rw ip?                       inet:ip-address
+     |  |  |  +--rw port?                     inet:port-number
+     |  |  |  +--rw extraIpPorts*             xs:token
+     |  |  |  +--rw dscp?                     dscpType
+     |  |  +--rw ssl!
+     |  |     +--rw enabled?                  boolean
+     |  |     +--rw disableNonAuthRedirect?   boolean
+     |  |     +--rw redirect?                 string
+     |  |     +--rw ip?                       inet:ip-address
+     |  |     +--rw port?                     inet:port-number
+     |  |     +--rw extraIpPorts*             xs:token
+     |  |     +--rw dscp?                     dscpType
+     |  |     +--rw keyFile?                  string
+     |  |     +--rw certFile?                 string
+     |  |     +--rw caCertFile?               string
+     |  |     +--rw verify?                   verifyType
+     |  |     +--rw depth?                    uint64
+     |  |     +--rw ciphers?                  string
+     |  |     +--rw protocols?                string
+     |  +--rw cgi!
+     |  |  +--rw enabled?            boolean
+     |  |  +--rw dir?                string
+     |  |  +--rw requestFilter?      string
+     |  |  +--rw maxRequestLength?   uint16
+     |  |  +--rw php!
+     |  |     +--rw enabled?   boolean
+     |  +--rw idleTimeout?        xs:duration
+     |  +--rw absoluteTimeout?    xs:duration
+     |  +--rw rateLimiting?       uint64
+     |  +--rw audit?              boolean
+     +--rw rest!
+     |  +--rw enabled?         boolean
+     |  +--rw showHidden?      boolean
+     |  +--rw customHeaders!
+     |     +--rw header* [name]
+     |        +--rw name     string
+     |        +--rw value    string
+     +--rw restconf!
+     |  +--rw enabled?           boolean
+     |  +--rw rootResource?      string
+     |  +--rw schemaServerUrl?   string
+     |  +--rw tokenResponse!
+     |  |  +--rw xAuthToken?    boolean
+     |  |  +--rw tokenCookie!
+     |  |     +--rw name?         string
+     |  |     +--rw directives?   string
+     |  +--rw customHeaders!
+     |     +--rw header* [name]
+     |        +--rw name     string
+     |        +--rw value    string
+     +--rw proxyForwarding!
+     |  +--rw autoLogin?   boolean
+     |  +--rw proxy* [target]
+     |     +--rw target     xs:token
+     |     +--rw address    inet:host
+     |     +--rw netconf!
+     |     |  +--rw (transport1)?
+     |     |     +--:(ssh)
+     |     |     |  +--rw ssh
+     |     |     |     +--rw port?   inet:port-number
+     |     |     +--:(tcp)
+     |     |        +--rw tcp
+     |     |           +--rw port?   inet:port-number
+     |     +--rw cli!
+     |        +--rw (transport)?
+     |           +--:(ssh)
+     |              +--rw ssh
+     |                 +--rw port?   inet:port-number
+     +--rw snmpAgent!
+     |  +--rw enabled?                           boolean
+     |  +--rw ip?                                inet:ip-address
+     |  +--rw port?                              inet:port-number
+     |  +--rw extraIpPorts*                      xs:token
+     |  +--rw dscp?                              dscpType
+     |  +--rw mibs!
+     |  |  +--rw file*           string
+     |  |  +--rw fromLoadPath?   boolean
+     |  +--rw temporaryStorageTime?              uint32
+     |  +--rw snmpVersions!
+     |  |  +--rw v1?    boolean
+     |  |  +--rw v2c?   boolean
+     |  |  +--rw v3?    boolean
+     |  +--rw snmpEngine!
+     |  |  +--rw snmpEngineID                tailf:hex-list
+     |  |  +--rw snmpEngineMaxMessageSize?   uint64
+     |  +--rw sessionIgnorePort?                 boolean
+     |  +--rw authenticationFailureNotifyName?   string
+     |  +--rw candidate!
+     |  |  +--rw maxLockWait?            xs:duration
+     |  |  +--rw pendingChangesAction?   pendingChangesActionType
+     |  +--rw dropWhenInUse?                     boolean
+     |  +--rw contexts*                          SNMPContextNameType
+     |  +--rw system!
+     |     +--rw sysDescr?      string
+     |     +--rw sysObjectID?   yang:object-identifier
+     |     +--rw sysServices?   uint64
+     |     +--rw sysORTable!
+     |        +--rw sysOREntry* [sysORIndex]
+     |           +--rw sysORIndex    uint64
+     |           +--rw sysORID       yang:object-identifier
+     |           +--rw sysORDescr    string
+     +--rw netconf!
+        +--rw enabled?             boolean
+        +--rw transport!
+        |  +--rw sshCallHomeExecutable?   string
+        |  +--rw ssh!
+        |  |  +--rw enabled?        boolean
+        |  |  +--rw ip?             inet:ip-address
+        |  |  +--rw port?           inet:port-number
+        |  |  +--rw extraIpPorts*   xs:token
+        |  |  +--rw dscp?           dscpType
+        |  +--rw tcp!
+        |     +--rw enabled?        boolean
+        |     +--rw ip?             inet:ip-address
+        |     +--rw port?           inet:port-number
+        |     +--rw extraIpPorts*   xs:token
+        |     +--rw dscp?           dscpType
+        +--rw extendedSessions?    boolean
+        +--rw sendDefaults?        boolean
+        +--rw idleTimeout?         xs:duration
+        +--rw writeTimeout?        xs:duration
+        +--rw rpcErrors?           rpcErrorType
+        +--rw maxBatchProcesses?   limitType
+Xpaths for model: confd_dyncfg.yang
+/confd_dyncfg:confdConfig,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent,list,
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:name,leaf,subagentNameType
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:tcp,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:tcp/confd_dyncfg:ip,leaf,inet:ip-address
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:tcp/confd_dyncfg:port,leaf,inet:port-number
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:tcp/confd_dyncfg:confdAuth,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:tcp/confd_dyncfg:confdAuth/confd_dyncfg:user,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:tcp/confd_dyncfg:confdAuth/confd_dyncfg:group,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:ssh,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:ssh/confd_dyncfg:ip,leaf,inet:ip-address
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:ssh/confd_dyncfg:port,leaf,inet:port-number
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:ssh/confd_dyncfg:user,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:ssh/confd_dyncfg:password,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:mount,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:mount/confd_dyncfg:path,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:mount/confd_dyncfg:node,leaf-list,xs:QName
+/confd_dyncfg:confdConfig/confd_dyncfg:subagents/confd_dyncfg:subagent/confd_dyncfg:disableSubtreeOptimization,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:notifications,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:notifications/confd_dyncfg:eventStreams,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:notifications/confd_dyncfg:eventStreams/confd_dyncfg:stream,list,
+/confd_dyncfg:confdConfig/confd_dyncfg:notifications/confd_dyncfg:eventStreams/confd_dyncfg:stream/confd_dyncfg:name,leaf,xs:token
+/confd_dyncfg:confdConfig/confd_dyncfg:notifications/confd_dyncfg:eventStreams/confd_dyncfg:stream/confd_dyncfg:description,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:notifications/confd_dyncfg:eventStreams/confd_dyncfg:stream/confd_dyncfg:replaySupport,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:notifications/confd_dyncfg:eventStreams/confd_dyncfg:stream/confd_dyncfg:builtinReplayStore,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:notifications/confd_dyncfg:eventStreams/confd_dyncfg:stream/confd_dyncfg:builtinReplayStore/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:notifications/confd_dyncfg:eventStreams/confd_dyncfg:stream/confd_dyncfg:builtinReplayStore/confd_dyncfg:dir,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:notifications/confd_dyncfg:eventStreams/confd_dyncfg:stream/confd_dyncfg:builtinReplayStore/confd_dyncfg:maxSize,leaf,tailf:size
+/confd_dyncfg:confdConfig/confd_dyncfg:notifications/confd_dyncfg:eventStreams/confd_dyncfg:stream/confd_dyncfg:builtinReplayStore/confd_dyncfg:maxFiles,leaf,maxFilesType
+/confd_dyncfg:confdConfig/confd_dyncfg:opcache,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:opcache/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:opcache/confd_dyncfg:timeout,leaf,uint64
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:trapPort,leaf,inet:port-number
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:rowCacheMaxAge,leaf,xs:duration
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:rowCacheMaxSize,leaf,uint16
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:agent,list,
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:agent/confd_dyncfg:name,leaf,SNMPAgentNameType
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:agent/confd_dyncfg:subscriptionId,leaf,xs:token
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:agent/confd_dyncfg:forwardNotifStream,leaf,xs:token
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:agent/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:agent/confd_dyncfg:community,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:agent/confd_dyncfg:community_bin,leaf,xs:hexBinary
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:agent/confd_dyncfg:version,leaf,snmpVersionType
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:agent/confd_dyncfg:timeout,leaf,xs:duration
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:agent/confd_dyncfg:retries,leaf,uint8
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:agent/confd_dyncfg:ip,leaf,inet:ip-address
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:agent/confd_dyncfg:port,leaf,inet:port-number
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpgw/confd_dyncfg:agent/confd_dyncfg:module,leaf-list,string
+/confd_dyncfg:confdConfig/confd_dyncfg:hideGroup,list,
+/confd_dyncfg:confdConfig/confd_dyncfg:hideGroup/confd_dyncfg:name,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:hideGroup/confd_dyncfg:password,leaf,tailf:md5-digest-string
+/confd_dyncfg:confdConfig/confd_dyncfg:hideGroup/confd_dyncfg:callback,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:encryptedStrings,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:encryptedStrings/confd_dyncfg:DES3CBC,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:encryptedStrings/confd_dyncfg:DES3CBC/confd_dyncfg:key1,leaf,hex8ValueType
+/confd_dyncfg:confdConfig/confd_dyncfg:encryptedStrings/confd_dyncfg:DES3CBC/confd_dyncfg:key2,leaf,hex8ValueType
+/confd_dyncfg:confdConfig/confd_dyncfg:encryptedStrings/confd_dyncfg:DES3CBC/confd_dyncfg:key3,leaf,hex8ValueType
+/confd_dyncfg:confdConfig/confd_dyncfg:encryptedStrings/confd_dyncfg:DES3CBC/confd_dyncfg:initVector,leaf,hex8ValueType
+/confd_dyncfg:confdConfig/confd_dyncfg:encryptedStrings/confd_dyncfg:AESCFB128,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:encryptedStrings/confd_dyncfg:AESCFB128/confd_dyncfg:key,leaf,hex16ValueType
+/confd_dyncfg:confdConfig/confd_dyncfg:encryptedStrings/confd_dyncfg:AESCFB128/confd_dyncfg:initVector,leaf,hex16ValueType
+/confd_dyncfg:confdConfig/confd_dyncfg:logs,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:syslogConfig,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:syslogConfig/confd_dyncfg:version,leaf,syslogVersionType
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:syslogConfig/confd_dyncfg:facility,leaf,syslogFacilityType
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:syslogConfig/confd_dyncfg:udp,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:syslogConfig/confd_dyncfg:udp/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:syslogConfig/confd_dyncfg:udp/confd_dyncfg:host,leaf,inet:host
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:syslogConfig/confd_dyncfg:udp/confd_dyncfg:port,leaf,inet:port-number
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:syslogConfig/confd_dyncfg:syslogServers,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:syslogConfig/confd_dyncfg:syslogServers/confd_dyncfg:server,list,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:syslogConfig/confd_dyncfg:syslogServers/confd_dyncfg:server/confd_dyncfg:host,leaf,inet:host
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:syslogConfig/confd_dyncfg:syslogServers/confd_dyncfg:server/confd_dyncfg:port,leaf,inet:port-number
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:syslogConfig/confd_dyncfg:syslogServers/confd_dyncfg:server/confd_dyncfg:version,leaf,syslogVersionType
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:syslogConfig/confd_dyncfg:syslogServers/confd_dyncfg:server/confd_dyncfg:facility,leaf,syslogFacilityType
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:syslogConfig/confd_dyncfg:syslogServers/confd_dyncfg:server/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:confdLog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:confdLog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:confdLog/confd_dyncfg:file,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:confdLog/confd_dyncfg:file/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:confdLog/confd_dyncfg:file/confd_dyncfg:name,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:confdLog/confd_dyncfg:syslog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:confdLog/confd_dyncfg:syslog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:confdLog/confd_dyncfg:syslog/confd_dyncfg:facility,leaf,syslogFacilityType
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:developerLog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:developerLog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:developerLog/confd_dyncfg:file,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:developerLog/confd_dyncfg:file/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:developerLog/confd_dyncfg:file/confd_dyncfg:name,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:developerLog/confd_dyncfg:syslog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:developerLog/confd_dyncfg:syslog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:developerLog/confd_dyncfg:syslog/confd_dyncfg:facility,leaf,syslogFacilityType
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:developerLogLevel,leaf,developerLogLevelType
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditLog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditLog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditLog/confd_dyncfg:file,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditLog/confd_dyncfg:file/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditLog/confd_dyncfg:file/confd_dyncfg:name,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditLog/confd_dyncfg:syslog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditLog/confd_dyncfg:syslog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditLog/confd_dyncfg:syslog/confd_dyncfg:facility,leaf,syslogFacilityType
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditLogCommit,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditNetworkLog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditNetworkLog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditNetworkLog/confd_dyncfg:file,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditNetworkLog/confd_dyncfg:file/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditNetworkLog/confd_dyncfg:file/confd_dyncfg:name,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditNetworkLog/confd_dyncfg:syslog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditNetworkLog/confd_dyncfg:syslog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:auditNetworkLog/confd_dyncfg:syslog/confd_dyncfg:facility,leaf,syslogFacilityType
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:netconfLog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:netconfLog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:netconfLog/confd_dyncfg:file,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:netconfLog/confd_dyncfg:file/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:netconfLog/confd_dyncfg:file/confd_dyncfg:name,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:netconfLog/confd_dyncfg:syslog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:netconfLog/confd_dyncfg:syslog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:netconfLog/confd_dyncfg:syslog/confd_dyncfg:facility,leaf,syslogFacilityType
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:netconfLog/confd_dyncfg:logReplyStatus,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:snmpLog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:snmpLog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:snmpLog/confd_dyncfg:file,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:snmpLog/confd_dyncfg:file/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:snmpLog/confd_dyncfg:file/confd_dyncfg:name,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:snmpLog/confd_dyncfg:syslog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:snmpLog/confd_dyncfg:syslog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:snmpLog/confd_dyncfg:syslog/confd_dyncfg:facility,leaf,syslogFacilityType
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:snmpLogLevel,leaf,snmpLogLevelType
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:snmpGatewayLog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:snmpGatewayLog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:snmpGatewayLog/confd_dyncfg:northbound,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:snmpGatewayLog/confd_dyncfg:southbound,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:snmpGatewayLog/confd_dyncfg:filename,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:webuiBrowserLog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:webuiBrowserLog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:webuiBrowserLog/confd_dyncfg:filename,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:webuiAccessLog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:webuiAccessLog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:webuiAccessLog/confd_dyncfg:trafficLog,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:webuiAccessLog/confd_dyncfg:dir,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:netconfTraceLog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:netconfTraceLog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:netconfTraceLog/confd_dyncfg:filename,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:netconfTraceLog/confd_dyncfg:format,leaf,netconfTraceFormatType
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:xpathTraceLog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:xpathTraceLog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:xpathTraceLog/confd_dyncfg:filename,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:errorLog,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:errorLog/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:errorLog/confd_dyncfg:filename,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:errorLog/confd_dyncfg:maxSize,leaf,tailf:size
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:errorLog/confd_dyncfg:debug,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:errorLog/confd_dyncfg:debug/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:errorLog/confd_dyncfg:debug/confd_dyncfg:level,leaf,uint16
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:errorLog/confd_dyncfg:debug/confd_dyncfg:tag,leaf-list,xs:token
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:progressTrace,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:progressTrace/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:logs/confd_dyncfg:progressTrace/confd_dyncfg:dir,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:sessionLimits,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:sessionLimits/confd_dyncfg:maxSessions,leaf,limitType
+/confd_dyncfg:confdConfig/confd_dyncfg:sessionLimits/confd_dyncfg:sessionLimit,list,
+/confd_dyncfg:confdConfig/confd_dyncfg:sessionLimits/confd_dyncfg:sessionLimit/confd_dyncfg:context,leaf,xs:token
+/confd_dyncfg:confdConfig/confd_dyncfg:sessionLimits/confd_dyncfg:sessionLimit/confd_dyncfg:maxSessions,leaf,limitType
+/confd_dyncfg:confdConfig/confd_dyncfg:sessionLimits/confd_dyncfg:maxConfigSessions,leaf,limitType
+/confd_dyncfg:confdConfig/confd_dyncfg:sessionLimits/confd_dyncfg:configSessionLimit,list,
+/confd_dyncfg:confdConfig/confd_dyncfg:sessionLimits/confd_dyncfg:configSessionLimit/confd_dyncfg:context,leaf,xs:token
+/confd_dyncfg:confdConfig/confd_dyncfg:sessionLimits/confd_dyncfg:configSessionLimit/confd_dyncfg:maxSessions,leaf,limitType
+/confd_dyncfg:confdConfig/confd_dyncfg:parserLimits,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:parserLimits/confd_dyncfg:maxTagLength,leaf,parserLimitType
+/confd_dyncfg:confdConfig/confd_dyncfg:parserLimits/confd_dyncfg:maxAttributeLength,leaf,parserLimitType
+/confd_dyncfg:confdConfig/confd_dyncfg:parserLimits/confd_dyncfg:maxAttributeValueLength,leaf,limitType
+/confd_dyncfg:confdConfig/confd_dyncfg:parserLimits/confd_dyncfg:maxAttributeCount,leaf,parserLimitType
+/confd_dyncfg:confdConfig/confd_dyncfg:parserLimits/confd_dyncfg:maxXmlnsPrefixLength,leaf,limitType
+/confd_dyncfg:confdConfig/confd_dyncfg:parserLimits/confd_dyncfg:maxXmlnsValueLength,leaf,parserLimitType
+/confd_dyncfg:confdConfig/confd_dyncfg:parserLimits/confd_dyncfg:maxXmlnsCount,leaf,limitType
+/confd_dyncfg:confdConfig/confd_dyncfg:parserLimits/confd_dyncfg:maxDataLength,leaf,limitType
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:sshPubkeyAuthentication,leaf,pubkeyAuthenticationType
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:sshLoginGraceTime,leaf,xs:duration
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:sshMaxAuthTries,leaf,limitType
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:defaultGroup,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:authOrder,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:validationOrder,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:expirationWarning,leaf,expirationWarningType
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:auditUserName,leaf,auditUserNameType
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:pam,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:pam/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:pam/confd_dyncfg:service,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:pam/confd_dyncfg:timeout,leaf,xs:duration
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:rest,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:rest/confd_dyncfg:authCacheTTL,leaf,xs:duration
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:rest/confd_dyncfg:enableAuthCacheClientIp,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:externalAuthentication,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:externalAuthentication/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:externalAuthentication/confd_dyncfg:executable,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:externalAuthentication/confd_dyncfg:useBase64,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:externalAuthentication/confd_dyncfg:includeExtra,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:localAuthentication,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:localAuthentication/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:authenticationCallback,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:authenticationCallback/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:externalValidation,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:externalValidation/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:externalValidation/confd_dyncfg:executable,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:externalValidation/confd_dyncfg:useBase64,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:externalValidation/confd_dyncfg:includeExtra,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:validationCallback,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:validationCallback/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:authorization,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:authorization/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:authorization/confd_dyncfg:callback,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:authorization/confd_dyncfg:callback/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:aaa/confd_dyncfg:authorization/confd_dyncfg:nacmCompliant,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:ssh,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:ssh/confd_dyncfg:idleConnectionTimeout,leaf,xs:duration
+/confd_dyncfg:confdConfig/confd_dyncfg:ssh/confd_dyncfg:algorithms,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:ssh/confd_dyncfg:algorithms/confd_dyncfg:serverHostKey,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:ssh/confd_dyncfg:algorithms/confd_dyncfg:kex,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:ssh/confd_dyncfg:algorithms/confd_dyncfg:dhGroup,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:ssh/confd_dyncfg:algorithms/confd_dyncfg:dhGroup/confd_dyncfg:minSize,leaf,dhGroupSizeType
+/confd_dyncfg:confdConfig/confd_dyncfg:ssh/confd_dyncfg:algorithms/confd_dyncfg:dhGroup/confd_dyncfg:maxSize,leaf,dhGroupSizeType
+/confd_dyncfg:confdConfig/confd_dyncfg:ssh/confd_dyncfg:algorithms/confd_dyncfg:mac,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:ssh/confd_dyncfg:algorithms/confd_dyncfg:encryption,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:ssh/confd_dyncfg:clientAliveInterval,leaf,timeoutType
+/confd_dyncfg:confdConfig/confd_dyncfg:ssh/confd_dyncfg:clientAliveCountMax,leaf,uint32
+/confd_dyncfg:confdConfig/confd_dyncfg:cli,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:maxLineLength,leaf,uint32
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowImplicitWildcard,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:startupScriptNonInteractive,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:modeNameStyle,leaf,cliModeNameStyleType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowOverwriteOnCopy,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:inheritPaginate,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:safeScriptExecution,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:exitConfigModeOnCtrlC,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:execNavigationCmds,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowOldStyleModeCmds,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:continueOnErrorCmdStack,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:topLevelCmdsInSubMode,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:mixedMode,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:completionShowOldVal,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:completionMetaInfo,leaf,completionMetaInfoType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:reportInvalidCompletionInput,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:useShortEnabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:smartRenameFiltering,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowParenQuotes,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:singleElemPattern,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:multiPatternOperation,leaf,multiPatternOperationType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:sortSubmodeCmds,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:sortLocalCmds,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:displayEmptyConfigContainers,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:displayNonPresenceAttributes,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showEditors,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:whoShowMode,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:whoHistoryDateTimeFormat,leaf,whoHistoryDateTimeFormatType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:resetScreenAfterMore,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:editWrapMode,leaf,editWrapModeType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:supportQuotedEOL,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowWildcard,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowAllAsWildcard,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowRangeExpression,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowRangeExpressionAllTypes,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:useDoubleDotRanges,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:addExtraTableSpacing,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:suppressRangeKeyword,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:exitModeOnEmptyRange,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:tableLabel,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:tableLookAhead,leaf,uint64
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:moreBufferLines,leaf,limitType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showTableLabelsIfMultiple,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:defaultTableBehavior,leaf,tableBehaviorType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowTableOverflow,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:tableOverflowTruncate,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowTableCellWrap,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showAllNs,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:useExposeNsPrefix,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:orderedShowConfig,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:suppressFastShow,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:leafPrompting,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:modeInfoInAudit,leaf,modeInfoInAuditType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:auditLogMode,leaf,cliAuditLogType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:transactions,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:transactionCtrlCmds,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:actionCallNoListInstance,leaf,cliActionNoListInst
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:style,leaf,cliStyle
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:completionShowMax,leaf,cliMax
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:rollbackAAA,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:rollbackMax,leaf,rollMax
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:rollbackNumbering,leaf,rollNumbering
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:rollbackNumberingInitial,leaf,int64
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:inconsistentDatabaseSuffix,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showDefaults,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:reallocateOperTrans,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:quickSshTeardown,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cAlignLeafValues,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:jAlignLeafValues,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:defaultPrefix,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:jWarningPrefix,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:jAbortedPrefix,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:jErrorPrefix,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cWarningPrefix,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cAbortedPrefix,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cErrorPrefix,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:invalidDataString,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:noEmbeddedComments,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showKeyName,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:commitRetryTimeout,leaf,timeoutType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:timezone,leaf,cliTimezoneType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:utcOffset,leaf,int64
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:oldDetailsArg,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:withDefaults,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:ignoreShowWithDefaultOnDiff,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:trimDefaultShow,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:trimDefaultSave,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:banner,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:bannerFile,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:prompt1,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:prompt2,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cPrompt1,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cPrompt2,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cStylePromptInJStyle,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:waitLockedConfigMode,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:promptHostnameDelimiter,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:asyncPromptRefresh,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showLogDirectory,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:idleTimeout,leaf,xs:duration
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:promptSessionsCLI,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:disableIdleTimeoutOnCmd,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:commandTimeout,leaf,timeoutType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:spaceCompletion,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:spaceCompletion/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:timestamp,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:timestamp/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:timestamp/confd_dyncfg:clock24,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:timestamp/confd_dyncfg:format,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:autoWizard,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:autoWizard/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:ssh,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:ssh/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:ssh/confd_dyncfg:ip,leaf,inet:ip-address
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:ssh/confd_dyncfg:port,leaf,inet:port-number
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:ssh/confd_dyncfg:extraIpPorts,leaf-list,xs:token
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:ssh/confd_dyncfg:dscp,leaf,dscpType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:ssh/confd_dyncfg:banner,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:ssh/confd_dyncfg:bannerFile,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:commitMessage,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:commitMessageFormat,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:suppressCommitMessages,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:suppressCommitMessages/confd_dyncfg:context,leaf-list,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:jShowCR,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showPipe,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showPipeConfig,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:disablePipe,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:disablePipeConfig,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:pipeHelpMode,leaf,pipeHelpModeType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:jAllowDeleteAll,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cSilentNo,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:noFollowIncompleteCommand,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cRestrictiveNo,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:prioritizeSubmodeCmds,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cExtendedCmdSearch,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cSuppressCmdSearch,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:enterSubmodeOnLeaf,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:jExtendedShow,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:jShowUnset,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:jShowUnsetText,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:jStatusFormat,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cModeExitFormat,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:forcedExitFormat,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showSubsystemMessages,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:ignoreSubsystemFailures,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showEmptyContainers,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showTags,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showAnnotations,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showServiceMetaData,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:suppressNedErrors,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:jShowTableRecursive,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cPrivate,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cTab,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cTabInfo,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:tabExtend,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cHelp,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:jHideHelp,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:restrictedFileAccess,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:hideDotFiles,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:restrictedFileRegexp,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:historySave,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:historyRemoveDuplicates,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:historyMaxSize,leaf,int64
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:messageMaxSize,leaf,int64
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:mapActions,leaf,cliActionMapType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:compactTable,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:compactShow,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:compactStatsShow,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:prettifyStatsName,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showCommitProgress,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:commitActivityClock,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:confirmUncommitedOnExit,leaf,confirmUncommitedOnExitType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:reconfirmHidden,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:dequoteHidden,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:enumKeyInfo,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:columnStats,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowAbbrevCmds,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowAbbrevCmdsOnLoad,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowAbbrevKeys,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowAbbrevParamNames,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowAbbrevEnums,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allowCaseInsensitiveEnums,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:strictRefsOnLoad,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:stopLoadOnError,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:suppressBurstErrors,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:allOrNothingLoad,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:autocommitLoad,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:autocommitLoadChunkSize,leaf,uint64
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:enableLoadMerge,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:loadActivityClock,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:instanceDescription,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:addErrorPrefixSuffix,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:compListCompact,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:completionListLine,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:infoOnMatch,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:externalActionErrorMsg,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:enableDisplayLevel,leaf,enableDisplayLevelType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:defaultDisplayLevel,leaf,int64
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:enableDisplayGroups,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:unifiedHistory,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:modeInfoInAAA,leaf,modeInfoInAAAType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cmdAAAForAutowizard,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:cStrictAAA,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:quoteStyle,leaf,quoteStyleType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:laxBarQuoting,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:expandAliasOnCompletion,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:expandAliasEscape,leaf,aliasQuoteType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:docWrap,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:infoOnTab,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:infoOnSpace,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:newLogout,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:newInsert,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:messageFormat,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:messageWordWrap,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:messageQueueSize,leaf,int64
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:promptEnumLimit,leaf,uint64
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:caseInsensitive,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:caseInsensitiveKeys,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:ignoreLeadingWhitespace,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:indentTemplates,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:wrapInfo,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:wrapPrompt,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:sortShowElems,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showMatchBeforePossible,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:possibleCompletionsFormat,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:matchCompletionsFormat,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:noMatchCompletionsFormat,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showDescription,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:explicitSetCreate,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:templateFilter,list,
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:templateFilter/confd_dyncfg:name,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:templateFilter/confd_dyncfg:callback,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:escapeBackslash,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:showNedErrorAsInfo,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:defaultLeafListStyle,leaf,cliLeafListStyleType
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:bypassAllowAbbrevKeys,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:jEnableLoadMergeLeafList,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:enableLoadMergeLeafList,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:cli/confd_dyncfg:enableCliCache,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:webui,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:serverName,leaf,xs:token
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:matchHostName,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:cacheRefreshSecs,leaf,uint64
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:maxRefEntries,leaf,uint64
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:docroot,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:webuiIndexUrl,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:loginDir,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:customDir,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:customHeaders,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:customHeaders/confd_dyncfg:header,list,
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:customHeaders/confd_dyncfg:header/confd_dyncfg:name,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:customHeaders/confd_dyncfg:header/confd_dyncfg:value,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:X-Frame-Options,leaf,X-Frame-OptionsType
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:disableAuth,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:disableAuth/confd_dyncfg:dir,leaf-list,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:allowSymlinks,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:tcp,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:tcp/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:tcp/confd_dyncfg:disableNonAuthRedirect,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:tcp/confd_dyncfg:redirect,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:tcp/confd_dyncfg:ip,leaf,inet:ip-address
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:tcp/confd_dyncfg:port,leaf,inet:port-number
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:tcp/confd_dyncfg:extraIpPorts,leaf-list,xs:token
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:tcp/confd_dyncfg:dscp,leaf,dscpType
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:ssl,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:ssl/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:ssl/confd_dyncfg:disableNonAuthRedirect,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:ssl/confd_dyncfg:redirect,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:ssl/confd_dyncfg:ip,leaf,inet:ip-address
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:ssl/confd_dyncfg:port,leaf,inet:port-number
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:ssl/confd_dyncfg:extraIpPorts,leaf-list,xs:token
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:ssl/confd_dyncfg:dscp,leaf,dscpType
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:ssl/confd_dyncfg:keyFile,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:ssl/confd_dyncfg:certFile,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:ssl/confd_dyncfg:caCertFile,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:ssl/confd_dyncfg:verify,leaf,verifyType
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:ssl/confd_dyncfg:depth,leaf,uint64
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:ssl/confd_dyncfg:ciphers,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:transport/confd_dyncfg:ssl/confd_dyncfg:protocols,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:cgi,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:cgi/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:cgi/confd_dyncfg:dir,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:cgi/confd_dyncfg:requestFilter,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:cgi/confd_dyncfg:maxRequestLength,leaf,uint16
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:cgi/confd_dyncfg:php,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:cgi/confd_dyncfg:php/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:idleTimeout,leaf,xs:duration
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:absoluteTimeout,leaf,xs:duration
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:rateLimiting,leaf,uint64
+/confd_dyncfg:confdConfig/confd_dyncfg:webui/confd_dyncfg:audit,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:rest,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:rest/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:rest/confd_dyncfg:showHidden,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:rest/confd_dyncfg:customHeaders,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:rest/confd_dyncfg:customHeaders/confd_dyncfg:header,list,
+/confd_dyncfg:confdConfig/confd_dyncfg:rest/confd_dyncfg:customHeaders/confd_dyncfg:header/confd_dyncfg:name,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:rest/confd_dyncfg:customHeaders/confd_dyncfg:header/confd_dyncfg:value,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:restconf,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:restconf/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:restconf/confd_dyncfg:rootResource,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:restconf/confd_dyncfg:schemaServerUrl,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:restconf/confd_dyncfg:tokenResponse,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:restconf/confd_dyncfg:tokenResponse/confd_dyncfg:xAuthToken,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:restconf/confd_dyncfg:tokenResponse/confd_dyncfg:tokenCookie,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:restconf/confd_dyncfg:tokenResponse/confd_dyncfg:tokenCookie/confd_dyncfg:name,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:restconf/confd_dyncfg:tokenResponse/confd_dyncfg:tokenCookie/confd_dyncfg:directives,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:restconf/confd_dyncfg:customHeaders,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:restconf/confd_dyncfg:customHeaders/confd_dyncfg:header,list,
+/confd_dyncfg:confdConfig/confd_dyncfg:restconf/confd_dyncfg:customHeaders/confd_dyncfg:header/confd_dyncfg:name,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:restconf/confd_dyncfg:customHeaders/confd_dyncfg:header/confd_dyncfg:value,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:autoLogin,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy,list,
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy/confd_dyncfg:target,leaf,xs:token
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy/confd_dyncfg:address,leaf,inet:host
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy/confd_dyncfg:netconf,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy/confd_dyncfg:netconf,choice,
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy/confd_dyncfg:netconf,case,
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy/confd_dyncfg:netconf/confd_dyncfg:ssh,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy/confd_dyncfg:netconf/confd_dyncfg:ssh/confd_dyncfg:port,leaf,inet:port-number
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy/confd_dyncfg:netconf,case,
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy/confd_dyncfg:netconf/confd_dyncfg:tcp,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy/confd_dyncfg:netconf/confd_dyncfg:tcp/confd_dyncfg:port,leaf,inet:port-number
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy/confd_dyncfg:cli,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy/confd_dyncfg:cli,choice,
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy/confd_dyncfg:cli,case,
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy/confd_dyncfg:cli/confd_dyncfg:ssh,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:proxyForwarding/confd_dyncfg:proxy/confd_dyncfg:cli/confd_dyncfg:ssh/confd_dyncfg:port,leaf,inet:port-number
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:ip,leaf,inet:ip-address
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:port,leaf,inet:port-number
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:extraIpPorts,leaf-list,xs:token
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:dscp,leaf,dscpType
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:mibs,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:mibs/confd_dyncfg:file,leaf-list,string
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:mibs/confd_dyncfg:fromLoadPath,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:temporaryStorageTime,leaf,uint32
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:snmpVersions,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:snmpVersions/confd_dyncfg:v1,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:snmpVersions/confd_dyncfg:v2c,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:snmpVersions/confd_dyncfg:v3,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:snmpEngine,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:snmpEngine/confd_dyncfg:snmpEngineID,leaf,tailf:hex-list
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:snmpEngine/confd_dyncfg:snmpEngineMaxMessageSize,leaf,uint64
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:sessionIgnorePort,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:authenticationFailureNotifyName,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:candidate,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:candidate/confd_dyncfg:maxLockWait,leaf,xs:duration
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:candidate/confd_dyncfg:pendingChangesAction,leaf,pendingChangesActionType
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:dropWhenInUse,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:contexts,leaf-list,SNMPContextNameType
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:system,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:system/confd_dyncfg:sysDescr,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:system/confd_dyncfg:sysObjectID,leaf,yang:object-identifier
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:system/confd_dyncfg:sysServices,leaf,uint64
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:system/confd_dyncfg:sysORTable,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:system/confd_dyncfg:sysORTable/confd_dyncfg:sysOREntry,list,
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:system/confd_dyncfg:sysORTable/confd_dyncfg:sysOREntry/confd_dyncfg:sysORIndex,leaf,uint64
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:system/confd_dyncfg:sysORTable/confd_dyncfg:sysOREntry/confd_dyncfg:sysORID,leaf,yang:object-identifier
+/confd_dyncfg:confdConfig/confd_dyncfg:snmpAgent/confd_dyncfg:system/confd_dyncfg:sysORTable/confd_dyncfg:sysOREntry/confd_dyncfg:sysORDescr,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:transport,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:transport/confd_dyncfg:sshCallHomeExecutable,leaf,string
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:transport/confd_dyncfg:ssh,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:transport/confd_dyncfg:ssh/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:transport/confd_dyncfg:ssh/confd_dyncfg:ip,leaf,inet:ip-address
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:transport/confd_dyncfg:ssh/confd_dyncfg:port,leaf,inet:port-number
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:transport/confd_dyncfg:ssh/confd_dyncfg:extraIpPorts,leaf-list,xs:token
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:transport/confd_dyncfg:ssh/confd_dyncfg:dscp,leaf,dscpType
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:transport/confd_dyncfg:tcp,container,
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:transport/confd_dyncfg:tcp/confd_dyncfg:enabled,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:transport/confd_dyncfg:tcp/confd_dyncfg:ip,leaf,inet:ip-address
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:transport/confd_dyncfg:tcp/confd_dyncfg:port,leaf,inet:port-number
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:transport/confd_dyncfg:tcp/confd_dyncfg:extraIpPorts,leaf-list,xs:token
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:transport/confd_dyncfg:tcp/confd_dyncfg:dscp,leaf,dscpType
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:extendedSessions,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:sendDefaults,leaf,boolean
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:idleTimeout,leaf,xs:duration
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:writeTimeout,leaf,xs:duration
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:rpcErrors,leaf,rpcErrorType
+/confd_dyncfg:confdConfig/confd_dyncfg:netconf/confd_dyncfg:maxBatchProcesses,leaf,limitType

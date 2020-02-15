@@ -1,0 +1,172 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-lisp-agent-oper.yang
+module: Cisco-IOS-XE-wireless-lisp-agent-oper
+  +--ro lisp-agent-oper-data
+     +--ro lisp-agent-memory-stats!
+     |  +--ro malloc-psk-buf?           yang:counter64
+     |  +--ro free-psk-buf?             yang:counter64
+     |  +--ro malloc-map-reg-msg?       yang:counter64
+     |  +--ro free-map-reg-msg?         yang:counter64
+     |  +--ro malloc-map-req-msg?       yang:counter64
+     |  +--ro free-map-req-msg?         yang:counter64
+     |  +--ro malloc-lisp-ha-node?      yang:counter64
+     |  +--ro free-lisp-ha-node?        yang:counter64
+     |  +--ro malloc-map-server-ctxt?   yang:counter64
+     |  +--ro free-map-server-ctxt?     yang:counter64
+     +--ro lisp-agent-map-server-memory-stats* [map-server-address]
+     |  +--ro map-server-address                   inet:ip-address
+     |  +--ro malloc-tcp-flow-control-msg-queue?   yang:counter64
+     |  +--ro free-tcp-flow-control-msg-queue?     yang:counter64
+     |  +--ro malloc-tcp-incomplete-msg-buffer?    yang:counter64
+     |  +--ro free-tcp-incomplete-msg-buffer?      yang:counter64
+     |  +--ro malloc-tcp-receive-buff?             yang:counter64
+     |  +--ro free-tcp-receive-buff?               yang:counter64
+     |  +--ro malloc-udp-receive-buff?             yang:counter64
+     |  +--ro free-udp-receive-buff?               yang:counter64
+     +--ro lisp-agent-ap-data* [wtp-radio-mac]
+     |  +--ro wtp-mac?         yang:mac-address
+     |  +--ro wtp-ip           inet:ip-address
+     |  +--ro wtp-xtr-ip?      inet:ip-address
+     |  +--ro wtp-vnid?        uint32
+     |  +--ro wtp-radio-mac    yang:mac-address
+     |  +--ro cp-name?         string
+     +--ro lisp-agent-client-data* [client-mac]
+     |  +--ro client-mac           yang:mac-address
+     |  +--ro client-ap-mac?       yang:mac-address
+     |  +--ro client-ap-ip?        inet:ip-address
+     |  +--ro client-xtr-ip?       inet:ip-address
+     |  +--ro client-assoc-time?   uint64
+     |  +--ro client-ap-vnid?      uint32
+     |  +--ro client-vnid?         uint32
+     |  +--ro client-sgt?          uint16
+     |  +--ro cp-name?             string
+     +--ro lisp-agent-client-history* [client-mac]
+     |  +--ro client-mac       yang:mac-address
+     |  +--ro assoc-history
+     |     +--ro entry* []
+     |        +--ro wtp-mac?             yang:mac-address
+     |        +--ro client-xtr-ip?       inet:ip-address
+     |        +--ro ms-ip?               inet:ip-address
+     |        +--ro client-assoc-time?   uint64
+     |        +--ro data-entry-time?     uint64
+     |        +--ro client-vnid?         uint32
+     |        +--ro lisp-msg-type?       uint32
+     |        +--ro client-sgt?          uint16
+     +--ro lisp-agent-ms-msg-stats-data* [map-server-ip]
+     |  +--ro map-server-ip                                   inet:ip-address
+     |  +--ro map-request-msg-count?                          yang:counter64
+     |  +--ro map-reply-ack-msg-count?                        yang:counter64
+     |  +--ro map-reply-nack-msg-count?                       yang:counter64
+     |  +--ro map-register-add-msg-count?                     yang:counter64
+     |  +--ro map-register-delete-msg-count?                  yang:counter64
+     |  +--ro map-register-ack-msg-count?                     yang:counter64
+     |  +--ro map-register-add-reject-msg-count?              yang:counter64
+     |  +--ro map-register-delete-reject-msg-count?           yang:counter64
+     |  +--ro map-register-refresh-msg-count?                 yang:counter64
+     |  +--ro map-wlc-notify-msg-count?                       yang:counter64
+     |  +--ro map-error-notify-msg-count?                     yang:counter64
+     |  +--ro map-request-msg-send-failure-count?             yang:counter64
+     |  +--ro map-register-msg-send-failure-count?            yang:counter64
+     |  +--ro map-register-ack-msg-parse-failure-count?       yang:counter64
+     |  +--ro map-register-reject-msg-parse-failure-count?    yang:counter64
+     |  +--ro map-register-refresh-msg-parse-failure-count?   yang:counter64
+     |  +--ro map-reply-msg-parse-failure-count?              yang:counter64
+     |  +--ro map-server-tcp-create-fail-count?               yang:counter64
+     |  +--ro map-server-tcp-read-fail-count?                 yang:counter64
+     |  +--ro map-server-tcp-msg-parse-fail-count?            yang:counter64
+     |  +--ro map-server-tcp-write-fail-count?                yang:counter64
+     |  +--ro map-server-udp-create-fail-count?               yang:counter64
+     |  +--ro map-server-udp-read-fail-count?                 yang:counter64
+     |  +--ro map-server-udp-msg-parse-fail-count?            yang:counter64
+     |  +--ro map-server-udp-write-fail-count?                yang:counter64
+     |  +--ro map-server-status?                              boolean
+     +--ro lisp-wlc-capabilities!
+     |  +--ro fabric-capable?   boolean
+     +--ro lisp-ap-capabilities* [ap-type]
+        +--ro ap-type           uint32
+        +--ro fabric-capable?   boolean
+Xpaths for model: Cisco-IOS-XE-wireless-lisp-agent-oper.yang
+/wireless-lisp-agent-oper:lisp-agent-oper-data,container,
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-memory-stats,container,
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-memory-stats/wireless-lisp-agent-oper:malloc-psk-buf,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-memory-stats/wireless-lisp-agent-oper:free-psk-buf,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-memory-stats/wireless-lisp-agent-oper:malloc-map-reg-msg,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-memory-stats/wireless-lisp-agent-oper:free-map-reg-msg,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-memory-stats/wireless-lisp-agent-oper:malloc-map-req-msg,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-memory-stats/wireless-lisp-agent-oper:free-map-req-msg,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-memory-stats/wireless-lisp-agent-oper:malloc-lisp-ha-node,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-memory-stats/wireless-lisp-agent-oper:free-lisp-ha-node,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-memory-stats/wireless-lisp-agent-oper:malloc-map-server-ctxt,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-memory-stats/wireless-lisp-agent-oper:free-map-server-ctxt,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-map-server-memory-stats,list,
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-map-server-memory-stats/wireless-lisp-agent-oper:map-server-address,leaf,inet:ip-address
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-map-server-memory-stats/wireless-lisp-agent-oper:malloc-tcp-flow-control-msg-queue,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-map-server-memory-stats/wireless-lisp-agent-oper:free-tcp-flow-control-msg-queue,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-map-server-memory-stats/wireless-lisp-agent-oper:malloc-tcp-incomplete-msg-buffer,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-map-server-memory-stats/wireless-lisp-agent-oper:free-tcp-incomplete-msg-buffer,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-map-server-memory-stats/wireless-lisp-agent-oper:malloc-tcp-receive-buff,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-map-server-memory-stats/wireless-lisp-agent-oper:free-tcp-receive-buff,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-map-server-memory-stats/wireless-lisp-agent-oper:malloc-udp-receive-buff,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-map-server-memory-stats/wireless-lisp-agent-oper:free-udp-receive-buff,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ap-data,list,
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ap-data/wireless-lisp-agent-oper:wtp-mac,leaf,yang:mac-address
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ap-data/wireless-lisp-agent-oper:wtp-ip,leaf,inet:ip-address
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ap-data/wireless-lisp-agent-oper:wtp-xtr-ip,leaf,inet:ip-address
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ap-data/wireless-lisp-agent-oper:wtp-vnid,leaf,uint32
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ap-data/wireless-lisp-agent-oper:wtp-radio-mac,leaf,yang:mac-address
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ap-data/wireless-lisp-agent-oper:cp-name,leaf,string
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-data,list,
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-data/wireless-lisp-agent-oper:client-mac,leaf,yang:mac-address
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-data/wireless-lisp-agent-oper:client-ap-mac,leaf,yang:mac-address
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-data/wireless-lisp-agent-oper:client-ap-ip,leaf,inet:ip-address
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-data/wireless-lisp-agent-oper:client-xtr-ip,leaf,inet:ip-address
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-data/wireless-lisp-agent-oper:client-assoc-time,leaf,uint64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-data/wireless-lisp-agent-oper:client-ap-vnid,leaf,uint32
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-data/wireless-lisp-agent-oper:client-vnid,leaf,uint32
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-data/wireless-lisp-agent-oper:client-sgt,leaf,uint16
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-data/wireless-lisp-agent-oper:cp-name,leaf,string
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-history,list,
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-history/wireless-lisp-agent-oper:client-mac,leaf,yang:mac-address
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-history/wireless-lisp-agent-oper:assoc-history,container,
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-history/wireless-lisp-agent-oper:assoc-history/wireless-lisp-agent-oper:entry,list,
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-history/wireless-lisp-agent-oper:assoc-history/wireless-lisp-agent-oper:entry/wireless-lisp-agent-oper:wtp-mac,leaf,yang:mac-address
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-history/wireless-lisp-agent-oper:assoc-history/wireless-lisp-agent-oper:entry/wireless-lisp-agent-oper:client-xtr-ip,leaf,inet:ip-address
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-history/wireless-lisp-agent-oper:assoc-history/wireless-lisp-agent-oper:entry/wireless-lisp-agent-oper:ms-ip,leaf,inet:ip-address
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-history/wireless-lisp-agent-oper:assoc-history/wireless-lisp-agent-oper:entry/wireless-lisp-agent-oper:client-assoc-time,leaf,uint64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-history/wireless-lisp-agent-oper:assoc-history/wireless-lisp-agent-oper:entry/wireless-lisp-agent-oper:data-entry-time,leaf,uint64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-history/wireless-lisp-agent-oper:assoc-history/wireless-lisp-agent-oper:entry/wireless-lisp-agent-oper:client-vnid,leaf,uint32
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-history/wireless-lisp-agent-oper:assoc-history/wireless-lisp-agent-oper:entry/wireless-lisp-agent-oper:lisp-msg-type,leaf,uint32
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-client-history/wireless-lisp-agent-oper:assoc-history/wireless-lisp-agent-oper:entry/wireless-lisp-agent-oper:client-sgt,leaf,uint16
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data,list,
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-server-ip,leaf,inet:ip-address
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-request-msg-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-reply-ack-msg-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-reply-nack-msg-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-register-add-msg-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-register-delete-msg-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-register-ack-msg-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-register-add-reject-msg-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-register-delete-reject-msg-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-register-refresh-msg-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-wlc-notify-msg-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-error-notify-msg-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-request-msg-send-failure-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-register-msg-send-failure-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-register-ack-msg-parse-failure-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-register-reject-msg-parse-failure-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-register-refresh-msg-parse-failure-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-reply-msg-parse-failure-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-server-tcp-create-fail-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-server-tcp-read-fail-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-server-tcp-msg-parse-fail-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-server-tcp-write-fail-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-server-udp-create-fail-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-server-udp-read-fail-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-server-udp-msg-parse-fail-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-server-udp-write-fail-count,leaf,yang:counter64
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-agent-ms-msg-stats-data/wireless-lisp-agent-oper:map-server-status,leaf,boolean
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-wlc-capabilities,container,
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-wlc-capabilities/wireless-lisp-agent-oper:fabric-capable,leaf,boolean
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-ap-capabilities,list,
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-ap-capabilities/wireless-lisp-agent-oper:ap-type,leaf,uint32
+/wireless-lisp-agent-oper:lisp-agent-oper-data/wireless-lisp-agent-oper:lisp-ap-capabilities/wireless-lisp-agent-oper:fabric-capable,leaf,boolean

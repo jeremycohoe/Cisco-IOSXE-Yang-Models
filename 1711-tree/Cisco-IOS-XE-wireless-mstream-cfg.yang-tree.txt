@@ -1,0 +1,44 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-mstream-cfg.yang
+module: Cisco-IOS-XE-wireless-mstream-cfg
+  +--rw mstream-cfg-data
+     +--rw mstream-groups
+     |  +--rw mstream-group* [group-name]
+     |     +--rw group-name       string
+     |     +--rw start-ip-addr?   inet:ip-address
+     |     +--rw end-ip-addr?     inet:ip-address
+     |     +--rw pak-size?        uint16
+     |     +--rw bandwidth?       uint16
+     |     +--rw is-admitted?     boolean
+     |     +--rw is-periodical?   boolean
+     |     +--rw qos?             wireless-enum-types:media-stream-qos
+     |     +--rw priority?        uint16
+     |     +--rw rrc-violation?   uint16
+     +--rw mstream-glob!
+        +--rw multicast-direct-state?   boolean
+        +--rw url?                      string
+        +--rw email?                    string
+        +--rw phone?                    string
+        +--rw note?                     string
+        +--rw msg-state?                boolean
+Xpaths for model: Cisco-IOS-XE-wireless-mstream-cfg.yang
+/wireless-mstream-cfg:mstream-cfg-data,container,
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-groups,container,
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-groups/wireless-mstream-cfg:mstream-group,list,
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-groups/wireless-mstream-cfg:mstream-group/wireless-mstream-cfg:group-name,leaf,string
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-groups/wireless-mstream-cfg:mstream-group/wireless-mstream-cfg:start-ip-addr,leaf,inet:ip-address
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-groups/wireless-mstream-cfg:mstream-group/wireless-mstream-cfg:end-ip-addr,leaf,inet:ip-address
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-groups/wireless-mstream-cfg:mstream-group/wireless-mstream-cfg:pak-size,leaf,uint16
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-groups/wireless-mstream-cfg:mstream-group/wireless-mstream-cfg:bandwidth,leaf,uint16
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-groups/wireless-mstream-cfg:mstream-group/wireless-mstream-cfg:is-admitted,leaf,boolean
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-groups/wireless-mstream-cfg:mstream-group/wireless-mstream-cfg:is-periodical,leaf,boolean
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-groups/wireless-mstream-cfg:mstream-group/wireless-mstream-cfg:qos,leaf,wireless-enum-types:media-stream-qos
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-groups/wireless-mstream-cfg:mstream-group/wireless-mstream-cfg:priority,leaf,uint16
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-groups/wireless-mstream-cfg:mstream-group/wireless-mstream-cfg:rrc-violation,leaf,uint16
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-glob,container,
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-glob/wireless-mstream-cfg:multicast-direct-state,leaf,boolean
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-glob/wireless-mstream-cfg:url,leaf,string
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-glob/wireless-mstream-cfg:email,leaf,string
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-glob/wireless-mstream-cfg:phone,leaf,string
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-glob/wireless-mstream-cfg:note,leaf,string
+/wireless-mstream-cfg:mstream-cfg-data/wireless-mstream-cfg:mstream-glob/wireless-mstream-cfg:msg-state,leaf,boolean

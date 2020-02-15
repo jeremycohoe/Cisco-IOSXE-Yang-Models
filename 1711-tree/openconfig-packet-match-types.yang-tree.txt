@@ -1,0 +1,3 @@
+ 
+KPI for model: openconfig-packet-match-types.yang
+Xpaths for model: openconfig-packet-match-types.yang

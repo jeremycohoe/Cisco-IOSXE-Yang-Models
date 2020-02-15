@@ -1,0 +1,16 @@
+ 
+KPI for model: Cisco-IOS-XE-vrf-oper.yang
+module: Cisco-IOS-XE-vrf-oper
+  +--ro vrf-oper-data
+     +--ro vrf-entry* [vrf-name]
+        +--ro vrf-name                string
+        +--ro interface*              string
+        +--ro address-family-entry* []
+           +--ro address-family?   vrf-ios-xe-oper:vrf-af
+Xpaths for model: Cisco-IOS-XE-vrf-oper.yang
+/vrf-ios-xe-oper:vrf-oper-data,container,
+/vrf-ios-xe-oper:vrf-oper-data/vrf-ios-xe-oper:vrf-entry,list,
+/vrf-ios-xe-oper:vrf-oper-data/vrf-ios-xe-oper:vrf-entry/vrf-ios-xe-oper:vrf-name,leaf,string
+/vrf-ios-xe-oper:vrf-oper-data/vrf-ios-xe-oper:vrf-entry/vrf-ios-xe-oper:interface,leaf-list,string
+/vrf-ios-xe-oper:vrf-oper-data/vrf-ios-xe-oper:vrf-entry/vrf-ios-xe-oper:address-family-entry,list,
+/vrf-ios-xe-oper:vrf-oper-data/vrf-ios-xe-oper:vrf-entry/vrf-ios-xe-oper:address-family-entry/vrf-ios-xe-oper:address-family,leaf,vrf-ios-xe-oper:vrf-af

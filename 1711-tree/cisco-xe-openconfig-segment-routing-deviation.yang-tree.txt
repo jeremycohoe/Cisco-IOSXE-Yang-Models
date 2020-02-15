@@ -1,0 +1,3 @@
+ 
+KPI for model: cisco-xe-openconfig-segment-routing-deviation.yang
+Xpaths for model: cisco-xe-openconfig-segment-routing-deviation.yang

@@ -1,0 +1,58 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-fabric-cfg.yang
+module: Cisco-IOS-XE-wireless-fabric-cfg
+  +--rw fabric-cfg-data
+     +--rw fabric-profiles
+     |  +--rw fabric-profile* [fabric-profile-name]
+     |     +--rw fabric-profile-name    string
+     |     +--rw description?           string
+     |     +--rw encap-type?            wireless-fabric-cfg:enm-fabric-profile-encap-type
+     |     +--rw sgt-tag?               uint16
+     |     +--rw client-l2-vnid?        uint32
+     +--rw fabric!
+     |  +--rw fabric-enabled?             boolean
+     |  +--rw fabric-name-vnid-entries
+     |     +--rw fabric-name-vnid-entry* [name]
+     |        +--rw name                  string
+     |        +--rw l2-vnid               uint32
+     |        +--rw l3-vnid?              uint32
+     |        +--rw netmask?              inet:ip-address
+     |        +--rw network-ip?           inet:ip-address
+     |        +--rw control-plane-name?   string
+     +--rw fabric-controlplane-names
+        +--rw fabric-controlplane-name* [control-plane-name]
+           +--rw control-plane-name                 string
+           +--rw description?                       string
+           +--rw fabric-control-plane-ip-configs
+              +--rw fabric-control-plane-ip-config* [control-plane-ip]
+                 +--rw control-plane-ip    inet:ip-address
+                 +--rw psk-key?            string
+                 +--rw psk-key-type?       wireless-enum-types:crypt-type
+Xpaths for model: Cisco-IOS-XE-wireless-fabric-cfg.yang
+/wireless-fabric-cfg:fabric-cfg-data,container,
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-profiles,container,
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-profiles/wireless-fabric-cfg:fabric-profile,list,
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-profiles/wireless-fabric-cfg:fabric-profile/wireless-fabric-cfg:fabric-profile-name,leaf,string
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-profiles/wireless-fabric-cfg:fabric-profile/wireless-fabric-cfg:description,leaf,string
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-profiles/wireless-fabric-cfg:fabric-profile/wireless-fabric-cfg:encap-type,leaf,wireless-fabric-cfg:enm-fabric-profile-encap-type
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-profiles/wireless-fabric-cfg:fabric-profile/wireless-fabric-cfg:sgt-tag,leaf,uint16
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-profiles/wireless-fabric-cfg:fabric-profile/wireless-fabric-cfg:client-l2-vnid,leaf,uint32
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric,container,
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric/wireless-fabric-cfg:fabric-enabled,leaf,boolean
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric/wireless-fabric-cfg:fabric-name-vnid-entries,container,
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric/wireless-fabric-cfg:fabric-name-vnid-entries/wireless-fabric-cfg:fabric-name-vnid-entry,list,
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric/wireless-fabric-cfg:fabric-name-vnid-entries/wireless-fabric-cfg:fabric-name-vnid-entry/wireless-fabric-cfg:name,leaf,string
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric/wireless-fabric-cfg:fabric-name-vnid-entries/wireless-fabric-cfg:fabric-name-vnid-entry/wireless-fabric-cfg:l2-vnid,leaf,uint32
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric/wireless-fabric-cfg:fabric-name-vnid-entries/wireless-fabric-cfg:fabric-name-vnid-entry/wireless-fabric-cfg:l3-vnid,leaf,uint32
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric/wireless-fabric-cfg:fabric-name-vnid-entries/wireless-fabric-cfg:fabric-name-vnid-entry/wireless-fabric-cfg:netmask,leaf,inet:ip-address
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric/wireless-fabric-cfg:fabric-name-vnid-entries/wireless-fabric-cfg:fabric-name-vnid-entry/wireless-fabric-cfg:network-ip,leaf,inet:ip-address
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric/wireless-fabric-cfg:fabric-name-vnid-entries/wireless-fabric-cfg:fabric-name-vnid-entry/wireless-fabric-cfg:control-plane-name,leaf,string
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-controlplane-names,container,
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-controlplane-names/wireless-fabric-cfg:fabric-controlplane-name,list,
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-controlplane-names/wireless-fabric-cfg:fabric-controlplane-name/wireless-fabric-cfg:control-plane-name,leaf,string
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-controlplane-names/wireless-fabric-cfg:fabric-controlplane-name/wireless-fabric-cfg:description,leaf,string
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-controlplane-names/wireless-fabric-cfg:fabric-controlplane-name/wireless-fabric-cfg:fabric-control-plane-ip-configs,container,
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-controlplane-names/wireless-fabric-cfg:fabric-controlplane-name/wireless-fabric-cfg:fabric-control-plane-ip-configs/wireless-fabric-cfg:fabric-control-plane-ip-config,list,
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-controlplane-names/wireless-fabric-cfg:fabric-controlplane-name/wireless-fabric-cfg:fabric-control-plane-ip-configs/wireless-fabric-cfg:fabric-control-plane-ip-config/wireless-fabric-cfg:control-plane-ip,leaf,inet:ip-address
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-controlplane-names/wireless-fabric-cfg:fabric-controlplane-name/wireless-fabric-cfg:fabric-control-plane-ip-configs/wireless-fabric-cfg:fabric-control-plane-ip-config/wireless-fabric-cfg:psk-key,leaf,string
+/wireless-fabric-cfg:fabric-cfg-data/wireless-fabric-cfg:fabric-controlplane-names/wireless-fabric-cfg:fabric-controlplane-name/wireless-fabric-cfg:fabric-control-plane-ip-configs/wireless-fabric-cfg:fabric-control-plane-ip-config/wireless-fabric-cfg:psk-key-type,leaf,wireless-enum-types:crypt-type

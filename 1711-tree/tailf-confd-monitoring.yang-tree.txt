@@ -1,0 +1,632 @@
+ 
+KPI for model: tailf-confd-monitoring.yang
+module: tailf-confd-monitoring
+  +--ro confd-state
+     +--ro version?              string
+     +--ro smp!
+     |  +--ro number-of-threads?   uint16
+     +--ro epoll?                boolean
+     +--ro daemon-status?        enumeration
+     +--ro read-only-mode?       empty
+     +--ro upgrade-mode?         empty
+     +--ro ha!
+     |  +--ro mode?              enumeration
+     |  +--ro node-id?           ha-node-id
+     |  +--ro master-node-id?    string
+     |  +--ro connected-slave*   string
+     |  +--ro pending-slave*     string
+     +--ro loaded-data-models
+     |  +--ro data-model* [name]
+     |     +--ro name                     string
+     |     +--ro revision?                string
+     |     +--ro namespace?               inet:uri
+     |     +--ro prefix?                  string
+     |     +--ro (exported)?
+     |        +--:(exported-to-all)
+     |        |  +--ro exported-to-all?   empty
+     |        +--:(exported-to)
+     |           +--ro exported-to*       union
+     +--ro netconf!
+     |  +--ro listen
+     |     +--ro tcp* []
+     |     |  +--ro ip?     inet:ip-address
+     |     |  +--ro port?   inet:port-number
+     |     +--ro ssh* []
+     |        +--ro ip?     inet:ip-address
+     |        +--ro port?   inet:port-number
+     +--ro cli!
+     |  +--ro listen
+     |     +--ro ssh* []
+     |        +--ro ip?     inet:ip-address
+     |        +--ro port?   inet:port-number
+     +--ro webui!
+     |  +--ro listen
+     |     +--ro tcp* []
+     |     |  +--ro ip?     inet:ip-address
+     |     |  +--ro port?   inet:port-number
+     |     +--ro ssl* []
+     |        +--ro ip?     inet:ip-address
+     |        +--ro port?   inet:port-number
+     +--ro rest!
+     |  +--ro listen
+     |     +--ro tcp* []
+     |     |  +--ro ip?     inet:ip-address
+     |     |  +--ro port?   inet:port-number
+     |     +--ro ssl* []
+     |        +--ro ip?     inet:ip-address
+     |        +--ro port?   inet:port-number
+     +--ro snmp!
+     |  +--ro listen
+     |  |  +--ro udp* []
+     |  |     +--ro ip?     inet:ip-address
+     |  |     +--ro port?   inet:port-number
+     |  +--ro mib*         string
+     |  +--ro version
+     |  |  +--ro v1?    empty
+     |  |  +--ro v2c?   empty
+     |  |  +--ro v3?    empty
+     |  +--ro engine-id?   string
+     +--ro internal
+        +--ro callpoints
+        |  +--ro callpoint* [id]
+        |  |  +--ro id              string
+        |  |  +--ro (registration-type)?
+        |  |  |  +--:(daemon)
+        |  |  |  |  +--ro daemon
+        |  |  |  |     +--ro id?      uint32
+        |  |  |  |     +--ro name?    string
+        |  |  |  |     +--ro error?   enumeration
+        |  |  |  +--:(range)
+        |  |  |  |  +--ro path?     string
+        |  |  |  |  +--ro range* []
+        |  |  |  |     +--ro lower?     string
+        |  |  |  |     +--ro upper?     string
+        |  |  |  |     +--ro default?   empty
+        |  |  |  |     +--ro daemon
+        |  |  |  |        +--ro id?      uint32
+        |  |  |  |        +--ro name?    string
+        |  |  |  |        +--ro error?   enumeration
+        |  |  |  +--:(file)
+        |  |  |     +--ro file?     string
+        |  |  +--ro error?          enumeration
+        |  +--ro validationpoint* [id]
+        |  |  +--ro id              string
+        |  |  +--ro (registration-type)?
+        |  |  |  +--:(daemon)
+        |  |  |  |  +--ro daemon
+        |  |  |  |     +--ro id?      uint32
+        |  |  |  |     +--ro name?    string
+        |  |  |  |     +--ro error?   enumeration
+        |  |  |  +--:(range)
+        |  |  |  |  +--ro path?     string
+        |  |  |  |  +--ro range* []
+        |  |  |  |     +--ro lower?     string
+        |  |  |  |     +--ro upper?     string
+        |  |  |  |     +--ro default?   empty
+        |  |  |  |     +--ro daemon
+        |  |  |  |        +--ro id?      uint32
+        |  |  |  |        +--ro name?    string
+        |  |  |  |        +--ro error?   enumeration
+        |  |  |  +--:(file)
+        |  |  |     +--ro file?     string
+        |  |  +--ro error?          enumeration
+        |  +--ro actionpoint* [id]
+        |  |  +--ro id              string
+        |  |  +--ro (registration-type)?
+        |  |  |  +--:(daemon)
+        |  |  |  |  +--ro daemon
+        |  |  |  |     +--ro id?      uint32
+        |  |  |  |     +--ro name?    string
+        |  |  |  |     +--ro error?   enumeration
+        |  |  |  +--:(range)
+        |  |  |  |  +--ro path?     string
+        |  |  |  |  +--ro range* []
+        |  |  |  |     +--ro lower?     string
+        |  |  |  |     +--ro upper?     string
+        |  |  |  |     +--ro default?   empty
+        |  |  |  |     +--ro daemon
+        |  |  |  |        +--ro id?      uint32
+        |  |  |  |        +--ro name?    string
+        |  |  |  |        +--ro error?   enumeration
+        |  |  |  +--:(file)
+        |  |  |     +--ro file?     string
+        |  |  +--ro error?          enumeration
+        |  +--ro snmp-inform-callback* [id]
+        |  |  +--ro id              string
+        |  |  +--ro (registration-type)?
+        |  |  |  +--:(daemon)
+        |  |  |  |  +--ro daemon
+        |  |  |  |     +--ro id?      uint32
+        |  |  |  |     +--ro name?    string
+        |  |  |  |     +--ro error?   enumeration
+        |  |  |  +--:(range)
+        |  |  |  |  +--ro path?     string
+        |  |  |  |  +--ro range* []
+        |  |  |  |     +--ro lower?     string
+        |  |  |  |     +--ro upper?     string
+        |  |  |  |     +--ro default?   empty
+        |  |  |  |     +--ro daemon
+        |  |  |  |        +--ro id?      uint32
+        |  |  |  |        +--ro name?    string
+        |  |  |  |        +--ro error?   enumeration
+        |  |  |  +--:(file)
+        |  |  |     +--ro file?     string
+        |  |  +--ro error?          enumeration
+        |  +--ro snmp-notification-subscription* [id]
+        |  |  +--ro id              string
+        |  |  +--ro (registration-type)?
+        |  |  |  +--:(daemon)
+        |  |  |  |  +--ro daemon
+        |  |  |  |     +--ro id?      uint32
+        |  |  |  |     +--ro name?    string
+        |  |  |  |     +--ro error?   enumeration
+        |  |  |  +--:(range)
+        |  |  |  |  +--ro path?     string
+        |  |  |  |  +--ro range* []
+        |  |  |  |     +--ro lower?     string
+        |  |  |  |     +--ro upper?     string
+        |  |  |  |     +--ro default?   empty
+        |  |  |  |     +--ro daemon
+        |  |  |  |        +--ro id?      uint32
+        |  |  |  |        +--ro name?    string
+        |  |  |  |        +--ro error?   enumeration
+        |  |  |  +--:(file)
+        |  |  |     +--ro file?     string
+        |  |  +--ro error?          enumeration
+        |  +--ro error-formatting-callback* [id]
+        |  |  +--ro id              string
+        |  |  +--ro (registration-type)?
+        |  |  |  +--:(daemon)
+        |  |  |  |  +--ro daemon
+        |  |  |  |     +--ro id?      uint32
+        |  |  |  |     +--ro name?    string
+        |  |  |  |     +--ro error?   enumeration
+        |  |  |  +--:(range)
+        |  |  |  |  +--ro path?     string
+        |  |  |  |  +--ro range* []
+        |  |  |  |     +--ro lower?     string
+        |  |  |  |     +--ro upper?     string
+        |  |  |  |     +--ro default?   empty
+        |  |  |  |     +--ro daemon
+        |  |  |  |        +--ro id?      uint32
+        |  |  |  |        +--ro name?    string
+        |  |  |  |        +--ro error?   enumeration
+        |  |  |  +--:(file)
+        |  |  |     +--ro file?     string
+        |  |  +--ro error?          enumeration
+        |  +--ro typepoint* [id]
+        |  |  +--ro id              string
+        |  |  +--ro (registration-type)?
+        |  |  |  +--:(daemon)
+        |  |  |  |  +--ro daemon
+        |  |  |  |     +--ro id?      uint32
+        |  |  |  |     +--ro name?    string
+        |  |  |  |     +--ro error?   enumeration
+        |  |  |  +--:(range)
+        |  |  |  |  +--ro path?     string
+        |  |  |  |  +--ro range* []
+        |  |  |  |     +--ro lower?     string
+        |  |  |  |     +--ro upper?     string
+        |  |  |  |     +--ro default?   empty
+        |  |  |  |     +--ro daemon
+        |  |  |  |        +--ro id?      uint32
+        |  |  |  |        +--ro name?    string
+        |  |  |  |        +--ro error?   enumeration
+        |  |  |  +--:(file)
+        |  |  |     +--ro file?     string
+        |  |  +--ro error?          enumeration
+        |  +--ro notification-stream-replay* [name]
+        |  |  +--ro name              string
+        |  |  +--ro replay-support?   enumeration
+        |  |  +--ro (registration-type)?
+        |  |  |  +--:(daemon)
+        |  |  |  |  +--ro daemon
+        |  |  |  |     +--ro id?      uint32
+        |  |  |  |     +--ro name?    string
+        |  |  |  |     +--ro error?   enumeration
+        |  |  |  +--:(range)
+        |  |  |  |  +--ro path?       string
+        |  |  |  |  +--ro range* []
+        |  |  |  |     +--ro lower?     string
+        |  |  |  |     +--ro upper?     string
+        |  |  |  |     +--ro default?   empty
+        |  |  |  |     +--ro daemon
+        |  |  |  |        +--ro id?      uint32
+        |  |  |  |        +--ro name?    string
+        |  |  |  |        +--ro error?   enumeration
+        |  |  |  +--:(file)
+        |  |  |     +--ro file?       string
+        |  |  +--ro error?            enumeration
+        |  +--ro authentication-callback!
+        |  |  +--ro enabled?        boolean
+        |  |  +--ro (registration-type)?
+        |  |  |  +--:(daemon)
+        |  |  |  |  +--ro daemon
+        |  |  |  |     +--ro id?      uint32
+        |  |  |  |     +--ro name?    string
+        |  |  |  |     +--ro error?   enumeration
+        |  |  |  +--:(range)
+        |  |  |  |  +--ro path?     string
+        |  |  |  |  +--ro range* []
+        |  |  |  |     +--ro lower?     string
+        |  |  |  |     +--ro upper?     string
+        |  |  |  |     +--ro default?   empty
+        |  |  |  |     +--ro daemon
+        |  |  |  |        +--ro id?      uint32
+        |  |  |  |        +--ro name?    string
+        |  |  |  |        +--ro error?   enumeration
+        |  |  |  +--:(file)
+        |  |  |     +--ro file?     string
+        |  |  +--ro error?          enumeration
+        |  +--ro authorization-callbacks!
+        |     +--ro enabled?        boolean
+        |     +--ro (registration-type)?
+        |     |  +--:(daemon)
+        |     |  |  +--ro daemon
+        |     |  |     +--ro id?      uint32
+        |     |  |     +--ro name?    string
+        |     |  |     +--ro error?   enumeration
+        |     |  +--:(range)
+        |     |  |  +--ro path?     string
+        |     |  |  +--ro range* []
+        |     |  |     +--ro lower?     string
+        |     |  |     +--ro upper?     string
+        |     |  |     +--ro default?   empty
+        |     |  |     +--ro daemon
+        |     |  |        +--ro id?      uint32
+        |     |  |        +--ro name?    string
+        |     |  |        +--ro error?   enumeration
+        |     |  +--:(file)
+        |     |     +--ro file?     string
+        |     +--ro error?          enumeration
+        +--ro cdb
+           +--ro datastore* [name]
+           |  +--ro name                            datastore-name
+           |  +--ro transaction-id?                 string
+           |  +--ro write-queue?                    uint32
+           |  +--ro filename?                       string
+           |  +--ro disk-size?                      size-in-bytes
+           |  +--ro ram-size?                       size-in-bytes
+           |  +--ro read-locks?                     uint32
+           |  +--ro write-lock-set?                 boolean
+           |  +--ro subscription-lock-set?          boolean
+           |  +--ro waiting-for-replication-sync?   boolean
+           |  +--ro pending-subscription-sync!
+           |  |  +--ro priority?         subscription-priority
+           |  |  +--ro notification* []
+           |  |  |  +--ro client-name?        string
+           |  |  |  +--ro subscription-ids*   subscription-id
+           |  |  +--ro time-remaining?   union
+           |  +--ro pending-notification-queue* []
+           |     +--ro notification* []
+           |        +--ro priority?           subscription-priority
+           |        +--ro client-name?        string
+           |        +--ro subscription-ids*   subscription-id
+           +--ro client* []
+              +--ro name?           string
+              +--ro info?           string
+              +--ro type?           enumeration
+              +--ro datastore?      union
+              +--ro lock?           enumeration
+              +--ro subscription* []
+                 +--ro datastore?   datastore-name
+                 +--ro twophase?    empty
+                 +--ro priority?    subscription-priority
+                 +--ro id?          subscription-id
+                 +--ro path?        string
+                 +--ro error?       enumeration
+Xpaths for model: tailf-confd-monitoring.yang
+/tfcm:confd-state,container,
+/tfcm:confd-state/tfcm:version,leaf,string
+/tfcm:confd-state/tfcm:smp,container,
+/tfcm:confd-state/tfcm:smp/tfcm:number-of-threads,leaf,uint16
+/tfcm:confd-state/tfcm:epoll,leaf,boolean
+/tfcm:confd-state/tfcm:daemon-status,leaf,enumeration
+/tfcm:confd-state/tfcm:read-only-mode,leaf,empty
+/tfcm:confd-state/tfcm:upgrade-mode,leaf,empty
+/tfcm:confd-state/tfcm:ha,container,
+/tfcm:confd-state/tfcm:ha/tfcm:mode,leaf,enumeration
+/tfcm:confd-state/tfcm:ha/tfcm:node-id,leaf,ha-node-id
+/tfcm:confd-state/tfcm:ha/tfcm:master-node-id,leaf,string
+/tfcm:confd-state/tfcm:ha/tfcm:connected-slave,leaf-list,string
+/tfcm:confd-state/tfcm:ha/tfcm:pending-slave,leaf-list,string
+/tfcm:confd-state/tfcm:loaded-data-models,container,
+/tfcm:confd-state/tfcm:loaded-data-models/tfcm:data-model,list,
+/tfcm:confd-state/tfcm:loaded-data-models/tfcm:data-model/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:loaded-data-models/tfcm:data-model/tfcm:revision,leaf,string
+/tfcm:confd-state/tfcm:loaded-data-models/tfcm:data-model/tfcm:namespace,leaf,inet:uri
+/tfcm:confd-state/tfcm:loaded-data-models/tfcm:data-model/tfcm:prefix,leaf,string
+/tfcm:confd-state/tfcm:loaded-data-models/tfcm:data-model,choice,
+/tfcm:confd-state/tfcm:loaded-data-models/tfcm:data-model,case,
+/tfcm:confd-state/tfcm:loaded-data-models/tfcm:data-model/tfcm:exported-to-all,leaf,empty
+/tfcm:confd-state/tfcm:loaded-data-models/tfcm:data-model,case,
+/tfcm:confd-state/tfcm:loaded-data-models/tfcm:data-model/tfcm:exported-to,leaf-list,union
+/tfcm:confd-state/tfcm:netconf,container,
+/tfcm:confd-state/tfcm:netconf/tfcm:listen,container,
+/tfcm:confd-state/tfcm:netconf/tfcm:listen/tfcm:tcp,list,
+/tfcm:confd-state/tfcm:netconf/tfcm:listen/tfcm:tcp/tfcm:ip,leaf,inet:ip-address
+/tfcm:confd-state/tfcm:netconf/tfcm:listen/tfcm:tcp/tfcm:port,leaf,inet:port-number
+/tfcm:confd-state/tfcm:netconf/tfcm:listen/tfcm:ssh,list,
+/tfcm:confd-state/tfcm:netconf/tfcm:listen/tfcm:ssh/tfcm:ip,leaf,inet:ip-address
+/tfcm:confd-state/tfcm:netconf/tfcm:listen/tfcm:ssh/tfcm:port,leaf,inet:port-number
+/tfcm:confd-state/tfcm:cli,container,
+/tfcm:confd-state/tfcm:cli/tfcm:listen,container,
+/tfcm:confd-state/tfcm:cli/tfcm:listen/tfcm:ssh,list,
+/tfcm:confd-state/tfcm:cli/tfcm:listen/tfcm:ssh/tfcm:ip,leaf,inet:ip-address
+/tfcm:confd-state/tfcm:cli/tfcm:listen/tfcm:ssh/tfcm:port,leaf,inet:port-number
+/tfcm:confd-state/tfcm:webui,container,
+/tfcm:confd-state/tfcm:webui/tfcm:listen,container,
+/tfcm:confd-state/tfcm:webui/tfcm:listen/tfcm:tcp,list,
+/tfcm:confd-state/tfcm:webui/tfcm:listen/tfcm:tcp/tfcm:ip,leaf,inet:ip-address
+/tfcm:confd-state/tfcm:webui/tfcm:listen/tfcm:tcp/tfcm:port,leaf,inet:port-number
+/tfcm:confd-state/tfcm:webui/tfcm:listen/tfcm:ssl,list,
+/tfcm:confd-state/tfcm:webui/tfcm:listen/tfcm:ssl/tfcm:ip,leaf,inet:ip-address
+/tfcm:confd-state/tfcm:webui/tfcm:listen/tfcm:ssl/tfcm:port,leaf,inet:port-number
+/tfcm:confd-state/tfcm:rest,container,
+/tfcm:confd-state/tfcm:rest/tfcm:listen,container,
+/tfcm:confd-state/tfcm:rest/tfcm:listen/tfcm:tcp,list,
+/tfcm:confd-state/tfcm:rest/tfcm:listen/tfcm:tcp/tfcm:ip,leaf,inet:ip-address
+/tfcm:confd-state/tfcm:rest/tfcm:listen/tfcm:tcp/tfcm:port,leaf,inet:port-number
+/tfcm:confd-state/tfcm:rest/tfcm:listen/tfcm:ssl,list,
+/tfcm:confd-state/tfcm:rest/tfcm:listen/tfcm:ssl/tfcm:ip,leaf,inet:ip-address
+/tfcm:confd-state/tfcm:rest/tfcm:listen/tfcm:ssl/tfcm:port,leaf,inet:port-number
+/tfcm:confd-state/tfcm:snmp,container,
+/tfcm:confd-state/tfcm:snmp/tfcm:listen,container,
+/tfcm:confd-state/tfcm:snmp/tfcm:listen/tfcm:udp,list,
+/tfcm:confd-state/tfcm:snmp/tfcm:listen/tfcm:udp/tfcm:ip,leaf,inet:ip-address
+/tfcm:confd-state/tfcm:snmp/tfcm:listen/tfcm:udp/tfcm:port,leaf,inet:port-number
+/tfcm:confd-state/tfcm:snmp/tfcm:mib,leaf-list,string
+/tfcm:confd-state/tfcm:snmp/tfcm:version,container,
+/tfcm:confd-state/tfcm:snmp/tfcm:version/tfcm:v1,leaf,empty
+/tfcm:confd-state/tfcm:snmp/tfcm:version/tfcm:v2c,leaf,empty
+/tfcm:confd-state/tfcm:snmp/tfcm:version/tfcm:v3,leaf,empty
+/tfcm:confd-state/tfcm:snmp/tfcm:engine-id,leaf,string
+/tfcm:confd-state/tfcm:internal,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:id,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint,choice,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:path,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:range,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:range/tfcm:lower,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:range/tfcm:upper,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:range/tfcm:default,leaf,empty
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:range/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:range/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:range/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:range/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:file,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:callpoint/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:id,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint,choice,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:path,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:range,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:range/tfcm:lower,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:range/tfcm:upper,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:range/tfcm:default,leaf,empty
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:range/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:range/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:range/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:range/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:file,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:validationpoint/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:id,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint,choice,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:path,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:range,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:range/tfcm:lower,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:range/tfcm:upper,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:range/tfcm:default,leaf,empty
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:range/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:range/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:range/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:range/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:file,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:actionpoint/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:id,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback,choice,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:path,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:range,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:range/tfcm:lower,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:range/tfcm:upper,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:range/tfcm:default,leaf,empty
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:range/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:range/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:range/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:range/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:file,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-inform-callback/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:id,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription,choice,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:path,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:range,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:range/tfcm:lower,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:range/tfcm:upper,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:range/tfcm:default,leaf,empty
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:range/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:range/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:range/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:range/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:file,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:snmp-notification-subscription/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:id,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback,choice,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:path,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:range,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:range/tfcm:lower,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:range/tfcm:upper,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:range/tfcm:default,leaf,empty
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:range/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:range/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:range/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:range/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:file,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:error-formatting-callback/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:id,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint,choice,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:path,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:range,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:range/tfcm:lower,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:range/tfcm:upper,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:range/tfcm:default,leaf,empty
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:range/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:range/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:range/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:range/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:file,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:typepoint/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:replay-support,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay,choice,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:path,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:range,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:range/tfcm:lower,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:range/tfcm:upper,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:range/tfcm:default,leaf,empty
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:range/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:range/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:range/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:range/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:file,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:notification-stream-replay/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:enabled,leaf,boolean
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback,choice,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:path,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:range,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:range/tfcm:lower,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:range/tfcm:upper,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:range/tfcm:default,leaf,empty
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:range/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:range/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:range/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:range/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:file,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authentication-callback/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:enabled,leaf,boolean
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks,choice,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:path,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:range,list,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:range/tfcm:lower,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:range/tfcm:upper,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:range/tfcm:default,leaf,empty
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:range/tfcm:daemon,container,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:range/tfcm:daemon/tfcm:id,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:range/tfcm:daemon/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:range/tfcm:daemon/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks,case,
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:file,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:callpoints/tfcm:authorization-callbacks/tfcm:error,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:cdb,container,
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore,list,
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:name,leaf,datastore-name
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:transaction-id,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:write-queue,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:filename,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:disk-size,leaf,size-in-bytes
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:ram-size,leaf,size-in-bytes
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:read-locks,leaf,uint32
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:write-lock-set,leaf,boolean
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:subscription-lock-set,leaf,boolean
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:waiting-for-replication-sync,leaf,boolean
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:pending-subscription-sync,container,
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:pending-subscription-sync/tfcm:priority,leaf,subscription-priority
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:pending-subscription-sync/tfcm:notification,list,
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:pending-subscription-sync/tfcm:notification/tfcm:client-name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:pending-subscription-sync/tfcm:notification/tfcm:subscription-ids,leaf-list,subscription-id
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:pending-subscription-sync/tfcm:time-remaining,leaf,union
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:pending-notification-queue,list,
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:pending-notification-queue/tfcm:notification,list,
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:pending-notification-queue/tfcm:notification/tfcm:priority,leaf,subscription-priority
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:pending-notification-queue/tfcm:notification/tfcm:client-name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:datastore/tfcm:pending-notification-queue/tfcm:notification/tfcm:subscription-ids,leaf-list,subscription-id
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:client,list,
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:client/tfcm:name,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:client/tfcm:info,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:client/tfcm:type,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:client/tfcm:datastore,leaf,union
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:client/tfcm:lock,leaf,enumeration
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:client/tfcm:subscription,list,
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:client/tfcm:subscription/tfcm:datastore,leaf,datastore-name
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:client/tfcm:subscription/tfcm:twophase,leaf,empty
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:client/tfcm:subscription/tfcm:priority,leaf,subscription-priority
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:client/tfcm:subscription/tfcm:id,leaf,subscription-id
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:client/tfcm:subscription/tfcm:path,leaf,string
+/tfcm:confd-state/tfcm:internal/tfcm:cdb/tfcm:client/tfcm:subscription/tfcm:error,leaf,enumeration

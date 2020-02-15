@@ -1,0 +1,114 @@
+ 
+KPI for model: Cisco-IOS-XE-tunnel-oper.yang
+module: Cisco-IOS-XE-tunnel-oper
+  +--ro tunnel-oper-data
+     +--ro tunnel-domain* [name type]
+     |  +--ro name                  string
+     |  +--ro type                  tunnel-types:tunnel-domain-mode
+     |  +--ro cfg
+     |  |  +--ro primary-tunnel-name?     string
+     |  |  +--ro secondary-tunnel-name?   string
+     |  |  +--ro redundancy-model?        tunnel-types:tunnel-redundancy-model
+     |  |  +--ro enable?                  boolean
+     |  +--ro active-tunnel-name?   string
+     |  +--ro history
+     |     +--ro event-history* []
+     |        +--ro event?         uint32
+     |        +--ro state?         uint32
+     |        +--ro context?       uint32
+     |        +--ro context-str?   string
+     |        +--ro current-rc?    uint32
+     |        +--ro count?         uint32
+     |        +--ro sticky?        boolean
+     |        +--ro timestamp?     yang:date-and-time
+     +--ro tunnel-intf* [name type]
+        +--ro name                string
+        +--ro type                tunnel-types:tunnel-domain-mode
+        +--ro gateway-address?    inet:ip-address
+        +--ro admin-status?       tunnel-types:tunnel-intf-status
+        +--ro status?             tunnel-types:tunnel-intf-status
+        +--ro up-timestamp?       yang:date-and-time
+        +--ro mtu?                uint32
+        +--ro stats
+        |  +--ro flap-count?           uint32
+        |  +--ro total-rx-bytes?       uint64
+        |  +--ro total-tx-bytes?       uint64
+        |  +--ro total-rx-pkts?        uint64
+        |  +--ro total-tx-pkts?        uint64
+        |  +--ro client-count?         uint32
+        |  +--ro up-time?              uint32
+        |  +--ro keepalive-tx?         uint64
+        |  +--ro keepalive-rx?         uint64
+        |  +--ro keepalive-windows?    uint32
+        |  +--ro keepalive-dropped?    uint32
+        |  +--ro total-keepalive-tx?   uint64
+        |  +--ro total-keepalive-rx?   uint64
+        +--ro source-interface?   string
+        +--ro source-address?     inet:ip-address
+        +--ro history
+        |  +--ro event-history* []
+        |     +--ro event?         uint32
+        |     +--ro state?         uint32
+        |     +--ro context?       uint32
+        |     +--ro context-str?   string
+        |     +--ro current-rc?    uint32
+        |     +--ro count?         uint32
+        |     +--ro sticky?        boolean
+        |     +--ro timestamp?     yang:date-and-time
+        +--ro intf-type?          tunnel-types:tunnel-intf-mode
+Xpaths for model: Cisco-IOS-XE-tunnel-oper.yang
+/ios-tunnel-oper:tunnel-oper-data,container,
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain,list,
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:name,leaf,string
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:type,leaf,tunnel-types:tunnel-domain-mode
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:cfg,container,
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:cfg/ios-tunnel-oper:primary-tunnel-name,leaf,string
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:cfg/ios-tunnel-oper:secondary-tunnel-name,leaf,string
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:cfg/ios-tunnel-oper:redundancy-model,leaf,tunnel-types:tunnel-redundancy-model
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:cfg/ios-tunnel-oper:enable,leaf,boolean
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:active-tunnel-name,leaf,string
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:history,container,
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:history/ios-tunnel-oper:event-history,list,
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:event,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:state,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:context,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:context-str,leaf,string
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:current-rc,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:count,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:sticky,leaf,boolean
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-domain/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:timestamp,leaf,yang:date-and-time
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf,list,
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:name,leaf,string
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:type,leaf,tunnel-types:tunnel-domain-mode
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:gateway-address,leaf,inet:ip-address
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:admin-status,leaf,tunnel-types:tunnel-intf-status
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:status,leaf,tunnel-types:tunnel-intf-status
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:up-timestamp,leaf,yang:date-and-time
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:mtu,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:stats,container,
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:stats/ios-tunnel-oper:flap-count,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:stats/ios-tunnel-oper:total-rx-bytes,leaf,uint64
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:stats/ios-tunnel-oper:total-tx-bytes,leaf,uint64
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:stats/ios-tunnel-oper:total-rx-pkts,leaf,uint64
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:stats/ios-tunnel-oper:total-tx-pkts,leaf,uint64
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:stats/ios-tunnel-oper:client-count,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:stats/ios-tunnel-oper:up-time,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:stats/ios-tunnel-oper:keepalive-tx,leaf,uint64
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:stats/ios-tunnel-oper:keepalive-rx,leaf,uint64
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:stats/ios-tunnel-oper:keepalive-windows,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:stats/ios-tunnel-oper:keepalive-dropped,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:stats/ios-tunnel-oper:total-keepalive-tx,leaf,uint64
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:stats/ios-tunnel-oper:total-keepalive-rx,leaf,uint64
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:source-interface,leaf,string
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:source-address,leaf,inet:ip-address
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:history,container,
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:history/ios-tunnel-oper:event-history,list,
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:event,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:state,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:context,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:context-str,leaf,string
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:current-rc,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:count,leaf,uint32
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:sticky,leaf,boolean
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:history/ios-tunnel-oper:event-history/ios-tunnel-oper:timestamp,leaf,yang:date-and-time
+/ios-tunnel-oper:tunnel-oper-data/ios-tunnel-oper:tunnel-intf/ios-tunnel-oper:intf-type,leaf,tunnel-types:tunnel-intf-mode

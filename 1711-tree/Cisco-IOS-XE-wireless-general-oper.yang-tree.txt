@@ -1,0 +1,48 @@
+ 
+KPI for model: Cisco-IOS-XE-wireless-general-oper.yang
+module: Cisco-IOS-XE-wireless-general-oper
+  +--ro general-oper-data
+     +--ro mgmt-intf-data!
+     |  +--ro intf-name?             string
+     |  +--ro intf-type?             string
+     |  +--ro intf-id?               uint32
+     |  +--ro mgmt-ip?               inet:ipv4-address
+     |  +--ro net-mask?              inet:ipv4-address
+     |  +--ro mgmt-mac?              yang:mac-address
+     |  +--ro interface-ipv6-list* [addr]
+     |     +--ro addr    inet:ip-prefix
+     +--ro mfp-stats* [bssid]
+        +--ro bssid                yang:mac-address
+        +--ro wtp-mac?             yang:mac-address
+        +--ro last-src-mac-addr?   yang:mac-address
+        +--ro ap-name?             string
+        +--ro slot-id?             wireless-enum-types:slot-id-type
+        +--ro radio-type?          wireless-enum-types:enm-radio-type
+        +--ro last-report-time?    uint32
+        +--ro event* []
+           +--ro count?    uint32
+           +--ro event?    wireless-enum-types:mfp-event
+           +--ro frames?   wireless-general-oper:mfp-event-frames
+Xpaths for model: Cisco-IOS-XE-wireless-general-oper.yang
+/wireless-general-oper:general-oper-data,container,
+/wireless-general-oper:general-oper-data/wireless-general-oper:mgmt-intf-data,container,
+/wireless-general-oper:general-oper-data/wireless-general-oper:mgmt-intf-data/wireless-general-oper:intf-name,leaf,string
+/wireless-general-oper:general-oper-data/wireless-general-oper:mgmt-intf-data/wireless-general-oper:intf-type,leaf,string
+/wireless-general-oper:general-oper-data/wireless-general-oper:mgmt-intf-data/wireless-general-oper:intf-id,leaf,uint32
+/wireless-general-oper:general-oper-data/wireless-general-oper:mgmt-intf-data/wireless-general-oper:mgmt-ip,leaf,inet:ipv4-address
+/wireless-general-oper:general-oper-data/wireless-general-oper:mgmt-intf-data/wireless-general-oper:net-mask,leaf,inet:ipv4-address
+/wireless-general-oper:general-oper-data/wireless-general-oper:mgmt-intf-data/wireless-general-oper:mgmt-mac,leaf,yang:mac-address
+/wireless-general-oper:general-oper-data/wireless-general-oper:mgmt-intf-data/wireless-general-oper:interface-ipv6-list,list,
+/wireless-general-oper:general-oper-data/wireless-general-oper:mgmt-intf-data/wireless-general-oper:interface-ipv6-list/wireless-general-oper:addr,leaf,inet:ip-prefix
+/wireless-general-oper:general-oper-data/wireless-general-oper:mfp-stats,list,
+/wireless-general-oper:general-oper-data/wireless-general-oper:mfp-stats/wireless-general-oper:bssid,leaf,yang:mac-address
+/wireless-general-oper:general-oper-data/wireless-general-oper:mfp-stats/wireless-general-oper:wtp-mac,leaf,yang:mac-address
+/wireless-general-oper:general-oper-data/wireless-general-oper:mfp-stats/wireless-general-oper:last-src-mac-addr,leaf,yang:mac-address
+/wireless-general-oper:general-oper-data/wireless-general-oper:mfp-stats/wireless-general-oper:ap-name,leaf,string
+/wireless-general-oper:general-oper-data/wireless-general-oper:mfp-stats/wireless-general-oper:slot-id,leaf,wireless-enum-types:slot-id-type
+/wireless-general-oper:general-oper-data/wireless-general-oper:mfp-stats/wireless-general-oper:radio-type,leaf,wireless-enum-types:enm-radio-type
+/wireless-general-oper:general-oper-data/wireless-general-oper:mfp-stats/wireless-general-oper:last-report-time,leaf,uint32
+/wireless-general-oper:general-oper-data/wireless-general-oper:mfp-stats/wireless-general-oper:event,list,
+/wireless-general-oper:general-oper-data/wireless-general-oper:mfp-stats/wireless-general-oper:event/wireless-general-oper:count,leaf,uint32
+/wireless-general-oper:general-oper-data/wireless-general-oper:mfp-stats/wireless-general-oper:event/wireless-general-oper:event,leaf,wireless-enum-types:mfp-event
+/wireless-general-oper:general-oper-data/wireless-general-oper:mfp-stats/wireless-general-oper:event/wireless-general-oper:frames,leaf,wireless-general-oper:mfp-event-frames

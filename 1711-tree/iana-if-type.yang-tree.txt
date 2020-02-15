@@ -1,0 +1,3 @@
+ 
+KPI for model: iana-if-type.yang
+Xpaths for model: iana-if-type.yang

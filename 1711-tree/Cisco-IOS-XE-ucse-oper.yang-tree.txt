@@ -1,0 +1,40 @@
+ 
+KPI for model: Cisco-IOS-XE-ucse-oper.yang
+module: Cisco-IOS-XE-ucse-oper
+  +--ro ucse-oper-data
+     +--ro ucse-stats* [slot-num subslot-num]
+        +--ro slot-num         uint32
+        +--ro subslot-num      uint32
+        +--ro command-stats
+           +--ro shutdown-count?                     uint64
+           +--ro status-count?                       uint64
+           +--ro server-raid-password-reset-count?   uint64
+           +--ro server-bios-password-reset-count?   uint64
+           +--ro server-reload-count?                uint64
+           +--ro server-reset-count?                 uint64
+           +--ro server-start-count?                 uint64
+           +--ro server-stop-count?                  uint64
+           +--ro imc-password-reset-count?           uint64
+           +--ro imc-vlan-count?                     uint64
+           +--ro imc-access-port-count?              uint64
+           +--ro imc-ip-count?                       uint64
+           +--ro stats-start-time?                   yang:date-and-time
+Xpaths for model: Cisco-IOS-XE-ucse-oper.yang
+/ucse-ios-xe-oper:ucse-oper-data,container,
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats,list,
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:slot-num,leaf,uint32
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:subslot-num,leaf,uint32
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:command-stats,container,
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:command-stats/ucse-ios-xe-oper:shutdown-count,leaf,uint64
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:command-stats/ucse-ios-xe-oper:status-count,leaf,uint64
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:command-stats/ucse-ios-xe-oper:server-raid-password-reset-count,leaf,uint64
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:command-stats/ucse-ios-xe-oper:server-bios-password-reset-count,leaf,uint64
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:command-stats/ucse-ios-xe-oper:server-reload-count,leaf,uint64
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:command-stats/ucse-ios-xe-oper:server-reset-count,leaf,uint64
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:command-stats/ucse-ios-xe-oper:server-start-count,leaf,uint64
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:command-stats/ucse-ios-xe-oper:server-stop-count,leaf,uint64
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:command-stats/ucse-ios-xe-oper:imc-password-reset-count,leaf,uint64
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:command-stats/ucse-ios-xe-oper:imc-vlan-count,leaf,uint64
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:command-stats/ucse-ios-xe-oper:imc-access-port-count,leaf,uint64
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:command-stats/ucse-ios-xe-oper:imc-ip-count,leaf,uint64
+/ucse-ios-xe-oper:ucse-oper-data/ucse-ios-xe-oper:ucse-stats/ucse-ios-xe-oper:command-stats/ucse-ios-xe-oper:stats-start-time,leaf,yang:date-and-time

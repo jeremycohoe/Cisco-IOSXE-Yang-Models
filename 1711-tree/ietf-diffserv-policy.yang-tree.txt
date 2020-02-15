@@ -1,0 +1,78 @@
+ 
+KPI for model: ietf-diffserv-policy.yang
+module: ietf-diffserv-policy
+  +--rw policies {policy-template-support}?
+     +--rw policy-entry* [policy-name]
+        +--rw policy-name         string
+        +--rw policy-descr?       string
+        +--rw classifier-entry* [classifier-entry-name]
+           +--rw classifier-entry-name           string
+           +--rw classifier-entry-inline?        boolean
+           +--rw classifier-entry-filter-oper?   identityref
+           +--rw filter-entry* [filter-type filter-logical-not] {policy-inline-classifier-config}?
+           |  +--rw filter-type                         identityref
+           |  +--rw filter-logical-not                  boolean
+           |  +--rw (filter-param)?
+           |     +--:(dscp)
+           |     |  +--rw dscp-cfg* [dscp-min dscp-max]
+           |     |     +--rw dscp-min    inet:dscp
+           |     |     +--rw dscp-max    inet:dscp
+           |     +--:(source-ip-address)
+           |     |  +--rw source-ip-address-cfg* [source-ip-addr]
+           |     |     +--rw source-ip-addr    inet:ip-prefix
+           |     +--:(destination-ip-address)
+           |     |  +--rw destination-ip-address-cfg* [destination-ip-addr]
+           |     |     +--rw destination-ip-addr    inet:ip-prefix
+           |     +--:(source-port)
+           |     |  +--rw source-port-cfg* [source-port-min source-port-max]
+           |     |     +--rw source-port-min    inet:port-number
+           |     |     +--rw source-port-max    inet:port-number
+           |     +--:(destination-port)
+           |     |  +--rw destination-port-cfg* [destination-port-min destination-port-max]
+           |     |     +--rw destination-port-min    inet:port-number
+           |     |     +--rw destination-port-max    inet:port-number
+           |     +--:(protocol)
+           |        +--rw protocol-cfg* [protocol-min protocol-max]
+           |           +--rw protocol-min    uint8
+           |           +--rw protocol-max    uint8
+           +--rw classifier-action-entry-cfg* [action-type]
+              +--rw action-type    identityref
+              +--rw (action-cfg-params)?
+Xpaths for model: ietf-diffserv-policy.yang
+/policy:policies,container,
+/policy:policies/policy:policy-entry,list,
+/policy:policies/policy:policy-entry/policy:policy-name,leaf,string
+/policy:policies/policy:policy-entry/policy:policy-descr,leaf,string
+/policy:policies/policy:policy-entry/policy:classifier-entry,list,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:classifier-entry-name,leaf,string
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:classifier-entry-inline,leaf,boolean
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:classifier-entry-filter-oper,leaf,identityref
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry,list,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:filter-type,leaf,identityref
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:filter-logical-not,leaf,boolean
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry,choice,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry,case,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:dscp-cfg,list,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:dscp-cfg/policy:dscp-min,leaf,inet:dscp
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:dscp-cfg/policy:dscp-max,leaf,inet:dscp
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry,case,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:source-ip-address-cfg,list,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:source-ip-address-cfg/policy:source-ip-addr,leaf,inet:ip-prefix
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry,case,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:destination-ip-address-cfg,list,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:destination-ip-address-cfg/policy:destination-ip-addr,leaf,inet:ip-prefix
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry,case,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:source-port-cfg,list,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:source-port-cfg/policy:source-port-min,leaf,inet:port-number
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:source-port-cfg/policy:source-port-max,leaf,inet:port-number
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry,case,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:destination-port-cfg,list,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:destination-port-cfg/policy:destination-port-min,leaf,inet:port-number
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:destination-port-cfg/policy:destination-port-max,leaf,inet:port-number
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry,case,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:protocol-cfg,list,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:protocol-cfg/policy:protocol-min,leaf,uint8
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:filter-entry/policy:protocol-cfg/policy:protocol-max,leaf,uint8
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:classifier-action-entry-cfg,list,
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:classifier-action-entry-cfg/policy:action-type,leaf,identityref
+/policy:policies/policy:policy-entry/policy:classifier-entry/policy:classifier-action-entry-cfg,choice,

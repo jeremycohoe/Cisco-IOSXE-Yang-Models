@@ -1,0 +1,84 @@
+ 
+KPI for model: Cisco-IOS-XE-ppp-oper.yang
+module: Cisco-IOS-XE-ppp-oper
+  +--ro ppp-data
+     +--ro ppp-interface* [phy-ifname]
+     |  +--ro phy-ifname    string
+     |  +--ro ppp-va* []
+     |     +--ro va-ifname?          string
+     |     +--ro vrf-name?           string
+     |     +--ro interface-ip?       inet:ip-address
+     |     +--ro gateway-ip?         inet:ip-address
+     |     +--ro primary-dns-ip?     inet:ip-address
+     |     +--ro secondary-dns-ip?   inet:ip-address
+     |     +--ro mtu?                uint32
+     |     +--ro auth-type?          ppp-ios-xe-oper:ppp-ios-auth-type
+     +--ro ppp-statistics!
+     |  +--ro ppp-lcp-pkts?    uint32
+     |  +--ro ppp-ipcp-pkts?   uint32
+     |  +--ro ppp-ccp-pkts?    uint32
+     +--ro pppoe!
+        +--ro role?                 ppp-ios-xe-oper:pppoe-operational-role
+        +--ro pppoe-session-list* [ifname]
+        |  +--ro ifname     string
+        |  +--ro session* []
+        |     +--ro session-id?              uint16
+        |     +--ro lmac?                    yang:mac-address
+        |     +--ro rmac?                    yang:mac-address
+        |     +--ro va-ifname?               string
+        |     +--ro vrf-name?                string
+        |     +--ro dot1q-qinq-outer-vlan?   uint16
+        |     +--ro dot1q-qinq-inner-vlan?   uint16
+        |     +--ro service-name?            string
+        |     +--ro in-packet?               uint32
+        |     +--ro out-packet?              uint32
+        |     +--ro in-bytes?                uint64
+        |     +--ro out-bytes?               uint64
+        +--ro pppoe-statistics!
+           +--ro pppoe-padi-pkts?          uint32
+           +--ro pppoe-pado-pkts?          uint32
+           +--ro pppoe-padr-pkts?          uint32
+           +--ro pppoe-pads-pkts?          uint32
+           +--ro pppoe-padt-pkts?          uint32
+           +--ro invalid-discovery-pkts?   uint32
+Xpaths for model: Cisco-IOS-XE-ppp-oper.yang
+/ppp-ios-xe-oper:ppp-data,container,
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:ppp-interface,list,
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:ppp-interface/ppp-ios-xe-oper:phy-ifname,leaf,string
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:ppp-interface/ppp-ios-xe-oper:ppp-va,list,
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:ppp-interface/ppp-ios-xe-oper:ppp-va/ppp-ios-xe-oper:va-ifname,leaf,string
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:ppp-interface/ppp-ios-xe-oper:ppp-va/ppp-ios-xe-oper:vrf-name,leaf,string
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:ppp-interface/ppp-ios-xe-oper:ppp-va/ppp-ios-xe-oper:interface-ip,leaf,inet:ip-address
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:ppp-interface/ppp-ios-xe-oper:ppp-va/ppp-ios-xe-oper:gateway-ip,leaf,inet:ip-address
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:ppp-interface/ppp-ios-xe-oper:ppp-va/ppp-ios-xe-oper:primary-dns-ip,leaf,inet:ip-address
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:ppp-interface/ppp-ios-xe-oper:ppp-va/ppp-ios-xe-oper:secondary-dns-ip,leaf,inet:ip-address
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:ppp-interface/ppp-ios-xe-oper:ppp-va/ppp-ios-xe-oper:mtu,leaf,uint32
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:ppp-interface/ppp-ios-xe-oper:ppp-va/ppp-ios-xe-oper:auth-type,leaf,ppp-ios-xe-oper:ppp-ios-auth-type
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:ppp-statistics,container,
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:ppp-statistics/ppp-ios-xe-oper:ppp-lcp-pkts,leaf,uint32
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:ppp-statistics/ppp-ios-xe-oper:ppp-ipcp-pkts,leaf,uint32
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:ppp-statistics/ppp-ios-xe-oper:ppp-ccp-pkts,leaf,uint32
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe,container,
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:role,leaf,ppp-ios-xe-oper:pppoe-operational-role
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-session-list,list,
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-session-list/ppp-ios-xe-oper:ifname,leaf,string
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-session-list/ppp-ios-xe-oper:session,list,
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-session-list/ppp-ios-xe-oper:session/ppp-ios-xe-oper:session-id,leaf,uint16
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-session-list/ppp-ios-xe-oper:session/ppp-ios-xe-oper:lmac,leaf,yang:mac-address
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-session-list/ppp-ios-xe-oper:session/ppp-ios-xe-oper:rmac,leaf,yang:mac-address
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-session-list/ppp-ios-xe-oper:session/ppp-ios-xe-oper:va-ifname,leaf,string
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-session-list/ppp-ios-xe-oper:session/ppp-ios-xe-oper:vrf-name,leaf,string
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-session-list/ppp-ios-xe-oper:session/ppp-ios-xe-oper:dot1q-qinq-outer-vlan,leaf,uint16
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-session-list/ppp-ios-xe-oper:session/ppp-ios-xe-oper:dot1q-qinq-inner-vlan,leaf,uint16
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-session-list/ppp-ios-xe-oper:session/ppp-ios-xe-oper:service-name,leaf,string
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-session-list/ppp-ios-xe-oper:session/ppp-ios-xe-oper:in-packet,leaf,uint32
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-session-list/ppp-ios-xe-oper:session/ppp-ios-xe-oper:out-packet,leaf,uint32
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-session-list/ppp-ios-xe-oper:session/ppp-ios-xe-oper:in-bytes,leaf,uint64
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-session-list/ppp-ios-xe-oper:session/ppp-ios-xe-oper:out-bytes,leaf,uint64
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-statistics,container,
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-statistics/ppp-ios-xe-oper:pppoe-padi-pkts,leaf,uint32
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-statistics/ppp-ios-xe-oper:pppoe-pado-pkts,leaf,uint32
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-statistics/ppp-ios-xe-oper:pppoe-padr-pkts,leaf,uint32
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-statistics/ppp-ios-xe-oper:pppoe-pads-pkts,leaf,uint32
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-statistics/ppp-ios-xe-oper:pppoe-padt-pkts,leaf,uint32
+/ppp-ios-xe-oper:ppp-data/ppp-ios-xe-oper:pppoe/ppp-ios-xe-oper:pppoe-statistics/ppp-ios-xe-oper:invalid-discovery-pkts,leaf,uint32

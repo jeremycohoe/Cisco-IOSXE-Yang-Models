@@ -1,0 +1,13 @@
+ 
+KPI for model: openconfig-if-poe.yang
+
+module: openconfig-if-poe
+  augment /oc-if:interfaces/oc-if:interface/oc-eth:ethernet:
+    +--rw poe
+       +--rw config
+       |  +--rw enabled?   boolean
+       +--ro state
+          +--ro enabled?       boolean
+          +--ro power-used?    decimal64
+          +--ro power-class?   uint8
+Xpaths for model: openconfig-if-poe.yang

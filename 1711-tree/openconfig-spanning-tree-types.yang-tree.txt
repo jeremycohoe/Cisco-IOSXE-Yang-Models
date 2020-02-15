@@ -1,0 +1,3 @@
+ 
+KPI for model: openconfig-spanning-tree-types.yang
+Xpaths for model: openconfig-spanning-tree-types.yang

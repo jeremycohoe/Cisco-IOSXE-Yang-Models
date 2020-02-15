@@ -1,0 +1,102 @@
+ 
+KPI for model: Cisco-IOS-XE-spanning-tree-oper.yang
+module: Cisco-IOS-XE-spanning-tree-oper
+  +--ro stp-details
+     +--ro stp-detail* [instance]
+     |  +--ro instance                        string
+     |  +--ro hello-time?                     int32
+     |  +--ro max-age?                        int32
+     |  +--ro forwarding-delay?               int32
+     |  +--ro hold-count?                     uint32
+     |  +--ro bridge-priority?                uint16
+     |  +--ro bridge-address?                 yang:mac-address
+     |  +--ro designated-root-priority?       uint32
+     |  +--ro designated-root-address?        yang:mac-address
+     |  +--ro root-port?                      uint16
+     |  +--ro root-cost?                      uint64
+     |  +--ro hold-time?                      uint64
+     |  +--ro topology-changes?               uint64
+     |  +--ro time-of-last-topology-change?   yang:date-and-time
+     |  +--ro interfaces
+     |     +--ro interface* [name]
+     |        +--ro name                          string
+     |        +--ro cost?                         uint64
+     |        +--ro port-priority?                uint16
+     |        +--ro port-num?                     uint16
+     |        +--ro role?                         stp-ios-xe-oper:stp-port-role
+     |        +--ro state?                        stp-ios-xe-oper:stp-port-state
+     |        +--ro designated-root-priority?     uint32
+     |        +--ro designated-root-address?      yang:mac-address
+     |        +--ro designated-cost?              uint32
+     |        +--ro designated-bridge-priority?   uint32
+     |        +--ro designated-bridge-address?    yang:mac-address
+     |        +--ro designated-port-priority?     uint16
+     |        +--ro designated-port-num?          uint16
+     |        +--ro forward-transitions?          uint64
+     |        +--ro link-type?                    stp-ios-xe-oper:stp-link-role
+     |        +--ro guard?                        stp-ios-xe-oper:stp-port-guard
+     |        +--ro bpdu-guard?                   stp-ios-xe-oper:stp-port-bpduguard
+     |        +--ro bpdu-filter?                  stp-ios-xe-oper:stp-port-bpdufilter
+     |        +--ro bpdu-sent?                    uint64
+     |        +--ro bpdu-received?                uint64
+     +--ro stp-global!
+        +--ro mode?                           stp-ios-xe-oper:stp-mode
+        +--ro bridge-assurance?               empty
+        +--ro loop-guard?                     empty
+        +--ro bpdu-guard?                     empty
+        +--ro bpdu-filter?                    empty
+        +--ro etherchannel-misconfig-guard?   empty
+        +--ro mst-only
+           +--ro mst-config-revision?   uint16
+           +--ro mst-config-name?       string
+           +--ro max-hops?              uint16
+Xpaths for model: Cisco-IOS-XE-spanning-tree-oper.yang
+/stp-ios-xe-oper:stp-details,container,
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail,list,
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:instance,leaf,string
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:hello-time,leaf,int32
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:max-age,leaf,int32
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:forwarding-delay,leaf,int32
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:hold-count,leaf,uint32
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:bridge-priority,leaf,uint16
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:bridge-address,leaf,yang:mac-address
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:designated-root-priority,leaf,uint32
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:designated-root-address,leaf,yang:mac-address
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:root-port,leaf,uint16
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:root-cost,leaf,uint64
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:hold-time,leaf,uint64
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:topology-changes,leaf,uint64
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:time-of-last-topology-change,leaf,yang:date-and-time
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces,container,
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface,list,
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:name,leaf,string
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:cost,leaf,uint64
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:port-priority,leaf,uint16
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:port-num,leaf,uint16
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:role,leaf,stp-ios-xe-oper:stp-port-role
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:state,leaf,stp-ios-xe-oper:stp-port-state
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:designated-root-priority,leaf,uint32
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:designated-root-address,leaf,yang:mac-address
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:designated-cost,leaf,uint32
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:designated-bridge-priority,leaf,uint32
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:designated-bridge-address,leaf,yang:mac-address
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:designated-port-priority,leaf,uint16
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:designated-port-num,leaf,uint16
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:forward-transitions,leaf,uint64
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:link-type,leaf,stp-ios-xe-oper:stp-link-role
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:guard,leaf,stp-ios-xe-oper:stp-port-guard
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:bpdu-guard,leaf,stp-ios-xe-oper:stp-port-bpduguard
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:bpdu-filter,leaf,stp-ios-xe-oper:stp-port-bpdufilter
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:bpdu-sent,leaf,uint64
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-detail/stp-ios-xe-oper:interfaces/stp-ios-xe-oper:interface/stp-ios-xe-oper:bpdu-received,leaf,uint64
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-global,container,
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-global/stp-ios-xe-oper:mode,leaf,stp-ios-xe-oper:stp-mode
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-global/stp-ios-xe-oper:bridge-assurance,leaf,empty
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-global/stp-ios-xe-oper:loop-guard,leaf,empty
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-global/stp-ios-xe-oper:bpdu-guard,leaf,empty
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-global/stp-ios-xe-oper:bpdu-filter,leaf,empty
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-global/stp-ios-xe-oper:etherchannel-misconfig-guard,leaf,empty
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-global/stp-ios-xe-oper:mst-only,container,
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-global/stp-ios-xe-oper:mst-only/stp-ios-xe-oper:mst-config-revision,leaf,uint16
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-global/stp-ios-xe-oper:mst-only/stp-ios-xe-oper:mst-config-name,leaf,string
+/stp-ios-xe-oper:stp-details/stp-ios-xe-oper:stp-global/stp-ios-xe-oper:mst-only/stp-ios-xe-oper:max-hops,leaf,uint16

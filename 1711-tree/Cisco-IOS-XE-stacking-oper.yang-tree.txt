@@ -1,0 +1,36 @@
+ 
+KPI for model: Cisco-IOS-XE-stacking-oper.yang
+module: Cisco-IOS-XE-stacking-oper
+  x--ro stacking-oper-data
+     +--ro stack-data!
+     |  +--ro stack-mac-address?      yang:mac-address
+     |  +--ro is-local-mac?           boolean
+     |  +--ro mac-persistent-timer?   uint32
+     +--ro switch-oper-info* [switch-num]
+        +--ro switch-num            uint8
+        +--ro role?                 stacking-ios-xe-oper:oper-switch-role
+        +--ro state?                stacking-ios-xe-oper:oper-switch-state
+        +--ro priority?             uint8
+        +--ro mac-address?          yang:mac-address
+        +--ro hw-version?           string
+        +--ro is-stackport-1-up?    boolean
+        +--ro stackport-1-nbr-sw?   uint8
+        +--ro is-stackport-2-up?    boolean
+        +--ro stackport-2-nbr-sw?   uint8
+Xpaths for model: Cisco-IOS-XE-stacking-oper.yang
+/stacking-ios-xe-oper:stacking-oper-data,container,
+/stacking-ios-xe-oper:stacking-oper-data/stacking-ios-xe-oper:stack-data,container,
+/stacking-ios-xe-oper:stacking-oper-data/stacking-ios-xe-oper:stack-data/stacking-ios-xe-oper:stack-mac-address,leaf,yang:mac-address
+/stacking-ios-xe-oper:stacking-oper-data/stacking-ios-xe-oper:stack-data/stacking-ios-xe-oper:is-local-mac,leaf,boolean
+/stacking-ios-xe-oper:stacking-oper-data/stacking-ios-xe-oper:stack-data/stacking-ios-xe-oper:mac-persistent-timer,leaf,uint32
+/stacking-ios-xe-oper:stacking-oper-data/stacking-ios-xe-oper:switch-oper-info,list,
+/stacking-ios-xe-oper:stacking-oper-data/stacking-ios-xe-oper:switch-oper-info/stacking-ios-xe-oper:switch-num,leaf,uint8
+/stacking-ios-xe-oper:stacking-oper-data/stacking-ios-xe-oper:switch-oper-info/stacking-ios-xe-oper:role,leaf,stacking-ios-xe-oper:oper-switch-role
+/stacking-ios-xe-oper:stacking-oper-data/stacking-ios-xe-oper:switch-oper-info/stacking-ios-xe-oper:state,leaf,stacking-ios-xe-oper:oper-switch-state
+/stacking-ios-xe-oper:stacking-oper-data/stacking-ios-xe-oper:switch-oper-info/stacking-ios-xe-oper:priority,leaf,uint8
+/stacking-ios-xe-oper:stacking-oper-data/stacking-ios-xe-oper:switch-oper-info/stacking-ios-xe-oper:mac-address,leaf,yang:mac-address
+/stacking-ios-xe-oper:stacking-oper-data/stacking-ios-xe-oper:switch-oper-info/stacking-ios-xe-oper:hw-version,leaf,string
+/stacking-ios-xe-oper:stacking-oper-data/stacking-ios-xe-oper:switch-oper-info/stacking-ios-xe-oper:is-stackport-1-up,leaf,boolean
+/stacking-ios-xe-oper:stacking-oper-data/stacking-ios-xe-oper:switch-oper-info/stacking-ios-xe-oper:stackport-1-nbr-sw,leaf,uint8
+/stacking-ios-xe-oper:stacking-oper-data/stacking-ios-xe-oper:switch-oper-info/stacking-ios-xe-oper:is-stackport-2-up,leaf,boolean
+/stacking-ios-xe-oper:stacking-oper-data/stacking-ios-xe-oper:switch-oper-info/stacking-ios-xe-oper:stackport-2-nbr-sw,leaf,uint8

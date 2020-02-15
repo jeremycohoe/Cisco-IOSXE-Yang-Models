@@ -1,0 +1,119 @@
+ 
+KPI for model: ietf-ospf.yang
+module: ietf-ospf
+
+  notifications:
+    +---n if-state-change
+    |  +--ro routing-instance?        rt:routing-instance-ref
+    |  +--ro routing-protocol-name?   string
+    |  +--ro instance-af
+    |  |  +--ro af?   identityref
+    |  +--ro link-type?               identityref
+    |  +--ro interface
+    |  |  +--ro interface?   if:interface-ref
+    |  +--ro virtual-link
+    |  |  +--ro area-id?              uint32
+    |  |  +--ro neighbor-router-id?   yang:dotted-quad
+    |  +--ro sham-link
+    |  |  +--ro area-id?          uint32
+    |  |  +--ro local-ip-addr?    inet:ip-address
+    |  |  +--ro remote-ip-addr?   inet:ip-address
+    |  +--ro state?                   string
+    +---n if-config-error
+    |  +--ro routing-instance?        rt:routing-instance-ref
+    |  +--ro routing-protocol-name?   string
+    |  +--ro instance-af
+    |  |  +--ro af?   identityref
+    |  +--ro link-type?               identityref
+    |  +--ro interface
+    |  |  +--ro interface?       if:interface-ref
+    |  |  +--ro packet-source?   yang:dotted-quad
+    |  +--ro virtual-link
+    |  |  +--ro area-id?              uint32
+    |  |  +--ro neighbor-router-id?   yang:dotted-quad
+    |  +--ro sham-link
+    |  |  +--ro area-id?          uint32
+    |  |  +--ro local-ip-addr?    inet:ip-address
+    |  |  +--ro remote-ip-addr?   inet:ip-address
+    |  +--ro packet-type?             packet-type
+    |  +--ro error?                   enumeration
+    +---n nbr-state-change
+    |  +--ro routing-instance?        rt:routing-instance-ref
+    |  +--ro routing-protocol-name?   string
+    |  +--ro instance-af
+    |  |  +--ro af?   identityref
+    |  +--ro link-type?               identityref
+    |  +--ro interface
+    |  |  +--ro interface?            if:interface-ref
+    |  |  +--ro neighbor-router-id?   yang:dotted-quad
+    |  |  +--ro neighbor-ip-addr?     yang:dotted-quad
+    |  +--ro virtual-link
+    |  |  +--ro area-id?              uint32
+    |  |  +--ro neighbor-router-id?   yang:dotted-quad
+    |  +--ro sham-link
+    |  |  +--ro area-id?              uint32
+    |  |  +--ro local-ip-addr?        inet:ip-address
+    |  |  +--ro neighbor-router-id?   yang:dotted-quad
+    |  |  +--ro neighbor-ip-addr?     yang:dotted-quad
+    |  +--ro state?                   nbr-state-type
+    +---n nbr-restart-helper-status-change
+    |  +--ro routing-instance?        rt:routing-instance-ref
+    |  +--ro routing-protocol-name?   string
+    |  +--ro instance-af
+    |  |  +--ro af?   identityref
+    |  +--ro link-type?               identityref
+    |  +--ro interface
+    |  |  +--ro interface?            if:interface-ref
+    |  |  +--ro neighbor-router-id?   yang:dotted-quad
+    |  |  +--ro neighbor-ip-addr?     yang:dotted-quad
+    |  +--ro virtual-link
+    |  |  +--ro area-id?              uint32
+    |  |  +--ro neighbor-router-id?   yang:dotted-quad
+    |  +--ro status?                  restart-helper-status-type
+    |  +--ro age?                     uint32
+    |  +--ro exit-reason?             restart-exit-reason-type
+    +---n rx-bad-packet
+    |  +--ro routing-instance?        rt:routing-instance-ref
+    |  +--ro routing-protocol-name?   string
+    |  +--ro instance-af
+    |  |  +--ro af?   identityref
+    |  +--ro link-type?               identityref
+    |  +--ro interface
+    |  |  +--ro interface?       if:interface-ref
+    |  |  +--ro packet-source?   yang:dotted-quad
+    |  +--ro virtual-link
+    |  |  +--ro area-id?              uint32
+    |  |  +--ro neighbor-router-id?   yang:dotted-quad
+    |  +--ro sham-link
+    |  |  +--ro area-id?          uint32
+    |  |  +--ro local-ip-addr?    inet:ip-address
+    |  |  +--ro remote-ip-addr?   inet:ip-address
+    |  +--ro packet-type?             packet-type
+    +---n lsdb-approaching-overflow
+    |  +--ro routing-instance?        rt:routing-instance-ref
+    |  +--ro routing-protocol-name?   string
+    |  +--ro instance-af
+    |  |  +--ro af?   identityref
+    |  +--ro ext-lsdb-limit?          uint32
+    +---n lsdb-overflow
+    |  +--ro routing-instance?        rt:routing-instance-ref
+    |  +--ro routing-protocol-name?   string
+    |  +--ro instance-af
+    |  |  +--ro af?   identityref
+    |  +--ro ext-lsdb-limit?          uint32
+    +---n nssa-translator-status-change
+    |  +--ro routing-instance?        rt:routing-instance-ref
+    |  +--ro routing-protocol-name?   string
+    |  +--ro instance-af
+    |  |  +--ro af?   identityref
+    |  +--ro area-id?                 uint32
+    |  +--ro status?                  nssa-translator-state-type
+    +---n restart-status-change
+       +--ro routing-instance?        rt:routing-instance-ref
+       +--ro routing-protocol-name?   string
+       +--ro instance-af
+       |  +--ro af?   identityref
+       +--ro status?                  restart-status-type
+       +--ro restart-interval?        uint16
+       +--ro exit-reason?             restart-exit-reason-type
+Xpaths for model: ietf-ospf.yang

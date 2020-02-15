@@ -1,0 +1,341 @@
+ 
+KPI for model: Cisco-IOS-XE-nd.yang
+
+module: Cisco-IOS-XE-nd
+  augment /ios:native/ios:ipv6/ios:nd:
+    x--rw inspection
+    |  x--rw policy* [name-nd-inspection-policy]
+    |     x--rw name-nd-inspection-policy    string
+    |     x--rw device-role
+    |     |  x--rw host?      empty
+    |     |  x--rw monitor?   empty
+    |     |  x--rw router?    empty
+    |     |  x--rw switch?    empty
+    |     x--rw drop-unsecure?               empty
+    |     x--rw limit
+    |     |  x--rw address-count?   uint16
+    |     x--rw sec-level
+    |     |  x--rw minimum?   uint8
+    |     x--rw tracking
+    |     |  x--rw disable!
+    |     |  |  x--rw stale-lifetime
+    |     |  |     x--rw seconds?    uint32
+    |     |  |     x--rw infinite?   empty
+    |     |  x--rw enable!
+    |     |     x--rw reachable-lifetime
+    |     |        x--rw seconds?    uint32
+    |     |        x--rw infinite?   empty
+    |     x--rw trusted-port?                empty
+    |     x--rw validate
+    |        x--rw source-mac?   empty
+    +--rw cache
+    |  +--rw expire
+    |     +--rw time?      uint16
+    |     +--rw refresh?   empty
+    +--rw raguard
+    |  +--rw policy* [raguard-policy-name]
+    |  |  +--rw raguard-policy-name    string
+    |  |  +--rw device-role
+    |  |  |  +--rw host?      empty
+    |  |  |  +--rw monitor?   empty
+    |  |  |  +--rw router?    empty
+    |  |  |  +--rw switch?    empty
+    |  |  +--rw hop-limit
+    |  |  |  +--rw maximum?   uint8
+    |  |  |  +--rw minimum?   uint8
+    |  |  +--rw trusted-port?          empty
+    |  +--rw attach-policy?   string
+    +--rw default-route
+    |  +--rw vrf* [word]
+    |  |  +--rw word     string
+    |  |  +--rw limit?   uint8
+    |  +--rw limit?   uint8
+    +--rw suppress
+       +--rw policy* [nd-suppress-policy-name]
+          +--rw nd-suppress-policy-name    string
+  augment /ios:native/ios:interface/ios:FastEthernet/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw other-config-flag?     empty
+    +--rw router-preference?     enumeration
+    +--rw prefix
+    |  +--rw ipv6-prefix-list* [ipv6-prefix]
+    |     +--rw ipv6-prefix     ios-types:ipv6-prefix
+    |     +--rw no-advertise?   empty
+    +--rw ra
+    |  +--rw suppress!
+    |     +--rw all?   empty
+    +--rw ns-interval?           uint32
+    +--rw reachable-time?        uint32
+    +--rw packet-priority?       empty
+  augment /ios:native/ios:interface/ios:GigabitEthernet/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw other-config-flag?     empty
+    +--rw router-preference?     enumeration
+    +--rw prefix
+    |  +--rw ipv6-prefix-list* [ipv6-prefix]
+    |     +--rw ipv6-prefix     ios-types:ipv6-prefix
+    |     +--rw no-advertise?   empty
+    +--rw ra
+    |  +--rw suppress!
+    |     +--rw all?   empty
+    +--rw ns-interval?           uint32
+    +--rw reachable-time?        uint32
+    +--rw packet-priority?       empty
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw other-config-flag?     empty
+    +--rw router-preference?     enumeration
+    +--rw prefix
+    |  +--rw ipv6-prefix-list* [ipv6-prefix]
+    |     +--rw ipv6-prefix     ios-types:ipv6-prefix
+    |     +--rw no-advertise?   empty
+    +--rw ra
+    |  +--rw suppress!
+    |     +--rw all?   empty
+    +--rw ns-interval?           uint32
+    +--rw reachable-time?        uint32
+    +--rw packet-priority?       empty
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw other-config-flag?     empty
+    +--rw router-preference?     enumeration
+    +--rw prefix
+    |  +--rw ipv6-prefix-list* [ipv6-prefix]
+    |     +--rw ipv6-prefix     ios-types:ipv6-prefix
+    |     +--rw no-advertise?   empty
+    +--rw ra
+    |  +--rw suppress!
+    |     +--rw all?   empty
+    +--rw ns-interval?           uint32
+    +--rw reachable-time?        uint32
+    +--rw packet-priority?       empty
+  augment /ios:native/ios:interface/ios:AppGigabitEthernet/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw other-config-flag?     empty
+    +--rw router-preference?     enumeration
+    +--rw prefix
+    |  +--rw ipv6-prefix-list* [ipv6-prefix]
+    |     +--rw ipv6-prefix     ios-types:ipv6-prefix
+    |     +--rw no-advertise?   empty
+    +--rw ra
+    |  +--rw suppress!
+    |     +--rw all?   empty
+    +--rw ns-interval?           uint32
+    +--rw reachable-time?        uint32
+    +--rw packet-priority?       empty
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw other-config-flag?     empty
+    +--rw router-preference?     enumeration
+    +--rw prefix
+    |  +--rw ipv6-prefix-list* [ipv6-prefix]
+    |     +--rw ipv6-prefix     ios-types:ipv6-prefix
+    |     +--rw no-advertise?   empty
+    +--rw ra
+    |  +--rw suppress!
+    |     +--rw all?   empty
+    +--rw ns-interval?           uint32
+    +--rw reachable-time?        uint32
+    +--rw packet-priority?       empty
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw other-config-flag?     empty
+    +--rw router-preference?     enumeration
+    +--rw prefix
+    |  +--rw ipv6-prefix-list* [ipv6-prefix]
+    |     +--rw ipv6-prefix     ios-types:ipv6-prefix
+    |     +--rw no-advertise?   empty
+    +--rw ra
+    |  +--rw suppress!
+    |     +--rw all?   empty
+    +--rw ns-interval?           uint32
+    +--rw reachable-time?        uint32
+    +--rw packet-priority?       empty
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw other-config-flag?     empty
+    +--rw router-preference?     enumeration
+    +--rw prefix
+    |  +--rw ipv6-prefix-list* [ipv6-prefix]
+    |     +--rw ipv6-prefix     ios-types:ipv6-prefix
+    |     +--rw no-advertise?   empty
+    +--rw ra
+    |  +--rw suppress!
+    |     +--rw all?   empty
+    +--rw ns-interval?           uint32
+    +--rw reachable-time?        uint32
+    +--rw packet-priority?       empty
+  augment /ios:native/ios:interface/ios:HundredGigE/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw other-config-flag?     empty
+    +--rw router-preference?     enumeration
+    +--rw prefix
+    |  +--rw ipv6-prefix-list* [ipv6-prefix]
+    |     +--rw ipv6-prefix     ios-types:ipv6-prefix
+    |     +--rw no-advertise?   empty
+    +--rw ra
+    |  +--rw suppress!
+    |     +--rw all?   empty
+    +--rw ns-interval?           uint32
+    +--rw reachable-time?        uint32
+    +--rw packet-priority?       empty
+  augment /ios:native/ios:interface/ios:Port-channel/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw other-config-flag?     empty
+    +--rw router-preference?     enumeration
+    +--rw prefix
+    |  +--rw ipv6-prefix-list* [ipv6-prefix]
+    |     +--rw ipv6-prefix     ios-types:ipv6-prefix
+    |     +--rw no-advertise?   empty
+    +--rw ra
+    |  +--rw suppress!
+    |     +--rw all?   empty
+    +--rw ns-interval?           uint32
+    +--rw reachable-time?        uint32
+    +--rw packet-priority?       empty
+  augment /ios:native/ios:interface/ios:Loopback/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw other-config-flag?     empty
+    +--rw router-preference?     enumeration
+    +--rw prefix
+    |  +--rw ipv6-prefix-list* [ipv6-prefix]
+    |     +--rw ipv6-prefix     ios-types:ipv6-prefix
+    |     +--rw no-advertise?   empty
+    +--rw ra
+    |  +--rw suppress!
+    |     +--rw all?   empty
+    +--rw ns-interval?           uint32
+    +--rw reachable-time?        uint32
+    +--rw packet-priority?       empty
+  augment /ios:native/ios:interface/ios:Tunnel/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw other-config-flag?     empty
+    +--rw router-preference?     enumeration
+    +--rw prefix
+    |  +--rw ipv6-prefix-list* [ipv6-prefix]
+    |     +--rw ipv6-prefix     ios-types:ipv6-prefix
+    |     +--rw no-advertise?   empty
+    +--rw ra
+    |  +--rw suppress!
+    |     +--rw all?   empty
+    +--rw ns-interval?           uint32
+    +--rw reachable-time?        uint32
+    +--rw packet-priority?       empty
+  augment /ios:native/ios:interface/ios:vasileft/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw other-config-flag?     empty
+    +--rw router-preference?     enumeration
+    +--rw prefix
+    |  +--rw ipv6-prefix-list* [ipv6-prefix]
+    |     +--rw ipv6-prefix     ios-types:ipv6-prefix
+    |     +--rw no-advertise?   empty
+    +--rw ra
+    |  +--rw suppress!
+    |     +--rw all?   empty
+    +--rw ns-interval?           uint32
+    +--rw reachable-time?        uint32
+    +--rw packet-priority?       empty
+  augment /ios:native/ios:interface/ios:vasiright/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw other-config-flag?     empty
+    +--rw router-preference?     enumeration
+    +--rw prefix
+    |  +--rw ipv6-prefix-list* [ipv6-prefix]
+    |     +--rw ipv6-prefix     ios-types:ipv6-prefix
+    |     +--rw no-advertise?   empty
+    +--rw ra
+    |  +--rw suppress!
+    |     +--rw all?   empty
+    +--rw ns-interval?           uint32
+    +--rw reachable-time?        uint32
+    +--rw packet-priority?       empty
+  augment /ios:native/ios:interface/ios:Vlan/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw other-config-flag?     empty
+    +--rw router-preference?     enumeration
+    +--rw prefix
+    |  +--rw ipv6-prefix-list* [ipv6-prefix]
+    |     +--rw ipv6-prefix     ios-types:ipv6-prefix
+    |     +--rw no-advertise?   empty
+    +--rw ra
+    |  +--rw suppress!
+    |     +--rw all?   empty
+    +--rw ns-interval?           uint32
+    +--rw reachable-time?        uint32
+    +--rw packet-priority?       empty
+Xpaths for model: Cisco-IOS-XE-nd.yang

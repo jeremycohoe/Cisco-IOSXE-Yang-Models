@@ -1,0 +1,1505 @@
+ 
+KPI for model: Cisco-IOS-XE-rpc.yang
+module: Cisco-IOS-XE-rpc
+
+  rpcs:
+    +---x default
+    |  +---w input
+    |  |  +---w (default-choice)
+    |  |     +--:(interface-case)
+    |  |        +---w interface?   string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x clear
+    |  +---w input
+    |  |  +---w (clear-choice)
+    |  |     +--:(interface-case)
+    |  |     |  +---w interface?   string
+    |  |     +--:(count-case)
+    |  |     |  +---w count?       string
+    |  |     +--:(ip-case)
+    |  |     |  +---w ip
+    |  |     |     +---w (ip-protocol)?
+    |  |     |        +--:(bgp-case)
+    |  |     |        |  +---w bgp
+    |  |     |        |     +---w peer-address-drop-node-name?   union
+    |  |     |        |     +---w vrf?                           string
+    |  |     |        +--:(dhcp-case)
+    |  |     |        |  +---w dhcp
+    |  |     |        |     +---w binding
+    |  |     |        |        +---w vrf?                  string
+    |  |     |        |        +---w all-drop-node-name    string
+    |  |     |        +--:(ospf-case)
+    |  |     |           +---w ospf
+    |  |     |              +---w id-drop-node-name?   uint16
+    |  |     |              +---w process?             empty
+    |  |     +--:(arp-cache-case)
+    |  |     |  +---w arp-cache!
+    |  |     |     +---w vrf?                 string
+    |  |     |     +---w interface?           string
+    |  |     |     +---w ip-drop-node-name?   inet:ipv4-address
+    |  |     +--:(aaa-case)
+    |  |     |  +---w aaa
+    |  |     |     +---w local
+    |  |     |        +---w user
+    |  |     |           +---w lockout
+    |  |     |              +---w username?   string
+    |  |     +--:(platform-case)
+    |  |        +---w platform
+    |  |           +---w (platform-choice)?
+    |  |              +--:(condition-case)
+    |  |              |  +---w condition
+    |  |              |     +---w all?   empty
+    |  |              +--:(packet-trace-case)
+    |  |              |  +---w packet-trace
+    |  |              |     +---w (packet-trace-choice)?
+    |  |              |        +--:(configuration-case)
+    |  |              |        |  +---w configuration?   empty
+    |  |              |        +--:(statistics-case)
+    |  |              |           +---w statistics?      empty
+    |  |              +--:(hardware-case)
+    |  |                 +---w hardware
+    |  |                    +---w qfp
+    |  |                       +---w active
+    |  |                          +---w feature
+    |  |                             +---w (feature-choice)?
+    |  +--ro output
+    |     +--ro result?   string
+    +---x crypto
+    |  +---w input
+    |  |  +---w pki
+    |  |  |  +---w (subcommand)?
+    |  |  |     +--:(benchmark)
+    |  |  |     |  +---w benchmark
+    |  |  |     |     +---w start?   uint16
+    |  |  |     |     +---w wrap?    empty
+    |  |  |     |     +---w stop?    empty
+    |  |  |     +--:(crl)
+    |  |  |     |  +---w crl
+    |  |  |     |     +---w refresh-cache?   empty
+    |  |  |     |     +---w request?         string
+    |  |  |     +--:(authenticate)
+    |  |  |     |  +---w authenticate
+    |  |  |     |     +---w name-drop-node-name?   string
+    |  |  |     +--:(enroll)
+    |  |  |     |  +---w enroll
+    |  |  |     |     +---w name-drop-node-name?   string
+    |  |  |     +--:(export)
+    |  |  |     |  +---w export
+    |  |  |     |     +---w name-drop-node-name?   string
+    |  |  |     |     +---w pkcs12?                string
+    |  |  |     |     +---w password?              string
+    |  |  |     +--:(import)
+    |  |  |     |  +---w import
+    |  |  |     |     +---w name-drop-node-name?   string
+    |  |  |     |     +---w certificate?           empty
+    |  |  |     |     +---w pkcs12?                string
+    |  |  |     |     +---w password?              string
+    |  |  |     +--:(certificate)
+    |  |  |     |  +---w certificate
+    |  |  |     |     +---w validate?   string
+    |  |  |     +--:(server)
+    |  |  |        +---w server
+    |  |  |           +---w name-drop-node-name?   string
+    |  |  |           +---w grant
+    |  |  |           |  +---w id-drop-node-name?   uint16
+    |  |  |           |  +---w all?                 empty
+    |  |  |           +---w password
+    |  |  |           |  +---w generate!
+    |  |  |           |     +---w minutes-drop-node-name?   uint16
+    |  |  |           +---w reject
+    |  |  |           |  +---w id-drop-node-name?   uint16
+    |  |  |           |  +---w all?                 empty
+    |  |  |           +---w remove
+    |  |  |           |  +---w id-drop-node-name?   uint16
+    |  |  |           |  +---w all?                 empty
+    |  |  |           +---w request
+    |  |  |           |  +---w pkcs10
+    |  |  |           |     +---w location-drop-node-name?   enumeration
+    |  |  |           |     +---w (format)?
+    |  |  |           |        +--:(base64)
+    |  |  |           |        |  +---w base64?              empty
+    |  |  |           |        +--:(pem)
+    |  |  |           |        |  +---w pem?                 empty
+    |  |  |           |        +--:(hex)
+    |  |  |           |           +---w hex!
+    |  |  |           |              +---w tid-drop-node-name?     string
+    |  |  |           |              +---w nonce-drop-node-name?   string
+    |  |  |           |              +---w rid-drop-node-name?     uint16
+    |  |  |           +---w revoke?                string
+    |  |  |           +---w unrevoke?              string
+    |  |  |           +---w start?                 empty
+    |  |  |           +---w stop?                  empty
+    |  |  |           +---w trim
+    |  |  |              +---w url?       enumeration
+    |  |  |              +---w verbose?   empty
+    |  |  +---w key
+    |  |     +---w zeroize
+    |  |        +---w rsa?   string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x release
+    |  +---w input
+    |  |  +---w dhcp?   string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x reload
+    |  +---w input
+    |  |  +---w force?    boolean
+    |  |  +---w reason?   string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x factory-reset
+    |  +---w input
+    |  |  +---w all!
+    |  +--ro output
+    |     +--ro result?   string
+    +---x license
+    |  +---w input
+    |  |  +---w (license-command-choice)?
+    |  |     +--:(licese-smart)
+    |  |     |  +---w smart
+    |  |     |     +---w (smart-choice)?
+    |  |     |        +--:(register-case)
+    |  |     |        |  +---w register
+    |  |     |        |     +---w idtoken    string
+    |  |     |        |     +---w force?     empty
+    |  |     |        +--:(deregister-case)
+    |  |     |        |  +---w deregister?   empty
+    |  |     |        +--:(renew-case)
+    |  |     |           +---w renew
+    |  |     |              +---w (renew-choice)
+    |  |     |                 +--:(ID)
+    |  |     |                 |  +---w ID?     empty
+    |  |     |                 +--:(auth)
+    |  |     |                    +---w auth?   empty
+    |  |     +--:(license-install)
+    |  |     |  +---w install?   string
+    |  |     +--:(license-clear)
+    |  |        +---w clear?     string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x service
+    |  +---w input
+    |  |  +---w (services-choice)?
+    |  |     +--:(wass-case)
+    |  |     |  +---w waas
+    |  |     |     +---w wcm
+    |  |     |        +---w (wcm-choices)?
+    |  |     |           +--:(ip-case)
+    |  |     |           |  +---w ip
+    |  |     |           |     +---w address?   inet:ipv4-address
+    |  |     |           +--:(ipv6-case)
+    |  |     |              +---w ipv6
+    |  |     |                 +---w address?   inet:ipv6-address
+    |  |     +--:(sd-avc-case)
+    |  |        +---w sd-avc
+    |  |           +---w (sd-avc-choice)
+    |  |              +--:(activate-case)
+    |  |              |  +---w activate?      empty
+    |  |              +--:(configure-case)
+    |  |              |  +---w configure
+    |  |              |     +---w gateway
+    |  |              |        +---w interface?    string
+    |  |              |        +---w service-ip?   inet:ipv4-address
+    |  |              |        +---w activate?     empty
+    |  |              +--:(connect-case)
+    |  |              |  +---w connect?       empty
+    |  |              +--:(help-case)
+    |  |              |  +---w help?          empty
+    |  |              +--:(deactivate-case)
+    |  |              |  +---w deactivate?    empty
+    |  |              +--:(install-case)
+    |  |              |  +---w install
+    |  |              |     +---w package?   string
+    |  |              +--:(status-case)
+    |  |              |  +---w status?        empty
+    |  |              +--:(unconfigure-case)
+    |  |              |  +---w unconfigure?   empty
+    |  |              +--:(uninstall-case)
+    |  |              |  +---w uninstall?     empty
+    |  |              +--:(upgrade-case)
+    |  |                 +---w upgrade
+    |  |                    +---w package?   string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x virtual-service
+    |  +---w input
+    |  |  +---w (operation)
+    |  |     +--:(install)
+    |  |     |  +---w install
+    |  |     |     +---w name?      string
+    |  |     |     +---w package?   string
+    |  |     |     +---w media?     string
+    |  |     +--:(uninstall)
+    |  |     |  +---w uninstall
+    |  |     |     +---w name?   string
+    |  |     +--:(upgrade)
+    |  |     |  +---w upgrade
+    |  |     |     +---w name?      string
+    |  |     |     +---w package?   string
+    |  |     +--:(move)
+    |  |        +---w move
+    |  |           +---w name          string
+    |  |           +---w (file-choice)
+    |  |              +--:(core)
+    |  |              |  +---w core
+    |  |              |     +---w to?   string
+    |  |              +--:(log)
+    |  |                 +---w log
+    |  |                    +---w to?   string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x copy
+    |  +---w input
+    |  |  +---w source-drop-node-name         string
+    |  |  +---w destination-drop-node-name    string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x delete
+    |  +---w input
+    |  |  +---w filename-drop-node-name    string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x app-hosting
+    |  +---w input
+    |  |  +---w (lifecycle)
+    |  |     +--:(install)
+    |  |     |  +---w install
+    |  |     |     +---w appid?     string
+    |  |     |     +---w package?   string
+    |  |     +--:(uninstall)
+    |  |     |  +---w uninstall
+    |  |     |     +---w appid?   string
+    |  |     +--:(activate)
+    |  |     |  +---w activate
+    |  |     |     +---w appid?   string
+    |  |     +--:(deactivate)
+    |  |     |  +---w deactivate
+    |  |     |     +---w appid?   string
+    |  |     +--:(start)
+    |  |     |  +---w start
+    |  |     |     +---w appid?   string
+    |  |     +--:(stop)
+    |  |     |  +---w stop
+    |  |     |     +---w appid?   string
+    |  |     +--:(upgrade)
+    |  |     |  +---w upgrade
+    |  |     |     +---w appid?     string
+    |  |     |     +---w package?   string
+    |  |     +--:(verification)
+    |  |     |  +---w verification
+    |  |     |     +---w enable?    empty
+    |  |     |     +---w disable?   empty
+    |  |     +--:(move)
+    |  |        +---w move
+    |  |           +---w (type-choice)
+    |  |              +--:(appid-case)
+    |  |              |  +---w appid         string
+    |  |              |  +---w (file-choice)
+    |  |              |     +--:(core)
+    |  |              |     |  +---w core
+    |  |              |     |     +---w to?   string
+    |  |              |     +--:(log)
+    |  |              |        +---w log
+    |  |              |           +---w to?   string
+    |  |              +--:(system-case)
+    |  |                 +---w system
+    |  |                    +---w techsupport
+    |  |                       +---w to?   string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x guestshell
+    |  +---w input
+    |  |  +---w (action)
+    |  |     +--:(destroy-case)
+    |  |     |  +---w destroy?   empty
+    |  |     +--:(disable-case)
+    |  |     |  +---w disable?   empty
+    |  |     +--:(enable-case)
+    |  |        +---w enable?    empty
+    |  +--ro output
+    |     +--ro result?   string
+    +---x start
+    |  +---w input
+    |  |  +---w maintenance?   empty
+    |  +--ro output
+    |     +--ro result?   string
+    +---x stop
+    |  +---w input
+    |  |  +---w maintenance?   empty
+    |  +--ro output
+    |     +--ro result?   string
+    +---x hw-module
+    |  +---w input
+    |  |  +---w switch
+    |  |     +---w switch-number-drop-node-name?   uint8
+    |  |     +---w usbflash1
+    |  |        +---w (umount-sec)
+    |  |           +--:(unmount-case)
+    |  |           |  +---w unmount?    empty
+    |  |           +--:(security-case)
+    |  |              +---w security
+    |  |                 +---w (security-choice)
+    |  |                    +--:(enable-case)
+    |  |                    |  +---w enable!
+    |  |                    |     +---w password?   string
+    |  |                    +--:(disable-case)
+    |  |                    |  +---w disable!
+    |  |                    |     +---w password?   string
+    |  |                    +--:(unlock-case)
+    |  |                       +---w unlock!
+    |  |                          +---w password?   string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x debug
+    |  +---w input
+    |  |  +---w (debug-choice)
+    |  |     +--:(crypto-case)
+    |  |     |  +---w crypto
+    |  |     |     +---w pki
+    |  |     |     |  +---w API?            empty
+    |  |     |     |  +---w callbacks?      empty
+    |  |     |     |  +---w messages?       empty
+    |  |     |     |  +---w scep?           empty
+    |  |     |     |  +---w server!
+    |  |     |     |  |  +---w performance?   empty
+    |  |     |     |  +---w transactions!
+    |  |     |     |  |  +---w performance?   empty
+    |  |     |     |  +---w validation?     empty
+    |  |     |     +---w est-client?   empty
+    |  |     |     +---w ha?           empty
+    |  |     +--:(platform-case)
+    |  |        +---w platform
+    |  |           +---w (platform-choice)?
+    |  |              +--:(condtion-case)
+    |  |              |  +---w condition
+    |  |              |     +---w (condition-choice)?
+    |  |              |        +--:(start-case)
+    |  |              |        |  +---w start?                      empty
+    |  |              |        +--:(stop-case)
+    |  |              |        |  +---w stop?                       empty
+    |  |              |        +--:(direction-case)
+    |  |              |        |  +---w direction-drop-node-name
+    |  |              |        |     +---w (direction-choice)?
+    |  |              |        |     |  +--:(both-case)
+    |  |              |        |     |  |  +---w both?      empty
+    |  |              |        |     |  +--:(ingress-case)
+    |  |              |        |     |  |  +---w ingress?   empty
+    |  |              |        |     |  +--:(engress-case)
+    |  |              |        |     |     +---w egress?    empty
+    |  |              |        |     +---w no?              empty
+    |  |              |        +--:(application-case)
+    |  |              |        |  +---w application
+    |  |              |        |     +---w app-name-drop-node-name    string
+    |  |              |        |     +---w (direction-choice)?
+    |  |              |        |     |  +--:(both-case)
+    |  |              |        |     |  |  +---w both?                empty
+    |  |              |        |     |  +--:(ingress-case)
+    |  |              |        |     |  |  +---w ingress?             empty
+    |  |              |        |     |  +--:(engress-case)
+    |  |              |        |     |     +---w egress?              empty
+    |  |              |        |     +---w no?                        empty
+    |  |              |        +--:(mpls-case)
+    |  |              |        |  +---w mpls
+    |  |              |        |     +---w (mpls-choice)?
+    |  |              |        |     |  +--:(label-case)
+    |  |              |        |     |  |  +---w label-drop-node-name
+    |  |              |        |     |  |     +---w label-id-drop-node-name    uint32
+    |  |              |        |     |  |     +---w depth-drop-node-name?      uint8
+    |  |              |        |     |  |     +---w application?               string
+    |  |              |        |     |  |     +---w (direction-choice)?
+    |  |              |        |     |  |        +--:(both-case)
+    |  |              |        |     |  |        |  +---w both?                empty
+    |  |              |        |     |  |        +--:(ingress-case)
+    |  |              |        |     |  |        |  +---w ingress?             empty
+    |  |              |        |     |  |        +--:(engress-case)
+    |  |              |        |     |  |           +---w egress?              empty
+    |  |              |        |     |  +--:(application-case)
+    |  |              |        |     |  |  +---w application
+    |  |              |        |     |  |     +---w app-name-drop-node-name    string
+    |  |              |        |     |  |     +---w (direction-choice)?
+    |  |              |        |     |  |        +--:(both-case)
+    |  |              |        |     |  |        |  +---w both?                empty
+    |  |              |        |     |  |        +--:(ingress-case)
+    |  |              |        |     |  |        |  +---w ingress?             empty
+    |  |              |        |     |  |        +--:(engress-case)
+    |  |              |        |     |  |           +---w egress?              empty
+    |  |              |        |     |  +--:(direction-case)
+    |  |              |        |     |     +---w (direction-choice)?
+    |  |              |        |     |        +--:(both-case)
+    |  |              |        |     |        |  +---w both?             empty
+    |  |              |        |     |        +--:(ingress-case)
+    |  |              |        |     |        |  +---w ingress?          empty
+    |  |              |        |     |        +--:(engress-case)
+    |  |              |        |     |           +---w egress?           empty
+    |  |              |        |     +---w no?                           empty
+    |  |              |        +--:(ipv4-case)
+    |  |              |        |  +---w ipv4
+    |  |              |        |     +---w (ipv4-choice)?
+    |  |              |        |     |  +--:(direction-case)
+    |  |              |        |     |  |  +---w (direction-choice)?
+    |  |              |        |     |  |     +--:(both-case)
+    |  |              |        |     |  |     |  +---w both?                empty
+    |  |              |        |     |  |     +--:(ingress-case)
+    |  |              |        |     |  |     |  +---w ingress?             empty
+    |  |              |        |     |  |     +--:(engress-case)
+    |  |              |        |     |  |        +---w egress?              empty
+    |  |              |        |     |  +--:(ipv4addr-case)
+    |  |              |        |     |  |  +---w ipv4addr-drop-node-name
+    |  |              |        |     |  |     +---w ip-addr-drop-node-name    string
+    |  |              |        |     |  |     +---w (ipv4addr-choice)?
+    |  |              |        |     |  |        +--:(application-case)
+    |  |              |        |     |  |        |  +---w application
+    |  |              |        |     |  |        |     +---w app-name-drop-node-name    string
+    |  |              |        |     |  |        |     +---w (direction-choice)?
+    |  |              |        |     |  |        |        +--:(both-case)
+    |  |              |        |     |  |        |        |  +---w both?                empty
+    |  |              |        |     |  |        |        +--:(ingress-case)
+    |  |              |        |     |  |        |        |  +---w ingress?             empty
+    |  |              |        |     |  |        |        +--:(engress-case)
+    |  |              |        |     |  |        |           +---w egress?              empty
+    |  |              |        |     |  |        +--:(direction-case)
+    |  |              |        |     |  |           +---w (direction-choice)?
+    |  |              |        |     |  |              +--:(both-case)
+    |  |              |        |     |  |              |  +---w both?         empty
+    |  |              |        |     |  |              +--:(ingress-case)
+    |  |              |        |     |  |              |  +---w ingress?      empty
+    |  |              |        |     |  |              +--:(engress-case)
+    |  |              |        |     |  |                 +---w egress?       empty
+    |  |              |        |     |  +--:(access-list-case)
+    |  |              |        |     |     +---w access-list
+    |  |              |        |     |        +---w acl-name-drop-node-name    string
+    |  |              |        |     |        +---w (direction-choice)?
+    |  |              |        |     |           +--:(both-case)
+    |  |              |        |     |           |  +---w both?                empty
+    |  |              |        |     |           +--:(ingress-case)
+    |  |              |        |     |           |  +---w ingress?             empty
+    |  |              |        |     |           +--:(engress-case)
+    |  |              |        |     |              +---w egress?              empty
+    |  |              |        |     +---w no?                              empty
+    |  |              |        +--:(ipv6-case)
+    |  |              |        |  +---w ipv6
+    |  |              |        |     +---w (ipv6-choice)?
+    |  |              |        |     |  +--:(direction-case)
+    |  |              |        |     |  |  +---w (direction-choice)?
+    |  |              |        |     |  |     +--:(both-case)
+    |  |              |        |     |  |     |  +---w both?                empty
+    |  |              |        |     |  |     +--:(ingress-case)
+    |  |              |        |     |  |     |  +---w ingress?             empty
+    |  |              |        |     |  |     +--:(engress-case)
+    |  |              |        |     |  |        +---w egress?              empty
+    |  |              |        |     |  +--:(ipv6addr-case)
+    |  |              |        |     |  |  +---w ipv6addr-drop-node-name
+    |  |              |        |     |  |     +---w ip-addr-drop-node-name    string
+    |  |              |        |     |  |     +---w (ipv6addr-choice)?
+    |  |              |        |     |  |        +--:(application-case)
+    |  |              |        |     |  |        |  +---w application
+    |  |              |        |     |  |        |     +---w app-name-drop-node-name    string
+    |  |              |        |     |  |        |     +---w (direction-choice)?
+    |  |              |        |     |  |        |        +--:(both-case)
+    |  |              |        |     |  |        |        |  +---w both?                empty
+    |  |              |        |     |  |        |        +--:(ingress-case)
+    |  |              |        |     |  |        |        |  +---w ingress?             empty
+    |  |              |        |     |  |        |        +--:(engress-case)
+    |  |              |        |     |  |        |           +---w egress?              empty
+    |  |              |        |     |  |        +--:(direction-case)
+    |  |              |        |     |  |           +---w (direction-choice)?
+    |  |              |        |     |  |              +--:(both-case)
+    |  |              |        |     |  |              |  +---w both?         empty
+    |  |              |        |     |  |              +--:(ingress-case)
+    |  |              |        |     |  |              |  +---w ingress?      empty
+    |  |              |        |     |  |              +--:(engress-case)
+    |  |              |        |     |  |                 +---w egress?       empty
+    |  |              |        |     |  +--:(access-list-case)
+    |  |              |        |     |     +---w access-list
+    |  |              |        |     |        +---w acl-name-drop-node-name    string
+    |  |              |        |     |        +---w (direction-choice)?
+    |  |              |        |     |           +--:(both-case)
+    |  |              |        |     |           |  +---w both?                empty
+    |  |              |        |     |           +--:(ingress-case)
+    |  |              |        |     |           |  +---w ingress?             empty
+    |  |              |        |     |           +--:(engress-case)
+    |  |              |        |     |              +---w egress?              empty
+    |  |              |        |     +---w no?                              empty
+    |  |              |        +--:(match-case)
+    |  |              |        |  +---w match
+    |  |              |        |     +---w (match-choice)?
+    |  |              |        |     |  +--:(ipv4-case)
+    |  |              |        |     |  |  +---w ipv4
+    |  |              |        |     |  |     +---w (ipv4-choice)?
+    |  |              |        |     |  |        +--:(protocol-case)
+    |  |              |        |     |  |        |  +---w protocol
+    |  |              |        |     |  |        |     +---w (protocol-choice)?
+    |  |              |        |     |  |        |        +--:(icmp-case)
+    |  |              |        |     |  |        |        |  +---w icmp
+    |  |              |        |     |  |        |        |     +---w (source-choice)?
+    |  |              |        |     |  |        |        |     |  +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |        |     |  |  +---w src-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |        |     |  +--:(any-case)
+    |  |              |        |     |  |        |        |     |  |  +---w any?                               empty
+    |  |              |        |     |  |        |        |     |  +--:(host-case)
+    |  |              |        |     |  |        |        |     |     +---w host?                              ios-types:ipv4-host
+    |  |              |        |     |  |        |        |     +---w dst-addr-drop-node-name
+    |  |              |        |     |  |        |        |     |  +---w (destination-choice)?
+    |  |              |        |     |  |        |        |     |     +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |        |     |     |  +---w dest-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |        |     |     +--:(any-case)
+    |  |              |        |     |  |        |        |     |     |  +---w any?                                empty
+    |  |              |        |     |  |        |        |     |     +--:(host-case)
+    |  |              |        |     |  |        |        |     |        +---w host?                               ios-types:ipv4-host
+    |  |              |        |     |  |        |        |     +---w (direction-choice)?
+    |  |              |        |     |  |        |        |        +--:(both-case)
+    |  |              |        |     |  |        |        |        |  +---w both?                              empty
+    |  |              |        |     |  |        |        |        +--:(ingress-case)
+    |  |              |        |     |  |        |        |        |  +---w ingress?                           empty
+    |  |              |        |     |  |        |        |        +--:(engress-case)
+    |  |              |        |     |  |        |        |           +---w egress?                            empty
+    |  |              |        |     |  |        |        +--:(tcp-case)
+    |  |              |        |     |  |        |        |  +---w tcp
+    |  |              |        |     |  |        |        |     +---w (source-choice)?
+    |  |              |        |     |  |        |        |     |  +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |        |     |  |  +---w src-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |        |     |  +--:(any-case)
+    |  |              |        |     |  |        |        |     |  |  +---w any?                               empty
+    |  |              |        |     |  |        |        |     |  +--:(host-case)
+    |  |              |        |     |  |        |        |     |     +---w host?                              ios-types:ipv4-host
+    |  |              |        |     |  |        |        |     +---w (src-port-choice)?
+    |  |              |        |     |  |        |        |     |  +--:(src-eq-case)
+    |  |              |        |     |  |        |        |     |  |  +---w eq?                                inet:port-number
+    |  |              |        |     |  |        |        |     |  +--:(src-gt-case)
+    |  |              |        |     |  |        |        |     |  |  +---w gt?                                inet:port-number
+    |  |              |        |     |  |        |        |     |  +--:(src-lt-case)
+    |  |              |        |     |  |        |        |     |  |  +---w lt?                                inet:port-number
+    |  |              |        |     |  |        |        |     |  +--:(src-neq-case)
+    |  |              |        |     |  |        |        |     |  |  +---w neq?                               inet:port-number
+    |  |              |        |     |  |        |        |     |  +--:(src-range-case)
+    |  |              |        |     |  |        |        |     |     +---w range?                             inet:port-number
+    |  |              |        |     |  |        |        |     |     +---w src-range2-drop-node-name?         inet:port-number
+    |  |              |        |     |  |        |        |     +---w dst-addr-port-drop-node-name
+    |  |              |        |     |  |        |        |     |  +---w (destination-choice)?
+    |  |              |        |     |  |        |        |     |  |  +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |        |     |  |  |  +---w dest-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |        |     |  |  +--:(any-case)
+    |  |              |        |     |  |        |        |     |  |  |  +---w any?                                empty
+    |  |              |        |     |  |        |        |     |  |  +--:(host-case)
+    |  |              |        |     |  |        |        |     |  |     +---w host?                               ios-types:ipv4-host
+    |  |              |        |     |  |        |        |     |  +---w (dst-port-choice)?
+    |  |              |        |     |  |        |        |     |     +--:(dst-eq-case)
+    |  |              |        |     |  |        |        |     |     |  +---w eq?                                 inet:port-number
+    |  |              |        |     |  |        |        |     |     +--:(dst-gt-case)
+    |  |              |        |     |  |        |        |     |     |  +---w gt?                                 inet:port-number
+    |  |              |        |     |  |        |        |     |     +--:(dst-lt-case)
+    |  |              |        |     |  |        |        |     |     |  +---w lt?                                 inet:port-number
+    |  |              |        |     |  |        |        |     |     +--:(dst-neq-case)
+    |  |              |        |     |  |        |        |     |     |  +---w neq?                                inet:port-number
+    |  |              |        |     |  |        |        |     |     +--:(dst-range-case)
+    |  |              |        |     |  |        |        |     |        +---w range?                              inet:port-number
+    |  |              |        |     |  |        |        |     |        +---w dst-range2-drop-node-name?          inet:port-number
+    |  |              |        |     |  |        |        |     +---w (direction-choice)?
+    |  |              |        |     |  |        |        |        +--:(both-case)
+    |  |              |        |     |  |        |        |        |  +---w both?                              empty
+    |  |              |        |     |  |        |        |        +--:(ingress-case)
+    |  |              |        |     |  |        |        |        |  +---w ingress?                           empty
+    |  |              |        |     |  |        |        |        +--:(engress-case)
+    |  |              |        |     |  |        |        |           +---w egress?                            empty
+    |  |              |        |     |  |        |        +--:(udp-case)
+    |  |              |        |     |  |        |        |  +---w udp
+    |  |              |        |     |  |        |        |     +---w (source-choice)?
+    |  |              |        |     |  |        |        |     |  +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |        |     |  |  +---w src-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |        |     |  +--:(any-case)
+    |  |              |        |     |  |        |        |     |  |  +---w any?                               empty
+    |  |              |        |     |  |        |        |     |  +--:(host-case)
+    |  |              |        |     |  |        |        |     |     +---w host?                              ios-types:ipv4-host
+    |  |              |        |     |  |        |        |     +---w (src-port-choice)?
+    |  |              |        |     |  |        |        |     |  +--:(src-eq-case)
+    |  |              |        |     |  |        |        |     |  |  +---w eq?                                inet:port-number
+    |  |              |        |     |  |        |        |     |  +--:(src-gt-case)
+    |  |              |        |     |  |        |        |     |  |  +---w gt?                                inet:port-number
+    |  |              |        |     |  |        |        |     |  +--:(src-lt-case)
+    |  |              |        |     |  |        |        |     |  |  +---w lt?                                inet:port-number
+    |  |              |        |     |  |        |        |     |  +--:(src-neq-case)
+    |  |              |        |     |  |        |        |     |  |  +---w neq?                               inet:port-number
+    |  |              |        |     |  |        |        |     |  +--:(src-range-case)
+    |  |              |        |     |  |        |        |     |     +---w range?                             inet:port-number
+    |  |              |        |     |  |        |        |     |     +---w src-range2-drop-node-name?         inet:port-number
+    |  |              |        |     |  |        |        |     +---w dst-addr-port-drop-node-name
+    |  |              |        |     |  |        |        |     |  +---w (destination-choice)?
+    |  |              |        |     |  |        |        |     |  |  +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |        |     |  |  |  +---w dest-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |        |     |  |  +--:(any-case)
+    |  |              |        |     |  |        |        |     |  |  |  +---w any?                                empty
+    |  |              |        |     |  |        |        |     |  |  +--:(host-case)
+    |  |              |        |     |  |        |        |     |  |     +---w host?                               ios-types:ipv4-host
+    |  |              |        |     |  |        |        |     |  +---w (dst-port-choice)?
+    |  |              |        |     |  |        |        |     |     +--:(dst-eq-case)
+    |  |              |        |     |  |        |        |     |     |  +---w eq?                                 inet:port-number
+    |  |              |        |     |  |        |        |     |     +--:(dst-gt-case)
+    |  |              |        |     |  |        |        |     |     |  +---w gt?                                 inet:port-number
+    |  |              |        |     |  |        |        |     |     +--:(dst-lt-case)
+    |  |              |        |     |  |        |        |     |     |  +---w lt?                                 inet:port-number
+    |  |              |        |     |  |        |        |     |     +--:(dst-neq-case)
+    |  |              |        |     |  |        |        |     |     |  +---w neq?                                inet:port-number
+    |  |              |        |     |  |        |        |     |     +--:(dst-range-case)
+    |  |              |        |     |  |        |        |     |        +---w range?                              inet:port-number
+    |  |              |        |     |  |        |        |     |        +---w dst-range2-drop-node-name?          inet:port-number
+    |  |              |        |     |  |        |        |     +---w (direction-choice)?
+    |  |              |        |     |  |        |        |        +--:(both-case)
+    |  |              |        |     |  |        |        |        |  +---w both?                              empty
+    |  |              |        |     |  |        |        |        +--:(ingress-case)
+    |  |              |        |     |  |        |        |        |  +---w ingress?                           empty
+    |  |              |        |     |  |        |        |        +--:(engress-case)
+    |  |              |        |     |  |        |        |           +---w egress?                            empty
+    |  |              |        |     |  |        |        +--:(proto-num-case)
+    |  |              |        |     |  |        |           +---w proto-num-drop-node-name
+    |  |              |        |     |  |        |              +---w protonum-drop-node-name                  uint8
+    |  |              |        |     |  |        |              +---w (source-choice)?
+    |  |              |        |     |  |        |              |  +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |              |  |  +---w src-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |              |  +--:(any-case)
+    |  |              |        |     |  |        |              |  |  +---w any?                               empty
+    |  |              |        |     |  |        |              |  +--:(host-case)
+    |  |              |        |     |  |        |              |     +---w host?                              ios-types:ipv4-host
+    |  |              |        |     |  |        |              +---w dst-addr-drop-node-name
+    |  |              |        |     |  |        |              |  +---w (destination-choice)?
+    |  |              |        |     |  |        |              |     +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |              |     |  +---w dest-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |              |     +--:(any-case)
+    |  |              |        |     |  |        |              |     |  +---w any?                                empty
+    |  |              |        |     |  |        |              |     +--:(host-case)
+    |  |              |        |     |  |        |              |        +---w host?                               ios-types:ipv4-host
+    |  |              |        |     |  |        |              +---w (direction-choice)?
+    |  |              |        |     |  |        |                 +--:(both-case)
+    |  |              |        |     |  |        |                 |  +---w both?                              empty
+    |  |              |        |     |  |        |                 +--:(ingress-case)
+    |  |              |        |     |  |        |                 |  +---w ingress?                           empty
+    |  |              |        |     |  |        |                 +--:(engress-case)
+    |  |              |        |     |  |        |                    +---w egress?                            empty
+    |  |              |        |     |  |        +--:(ipv4addr-case)
+    |  |              |        |     |  |           +---w ipv4-addr-drop-node-name
+    |  |              |        |     |  |              +---w (source-choice)?
+    |  |              |        |     |  |              |  +--:(ipv4-prefix-case)
+    |  |              |        |     |  |              |  |  +---w src-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |              |  +--:(any-case)
+    |  |              |        |     |  |              |  |  +---w any?                               empty
+    |  |              |        |     |  |              |  +--:(host-case)
+    |  |              |        |     |  |              |     +---w host?                              ios-types:ipv4-host
+    |  |              |        |     |  |              +---w dst-addr-drop-node-name
+    |  |              |        |     |  |              |  +---w (destination-choice)?
+    |  |              |        |     |  |              |     +--:(ipv4-prefix-case)
+    |  |              |        |     |  |              |     |  +---w dest-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |              |     +--:(any-case)
+    |  |              |        |     |  |              |     |  +---w any?                                empty
+    |  |              |        |     |  |              |     +--:(host-case)
+    |  |              |        |     |  |              |        +---w host?                               ios-types:ipv4-host
+    |  |              |        |     |  |              +---w (direction-choice)?
+    |  |              |        |     |  |                 +--:(both-case)
+    |  |              |        |     |  |                 |  +---w both?                              empty
+    |  |              |        |     |  |                 +--:(ingress-case)
+    |  |              |        |     |  |                 |  +---w ingress?                           empty
+    |  |              |        |     |  |                 +--:(engress-case)
+    |  |              |        |     |  |                    +---w egress?                            empty
+    |  |              |        |     |  +--:(ipv6-case)
+    |  |              |        |     |     +---w ipv6
+    |  |              |        |     |        +---w (ipv6-choice)?
+    |  |              |        |     |           +--:(protocol-case)
+    |  |              |        |     |           |  +---w protocol
+    |  |              |        |     |           |     +---w (protocol-choice)?
+    |  |              |        |     |           |        +--:(icmp-case)
+    |  |              |        |     |           |        |  +---w icmp
+    |  |              |        |     |           |        |     +---w (source-choice)?
+    |  |              |        |     |           |        |     |  +--:(prefix-case)
+    |  |              |        |     |           |        |     |  |  +---w source-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |           |        |     |  +--:(any-case)
+    |  |              |        |     |           |        |     |  |  +---w any?                            empty
+    |  |              |        |     |           |        |     |  +--:(host-case)
+    |  |              |        |     |           |        |     |     +---w host?                           ios-types:ip-host
+    |  |              |        |     |           |        |     +---w dst-addr-drop-node-name
+    |  |              |        |     |           |        |     |  +---w (destination-choice)?
+    |  |              |        |     |           |        |     |     +--:(prefix-case)
+    |  |              |        |     |           |        |     |     |  +---w destination-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |           |        |     |     +--:(any-case)
+    |  |              |        |     |           |        |     |     |  +---w any?                                 empty
+    |  |              |        |     |           |        |     |     +--:(host-case)
+    |  |              |        |     |           |        |     |        +---w host?                                ios-types:ip-host
+    |  |              |        |     |           |        |     +---w (direction-choice)?
+    |  |              |        |     |           |        |        +--:(both-case)
+    |  |              |        |     |           |        |        |  +---w both?                           empty
+    |  |              |        |     |           |        |        +--:(ingress-case)
+    |  |              |        |     |           |        |        |  +---w ingress?                        empty
+    |  |              |        |     |           |        |        +--:(engress-case)
+    |  |              |        |     |           |        |           +---w egress?                         empty
+    |  |              |        |     |           |        +--:(tcp-case)
+    |  |              |        |     |           |        |  +---w tcp
+    |  |              |        |     |           |        |     +---w (source-choice)?
+    |  |              |        |     |           |        |     |  +--:(prefix-case)
+    |  |              |        |     |           |        |     |  |  +---w source-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |           |        |     |  +--:(any-case)
+    |  |              |        |     |           |        |     |  |  +---w any?                            empty
+    |  |              |        |     |           |        |     |  +--:(host-case)
+    |  |              |        |     |           |        |     |     +---w host?                           ios-types:ip-host
+    |  |              |        |     |           |        |     +---w (src-port-choice)?
+    |  |              |        |     |           |        |     |  +--:(src-eq-case)
+    |  |              |        |     |           |        |     |  |  +---w eq?                             inet:port-number
+    |  |              |        |     |           |        |     |  +--:(src-gt-case)
+    |  |              |        |     |           |        |     |  |  +---w gt?                             inet:port-number
+    |  |              |        |     |           |        |     |  +--:(src-lt-case)
+    |  |              |        |     |           |        |     |  |  +---w lt?                             inet:port-number
+    |  |              |        |     |           |        |     |  +--:(src-neq-case)
+    |  |              |        |     |           |        |     |  |  +---w neq?                            inet:port-number
+    |  |              |        |     |           |        |     |  +--:(src-range-case)
+    |  |              |        |     |           |        |     |     +---w range?                          inet:port-number
+    |  |              |        |     |           |        |     |     +---w src-range2-drop-node-name?      inet:port-number
+    |  |              |        |     |           |        |     +---w dst-addr-port-drop-node-name
+    |  |              |        |     |           |        |     |  +---w (destination-choice)?
+    |  |              |        |     |           |        |     |  |  +--:(prefix-case)
+    |  |              |        |     |           |        |     |  |  |  +---w destination-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |           |        |     |  |  +--:(any-case)
+    |  |              |        |     |           |        |     |  |  |  +---w any?                                 empty
+    |  |              |        |     |           |        |     |  |  +--:(host-case)
+    |  |              |        |     |           |        |     |  |     +---w host?                                ios-types:ip-host
+    |  |              |        |     |           |        |     |  +---w (dst-port-choice)?
+    |  |              |        |     |           |        |     |     +--:(dst-eq-case)
+    |  |              |        |     |           |        |     |     |  +---w eq?                                  inet:port-number
+    |  |              |        |     |           |        |     |     +--:(dst-gt-case)
+    |  |              |        |     |           |        |     |     |  +---w gt?                                  inet:port-number
+    |  |              |        |     |           |        |     |     +--:(dst-lt-case)
+    |  |              |        |     |           |        |     |     |  +---w lt?                                  inet:port-number
+    |  |              |        |     |           |        |     |     +--:(dst-neq-case)
+    |  |              |        |     |           |        |     |     |  +---w neq?                                 inet:port-number
+    |  |              |        |     |           |        |     |     +--:(dst-range-case)
+    |  |              |        |     |           |        |     |        +---w range?                               inet:port-number
+    |  |              |        |     |           |        |     |        +---w dst-range2-drop-node-name?           inet:port-number
+    |  |              |        |     |           |        |     +---w (direction-choice)?
+    |  |              |        |     |           |        |        +--:(both-case)
+    |  |              |        |     |           |        |        |  +---w both?                           empty
+    |  |              |        |     |           |        |        +--:(ingress-case)
+    |  |              |        |     |           |        |        |  +---w ingress?                        empty
+    |  |              |        |     |           |        |        +--:(engress-case)
+    |  |              |        |     |           |        |           +---w egress?                         empty
+    |  |              |        |     |           |        +--:(udp-case)
+    |  |              |        |     |           |        |  +---w udp
+    |  |              |        |     |           |        |     +---w (source-choice)?
+    |  |              |        |     |           |        |     |  +--:(prefix-case)
+    |  |              |        |     |           |        |     |  |  +---w source-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |           |        |     |  +--:(any-case)
+    |  |              |        |     |           |        |     |  |  +---w any?                            empty
+    |  |              |        |     |           |        |     |  +--:(host-case)
+    |  |              |        |     |           |        |     |     +---w host?                           ios-types:ip-host
+    |  |              |        |     |           |        |     +---w (src-port-choice)?
+    |  |              |        |     |           |        |     |  +--:(src-eq-case)
+    |  |              |        |     |           |        |     |  |  +---w eq?                             inet:port-number
+    |  |              |        |     |           |        |     |  +--:(src-gt-case)
+    |  |              |        |     |           |        |     |  |  +---w gt?                             inet:port-number
+    |  |              |        |     |           |        |     |  +--:(src-lt-case)
+    |  |              |        |     |           |        |     |  |  +---w lt?                             inet:port-number
+    |  |              |        |     |           |        |     |  +--:(src-neq-case)
+    |  |              |        |     |           |        |     |  |  +---w neq?                            inet:port-number
+    |  |              |        |     |           |        |     |  +--:(src-range-case)
+    |  |              |        |     |           |        |     |     +---w range?                          inet:port-number
+    |  |              |        |     |           |        |     |     +---w src-range2-drop-node-name?      inet:port-number
+    |  |              |        |     |           |        |     +---w dst-addr-port-drop-node-name
+    |  |              |        |     |           |        |     |  +---w (destination-choice)?
+    |  |              |        |     |           |        |     |  |  +--:(prefix-case)
+    |  |              |        |     |           |        |     |  |  |  +---w destination-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |           |        |     |  |  +--:(any-case)
+    |  |              |        |     |           |        |     |  |  |  +---w any?                                 empty
+    |  |              |        |     |           |        |     |  |  +--:(host-case)
+    |  |              |        |     |           |        |     |  |     +---w host?                                ios-types:ip-host
+    |  |              |        |     |           |        |     |  +---w (dst-port-choice)?
+    |  |              |        |     |           |        |     |     +--:(dst-eq-case)
+    |  |              |        |     |           |        |     |     |  +---w eq?                                  inet:port-number
+    |  |              |        |     |           |        |     |     +--:(dst-gt-case)
+    |  |              |        |     |           |        |     |     |  +---w gt?                                  inet:port-number
+    |  |              |        |     |           |        |     |     +--:(dst-lt-case)
+    |  |              |        |     |           |        |     |     |  +---w lt?                                  inet:port-number
+    |  |              |        |     |           |        |     |     +--:(dst-neq-case)
+    |  |              |        |     |           |        |     |     |  +---w neq?                                 inet:port-number
+    |  |              |        |     |           |        |     |     +--:(dst-range-case)
+    |  |              |        |     |           |        |     |        +---w range?                               inet:port-number
+    |  |              |        |     |           |        |     |        +---w dst-range2-drop-node-name?           inet:port-number
+    |  |              |        |     |           |        |     +---w (direction-choice)?
+    |  |              |        |     |           |        |        +--:(both-case)
+    |  |              |        |     |           |        |        |  +---w both?                           empty
+    |  |              |        |     |           |        |        +--:(ingress-case)
+    |  |              |        |     |           |        |        |  +---w ingress?                        empty
+    |  |              |        |     |           |        |        +--:(engress-case)
+    |  |              |        |     |           |        |           +---w egress?                         empty
+    |  |              |        |     |           |        +--:(proto-num-case)
+    |  |              |        |     |           |           +---w proto-num-drop-node-name
+    |  |              |        |     |           |              +---w protonum-drop-node-name               uint8
+    |  |              |        |     |           |              +---w (source-choice)?
+    |  |              |        |     |           |              |  +--:(prefix-case)
+    |  |              |        |     |           |              |  |  +---w source-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |           |              |  +--:(any-case)
+    |  |              |        |     |           |              |  |  +---w any?                            empty
+    |  |              |        |     |           |              |  +--:(host-case)
+    |  |              |        |     |           |              |     +---w host?                           ios-types:ip-host
+    |  |              |        |     |           |              +---w dst-addr-drop-node-name
+    |  |              |        |     |           |              |  +---w (destination-choice)?
+    |  |              |        |     |           |              |     +--:(prefix-case)
+    |  |              |        |     |           |              |     |  +---w destination-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |           |              |     +--:(any-case)
+    |  |              |        |     |           |              |     |  +---w any?                                 empty
+    |  |              |        |     |           |              |     +--:(host-case)
+    |  |              |        |     |           |              |        +---w host?                                ios-types:ip-host
+    |  |              |        |     |           |              +---w (direction-choice)?
+    |  |              |        |     |           |                 +--:(both-case)
+    |  |              |        |     |           |                 |  +---w both?                           empty
+    |  |              |        |     |           |                 +--:(ingress-case)
+    |  |              |        |     |           |                 |  +---w ingress?                        empty
+    |  |              |        |     |           |                 +--:(engress-case)
+    |  |              |        |     |           |                    +---w egress?                         empty
+    |  |              |        |     |           +--:(ipv6addr-case)
+    |  |              |        |     |              +---w ipv6-addr-drop-node-name
+    |  |              |        |     |                 +---w (source-choice)?
+    |  |              |        |     |                 |  +--:(prefix-case)
+    |  |              |        |     |                 |  |  +---w source-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |                 |  +--:(any-case)
+    |  |              |        |     |                 |  |  +---w any?                            empty
+    |  |              |        |     |                 |  +--:(host-case)
+    |  |              |        |     |                 |     +---w host?                           ios-types:ip-host
+    |  |              |        |     |                 +---w dst-addr-drop-node-name
+    |  |              |        |     |                 |  +---w (destination-choice)?
+    |  |              |        |     |                 |     +--:(prefix-case)
+    |  |              |        |     |                 |     |  +---w destination-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |                 |     +--:(any-case)
+    |  |              |        |     |                 |     |  +---w any?                                 empty
+    |  |              |        |     |                 |     +--:(host-case)
+    |  |              |        |     |                 |        +---w host?                                ios-types:ip-host
+    |  |              |        |     |                 +---w (direction-choice)?
+    |  |              |        |     |                    +--:(both-case)
+    |  |              |        |     |                    |  +---w both?                           empty
+    |  |              |        |     |                    +--:(ingress-case)
+    |  |              |        |     |                    |  +---w ingress?                        empty
+    |  |              |        |     |                    +--:(engress-case)
+    |  |              |        |     |                       +---w egress?                         empty
+    |  |              |        |     +---w no?           empty
+    |  |              |        +--:(interface-case)
+    |  |              |        |  +---w interface
+    |  |              |        |     +---w interface-name-drop-node-name    string
+    |  |              |        |     +---w (interface-choice)?
+    |  |              |        |     |  +--:(direction-case)
+    |  |              |        |     |  |  +---w (direction-choice)?
+    |  |              |        |     |  |     +--:(both-case)
+    |  |              |        |     |  |     |  +---w both?                empty
+    |  |              |        |     |  |     +--:(ingress-case)
+    |  |              |        |     |  |     |  +---w ingress?             empty
+    |  |              |        |     |  |     +--:(engress-case)
+    |  |              |        |     |  |        +---w egress?              empty
+    |  |              |        |     |  +--:(application-case)
+    |  |              |        |     |  |  +---w application
+    |  |              |        |     |  |     +---w app-name-drop-node-name    string
+    |  |              |        |     |  |     +---w (direction-choice)?
+    |  |              |        |     |  |        +--:(both-case)
+    |  |              |        |     |  |        |  +---w both?                empty
+    |  |              |        |     |  |        +--:(ingress-case)
+    |  |              |        |     |  |        |  +---w ingress?             empty
+    |  |              |        |     |  |        +--:(engress-case)
+    |  |              |        |     |  |           +---w egress?              empty
+    |  |              |        |     |  +--:(ipv4-case)
+    |  |              |        |     |  |  +---w ipv4
+    |  |              |        |     |  |     +---w (ipv4-choice)?
+    |  |              |        |     |  |        +--:(direction-case)
+    |  |              |        |     |  |        |  +---w (direction-choice)?
+    |  |              |        |     |  |        |     +--:(both-case)
+    |  |              |        |     |  |        |     |  +---w both?                empty
+    |  |              |        |     |  |        |     +--:(ingress-case)
+    |  |              |        |     |  |        |     |  +---w ingress?             empty
+    |  |              |        |     |  |        |     +--:(engress-case)
+    |  |              |        |     |  |        |        +---w egress?              empty
+    |  |              |        |     |  |        +--:(ipv4addr-case)
+    |  |              |        |     |  |        |  +---w ipv4addr-drop-node-name
+    |  |              |        |     |  |        |     +---w ip-addr-drop-node-name    string
+    |  |              |        |     |  |        |     +---w (ipv4addr-choice)?
+    |  |              |        |     |  |        |        +--:(application-case)
+    |  |              |        |     |  |        |        |  +---w application
+    |  |              |        |     |  |        |        |     +---w app-name-drop-node-name    string
+    |  |              |        |     |  |        |        |     +---w (direction-choice)?
+    |  |              |        |     |  |        |        |        +--:(both-case)
+    |  |              |        |     |  |        |        |        |  +---w both?                empty
+    |  |              |        |     |  |        |        |        +--:(ingress-case)
+    |  |              |        |     |  |        |        |        |  +---w ingress?             empty
+    |  |              |        |     |  |        |        |        +--:(engress-case)
+    |  |              |        |     |  |        |        |           +---w egress?              empty
+    |  |              |        |     |  |        |        +--:(direction-case)
+    |  |              |        |     |  |        |           +---w (direction-choice)?
+    |  |              |        |     |  |        |              +--:(both-case)
+    |  |              |        |     |  |        |              |  +---w both?         empty
+    |  |              |        |     |  |        |              +--:(ingress-case)
+    |  |              |        |     |  |        |              |  +---w ingress?      empty
+    |  |              |        |     |  |        |              +--:(engress-case)
+    |  |              |        |     |  |        |                 +---w egress?       empty
+    |  |              |        |     |  |        +--:(access-list-case)
+    |  |              |        |     |  |           +---w access-list
+    |  |              |        |     |  |              +---w acl-name-drop-node-name    string
+    |  |              |        |     |  |              +---w (direction-choice)?
+    |  |              |        |     |  |                 +--:(both-case)
+    |  |              |        |     |  |                 |  +---w both?                empty
+    |  |              |        |     |  |                 +--:(ingress-case)
+    |  |              |        |     |  |                 |  +---w ingress?             empty
+    |  |              |        |     |  |                 +--:(engress-case)
+    |  |              |        |     |  |                    +---w egress?              empty
+    |  |              |        |     |  +--:(ipv6-case)
+    |  |              |        |     |  |  +---w ipv6
+    |  |              |        |     |  |     +---w (ipv6-choice)?
+    |  |              |        |     |  |        +--:(direction-case)
+    |  |              |        |     |  |        |  +---w (direction-choice)?
+    |  |              |        |     |  |        |     +--:(both-case)
+    |  |              |        |     |  |        |     |  +---w both?                empty
+    |  |              |        |     |  |        |     +--:(ingress-case)
+    |  |              |        |     |  |        |     |  +---w ingress?             empty
+    |  |              |        |     |  |        |     +--:(engress-case)
+    |  |              |        |     |  |        |        +---w egress?              empty
+    |  |              |        |     |  |        +--:(ipv6addr-case)
+    |  |              |        |     |  |        |  +---w ipv6addr-drop-node-name
+    |  |              |        |     |  |        |     +---w ip-addr-drop-node-name    string
+    |  |              |        |     |  |        |     +---w (ipv6addr-choice)?
+    |  |              |        |     |  |        |        +--:(application-case)
+    |  |              |        |     |  |        |        |  +---w application
+    |  |              |        |     |  |        |        |     +---w app-name-drop-node-name    string
+    |  |              |        |     |  |        |        |     +---w (direction-choice)?
+    |  |              |        |     |  |        |        |        +--:(both-case)
+    |  |              |        |     |  |        |        |        |  +---w both?                empty
+    |  |              |        |     |  |        |        |        +--:(ingress-case)
+    |  |              |        |     |  |        |        |        |  +---w ingress?             empty
+    |  |              |        |     |  |        |        |        +--:(engress-case)
+    |  |              |        |     |  |        |        |           +---w egress?              empty
+    |  |              |        |     |  |        |        +--:(direction-case)
+    |  |              |        |     |  |        |           +---w (direction-choice)?
+    |  |              |        |     |  |        |              +--:(both-case)
+    |  |              |        |     |  |        |              |  +---w both?         empty
+    |  |              |        |     |  |        |              +--:(ingress-case)
+    |  |              |        |     |  |        |              |  +---w ingress?      empty
+    |  |              |        |     |  |        |              +--:(engress-case)
+    |  |              |        |     |  |        |                 +---w egress?       empty
+    |  |              |        |     |  |        +--:(access-list-case)
+    |  |              |        |     |  |           +---w access-list
+    |  |              |        |     |  |              +---w acl-name-drop-node-name    string
+    |  |              |        |     |  |              +---w (direction-choice)?
+    |  |              |        |     |  |                 +--:(both-case)
+    |  |              |        |     |  |                 |  +---w both?                empty
+    |  |              |        |     |  |                 +--:(ingress-case)
+    |  |              |        |     |  |                 |  +---w ingress?             empty
+    |  |              |        |     |  |                 +--:(engress-case)
+    |  |              |        |     |  |                    +---w egress?              empty
+    |  |              |        |     |  +--:(match-case)
+    |  |              |        |     |  |  +---w match
+    |  |              |        |     |  |     +---w (match-choice)?
+    |  |              |        |     |  |        +--:(ipv4-case)
+    |  |              |        |     |  |        |  +---w ipv4
+    |  |              |        |     |  |        |     +---w (ipv4-choice)?
+    |  |              |        |     |  |        |        +--:(protocol-case)
+    |  |              |        |     |  |        |        |  +---w protocol
+    |  |              |        |     |  |        |        |     +---w (protocol-choice)?
+    |  |              |        |     |  |        |        |        +--:(icmp-case)
+    |  |              |        |     |  |        |        |        |  +---w icmp
+    |  |              |        |     |  |        |        |        |     +---w (source-choice)?
+    |  |              |        |     |  |        |        |        |     |  +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |        |        |     |  |  +---w src-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |        |        |     |  +--:(any-case)
+    |  |              |        |     |  |        |        |        |     |  |  +---w any?                               empty
+    |  |              |        |     |  |        |        |        |     |  +--:(host-case)
+    |  |              |        |     |  |        |        |        |     |     +---w host?                              ios-types:ipv4-host
+    |  |              |        |     |  |        |        |        |     +---w dst-addr-drop-node-name
+    |  |              |        |     |  |        |        |        |     |  +---w (destination-choice)?
+    |  |              |        |     |  |        |        |        |     |     +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |        |        |     |     |  +---w dest-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |        |        |     |     +--:(any-case)
+    |  |              |        |     |  |        |        |        |     |     |  +---w any?                                empty
+    |  |              |        |     |  |        |        |        |     |     +--:(host-case)
+    |  |              |        |     |  |        |        |        |     |        +---w host?                               ios-types:ipv4-host
+    |  |              |        |     |  |        |        |        |     +---w (direction-choice)?
+    |  |              |        |     |  |        |        |        |        +--:(both-case)
+    |  |              |        |     |  |        |        |        |        |  +---w both?                              empty
+    |  |              |        |     |  |        |        |        |        +--:(ingress-case)
+    |  |              |        |     |  |        |        |        |        |  +---w ingress?                           empty
+    |  |              |        |     |  |        |        |        |        +--:(engress-case)
+    |  |              |        |     |  |        |        |        |           +---w egress?                            empty
+    |  |              |        |     |  |        |        |        +--:(tcp-case)
+    |  |              |        |     |  |        |        |        |  +---w tcp
+    |  |              |        |     |  |        |        |        |     +---w (source-choice)?
+    |  |              |        |     |  |        |        |        |     |  +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |        |        |     |  |  +---w src-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |        |        |     |  +--:(any-case)
+    |  |              |        |     |  |        |        |        |     |  |  +---w any?                               empty
+    |  |              |        |     |  |        |        |        |     |  +--:(host-case)
+    |  |              |        |     |  |        |        |        |     |     +---w host?                              ios-types:ipv4-host
+    |  |              |        |     |  |        |        |        |     +---w (src-port-choice)?
+    |  |              |        |     |  |        |        |        |     |  +--:(src-eq-case)
+    |  |              |        |     |  |        |        |        |     |  |  +---w eq?                                inet:port-number
+    |  |              |        |     |  |        |        |        |     |  +--:(src-gt-case)
+    |  |              |        |     |  |        |        |        |     |  |  +---w gt?                                inet:port-number
+    |  |              |        |     |  |        |        |        |     |  +--:(src-lt-case)
+    |  |              |        |     |  |        |        |        |     |  |  +---w lt?                                inet:port-number
+    |  |              |        |     |  |        |        |        |     |  +--:(src-neq-case)
+    |  |              |        |     |  |        |        |        |     |  |  +---w neq?                               inet:port-number
+    |  |              |        |     |  |        |        |        |     |  +--:(src-range-case)
+    |  |              |        |     |  |        |        |        |     |     +---w range?                             inet:port-number
+    |  |              |        |     |  |        |        |        |     |     +---w src-range2-drop-node-name?         inet:port-number
+    |  |              |        |     |  |        |        |        |     +---w dst-addr-port-drop-node-name
+    |  |              |        |     |  |        |        |        |     |  +---w (destination-choice)?
+    |  |              |        |     |  |        |        |        |     |  |  +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |        |        |     |  |  |  +---w dest-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |        |        |     |  |  +--:(any-case)
+    |  |              |        |     |  |        |        |        |     |  |  |  +---w any?                                empty
+    |  |              |        |     |  |        |        |        |     |  |  +--:(host-case)
+    |  |              |        |     |  |        |        |        |     |  |     +---w host?                               ios-types:ipv4-host
+    |  |              |        |     |  |        |        |        |     |  +---w (dst-port-choice)?
+    |  |              |        |     |  |        |        |        |     |     +--:(dst-eq-case)
+    |  |              |        |     |  |        |        |        |     |     |  +---w eq?                                 inet:port-number
+    |  |              |        |     |  |        |        |        |     |     +--:(dst-gt-case)
+    |  |              |        |     |  |        |        |        |     |     |  +---w gt?                                 inet:port-number
+    |  |              |        |     |  |        |        |        |     |     +--:(dst-lt-case)
+    |  |              |        |     |  |        |        |        |     |     |  +---w lt?                                 inet:port-number
+    |  |              |        |     |  |        |        |        |     |     +--:(dst-neq-case)
+    |  |              |        |     |  |        |        |        |     |     |  +---w neq?                                inet:port-number
+    |  |              |        |     |  |        |        |        |     |     +--:(dst-range-case)
+    |  |              |        |     |  |        |        |        |     |        +---w range?                              inet:port-number
+    |  |              |        |     |  |        |        |        |     |        +---w dst-range2-drop-node-name?          inet:port-number
+    |  |              |        |     |  |        |        |        |     +---w (direction-choice)?
+    |  |              |        |     |  |        |        |        |        +--:(both-case)
+    |  |              |        |     |  |        |        |        |        |  +---w both?                              empty
+    |  |              |        |     |  |        |        |        |        +--:(ingress-case)
+    |  |              |        |     |  |        |        |        |        |  +---w ingress?                           empty
+    |  |              |        |     |  |        |        |        |        +--:(engress-case)
+    |  |              |        |     |  |        |        |        |           +---w egress?                            empty
+    |  |              |        |     |  |        |        |        +--:(udp-case)
+    |  |              |        |     |  |        |        |        |  +---w udp
+    |  |              |        |     |  |        |        |        |     +---w (source-choice)?
+    |  |              |        |     |  |        |        |        |     |  +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |        |        |     |  |  +---w src-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |        |        |     |  +--:(any-case)
+    |  |              |        |     |  |        |        |        |     |  |  +---w any?                               empty
+    |  |              |        |     |  |        |        |        |     |  +--:(host-case)
+    |  |              |        |     |  |        |        |        |     |     +---w host?                              ios-types:ipv4-host
+    |  |              |        |     |  |        |        |        |     +---w (src-port-choice)?
+    |  |              |        |     |  |        |        |        |     |  +--:(src-eq-case)
+    |  |              |        |     |  |        |        |        |     |  |  +---w eq?                                inet:port-number
+    |  |              |        |     |  |        |        |        |     |  +--:(src-gt-case)
+    |  |              |        |     |  |        |        |        |     |  |  +---w gt?                                inet:port-number
+    |  |              |        |     |  |        |        |        |     |  +--:(src-lt-case)
+    |  |              |        |     |  |        |        |        |     |  |  +---w lt?                                inet:port-number
+    |  |              |        |     |  |        |        |        |     |  +--:(src-neq-case)
+    |  |              |        |     |  |        |        |        |     |  |  +---w neq?                               inet:port-number
+    |  |              |        |     |  |        |        |        |     |  +--:(src-range-case)
+    |  |              |        |     |  |        |        |        |     |     +---w range?                             inet:port-number
+    |  |              |        |     |  |        |        |        |     |     +---w src-range2-drop-node-name?         inet:port-number
+    |  |              |        |     |  |        |        |        |     +---w dst-addr-port-drop-node-name
+    |  |              |        |     |  |        |        |        |     |  +---w (destination-choice)?
+    |  |              |        |     |  |        |        |        |     |  |  +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |        |        |     |  |  |  +---w dest-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |        |        |     |  |  +--:(any-case)
+    |  |              |        |     |  |        |        |        |     |  |  |  +---w any?                                empty
+    |  |              |        |     |  |        |        |        |     |  |  +--:(host-case)
+    |  |              |        |     |  |        |        |        |     |  |     +---w host?                               ios-types:ipv4-host
+    |  |              |        |     |  |        |        |        |     |  +---w (dst-port-choice)?
+    |  |              |        |     |  |        |        |        |     |     +--:(dst-eq-case)
+    |  |              |        |     |  |        |        |        |     |     |  +---w eq?                                 inet:port-number
+    |  |              |        |     |  |        |        |        |     |     +--:(dst-gt-case)
+    |  |              |        |     |  |        |        |        |     |     |  +---w gt?                                 inet:port-number
+    |  |              |        |     |  |        |        |        |     |     +--:(dst-lt-case)
+    |  |              |        |     |  |        |        |        |     |     |  +---w lt?                                 inet:port-number
+    |  |              |        |     |  |        |        |        |     |     +--:(dst-neq-case)
+    |  |              |        |     |  |        |        |        |     |     |  +---w neq?                                inet:port-number
+    |  |              |        |     |  |        |        |        |     |     +--:(dst-range-case)
+    |  |              |        |     |  |        |        |        |     |        +---w range?                              inet:port-number
+    |  |              |        |     |  |        |        |        |     |        +---w dst-range2-drop-node-name?          inet:port-number
+    |  |              |        |     |  |        |        |        |     +---w (direction-choice)?
+    |  |              |        |     |  |        |        |        |        +--:(both-case)
+    |  |              |        |     |  |        |        |        |        |  +---w both?                              empty
+    |  |              |        |     |  |        |        |        |        +--:(ingress-case)
+    |  |              |        |     |  |        |        |        |        |  +---w ingress?                           empty
+    |  |              |        |     |  |        |        |        |        +--:(engress-case)
+    |  |              |        |     |  |        |        |        |           +---w egress?                            empty
+    |  |              |        |     |  |        |        |        +--:(proto-num-case)
+    |  |              |        |     |  |        |        |           +---w proto-num-drop-node-name
+    |  |              |        |     |  |        |        |              +---w protonum-drop-node-name                  uint8
+    |  |              |        |     |  |        |        |              +---w (source-choice)?
+    |  |              |        |     |  |        |        |              |  +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |        |              |  |  +---w src-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |        |              |  +--:(any-case)
+    |  |              |        |     |  |        |        |              |  |  +---w any?                               empty
+    |  |              |        |     |  |        |        |              |  +--:(host-case)
+    |  |              |        |     |  |        |        |              |     +---w host?                              ios-types:ipv4-host
+    |  |              |        |     |  |        |        |              +---w dst-addr-drop-node-name
+    |  |              |        |     |  |        |        |              |  +---w (destination-choice)?
+    |  |              |        |     |  |        |        |              |     +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |        |              |     |  +---w dest-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |        |              |     +--:(any-case)
+    |  |              |        |     |  |        |        |              |     |  +---w any?                                empty
+    |  |              |        |     |  |        |        |              |     +--:(host-case)
+    |  |              |        |     |  |        |        |              |        +---w host?                               ios-types:ipv4-host
+    |  |              |        |     |  |        |        |              +---w (direction-choice)?
+    |  |              |        |     |  |        |        |                 +--:(both-case)
+    |  |              |        |     |  |        |        |                 |  +---w both?                              empty
+    |  |              |        |     |  |        |        |                 +--:(ingress-case)
+    |  |              |        |     |  |        |        |                 |  +---w ingress?                           empty
+    |  |              |        |     |  |        |        |                 +--:(engress-case)
+    |  |              |        |     |  |        |        |                    +---w egress?                            empty
+    |  |              |        |     |  |        |        +--:(ipv4addr-case)
+    |  |              |        |     |  |        |           +---w ipv4-addr-drop-node-name
+    |  |              |        |     |  |        |              +---w (source-choice)?
+    |  |              |        |     |  |        |              |  +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |              |  |  +---w src-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |              |  +--:(any-case)
+    |  |              |        |     |  |        |              |  |  +---w any?                               empty
+    |  |              |        |     |  |        |              |  +--:(host-case)
+    |  |              |        |     |  |        |              |     +---w host?                              ios-types:ipv4-host
+    |  |              |        |     |  |        |              +---w dst-addr-drop-node-name
+    |  |              |        |     |  |        |              |  +---w (destination-choice)?
+    |  |              |        |     |  |        |              |     +--:(ipv4-prefix-case)
+    |  |              |        |     |  |        |              |     |  +---w dest-ipv4-address-drop-node-name?   string
+    |  |              |        |     |  |        |              |     +--:(any-case)
+    |  |              |        |     |  |        |              |     |  +---w any?                                empty
+    |  |              |        |     |  |        |              |     +--:(host-case)
+    |  |              |        |     |  |        |              |        +---w host?                               ios-types:ipv4-host
+    |  |              |        |     |  |        |              +---w (direction-choice)?
+    |  |              |        |     |  |        |                 +--:(both-case)
+    |  |              |        |     |  |        |                 |  +---w both?                              empty
+    |  |              |        |     |  |        |                 +--:(ingress-case)
+    |  |              |        |     |  |        |                 |  +---w ingress?                           empty
+    |  |              |        |     |  |        |                 +--:(engress-case)
+    |  |              |        |     |  |        |                    +---w egress?                            empty
+    |  |              |        |     |  |        +--:(ipv6-case)
+    |  |              |        |     |  |           +---w ipv6
+    |  |              |        |     |  |              +---w (ipv6-choice)?
+    |  |              |        |     |  |                 +--:(protocol-case)
+    |  |              |        |     |  |                 |  +---w protocol
+    |  |              |        |     |  |                 |     +---w (protocol-choice)?
+    |  |              |        |     |  |                 |        +--:(icmp-case)
+    |  |              |        |     |  |                 |        |  +---w icmp
+    |  |              |        |     |  |                 |        |     +---w (source-choice)?
+    |  |              |        |     |  |                 |        |     |  +--:(prefix-case)
+    |  |              |        |     |  |                 |        |     |  |  +---w source-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |  |                 |        |     |  +--:(any-case)
+    |  |              |        |     |  |                 |        |     |  |  +---w any?                            empty
+    |  |              |        |     |  |                 |        |     |  +--:(host-case)
+    |  |              |        |     |  |                 |        |     |     +---w host?                           ios-types:ip-host
+    |  |              |        |     |  |                 |        |     +---w dst-addr-drop-node-name
+    |  |              |        |     |  |                 |        |     |  +---w (destination-choice)?
+    |  |              |        |     |  |                 |        |     |     +--:(prefix-case)
+    |  |              |        |     |  |                 |        |     |     |  +---w destination-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |  |                 |        |     |     +--:(any-case)
+    |  |              |        |     |  |                 |        |     |     |  +---w any?                                 empty
+    |  |              |        |     |  |                 |        |     |     +--:(host-case)
+    |  |              |        |     |  |                 |        |     |        +---w host?                                ios-types:ip-host
+    |  |              |        |     |  |                 |        |     +---w (direction-choice)?
+    |  |              |        |     |  |                 |        |        +--:(both-case)
+    |  |              |        |     |  |                 |        |        |  +---w both?                           empty
+    |  |              |        |     |  |                 |        |        +--:(ingress-case)
+    |  |              |        |     |  |                 |        |        |  +---w ingress?                        empty
+    |  |              |        |     |  |                 |        |        +--:(engress-case)
+    |  |              |        |     |  |                 |        |           +---w egress?                         empty
+    |  |              |        |     |  |                 |        +--:(tcp-case)
+    |  |              |        |     |  |                 |        |  +---w tcp
+    |  |              |        |     |  |                 |        |     +---w (source-choice)?
+    |  |              |        |     |  |                 |        |     |  +--:(prefix-case)
+    |  |              |        |     |  |                 |        |     |  |  +---w source-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |  |                 |        |     |  +--:(any-case)
+    |  |              |        |     |  |                 |        |     |  |  +---w any?                            empty
+    |  |              |        |     |  |                 |        |     |  +--:(host-case)
+    |  |              |        |     |  |                 |        |     |     +---w host?                           ios-types:ip-host
+    |  |              |        |     |  |                 |        |     +---w (src-port-choice)?
+    |  |              |        |     |  |                 |        |     |  +--:(src-eq-case)
+    |  |              |        |     |  |                 |        |     |  |  +---w eq?                             inet:port-number
+    |  |              |        |     |  |                 |        |     |  +--:(src-gt-case)
+    |  |              |        |     |  |                 |        |     |  |  +---w gt?                             inet:port-number
+    |  |              |        |     |  |                 |        |     |  +--:(src-lt-case)
+    |  |              |        |     |  |                 |        |     |  |  +---w lt?                             inet:port-number
+    |  |              |        |     |  |                 |        |     |  +--:(src-neq-case)
+    |  |              |        |     |  |                 |        |     |  |  +---w neq?                            inet:port-number
+    |  |              |        |     |  |                 |        |     |  +--:(src-range-case)
+    |  |              |        |     |  |                 |        |     |     +---w range?                          inet:port-number
+    |  |              |        |     |  |                 |        |     |     +---w src-range2-drop-node-name?      inet:port-number
+    |  |              |        |     |  |                 |        |     +---w dst-addr-port-drop-node-name
+    |  |              |        |     |  |                 |        |     |  +---w (destination-choice)?
+    |  |              |        |     |  |                 |        |     |  |  +--:(prefix-case)
+    |  |              |        |     |  |                 |        |     |  |  |  +---w destination-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |  |                 |        |     |  |  +--:(any-case)
+    |  |              |        |     |  |                 |        |     |  |  |  +---w any?                                 empty
+    |  |              |        |     |  |                 |        |     |  |  +--:(host-case)
+    |  |              |        |     |  |                 |        |     |  |     +---w host?                                ios-types:ip-host
+    |  |              |        |     |  |                 |        |     |  +---w (dst-port-choice)?
+    |  |              |        |     |  |                 |        |     |     +--:(dst-eq-case)
+    |  |              |        |     |  |                 |        |     |     |  +---w eq?                                  inet:port-number
+    |  |              |        |     |  |                 |        |     |     +--:(dst-gt-case)
+    |  |              |        |     |  |                 |        |     |     |  +---w gt?                                  inet:port-number
+    |  |              |        |     |  |                 |        |     |     +--:(dst-lt-case)
+    |  |              |        |     |  |                 |        |     |     |  +---w lt?                                  inet:port-number
+    |  |              |        |     |  |                 |        |     |     +--:(dst-neq-case)
+    |  |              |        |     |  |                 |        |     |     |  +---w neq?                                 inet:port-number
+    |  |              |        |     |  |                 |        |     |     +--:(dst-range-case)
+    |  |              |        |     |  |                 |        |     |        +---w range?                               inet:port-number
+    |  |              |        |     |  |                 |        |     |        +---w dst-range2-drop-node-name?           inet:port-number
+    |  |              |        |     |  |                 |        |     +---w (direction-choice)?
+    |  |              |        |     |  |                 |        |        +--:(both-case)
+    |  |              |        |     |  |                 |        |        |  +---w both?                           empty
+    |  |              |        |     |  |                 |        |        +--:(ingress-case)
+    |  |              |        |     |  |                 |        |        |  +---w ingress?                        empty
+    |  |              |        |     |  |                 |        |        +--:(engress-case)
+    |  |              |        |     |  |                 |        |           +---w egress?                         empty
+    |  |              |        |     |  |                 |        +--:(udp-case)
+    |  |              |        |     |  |                 |        |  +---w udp
+    |  |              |        |     |  |                 |        |     +---w (source-choice)?
+    |  |              |        |     |  |                 |        |     |  +--:(prefix-case)
+    |  |              |        |     |  |                 |        |     |  |  +---w source-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |  |                 |        |     |  +--:(any-case)
+    |  |              |        |     |  |                 |        |     |  |  +---w any?                            empty
+    |  |              |        |     |  |                 |        |     |  +--:(host-case)
+    |  |              |        |     |  |                 |        |     |     +---w host?                           ios-types:ip-host
+    |  |              |        |     |  |                 |        |     +---w (src-port-choice)?
+    |  |              |        |     |  |                 |        |     |  +--:(src-eq-case)
+    |  |              |        |     |  |                 |        |     |  |  +---w eq?                             inet:port-number
+    |  |              |        |     |  |                 |        |     |  +--:(src-gt-case)
+    |  |              |        |     |  |                 |        |     |  |  +---w gt?                             inet:port-number
+    |  |              |        |     |  |                 |        |     |  +--:(src-lt-case)
+    |  |              |        |     |  |                 |        |     |  |  +---w lt?                             inet:port-number
+    |  |              |        |     |  |                 |        |     |  +--:(src-neq-case)
+    |  |              |        |     |  |                 |        |     |  |  +---w neq?                            inet:port-number
+    |  |              |        |     |  |                 |        |     |  +--:(src-range-case)
+    |  |              |        |     |  |                 |        |     |     +---w range?                          inet:port-number
+    |  |              |        |     |  |                 |        |     |     +---w src-range2-drop-node-name?      inet:port-number
+    |  |              |        |     |  |                 |        |     +---w dst-addr-port-drop-node-name
+    |  |              |        |     |  |                 |        |     |  +---w (destination-choice)?
+    |  |              |        |     |  |                 |        |     |  |  +--:(prefix-case)
+    |  |              |        |     |  |                 |        |     |  |  |  +---w destination-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |  |                 |        |     |  |  +--:(any-case)
+    |  |              |        |     |  |                 |        |     |  |  |  +---w any?                                 empty
+    |  |              |        |     |  |                 |        |     |  |  +--:(host-case)
+    |  |              |        |     |  |                 |        |     |  |     +---w host?                                ios-types:ip-host
+    |  |              |        |     |  |                 |        |     |  +---w (dst-port-choice)?
+    |  |              |        |     |  |                 |        |     |     +--:(dst-eq-case)
+    |  |              |        |     |  |                 |        |     |     |  +---w eq?                                  inet:port-number
+    |  |              |        |     |  |                 |        |     |     +--:(dst-gt-case)
+    |  |              |        |     |  |                 |        |     |     |  +---w gt?                                  inet:port-number
+    |  |              |        |     |  |                 |        |     |     +--:(dst-lt-case)
+    |  |              |        |     |  |                 |        |     |     |  +---w lt?                                  inet:port-number
+    |  |              |        |     |  |                 |        |     |     +--:(dst-neq-case)
+    |  |              |        |     |  |                 |        |     |     |  +---w neq?                                 inet:port-number
+    |  |              |        |     |  |                 |        |     |     +--:(dst-range-case)
+    |  |              |        |     |  |                 |        |     |        +---w range?                               inet:port-number
+    |  |              |        |     |  |                 |        |     |        +---w dst-range2-drop-node-name?           inet:port-number
+    |  |              |        |     |  |                 |        |     +---w (direction-choice)?
+    |  |              |        |     |  |                 |        |        +--:(both-case)
+    |  |              |        |     |  |                 |        |        |  +---w both?                           empty
+    |  |              |        |     |  |                 |        |        +--:(ingress-case)
+    |  |              |        |     |  |                 |        |        |  +---w ingress?                        empty
+    |  |              |        |     |  |                 |        |        +--:(engress-case)
+    |  |              |        |     |  |                 |        |           +---w egress?                         empty
+    |  |              |        |     |  |                 |        +--:(proto-num-case)
+    |  |              |        |     |  |                 |           +---w proto-num-drop-node-name
+    |  |              |        |     |  |                 |              +---w protonum-drop-node-name               uint8
+    |  |              |        |     |  |                 |              +---w (source-choice)?
+    |  |              |        |     |  |                 |              |  +--:(prefix-case)
+    |  |              |        |     |  |                 |              |  |  +---w source-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |  |                 |              |  +--:(any-case)
+    |  |              |        |     |  |                 |              |  |  +---w any?                            empty
+    |  |              |        |     |  |                 |              |  +--:(host-case)
+    |  |              |        |     |  |                 |              |     +---w host?                           ios-types:ip-host
+    |  |              |        |     |  |                 |              +---w dst-addr-drop-node-name
+    |  |              |        |     |  |                 |              |  +---w (destination-choice)?
+    |  |              |        |     |  |                 |              |     +--:(prefix-case)
+    |  |              |        |     |  |                 |              |     |  +---w destination-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |  |                 |              |     +--:(any-case)
+    |  |              |        |     |  |                 |              |     |  +---w any?                                 empty
+    |  |              |        |     |  |                 |              |     +--:(host-case)
+    |  |              |        |     |  |                 |              |        +---w host?                                ios-types:ip-host
+    |  |              |        |     |  |                 |              +---w (direction-choice)?
+    |  |              |        |     |  |                 |                 +--:(both-case)
+    |  |              |        |     |  |                 |                 |  +---w both?                           empty
+    |  |              |        |     |  |                 |                 +--:(ingress-case)
+    |  |              |        |     |  |                 |                 |  +---w ingress?                        empty
+    |  |              |        |     |  |                 |                 +--:(engress-case)
+    |  |              |        |     |  |                 |                    +---w egress?                         empty
+    |  |              |        |     |  |                 +--:(ipv6addr-case)
+    |  |              |        |     |  |                    +---w ipv6-addr-drop-node-name
+    |  |              |        |     |  |                       +---w (source-choice)?
+    |  |              |        |     |  |                       |  +--:(prefix-case)
+    |  |              |        |     |  |                       |  |  +---w source-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |  |                       |  +--:(any-case)
+    |  |              |        |     |  |                       |  |  +---w any?                            empty
+    |  |              |        |     |  |                       |  +--:(host-case)
+    |  |              |        |     |  |                       |     +---w host?                           ios-types:ip-host
+    |  |              |        |     |  |                       +---w dst-addr-drop-node-name
+    |  |              |        |     |  |                       |  +---w (destination-choice)?
+    |  |              |        |     |  |                       |     +--:(prefix-case)
+    |  |              |        |     |  |                       |     |  +---w destination-prefix-drop-node-name?   ios-types:ipv6-prefix
+    |  |              |        |     |  |                       |     +--:(any-case)
+    |  |              |        |     |  |                       |     |  +---w any?                                 empty
+    |  |              |        |     |  |                       |     +--:(host-case)
+    |  |              |        |     |  |                       |        +---w host?                                ios-types:ip-host
+    |  |              |        |     |  |                       +---w (direction-choice)?
+    |  |              |        |     |  |                          +--:(both-case)
+    |  |              |        |     |  |                          |  +---w both?                           empty
+    |  |              |        |     |  |                          +--:(ingress-case)
+    |  |              |        |     |  |                          |  +---w ingress?                        empty
+    |  |              |        |     |  |                          +--:(engress-case)
+    |  |              |        |     |  |                             +---w egress?                         empty
+    |  |              |        |     |  +--:(mpls-case)
+    |  |              |        |     |     +---w mpls
+    |  |              |        |     |        +---w (mpls-choice)?
+    |  |              |        |     |           +--:(label-case)
+    |  |              |        |     |           |  +---w label-drop-node-name
+    |  |              |        |     |           |     +---w label-id-drop-node-name    uint32
+    |  |              |        |     |           |     +---w depth-drop-node-name?      uint8
+    |  |              |        |     |           |     +---w application?               string
+    |  |              |        |     |           |     +---w (direction-choice)?
+    |  |              |        |     |           |        +--:(both-case)
+    |  |              |        |     |           |        |  +---w both?                empty
+    |  |              |        |     |           |        +--:(ingress-case)
+    |  |              |        |     |           |        |  +---w ingress?             empty
+    |  |              |        |     |           |        +--:(engress-case)
+    |  |              |        |     |           |           +---w egress?              empty
+    |  |              |        |     |           +--:(application-case)
+    |  |              |        |     |           |  +---w application
+    |  |              |        |     |           |     +---w app-name-drop-node-name    string
+    |  |              |        |     |           |     +---w (direction-choice)?
+    |  |              |        |     |           |        +--:(both-case)
+    |  |              |        |     |           |        |  +---w both?                empty
+    |  |              |        |     |           |        +--:(ingress-case)
+    |  |              |        |     |           |        |  +---w ingress?             empty
+    |  |              |        |     |           |        +--:(engress-case)
+    |  |              |        |     |           |           +---w egress?              empty
+    |  |              |        |     |           +--:(direction-case)
+    |  |              |        |     |              +---w (direction-choice)?
+    |  |              |        |     |                 +--:(both-case)
+    |  |              |        |     |                 |  +---w both?             empty
+    |  |              |        |     |                 +--:(ingress-case)
+    |  |              |        |     |                 |  +---w ingress?          empty
+    |  |              |        |     |                 +--:(engress-case)
+    |  |              |        |     |                    +---w egress?           empty
+    |  |              |        |     +---w no?                              empty
+    |  |              |        +--:(feature-case)
+    |  |              |           +---w feature
+    |  |              |              +---w ipsec
+    |  |              |                 +---w dataplane
+    |  |              |                    +---w (dataplane-debug-choice)?
+    |  |              |                    |  +--:(submode-case)
+    |  |              |                    |  |  +---w submode
+    |  |              |                    |  |     +---w (submode-choice)?
+    |  |              |                    |  |        +--:(all-case)
+    |  |              |                    |  |        |  +---w all
+    |  |              |                    |  |        |     +---w level
+    |  |              |                    |  |        |        +---w (level-choice)?
+    |  |              |                    |  |        |           +--:(error-case)
+    |  |              |                    |  |        |           |  +---w error?     empty
+    |  |              |                    |  |        |           +--:(info-case)
+    |  |              |                    |  |        |           |  +---w info?      empty
+    |  |              |                    |  |        |           +--:(verbose-case)
+    |  |              |                    |  |        |           |  +---w verbose?   empty
+    |  |              |                    |  |        |           +--:(warning-case)
+    |  |              |                    |  |        |              +---w warning?   empty
+    |  |              |                    |  |        +--:(cce-case)
+    |  |              |                    |  |        |  +---w cce
+    |  |              |                    |  |        |     +---w level
+    |  |              |                    |  |        |        +---w (level-choice)?
+    |  |              |                    |  |        |           +--:(error-case)
+    |  |              |                    |  |        |           |  +---w error?     empty
+    |  |              |                    |  |        |           +--:(info-case)
+    |  |              |                    |  |        |           |  +---w info?      empty
+    |  |              |                    |  |        |           +--:(verbose-case)
+    |  |              |                    |  |        |           |  +---w verbose?   empty
+    |  |              |                    |  |        |           +--:(warning-case)
+    |  |              |                    |  |        |              +---w warning?   empty
+    |  |              |                    |  |        +--:(pkt-dump)
+    |  |              |                    |  |           +---w pkt-dump
+    |  |              |                    |  |              +---w level
+    |  |              |                    |  |                 +---w (level-choice)?
+    |  |              |                    |  |                    +--:(error-case)
+    |  |              |                    |  |                    |  +---w error?     empty
+    |  |              |                    |  |                    +--:(info-case)
+    |  |              |                    |  |                    |  +---w info?      empty
+    |  |              |                    |  |                    +--:(verbose-case)
+    |  |              |                    |  |                    |  +---w verbose?   empty
+    |  |              |                    |  |                    +--:(warning-case)
+    |  |              |                    |  |                       +---w warning?   empty
+    |  |              |                    |  +--:(droptype-case)
+    |  |              |                    |  |  +---w droptype?     union
+    |  |              |                    |  +--:(pktcorrupt-case)
+    |  |              |                    |     +---w pktcorrupt?   uint8
+    |  |              |                    +---w no?                 empty
+    |  |              +--:(packet-trace-case)
+    |  |                 +---w packet-trace
+    |  |                    +---w (packet-trace-choice)?
+    |  |                    |  +--:(statistics-case)
+    |  |                    |  |  +---w statistics?   empty
+    |  |                    |  +--:(drop-case)
+    |  |                    |  |  +---w drop!
+    |  |                    |  |     +---w code?   uint16
+    |  |                    |  +--:(inject-case)
+    |  |                    |  |  +---w inject!
+    |  |                    |  |     +---w code?   uint16
+    |  |                    |  +--:(punt-case)
+    |  |                    |  |  +---w punt!
+    |  |                    |  |     +---w code?   uint16
+    |  |                    |  +--:(packet-case)
+    |  |                    |  |  +---w packet
+    |  |                    |  |     +---w packet-num-drop-node-name     uint16
+    |  |                    |  |     +---w option-grp1-drop-node-name
+    |  |                    |  |     |  +---w data-size?   uint16
+    |  |                    |  |     |  +---w fia-trace?   empty
+    |  |                    |  |     |  +---w circular?    empty
+    |  |                    |  |     +---w option-grp2-drop-node-name
+    |  |                    |  |        +---w circular?       empty
+    |  |                    |  |        +---w summary-only?   empty
+    |  |                    |  +--:(copy-case)
+    |  |                    |     +---w copy
+    |  |                    |        +---w packet
+    |  |                    |           +---w (direction-choice)
+    |  |                    |           |  +--:(both-case)
+    |  |                    |           |  |  +---w both?     empty
+    |  |                    |           |  +--:(input-case)
+    |  |                    |           |  |  +---w input?    empty
+    |  |                    |           |  +--:(output-case)
+    |  |                    |           |     +---w output?   empty
+    |  |                    |           +---w (layer-choice)?
+    |  |                    |           |  +--:(l2-case)
+    |  |                    |           |  |  +---w l2?       empty
+    |  |                    |           |  +--:(l3-case)
+    |  |                    |           |  |  +---w l3?       empty
+    |  |                    |           |  +--:(l4-case)
+    |  |                    |           |     +---w l4?       empty
+    |  |                    |           +---w size?           uint16
+    |  |                    +---w no?                 empty
+    |  +--ro output
+    |     +--ro result?   string
+    +---x monitor
+    |  +---w input
+    |  |  +---w capture?             string
+    |  |  +---w match?               string
+    |  |  +---w interface?           string
+    |  |  +---w (capture-direction-choice)?
+    |  |  |  +--:(both-case)
+    |  |  |  |  +---w both?          empty
+    |  |  |  +--:(in-case)
+    |  |  |  |  +---w in?            empty
+    |  |  |  +--:(out-case)
+    |  |  |     +---w out?           empty
+    |  |  +---w (capture-command-choice)?
+    |  |     +--:(start-case)
+    |  |     |  +---w start?         empty
+    |  |     +--:(stop-case)
+    |  |     |  +---w stop?          empty
+    |  |     +--:(stop-export-case)
+    |  |        +---w stop_export?   empty
+    |  +--ro output
+    |     +--ro result?   string
+    +---x pnpa
+    |  +---w input
+    |  |  +---w service
+    |  |     +---w (service-choice)?
+    |  |        +--:(wakeup-case)
+    |  |        |  +---w wakeup
+    |  |        |     +---w profile-drop-node-name?   string
+    |  |        +--:(reset-case)
+    |  |           +---w reset?    empty
+    |  +--ro output
+    |     +--ro result?   string
+    +---x test
+       +---w input
+       |  +---w (test-feature)?
+       +--ro output
+          +--ro result?   string
+Xpaths for model: Cisco-IOS-XE-rpc.yang

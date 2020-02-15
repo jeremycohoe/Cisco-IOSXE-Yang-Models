@@ -1,0 +1,228 @@
+ 
+KPI for model: Cisco-IOS-XE-umbrella.yang
+
+module: Cisco-IOS-XE-umbrella
+  augment /ios:native/ios:parameter-map/ios:type:
+    +--rw umbrella
+       +--rw global!
+       |  +--rw token?              string
+       |  +--rw local-domain?       -> /ios:native/parameter-map/type/ios-policy:regex/name
+       |  +--rw dnscrypt?           boolean
+       |  +--rw public-key?         string
+       |  +--rw udp-timeout?        uint8
+       |  +--rw resolver
+       |  |  +--rw ipv4* [address]
+       |  |  |  +--rw address    inet:ipv4-address
+       |  |  +--rw ipv6* [address]
+       |  |     +--rw address    inet:ipv6-address
+       |  +--rw orgid?              uint32
+       |  +--rw api-key?            string
+       |  +--rw secret
+       |  |  +--rw encryption?   enumeration
+       |  |  +--rw secret-key?   string
+       |  +--rw registration-vrf?   string
+       |  +--rw vrf* [name]
+       |     +--rw name                            string
+       |     +--rw dns-resolver?                   union
+       |     +--rw match-local-domain-to-bypass?   boolean
+       +--rw non-global-parameter-map* [name]
+          +--rw name    string
+  augment /ios:native/ios:interface/ios:Ethernet:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:AppGigabitEthernet:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:TwentyFiveGigabitEthernet:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:LISP:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:Loopback:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:Tunnel:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:Virtual-Template:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:Vlan:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:vasileft:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+  augment /ios:native/ios:interface/ios:vasiright:
+    +--rw umbrella
+       +--rw out?   empty
+       +--rw in
+          +--rw (tag_or_dca)?
+             +--:(tag)
+             |  +--rw tag?                   string
+             +--:(direct-cloud-access)
+                +--rw direct-cloud-access
+                   +--rw policy?   string
+                   +--rw tag?      string
+Xpaths for model: Cisco-IOS-XE-umbrella.yang

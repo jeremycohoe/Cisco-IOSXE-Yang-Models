@@ -1,0 +1,3 @@
+ 
+KPI for model: openconfig-alarm-types.yang
+Xpaths for model: openconfig-alarm-types.yang

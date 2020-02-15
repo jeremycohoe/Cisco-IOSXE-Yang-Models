@@ -1,0 +1,3 @@
+ 
+KPI for model: cisco-semver.yang
+Xpaths for model: cisco-semver.yang

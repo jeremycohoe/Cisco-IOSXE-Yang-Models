@@ -1,0 +1,40 @@
+ 
+KPI for model: ietf-yang-library.yang
+module: ietf-yang-library
+  +--ro modules-state
+     +--ro module-set-id    string
+     +--ro module* [name revision]
+        +--ro name                yang:yang-identifier
+        +--ro revision            union
+        +--ro schema?             inet:uri
+        +--ro namespace           inet:uri
+        +--ro feature*            yang:yang-identifier
+        +--ro deviation* [name revision]
+        |  +--ro name        yang:yang-identifier
+        |  +--ro revision    union
+        +--ro conformance-type    enumeration
+        +--ro submodule* [name revision]
+           +--ro name        yang:yang-identifier
+           +--ro revision    union
+           +--ro schema?     inet:uri
+
+  notifications:
+    +---n yang-library-change
+       +--ro module-set-id    -> /modules-state/module-set-id
+Xpaths for model: ietf-yang-library.yang
+/yanglib:modules-state,container,
+/yanglib:modules-state/yanglib:module-set-id,leaf,string
+/yanglib:modules-state/yanglib:module,list,
+/yanglib:modules-state/yanglib:module/yanglib:name,leaf,yang:yang-identifier
+/yanglib:modules-state/yanglib:module/yanglib:revision,leaf,union
+/yanglib:modules-state/yanglib:module/yanglib:schema,leaf,inet:uri
+/yanglib:modules-state/yanglib:module/yanglib:namespace,leaf,inet:uri
+/yanglib:modules-state/yanglib:module/yanglib:feature,leaf-list,yang:yang-identifier
+/yanglib:modules-state/yanglib:module/yanglib:deviation,list,
+/yanglib:modules-state/yanglib:module/yanglib:deviation/yanglib:name,leaf,yang:yang-identifier
+/yanglib:modules-state/yanglib:module/yanglib:deviation/yanglib:revision,leaf,union
+/yanglib:modules-state/yanglib:module/yanglib:conformance-type,leaf,enumeration
+/yanglib:modules-state/yanglib:module/yanglib:submodule,list,
+/yanglib:modules-state/yanglib:module/yanglib:submodule/yanglib:name,leaf,yang:yang-identifier
+/yanglib:modules-state/yanglib:module/yanglib:submodule/yanglib:revision,leaf,union
+/yanglib:modules-state/yanglib:module/yanglib:submodule/yanglib:schema,leaf,inet:uri

@@ -1,0 +1,35 @@
+ 
+KPI for model: Cisco-IOS-XE-service-discovery.yang
+
+module: Cisco-IOS-XE-service-discovery
+  augment /ios:native:
+    +--rw service-list
+       +--rw mdns-sd* [service-list-name]
+          +--rw service-list-name    string
+          +--rw deny* [deny-pack]
+          |  +--rw deny-pack    uint8
+          |  +--rw match
+          |     +--rw learnt-interface?   empty
+          |     +--rw location!
+          |     |  +--rw civic?   string
+          |     +--rw message-type!
+          |     |  +--rw announcement?   empty
+          |     |  +--rw query?          empty
+          |     |  +--rw any?            empty
+          |     +--rw service-instance?   string
+          |     +--rw service-type?       string
+          +--rw permit* [deny-pack]
+          |  +--rw deny-pack    uint8
+          |  +--rw match
+          |     +--rw learnt-interface?   empty
+          |     +--rw location!
+          |     |  +--rw civic?   string
+          |     +--rw message-type!
+          |     |  +--rw announcement?   empty
+          |     |  +--rw query?          empty
+          |     |  +--rw any?            empty
+          |     +--rw service-instance?   string
+          |     +--rw service-type?       string
+          +--rw query
+             +--rw service-type?   string
+Xpaths for model: Cisco-IOS-XE-service-discovery.yang

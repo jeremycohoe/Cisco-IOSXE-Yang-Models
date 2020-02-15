@@ -1,0 +1,36 @@
+ 
+KPI for model: ietf-diffserv-target.yang
+
+module: ietf-diffserv-target
+  augment /if:interfaces/if:interface:
+    +--rw diffserv-target-entry* [direction policy-name]
+       +--rw direction      identityref
+       +--rw policy-name    string
+  augment /if:interfaces-state/if:interface:
+    +--ro diffserv-target-entry* [direction policy-name]
+       +--ro direction                                identityref
+       +--ro policy-name                              string
+       +--ro diffserv-target-classifier-statistics* [classifier-entry-name parent-path]
+          +--ro classifier-entry-name          string
+          +--ro parent-path                    string
+          +--ro classifier-entry-statistics
+          |  +--ro classified-pkts?    uint64
+          |  +--ro classified-bytes?   uint64
+          |  +--ro classified-rate?    uint64
+          +--ro meter-statistics* [meter-id]
+          |  +--ro meter-id               uint16
+          |  +--ro meter-succeed-pkts?    uint64
+          |  +--ro meter-succeed-bytes?   uint64
+          |  +--ro meter-failed-pkts?     uint64
+          |  +--ro meter-failed-bytes?    uint64
+          +--ro queuing-statistics
+             +--ro output-pkts?        uint64
+             +--ro output-bytes?       uint64
+             +--ro queue-size-pkts?    uint64
+             +--ro queue-size-bytes?   uint64
+             +--ro drop-pkts?          uint64
+             +--ro drop-bytes?         uint64
+             +--ro wred-stats
+                +--ro early-drop-pkts?    uint64
+                +--ro early-drop-bytes?   uint64
+Xpaths for model: ietf-diffserv-target.yang

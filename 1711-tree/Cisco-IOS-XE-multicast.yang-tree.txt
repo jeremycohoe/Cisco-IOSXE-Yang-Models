@@ -1,0 +1,3955 @@
+ 
+KPI for model: Cisco-IOS-XE-multicast.yang
+
+module: Cisco-IOS-XE-multicast
+  augment /ios:native/ios:ip/ios:multicast:
+    +--rw auto-enable?             empty
+    +--rw default-rpf-distance?    uint8
+    +--rw group-range?             ios-types:mcast-std-acl-type
+    +--rw heartbeat* [group-address]
+    |  +--rw group-address    inet:ipv4-address
+    |  +--rw min-interval     uint8
+    |  +--rw num-interval     uint8
+    |  +--rw length           uint16
+    +--rw limit
+    |  +--rw cost* [access-list]
+    |     +--rw access-list    union
+    |     +--rw cost           uint32
+    +--rw longest-match?           empty
+    +--rw mpls
+    |  +--rw mldp?          empty
+    |  +--rw traffic-eng!
+    |     +--rw range?   union
+    +--rw mrinfo-filter?           ios-types:mcast-std-acl-type
+    +--rw topology
+    |  +--rw multicast* [word]
+    |  |  +--rw word    string
+    |  |  +--rw tid     uint16
+    |  +--rw unicast* [word]
+    |     +--rw word    string
+    |     +--rw tid     uint16
+    +--rw multipath!
+    |  +--rw s-g-hash?   enumeration
+    +--rw rpf
+    |  +--rw default-distance?   uint8
+    |  +--rw mofrr
+    |  |  +--rw list?     ios-types:ext-acl-type
+    |  |  +--rw sticky?   empty
+    |  +--rw proxy
+    |  |  +--rw disable?   empty
+    |  |  +--rw vector?    empty
+    |  +--rw select
+    |  |  +--rw global
+    |  |  |  +--rw group-list*   ios-types:mcast-std-acl-type
+    |  |  +--rw topology
+    |  |  |  +--rw multicast
+    |  |  |  |  +--rw word* [topology-name]
+    |  |  |  |     +--rw topology-name     string
+    |  |  |  |     +--rw access-list-id    uint8
+    |  |  |  +--rw unicast
+    |  |  |     +--rw word* [topology-name]
+    |  |  |        +--rw topology-name     string
+    |  |  |        +--rw access-list-id    uint8
+    |  |  +--rw vrf-list* [group-list]
+    |  |  |  +--rw name?         string
+    |  |  |  +--rw group-list    ios-types:mcast-std-acl-type
+    |  |  o--rw vrf* [name]
+    |  |     o--rw name          string
+    |  |     o--rw group-list* [group-list-name]
+    |  |        o--rw group-list-name    union
+    |  +--rw multitopology?      empty
+    +--rw route-limit-container
+    |  +--rw routelimit?          uint32
+    |  +--rw warning-threshold?   uint32
+    x--rw route-limit?             uint32
+    +--rw redundancy
+    |  +--rw nsf
+    |  |  +--rw holdtime?   uint16
+    |  +--rw routeflush
+    |     +--rw maxtime?   uint16
+    +--rw vrf* [name]
+       +--rw name                    string
+       +--rw route-limit
+       |  +--rw no-routes?           uint32
+       |  +--rw warning-threshold?   uint32
+       +--rw auto-enable?            empty
+       +--rw default-rpf-distance?   uint8
+       +--rw group-range?            ios-types:mcast-std-acl-type
+       +--rw heartbeat* [group-address]
+       |  +--rw group-address    inet:ipv4-address
+       |  +--rw min-interval     uint8
+       |  +--rw num-interval     uint8
+       |  +--rw length           uint16
+       +--rw limit
+       |  +--rw cost* [access-list]
+       |     +--rw access-list    union
+       |     +--rw cost           uint32
+       +--rw longest-match?          empty
+       +--rw mpls
+       |  +--rw mldp?          empty
+       |  +--rw traffic-eng!
+       |     +--rw range?   union
+       +--rw mrinfo-filter?          ios-types:mcast-std-acl-type
+       +--rw topology
+       |  +--rw multicast* [word]
+       |  |  +--rw word    string
+       |  |  +--rw tid     uint16
+       |  +--rw unicast* [word]
+       |     +--rw word    string
+       |     +--rw tid     uint16
+       +--rw multipath!
+       |  +--rw s-g-hash?   enumeration
+       +--rw rpf
+          +--rw default-distance?   uint8
+          +--rw mofrr
+          |  +--rw list?     ios-types:ext-acl-type
+          |  +--rw sticky?   empty
+          +--rw proxy
+          |  +--rw disable?   empty
+          |  +--rw vector?    empty
+          +--rw select
+             +--rw global
+             |  +--rw group-list*   ios-types:mcast-std-acl-type
+             +--rw topology
+             |  +--rw multicast
+             |  |  +--rw word* [topology-name]
+             |  |     +--rw topology-name     string
+             |  |     +--rw access-list-id    uint8
+             |  +--rw unicast
+             |     +--rw word* [topology-name]
+             |        +--rw topology-name     string
+             |        +--rw access-list-id    uint8
+             +--rw vrf-list* [group-list]
+             |  +--rw name?         string
+             |  +--rw group-list    ios-types:mcast-std-acl-type
+             o--rw vrf* [name]
+                o--rw name          string
+                o--rw group-list* [group-list-name]
+                   o--rw group-list-name    union
+  augment /ios:native/ios:interface/ios:FastEthernet/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:GigabitEthernet/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:AppGigabitEthernet/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:HundredGigE/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:Port-channel/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:Loopback/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:Tunnel/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:Virtual-Template/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:VirtualPortGroup/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:Vlan/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:Port-channel-subinterface/ios:Port-channel/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:LISP/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:LISP-subinterface/ios:LISP/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:Vif/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:Multilink/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:Cellular/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:interface/ios:BDI/ios:ip:
+    +--rw multicast
+       +--rw boundary
+       |  +--rw block
+       |  |  +--rw source?   empty
+       |  +--rw filter-type-autorp
+       |  |  +--rw access-list?     union
+       |  |  +--rw filter-autorp?   empty
+       |  +--rw filter-type-in-out* [filter-type]
+       |     +--rw filter-type    enumeration
+       |     +--rw access-list?   union
+       +--rw limit
+          +--rw access-list* [access-list]
+          |  +--rw access-list    union
+          |  +--rw max-state      uint32
+          +--rw connected
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw out
+          |  +--rw access-list* [access-list]
+          |     +--rw access-list    union
+          |     +--rw max-state      uint32
+          +--rw rpf
+             +--rw access-list* [access-list]
+                +--rw access-list    union
+                +--rw max-state      uint32
+  augment /ios:native/ios:ipv6/ios:multicast:
+    +--rw vrf?   string
+    +--rw rpf
+       +--rw backoff
+       |  +--rw initial-delay?   uint16
+       |  +--rw max-delay?       uint16
+       o--rw use-bgp?   boolean
+  augment /ios:native/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   ios-types:ext-acl-type
+    +--rw accept-rp
+    |  +--rw rp_list* [ip_addr]
+    |  |  +--rw ip_addr    inet:ipv4-address
+    |  |  +--rw acl?       ios-types:std-acl-type
+    |  +--rw auto-rp!
+    |     +--rw acl?   ios-types:std-acl-type
+    +--rw allow-rp!
+    |  +--rw rp-list?      ios-types:mcast-std-acl-type
+    |  +--rw group-list?   ios-types:mcast-std-acl-type
+    +--rw autorp-container
+    |  +--rw autorp?     boolean
+    |  +--rw listener?   empty
+    x--rw autorp!
+    |  x--rw listener?   empty
+    +--rw bidir-backoff-interval?    uint16
+    +--rw bidir-offer-interval
+    |  +--rw (seconds-milliseconds)?
+    |     +--:(seconds-interval)
+    |     |  +--rw interval?                uint16
+    |     +--:(milliseconds)
+    |        +--rw milliseconds-interval?   uint16
+    |        +--rw msec?                    boolean
+    +--rw bidir-offer-limit?         uint16
+    +--rw bidir-winner-interval?     uint16
+    +--rw bsr-candidate
+    |  +--rw (interface-choice)?
+    |  |  +--:(AppNav-Compress)
+    |  |  |  +--rw AppNav-Compress?             uint16
+    |  |  +--:(AppNav-UnCompress)
+    |  |  |  +--rw AppNav-UnCompress?           uint16
+    |  |  +--:(ATM)
+    |  |  |  +--rw ATM?                         string
+    |  |  +--:(ATM-subinterface)
+    |  |  |  +--rw ATM-subinterface
+    |  |  |     +--rw ATM?   string
+    |  |  +--:(ATM-ACR)
+    |  |  |  +--rw ATM-ACR?                     string
+    |  |  +--:(ATM-ACRsubinterface)
+    |  |  |  +--rw ATM-ACRsubinterface
+    |  |  |     +--rw ATM-ACR?   string
+    |  |  +--:(BDI)
+    |  |  |  +--rw BDI?                         string
+    |  |  +--:(CEM)
+    |  |  |  +--rw CEM?                         string
+    |  |  +--:(CEM-ACR)
+    |  |  |  +--rw CEM-ACR?                     uint8
+    |  |  +--:(Embedded-Service-Engine)
+    |  |  |  +--rw Embedded-Service-Engine?     string
+    |  |  +--:(Ethernet)
+    |  |  |  +--rw Ethernet?                    string
+    |  |  +--:(FastEthernet)
+    |  |  |  +--rw FastEthernet?                string
+    |  |  +--:(GigabitEthernet)
+    |  |  |  +--rw GigabitEthernet?             string
+    |  |  +--:(FiveGigabitEthernet)
+    |  |  |  +--rw FiveGigabitEthernet?         string
+    |  |  +--:(AppGigabitEthernet)
+    |  |  |  +--rw AppGigabitEthernet?          string
+    |  |  +--:(TwentyFiveGigabitEthernet)
+    |  |  |  o--rw TwentyFiveGigabitEthernet?   string
+    |  |  +--:(TwentyFiveGigE)
+    |  |  |  +--rw TwentyFiveGigE?              string
+    |  |  +--:(TwoGigabitEthernet)
+    |  |  |  +--rw TwoGigabitEthernet?          string
+    |  |  +--:(FortyGigabitEthernet)
+    |  |  |  +--rw FortyGigabitEthernet?        string
+    |  |  +--:(HundredGigE)
+    |  |  |  +--rw HundredGigE?                 string
+    |  |  +--:(LISP)
+    |  |  |  +--rw LISP?                        string
+    |  |  +--:(LISP-subinterface)
+    |  |  |  +--rw LISP-subinterface
+    |  |  |     +--rw LISP?   string
+    |  |  +--:(Loopback)
+    |  |  |  +--rw Loopback?                    uint32
+    |  |  +--:(Multilink)
+    |  |  |  +--rw Multilink?                   uint16
+    |  |  +--:(nve)
+    |  |  |  +--rw nve?                         uint16
+    |  |  +--:(overlay)
+    |  |  |  +--rw overlay?                     uint16
+    |  |  +--:(Port-channel)
+    |  |  |  +--rw Port-channel?                uint32
+    |  |  +--:(Port-channel-subinterface)
+    |  |  |  +--rw Port-channel-subinterface
+    |  |  |     +--rw Port-channel?   string
+    |  |  +--:(pseudowire)
+    |  |  |  +--rw pseudowire?                  uint32
+    |  |  +--:(SM)
+    |  |  |  +--rw SM?                          string
+    |  |  +--:(Cellular)
+    |  |  |  +--rw Cellular?                    string
+    |  |  +--:(Dialer)
+    |  |  |  +--rw Dialer?                      string
+    |  |  +--:(Serial)
+    |  |  |  +--rw Serial?                      string
+    |  |  +--:(Async)
+    |  |  |  +--rw Async?                       string
+    |  |  +--:(TenGigabitEthernet)
+    |  |  |  +--rw TenGigabitEthernet?          string
+    |  |  +--:(Tunnel)
+    |  |  |  +--rw Tunnel?                      uint32
+    |  |  +--:(Virtual-Template)
+    |  |  |  +--rw Virtual-Template?            uint16
+    |  |  +--:(Vlan)
+    |  |  |  +--rw Vlan?                        uint16
+    |  |  +--:(VirtualPortGroup)
+    |  |  |  +--rw VirtualPortGroup?            uint16
+    |  |  +--:(vasileft)
+    |  |  |  +--rw vasileft?                    uint16
+    |  |  +--:(vasiright)
+    |  |  |  +--rw vasiright?                   uint16
+    |  |  +--:(BD-VIF)
+    |  |     +--rw BD-VIF?                      string
+    |  +--rw mask?                              uint8
+    |  +--rw priority?                          uint8
+    |  +--rw accept-rp-candidate?               ios-types:exp-acl-type
+    +--rw dm-fallback?               boolean
+    +--rw fast-register-stop?        empty
+    +--rw log-neighbor-changes?      boolean
+    +--rw maximum
+    |  +--rw group-mappings
+    |     +--rw autorp?   uint16
+    |     +--rw bsr?      uint16
+    +--rw mpls
+    |  +--rw source
+    |     +--rw (interface-choice)?
+    |        +--:(AppNav-Compress)
+    |        |  +--rw AppNav-Compress?             uint16
+    |        +--:(AppNav-UnCompress)
+    |        |  +--rw AppNav-UnCompress?           uint16
+    |        +--:(ATM)
+    |        |  +--rw ATM?                         string
+    |        +--:(ATM-subinterface)
+    |        |  +--rw ATM-subinterface
+    |        |     +--rw ATM?   string
+    |        +--:(ATM-ACR)
+    |        |  +--rw ATM-ACR?                     string
+    |        +--:(ATM-ACRsubinterface)
+    |        |  +--rw ATM-ACRsubinterface
+    |        |     +--rw ATM-ACR?   string
+    |        +--:(BDI)
+    |        |  +--rw BDI?                         string
+    |        +--:(CEM)
+    |        |  +--rw CEM?                         string
+    |        +--:(CEM-ACR)
+    |        |  +--rw CEM-ACR?                     uint8
+    |        +--:(Embedded-Service-Engine)
+    |        |  +--rw Embedded-Service-Engine?     string
+    |        +--:(Ethernet)
+    |        |  +--rw Ethernet?                    string
+    |        +--:(FastEthernet)
+    |        |  +--rw FastEthernet?                string
+    |        +--:(GigabitEthernet)
+    |        |  +--rw GigabitEthernet?             string
+    |        +--:(FiveGigabitEthernet)
+    |        |  +--rw FiveGigabitEthernet?         string
+    |        +--:(AppGigabitEthernet)
+    |        |  +--rw AppGigabitEthernet?          string
+    |        +--:(TwentyFiveGigabitEthernet)
+    |        |  o--rw TwentyFiveGigabitEthernet?   string
+    |        +--:(TwentyFiveGigE)
+    |        |  +--rw TwentyFiveGigE?              string
+    |        +--:(TwoGigabitEthernet)
+    |        |  +--rw TwoGigabitEthernet?          string
+    |        +--:(FortyGigabitEthernet)
+    |        |  +--rw FortyGigabitEthernet?        string
+    |        +--:(HundredGigE)
+    |        |  +--rw HundredGigE?                 string
+    |        +--:(LISP)
+    |        |  +--rw LISP?                        string
+    |        +--:(LISP-subinterface)
+    |        |  +--rw LISP-subinterface
+    |        |     +--rw LISP?   string
+    |        +--:(Loopback)
+    |        |  +--rw Loopback?                    uint32
+    |        +--:(Multilink)
+    |        |  +--rw Multilink?                   uint16
+    |        +--:(nve)
+    |        |  +--rw nve?                         uint16
+    |        +--:(overlay)
+    |        |  +--rw overlay?                     uint16
+    |        +--:(Port-channel)
+    |        |  +--rw Port-channel?                uint32
+    |        +--:(Port-channel-subinterface)
+    |        |  +--rw Port-channel-subinterface
+    |        |     +--rw Port-channel?   string
+    |        +--:(pseudowire)
+    |        |  +--rw pseudowire?                  uint32
+    |        +--:(SM)
+    |        |  +--rw SM?                          string
+    |        +--:(Cellular)
+    |        |  +--rw Cellular?                    string
+    |        +--:(Dialer)
+    |        |  +--rw Dialer?                      string
+    |        +--:(Serial)
+    |        |  +--rw Serial?                      string
+    |        +--:(Async)
+    |        |  +--rw Async?                       string
+    |        +--:(TenGigabitEthernet)
+    |        |  +--rw TenGigabitEthernet?          string
+    |        +--:(Tunnel)
+    |        |  +--rw Tunnel?                      uint32
+    |        +--:(Virtual-Template)
+    |        |  +--rw Virtual-Template?            uint16
+    |        +--:(Vlan)
+    |        |  +--rw Vlan?                        uint16
+    |        +--:(VirtualPortGroup)
+    |        |  +--rw VirtualPortGroup?            uint16
+    |        +--:(vasileft)
+    |        |  +--rw vasileft?                    uint16
+    |        +--:(vasiright)
+    |        |  +--rw vasiright?                   uint16
+    |        +--:(BD-VIF)
+    |           +--rw BD-VIF?                      string
+    +--rw old-register-checksum?     empty
+    +--rw register-rate-limit?       uint32
+    +--rw register-source
+    |  +--rw (interface-choice)?
+    |     +--:(AppNav-Compress)
+    |     |  +--rw AppNav-Compress?             uint16
+    |     +--:(AppNav-UnCompress)
+    |     |  +--rw AppNav-UnCompress?           uint16
+    |     +--:(ATM)
+    |     |  +--rw ATM?                         string
+    |     +--:(ATM-subinterface)
+    |     |  +--rw ATM-subinterface
+    |     |     +--rw ATM?   string
+    |     +--:(ATM-ACR)
+    |     |  +--rw ATM-ACR?                     string
+    |     +--:(ATM-ACRsubinterface)
+    |     |  +--rw ATM-ACRsubinterface
+    |     |     +--rw ATM-ACR?   string
+    |     +--:(BDI)
+    |     |  +--rw BDI?                         string
+    |     +--:(CEM)
+    |     |  +--rw CEM?                         string
+    |     +--:(CEM-ACR)
+    |     |  +--rw CEM-ACR?                     uint8
+    |     +--:(Embedded-Service-Engine)
+    |     |  +--rw Embedded-Service-Engine?     string
+    |     +--:(Ethernet)
+    |     |  +--rw Ethernet?                    string
+    |     +--:(FastEthernet)
+    |     |  +--rw FastEthernet?                string
+    |     +--:(GigabitEthernet)
+    |     |  +--rw GigabitEthernet?             string
+    |     +--:(FiveGigabitEthernet)
+    |     |  +--rw FiveGigabitEthernet?         string
+    |     +--:(AppGigabitEthernet)
+    |     |  +--rw AppGigabitEthernet?          string
+    |     +--:(TwentyFiveGigabitEthernet)
+    |     |  o--rw TwentyFiveGigabitEthernet?   string
+    |     +--:(TwentyFiveGigE)
+    |     |  +--rw TwentyFiveGigE?              string
+    |     +--:(TwoGigabitEthernet)
+    |     |  +--rw TwoGigabitEthernet?          string
+    |     +--:(FortyGigabitEthernet)
+    |     |  +--rw FortyGigabitEthernet?        string
+    |     +--:(HundredGigE)
+    |     |  +--rw HundredGigE?                 string
+    |     +--:(LISP)
+    |     |  +--rw LISP?                        string
+    |     +--:(LISP-subinterface)
+    |     |  +--rw LISP-subinterface
+    |     |     +--rw LISP?   string
+    |     +--:(Loopback)
+    |     |  +--rw Loopback?                    uint32
+    |     +--:(Multilink)
+    |     |  +--rw Multilink?                   uint16
+    |     +--:(nve)
+    |     |  +--rw nve?                         uint16
+    |     +--:(overlay)
+    |     |  +--rw overlay?                     uint16
+    |     +--:(Port-channel)
+    |     |  +--rw Port-channel?                uint32
+    |     +--:(Port-channel-subinterface)
+    |     |  +--rw Port-channel-subinterface
+    |     |     +--rw Port-channel?   string
+    |     +--:(pseudowire)
+    |     |  +--rw pseudowire?                  uint32
+    |     +--:(SM)
+    |     |  +--rw SM?                          string
+    |     +--:(Cellular)
+    |     |  +--rw Cellular?                    string
+    |     +--:(Dialer)
+    |     |  +--rw Dialer?                      string
+    |     +--:(Serial)
+    |     |  +--rw Serial?                      string
+    |     +--:(Async)
+    |     |  +--rw Async?                       string
+    |     +--:(TenGigabitEthernet)
+    |     |  +--rw TenGigabitEthernet?          string
+    |     +--:(Tunnel)
+    |     |  +--rw Tunnel?                      uint32
+    |     +--:(Virtual-Template)
+    |     |  +--rw Virtual-Template?            uint16
+    |     +--:(Vlan)
+    |     |  +--rw Vlan?                        uint16
+    |     +--:(VirtualPortGroup)
+    |     |  +--rw VirtualPortGroup?            uint16
+    |     +--:(vasileft)
+    |     |  +--rw vasileft?                    uint16
+    |     +--:(vasiright)
+    |     |  +--rw vasiright?                   uint16
+    |     +--:(BD-VIF)
+    |        +--rw BD-VIF?                      string
+    +--rw rp-address* [address]
+    |  +--rw address        inet:ipv4-address
+    |  +--rw access-list?   ios-types:std-acl-type
+    |  +--rw override?      empty
+    |  +--rw bidir?         empty
+    +--rw rp-announce-filter
+    |  +--rw group-list* [acl]
+    |  |  +--rw acl    ios-types:mcast-std-acl-type
+    |  +--rw rp-list
+    |     +--rw rp* [acl]
+    |        +--rw acl           ios-types:mcast-std-acl-type
+    |        +--rw group-list* [acl]
+    |           +--rw acl    ios-types:mcast-std-acl-type
+    +--rw rp-candidate* [interface]
+    |  +--rw interface     string
+    |  +--rw group-list?   ios-types:mcast-std-acl-type
+    |  +--rw interval?     uint16
+    |  +--rw priority?     uint8
+    |  +--rw bidir?        empty
+    +--rw rp-proxy-join?             empty
+    +--rw spt-threshold-list* [group-list]
+    |  +--rw how           enumeration
+    |  +--rw group-list    ios-types:std-acl-type
+    o--rw spt-threshold* [how group-list]
+    |  o--rw how           enumeration
+    |  o--rw group-list    ios-types:std-acl-type
+    +--rw spt-threshold-container
+    |  +--rw spt-threshold
+    |     +--rw how?   enumeration
+    +--rw send-rp-announce
+    |  +--rw send-rp-announce-list* [if-name]
+    |  |  +--rw if-name       union
+    |  |  +--rw scope         uint8
+    |  |  +--rw group-list?   ios-types:mcast-std-acl-type
+    |  |  +--rw interval?     uint16
+    |  |  +--rw bidir?        empty
+    |  x--rw interface_list* [if-name]
+    |  |  x--rw if-name    string
+    |  |  x--rw scope
+    |  |     x--rw pkt-ttl?      uint8
+    |  |     x--rw group-list
+    |  |        x--rw acl-ref?   uint8
+    |  |        x--rw std-acl?   string
+    |  o--rw Port-channel* [name]
+    |     o--rw name     uint32
+    |     o--rw scope?   uint8
+    +--rw sparse
+    |  +--rw accept-source-reports!
+    |  |  +--rw range?   ios-types:mcast-std-acl-type
+    |  +--rw sg-expiry-timer
+    |     +--rw timer?     uint16
+    |     +--rw sg-list?   ios-types:ext-acl-type
+    +--rw send-rp-discovery
+    |  +--rw interface
+    |  |  +--rw (interface-choice)?
+    |  |     +--:(AppNav-Compress)
+    |  |     |  +--rw AppNav-Compress?             uint16
+    |  |     +--:(AppNav-UnCompress)
+    |  |     |  +--rw AppNav-UnCompress?           uint16
+    |  |     +--:(ATM)
+    |  |     |  +--rw ATM?                         string
+    |  |     +--:(ATM-subinterface)
+    |  |     |  +--rw ATM-subinterface
+    |  |     |     +--rw ATM?   string
+    |  |     +--:(ATM-ACR)
+    |  |     |  +--rw ATM-ACR?                     string
+    |  |     +--:(ATM-ACRsubinterface)
+    |  |     |  +--rw ATM-ACRsubinterface
+    |  |     |     +--rw ATM-ACR?   string
+    |  |     +--:(BDI)
+    |  |     |  +--rw BDI?                         string
+    |  |     +--:(CEM)
+    |  |     |  +--rw CEM?                         string
+    |  |     +--:(CEM-ACR)
+    |  |     |  +--rw CEM-ACR?                     uint8
+    |  |     +--:(Embedded-Service-Engine)
+    |  |     |  +--rw Embedded-Service-Engine?     string
+    |  |     +--:(Ethernet)
+    |  |     |  +--rw Ethernet?                    string
+    |  |     +--:(FastEthernet)
+    |  |     |  +--rw FastEthernet?                string
+    |  |     +--:(GigabitEthernet)
+    |  |     |  +--rw GigabitEthernet?             string
+    |  |     +--:(FiveGigabitEthernet)
+    |  |     |  +--rw FiveGigabitEthernet?         string
+    |  |     +--:(AppGigabitEthernet)
+    |  |     |  +--rw AppGigabitEthernet?          string
+    |  |     +--:(TwentyFiveGigabitEthernet)
+    |  |     |  o--rw TwentyFiveGigabitEthernet?   string
+    |  |     +--:(TwentyFiveGigE)
+    |  |     |  +--rw TwentyFiveGigE?              string
+    |  |     +--:(TwoGigabitEthernet)
+    |  |     |  +--rw TwoGigabitEthernet?          string
+    |  |     +--:(FortyGigabitEthernet)
+    |  |     |  +--rw FortyGigabitEthernet?        string
+    |  |     +--:(HundredGigE)
+    |  |     |  +--rw HundredGigE?                 string
+    |  |     +--:(LISP)
+    |  |     |  +--rw LISP?                        string
+    |  |     +--:(LISP-subinterface)
+    |  |     |  +--rw LISP-subinterface
+    |  |     |     +--rw LISP?   string
+    |  |     +--:(Loopback)
+    |  |     |  +--rw Loopback?                    uint32
+    |  |     +--:(Multilink)
+    |  |     |  +--rw Multilink?                   uint16
+    |  |     +--:(nve)
+    |  |     |  +--rw nve?                         uint16
+    |  |     +--:(overlay)
+    |  |     |  +--rw overlay?                     uint16
+    |  |     +--:(Port-channel)
+    |  |     |  +--rw Port-channel?                uint32
+    |  |     +--:(Port-channel-subinterface)
+    |  |     |  +--rw Port-channel-subinterface
+    |  |     |     +--rw Port-channel?   string
+    |  |     +--:(pseudowire)
+    |  |     |  +--rw pseudowire?                  uint32
+    |  |     +--:(SM)
+    |  |     |  +--rw SM?                          string
+    |  |     +--:(Cellular)
+    |  |     |  +--rw Cellular?                    string
+    |  |     +--:(Dialer)
+    |  |     |  +--rw Dialer?                      string
+    |  |     +--:(Serial)
+    |  |     |  +--rw Serial?                      string
+    |  |     +--:(Async)
+    |  |     |  +--rw Async?                       string
+    |  |     +--:(TenGigabitEthernet)
+    |  |     |  +--rw TenGigabitEthernet?          string
+    |  |     +--:(Tunnel)
+    |  |     |  +--rw Tunnel?                      uint32
+    |  |     +--:(Virtual-Template)
+    |  |     |  +--rw Virtual-Template?            uint16
+    |  |     +--:(Vlan)
+    |  |     |  +--rw Vlan?                        uint16
+    |  |     +--:(VirtualPortGroup)
+    |  |     |  +--rw VirtualPortGroup?            uint16
+    |  |     +--:(vasileft)
+    |  |     |  +--rw vasileft?                    uint16
+    |  |     +--:(vasiright)
+    |  |     |  +--rw vasiright?                   uint16
+    |  |     +--:(BD-VIF)
+    |  |        +--rw BD-VIF?                      string
+    |  +--rw scope?       uint8
+    |  +--rw interval?    uint16
+    +--rw ssm
+    |  +--rw range?     ios-types:mcast-std-acl-type
+    |  +--rw default?   empty
+    +--rw state-refresh
+    |  +--rw disable?   empty
+    +--rw cache
+    |  +--rw rpf-oif?   empty
+    +--rw bidir-enable?              empty
+    +--rw vrf* [id]
+       +--rw id                         string
+       +--rw accept-register
+       |  +--rw list?   ios-types:ext-acl-type
+       +--rw accept-rp
+       |  +--rw rp_list* [ip_addr]
+       |  |  +--rw ip_addr    inet:ipv4-address
+       |  |  +--rw acl?       ios-types:std-acl-type
+       |  +--rw auto-rp!
+       |     +--rw acl?   ios-types:std-acl-type
+       +--rw allow-rp!
+       |  +--rw rp-list?      ios-types:mcast-std-acl-type
+       |  +--rw group-list?   ios-types:mcast-std-acl-type
+       +--rw autorp-container
+       |  +--rw autorp?     boolean
+       |  +--rw listener?   empty
+       x--rw autorp!
+       |  x--rw listener?   empty
+       +--rw bidir-backoff-interval?    uint16
+       +--rw bidir-offer-interval
+       |  +--rw (seconds-milliseconds)?
+       |     +--:(seconds-interval)
+       |     |  +--rw interval?                uint16
+       |     +--:(milliseconds)
+       |        +--rw milliseconds-interval?   uint16
+       |        +--rw msec?                    boolean
+       +--rw bidir-offer-limit?         uint16
+       +--rw bidir-winner-interval?     uint16
+       +--rw bsr-candidate
+       |  +--rw (interface-choice)?
+       |  |  +--:(AppNav-Compress)
+       |  |  |  +--rw AppNav-Compress?             uint16
+       |  |  +--:(AppNav-UnCompress)
+       |  |  |  +--rw AppNav-UnCompress?           uint16
+       |  |  +--:(ATM)
+       |  |  |  +--rw ATM?                         string
+       |  |  +--:(ATM-subinterface)
+       |  |  |  +--rw ATM-subinterface
+       |  |  |     +--rw ATM?   string
+       |  |  +--:(ATM-ACR)
+       |  |  |  +--rw ATM-ACR?                     string
+       |  |  +--:(ATM-ACRsubinterface)
+       |  |  |  +--rw ATM-ACRsubinterface
+       |  |  |     +--rw ATM-ACR?   string
+       |  |  +--:(BDI)
+       |  |  |  +--rw BDI?                         string
+       |  |  +--:(CEM)
+       |  |  |  +--rw CEM?                         string
+       |  |  +--:(CEM-ACR)
+       |  |  |  +--rw CEM-ACR?                     uint8
+       |  |  +--:(Embedded-Service-Engine)
+       |  |  |  +--rw Embedded-Service-Engine?     string
+       |  |  +--:(Ethernet)
+       |  |  |  +--rw Ethernet?                    string
+       |  |  +--:(FastEthernet)
+       |  |  |  +--rw FastEthernet?                string
+       |  |  +--:(GigabitEthernet)
+       |  |  |  +--rw GigabitEthernet?             string
+       |  |  +--:(FiveGigabitEthernet)
+       |  |  |  +--rw FiveGigabitEthernet?         string
+       |  |  +--:(AppGigabitEthernet)
+       |  |  |  +--rw AppGigabitEthernet?          string
+       |  |  +--:(TwentyFiveGigabitEthernet)
+       |  |  |  o--rw TwentyFiveGigabitEthernet?   string
+       |  |  +--:(TwentyFiveGigE)
+       |  |  |  +--rw TwentyFiveGigE?              string
+       |  |  +--:(TwoGigabitEthernet)
+       |  |  |  +--rw TwoGigabitEthernet?          string
+       |  |  +--:(FortyGigabitEthernet)
+       |  |  |  +--rw FortyGigabitEthernet?        string
+       |  |  +--:(HundredGigE)
+       |  |  |  +--rw HundredGigE?                 string
+       |  |  +--:(LISP)
+       |  |  |  +--rw LISP?                        string
+       |  |  +--:(LISP-subinterface)
+       |  |  |  +--rw LISP-subinterface
+       |  |  |     +--rw LISP?   string
+       |  |  +--:(Loopback)
+       |  |  |  +--rw Loopback?                    uint32
+       |  |  +--:(Multilink)
+       |  |  |  +--rw Multilink?                   uint16
+       |  |  +--:(nve)
+       |  |  |  +--rw nve?                         uint16
+       |  |  +--:(overlay)
+       |  |  |  +--rw overlay?                     uint16
+       |  |  +--:(Port-channel)
+       |  |  |  +--rw Port-channel?                uint32
+       |  |  +--:(Port-channel-subinterface)
+       |  |  |  +--rw Port-channel-subinterface
+       |  |  |     +--rw Port-channel?   string
+       |  |  +--:(pseudowire)
+       |  |  |  +--rw pseudowire?                  uint32
+       |  |  +--:(SM)
+       |  |  |  +--rw SM?                          string
+       |  |  +--:(Cellular)
+       |  |  |  +--rw Cellular?                    string
+       |  |  +--:(Dialer)
+       |  |  |  +--rw Dialer?                      string
+       |  |  +--:(Serial)
+       |  |  |  +--rw Serial?                      string
+       |  |  +--:(Async)
+       |  |  |  +--rw Async?                       string
+       |  |  +--:(TenGigabitEthernet)
+       |  |  |  +--rw TenGigabitEthernet?          string
+       |  |  +--:(Tunnel)
+       |  |  |  +--rw Tunnel?                      uint32
+       |  |  +--:(Virtual-Template)
+       |  |  |  +--rw Virtual-Template?            uint16
+       |  |  +--:(Vlan)
+       |  |  |  +--rw Vlan?                        uint16
+       |  |  +--:(VirtualPortGroup)
+       |  |  |  +--rw VirtualPortGroup?            uint16
+       |  |  +--:(vasileft)
+       |  |  |  +--rw vasileft?                    uint16
+       |  |  +--:(vasiright)
+       |  |  |  +--rw vasiright?                   uint16
+       |  |  +--:(BD-VIF)
+       |  |     +--rw BD-VIF?                      string
+       |  +--rw mask?                              uint8
+       |  +--rw priority?                          uint8
+       |  +--rw accept-rp-candidate?               ios-types:exp-acl-type
+       +--rw dm-fallback?               boolean
+       +--rw fast-register-stop?        empty
+       +--rw log-neighbor-changes?      boolean
+       +--rw maximum
+       |  +--rw group-mappings
+       |     +--rw autorp?   uint16
+       |     +--rw bsr?      uint16
+       +--rw mpls
+       |  +--rw source
+       |     +--rw (interface-choice)?
+       |        +--:(AppNav-Compress)
+       |        |  +--rw AppNav-Compress?             uint16
+       |        +--:(AppNav-UnCompress)
+       |        |  +--rw AppNav-UnCompress?           uint16
+       |        +--:(ATM)
+       |        |  +--rw ATM?                         string
+       |        +--:(ATM-subinterface)
+       |        |  +--rw ATM-subinterface
+       |        |     +--rw ATM?   string
+       |        +--:(ATM-ACR)
+       |        |  +--rw ATM-ACR?                     string
+       |        +--:(ATM-ACRsubinterface)
+       |        |  +--rw ATM-ACRsubinterface
+       |        |     +--rw ATM-ACR?   string
+       |        +--:(BDI)
+       |        |  +--rw BDI?                         string
+       |        +--:(CEM)
+       |        |  +--rw CEM?                         string
+       |        +--:(CEM-ACR)
+       |        |  +--rw CEM-ACR?                     uint8
+       |        +--:(Embedded-Service-Engine)
+       |        |  +--rw Embedded-Service-Engine?     string
+       |        +--:(Ethernet)
+       |        |  +--rw Ethernet?                    string
+       |        +--:(FastEthernet)
+       |        |  +--rw FastEthernet?                string
+       |        +--:(GigabitEthernet)
+       |        |  +--rw GigabitEthernet?             string
+       |        +--:(FiveGigabitEthernet)
+       |        |  +--rw FiveGigabitEthernet?         string
+       |        +--:(AppGigabitEthernet)
+       |        |  +--rw AppGigabitEthernet?          string
+       |        +--:(TwentyFiveGigabitEthernet)
+       |        |  o--rw TwentyFiveGigabitEthernet?   string
+       |        +--:(TwentyFiveGigE)
+       |        |  +--rw TwentyFiveGigE?              string
+       |        +--:(TwoGigabitEthernet)
+       |        |  +--rw TwoGigabitEthernet?          string
+       |        +--:(FortyGigabitEthernet)
+       |        |  +--rw FortyGigabitEthernet?        string
+       |        +--:(HundredGigE)
+       |        |  +--rw HundredGigE?                 string
+       |        +--:(LISP)
+       |        |  +--rw LISP?                        string
+       |        +--:(LISP-subinterface)
+       |        |  +--rw LISP-subinterface
+       |        |     +--rw LISP?   string
+       |        +--:(Loopback)
+       |        |  +--rw Loopback?                    uint32
+       |        +--:(Multilink)
+       |        |  +--rw Multilink?                   uint16
+       |        +--:(nve)
+       |        |  +--rw nve?                         uint16
+       |        +--:(overlay)
+       |        |  +--rw overlay?                     uint16
+       |        +--:(Port-channel)
+       |        |  +--rw Port-channel?                uint32
+       |        +--:(Port-channel-subinterface)
+       |        |  +--rw Port-channel-subinterface
+       |        |     +--rw Port-channel?   string
+       |        +--:(pseudowire)
+       |        |  +--rw pseudowire?                  uint32
+       |        +--:(SM)
+       |        |  +--rw SM?                          string
+       |        +--:(Cellular)
+       |        |  +--rw Cellular?                    string
+       |        +--:(Dialer)
+       |        |  +--rw Dialer?                      string
+       |        +--:(Serial)
+       |        |  +--rw Serial?                      string
+       |        +--:(Async)
+       |        |  +--rw Async?                       string
+       |        +--:(TenGigabitEthernet)
+       |        |  +--rw TenGigabitEthernet?          string
+       |        +--:(Tunnel)
+       |        |  +--rw Tunnel?                      uint32
+       |        +--:(Virtual-Template)
+       |        |  +--rw Virtual-Template?            uint16
+       |        +--:(Vlan)
+       |        |  +--rw Vlan?                        uint16
+       |        +--:(VirtualPortGroup)
+       |        |  +--rw VirtualPortGroup?            uint16
+       |        +--:(vasileft)
+       |        |  +--rw vasileft?                    uint16
+       |        +--:(vasiright)
+       |        |  +--rw vasiright?                   uint16
+       |        +--:(BD-VIF)
+       |           +--rw BD-VIF?                      string
+       +--rw old-register-checksum?     empty
+       +--rw register-rate-limit?       uint32
+       +--rw register-source
+       |  +--rw (interface-choice)?
+       |     +--:(AppNav-Compress)
+       |     |  +--rw AppNav-Compress?             uint16
+       |     +--:(AppNav-UnCompress)
+       |     |  +--rw AppNav-UnCompress?           uint16
+       |     +--:(ATM)
+       |     |  +--rw ATM?                         string
+       |     +--:(ATM-subinterface)
+       |     |  +--rw ATM-subinterface
+       |     |     +--rw ATM?   string
+       |     +--:(ATM-ACR)
+       |     |  +--rw ATM-ACR?                     string
+       |     +--:(ATM-ACRsubinterface)
+       |     |  +--rw ATM-ACRsubinterface
+       |     |     +--rw ATM-ACR?   string
+       |     +--:(BDI)
+       |     |  +--rw BDI?                         string
+       |     +--:(CEM)
+       |     |  +--rw CEM?                         string
+       |     +--:(CEM-ACR)
+       |     |  +--rw CEM-ACR?                     uint8
+       |     +--:(Embedded-Service-Engine)
+       |     |  +--rw Embedded-Service-Engine?     string
+       |     +--:(Ethernet)
+       |     |  +--rw Ethernet?                    string
+       |     +--:(FastEthernet)
+       |     |  +--rw FastEthernet?                string
+       |     +--:(GigabitEthernet)
+       |     |  +--rw GigabitEthernet?             string
+       |     +--:(FiveGigabitEthernet)
+       |     |  +--rw FiveGigabitEthernet?         string
+       |     +--:(AppGigabitEthernet)
+       |     |  +--rw AppGigabitEthernet?          string
+       |     +--:(TwentyFiveGigabitEthernet)
+       |     |  o--rw TwentyFiveGigabitEthernet?   string
+       |     +--:(TwentyFiveGigE)
+       |     |  +--rw TwentyFiveGigE?              string
+       |     +--:(TwoGigabitEthernet)
+       |     |  +--rw TwoGigabitEthernet?          string
+       |     +--:(FortyGigabitEthernet)
+       |     |  +--rw FortyGigabitEthernet?        string
+       |     +--:(HundredGigE)
+       |     |  +--rw HundredGigE?                 string
+       |     +--:(LISP)
+       |     |  +--rw LISP?                        string
+       |     +--:(LISP-subinterface)
+       |     |  +--rw LISP-subinterface
+       |     |     +--rw LISP?   string
+       |     +--:(Loopback)
+       |     |  +--rw Loopback?                    uint32
+       |     +--:(Multilink)
+       |     |  +--rw Multilink?                   uint16
+       |     +--:(nve)
+       |     |  +--rw nve?                         uint16
+       |     +--:(overlay)
+       |     |  +--rw overlay?                     uint16
+       |     +--:(Port-channel)
+       |     |  +--rw Port-channel?                uint32
+       |     +--:(Port-channel-subinterface)
+       |     |  +--rw Port-channel-subinterface
+       |     |     +--rw Port-channel?   string
+       |     +--:(pseudowire)
+       |     |  +--rw pseudowire?                  uint32
+       |     +--:(SM)
+       |     |  +--rw SM?                          string
+       |     +--:(Cellular)
+       |     |  +--rw Cellular?                    string
+       |     +--:(Dialer)
+       |     |  +--rw Dialer?                      string
+       |     +--:(Serial)
+       |     |  +--rw Serial?                      string
+       |     +--:(Async)
+       |     |  +--rw Async?                       string
+       |     +--:(TenGigabitEthernet)
+       |     |  +--rw TenGigabitEthernet?          string
+       |     +--:(Tunnel)
+       |     |  +--rw Tunnel?                      uint32
+       |     +--:(Virtual-Template)
+       |     |  +--rw Virtual-Template?            uint16
+       |     +--:(Vlan)
+       |     |  +--rw Vlan?                        uint16
+       |     +--:(VirtualPortGroup)
+       |     |  +--rw VirtualPortGroup?            uint16
+       |     +--:(vasileft)
+       |     |  +--rw vasileft?                    uint16
+       |     +--:(vasiright)
+       |     |  +--rw vasiright?                   uint16
+       |     +--:(BD-VIF)
+       |        +--rw BD-VIF?                      string
+       +--rw rp-address* [address]
+       |  +--rw address        inet:ipv4-address
+       |  +--rw access-list?   ios-types:std-acl-type
+       |  +--rw override?      empty
+       |  +--rw bidir?         empty
+       +--rw rp-announce-filter
+       |  +--rw group-list* [acl]
+       |  |  +--rw acl    ios-types:mcast-std-acl-type
+       |  +--rw rp-list
+       |     +--rw rp* [acl]
+       |        +--rw acl           ios-types:mcast-std-acl-type
+       |        +--rw group-list* [acl]
+       |           +--rw acl    ios-types:mcast-std-acl-type
+       +--rw rp-candidate* [interface]
+       |  +--rw interface     string
+       |  +--rw group-list?   ios-types:mcast-std-acl-type
+       |  +--rw interval?     uint16
+       |  +--rw priority?     uint8
+       |  +--rw bidir?        empty
+       +--rw rp-proxy-join?             empty
+       +--rw spt-threshold-list* [group-list]
+       |  +--rw how           enumeration
+       |  +--rw group-list    ios-types:std-acl-type
+       o--rw spt-threshold* [how group-list]
+       |  o--rw how           enumeration
+       |  o--rw group-list    ios-types:std-acl-type
+       +--rw spt-threshold-container
+       |  +--rw spt-threshold
+       |     +--rw how?   enumeration
+       +--rw send-rp-announce
+       |  +--rw send-rp-announce-list* [if-name]
+       |  |  +--rw if-name       union
+       |  |  +--rw scope         uint8
+       |  |  +--rw group-list?   ios-types:mcast-std-acl-type
+       |  |  +--rw interval?     uint16
+       |  |  +--rw bidir?        empty
+       |  x--rw interface_list* [if-name]
+       |  |  x--rw if-name    string
+       |  |  x--rw scope
+       |  |     x--rw pkt-ttl?      uint8
+       |  |     x--rw group-list
+       |  |        x--rw acl-ref?   uint8
+       |  |        x--rw std-acl?   string
+       |  o--rw Port-channel* [name]
+       |     o--rw name     uint32
+       |     o--rw scope?   uint8
+       +--rw sparse
+       |  +--rw accept-source-reports!
+       |  |  +--rw range?   ios-types:mcast-std-acl-type
+       |  +--rw sg-expiry-timer
+       |     +--rw timer?     uint16
+       |     +--rw sg-list?   ios-types:ext-acl-type
+       +--rw send-rp-discovery
+       |  +--rw interface
+       |  |  +--rw (interface-choice)?
+       |  |     +--:(AppNav-Compress)
+       |  |     |  +--rw AppNav-Compress?             uint16
+       |  |     +--:(AppNav-UnCompress)
+       |  |     |  +--rw AppNav-UnCompress?           uint16
+       |  |     +--:(ATM)
+       |  |     |  +--rw ATM?                         string
+       |  |     +--:(ATM-subinterface)
+       |  |     |  +--rw ATM-subinterface
+       |  |     |     +--rw ATM?   string
+       |  |     +--:(ATM-ACR)
+       |  |     |  +--rw ATM-ACR?                     string
+       |  |     +--:(ATM-ACRsubinterface)
+       |  |     |  +--rw ATM-ACRsubinterface
+       |  |     |     +--rw ATM-ACR?   string
+       |  |     +--:(BDI)
+       |  |     |  +--rw BDI?                         string
+       |  |     +--:(CEM)
+       |  |     |  +--rw CEM?                         string
+       |  |     +--:(CEM-ACR)
+       |  |     |  +--rw CEM-ACR?                     uint8
+       |  |     +--:(Embedded-Service-Engine)
+       |  |     |  +--rw Embedded-Service-Engine?     string
+       |  |     +--:(Ethernet)
+       |  |     |  +--rw Ethernet?                    string
+       |  |     +--:(FastEthernet)
+       |  |     |  +--rw FastEthernet?                string
+       |  |     +--:(GigabitEthernet)
+       |  |     |  +--rw GigabitEthernet?             string
+       |  |     +--:(FiveGigabitEthernet)
+       |  |     |  +--rw FiveGigabitEthernet?         string
+       |  |     +--:(AppGigabitEthernet)
+       |  |     |  +--rw AppGigabitEthernet?          string
+       |  |     +--:(TwentyFiveGigabitEthernet)
+       |  |     |  o--rw TwentyFiveGigabitEthernet?   string
+       |  |     +--:(TwentyFiveGigE)
+       |  |     |  +--rw TwentyFiveGigE?              string
+       |  |     +--:(TwoGigabitEthernet)
+       |  |     |  +--rw TwoGigabitEthernet?          string
+       |  |     +--:(FortyGigabitEthernet)
+       |  |     |  +--rw FortyGigabitEthernet?        string
+       |  |     +--:(HundredGigE)
+       |  |     |  +--rw HundredGigE?                 string
+       |  |     +--:(LISP)
+       |  |     |  +--rw LISP?                        string
+       |  |     +--:(LISP-subinterface)
+       |  |     |  +--rw LISP-subinterface
+       |  |     |     +--rw LISP?   string
+       |  |     +--:(Loopback)
+       |  |     |  +--rw Loopback?                    uint32
+       |  |     +--:(Multilink)
+       |  |     |  +--rw Multilink?                   uint16
+       |  |     +--:(nve)
+       |  |     |  +--rw nve?                         uint16
+       |  |     +--:(overlay)
+       |  |     |  +--rw overlay?                     uint16
+       |  |     +--:(Port-channel)
+       |  |     |  +--rw Port-channel?                uint32
+       |  |     +--:(Port-channel-subinterface)
+       |  |     |  +--rw Port-channel-subinterface
+       |  |     |     +--rw Port-channel?   string
+       |  |     +--:(pseudowire)
+       |  |     |  +--rw pseudowire?                  uint32
+       |  |     +--:(SM)
+       |  |     |  +--rw SM?                          string
+       |  |     +--:(Cellular)
+       |  |     |  +--rw Cellular?                    string
+       |  |     +--:(Dialer)
+       |  |     |  +--rw Dialer?                      string
+       |  |     +--:(Serial)
+       |  |     |  +--rw Serial?                      string
+       |  |     +--:(Async)
+       |  |     |  +--rw Async?                       string
+       |  |     +--:(TenGigabitEthernet)
+       |  |     |  +--rw TenGigabitEthernet?          string
+       |  |     +--:(Tunnel)
+       |  |     |  +--rw Tunnel?                      uint32
+       |  |     +--:(Virtual-Template)
+       |  |     |  +--rw Virtual-Template?            uint16
+       |  |     +--:(Vlan)
+       |  |     |  +--rw Vlan?                        uint16
+       |  |     +--:(VirtualPortGroup)
+       |  |     |  +--rw VirtualPortGroup?            uint16
+       |  |     +--:(vasileft)
+       |  |     |  +--rw vasileft?                    uint16
+       |  |     +--:(vasiright)
+       |  |     |  +--rw vasiright?                   uint16
+       |  |     +--:(BD-VIF)
+       |  |        +--rw BD-VIF?                      string
+       |  +--rw scope?       uint8
+       |  +--rw interval?    uint16
+       +--rw ssm
+       |  +--rw range?     ios-types:mcast-std-acl-type
+       |  +--rw default?   empty
+       +--rw state-refresh
+       |  +--rw disable?   empty
+       +--rw cache
+          +--rw rpf-oif?   empty
+  augment /ios:native/ios:ipv6/ios:pim:
+    +--rw bsr
+    |  +--rw candidate
+    |     +--rw bsr
+    |     |  +--rw global-scope
+    |     |  |  +--rw name-addr?             union
+    |     |  |  +--rw hash-mask-length?      uint8
+    |     |  |  +--rw priority?              uint8
+    |     |  |  +--rw accept-rp-candidate?   string
+    |     |  +--rw user-defined-scope-list* [scope]
+    |     |     +--rw name-addr              union
+    |     |     +--rw hash-mask-length?      uint8
+    |     |     +--rw priority?              uint8
+    |     |     +--rw scope                  uint8
+    |     |     +--rw accept-rp-candidate?   string
+    |     +--rw rp* [name-addr]
+    |        +--rw name-addr    union
+    +--rw rp-address
+    |  +--rw address?       union
+    |  +--rw access-list?   union
+    |  +--rw bidir?         empty
+    +--rw register-source
+    |  +--rw (interface-choice)?
+    |     +--:(AppNav-Compress)
+    |     |  +--rw AppNav-Compress?             uint16
+    |     +--:(AppNav-UnCompress)
+    |     |  +--rw AppNav-UnCompress?           uint16
+    |     +--:(ATM)
+    |     |  +--rw ATM?                         string
+    |     +--:(ATM-subinterface)
+    |     |  +--rw ATM-subinterface
+    |     |     +--rw ATM?   string
+    |     +--:(ATM-ACR)
+    |     |  +--rw ATM-ACR?                     string
+    |     +--:(ATM-ACRsubinterface)
+    |     |  +--rw ATM-ACRsubinterface
+    |     |     +--rw ATM-ACR?   string
+    |     +--:(BDI)
+    |     |  +--rw BDI?                         string
+    |     +--:(CEM)
+    |     |  +--rw CEM?                         string
+    |     +--:(CEM-ACR)
+    |     |  +--rw CEM-ACR?                     uint8
+    |     +--:(Embedded-Service-Engine)
+    |     |  +--rw Embedded-Service-Engine?     string
+    |     +--:(Ethernet)
+    |     |  +--rw Ethernet?                    string
+    |     +--:(FastEthernet)
+    |     |  +--rw FastEthernet?                string
+    |     +--:(GigabitEthernet)
+    |     |  +--rw GigabitEthernet?             string
+    |     +--:(FiveGigabitEthernet)
+    |     |  +--rw FiveGigabitEthernet?         string
+    |     +--:(AppGigabitEthernet)
+    |     |  +--rw AppGigabitEthernet?          string
+    |     +--:(TwentyFiveGigabitEthernet)
+    |     |  o--rw TwentyFiveGigabitEthernet?   string
+    |     +--:(TwentyFiveGigE)
+    |     |  +--rw TwentyFiveGigE?              string
+    |     +--:(TwoGigabitEthernet)
+    |     |  +--rw TwoGigabitEthernet?          string
+    |     +--:(FortyGigabitEthernet)
+    |     |  +--rw FortyGigabitEthernet?        string
+    |     +--:(HundredGigE)
+    |     |  +--rw HundredGigE?                 string
+    |     +--:(LISP)
+    |     |  +--rw LISP?                        string
+    |     +--:(LISP-subinterface)
+    |     |  +--rw LISP-subinterface
+    |     |     +--rw LISP?   string
+    |     +--:(Loopback)
+    |     |  +--rw Loopback?                    uint32
+    |     +--:(Multilink)
+    |     |  +--rw Multilink?                   uint16
+    |     +--:(nve)
+    |     |  +--rw nve?                         uint16
+    |     +--:(overlay)
+    |     |  +--rw overlay?                     uint16
+    |     +--:(Port-channel)
+    |     |  +--rw Port-channel?                uint32
+    |     +--:(Port-channel-subinterface)
+    |     |  +--rw Port-channel-subinterface
+    |     |     +--rw Port-channel?   string
+    |     +--:(pseudowire)
+    |     |  +--rw pseudowire?                  uint32
+    |     +--:(SM)
+    |     |  +--rw SM?                          string
+    |     +--:(Cellular)
+    |     |  +--rw Cellular?                    string
+    |     +--:(Dialer)
+    |     |  +--rw Dialer?                      string
+    |     +--:(Serial)
+    |     |  +--rw Serial?                      string
+    |     +--:(Async)
+    |     |  +--rw Async?                       string
+    |     +--:(TenGigabitEthernet)
+    |     |  +--rw TenGigabitEthernet?          string
+    |     +--:(Tunnel)
+    |     |  +--rw Tunnel?                      uint32
+    |     +--:(Virtual-Template)
+    |     |  +--rw Virtual-Template?            uint16
+    |     +--:(Vlan)
+    |     |  +--rw Vlan?                        uint16
+    |     +--:(VirtualPortGroup)
+    |     |  +--rw VirtualPortGroup?            uint16
+    |     +--:(vasileft)
+    |     |  +--rw vasileft?                    uint16
+    |     +--:(vasiright)
+    |     |  +--rw vasiright?                   uint16
+    |     +--:(BD-VIF)
+    |        +--rw BD-VIF?                      string
+    +--rw anycast-rp* [ipv6_RP_address ipv6_RP_peer_address]
+    |  +--rw ipv6_RP_address         union
+    |  +--rw ipv6_RP_peer_address    union
+    +--rw vrf* [id]
+       +--rw id                 string
+       +--rw bsr
+       |  +--rw candidate
+       |     +--rw bsr
+       |     |  +--rw global-scope
+       |     |  |  +--rw name-addr?             union
+       |     |  |  +--rw hash-mask-length?      uint8
+       |     |  |  +--rw priority?              uint8
+       |     |  |  +--rw accept-rp-candidate?   string
+       |     |  +--rw user-defined-scope-list* [scope]
+       |     |     +--rw name-addr              union
+       |     |     +--rw hash-mask-length?      uint8
+       |     |     +--rw priority?              uint8
+       |     |     +--rw scope                  uint8
+       |     |     +--rw accept-rp-candidate?   string
+       |     +--rw rp* [name-addr]
+       |        +--rw name-addr    union
+       +--rw rp-address
+       |  +--rw address?       union
+       |  +--rw access-list?   union
+       |  +--rw bidir?         empty
+       +--rw register-source
+       |  +--rw (interface-choice)?
+       |     +--:(AppNav-Compress)
+       |     |  +--rw AppNav-Compress?             uint16
+       |     +--:(AppNav-UnCompress)
+       |     |  +--rw AppNav-UnCompress?           uint16
+       |     +--:(ATM)
+       |     |  +--rw ATM?                         string
+       |     +--:(ATM-subinterface)
+       |     |  +--rw ATM-subinterface
+       |     |     +--rw ATM?   string
+       |     +--:(ATM-ACR)
+       |     |  +--rw ATM-ACR?                     string
+       |     +--:(ATM-ACRsubinterface)
+       |     |  +--rw ATM-ACRsubinterface
+       |     |     +--rw ATM-ACR?   string
+       |     +--:(BDI)
+       |     |  +--rw BDI?                         string
+       |     +--:(CEM)
+       |     |  +--rw CEM?                         string
+       |     +--:(CEM-ACR)
+       |     |  +--rw CEM-ACR?                     uint8
+       |     +--:(Embedded-Service-Engine)
+       |     |  +--rw Embedded-Service-Engine?     string
+       |     +--:(Ethernet)
+       |     |  +--rw Ethernet?                    string
+       |     +--:(FastEthernet)
+       |     |  +--rw FastEthernet?                string
+       |     +--:(GigabitEthernet)
+       |     |  +--rw GigabitEthernet?             string
+       |     +--:(FiveGigabitEthernet)
+       |     |  +--rw FiveGigabitEthernet?         string
+       |     +--:(AppGigabitEthernet)
+       |     |  +--rw AppGigabitEthernet?          string
+       |     +--:(TwentyFiveGigabitEthernet)
+       |     |  o--rw TwentyFiveGigabitEthernet?   string
+       |     +--:(TwentyFiveGigE)
+       |     |  +--rw TwentyFiveGigE?              string
+       |     +--:(TwoGigabitEthernet)
+       |     |  +--rw TwoGigabitEthernet?          string
+       |     +--:(FortyGigabitEthernet)
+       |     |  +--rw FortyGigabitEthernet?        string
+       |     +--:(HundredGigE)
+       |     |  +--rw HundredGigE?                 string
+       |     +--:(LISP)
+       |     |  +--rw LISP?                        string
+       |     +--:(LISP-subinterface)
+       |     |  +--rw LISP-subinterface
+       |     |     +--rw LISP?   string
+       |     +--:(Loopback)
+       |     |  +--rw Loopback?                    uint32
+       |     +--:(Multilink)
+       |     |  +--rw Multilink?                   uint16
+       |     +--:(nve)
+       |     |  +--rw nve?                         uint16
+       |     +--:(overlay)
+       |     |  +--rw overlay?                     uint16
+       |     +--:(Port-channel)
+       |     |  +--rw Port-channel?                uint32
+       |     +--:(Port-channel-subinterface)
+       |     |  +--rw Port-channel-subinterface
+       |     |     +--rw Port-channel?   string
+       |     +--:(pseudowire)
+       |     |  +--rw pseudowire?                  uint32
+       |     +--:(SM)
+       |     |  +--rw SM?                          string
+       |     +--:(Cellular)
+       |     |  +--rw Cellular?                    string
+       |     +--:(Dialer)
+       |     |  +--rw Dialer?                      string
+       |     +--:(Serial)
+       |     |  +--rw Serial?                      string
+       |     +--:(Async)
+       |     |  +--rw Async?                       string
+       |     +--:(TenGigabitEthernet)
+       |     |  +--rw TenGigabitEthernet?          string
+       |     +--:(Tunnel)
+       |     |  +--rw Tunnel?                      uint32
+       |     +--:(Virtual-Template)
+       |     |  +--rw Virtual-Template?            uint16
+       |     +--:(Vlan)
+       |     |  +--rw Vlan?                        uint16
+       |     +--:(VirtualPortGroup)
+       |     |  +--rw VirtualPortGroup?            uint16
+       |     +--:(vasileft)
+       |     |  +--rw vasileft?                    uint16
+       |     +--:(vasiright)
+       |     |  +--rw vasiright?                   uint16
+       |     +--:(BD-VIF)
+       |        +--rw BD-VIF?                      string
+       +--rw anycast-rp* [ipv6_RP_address ipv6_RP_peer_address]
+          +--rw ipv6_RP_address         union
+          +--rw ipv6_RP_peer_address    union
+  augment /ios:native/ios:mpls:
+    +--rw mldp?        boolean
+    +--rw mldp-conf
+       +--rw mldp
+          +--rw fec* [fecid]
+          |  +--rw fecid          uint8
+          |  +--rw opaque-type
+          |     +--rw (type)?
+          |        +--:(ipv4-type)
+          |        |  +--rw ipv4
+          |        |     +--rw source_address    inet:ipv4-address
+          |        |     +--rw group_address     inet:ipv4-address
+          |        +--:(vpnv4-type)
+          |        |  +--rw vpnv4
+          |        |     +--rw source_address    inet:ipv4-address
+          |        |     +--rw group_address     inet:ipv4-address
+          |        |     +--rw vpnid             string
+          |        +--:(ipv6-type)
+          |        |  +--rw ipv6
+          |        |     +--rw source_address    inet:ipv6-address
+          |        |     +--rw group_address     inet:ipv6-address
+          |        +--:(vpnv6-type)
+          |        |  +--rw vpnv6
+          |        |     +--rw source_address    inet:ipv6-address
+          |        |     +--rw group_address     inet:ipv6-address
+          |        |     +--rw vpnid             string
+          |        +--:(mdt-type)
+          |           +--rw mdt
+          |              +--rw vpn-id
+          |                 +--rw vpnid    union
+          |                 +--rw scope    union
+          +--rw filter* [fecid]
+          |  +--rw fecid        uint8
+          |  +--rw peer-list    ios-types:std-acl-type
+          +--rw forwarding
+          |  +--rw recursive?   boolean
+          +--rw limit?               uint32
+          +--rw logging
+          |  +--rw internal?        empty
+          |  +--rw notifications?   empty
+          +--rw make-before-break
+          |  +--rw delay?   uint32
+          +--rw path
+          |  +--rw multipath
+          |  |  +--rw upstream?     boolean
+          |  |  +--rw downstream?   boolean
+          |  +--rw traffic-eng?   empty
+          +--rw static
+             +--rw mp2mp* [root_address]
+             |  +--rw root_address     inet:ipv4-address
+             |  +--rw lsp_instances    uint32
+             +--rw p2mp* [root_address]
+                +--rw root_address     inet:ipv4-address
+                +--rw lsp_instances    uint32
+  augment /ios:native/ios:interface/ios:FastEthernet/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:GigabitEthernet/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:AppGigabitEthernet/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:HundredGigE/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:Port-channel/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:Loopback/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:Tunnel/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:Virtual-Template/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:VirtualPortGroup/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:Vlan/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:Port-channel-subinterface/ios:Port-channel/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:LISP/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+    +--rw lisp
+       +--rw core-group-range
+       |  +--rw addr?    inet:ipv4-address
+       |  +--rw range?   uint16
+       +--rw transport
+          +--rw (transport-type)?
+             +--:(multicast)
+             |  +--rw multicast!
+             |     +--rw ipv4?   empty
+             +--:(unicast)
+                +--rw unicast!
+                   +--rw ipv4?   empty
+  augment /ios:native/ios:interface/ios:LISP-subinterface/ios:LISP/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+    +--rw lisp
+       +--rw core-group-range
+       |  +--rw addr?    inet:ipv4-address
+       |  +--rw range?   uint16
+       +--rw transport
+          +--rw (transport-type)?
+             +--:(multicast)
+             |  +--rw multicast!
+             |     +--rw ipv4?   empty
+             +--:(unicast)
+                +--rw unicast!
+                   +--rw ipv4?   empty
+  augment /ios:native/ios:interface/ios:Vif/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:Multilink/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:Cellular/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:BDI/ios:ip/ios:pim:
+    +--rw accept-register
+    |  +--rw list?   string
+    +--rw bfd?                       empty
+    +--rw bidir-neighbor-filter?     ios-types:mcast-std-acl-type
+    +--rw border?                    empty
+    +--rw bsr-border?                empty
+    +--rw (pim-mode-choice)?
+    |  +--:(passive-mode)
+    |  |  +--rw passive?             empty
+    |  +--:(dense)
+    |  |  +--rw dense-mode!
+    |  |     +--rw proxy-register
+    |  |        +--rw list?        ios-types:ext-acl-type
+    |  |        +--rw route-map?   string
+    |  +--:(sparse)
+    |  |  +--rw sparse-mode?         empty
+    |  +--:(sparse-dense)
+    |     +--rw sparse-dense-mode?   empty
+    x--rw pim-mode?                  enumeration
+    +--rw nbma-mode?                 empty
+    +--rw dr-priority?               uint32
+    +--rw drlb
+    |  +--rw rp-mask?    union
+    |  +--rw grp-mask?   union
+    |  +--rw src-mask?   union
+    +--rw join-prune-interval?       uint16
+    +--rw neighbor-filter?           ios-types:mcast-std-acl-type
+    +--rw non-dr-join?               empty
+    +--rw query-interval
+    |  +--rw (seconds-milliseconds)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds-interval?        uint16
+    |  |  +--:(milliseconds)
+    |  |     +--rw milliseconds-interval?   uint16
+    |  |     +--rw msec                     empty
+    |  +--rw neighbor-holdtime?             uint16
+    +--rw redundancy* [group-name]
+    |  +--rw group-name     string
+    |  +--rw protocol?      enumeration
+    |  +--rw dr-priority?   uint32
+    +--rw state-refresh
+    |  +--rw origination-interval!
+    |     +--rw interval?   uint8
+    +--rw spt-threshold?             enumeration
+  augment /ios:native/ios:interface/ios:FastEthernet/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:GigabitEthernet/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:AppGigabitEthernet/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:HundredGigE/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:Port-channel/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:Port-channel-subinterface/ios:Port-channel/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:Loopback/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:Tunnel/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:Virtual-Template/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:VirtualPortGroup/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:Vif/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:Vlan/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:LISP/ios:ipv6:
+    +--rw pim
+       +--rw lisp
+          +--rw transport-container
+          |  +--rw (lisp-v4-choice)?
+          |     +--:(unicast)
+          |        +--rw unicast!
+          |           +--rw ipv4?   empty
+          x--rw transport
+             x--rw (lisp-v4-choice)?
+                +--:(unicast)
+                   x--rw unicast
+                      x--rw ipv4?   empty
+                      o--rw cr?     empty
+  augment /ios:native/ios:interface/ios:LISP-subinterface/ios:LISP/ios:ipv6:
+    +--rw pim
+       +--rw lisp
+          +--rw transport-container
+          |  +--rw (lisp-v4-choice)?
+          |     +--:(unicast)
+          |        +--rw unicast!
+          |           +--rw ipv4?   empty
+          x--rw transport
+             x--rw (lisp-v4-choice)?
+                +--:(unicast)
+                   x--rw unicast
+                      x--rw ipv4?   empty
+                      o--rw cr?     empty
+  augment /ios:native/ios:interface/ios:Multilink/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:Cellular/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:interface/ios:BDI/ios:ipv6:
+    +--rw pim-conf
+    |  +--rw pim?   boolean
+    +--rw pim-container
+    |  +--rw bfd?           empty
+    |  +--rw bsr
+    |  |  +--rw border?   empty
+    |  +--rw dr-priority?   uint32
+    x--rw (ipv6-pim-choice)?
+       +--:(no-pim)
+       |  x--rw no-pim
+       |     x--rw pim?   boolean
+       +--:(pim)
+          x--rw pim
+             x--rw bfd?           empty
+             x--rw bsr
+             |  x--rw border?   empty
+             x--rw dr-priority?   uint32
+  augment /ios:native/ios:ip:
+    +--rw msdp
+       +--rw border
+       |  +--rw sa-address
+       |     +--rw (interface-choice)?
+       |        +--:(AppNav-Compress)
+       |        |  +--rw AppNav-Compress?             uint16
+       |        +--:(AppNav-UnCompress)
+       |        |  +--rw AppNav-UnCompress?           uint16
+       |        +--:(ATM)
+       |        |  +--rw ATM?                         string
+       |        +--:(ATM-subinterface)
+       |        |  +--rw ATM-subinterface
+       |        |     +--rw ATM?   string
+       |        +--:(ATM-ACR)
+       |        |  +--rw ATM-ACR?                     string
+       |        +--:(ATM-ACRsubinterface)
+       |        |  +--rw ATM-ACRsubinterface
+       |        |     +--rw ATM-ACR?   string
+       |        +--:(BDI)
+       |        |  +--rw BDI?                         string
+       |        +--:(CEM)
+       |        |  +--rw CEM?                         string
+       |        +--:(CEM-ACR)
+       |        |  +--rw CEM-ACR?                     uint8
+       |        +--:(Embedded-Service-Engine)
+       |        |  +--rw Embedded-Service-Engine?     string
+       |        +--:(Ethernet)
+       |        |  +--rw Ethernet?                    string
+       |        +--:(FastEthernet)
+       |        |  +--rw FastEthernet?                string
+       |        +--:(GigabitEthernet)
+       |        |  +--rw GigabitEthernet?             string
+       |        +--:(FiveGigabitEthernet)
+       |        |  +--rw FiveGigabitEthernet?         string
+       |        +--:(AppGigabitEthernet)
+       |        |  +--rw AppGigabitEthernet?          string
+       |        +--:(TwentyFiveGigabitEthernet)
+       |        |  o--rw TwentyFiveGigabitEthernet?   string
+       |        +--:(TwentyFiveGigE)
+       |        |  +--rw TwentyFiveGigE?              string
+       |        +--:(TwoGigabitEthernet)
+       |        |  +--rw TwoGigabitEthernet?          string
+       |        +--:(FortyGigabitEthernet)
+       |        |  +--rw FortyGigabitEthernet?        string
+       |        +--:(HundredGigE)
+       |        |  +--rw HundredGigE?                 string
+       |        +--:(LISP)
+       |        |  +--rw LISP?                        string
+       |        +--:(LISP-subinterface)
+       |        |  +--rw LISP-subinterface
+       |        |     +--rw LISP?   string
+       |        +--:(Loopback)
+       |        |  +--rw Loopback?                    uint32
+       |        +--:(Multilink)
+       |        |  +--rw Multilink?                   uint16
+       |        +--:(nve)
+       |        |  +--rw nve?                         uint16
+       |        +--:(overlay)
+       |        |  +--rw overlay?                     uint16
+       |        +--:(Port-channel)
+       |        |  +--rw Port-channel?                uint32
+       |        +--:(Port-channel-subinterface)
+       |        |  +--rw Port-channel-subinterface
+       |        |     +--rw Port-channel?   string
+       |        +--:(pseudowire)
+       |        |  +--rw pseudowire?                  uint32
+       |        +--:(SM)
+       |        |  +--rw SM?                          string
+       |        +--:(Cellular)
+       |        |  +--rw Cellular?                    string
+       |        +--:(Dialer)
+       |        |  +--rw Dialer?                      string
+       |        +--:(Serial)
+       |        |  +--rw Serial?                      string
+       |        +--:(Async)
+       |        |  +--rw Async?                       string
+       |        +--:(TenGigabitEthernet)
+       |        |  +--rw TenGigabitEthernet?          string
+       |        +--:(Tunnel)
+       |        |  +--rw Tunnel?                      uint32
+       |        +--:(Virtual-Template)
+       |        |  +--rw Virtual-Template?            uint16
+       |        +--:(Vlan)
+       |        |  +--rw Vlan?                        uint16
+       |        +--:(VirtualPortGroup)
+       |        |  +--rw VirtualPortGroup?            uint16
+       |        +--:(vasileft)
+       |        |  +--rw vasileft?                    uint16
+       |        +--:(vasiright)
+       |        |  +--rw vasiright?                   uint16
+       |        +--:(BD-VIF)
+       |           +--rw BD-VIF?                      string
+       +--rw peer* [addr]
+       |  +--rw addr              union
+       |  +--rw connect-source
+       |  |  +--rw (interface-choice)?
+       |  |     +--:(AppNav-Compress)
+       |  |     |  +--rw AppNav-Compress?             uint16
+       |  |     +--:(AppNav-UnCompress)
+       |  |     |  +--rw AppNav-UnCompress?           uint16
+       |  |     +--:(ATM)
+       |  |     |  +--rw ATM?                         string
+       |  |     +--:(ATM-subinterface)
+       |  |     |  +--rw ATM-subinterface
+       |  |     |     +--rw ATM?   string
+       |  |     +--:(ATM-ACR)
+       |  |     |  +--rw ATM-ACR?                     string
+       |  |     +--:(ATM-ACRsubinterface)
+       |  |     |  +--rw ATM-ACRsubinterface
+       |  |     |     +--rw ATM-ACR?   string
+       |  |     +--:(BDI)
+       |  |     |  +--rw BDI?                         string
+       |  |     +--:(CEM)
+       |  |     |  +--rw CEM?                         string
+       |  |     +--:(CEM-ACR)
+       |  |     |  +--rw CEM-ACR?                     uint8
+       |  |     +--:(Embedded-Service-Engine)
+       |  |     |  +--rw Embedded-Service-Engine?     string
+       |  |     +--:(Ethernet)
+       |  |     |  +--rw Ethernet?                    string
+       |  |     +--:(FastEthernet)
+       |  |     |  +--rw FastEthernet?                string
+       |  |     +--:(GigabitEthernet)
+       |  |     |  +--rw GigabitEthernet?             string
+       |  |     +--:(FiveGigabitEthernet)
+       |  |     |  +--rw FiveGigabitEthernet?         string
+       |  |     +--:(AppGigabitEthernet)
+       |  |     |  +--rw AppGigabitEthernet?          string
+       |  |     +--:(TwentyFiveGigabitEthernet)
+       |  |     |  o--rw TwentyFiveGigabitEthernet?   string
+       |  |     +--:(TwentyFiveGigE)
+       |  |     |  +--rw TwentyFiveGigE?              string
+       |  |     +--:(TwoGigabitEthernet)
+       |  |     |  +--rw TwoGigabitEthernet?          string
+       |  |     +--:(FortyGigabitEthernet)
+       |  |     |  +--rw FortyGigabitEthernet?        string
+       |  |     +--:(HundredGigE)
+       |  |     |  +--rw HundredGigE?                 string
+       |  |     +--:(LISP)
+       |  |     |  +--rw LISP?                        string
+       |  |     +--:(LISP-subinterface)
+       |  |     |  +--rw LISP-subinterface
+       |  |     |     +--rw LISP?   string
+       |  |     +--:(Loopback)
+       |  |     |  +--rw Loopback?                    uint32
+       |  |     +--:(Multilink)
+       |  |     |  +--rw Multilink?                   uint16
+       |  |     +--:(nve)
+       |  |     |  +--rw nve?                         uint16
+       |  |     +--:(overlay)
+       |  |     |  +--rw overlay?                     uint16
+       |  |     +--:(Port-channel)
+       |  |     |  +--rw Port-channel?                uint32
+       |  |     +--:(Port-channel-subinterface)
+       |  |     |  +--rw Port-channel-subinterface
+       |  |     |     +--rw Port-channel?   string
+       |  |     +--:(pseudowire)
+       |  |     |  +--rw pseudowire?                  uint32
+       |  |     +--:(SM)
+       |  |     |  +--rw SM?                          string
+       |  |     +--:(Cellular)
+       |  |     |  +--rw Cellular?                    string
+       |  |     +--:(Dialer)
+       |  |     |  +--rw Dialer?                      string
+       |  |     +--:(Serial)
+       |  |     |  +--rw Serial?                      string
+       |  |     +--:(Async)
+       |  |     |  +--rw Async?                       string
+       |  |     +--:(TenGigabitEthernet)
+       |  |     |  +--rw TenGigabitEthernet?          string
+       |  |     +--:(Tunnel)
+       |  |     |  +--rw Tunnel?                      uint32
+       |  |     +--:(Virtual-Template)
+       |  |     |  +--rw Virtual-Template?            uint16
+       |  |     +--:(Vlan)
+       |  |     |  +--rw Vlan?                        uint16
+       |  |     +--:(VirtualPortGroup)
+       |  |     |  +--rw VirtualPortGroup?            uint16
+       |  |     +--:(vasileft)
+       |  |     |  +--rw vasileft?                    uint16
+       |  |     +--:(vasiright)
+       |  |     |  +--rw vasiright?                   uint16
+       |  |     +--:(BD-VIF)
+       |  |        +--rw BD-VIF?                      string
+       |  +--rw remote-as?        uint16
+       +--rw cache-rejected-sa?        uint32
+       +--rw cache-sa-state?           empty
+       +--rw default-peer-list* [name-addr]
+       |  +--rw name-addr      -> /ios:native/ip/ios-mc:msdp/peer/addr
+       |  +--rw prefix-list?   string
+       o--rw default-peer
+       |  o--rw name-addr?     union
+       |  o--rw prefix-list?   string
+       +--rw description-list* [name-addr]
+       |  +--rw name-addr      -> /ios:native/ip/ios-mc:msdp/peer/addr
+       |  +--rw description    string
+       o--rw description
+       |  o--rw name-addr?     union
+       |  o--rw description?   string
+       +--rw filter-sa-request-list* [name-addr]
+       |  +--rw name-addr    -> /ios:native/ip/ios-mc:msdp/peer/addr
+       |  +--rw list?        ios-types:std-acl-type
+       o--rw filter-sa-request
+       |  o--rw name-addr?   union
+       |  o--rw list?        ios-types:std-acl-type
+       +--rw keepalive-list* [name-addr]
+       |  +--rw name-addr    -> /ios:native/ip/ios-mc:msdp/peer/addr
+       |  +--rw keepalive    uint8
+       |  +--rw max-wait     uint8
+       o--rw keepalive
+       |  o--rw name-addr?   union
+       |  o--rw keepalive?   uint8
+       |  o--rw max-wait?    uint8
+       +--rw mesh-group-list* [addr]
+       |  +--rw name    string
+       |  +--rw addr    -> /ios:native/ip/ios-mc:msdp/peer/addr
+       o--rw mesh-group
+       |  o--rw name?   string
+       |  o--rw addr?   union
+       +--rw new-rpf-rules?            empty
+       +--rw originator-id?            string
+       +--rw password
+       |  +--rw peer-list* [addr]
+       |  |  +--rw addr          -> /ios:native/ip/ios-mc:msdp/peer/addr
+       |  |  +--rw encryption?   uint8
+       |  |  +--rw password      string
+       |  o--rw peer
+       |     o--rw addr?         union
+       |     o--rw encryption?   uint8
+       |     o--rw password?     string
+       +--rw redistribute-container!
+       |  +--rw list?        ios-types:ext-acl-type
+       |  +--rw asn?         uint16
+       |  +--rw route-map?   string
+       x--rw redistribute
+       |  x--rw list?        ios-types:ext-acl-type
+       |  x--rw asn?         uint16
+       |  x--rw route-map?   string
+       +--rw rpf?                      enumeration
+       +--rw sa-filter
+       |  +--rw in-list* [addr]
+       |  |  +--rw addr            -> /ios:native/ip/ios-mc:msdp/peer/addr
+       |  |  +--rw list?           ios-types:ext-acl-type
+       |  |  +--rw route-map?      string
+       |  |  +--rw rp-list?        ios-types:mcast-std-acl-type
+       |  |  +--rw rp-route-map?   string
+       |  o--rw in
+       |  |  o--rw addr?           union
+       |  |  o--rw list?           ios-types:ext-acl-type
+       |  |  o--rw route-map?      string
+       |  |  o--rw rp-list?        union
+       |  |  o--rw rp-route-map?   string
+       |  +--rw out-list* [addr]
+       |  |  +--rw addr            -> /ios:native/ip/ios-mc:msdp/peer/addr
+       |  |  +--rw list?           ios-types:ext-acl-type
+       |  |  +--rw route-map?      string
+       |  |  +--rw rp-list?        ios-types:mcast-std-acl-type
+       |  |  +--rw rp-route-map?   string
+       |  o--rw out
+       |     o--rw addr?           union
+       |     o--rw list?           ios-types:ext-acl-type
+       |     o--rw route-map?      string
+       |     o--rw rp-list?        union
+       |     o--rw rp-route-map?   string
+       +--rw sa-limit-list* [name-addr]
+       |  +--rw name-addr    -> /ios:native/ip/ios-mc:msdp/peer/addr
+       |  +--rw limit        uint32
+       o--rw sa-limit
+       |  o--rw name-addr?   union
+       |  o--rw limit?       uint32
+       +--rw shutdown-list* [name-addr]
+       |  +--rw name-addr    -> /ios:native/ip/ios-mc:msdp/peer/addr
+       o--rw shutdown
+       |  o--rw name-addr?   union
+       +--rw timer?                    uint8
+       +--rw ttl-threshold-list* [name-addr]
+       |  +--rw name-addr    -> /ios:native/ip/ios-mc:msdp/peer/addr
+       |  +--rw threshold    uint8
+       o--rw ttl-threshold
+       |  o--rw name-addr?   union
+       |  o--rw threshold?   uint8
+       +--rw vrf* [name]
+          +--rw name                      string
+          +--rw border
+          |  +--rw sa-address
+          |     +--rw (interface-choice)?
+          |        +--:(AppNav-Compress)
+          |        |  +--rw AppNav-Compress?             uint16
+          |        +--:(AppNav-UnCompress)
+          |        |  +--rw AppNav-UnCompress?           uint16
+          |        +--:(ATM)
+          |        |  +--rw ATM?                         string
+          |        +--:(ATM-subinterface)
+          |        |  +--rw ATM-subinterface
+          |        |     +--rw ATM?   string
+          |        +--:(ATM-ACR)
+          |        |  +--rw ATM-ACR?                     string
+          |        +--:(ATM-ACRsubinterface)
+          |        |  +--rw ATM-ACRsubinterface
+          |        |     +--rw ATM-ACR?   string
+          |        +--:(BDI)
+          |        |  +--rw BDI?                         string
+          |        +--:(CEM)
+          |        |  +--rw CEM?                         string
+          |        +--:(CEM-ACR)
+          |        |  +--rw CEM-ACR?                     uint8
+          |        +--:(Embedded-Service-Engine)
+          |        |  +--rw Embedded-Service-Engine?     string
+          |        +--:(Ethernet)
+          |        |  +--rw Ethernet?                    string
+          |        +--:(FastEthernet)
+          |        |  +--rw FastEthernet?                string
+          |        +--:(GigabitEthernet)
+          |        |  +--rw GigabitEthernet?             string
+          |        +--:(FiveGigabitEthernet)
+          |        |  +--rw FiveGigabitEthernet?         string
+          |        +--:(AppGigabitEthernet)
+          |        |  +--rw AppGigabitEthernet?          string
+          |        +--:(TwentyFiveGigabitEthernet)
+          |        |  o--rw TwentyFiveGigabitEthernet?   string
+          |        +--:(TwentyFiveGigE)
+          |        |  +--rw TwentyFiveGigE?              string
+          |        +--:(TwoGigabitEthernet)
+          |        |  +--rw TwoGigabitEthernet?          string
+          |        +--:(FortyGigabitEthernet)
+          |        |  +--rw FortyGigabitEthernet?        string
+          |        +--:(HundredGigE)
+          |        |  +--rw HundredGigE?                 string
+          |        +--:(LISP)
+          |        |  +--rw LISP?                        string
+          |        +--:(LISP-subinterface)
+          |        |  +--rw LISP-subinterface
+          |        |     +--rw LISP?   string
+          |        +--:(Loopback)
+          |        |  +--rw Loopback?                    uint32
+          |        +--:(Multilink)
+          |        |  +--rw Multilink?                   uint16
+          |        +--:(nve)
+          |        |  +--rw nve?                         uint16
+          |        +--:(overlay)
+          |        |  +--rw overlay?                     uint16
+          |        +--:(Port-channel)
+          |        |  +--rw Port-channel?                uint32
+          |        +--:(Port-channel-subinterface)
+          |        |  +--rw Port-channel-subinterface
+          |        |     +--rw Port-channel?   string
+          |        +--:(pseudowire)
+          |        |  +--rw pseudowire?                  uint32
+          |        +--:(SM)
+          |        |  +--rw SM?                          string
+          |        +--:(Cellular)
+          |        |  +--rw Cellular?                    string
+          |        +--:(Dialer)
+          |        |  +--rw Dialer?                      string
+          |        +--:(Serial)
+          |        |  +--rw Serial?                      string
+          |        +--:(Async)
+          |        |  +--rw Async?                       string
+          |        +--:(TenGigabitEthernet)
+          |        |  +--rw TenGigabitEthernet?          string
+          |        +--:(Tunnel)
+          |        |  +--rw Tunnel?                      uint32
+          |        +--:(Virtual-Template)
+          |        |  +--rw Virtual-Template?            uint16
+          |        +--:(Vlan)
+          |        |  +--rw Vlan?                        uint16
+          |        +--:(VirtualPortGroup)
+          |        |  +--rw VirtualPortGroup?            uint16
+          |        +--:(vasileft)
+          |        |  +--rw vasileft?                    uint16
+          |        +--:(vasiright)
+          |        |  +--rw vasiright?                   uint16
+          |        +--:(BD-VIF)
+          |           +--rw BD-VIF?                      string
+          +--rw peer* [addr]
+          |  +--rw addr              union
+          |  +--rw connect-source
+          |  |  +--rw (interface-choice)?
+          |  |     +--:(AppNav-Compress)
+          |  |     |  +--rw AppNav-Compress?             uint16
+          |  |     +--:(AppNav-UnCompress)
+          |  |     |  +--rw AppNav-UnCompress?           uint16
+          |  |     +--:(ATM)
+          |  |     |  +--rw ATM?                         string
+          |  |     +--:(ATM-subinterface)
+          |  |     |  +--rw ATM-subinterface
+          |  |     |     +--rw ATM?   string
+          |  |     +--:(ATM-ACR)
+          |  |     |  +--rw ATM-ACR?                     string
+          |  |     +--:(ATM-ACRsubinterface)
+          |  |     |  +--rw ATM-ACRsubinterface
+          |  |     |     +--rw ATM-ACR?   string
+          |  |     +--:(BDI)
+          |  |     |  +--rw BDI?                         string
+          |  |     +--:(CEM)
+          |  |     |  +--rw CEM?                         string
+          |  |     +--:(CEM-ACR)
+          |  |     |  +--rw CEM-ACR?                     uint8
+          |  |     +--:(Embedded-Service-Engine)
+          |  |     |  +--rw Embedded-Service-Engine?     string
+          |  |     +--:(Ethernet)
+          |  |     |  +--rw Ethernet?                    string
+          |  |     +--:(FastEthernet)
+          |  |     |  +--rw FastEthernet?                string
+          |  |     +--:(GigabitEthernet)
+          |  |     |  +--rw GigabitEthernet?             string
+          |  |     +--:(FiveGigabitEthernet)
+          |  |     |  +--rw FiveGigabitEthernet?         string
+          |  |     +--:(AppGigabitEthernet)
+          |  |     |  +--rw AppGigabitEthernet?          string
+          |  |     +--:(TwentyFiveGigabitEthernet)
+          |  |     |  o--rw TwentyFiveGigabitEthernet?   string
+          |  |     +--:(TwentyFiveGigE)
+          |  |     |  +--rw TwentyFiveGigE?              string
+          |  |     +--:(TwoGigabitEthernet)
+          |  |     |  +--rw TwoGigabitEthernet?          string
+          |  |     +--:(FortyGigabitEthernet)
+          |  |     |  +--rw FortyGigabitEthernet?        string
+          |  |     +--:(HundredGigE)
+          |  |     |  +--rw HundredGigE?                 string
+          |  |     +--:(LISP)
+          |  |     |  +--rw LISP?                        string
+          |  |     +--:(LISP-subinterface)
+          |  |     |  +--rw LISP-subinterface
+          |  |     |     +--rw LISP?   string
+          |  |     +--:(Loopback)
+          |  |     |  +--rw Loopback?                    uint32
+          |  |     +--:(Multilink)
+          |  |     |  +--rw Multilink?                   uint16
+          |  |     +--:(nve)
+          |  |     |  +--rw nve?                         uint16
+          |  |     +--:(overlay)
+          |  |     |  +--rw overlay?                     uint16
+          |  |     +--:(Port-channel)
+          |  |     |  +--rw Port-channel?                uint32
+          |  |     +--:(Port-channel-subinterface)
+          |  |     |  +--rw Port-channel-subinterface
+          |  |     |     +--rw Port-channel?   string
+          |  |     +--:(pseudowire)
+          |  |     |  +--rw pseudowire?                  uint32
+          |  |     +--:(SM)
+          |  |     |  +--rw SM?                          string
+          |  |     +--:(Cellular)
+          |  |     |  +--rw Cellular?                    string
+          |  |     +--:(Dialer)
+          |  |     |  +--rw Dialer?                      string
+          |  |     +--:(Serial)
+          |  |     |  +--rw Serial?                      string
+          |  |     +--:(Async)
+          |  |     |  +--rw Async?                       string
+          |  |     +--:(TenGigabitEthernet)
+          |  |     |  +--rw TenGigabitEthernet?          string
+          |  |     +--:(Tunnel)
+          |  |     |  +--rw Tunnel?                      uint32
+          |  |     +--:(Virtual-Template)
+          |  |     |  +--rw Virtual-Template?            uint16
+          |  |     +--:(Vlan)
+          |  |     |  +--rw Vlan?                        uint16
+          |  |     +--:(VirtualPortGroup)
+          |  |     |  +--rw VirtualPortGroup?            uint16
+          |  |     +--:(vasileft)
+          |  |     |  +--rw vasileft?                    uint16
+          |  |     +--:(vasiright)
+          |  |     |  +--rw vasiright?                   uint16
+          |  |     +--:(BD-VIF)
+          |  |        +--rw BD-VIF?                      string
+          |  +--rw remote-as?        uint16
+          +--rw cache-rejected-sa?        uint32
+          +--rw cache-sa-state?           empty
+          +--rw default-peer-list* [name-addr]
+          |  +--rw name-addr      -> /ios:native/ip/ios-mc:msdp/peer/addr
+          |  +--rw prefix-list?   string
+          o--rw default-peer
+          |  o--rw name-addr?     union
+          |  o--rw prefix-list?   string
+          +--rw description-list* [name-addr]
+          |  +--rw name-addr      -> /ios:native/ip/ios-mc:msdp/peer/addr
+          |  +--rw description    string
+          o--rw description
+          |  o--rw name-addr?     union
+          |  o--rw description?   string
+          +--rw filter-sa-request-list* [name-addr]
+          |  +--rw name-addr    -> /ios:native/ip/ios-mc:msdp/peer/addr
+          |  +--rw list?        ios-types:std-acl-type
+          o--rw filter-sa-request
+          |  o--rw name-addr?   union
+          |  o--rw list?        ios-types:std-acl-type
+          +--rw keepalive-list* [name-addr]
+          |  +--rw name-addr    -> /ios:native/ip/ios-mc:msdp/peer/addr
+          |  +--rw keepalive    uint8
+          |  +--rw max-wait     uint8
+          o--rw keepalive
+          |  o--rw name-addr?   union
+          |  o--rw keepalive?   uint8
+          |  o--rw max-wait?    uint8
+          +--rw mesh-group-list* [addr]
+          |  +--rw name    string
+          |  +--rw addr    -> /ios:native/ip/ios-mc:msdp/peer/addr
+          o--rw mesh-group
+          |  o--rw name?   string
+          |  o--rw addr?   union
+          +--rw new-rpf-rules?            empty
+          +--rw originator-id?            string
+          +--rw password
+          |  +--rw peer-list* [addr]
+          |  |  +--rw addr          -> /ios:native/ip/ios-mc:msdp/peer/addr
+          |  |  +--rw encryption?   uint8
+          |  |  +--rw password      string
+          |  o--rw peer
+          |     o--rw addr?         union
+          |     o--rw encryption?   uint8
+          |     o--rw password?     string
+          +--rw redistribute-container!
+          |  +--rw list?        ios-types:ext-acl-type
+          |  +--rw asn?         uint16
+          |  +--rw route-map?   string
+          x--rw redistribute
+          |  x--rw list?        ios-types:ext-acl-type
+          |  x--rw asn?         uint16
+          |  x--rw route-map?   string
+          +--rw rpf?                      enumeration
+          +--rw sa-filter
+          |  +--rw in-list* [addr]
+          |  |  +--rw addr            -> /ios:native/ip/ios-mc:msdp/peer/addr
+          |  |  +--rw list?           ios-types:ext-acl-type
+          |  |  +--rw route-map?      string
+          |  |  +--rw rp-list?        ios-types:mcast-std-acl-type
+          |  |  +--rw rp-route-map?   string
+          |  o--rw in
+          |  |  o--rw addr?           union
+          |  |  o--rw list?           ios-types:ext-acl-type
+          |  |  o--rw route-map?      string
+          |  |  o--rw rp-list?        union
+          |  |  o--rw rp-route-map?   string
+          |  +--rw out-list* [addr]
+          |  |  +--rw addr            -> /ios:native/ip/ios-mc:msdp/peer/addr
+          |  |  +--rw list?           ios-types:ext-acl-type
+          |  |  +--rw route-map?      string
+          |  |  +--rw rp-list?        ios-types:mcast-std-acl-type
+          |  |  +--rw rp-route-map?   string
+          |  o--rw out
+          |     o--rw addr?           union
+          |     o--rw list?           ios-types:ext-acl-type
+          |     o--rw route-map?      string
+          |     o--rw rp-list?        union
+          |     o--rw rp-route-map?   string
+          +--rw sa-limit-list* [name-addr]
+          |  +--rw name-addr    -> /ios:native/ip/ios-mc:msdp/peer/addr
+          |  +--rw limit        uint32
+          o--rw sa-limit
+          |  o--rw name-addr?   union
+          |  o--rw limit?       uint32
+          +--rw shutdown-list* [name-addr]
+          |  +--rw name-addr    -> /ios:native/ip/ios-mc:msdp/peer/addr
+          o--rw shutdown
+          |  o--rw name-addr?   union
+          +--rw timer?                    uint8
+          +--rw ttl-threshold-list* [name-addr]
+          |  +--rw name-addr    -> /ios:native/ip/ios-mc:msdp/peer/addr
+          |  +--rw threshold    uint8
+          o--rw ttl-threshold
+             o--rw name-addr?   union
+             o--rw threshold?   uint8
+  augment /ios:native/ios:ip:
+    +--rw mcr-conf
+    |  +--rw multicast-routing?   empty
+    +--rw multicast-routing!
+       +--rw vrf* [name]
+       |  +--rw name           string
+       |  +--rw distributed?   empty
+       +--rw distributed?   empty
+  augment /ios:native/ios:ip:
+    +--rw mroute
+       +--rw source-address?   inet:ipv4-address
+       +--rw subnet-mask?      inet:ipv4-address
+       +--rw Tunnel?           int32
+  augment /ios:native/ios:ipv6:
+    +--rw mcr-conf
+    |  +--rw multicast-routing?   empty
+    +--rw multicast-routing-container
+    |  +--rw vrf* [name]
+    |     +--rw name    string
+    x--rw multicast-routing!
+       x--rw vrf?   string
+  augment /ios:native/ios:interface/ios:Vif/ios:ip:
+    +--rw service
+       +--rw reflect
+          +--rw service_reflect_source_list* [destination to mask-len source to_src src-mask-len]
+          |  +--rw destination     inet:ip-address
+          |  +--rw to              inet:ip-address
+          |  +--rw mask-len        uint8
+          |  +--rw source          inet:ip-address
+          |  +--rw to_src          inet:ip-address
+          |  +--rw src-mask-len    uint8
+          +--rw service_reflect_list* [destination to mask-len source]
+          |  +--rw destination    inet:ip-address
+          |  +--rw to             inet:ip-address
+          |  +--rw mask-len       uint8
+          |  +--rw source         inet:ip-address
+          +--rw service_reflect_interface_source_list* [interface destination to mask-len source to_src src-mask-len]
+          |  +--rw interface       string
+          |  +--rw destination     inet:ip-address
+          |  +--rw to              inet:ip-address
+          |  +--rw mask-len        uint8
+          |  +--rw source          inet:ip-address
+          |  +--rw to_src          inet:ip-address
+          |  +--rw src-mask-len    uint8
+          +--rw service_reflect_interface_list* [interface destination to mask-len source]
+             +--rw interface      string
+             +--rw destination    inet:ip-address
+             +--rw to             inet:ip-address
+             +--rw mask-len       uint8
+             +--rw source         inet:ip-address
+Xpaths for model: Cisco-IOS-XE-multicast.yang

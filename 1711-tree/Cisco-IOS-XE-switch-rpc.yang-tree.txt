@@ -1,0 +1,22 @@
+ 
+KPI for model: Cisco-IOS-XE-switch-rpc.yang
+
+module: Cisco-IOS-XE-switch-rpc
+  augment /ios-xe-rpc:reload/ios-xe-rpc:input:
+    +---w slot?   uint8
+
+  rpcs:
+    +---x switch
+       +---w input
+       |  +---w switch-number-drop-node-name    uint8
+       |  +---w (pri-renum-stack)
+       |     +--:(priority-case)
+       |     |  +---w priority?                 uint8
+       |     +--:(renumver-case)
+       |     |  +---w renumber?                 uint8
+       |     +--:(stack-case)
+       |        +---w statck
+       |           +---w port?   uint8
+       +--ro output
+          +--ro result?   string
+Xpaths for model: Cisco-IOS-XE-switch-rpc.yang
