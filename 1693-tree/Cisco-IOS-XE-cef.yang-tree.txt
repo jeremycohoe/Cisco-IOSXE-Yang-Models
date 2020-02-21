@@ -1,0 +1,175 @@
+ 
+KPI for model: Cisco-IOS-XE-cef.yang
+
+module: Cisco-IOS-XE-cef
+  augment /ios:native:
+    +--rw cef
+       +--rw table
+          +--rw output-chain
+          |  +--rw build
+          |     +--rw favor
+          |     |  +--rw (favor-choice)?
+          |     |     +--:(convergence-speed)
+          |     |     |  +--rw convergence-speed?    empty
+          |     |     +--:(memory-utilization)
+          |     |        +--rw memory-utilization?   empty
+          |     +--rw indirection
+          |     |  +--rw ipv4-to-mpls?            empty
+          |     |  +--rw ipv6-to-mpls?            empty
+          |     |  +--rw mpls-end-of-stack?       empty
+          |     |  +--rw mpls-non-end-of-stack?   empty
+          |     |  +--rw non-recursive-prefix?    empty
+          |     |  +--rw recursive-prefix?        empty
+          |     +--rw inplace-modify
+          |        +--rw load-sharing?   empty
+          |        +--rw push-counter?   empty
+          +--rw consistency-check
+          |  +--rw ipv4
+          |  |  +--rw auto-repair
+          |  |  |  +--rw delay?      uint16
+          |  |  |  +--rw holddown?   uint16
+          |  |  +--rw type
+          |  |  |  +--rw scan-ios-rib
+          |  |  |  |  +--rw scan-opt
+          |  |  |  |     +--rw count?    uint16
+          |  |  |  |     +--rw period?   uint16
+          |  |  |  +--rw scan-rib-ios
+          |  |  |  |  +--rw scan-opt
+          |  |  |  |     +--rw count?    uint16
+          |  |  |  |     +--rw period?   uint16
+          |  |  |  +--rw scan-lc-rp
+          |  |  |  |  +--rw scan-opt
+          |  |  |  |     +--rw count?    uint16
+          |  |  |  |     +--rw period?   uint16
+          |  |  |  +--rw scan-rp-lc
+          |  |  |  |  +--rw scan-opt
+          |  |  |  |     +--rw count?    uint16
+          |  |  |  |     +--rw period?   uint16
+          |  |  |  +--rw lc-detect?      empty
+          |  |  +--rw data-checking?   empty
+          |  |  +--rw error-message?   empty
+          |  +--rw ipv6
+          |     +--rw auto-repair
+          |     |  +--rw delay?      uint16
+          |     |  +--rw holddown?   uint16
+          |     +--rw type
+          |     |  +--rw scan-ios-rib
+          |     |  |  +--rw scan-opt
+          |     |  |     +--rw count?    uint16
+          |     |  |     +--rw period?   uint16
+          |     |  +--rw scan-lc-rp
+          |     |  |  +--rw scan-opt
+          |     |  |     +--rw count?    uint16
+          |     |  |     +--rw period?   uint16
+          |     |  +--rw scan-rp-lc
+          |     |  |  +--rw scan-opt
+          |     |  |     +--rw count?    uint16
+          |     |  |     +--rw period?   uint16
+          |     |  +--rw lc-detect?      empty
+          |     +--rw data-checking?   empty
+          |     +--rw error-message?   empty
+          +--rw download
+          |  +--rw catch-all
+          |  |  +--rw priority
+          |  |     +--rw priority1?   empty
+          |  |     +--rw priority2?   empty
+          |  |     +--rw priority3?   empty
+          |  |     +--rw priority4?   empty
+          |  +--rw connected-route
+          |  |  +--rw priority
+          |  |     +--rw priority1?   empty
+          |  |     +--rw priority2?   empty
+          |  |     +--rw priority3?   empty
+          |  |     +--rw priority4?   empty
+          |  +--rw default-route
+          |  |  +--rw priority
+          |  |     +--rw priority1?   empty
+          |  |     +--rw priority2?   empty
+          |  |     +--rw priority3?   empty
+          |  |     +--rw priority4?   empty
+          |  +--rw receive-route
+          |  |  +--rw priority
+          |  |     +--rw priority1?   empty
+          |  |     +--rw priority2?   empty
+          |  |     +--rw priority3?   empty
+          |  |     +--rw priority4?   empty
+          |  +--rw recursive-dependents
+          |  |  +--rw priority
+          |  |     +--rw priority1?   empty
+          |  |     +--rw priority2?   empty
+          |  |     +--rw priority3?   empty
+          |  |     +--rw priority4?   empty
+          |  +--rw route-in-vrf
+          |     +--rw priority
+          |        +--rw priority1?   empty
+          |        +--rw priority2?   empty
+          |        +--rw priority3?   empty
+          |        +--rw priority4?   empty
+          +--rw rate-monitor-period?   uint8
+  augment /ios:native/ios:ip/ios:cef:
+    +--rw accounting
+    |  +--rw per-prefix?          empty
+    |  +--rw non-recursive?       empty
+    |  +--rw prefix-length?       empty
+    |  +--rw load-balance-hash?   empty
+    +--rw distributed?          empty
+    +--rw optimize
+    |  +--rw neighbor
+    |     +--rw resolution?   empty
+    +--rw traffic-statistics
+    |  +--rw load-interval?   uint16
+    |  +--rw update-rate?     uint16
+    +--rw load-sharing
+       +--rw algorithm
+       |  +--rw universal
+       |  |  +--rw universal?   empty
+       |  |  +--rw fixed-id?    fixed-id
+       |  +--rw tunnel
+       |  |  +--rw tunnel?     empty
+       |  |  +--rw fixed-id?   fixed-id
+       |  +--rw original
+       |  |  +--rw original?   empty
+       |  +--rw include-ports!
+       |     +--rw destination!
+       |     |  +--rw fixed-id?   fixed-id
+       |     +--rw source!
+       |        +--rw destination!
+       |        |  +--rw gtp!
+       |        |  |  +--rw fixed-id?   fixed-id
+       |        |  +--rw fixed-id?   fixed-id
+       |        +--rw fixed-id?      fixed-id
+       +--rw key-control
+  augment /ios:native/ios:ipv6/ios:cef:
+    +--rw accounting
+    |  +--rw per-prefix?          empty
+    |  +--rw non-recursive?       empty
+    |  +--rw prefix-length?       empty
+    |  +--rw load-balance-hash?   empty
+    +--rw distributed?          empty
+    +--rw optimize
+    |  +--rw neighbor
+    |     +--rw resolution?   empty
+    +--rw traffic-statistics
+    |  +--rw load-interval?   uint16
+    |  +--rw update-rate?     uint16
+    +--rw load-sharing
+       +--rw algorithm
+       |  +--rw tunnel
+       |  |  +--rw tunnel?     empty
+       |  |  +--rw fixed-id?   fixed-id
+       |  +--rw universal
+       |  |  +--rw universal?   empty
+       |  |  +--rw fixed-id?    fixed-id
+       |  +--rw original
+       |  |  +--rw original?   empty
+       |  +--rw include-ports!
+       |     +--rw destination!
+       |     |  +--rw fixed-id?   fixed-id
+       |     +--rw source!
+       |        +--rw destination!
+       |        |  +--rw gtp!
+       |        |  |  +--rw fixed-id?   fixed-id
+       |        |  +--rw fixed-id?   fixed-id
+       |        +--rw fixed-id?      fixed-id
+       +--rw key-control
+Xpaths for model: Cisco-IOS-XE-cef.yang

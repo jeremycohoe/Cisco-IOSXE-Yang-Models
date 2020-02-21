@@ -1,0 +1,20 @@
+ 
+KPI for model: Cisco-IOS-XE-checkpoint-archive-oper.yang
+module: Cisco-IOS-XE-checkpoint-archive-oper
+  +--ro checkpoint-archives
+     +--ro max?        uint8
+     +--ro current?    uint8
+     +--ro recent?     string
+     +--ro archives
+        +--ro archive* [number]
+           +--ro number    uint16
+           +--ro name?     string
+Xpaths for model: Cisco-IOS-XE-checkpoint-archive-oper.yang
+/checkpoint-archive-ios-xe-oper:checkpoint-archives,container,
+/checkpoint-archive-ios-xe-oper:checkpoint-archives/checkpoint-archive-ios-xe-oper:max,leaf,uint8
+/checkpoint-archive-ios-xe-oper:checkpoint-archives/checkpoint-archive-ios-xe-oper:current,leaf,uint8
+/checkpoint-archive-ios-xe-oper:checkpoint-archives/checkpoint-archive-ios-xe-oper:recent,leaf,string
+/checkpoint-archive-ios-xe-oper:checkpoint-archives/checkpoint-archive-ios-xe-oper:archives,container,
+/checkpoint-archive-ios-xe-oper:checkpoint-archives/checkpoint-archive-ios-xe-oper:archives/checkpoint-archive-ios-xe-oper:archive,list,
+/checkpoint-archive-ios-xe-oper:checkpoint-archives/checkpoint-archive-ios-xe-oper:archives/checkpoint-archive-ios-xe-oper:archive/checkpoint-archive-ios-xe-oper:number,leaf,uint16
+/checkpoint-archive-ios-xe-oper:checkpoint-archives/checkpoint-archive-ios-xe-oper:archives/checkpoint-archive-ios-xe-oper:archive/checkpoint-archive-ios-xe-oper:name,leaf,string

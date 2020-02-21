@@ -1,0 +1,20 @@
+ 
+KPI for model: Cisco-IOS-XE-tcam-oper.yang
+module: Cisco-IOS-XE-tcam-oper
+  +--ro tcam-details
+     +--ro tcam-detail* [asic-no name]
+        +--ro asic-no              uint8
+        +--ro name                 string
+        +--ro hash-entries-max?    uint32
+        +--ro tcam-entries-max?    uint32
+        +--ro hash-entries-used?   uint32
+        +--ro tcam-entries-used?   uint32
+Xpaths for model: Cisco-IOS-XE-tcam-oper.yang
+/tcam-ios-xe-oper:tcam-details,container,
+/tcam-ios-xe-oper:tcam-details/tcam-ios-xe-oper:tcam-detail,list,
+/tcam-ios-xe-oper:tcam-details/tcam-ios-xe-oper:tcam-detail/tcam-ios-xe-oper:asic-no,leaf,uint8
+/tcam-ios-xe-oper:tcam-details/tcam-ios-xe-oper:tcam-detail/tcam-ios-xe-oper:name,leaf,string
+/tcam-ios-xe-oper:tcam-details/tcam-ios-xe-oper:tcam-detail/tcam-ios-xe-oper:hash-entries-max,leaf,uint32
+/tcam-ios-xe-oper:tcam-details/tcam-ios-xe-oper:tcam-detail/tcam-ios-xe-oper:tcam-entries-max,leaf,uint32
+/tcam-ios-xe-oper:tcam-details/tcam-ios-xe-oper:tcam-detail/tcam-ios-xe-oper:hash-entries-used,leaf,uint32
+/tcam-ios-xe-oper:tcam-details/tcam-ios-xe-oper:tcam-detail/tcam-ios-xe-oper:tcam-entries-used,leaf,uint32

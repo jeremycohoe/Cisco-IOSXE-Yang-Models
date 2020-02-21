@@ -1,0 +1,215 @@
+ 
+KPI for model: Cisco-IOS-XE-sla.yang
+
+module: Cisco-IOS-XE-sla
+  augment /ios:native/ios:ip:
+    +--rw sla
+       +--rw entry* [number]
+       |  +--rw number               uint32
+       |  +--rw (sla-param)?
+       |     +--:(icmp-echo-case)
+       |     |  +--rw icmp-echo
+       |     |     +--rw destination?         union
+       |     |     +--rw source-interface?    string
+       |     |     +--rw source-ip?           union
+       |     |     +--rw data-pattern?        string
+       |     |     +--rw frequency?           uint32
+       |     |     +--rw history
+       |     |     |  +--rw buckets-kept?                       uint8
+       |     |     |  +--rw distributions-of-statistics-kept?   uint8
+       |     |     |  +--rw enhanced
+       |     |     |  |  +--rw interval?   uint32
+       |     |     |  |  +--rw buckets?    uint8
+       |     |     |  +--rw filter?                             enumeration
+       |     |     |  +--rw hours-of-statistics-kept?           uint8
+       |     |     |  +--rw lives-kept?                         uint8
+       |     |     |  +--rw statistics-distribution-interval?   uint8
+       |     |     +--rw owner?               string
+       |     |     +--rw request-data-size?   uint32
+       |     |     +--rw tag?                 string
+       |     |     +--rw threshold?           uint32
+       |     |     +--rw timeout?             uint64
+       |     |     +--rw tos?                 uint8
+       |     |     +--rw verify-data?         empty
+       |     |     +--rw vrf?                 string
+       |     +--:(path-echo-case)
+       |     |  +--rw path-echo
+       |     |     +--rw dst-ip?                     union
+       |     |     +--rw source-ip?                  union
+       |     |     +--rw paths-of-statistics-kept?   uint8
+       |     |     +--rw samples-of-history-kept?    uint8
+       |     |     +--rw hops-of-statistics-kept?    uint8
+       |     +--:(path-jitter-case)
+       |     |  +--rw path-jitter
+       |     |     +--rw dst-ip?              union
+       |     |     +--rw source-ip?           union
+       |     |     +--rw default
+       |     |     |  +--rw frequency?           empty
+       |     |     |  +--rw lsr-path?            empty
+       |     |     |  +--rw owner?               empty
+       |     |     |  +--rw request-data-size?   empty
+       |     |     |  +--rw tag?                 empty
+       |     |     |  +--rw threshold?           empty
+       |     |     |  +--rw timeout?             empty
+       |     |     |  +--rw tos?                 empty
+       |     |     |  +--rw verify-data?         empty
+       |     |     |  +--rw vrf?                 empty
+       |     |     +--rw frequency?           uint32
+       |     |     +--rw lsr-path*            union
+       |     |     +--rw owner?               string
+       |     |     +--rw request-data-size?   uint32
+       |     |     +--rw tag?                 string
+       |     |     +--rw threshold?           uint32
+       |     |     +--rw timeout?             uint32
+       |     |     +--rw tos?                 uint8
+       |     |     +--rw verify-data?         empty
+       |     |     +--rw vrf?                 string
+       |     +--:(udp-echo-case)
+       |     |  +--rw udp-echo
+       |     |     +--rw dest-addr?     union
+       |     |     +--rw dest-port?     uint16
+       |     |     +--rw source-ip?     union
+       |     |     +--rw source-port?   uint16
+       |     +--:(udp-jitter-case)
+       |     |  +--rw udp-jitter
+       |     |     +--rw dest-addr?                union
+       |     |     +--rw portno?                   uint16
+       |     |     +--rw (type-param)?
+       |     |     |  +--:(codec)
+       |     |     |  |  +--rw codec?              enumeration
+       |     |     |  |  +--rw advantage-factor?   uint16
+       |     |     |  |  +--rw codec-interval?     uint32
+       |     |     |  |  +--rw codec-numpackets?   uint32
+       |     |     |  |  +--rw codec-size?         uint16
+       |     |     |  +--:(non-codec)
+       |     |     |     +--rw num-packets?        uint16
+       |     |     |     +--rw interval?           uint16
+       |     |     +--rw source-ip?                union
+       |     |     +--rw source-port?              uint16
+       |     |     +--rw control?                  enumeration
+       |     |     +--rw history
+       |     |     |  +--rw distributions-of-statistics-kept?   uint8
+       |     |     |  +--rw enhanced
+       |     |     |  |  +--rw interval?   uint16
+       |     |     |  |  +--rw buckets?    uint8
+       |     |     |  +--rw hours-of-statistics-kept?           uint8
+       |     |     |  +--rw statistics-distribution-interval?   uint8
+       |     |     +--rw owner?                    string
+       |     |     +--rw request-data-size?        uint16
+       |     |     +--rw tag?                      string
+       |     |     +--rw threshold?                uint16
+       |     |     +--rw timeout?                  uint32
+       |     |     +--rw tos?                      uint8
+       |     |     +--rw traffic-class?            uint8
+       |     |     +--rw vrf?                      string
+       |     +--:(http-case)
+       |     |  +--rw http
+       |     |     +--rw (http-choice)?
+       |     |     |  +--:(http-get)
+       |     |     |  |  +--rw get
+       |     |     |  |     +--rw url?           string
+       |     |     |  |     +--rw source-ip?     union
+       |     |     |  |     +--rw source-port?   uint16
+       |     |     |  |     +--rw name-server?   union
+       |     |     |  +--:(http-raw)
+       |     |     |     +--rw raw
+       |     |     |        +--rw url?           string
+       |     |     |        +--rw source-ip?     union
+       |     |     |        +--rw source-port?   uint16
+       |     |     |        +--rw name-server?   union
+       |     |     +--rw owner?       string
+       |     |     +--rw tag?         string
+       |     |     +--rw vrf?         string
+       |     +--:(dhcp-case)
+       |     |  +--rw dhcp
+       |     |     +--rw dst-ip?      union
+       |     |     +--rw source-ip?   union
+       |     +--:(ethernet-case)
+       |        +--rw ethernet
+       |           +--rw y1731
+       |           |  +--rw delay
+       |           |     +--rw name?                enumeration
+       |           |     +--rw burst?               empty
+       |           |     +--rw domain?              string
+       |           |     +--rw (evc-or-vlan)?
+       |           |     |  +--:(evc)
+       |           |     |  |  +--rw evc?           string
+       |           |     |  +--:(vlan)
+       |           |     |     +--rw vlan?          uint16
+       |           |     +--rw (mac-or-mpid)?
+       |           |     |  +--:(mac-address)
+       |           |     |  |  +--rw mac-address?   ios-types:cisco-mac-address-type
+       |           |     |  +--:(mpid)
+       |           |     |     +--rw mpid?          uint16
+       |           |     +--rw cos?                 uint8
+       |           |     +--rw source
+       |           |        +--rw (mac-or-mpid)?
+       |           |           +--:(mac-address)
+       |           |           |  +--rw mac-address?   ios-types:cisco-mac-address-type
+       |           |           +--:(mpid)
+       |           |              +--rw mpid?          uint16
+       |           +--rw aggregate
+       |           |  +--rw interval?   uint32
+       |           +--rw history
+       |              +--rw interval?   uint8
+       +--rw enable
+       |  +--rw reaction-alerts?   empty
+       +--rw responder!
+       |  +--rw udp-echo
+       |  |  +--rw port?        uint16
+       |  |  +--rw ipaddress* [host]
+       |  |     +--rw host    union
+       |  |     +--rw port?   uint16
+       |  +--rw tcp-connect
+       |     +--rw port?        uint16
+       |     +--rw ipaddress* [host]
+       |        +--rw host    union
+       |        +--rw port?   uint16
+       +--rw logging
+       |  +--rw traps?   empty
+       +--rw group
+       |  +--rw schedule* [entry-number]
+       |     +--rw entry-number    uint32
+       |     +--rw probe-ids* [word]
+       |        +--rw word               string
+       |        +--rw schedule-period
+       |           +--rw seconds?      uint32
+       |           +--rw frequency
+       |           |  +--rw (frequency-choice)?
+       |           |     +--:(frequency-value)
+       |           |     |  +--rw frequency-val?   uint32
+       |           |     +--:(frequency-range)
+       |           |        +--rw range?           string
+       |           +--rw start-time
+       |           |  +--rw now?   empty
+       |           +--rw life?         union
+       +--rw schedule* [entry-number]
+       |  +--rw entry-number    -> /ios:native/ip/ios-sla:sla/entry/number
+       |  +--rw ageout?         uint32
+       |  +--rw life?           union
+       |  +--rw recurring?      empty
+       |  +--rw start-time
+       |     +--rw after?          string
+       |     +--rw hour-min?       string
+       |     +--rw hour-min-sec?   string
+       |     +--rw now?            empty
+       |     +--rw pending?        empty
+       |     +--rw random?         uint32
+       +--rw reaction-configuration* [entry-number]
+       |  +--rw entry-number    uint64
+       |  +--rw react
+       |     +--rw connectionLoss!
+       |     |  +--rw threshold-type
+       |     |     +--rw xOfy
+       |     |        +--rw x-val?         uint8
+       |     |        +--rw y-val?         uint8
+       |     |        +--rw action-type?   enumeration
+       |     +--rw rtt!
+       |        +--rw threshold-value
+       |           +--rw upper-limit-val?   uint32
+       |           +--rw lower-limit-val?   uint32
+       |           +--rw threshold-type?    enumeration
+       |           +--rw action-type?       enumeration
+       +--rw server
+          +--rw twamp!
+Xpaths for model: Cisco-IOS-XE-sla.yang

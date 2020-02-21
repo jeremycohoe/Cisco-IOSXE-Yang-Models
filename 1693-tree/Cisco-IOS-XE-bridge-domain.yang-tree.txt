@@ -1,0 +1,157 @@
+ 
+KPI for model: Cisco-IOS-XE-bridge-domain.yang
+
+module: Cisco-IOS-XE-bridge-domain
+  augment /ios:native/ios:bridge-domain:
+    +--rw brd-id* [bridge-domain-id]
+    |  +--rw bridge-domain-id    uint16
+    |  +--rw ip
+    |  |  +--rw igmp
+    |  |     +--rw snooping!
+    |  |        +--rw check
+    |  |        |  +--rw rtr-alert-option?   empty
+    |  |        |  +--rw ttl?                empty
+    |  |        +--rw explicit-tracking
+    |  |        |  +--rw limit?   empty
+    |  |        +--rw immediate-leave?              empty
+    |  |        +--rw last-member-query-count?      uint8
+    |  |        +--rw last-member-query-interval?   uint16
+    |  |        +--rw mrouter
+    |  |        |  +--rw interface?   empty
+    |  |        +--rw querier!
+    |  |        |  +--rw address?             empty
+    |  |        |  +--rw max-response-time?   empty
+    |  |        |  +--rw query-interval?      empty
+    |  |        |  +--rw tcn?                 empty
+    |  |        |  +--rw timer?               empty
+    |  |        |  +--rw version?             empty
+    |  |        +--rw report-suppression?           empty
+    |  |        +--rw robustness-variable?          uint8
+    |  |        +--rw static?                       inet:ipv4-address
+    |  +--rw mac
+    |  |  +--rw aging-time?   uint16
+    |  |  +--rw learning?     empty
+    |  |  +--rw limit
+    |  |     +--rw action
+    |  |     |  +--rw flooding
+    |  |     |     +--rw disable?   empty
+    |  |     +--rw maximum
+    |  |        +--rw addresses?   uint32
+    |  +--rw member
+    |  |  +--rw mem-ipv4* [mem-ipv4]
+    |  |  |  +--rw mem-ipv4         inet:ipv4-address
+    |  |  |  +--rw mem-vcid* [mem-vcid]
+    |  |  |  |  +--rw mem-vcid         uint32
+    |  |  |  |  +--rw encapsulation!
+    |  |  |  |  |  +--rw mpls?   empty
+    |  |  |  |  +--rw template!
+    |  |  |  |     +--rw template?   string
+    |  |  |  +--rw encapsulation
+    |  |  |  |  +--rw mpls?   empty
+    |  |  |  +--rw template?        string
+    |  |  +--rw ACR* [acr-int]
+    |  |  |  +--rw acr-int             string
+    |  |  |  +--rw service-instance
+    |  |  |     +--rw id* [id]
+    |  |  |        +--rw id               uint16
+    |  |  |        +--rw split-horizon?   empty
+    |  |  +--rw Analysis-Module?     uint8
+    |  |  +--rw Fcpa?                uint8
+    |  |  +--rw SBC?                 uint32
+    |  |  +--rw SONET_ACR?           uint8
+    |  |  +--rw _controller?         string
+    |  |  +--rw Service-Engine?      uint8
+    |  |  +--rw Tunnel-tp?           uint16
+    |  |  +--rw VPN?                 uint32
+    |  |  +--rw Virtual-TokenRing?   uint32
+    |  |  +--rw ucse?                uint8
+    |  |  +--rw vasileft?            uint16
+    |  |  +--rw vasiright?           uint16
+    |  |  +--rw vfi?                 string
+    |  |  +--rw vni?                 uint32
+    |  |  +--rw member-interface* [interface]
+    |  |     +--rw interface           string
+    |  |     +--rw interface-id?       union
+    |  |     +--rw service-instance?   uint32
+    |  |     +--rw split-horizon
+    |  |        +--rw group?   uint8
+    |  +--rw shutdown?           empty
+    +--rw c-mac
+    |  +--rw aging-time?   uint16
+    +--rw otv
+    |  +--rw default
+    |     +--rw age-time?   uint16
+    +--rw parameterized
+       +--rw vlan!
+          +--rw ip
+          |  +--rw igmp
+          |     +--rw snooping!
+          |        +--rw check
+          |        |  +--rw rtr-alert-option?   empty
+          |        |  +--rw ttl?                empty
+          |        +--rw explicit-tracking
+          |        |  +--rw limit?   empty
+          |        +--rw immediate-leave?              empty
+          |        +--rw last-member-query-count?      uint8
+          |        +--rw last-member-query-interval?   uint16
+          |        +--rw mrouter
+          |        |  +--rw interface?   empty
+          |        +--rw querier!
+          |        |  +--rw address?             empty
+          |        |  +--rw max-response-time?   empty
+          |        |  +--rw query-interval?      empty
+          |        |  +--rw tcn?                 empty
+          |        |  +--rw timer?               empty
+          |        |  +--rw version?             empty
+          |        +--rw report-suppression?           empty
+          |        +--rw robustness-variable?          uint8
+          |        +--rw static?                       inet:ipv4-address
+          +--rw mac
+          |  +--rw aging-time?   uint16
+          |  +--rw learning?     empty
+          |  +--rw limit
+          |     +--rw action
+          |     |  +--rw flooding
+          |     |     +--rw disable?   empty
+          |     +--rw maximum
+          |        +--rw addresses?   uint32
+          +--rw member
+          |  +--rw mem-ipv4* [mem-ipv4]
+          |  |  +--rw mem-ipv4         inet:ipv4-address
+          |  |  +--rw mem-vcid* [mem-vcid]
+          |  |  |  +--rw mem-vcid         uint32
+          |  |  |  +--rw encapsulation!
+          |  |  |  |  +--rw mpls?   empty
+          |  |  |  +--rw template!
+          |  |  |     +--rw template?   string
+          |  |  +--rw encapsulation
+          |  |  |  +--rw mpls?   empty
+          |  |  +--rw template?        string
+          |  +--rw ACR* [acr-int]
+          |  |  +--rw acr-int             string
+          |  |  +--rw service-instance
+          |  |     +--rw id* [id]
+          |  |        +--rw id               uint16
+          |  |        +--rw split-horizon?   empty
+          |  +--rw Analysis-Module?     uint8
+          |  +--rw Fcpa?                uint8
+          |  +--rw SBC?                 uint32
+          |  +--rw SONET_ACR?           uint8
+          |  +--rw _controller?         string
+          |  +--rw Service-Engine?      uint8
+          |  +--rw Tunnel-tp?           uint16
+          |  +--rw VPN?                 uint32
+          |  +--rw Virtual-TokenRing?   uint32
+          |  +--rw ucse?                uint8
+          |  +--rw vasileft?            uint16
+          |  +--rw vasiright?           uint16
+          |  +--rw vfi?                 string
+          |  +--rw vni?                 uint32
+          |  +--rw member-interface* [interface]
+          |     +--rw interface           string
+          |     +--rw interface-id?       union
+          |     +--rw service-instance?   uint32
+          |     +--rw split-horizon
+          |        +--rw group?   uint8
+          +--rw shutdown?   empty
+Xpaths for model: Cisco-IOS-XE-bridge-domain.yang

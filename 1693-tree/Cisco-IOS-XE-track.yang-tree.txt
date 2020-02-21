@@ -1,0 +1,83 @@
+ 
+KPI for model: Cisco-IOS-XE-track.yang
+
+module: Cisco-IOS-XE-track
+  augment /ios:native/ios:track:
+    +--rw tracked-object* [object-number]
+    |  +--rw object-number    uint32
+    |  +--rw interface
+    |  |  +--rw name?       string
+    |  |  +--rw protocol?   enumeration
+    |  |  +--rw routing?    empty
+    |  +--rw ip
+    |  |  +--rw route
+    |  |  |  +--rw address?        inet:ipv4-address
+    |  |  |  +--rw mask?           inet:ipv4-address
+    |  |  |  +--rw reachability?   empty
+    |  |  |  +--rw metric?         enumeration
+    |  |  +--rw sla
+    |  |     +--rw number?         uint32
+    |  |     +--rw reachability?   empty
+    |  |     +--rw state?          empty
+    |  +--rw ipv6
+    |  |  +--rw route
+    |  |     +--rw address?        ios-types:ipv6-prefix
+    |  |     +--rw reachability?   empty
+    |  |     +--rw metric?         enumeration
+    |  +--rw list
+    |  |  +--rw boolean?     enumeration
+    |  |  +--rw threshold?   enumeration
+    |  +--rw stub-object?     empty
+    |  +--rw delay
+    |  |  +--rw down?   uint32
+    |  |  +--rw up?     uint32
+    |  +--rw carrier-delay?   empty
+    |  +--rw threshold
+    |  |  +--rw metric
+    |  |  |  +--rw up?     uint32
+    |  |  |  +--rw down?   uint32
+    |  |  +--rw weight
+    |  |  |  +--rw up?     uint32
+    |  |  |  +--rw down?   uint32
+    |  |  +--rw percentage
+    |  |     +--rw up?     uint32
+    |  |     +--rw down?   uint32
+    |  +--rw default-state?   enumeration
+    |  +--rw object* [number]
+    |  |  +--rw number    uint32
+    |  |  +--rw not?      empty
+    |  |  +--rw weight?   uint32
+    |  +--rw ipv6-object
+    |  |  +--rw vrf?   string
+    |  +--rw ip-object
+    |     +--rw vrf?   string
+    +--rw resolution
+    |  +--rw ip
+    |     +--rw route
+    |        +--rw bgp?      uint32
+    |        +--rw eigrp?    uint32
+    |        +--rw isis?     uint32
+    |        +--rw ospf?     uint32
+    |        +--rw static?   uint32
+    +--rw timer
+       +--rw interface
+       |  +--rw seconds?   uint32
+       |  +--rw ms?        uint32
+       +--rw ip
+       |  +--rw route
+       |  |  +--rw seconds?   uint32
+       |  |  +--rw ms?        uint32
+       |  +--rw sla
+       |     +--rw seconds?   uint32
+       |     +--rw ms?        uint32
+       +--rw ipv6
+       |  +--rw route
+       |     +--rw seconds?   uint32
+       |     +--rw ms?        uint32
+       +--rw list
+       |  +--rw seconds?   uint32
+       |  +--rw ms?        uint32
+       +--rw stub-object
+          +--rw seconds?   uint32
+          +--rw ms?        uint32
+Xpaths for model: Cisco-IOS-XE-track.yang

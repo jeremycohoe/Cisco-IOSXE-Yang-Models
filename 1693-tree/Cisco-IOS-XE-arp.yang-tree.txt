@@ -1,0 +1,19 @@
+ 
+KPI for model: Cisco-IOS-XE-arp.yang
+
+module: Cisco-IOS-XE-arp
+  augment /ios:native:
+    +--rw arp
+       +--rw arp-entry* [ip]
+       |  +--rw ip                  inet:ip-address
+       |  +--rw hardware-address?   string
+       |  +--rw arp-type?           enumeration
+       |  +--rw alias?              empty
+       +--rw vrf* [vrf-name]
+          +--rw vrf-name     string
+          +--rw arp-entry* [ip]
+             +--rw ip                  inet:ip-address
+             +--rw hardware-address?   string
+             +--rw arp-type?           enumeration
+             +--rw alias?              empty
+Xpaths for model: Cisco-IOS-XE-arp.yang

@@ -1,0 +1,3 @@
+ 
+KPI for model: cisco-bridge-common.yang
+Xpaths for model: cisco-bridge-common.yang

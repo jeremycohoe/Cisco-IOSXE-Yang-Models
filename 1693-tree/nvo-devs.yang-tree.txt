@@ -1,0 +1,3 @@
+ 
+KPI for model: nvo-devs.yang
+Xpaths for model: nvo-devs.yang

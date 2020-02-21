@@ -1,0 +1,431 @@
+ 
+KPI for model: Cisco-IOS-XE-wccp.yang
+
+module: Cisco-IOS-XE-wccp
+  augment /ios:native/ios:ip:
+    +--rw wccp
+       +--rw wccp-list* [id]
+       |  +--rw id               uint8
+       |  +--rw group-address?   inet:ipv4-address
+       |  +--rw group-list?      ios-types:exp-acl-type
+       |  +--rw mode?            enumeration
+       |  +--rw password
+       |  |  +--rw encryption?   enumeration
+       |  |  +--rw clear-key?    string
+       |  +--rw redirect-list?   ios-types:exp-acl-type
+       |  +--rw snmp-disabled?   empty
+       +--rw source-interface?   string
+       +--rw web-cache
+       |  +--rw group-address?   inet:ipv4-address
+       |  +--rw group-list?      ios-types:exp-acl-type
+       |  +--rw mode?            enumeration
+       |  +--rw password
+       |  |  +--rw encryption?   enumeration
+       |  |  +--rw clear-key?    string
+       |  +--rw redirect-list?   ios-types:exp-acl-type
+       |  +--rw snmp-disabled?   empty
+       +--rw check
+       |  +--rw acl
+       |  |  +--rw outbound?   empty
+       |  +--rw services
+       |     +--rw all?   empty
+       +--rw vrf* [name]
+          +--rw name                string
+          +--rw wccp-list* [id]
+          |  +--rw id               uint8
+          |  +--rw group-address?   inet:ipv4-address
+          |  +--rw group-list?      ios-types:exp-acl-type
+          |  +--rw mode?            enumeration
+          |  +--rw password
+          |  |  +--rw encryption?   enumeration
+          |  |  +--rw clear-key?    string
+          |  +--rw redirect-list?   ios-types:exp-acl-type
+          |  +--rw snmp-disabled?   empty
+          +--rw source-interface?   string
+          +--rw web-cache
+             +--rw group-address?   inet:ipv4-address
+             +--rw group-list?      ios-types:exp-acl-type
+             +--rw mode?            enumeration
+             +--rw password
+             |  +--rw encryption?   enumeration
+             |  +--rw clear-key?    string
+             +--rw redirect-list?   ios-types:exp-acl-type
+             +--rw snmp-disabled?   empty
+  augment /ios:native/ios:interface/ios:FastEthernet/ios:ip:
+    +--rw wccp
+       +--rw wccp-list* [id]
+       |  +--rw id              uint8
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw web-cache
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw redirect
+       |  +--rw exclude
+       |     +--rw in?   empty
+       +--rw vrf* [name]
+          +--rw name         string
+          +--rw wccp-list* [id]
+          |  +--rw id              uint8
+          |  +--rw group-listen?   empty
+          |  +--rw redirect
+          |     +--rw in?    empty
+          |     +--rw out?   empty
+          +--rw web-cache
+             +--rw group-listen?   empty
+             +--rw redirect
+                +--rw in?    empty
+                +--rw out?   empty
+  augment /ios:native/ios:interface/ios:GigabitEthernet/ios:ip:
+    +--rw wccp
+       +--rw wccp-list* [id]
+       |  +--rw id              uint8
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw web-cache
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw redirect
+       |  +--rw exclude
+       |     +--rw in?   empty
+       +--rw vrf* [name]
+          +--rw name         string
+          +--rw wccp-list* [id]
+          |  +--rw id              uint8
+          |  +--rw group-listen?   empty
+          |  +--rw redirect
+          |     +--rw in?    empty
+          |     +--rw out?   empty
+          +--rw web-cache
+             +--rw group-listen?   empty
+             +--rw redirect
+                +--rw in?    empty
+                +--rw out?   empty
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet/ios:ip:
+    +--rw wccp
+       +--rw wccp-list* [id]
+       |  +--rw id              uint8
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw web-cache
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw redirect
+       |  +--rw exclude
+       |     +--rw in?   empty
+       +--rw vrf* [name]
+          +--rw name         string
+          +--rw wccp-list* [id]
+          |  +--rw id              uint8
+          |  +--rw group-listen?   empty
+          |  +--rw redirect
+          |     +--rw in?    empty
+          |     +--rw out?   empty
+          +--rw web-cache
+             +--rw group-listen?   empty
+             +--rw redirect
+                +--rw in?    empty
+                +--rw out?   empty
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet/ios:ip:
+    +--rw wccp
+       +--rw wccp-list* [id]
+       |  +--rw id              uint8
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw web-cache
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw redirect
+       |  +--rw exclude
+       |     +--rw in?   empty
+       +--rw vrf* [name]
+          +--rw name         string
+          +--rw wccp-list* [id]
+          |  +--rw id              uint8
+          |  +--rw group-listen?   empty
+          |  +--rw redirect
+          |     +--rw in?    empty
+          |     +--rw out?   empty
+          +--rw web-cache
+             +--rw group-listen?   empty
+             +--rw redirect
+                +--rw in?    empty
+                +--rw out?   empty
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet/ios:ip:
+    +--rw wccp
+       +--rw wccp-list* [id]
+       |  +--rw id              uint8
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw web-cache
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw redirect
+       |  +--rw exclude
+       |     +--rw in?   empty
+       +--rw vrf* [name]
+          +--rw name         string
+          +--rw wccp-list* [id]
+          |  +--rw id              uint8
+          |  +--rw group-listen?   empty
+          |  +--rw redirect
+          |     +--rw in?    empty
+          |     +--rw out?   empty
+          +--rw web-cache
+             +--rw group-listen?   empty
+             +--rw redirect
+                +--rw in?    empty
+                +--rw out?   empty
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE/ios:ip:
+    +--rw wccp
+       +--rw wccp-list* [id]
+       |  +--rw id              uint8
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw web-cache
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw redirect
+       |  +--rw exclude
+       |     +--rw in?   empty
+       +--rw vrf* [name]
+          +--rw name         string
+          +--rw wccp-list* [id]
+          |  +--rw id              uint8
+          |  +--rw group-listen?   empty
+          |  +--rw redirect
+          |     +--rw in?    empty
+          |     +--rw out?   empty
+          +--rw web-cache
+             +--rw group-listen?   empty
+             +--rw redirect
+                +--rw in?    empty
+                +--rw out?   empty
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet/ios:ip:
+    +--rw wccp
+       +--rw wccp-list* [id]
+       |  +--rw id              uint8
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw web-cache
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw redirect
+       |  +--rw exclude
+       |     +--rw in?   empty
+       +--rw vrf* [name]
+          +--rw name         string
+          +--rw wccp-list* [id]
+          |  +--rw id              uint8
+          |  +--rw group-listen?   empty
+          |  +--rw redirect
+          |     +--rw in?    empty
+          |     +--rw out?   empty
+          +--rw web-cache
+             +--rw group-listen?   empty
+             +--rw redirect
+                +--rw in?    empty
+                +--rw out?   empty
+  augment /ios:native/ios:interface/ios:HundredGigE/ios:ip:
+    +--rw wccp
+       +--rw wccp-list* [id]
+       |  +--rw id              uint8
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw web-cache
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw redirect
+       |  +--rw exclude
+       |     +--rw in?   empty
+       +--rw vrf* [name]
+          +--rw name         string
+          +--rw wccp-list* [id]
+          |  +--rw id              uint8
+          |  +--rw group-listen?   empty
+          |  +--rw redirect
+          |     +--rw in?    empty
+          |     +--rw out?   empty
+          +--rw web-cache
+             +--rw group-listen?   empty
+             +--rw redirect
+                +--rw in?    empty
+                +--rw out?   empty
+  augment /ios:native/ios:interface/ios:Port-channel/ios:ip:
+    +--rw wccp
+       +--rw wccp-list* [id]
+       |  +--rw id              uint8
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw web-cache
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw redirect
+       |  +--rw exclude
+       |     +--rw in?   empty
+       +--rw vrf* [name]
+          +--rw name         string
+          +--rw wccp-list* [id]
+          |  +--rw id              uint8
+          |  +--rw group-listen?   empty
+          |  +--rw redirect
+          |     +--rw in?    empty
+          |     +--rw out?   empty
+          +--rw web-cache
+             +--rw group-listen?   empty
+             +--rw redirect
+                +--rw in?    empty
+                +--rw out?   empty
+  augment /ios:native/ios:interface/ios:Loopback/ios:ip:
+    +--rw wccp
+       +--rw wccp-list* [id]
+       |  +--rw id              uint8
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw web-cache
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw redirect
+       |  +--rw exclude
+       |     +--rw in?   empty
+       +--rw vrf* [name]
+          +--rw name         string
+          +--rw wccp-list* [id]
+          |  +--rw id              uint8
+          |  +--rw group-listen?   empty
+          |  +--rw redirect
+          |     +--rw in?    empty
+          |     +--rw out?   empty
+          +--rw web-cache
+             +--rw group-listen?   empty
+             +--rw redirect
+                +--rw in?    empty
+                +--rw out?   empty
+  augment /ios:native/ios:interface/ios:Tunnel/ios:ip:
+    +--rw wccp
+       +--rw wccp-list* [id]
+       |  +--rw id              uint8
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw web-cache
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw redirect
+       |  +--rw exclude
+       |     +--rw in?   empty
+       +--rw vrf* [name]
+          +--rw name         string
+          +--rw wccp-list* [id]
+          |  +--rw id              uint8
+          |  +--rw group-listen?   empty
+          |  +--rw redirect
+          |     +--rw in?    empty
+          |     +--rw out?   empty
+          +--rw web-cache
+             +--rw group-listen?   empty
+             +--rw redirect
+                +--rw in?    empty
+                +--rw out?   empty
+  augment /ios:native/ios:interface/ios:vasileft/ios:ip:
+    +--rw wccp
+       +--rw wccp-list* [id]
+       |  +--rw id              uint8
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw web-cache
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw redirect
+       |  +--rw exclude
+       |     +--rw in?   empty
+       +--rw vrf* [name]
+          +--rw name         string
+          +--rw wccp-list* [id]
+          |  +--rw id              uint8
+          |  +--rw group-listen?   empty
+          |  +--rw redirect
+          |     +--rw in?    empty
+          |     +--rw out?   empty
+          +--rw web-cache
+             +--rw group-listen?   empty
+             +--rw redirect
+                +--rw in?    empty
+                +--rw out?   empty
+  augment /ios:native/ios:interface/ios:vasiright/ios:ip:
+    +--rw wccp
+       +--rw wccp-list* [id]
+       |  +--rw id              uint8
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw web-cache
+       |  +--rw group-listen?   empty
+       |  +--rw redirect
+       |     +--rw in?    empty
+       |     +--rw out?   empty
+       +--rw redirect
+       |  +--rw exclude
+       |     +--rw in?   empty
+       +--rw vrf* [name]
+          +--rw name         string
+          +--rw wccp-list* [id]
+          |  +--rw id              uint8
+          |  +--rw group-listen?   empty
+          |  +--rw redirect
+          |     +--rw in?    empty
+          |     +--rw out?   empty
+          +--rw web-cache
+             +--rw group-listen?   empty
+             +--rw redirect
+                +--rw in?    empty
+                +--rw out?   empty
+Xpaths for model: Cisco-IOS-XE-wccp.yang

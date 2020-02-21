@@ -1,0 +1,74 @@
+ 
+KPI for model: Cisco-IOS-XE-platform-oper.yang
+module: Cisco-IOS-XE-platform-oper
+  +--ro components
+     +--ro component* [cname]
+        +--ro cname                     string
+        +--ro state
+        |  +--ro type?          platform-ios-xe-oper:platform-comp-type
+        |  +--ro id?            string
+        |  +--ro description?   string
+        |  +--ro mfg-name?      string
+        |  +--ro version?       string
+        |  +--ro serial-no?     string
+        |  +--ro part-no?       string
+        |  +--ro temp
+        |     +--ro temp-instant?   decimal64
+        |     +--ro temp-avg?       decimal64
+        |     +--ro temp-max?       decimal64
+        |     +--ro temp-min?       decimal64
+        +--ro platform-properties
+        |  +--ro platform-property* [name]
+        |     +--ro name            string
+        |     +--ro value
+        |     |  +--ro (property-value-choice)?
+        |     |     +--:(property-string)
+        |     |     |  +--ro string?        string
+        |     |     +--:(property-boolean)
+        |     |     |  +--ro boolean?       boolean
+        |     |     +--:(property-int64)
+        |     |     |  +--ro intsixfour?    int64
+        |     |     +--:(property-uint64)
+        |     |     |  +--ro uintsixfour?   uint64
+        |     |     +--:(property-decimal64)
+        |     |        +--ro decimal?       decimal64
+        |     +--ro configurable?   boolean
+        +--ro platform-subcomponents
+           +--ro platform-subcomponent* [name]
+              +--ro name    string
+Xpaths for model: Cisco-IOS-XE-platform-oper.yang
+/platform-ios-xe-oper:components,container,
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component,list,
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:cname,leaf,string
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:state,container,
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:state/platform-ios-xe-oper:type,leaf,platform-ios-xe-oper:platform-comp-type
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:state/platform-ios-xe-oper:id,leaf,string
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:state/platform-ios-xe-oper:description,leaf,string
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:state/platform-ios-xe-oper:mfg-name,leaf,string
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:state/platform-ios-xe-oper:version,leaf,string
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:state/platform-ios-xe-oper:serial-no,leaf,string
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:state/platform-ios-xe-oper:part-no,leaf,string
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:state/platform-ios-xe-oper:temp,container,
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:state/platform-ios-xe-oper:temp/platform-ios-xe-oper:temp-instant,leaf,decimal64
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:state/platform-ios-xe-oper:temp/platform-ios-xe-oper:temp-avg,leaf,decimal64
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:state/platform-ios-xe-oper:temp/platform-ios-xe-oper:temp-max,leaf,decimal64
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:state/platform-ios-xe-oper:temp/platform-ios-xe-oper:temp-min,leaf,decimal64
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties,container,
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties/platform-ios-xe-oper:platform-property,list,
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties/platform-ios-xe-oper:platform-property/platform-ios-xe-oper:name,leaf,string
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties/platform-ios-xe-oper:platform-property/platform-ios-xe-oper:value,container,
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties/platform-ios-xe-oper:platform-property/platform-ios-xe-oper:value,choice,
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties/platform-ios-xe-oper:platform-property/platform-ios-xe-oper:value,case,
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties/platform-ios-xe-oper:platform-property/platform-ios-xe-oper:value/platform-ios-xe-oper:string,leaf,string
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties/platform-ios-xe-oper:platform-property/platform-ios-xe-oper:value,case,
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties/platform-ios-xe-oper:platform-property/platform-ios-xe-oper:value/platform-ios-xe-oper:boolean,leaf,boolean
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties/platform-ios-xe-oper:platform-property/platform-ios-xe-oper:value,case,
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties/platform-ios-xe-oper:platform-property/platform-ios-xe-oper:value/platform-ios-xe-oper:intsixfour,leaf,int64
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties/platform-ios-xe-oper:platform-property/platform-ios-xe-oper:value,case,
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties/platform-ios-xe-oper:platform-property/platform-ios-xe-oper:value/platform-ios-xe-oper:uintsixfour,leaf,uint64
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties/platform-ios-xe-oper:platform-property/platform-ios-xe-oper:value,case,
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties/platform-ios-xe-oper:platform-property/platform-ios-xe-oper:value/platform-ios-xe-oper:decimal,leaf,decimal64
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-properties/platform-ios-xe-oper:platform-property/platform-ios-xe-oper:configurable,leaf,boolean
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-subcomponents,container,
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-subcomponents/platform-ios-xe-oper:platform-subcomponent,list,
+/platform-ios-xe-oper:components/platform-ios-xe-oper:component/platform-ios-xe-oper:platform-subcomponents/platform-ios-xe-oper:platform-subcomponent/platform-ios-xe-oper:name,leaf,string

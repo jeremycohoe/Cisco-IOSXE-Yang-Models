@@ -1,0 +1,42 @@
+ 
+KPI for model: Cisco-IOS-XE-cfm-oper.yang
+module: Cisco-IOS-XE-cfm-oper
+  +--ro cfm-statistics
+     +--ro cfm-meps
+        +--ro cfm-mep* [domain-name ma-name mpid]
+           +--ro domain-name         string
+           +--ro ma-name             string
+           +--ro mpid                uint32
+           +--ro last-cleared
+           |  +--ro (cleared-choice)?
+           |     +--:(never-cleared)
+           |     |  +--ro never?   empty
+           |     +--:(cleared-before)
+           |        +--ro time?    yang:date-and-time
+           +--ro ccm-transmitted?    yang:counter64
+           +--ro ccm-seq-errors?     yang:counter64
+           +--ro ltr-unexpected?     yang:counter64
+           +--ro lbr-transmitted?    yang:counter64
+           +--ro lbr-seq-errors?     yang:counter64
+           +--ro lbr-received-ok?    yang:counter64
+           +--ro lbr-received-bad?   yang:counter64
+Xpaths for model: Cisco-IOS-XE-cfm-oper.yang
+/cfm-stats-ios-xe-oper:cfm-statistics,container,
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps,container,
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep,list,
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:domain-name,leaf,string
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:ma-name,leaf,string
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:mpid,leaf,uint32
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:last-cleared,container,
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:last-cleared,choice,
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:last-cleared,case,
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:last-cleared/cfm-stats-ios-xe-oper:never,leaf,empty
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:last-cleared,case,
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:last-cleared/cfm-stats-ios-xe-oper:time,leaf,yang:date-and-time
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:ccm-transmitted,leaf,yang:counter64
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:ccm-seq-errors,leaf,yang:counter64
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:ltr-unexpected,leaf,yang:counter64
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:lbr-transmitted,leaf,yang:counter64
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:lbr-seq-errors,leaf,yang:counter64
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:lbr-received-ok,leaf,yang:counter64
+/cfm-stats-ios-xe-oper:cfm-statistics/cfm-stats-ios-xe-oper:cfm-meps/cfm-stats-ios-xe-oper:cfm-mep/cfm-stats-ios-xe-oper:lbr-received-bad,leaf,yang:counter64

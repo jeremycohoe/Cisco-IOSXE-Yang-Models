@@ -1,0 +1,8 @@
+ 
+KPI for model: openconfig-alarms.yang
+
+module: openconfig-alarms
+  augment /oc-platform:components/oc-platform:component/oc-platform:state:
+    +--ro equipment-failure?    boolean
+    +--ro equipment-mismatch?   boolean
+Xpaths for model: openconfig-alarms.yang

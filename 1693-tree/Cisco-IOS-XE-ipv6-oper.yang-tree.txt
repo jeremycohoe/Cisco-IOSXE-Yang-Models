@@ -1,0 +1,22 @@
+ 
+KPI for model: Cisco-IOS-XE-ipv6-oper.yang
+module: Cisco-IOS-XE-ipv6-oper
+  +--ro ipv6-data
+     +--ro nd6-info* [vrf-name if-name ip]
+        +--ro vrf-name       string
+        +--ro if-name        string
+        +--ro ip             inet:ip-address
+        +--ro mac-address?   yang:mac-address
+        +--ro state?         ipv6-ios-xe-oper:ipv6-nd-tdl-state
+        +--ro idle-timer?    uint32
+        +--ro uptime?        uint32
+Xpaths for model: Cisco-IOS-XE-ipv6-oper.yang
+/ipv6-ios-xe-oper:ipv6-data,container,
+/ipv6-ios-xe-oper:ipv6-data/ipv6-ios-xe-oper:nd6-info,list,
+/ipv6-ios-xe-oper:ipv6-data/ipv6-ios-xe-oper:nd6-info/ipv6-ios-xe-oper:vrf-name,leaf,string
+/ipv6-ios-xe-oper:ipv6-data/ipv6-ios-xe-oper:nd6-info/ipv6-ios-xe-oper:if-name,leaf,string
+/ipv6-ios-xe-oper:ipv6-data/ipv6-ios-xe-oper:nd6-info/ipv6-ios-xe-oper:ip,leaf,inet:ip-address
+/ipv6-ios-xe-oper:ipv6-data/ipv6-ios-xe-oper:nd6-info/ipv6-ios-xe-oper:mac-address,leaf,yang:mac-address
+/ipv6-ios-xe-oper:ipv6-data/ipv6-ios-xe-oper:nd6-info/ipv6-ios-xe-oper:state,leaf,ipv6-ios-xe-oper:ipv6-nd-tdl-state
+/ipv6-ios-xe-oper:ipv6-data/ipv6-ios-xe-oper:nd6-info/ipv6-ios-xe-oper:idle-timer,leaf,uint32
+/ipv6-ios-xe-oper:ipv6-data/ipv6-ios-xe-oper:nd6-info/ipv6-ios-xe-oper:uptime,leaf,uint32

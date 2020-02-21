@@ -1,0 +1,99 @@
+ 
+KPI for model: Cisco-IOS-XE-cdp.yang
+
+module: Cisco-IOS-XE-cdp
+  augment /ios:native/ios:cdp:
+    +--rw holdtime?   uint8
+    +--rw timer?      uint8
+    +--rw run?        empty
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw cdp
+       +--rw enable?   boolean
+       +--rw tlv
+          +--rw app!
+          |  +--rw tlvtype?   uint16
+          |  +--rw value?     string
+          +--rw server-location?   empty
+          +--rw location?          empty
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw cdp
+       +--rw enable?   boolean
+       +--rw tlv
+          +--rw app!
+          |  +--rw tlvtype?   uint16
+          |  +--rw value?     string
+          +--rw server-location?   empty
+          +--rw location?          empty
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw cdp
+       +--rw enable?   boolean
+       +--rw tlv
+          +--rw app!
+          |  +--rw tlvtype?   uint16
+          |  +--rw value?     string
+          +--rw server-location?   empty
+          +--rw location?          empty
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw cdp
+       +--rw enable?   boolean
+       +--rw tlv
+          +--rw app!
+          |  +--rw tlvtype?   uint16
+          |  +--rw value?     string
+          +--rw server-location?   empty
+          +--rw location?          empty
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw cdp
+       +--rw enable?   boolean
+       +--rw tlv
+          +--rw app!
+          |  +--rw tlvtype?   uint16
+          |  +--rw value?     string
+          +--rw server-location?   empty
+          +--rw location?          empty
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw cdp
+       +--rw enable?   boolean
+       +--rw tlv
+          +--rw app!
+          |  +--rw tlvtype?   uint16
+          |  +--rw value?     string
+          +--rw server-location?   empty
+          +--rw location?          empty
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw cdp
+       +--rw enable?   boolean
+       +--rw tlv
+          +--rw app!
+          |  +--rw tlvtype?   uint16
+          |  +--rw value?     string
+          +--rw server-location?   empty
+          +--rw location?          empty
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw cdp
+       +--rw enable?   boolean
+       +--rw tlv
+          +--rw app!
+          |  +--rw tlvtype?   uint16
+          |  +--rw value?     string
+          +--rw server-location?   empty
+          +--rw location?          empty
+  augment /ios:native/ios:interface/ios:Tunnel:
+    +--rw cdp
+       +--rw enable?   boolean
+       +--rw tlv
+          +--rw app!
+          |  +--rw tlvtype?   uint16
+          |  +--rw value?     string
+          +--rw server-location?   empty
+          +--rw location?          empty
+  augment /ios:native/ios:interface/ios:Virtual-Template:
+    +--rw cdp
+       +--rw enable?   boolean
+       +--rw tlv
+          +--rw app!
+          |  +--rw tlvtype?   uint16
+          |  +--rw value?     string
+          +--rw server-location?   empty
+          +--rw location?          empty
+Xpaths for model: Cisco-IOS-XE-cdp.yang

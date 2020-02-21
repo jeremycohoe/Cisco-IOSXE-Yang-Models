@@ -1,0 +1,48 @@
+ 
+KPI for model: Cisco-IOS-XE-device-hardware-oper.yang
+module: Cisco-IOS-XE-device-hardware-oper
+  +--ro device-hardware-data
+     +--ro device-hardware!
+        +--ro device-inventory* [hw-type hw-dev-index]
+        |  +--ro hw-type           device-hardware-xe-oper:hw-type
+        |  +--ro hw-dev-index      uint32
+        |  +--ro version?          string
+        |  +--ro part-number?      string
+        |  +--ro serial-number?    string
+        |  +--ro hw-description?   string
+        +--ro device-alarm* [alarm-id alarm-instance]
+        |  +--ro alarm-id             uint32
+        |  +--ro alarm-instance       uint32
+        |  +--ro alarm-name?          string
+        |  +--ro alarm-category?      device-hardware-xe-oper:alarm-severity
+        |  +--ro alarm-time?          yang:date-and-time
+        |  +--ro alarm-description?   string
+        +--ro device-system-data!
+           +--ro current-time?         yang:date-and-time
+           +--ro boot-time?            yang:date-and-time
+           +--ro software-version?     string
+           +--ro rommon-version?       string
+           +--ro last-reboot-reason?   string
+Xpaths for model: Cisco-IOS-XE-device-hardware-oper.yang
+/device-hardware-xe-oper:device-hardware-data,container,
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware,container,
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-inventory,list,
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-inventory/device-hardware-xe-oper:hw-type,leaf,device-hardware-xe-oper:hw-type
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-inventory/device-hardware-xe-oper:hw-dev-index,leaf,uint32
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-inventory/device-hardware-xe-oper:version,leaf,string
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-inventory/device-hardware-xe-oper:part-number,leaf,string
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-inventory/device-hardware-xe-oper:serial-number,leaf,string
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-inventory/device-hardware-xe-oper:hw-description,leaf,string
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-alarm,list,
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-alarm/device-hardware-xe-oper:alarm-id,leaf,uint32
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-alarm/device-hardware-xe-oper:alarm-instance,leaf,uint32
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-alarm/device-hardware-xe-oper:alarm-name,leaf,string
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-alarm/device-hardware-xe-oper:alarm-category,leaf,device-hardware-xe-oper:alarm-severity
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-alarm/device-hardware-xe-oper:alarm-time,leaf,yang:date-and-time
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-alarm/device-hardware-xe-oper:alarm-description,leaf,string
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-system-data,container,
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-system-data/device-hardware-xe-oper:current-time,leaf,yang:date-and-time
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-system-data/device-hardware-xe-oper:boot-time,leaf,yang:date-and-time
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-system-data/device-hardware-xe-oper:software-version,leaf,string
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-system-data/device-hardware-xe-oper:rommon-version,leaf,string
+/device-hardware-xe-oper:device-hardware-data/device-hardware-xe-oper:device-hardware/device-hardware-xe-oper:device-system-data/device-hardware-xe-oper:last-reboot-reason,leaf,string

@@ -1,0 +1,9 @@
+ 
+KPI for model: Cisco-IOS-XE-card.yang
+
+module: Cisco-IOS-XE-card
+  augment /ios:native/ios:card:
+    +--rw type?   enumeration
+    +--rw slot?   uint32
+    +--rw bay?    uint32
+Xpaths for model: Cisco-IOS-XE-card.yang

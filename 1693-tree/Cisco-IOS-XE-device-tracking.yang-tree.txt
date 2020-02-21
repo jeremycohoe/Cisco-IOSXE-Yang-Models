@@ -1,0 +1,56 @@
+ 
+KPI for model: Cisco-IOS-XE-device-tracking.yang
+
+module: Cisco-IOS-XE-device-tracking
+  augment /ios:native/ios:device-tracking:
+    +--rw policy* [word]
+    |  +--rw word              string
+    |  +--rw device-role
+    |  |  +--rw (device-role-choice)?
+    |  |     +--:(node)
+    |  |     |  +--rw node?     boolean
+    |  |     +--:(switch)
+    |  |        +--rw switch?   empty
+    |  +--rw protocol
+    |  |  +--rw udp?     boolean
+    |  |  +--rw arp?     boolean
+    |  |  +--rw dhcp4?   boolean
+    |  |  +--rw dhcp6?   boolean
+    |  |  +--rw ndp?     boolean
+    |  +--rw tracking
+    |  |  +--rw enable!
+    |  |  |  +--rw reachable-lifetime
+    |  |  |     +--rw seconds?   uint32
+    |  |  +--rw disable?   empty
+    |  +--rw limit
+    |  |  +--rw address-count?   uint16
+    |  +--rw security-level
+    |     +--rw glean?   empty
+    +--rw tracking!
+       +--rw auto-source!
+       |  +--rw fallback
+       |  |  +--rw (ip-subnet-choice)?
+       |  |     +--:(ip-addr-and-mask)
+       |  |     |  +--rw ipv4-subnet-type1
+       |  |     |     +--rw ipv4?       inet:ipv4-address
+       |  |     |     +--rw mask?       inet:ipv4-address
+       |  |     |     +--rw override?   empty
+       |  |     +--:(ip-addr-and-prefix-len)
+       |  |        +--rw ipv4-subnet-type2
+       |  |           +--rw ipv4-prefix-name?   ios-types:ipv4-address-slash-prefix-len
+       |  |           +--rw override?           empty
+       |  +--rw override?   empty
+       +--rw retry-interval?   uint16
+  augment /ios:native/ios:ip/ios:device:
+    +--rw tracking! {ios-features:device-tracking}?
+       +--rw probe
+       |  +--rw auto-source!
+       |  |  +--rw fallback
+       |  |  |  +--rw src-ip?   inet:ipv4-address
+       |  |  |  +--rw mask?     inet:ipv4-address
+       |  |  +--rw override?   empty
+       |  +--rw count?         uint8
+       |  +--rw delay?         uint8
+       |  +--rw interval?      uint32
+       +--rw trace-buffer?   empty
+Xpaths for model: Cisco-IOS-XE-device-tracking.yang

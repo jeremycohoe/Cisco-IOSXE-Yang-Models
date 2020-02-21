@@ -1,0 +1,21 @@
+ 
+KPI for model: cisco-ethernet.yang
+
+module: cisco-ethernet
+  augment /if:interfaces/if:interface:
+    +--rw ethernet
+       +--rw transmission-params
+       |  +--rw (transmission-mode)?
+       |     +--:(auto1)
+       |     |  +--rw auto-negotiate?   empty
+       |     +--:(manual)
+       |        +--rw duplex?           enumeration
+       |        +--rw speed?            identityref
+       +--rw mtu-size?              uint16
+  augment /if:interfaces-state/if:interface:
+    +--ro ethernet
+       +--ro duplex?                enumeration
+       +--ro supported-mtu-range
+          +--ro min-mtu-size?   uint16
+          +--ro max-mtu-size?   uint16
+Xpaths for model: cisco-ethernet.yang

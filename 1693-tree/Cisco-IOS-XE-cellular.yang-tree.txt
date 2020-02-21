@@ -1,0 +1,33 @@
+ 
+KPI for model: Cisco-IOS-XE-cellular.yang
+
+module: Cisco-IOS-XE-cellular
+  augment /ios:native:
+    +--rw dialer
+       +--rw watch-list* [number]
+          +--rw number    uint8
+          +--rw delay* [interval]
+          |  +--rw interval      enumeration
+          |  +--rw initial?      empty
+          |  +--rw delay-time?   uint32
+          +--rw ip* [address]
+             +--rw address    inet:ipv4-address
+             +--rw mask?      inet:ipv4-address
+  augment /ios:native:
+    +--rw dialer-list* [group-number]
+       +--rw group-number    uint8
+       +--rw protocol* [protocol-type]
+          +--rw protocol-type    enumeration
+          +--rw access?          enumeration
+          +--rw list-name?       string
+  augment /ios:native/ios:interface/ios:Cellular:
+    +--rw dialer
+    |  +--rw in-band?        empty
+    |  +--rw idle-timeout?   uint32
+    |  +--rw string?         string
+    |  +--rw watch-group?    uint32
+    +--rw dialer-group?   uint8
+    +--rw pulse-time?     uint8
+    +--rw async
+       +--rw mode?   enumeration
+Xpaths for model: Cisco-IOS-XE-cellular.yang

@@ -1,0 +1,150 @@
+ 
+KPI for model: Cisco-IOS-XE-flow-monitor-oper.yang
+module: Cisco-IOS-XE-flow-monitor-oper
+  +--ro flow-monitors
+     +--ro flow-monitor* [name]
+     |  +--ro name              string
+     |  +--ro time-collected?   uint64
+     |  +--ro flows
+     |     +--ro flow* [source-address destination-address interface-input is-multicast vrf-id-input source-port destination-port ip-tos ip-protocol]
+     |        +--ro source-address         string
+     |        +--ro destination-address    string
+     |        +--ro interface-input        string
+     |        +--ro is-multicast           string
+     |        +--ro vrf-id-input           int64
+     |        +--ro source-port            int64
+     |        +--ro destination-port       int64
+     |        +--ro ip-tos                 string
+     |        +--ro ip-protocol            int64
+     |        +--ro interface-output?      string
+     |        +--ro bytes?                 int64
+     |        +--ro packets?               int64
+     +--ro flow-export-statistics* [name]
+     |  +--ro name               string
+     |  +--ro transport-stats
+     |  |  +--ro last-cleared?          yang:date-and-time
+     |  |  +--ro flow-exporter-stats* []
+     |  |     +--ro type?          flow-monitor-ios-xe-oper:flow-exporter-ipwrite-stats-type
+     |  |     +--ro pkt-counts?    uint64
+     |  |     +--ro byte-counts?   uint64
+     |  +--ro export-client* []
+     |     +--ro name?             string
+     |     +--ro group?            string
+     |     +--ro protocol-stats
+     |        +--ro bytes-added?       uint64
+     |        +--ro bytes-sent?        uint64
+     |        +--ro bytes-dropped?     uint64
+     |        +--ro records-added?     uint64
+     |        +--ro records-sent?      uint64
+     |        +--ro records-dropped?   uint64
+     +--ro flow-cache-statistics* [name]
+     |  +--ro name                        string
+     |  +--ro cache-size?                 uint64
+     |  +--ro current-entries?            uint64
+     |  +--ro high-watermark?             uint64
+     |  +--ro flows-added?                uint64
+     |  +--ro flows-aged?                 uint64
+     |  +--ro active-flows-timed-out?     uint64
+     |  +--ro inactive-flows-timed-out?   uint64
+     +--ro flow-monitor-statistics* [monitor-name]
+        +--ro monitor-name                    string
+        +--ro description?                    string
+        +--ro record-name?                    string
+        +--ro active-flow-exporter*           string
+        +--ro inactive-flow-exporter*         string
+        +--ro invalid-packet-counts?          uint64
+        +--ro cache-data
+        |  +--ro state?         flow-monitor-ios-xe-oper:flow-monitor-cache-state
+        |  +--ro type?          string
+        |  +--ro cache-name?    string
+        |  +--ro status?        string
+        |  +--ro num-entries?   uint64
+        |  +--ro num-bytes?     uint64
+        +--ro transaction-end-ager-enabled?   boolean
+        +--ro protocol-dist-configured?       string
+        +--ro size-dist-configured?           string
+        +--ro (cache-type-choice)?
+           +--:(flow-monitor-cache-type-normal)
+           |  +--ro inactive-timer?           uint32
+           |  +--ro active-timer?             uint32
+           +--:(flow-monitor-cache-type-permanent)
+           |  +--ro update-timeout?           uint32
+           +--:(flow-monitor-cache-type-synchronized)
+           |  +--ro synchronized-timeout?     uint32
+           |  +--ro export-spread-interval?   uint32
+           +--:(flow-monitor-cache-type-immediate)
+              +--ro immediate-timeout?        uint32
+Xpaths for model: Cisco-IOS-XE-flow-monitor-oper.yang
+/flow-monitor-ios-xe-oper:flow-monitors,container,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor,list,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:name,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:time-collected,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:flows,container,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:flows/flow-monitor-ios-xe-oper:flow,list,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:flows/flow-monitor-ios-xe-oper:flow/flow-monitor-ios-xe-oper:source-address,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:flows/flow-monitor-ios-xe-oper:flow/flow-monitor-ios-xe-oper:destination-address,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:flows/flow-monitor-ios-xe-oper:flow/flow-monitor-ios-xe-oper:interface-input,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:flows/flow-monitor-ios-xe-oper:flow/flow-monitor-ios-xe-oper:is-multicast,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:flows/flow-monitor-ios-xe-oper:flow/flow-monitor-ios-xe-oper:vrf-id-input,leaf,int64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:flows/flow-monitor-ios-xe-oper:flow/flow-monitor-ios-xe-oper:source-port,leaf,int64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:flows/flow-monitor-ios-xe-oper:flow/flow-monitor-ios-xe-oper:destination-port,leaf,int64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:flows/flow-monitor-ios-xe-oper:flow/flow-monitor-ios-xe-oper:ip-tos,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:flows/flow-monitor-ios-xe-oper:flow/flow-monitor-ios-xe-oper:ip-protocol,leaf,int64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:flows/flow-monitor-ios-xe-oper:flow/flow-monitor-ios-xe-oper:interface-output,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:flows/flow-monitor-ios-xe-oper:flow/flow-monitor-ios-xe-oper:bytes,leaf,int64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor/flow-monitor-ios-xe-oper:flows/flow-monitor-ios-xe-oper:flow/flow-monitor-ios-xe-oper:packets,leaf,int64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics,list,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:name,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:transport-stats,container,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:transport-stats/flow-monitor-ios-xe-oper:last-cleared,leaf,yang:date-and-time
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:transport-stats/flow-monitor-ios-xe-oper:flow-exporter-stats,list,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:transport-stats/flow-monitor-ios-xe-oper:flow-exporter-stats/flow-monitor-ios-xe-oper:type,leaf,flow-monitor-ios-xe-oper:flow-exporter-ipwrite-stats-type
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:transport-stats/flow-monitor-ios-xe-oper:flow-exporter-stats/flow-monitor-ios-xe-oper:pkt-counts,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:transport-stats/flow-monitor-ios-xe-oper:flow-exporter-stats/flow-monitor-ios-xe-oper:byte-counts,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:export-client,list,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:export-client/flow-monitor-ios-xe-oper:name,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:export-client/flow-monitor-ios-xe-oper:group,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:export-client/flow-monitor-ios-xe-oper:protocol-stats,container,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:export-client/flow-monitor-ios-xe-oper:protocol-stats/flow-monitor-ios-xe-oper:bytes-added,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:export-client/flow-monitor-ios-xe-oper:protocol-stats/flow-monitor-ios-xe-oper:bytes-sent,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:export-client/flow-monitor-ios-xe-oper:protocol-stats/flow-monitor-ios-xe-oper:bytes-dropped,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:export-client/flow-monitor-ios-xe-oper:protocol-stats/flow-monitor-ios-xe-oper:records-added,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:export-client/flow-monitor-ios-xe-oper:protocol-stats/flow-monitor-ios-xe-oper:records-sent,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-export-statistics/flow-monitor-ios-xe-oper:export-client/flow-monitor-ios-xe-oper:protocol-stats/flow-monitor-ios-xe-oper:records-dropped,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-cache-statistics,list,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-cache-statistics/flow-monitor-ios-xe-oper:name,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-cache-statistics/flow-monitor-ios-xe-oper:cache-size,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-cache-statistics/flow-monitor-ios-xe-oper:current-entries,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-cache-statistics/flow-monitor-ios-xe-oper:high-watermark,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-cache-statistics/flow-monitor-ios-xe-oper:flows-added,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-cache-statistics/flow-monitor-ios-xe-oper:flows-aged,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-cache-statistics/flow-monitor-ios-xe-oper:active-flows-timed-out,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-cache-statistics/flow-monitor-ios-xe-oper:inactive-flows-timed-out,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics,list,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:monitor-name,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:description,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:record-name,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:active-flow-exporter,leaf-list,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:inactive-flow-exporter,leaf-list,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:invalid-packet-counts,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:cache-data,container,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:cache-data/flow-monitor-ios-xe-oper:state,leaf,flow-monitor-ios-xe-oper:flow-monitor-cache-state
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:cache-data/flow-monitor-ios-xe-oper:type,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:cache-data/flow-monitor-ios-xe-oper:cache-name,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:cache-data/flow-monitor-ios-xe-oper:status,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:cache-data/flow-monitor-ios-xe-oper:num-entries,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:cache-data/flow-monitor-ios-xe-oper:num-bytes,leaf,uint64
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:transaction-end-ager-enabled,leaf,boolean
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:protocol-dist-configured,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:size-dist-configured,leaf,string
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics,choice,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics,case,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:inactive-timer,leaf,uint32
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:active-timer,leaf,uint32
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics,case,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:update-timeout,leaf,uint32
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics,case,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:synchronized-timeout,leaf,uint32
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:export-spread-interval,leaf,uint32
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics,case,
+/flow-monitor-ios-xe-oper:flow-monitors/flow-monitor-ios-xe-oper:flow-monitor-statistics/flow-monitor-ios-xe-oper:immediate-timeout,leaf,uint32

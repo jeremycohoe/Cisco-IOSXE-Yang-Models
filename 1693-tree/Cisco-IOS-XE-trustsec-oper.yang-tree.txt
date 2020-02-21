@@ -1,0 +1,72 @@
+ 
+KPI for model: Cisco-IOS-XE-trustsec-oper.yang
+module: Cisco-IOS-XE-trustsec-oper
+  +--ro trustsec-state
+     +--ro cts-rolebased-sgtmaps
+     |  +--ro cts-rolebased-sgtmap* [ip vrf-name]
+     |     +--ro ip          inet:ip-prefix
+     |     +--ro vrf-name    string
+     |     +--ro sgt?        int32
+     |     +--ro source?     trustsec-ios-xe-oper:cts-odm-binding-source
+     +--ro cts-rolebased-policies
+     |  +--ro cts-rolebased-policy* [src-sgt dst-sgt]
+     |     +--ro src-sgt                   int32
+     |     +--ro dst-sgt                   int32
+     |     +--ro sgacl-name?               string
+     |     +--ro num-of-sgacl?             uint32
+     |     +--ro monitor-mode?             boolean
+     |     +--ro policy-life-time?         uint64
+     |     +--ro last-updated-time?        yang:date-and-time
+     |     +--ro total-deny-count?         uint64
+     |     +--ro total-permit-count?       uint64
+     |     +--ro software-deny-count?      uint64
+     |     +--ro software-permit-count?    uint64
+     |     +--ro hardware-deny-count?      uint64
+     |     +--ro hardware-permit-count?    uint64
+     |     +--ro software-monitor-count?   uint64
+     |     +--ro hardware-monitor-count?   uint64
+     +--ro cts-sxp-connections
+        +--ro cts-sxp-connection* [peer-ip vrf-name]
+           +--ro peer-ip              inet:ip-address
+           +--ro vrf-name             string
+           +--ro source-ip?           inet:ip-address
+           +--ro speaker-state?       trustsec-ios-xe-oper:sxp-con-state
+           +--ro speaker-duration?    uint64
+           +--ro listener-state?      trustsec-ios-xe-oper:sxp-con-state
+           +--ro listener-duration?   uint64
+           +--ro local-mode?          trustsec-ios-xe-oper:sxp-con-mode
+Xpaths for model: Cisco-IOS-XE-trustsec-oper.yang
+/trustsec-ios-xe-oper:trustsec-state,container,
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-sgtmaps,container,
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-sgtmaps/trustsec-ios-xe-oper:cts-rolebased-sgtmap,list,
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-sgtmaps/trustsec-ios-xe-oper:cts-rolebased-sgtmap/trustsec-ios-xe-oper:ip,leaf,inet:ip-prefix
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-sgtmaps/trustsec-ios-xe-oper:cts-rolebased-sgtmap/trustsec-ios-xe-oper:vrf-name,leaf,string
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-sgtmaps/trustsec-ios-xe-oper:cts-rolebased-sgtmap/trustsec-ios-xe-oper:sgt,leaf,int32
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-sgtmaps/trustsec-ios-xe-oper:cts-rolebased-sgtmap/trustsec-ios-xe-oper:source,leaf,trustsec-ios-xe-oper:cts-odm-binding-source
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies,container,
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy,list,
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy/trustsec-ios-xe-oper:src-sgt,leaf,int32
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy/trustsec-ios-xe-oper:dst-sgt,leaf,int32
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy/trustsec-ios-xe-oper:sgacl-name,leaf,string
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy/trustsec-ios-xe-oper:num-of-sgacl,leaf,uint32
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy/trustsec-ios-xe-oper:monitor-mode,leaf,boolean
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy/trustsec-ios-xe-oper:policy-life-time,leaf,uint64
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy/trustsec-ios-xe-oper:last-updated-time,leaf,yang:date-and-time
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy/trustsec-ios-xe-oper:total-deny-count,leaf,uint64
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy/trustsec-ios-xe-oper:total-permit-count,leaf,uint64
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy/trustsec-ios-xe-oper:software-deny-count,leaf,uint64
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy/trustsec-ios-xe-oper:software-permit-count,leaf,uint64
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy/trustsec-ios-xe-oper:hardware-deny-count,leaf,uint64
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy/trustsec-ios-xe-oper:hardware-permit-count,leaf,uint64
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy/trustsec-ios-xe-oper:software-monitor-count,leaf,uint64
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-rolebased-policies/trustsec-ios-xe-oper:cts-rolebased-policy/trustsec-ios-xe-oper:hardware-monitor-count,leaf,uint64
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-sxp-connections,container,
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-sxp-connections/trustsec-ios-xe-oper:cts-sxp-connection,list,
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-sxp-connections/trustsec-ios-xe-oper:cts-sxp-connection/trustsec-ios-xe-oper:peer-ip,leaf,inet:ip-address
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-sxp-connections/trustsec-ios-xe-oper:cts-sxp-connection/trustsec-ios-xe-oper:vrf-name,leaf,string
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-sxp-connections/trustsec-ios-xe-oper:cts-sxp-connection/trustsec-ios-xe-oper:source-ip,leaf,inet:ip-address
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-sxp-connections/trustsec-ios-xe-oper:cts-sxp-connection/trustsec-ios-xe-oper:speaker-state,leaf,trustsec-ios-xe-oper:sxp-con-state
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-sxp-connections/trustsec-ios-xe-oper:cts-sxp-connection/trustsec-ios-xe-oper:speaker-duration,leaf,uint64
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-sxp-connections/trustsec-ios-xe-oper:cts-sxp-connection/trustsec-ios-xe-oper:listener-state,leaf,trustsec-ios-xe-oper:sxp-con-state
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-sxp-connections/trustsec-ios-xe-oper:cts-sxp-connection/trustsec-ios-xe-oper:listener-duration,leaf,uint64
+/trustsec-ios-xe-oper:trustsec-state/trustsec-ios-xe-oper:cts-sxp-connections/trustsec-ios-xe-oper:cts-sxp-connection/trustsec-ios-xe-oper:local-mode,leaf,trustsec-ios-xe-oper:sxp-con-mode

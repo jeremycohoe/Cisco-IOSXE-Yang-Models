@@ -1,0 +1,186 @@
+ 
+KPI for model: Cisco-IOS-XE-nd.yang
+
+module: Cisco-IOS-XE-nd
+  augment /ios:native/ios:ipv6/ios:nd:
+    +--rw inspection
+    |  +--rw policy* [name-nd-inspection-policy]
+    |     +--rw name-nd-inspection-policy    string
+    |     +--rw device-role
+    |     |  +--rw host?      empty
+    |     |  +--rw monitor?   empty
+    |     |  +--rw router?    empty
+    |     |  +--rw switch?    empty
+    |     +--rw drop-unsecure?               empty
+    |     +--rw limit
+    |     |  +--rw address-count?   uint16
+    |     +--rw sec-level
+    |     |  +--rw minimum?   uint8
+    |     +--rw tracking
+    |     |  +--rw disable!
+    |     |  |  +--rw stale-lifetime
+    |     |  |     +--rw seconds?    uint32
+    |     |  |     +--rw infinite?   empty
+    |     |  +--rw enable!
+    |     |     +--rw reachable-lifetime
+    |     |        +--rw seconds?    uint32
+    |     |        +--rw infinite?   empty
+    |     +--rw trusted-port?                empty
+    |     +--rw validate
+    |        +--rw source-mac?   empty
+    +--rw cache
+    |  +--rw expire
+    |     +--rw time?      uint16
+    |     +--rw refresh?   empty
+    +--rw raguard
+    |  +--rw policy* [raguard-policy-name]
+    |  |  +--rw raguard-policy-name    string
+    |  |  +--rw device-role
+    |  |  |  +--rw host?      empty
+    |  |  |  +--rw monitor?   empty
+    |  |  |  +--rw router?    empty
+    |  |  |  +--rw switch?    empty
+    |  |  +--rw hop-limit
+    |  |  |  +--rw maximum?   uint8
+    |  |  |  +--rw minimum?   uint8
+    |  |  +--rw trusted-port?          empty
+    |  +--rw attach-policy?   string
+    +--rw default-route
+    |  +--rw vrf* [word]
+    |  |  +--rw word     string
+    |  |  +--rw limit?   uint8
+    |  +--rw limit?   uint8
+    +--rw suppress
+       +--rw policy* [nd-suppress-policy-name]
+          +--rw nd-suppress-policy-name    string
+  augment /ios:native/ios:interface/ios:FastEthernet/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw ra
+       +--rw suppress!
+          +--rw all?   empty
+  augment /ios:native/ios:interface/ios:GigabitEthernet/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw ra
+       +--rw suppress!
+          +--rw all?   empty
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw ra
+       +--rw suppress!
+          +--rw all?   empty
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw ra
+       +--rw suppress!
+          +--rw all?   empty
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw ra
+       +--rw suppress!
+          +--rw all?   empty
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw ra
+       +--rw suppress!
+          +--rw all?   empty
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw ra
+       +--rw suppress!
+          +--rw all?   empty
+  augment /ios:native/ios:interface/ios:HundredGigE/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw ra
+       +--rw suppress!
+          +--rw all?   empty
+  augment /ios:native/ios:interface/ios:Port-channel/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw ra
+       +--rw suppress!
+          +--rw all?   empty
+  augment /ios:native/ios:interface/ios:Loopback/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw ra
+       +--rw suppress!
+          +--rw all?   empty
+  augment /ios:native/ios:interface/ios:Tunnel/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw ra
+       +--rw suppress!
+          +--rw all?   empty
+  augment /ios:native/ios:interface/ios:vasileft/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw ra
+       +--rw suppress!
+          +--rw all?   empty
+  augment /ios:native/ios:interface/ios:vasiright/ios:ipv6/ios:nd:
+    +--rw raguard
+    |  +--rw attach-policy?   string
+    +--rw autoconfig
+    |  +--rw default-route?   empty
+    |  +--rw prefix?          empty
+    +--rw managed-config-flag?   empty
+    +--rw ra
+       +--rw suppress!
+          +--rw all?   empty
+Xpaths for model: Cisco-IOS-XE-nd.yang

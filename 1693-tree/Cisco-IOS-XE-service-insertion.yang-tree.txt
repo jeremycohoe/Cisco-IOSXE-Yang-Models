@@ -1,0 +1,34 @@
+ 
+KPI for model: Cisco-IOS-XE-service-insertion.yang
+
+module: Cisco-IOS-XE-service-insertion
+  augment /ios:native/ios:service-insertion:
+    +--rw acg-reload-delay?          uint16
+    +--rw appnav-controller-group* [group-name]
+    |  +--rw group-name           string
+    |  +--rw appnav-controller*   inet:ipv4-address
+    |  +--rw description?         string
+    +--rw service-context
+    |  +--rw waas* [name]
+    |     +--rw name                       string
+    |     +--rw appnav-controller-group?   string
+    |     +--rw authentication
+    |     |  +--rw sha1?      empty
+    |     |  +--rw key?       empty
+    |     |  +--rw encrypt?   enumeration
+    |     |  +--rw string?    string
+    |     +--rw service-node-group?        string
+    |     +--rw service-policy?            string
+    |     +--rw enable?                    empty
+    |     +--rw vrf
+    |        +--rw default?   empty
+    |        +--rw global?    empty
+    |        +--rw name?      string
+    +--rw service-node-group* [name]
+    |  +--rw name              string
+    |  +--rw description?      string
+    |  +--rw node-discovery?   enumeration
+    |  +--rw service-node*     inet:ipv4-address
+    +--rw swap
+       +--rw src-ip?   empty
+Xpaths for model: Cisco-IOS-XE-service-insertion.yang

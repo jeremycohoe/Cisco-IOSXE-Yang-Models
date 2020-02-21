@@ -1,0 +1,14 @@
+ 
+KPI for model: Cisco-IOS-XE-breakout-port-oper.yang
+module: Cisco-IOS-XE-breakout-port-oper
+  +--ro breakout-port-oper-data
+     +--ro port-breakout* [name]
+        +--ro name      string
+        +--ro number?   int16
+        +--ro speed?    bc-port-ios-xe-oper:bc-channel-speed
+Xpaths for model: Cisco-IOS-XE-breakout-port-oper.yang
+/bc-port-ios-xe-oper:breakout-port-oper-data,container,
+/bc-port-ios-xe-oper:breakout-port-oper-data/bc-port-ios-xe-oper:port-breakout,list,
+/bc-port-ios-xe-oper:breakout-port-oper-data/bc-port-ios-xe-oper:port-breakout/bc-port-ios-xe-oper:name,leaf,string
+/bc-port-ios-xe-oper:breakout-port-oper-data/bc-port-ios-xe-oper:port-breakout/bc-port-ios-xe-oper:number,leaf,int16
+/bc-port-ios-xe-oper:breakout-port-oper-data/bc-port-ios-xe-oper:port-breakout/bc-port-ios-xe-oper:speed,leaf,bc-port-ios-xe-oper:bc-channel-speed

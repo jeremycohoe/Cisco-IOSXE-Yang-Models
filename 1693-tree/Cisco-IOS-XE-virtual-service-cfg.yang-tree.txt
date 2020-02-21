@@ -1,0 +1,110 @@
+ 
+KPI for model: Cisco-IOS-XE-virtual-service-cfg.yang
+module: Cisco-IOS-XE-virtual-service-cfg
+  +--rw virtual-service-cfg-data
+     +--rw apps
+     |  +--rw app* [application-name]
+     |     +--rw application-name                string
+     |     +--rw application-network-resource
+     |     |  +--rw vnic-gateway-0?                                       string
+     |     |  +--rw virtualportgroup-guest-interface-name-1?              string
+     |     |  +--rw virtualportgroup-guest-ip-address-1?                  inet:ip-address
+     |     |  +--rw virtualportgroup-guest-ip-netmask-1?                  inet:ip-address
+     |     |  +--rw virtualportgroup-application-default-gateway-1?       inet:ip-address
+     |     |  +--rw nameserver-0?                                         inet:ip-address
+     |     |  +--rw virtualportgroup-guest-interface-default-gateway-1?   uint8
+     |     |  +--rw vnic-gateway-1?                                       string
+     |     |  +--rw virtualportgroup-guest-interface-name-2?              string
+     |     |  +--rw virtualportgroup-guest-ip-address-2?                  inet:ip-address
+     |     |  +--rw virtualportgroup-guest-ip-netmask-2?                  inet:ip-address
+     |     |  +--rw virtualportgroup-application-gateway-2?               inet:ip-address
+     |     |  +--rw nameserver-1?                                         inet:ip-address
+     |     |  +--rw virtualportgroup-guest-interface-default-gateway-2?   uint8
+     |     |  +--rw vnic-gateway-2?                                       string
+     |     |  +--rw virtualportgroup-guest-interface-name-3?              string
+     |     |  +--rw virtualportgroup-guest-ip-address-3?                  inet:ip-address
+     |     |  +--rw virtualportgroup-guest-ip-netmask-3?                  inet:ip-address
+     |     |  +--rw virtualportgroup-application-gateway-3?               inet:ip-address
+     |     |  +--rw nameserver2?                                          inet:ip-address
+     |     |  +--rw virtualportgroup-guest-interface-default-gateway-3?   uint8
+     |     |  +--rw vnic-gateway-3?                                       string
+     |     |  +--rw virtualportgroup-guest-interface-name-4?              string
+     |     |  +--rw virtualportgroup-guest-ip-address-4?                  inet:ip-address
+     |     |  +--rw virtualportgroup-guest-ip-netmask-4?                  inet:ip-address
+     |     |  +--rw virtualportgroup-application-gateway-4?               inet:ip-address
+     |     |  +--rw nameserver-3?                                         inet:ip-address
+     |     |  +--rw virtualportgroup-guest-interface-default-gateway-4?   uint8
+     |     |  +--rw management-interface-name?                            string
+     |     |  +--rw management-guest-ip-address?                          inet:ip-address
+     |     |  +--rw management-guest-ip-netmask?                          inet:ip-address
+     |     |  +--rw management-application-gateway?                       inet:ip-address
+     |     |  +--rw nameseerver4?                                         inet:ip-address
+     |     |  +--rw management-guest-interface-default-gateway?           uint8
+     |     |  +--rw application-mac-address
+     |     |     +--rw mac-address?          yang:mac-address
+     |     |     +--rw mac-interface-name?   string
+     |     +--rw application-resource-profile
+     |     |  +--rw profile-name?         string
+     |     |  +--rw vcpu?                 uint16
+     |     |  +--rw cpu-units?            uint16
+     |     |  +--rw memory-capacity-mb?   uint16
+     |     |  +--rw disk-size-mb?         uint16
+     |     |  +--rw pkg-profile-name?     string
+     |     +--rw application-attached-device
+     |        +--rw device-name?   string
+     +--rw controls!
+        +--rw application-hosting-infra-enable-statue?   uint8
+Xpaths for model: Cisco-IOS-XE-virtual-service-cfg.yang
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data,container,
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps,container,
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app,list,
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-name,leaf,string
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource,container,
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:vnic-gateway-0,leaf,string
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-interface-name-1,leaf,string
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-ip-address-1,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-ip-netmask-1,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-application-default-gateway-1,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:nameserver-0,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-interface-default-gateway-1,leaf,uint8
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:vnic-gateway-1,leaf,string
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-interface-name-2,leaf,string
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-ip-address-2,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-ip-netmask-2,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-application-gateway-2,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:nameserver-1,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-interface-default-gateway-2,leaf,uint8
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:vnic-gateway-2,leaf,string
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-interface-name-3,leaf,string
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-ip-address-3,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-ip-netmask-3,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-application-gateway-3,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:nameserver2,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-interface-default-gateway-3,leaf,uint8
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:vnic-gateway-3,leaf,string
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-interface-name-4,leaf,string
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-ip-address-4,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-ip-netmask-4,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-application-gateway-4,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:nameserver-3,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:virtualportgroup-guest-interface-default-gateway-4,leaf,uint8
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:management-interface-name,leaf,string
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:management-guest-ip-address,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:management-guest-ip-netmask,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:management-application-gateway,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:nameseerver4,leaf,inet:ip-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:management-guest-interface-default-gateway,leaf,uint8
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:application-mac-address,container,
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:application-mac-address/virtual-service-ios-xe-cfg:mac-address,leaf,yang:mac-address
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-network-resource/virtual-service-ios-xe-cfg:application-mac-address/virtual-service-ios-xe-cfg:mac-interface-name,leaf,string
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-resource-profile,container,
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-resource-profile/virtual-service-ios-xe-cfg:profile-name,leaf,string
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-resource-profile/virtual-service-ios-xe-cfg:vcpu,leaf,uint16
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-resource-profile/virtual-service-ios-xe-cfg:cpu-units,leaf,uint16
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-resource-profile/virtual-service-ios-xe-cfg:memory-capacity-mb,leaf,uint16
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-resource-profile/virtual-service-ios-xe-cfg:disk-size-mb,leaf,uint16
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-resource-profile/virtual-service-ios-xe-cfg:pkg-profile-name,leaf,string
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-attached-device,container,
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:apps/virtual-service-ios-xe-cfg:app/virtual-service-ios-xe-cfg:application-attached-device/virtual-service-ios-xe-cfg:device-name,leaf,string
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:controls,container,
+/virtual-service-ios-xe-cfg:virtual-service-cfg-data/virtual-service-ios-xe-cfg:controls/virtual-service-ios-xe-cfg:application-hosting-infra-enable-statue,leaf,uint8

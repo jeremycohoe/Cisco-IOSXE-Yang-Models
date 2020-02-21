@@ -1,0 +1,292 @@
+ 
+KPI for model: openconfig-acl.yang
+module: openconfig-acl
+  +--rw acl
+     +--rw config
+     +--ro state
+     |  +--ro counter-capability?   identityref
+     +--rw acl-sets
+     |  +--rw acl-set* [name type]
+     |     +--rw name           -> ../config/name
+     |     +--rw type           -> ../config/type
+     |     +--rw config
+     |     |  +--rw name?          string
+     |     |  +--rw type?          identityref
+     |     |  +--rw description?   string
+     |     +--ro state
+     |     |  +--ro name?          string
+     |     |  +--ro type?          identityref
+     |     |  +--ro description?   string
+     |     +--rw acl-entries
+     |        +--rw acl-entry* [sequence-id]
+     |           +--rw sequence-id        -> ../config/sequence-id
+     |           +--rw config
+     |           |  +--rw sequence-id?   uint32
+     |           |  +--rw description?   string
+     |           +--ro state
+     |           |  +--ro sequence-id?       uint32
+     |           |  +--ro description?       string
+     |           |  +--ro matched-packets?   oc-yang:counter64
+     |           |  +--ro matched-octets?    oc-yang:counter64
+     |           +--rw l2
+     |           |  +--rw config
+     |           |  |  +--rw source-mac?             oc-yang:mac-address
+     |           |  |  +--rw source-mac-mask?        oc-yang:mac-address
+     |           |  |  +--rw destination-mac?        oc-yang:mac-address
+     |           |  |  +--rw destination-mac-mask?   oc-yang:mac-address
+     |           |  |  +--rw ethertype?              oc-pkt-match-types:ethertype-type
+     |           |  +--ro state
+     |           |     +--ro source-mac?             oc-yang:mac-address
+     |           |     +--ro source-mac-mask?        oc-yang:mac-address
+     |           |     +--ro destination-mac?        oc-yang:mac-address
+     |           |     +--ro destination-mac-mask?   oc-yang:mac-address
+     |           |     +--ro ethertype?              oc-pkt-match-types:ethertype-type
+     |           +--rw ipv4
+     |           |  +--rw config
+     |           |  |  +--rw source-address?        oc-inet:ipv4-prefix
+     |           |  |  +--rw destination-address?   oc-inet:ipv4-prefix
+     |           |  |  +--rw dscp?                  oc-inet:dscp
+     |           |  |  +--rw protocol?              oc-pkt-match-types:ip-protocol-type
+     |           |  |  +--rw hop-limit?             uint8
+     |           |  +--ro state
+     |           |     +--ro source-address?        oc-inet:ipv4-prefix
+     |           |     +--ro destination-address?   oc-inet:ipv4-prefix
+     |           |     +--ro dscp?                  oc-inet:dscp
+     |           |     +--ro protocol?              oc-pkt-match-types:ip-protocol-type
+     |           |     +--ro hop-limit?             uint8
+     |           +--rw ipv6
+     |           |  +--rw config
+     |           |  |  +--rw source-address?           oc-inet:ipv6-prefix
+     |           |  |  +--rw source-flow-label?        oc-inet:ipv6-flow-label
+     |           |  |  +--rw destination-address?      oc-inet:ipv6-prefix
+     |           |  |  +--rw destination-flow-label?   oc-inet:ipv6-flow-label
+     |           |  |  +--rw dscp?                     oc-inet:dscp
+     |           |  |  +--rw protocol?                 oc-pkt-match-types:ip-protocol-type
+     |           |  |  +--rw hop-limit?                uint8
+     |           |  +--ro state
+     |           |     +--ro source-address?           oc-inet:ipv6-prefix
+     |           |     +--ro source-flow-label?        oc-inet:ipv6-flow-label
+     |           |     +--ro destination-address?      oc-inet:ipv6-prefix
+     |           |     +--ro destination-flow-label?   oc-inet:ipv6-flow-label
+     |           |     +--ro dscp?                     oc-inet:dscp
+     |           |     +--ro protocol?                 oc-pkt-match-types:ip-protocol-type
+     |           |     +--ro hop-limit?                uint8
+     |           +--rw transport
+     |           |  +--rw config
+     |           |  |  +--rw source-port?        oc-pkt-match-types:port-num-range
+     |           |  |  +--rw destination-port?   oc-pkt-match-types:port-num-range
+     |           |  |  +--rw tcp-flags*          identityref
+     |           |  +--ro state
+     |           |     +--ro source-port?        oc-pkt-match-types:port-num-range
+     |           |     +--ro destination-port?   oc-pkt-match-types:port-num-range
+     |           |     +--ro tcp-flags*          identityref
+     |           +--rw input-interface
+     |           |  +--rw config
+     |           |  +--ro state
+     |           |  +--rw interface-ref
+     |           |     +--rw config
+     |           |     |  +--rw interface?      -> /oc-if:interfaces/interface/name
+     |           |     |  +--rw subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+     |           |     +--ro state
+     |           |        +--ro interface?      -> /oc-if:interfaces/interface/name
+     |           |        +--ro subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+     |           +--rw actions
+     |              +--rw config
+     |              |  +--rw forwarding-action    identityref
+     |              |  +--rw log-action?          identityref
+     |              +--ro state
+     |                 +--ro forwarding-action    identityref
+     |                 +--ro log-action?          identityref
+     +--rw interfaces
+        +--rw interface* [id]
+           +--rw id                  -> ../config/id
+           +--rw config
+           |  +--rw id?   oc-if:interface-id
+           +--ro state
+           |  +--ro id?   oc-if:interface-id
+           +--rw interface-ref
+           |  +--rw config
+           |  |  +--rw interface?      -> /oc-if:interfaces/interface/name
+           |  |  +--rw subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+           |  +--ro state
+           |     +--ro interface?      -> /oc-if:interfaces/interface/name
+           |     +--ro subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+           +--rw ingress-acl-sets
+           |  +--rw ingress-acl-set* [set-name type]
+           |     +--rw set-name       -> ../config/set-name
+           |     +--rw type           -> ../config/type
+           |     +--rw config
+           |     |  +--rw set-name?   -> ../../../../../../acl-sets/acl-set/config/name
+           |     |  +--rw type?       -> ../../../../../../acl-sets/acl-set[name=current()/../set-name]/config/type
+           |     +--ro state
+           |     |  +--ro set-name?   -> ../../../../../../acl-sets/acl-set/config/name
+           |     |  +--ro type?       -> ../../../../../../acl-sets/acl-set[name=current()/../set-name]/config/type
+           |     +--ro acl-entries
+           |        +--ro acl-entry* [sequence-id]
+           |           +--ro sequence-id    -> ../state/sequence-id
+           |           +--ro state
+           |              +--ro sequence-id?       -> /acl/acl-sets/acl-set[name=current()/../../../../set-name][type=current()/../../../../type]/acl-entries/acl-entry/sequence-id
+           |              +--ro matched-packets?   oc-yang:counter64
+           |              +--ro matched-octets?    oc-yang:counter64
+           +--rw egress-acl-sets
+              +--rw egress-acl-set* [set-name type]
+                 +--rw set-name       -> ../config/set-name
+                 +--rw type           -> ../config/type
+                 +--rw config
+                 |  +--rw set-name?   -> ../../../../../../acl-sets/acl-set/config/name
+                 |  +--rw type?       -> ../../../../../../acl-sets/acl-set[name=current()/../set-name]/config/type
+                 +--ro state
+                 |  +--ro set-name?   -> ../../../../../../acl-sets/acl-set/config/name
+                 |  +--ro type?       -> ../../../../../../acl-sets/acl-set[name=current()/../set-name]/config/type
+                 +--ro acl-entries
+                    +--ro acl-entry* [sequence-id]
+                       +--ro sequence-id    -> ../state/sequence-id
+                       +--ro state
+                          +--ro sequence-id?       -> /acl/acl-sets/acl-set[name=current()/../../../../set-name][type=current()/../../../../type]/acl-entries/acl-entry/sequence-id
+                          +--ro matched-packets?   oc-yang:counter64
+                          +--ro matched-octets?    oc-yang:counter64
+Xpaths for model: openconfig-acl.yang
+/oc-acl:acl,container,
+/oc-acl:acl/oc-acl:config,container,
+/oc-acl:acl/oc-acl:state,container,
+/oc-acl:acl/oc-acl:state/oc-acl:counter-capability,leaf,identityref
+/oc-acl:acl/oc-acl:acl-sets,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set,list,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:name,leaf,leafref
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:type,leaf,leafref
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:config,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:config/oc-acl:name,leaf,string
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:config/oc-acl:type,leaf,identityref
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:config/oc-acl:description,leaf,string
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:state,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:state/oc-acl:name,leaf,string
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:state/oc-acl:type,leaf,identityref
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:state/oc-acl:description,leaf,string
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry,list,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:sequence-id,leaf,leafref
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:config,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:config/oc-acl:sequence-id,leaf,uint32
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:config/oc-acl:description,leaf,string
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:state,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:state/oc-acl:sequence-id,leaf,uint32
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:state/oc-acl:description,leaf,string
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:state/oc-acl:matched-packets,leaf,oc-yang:counter64
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:state/oc-acl:matched-octets,leaf,oc-yang:counter64
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:l2,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:l2/oc-acl:config,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:l2/oc-acl:config/oc-acl:source-mac,leaf,oc-yang:mac-address
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:l2/oc-acl:config/oc-acl:source-mac-mask,leaf,oc-yang:mac-address
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:l2/oc-acl:config/oc-acl:destination-mac,leaf,oc-yang:mac-address
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:l2/oc-acl:config/oc-acl:destination-mac-mask,leaf,oc-yang:mac-address
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:l2/oc-acl:config/oc-acl:ethertype,leaf,oc-pkt-match-types:ethertype-type
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:l2/oc-acl:state,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:l2/oc-acl:state/oc-acl:source-mac,leaf,oc-yang:mac-address
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:l2/oc-acl:state/oc-acl:source-mac-mask,leaf,oc-yang:mac-address
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:l2/oc-acl:state/oc-acl:destination-mac,leaf,oc-yang:mac-address
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:l2/oc-acl:state/oc-acl:destination-mac-mask,leaf,oc-yang:mac-address
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:l2/oc-acl:state/oc-acl:ethertype,leaf,oc-pkt-match-types:ethertype-type
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv4,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv4/oc-acl:config,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv4/oc-acl:config/oc-acl:source-address,leaf,oc-inet:ipv4-prefix
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv4/oc-acl:config/oc-acl:destination-address,leaf,oc-inet:ipv4-prefix
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv4/oc-acl:config/oc-acl:dscp,leaf,oc-inet:dscp
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv4/oc-acl:config/oc-acl:protocol,leaf,oc-pkt-match-types:ip-protocol-type
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv4/oc-acl:config/oc-acl:hop-limit,leaf,uint8
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv4/oc-acl:state,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv4/oc-acl:state/oc-acl:source-address,leaf,oc-inet:ipv4-prefix
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv4/oc-acl:state/oc-acl:destination-address,leaf,oc-inet:ipv4-prefix
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv4/oc-acl:state/oc-acl:dscp,leaf,oc-inet:dscp
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv4/oc-acl:state/oc-acl:protocol,leaf,oc-pkt-match-types:ip-protocol-type
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv4/oc-acl:state/oc-acl:hop-limit,leaf,uint8
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:config,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:config/oc-acl:source-address,leaf,oc-inet:ipv6-prefix
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:config/oc-acl:source-flow-label,leaf,oc-inet:ipv6-flow-label
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:config/oc-acl:destination-address,leaf,oc-inet:ipv6-prefix
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:config/oc-acl:destination-flow-label,leaf,oc-inet:ipv6-flow-label
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:config/oc-acl:dscp,leaf,oc-inet:dscp
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:config/oc-acl:protocol,leaf,oc-pkt-match-types:ip-protocol-type
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:config/oc-acl:hop-limit,leaf,uint8
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:state,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:state/oc-acl:source-address,leaf,oc-inet:ipv6-prefix
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:state/oc-acl:source-flow-label,leaf,oc-inet:ipv6-flow-label
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:state/oc-acl:destination-address,leaf,oc-inet:ipv6-prefix
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:state/oc-acl:destination-flow-label,leaf,oc-inet:ipv6-flow-label
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:state/oc-acl:dscp,leaf,oc-inet:dscp
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:state/oc-acl:protocol,leaf,oc-pkt-match-types:ip-protocol-type
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:ipv6/oc-acl:state/oc-acl:hop-limit,leaf,uint8
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:transport,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:transport/oc-acl:config,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:transport/oc-acl:config/oc-acl:source-port,leaf,oc-pkt-match-types:port-num-range
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:transport/oc-acl:config/oc-acl:destination-port,leaf,oc-pkt-match-types:port-num-range
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:transport/oc-acl:config/oc-acl:tcp-flags,leaf-list,identityref
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:transport/oc-acl:state,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:transport/oc-acl:state/oc-acl:source-port,leaf,oc-pkt-match-types:port-num-range
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:transport/oc-acl:state/oc-acl:destination-port,leaf,oc-pkt-match-types:port-num-range
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:transport/oc-acl:state/oc-acl:tcp-flags,leaf-list,identityref
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:input-interface,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:input-interface/oc-acl:config,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:input-interface/oc-acl:state,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:input-interface/oc-acl:interface-ref,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:input-interface/oc-acl:interface-ref/oc-acl:config,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:input-interface/oc-acl:interface-ref/oc-acl:config/oc-acl:interface,leaf,leafref
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:input-interface/oc-acl:interface-ref/oc-acl:config/oc-acl:subinterface,leaf,leafref
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:input-interface/oc-acl:interface-ref/oc-acl:state,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:input-interface/oc-acl:interface-ref/oc-acl:state/oc-acl:interface,leaf,leafref
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:input-interface/oc-acl:interface-ref/oc-acl:state/oc-acl:subinterface,leaf,leafref
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:actions,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:actions/oc-acl:config,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:actions/oc-acl:config/oc-acl:forwarding-action,leaf,identityref
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:actions/oc-acl:config/oc-acl:log-action,leaf,identityref
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:actions/oc-acl:state,container,
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:actions/oc-acl:state/oc-acl:forwarding-action,leaf,identityref
+/oc-acl:acl/oc-acl:acl-sets/oc-acl:acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:actions/oc-acl:state/oc-acl:log-action,leaf,identityref
+/oc-acl:acl/oc-acl:interfaces,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface,list,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:id,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:config,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:config/oc-acl:id,leaf,oc-if:interface-id
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:state,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:state/oc-acl:id,leaf,oc-if:interface-id
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:interface-ref,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:interface-ref/oc-acl:config,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:interface-ref/oc-acl:config/oc-acl:interface,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:interface-ref/oc-acl:config/oc-acl:subinterface,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:interface-ref/oc-acl:state,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:interface-ref/oc-acl:state/oc-acl:interface,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:interface-ref/oc-acl:state/oc-acl:subinterface,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set,list,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set/oc-acl:set-name,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set/oc-acl:type,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set/oc-acl:config,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set/oc-acl:config/oc-acl:set-name,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set/oc-acl:config/oc-acl:type,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set/oc-acl:state,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set/oc-acl:state/oc-acl:set-name,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set/oc-acl:state/oc-acl:type,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set/oc-acl:acl-entries,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set/oc-acl:acl-entries/oc-acl:acl-entry,list,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:sequence-id,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:state,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:state/oc-acl:sequence-id,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:state/oc-acl:matched-packets,leaf,oc-yang:counter64
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:ingress-acl-sets/oc-acl:ingress-acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:state/oc-acl:matched-octets,leaf,oc-yang:counter64
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set,list,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set/oc-acl:set-name,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set/oc-acl:type,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set/oc-acl:config,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set/oc-acl:config/oc-acl:set-name,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set/oc-acl:config/oc-acl:type,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set/oc-acl:state,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set/oc-acl:state/oc-acl:set-name,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set/oc-acl:state/oc-acl:type,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set/oc-acl:acl-entries,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set/oc-acl:acl-entries/oc-acl:acl-entry,list,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:sequence-id,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:state,container,
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:state/oc-acl:sequence-id,leaf,leafref
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:state/oc-acl:matched-packets,leaf,oc-yang:counter64
+/oc-acl:acl/oc-acl:interfaces/oc-acl:interface/oc-acl:egress-acl-sets/oc-acl:egress-acl-set/oc-acl:acl-entries/oc-acl:acl-entry/oc-acl:state/oc-acl:matched-octets,leaf,oc-yang:counter64

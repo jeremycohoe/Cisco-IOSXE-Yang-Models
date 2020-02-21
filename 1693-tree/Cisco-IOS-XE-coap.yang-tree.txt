@@ -1,0 +1,9 @@
+ 
+KPI for model: Cisco-IOS-XE-coap.yang
+
+module: Cisco-IOS-XE-coap
+  augment /ios:native:
+    +--rw coap
+       +--rw http
+          +--rw enable?   empty
+Xpaths for model: Cisco-IOS-XE-coap.yang

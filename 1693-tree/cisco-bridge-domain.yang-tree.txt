@@ -1,0 +1,481 @@
+ 
+KPI for model: cisco-bridge-domain.yang
+module: cisco-bridge-domain
+  +--rw bridge-domain-config
+  |  +--rw global
+  |  |  +--rw bd-state-notification-enabled?   boolean
+  |  |  +--rw bd-state-notification-rate?      uint32
+  |  |  +--rw pbb
+  |  |     +--rw backbone-src-mac?   yang:mac-address
+  |  +--rw bridge-groups {configurable-bd-groups}?
+  |  |  +--rw bridge-group* [name]
+  |  |     +--rw name    string
+  |  +--rw bridge-domains
+  |     +--rw bridge-domain* [id]
+  |        +--rw id                               string
+  |        +--rw bridge-group                     -> /bridge-domain-config/bridge-groups/bridge-group/name {configurable-bd-groups}?
+  |        +--rw enabled?                         boolean
+  |        +--rw bd-status-change-notification?   boolean
+  |        +--rw members
+  |        |  +--rw ac-member* [interface]
+  |        |  |  +--rw interface                 if:interface-ref
+  |        |  |  +--rw split-horizon-group! {configurable-bd-member-features}?
+  |        |  |  |  +--rw id    uint16 {configurable-bd-sh-group-number}?
+  |        |  |  +--rw mac {configurable-bd-member-features}?
+  |        |  |  |  +--rw learning-enabled?   boolean
+  |        |  |  |  +--rw limit
+  |        |  |  |  |  +--rw maximum?        uint32 {configurable-bd-mac-limit-max}?
+  |        |  |  |  |  +--rw action?         mac-limit-action {configurable-bd-mac-limit-actions}?
+  |        |  |  |  |  +--rw notification?   identityref {configurable-bd-mac-limit-notif}?
+  |        |  |  |  +--rw aging
+  |        |  |  |  |  +--rw time?   uint32
+  |        |  |  |  |  +--rw type?   mac-aging-type {configurable-bd-mac-aging-types}?
+  |        |  |  |  +--rw port-down {configurable-bd-mac-event-action}?
+  |        |  |  |  |  +--rw flush?   boolean
+  |        |  |  |  +--rw secure {configurable-bd-mac-secure}?
+  |        |  |  |     +--rw action?    mac-secure-action
+  |        |  |  |     +--rw logging?   boolean
+  |        |  |  |     +--rw enabled?   boolean
+  |        |  |  +--rw igmp-snooping {configurable-bd-snooping-profiles,configurable-bd-member-features}?
+  |        |  |  |  +--rw profile-name    string
+  |        |  |  +--rw mld-snooping {configurable-bd-snooping-profiles,configurable-bd-member-features}?
+  |        |  |  |  +--rw profile-name    string
+  |        |  |  +--rw dhcp-ipv4-snooping {configurable-bd-snooping-profiles,configurable-bd-member-features}?
+  |        |  |  |  +--rw profile-name    string
+  |        |  |  +--rw flooding {configurable-bd-flooding,configurable-bd-member-features}?
+  |        |  |  |  +--rw disabled?                   empty
+  |        |  |  |  +--rw disabled-unknown-unicast?   empty
+  |        |  |  +--rw storm-control {configurable-bd-storm-control,configurable-bd-member-features}?
+  |        |  |  |  +--rw thresholds* [traffic-class]
+  |        |  |  |  |  +--rw traffic-class    cbridge:eth-traffic-class
+  |        |  |  |  |  +--rw value            uint32
+  |        |  |  |  |  +--rw unit             enumeration
+  |        |  |  |  +--rw action?       identityref {configurable-storm-control-actions}?
+  |        |  |  +--rw dynamic-arp-inspection {configurable-bd-dai}?
+  |        |  |  |  +--rw address-validation!
+  |        |  |  |  |  +--rw dst-mac?   empty
+  |        |  |  |  |  +--rw src-mac?   empty
+  |        |  |  |  |  +--rw ipv4?      empty
+  |        |  |  |  +--rw logging?              boolean
+  |        |  |  |  +--rw enable?               boolean
+  |        |  |  +--rw ip-source-guard {configurable-bd-ipsg}?
+  |        |  |     +--rw logging?   boolean
+  |        |  |     +--rw enable?    boolean
+  |        |  +--rw vfi-member* [interface]
+  |        |  |  +--rw interface    if:interface-ref
+  |        |  +--rw access-pw-member
+  |        |     +--rw access-pw-if-member* [interface]
+  |        |     |  +--rw interface    if:interface-ref
+  |        |     +--rw pw-neighbor-spec* [neighbor-ip-address vc-id]
+  |        |        +--rw neighbor-ip-address        inet:ip-address
+  |        |        +--rw vc-id                      uint32
+  |        |        +--rw static-label {static-label-direct-config}?
+  |        |        |  +--rw local-label?    uint32
+  |        |        |  +--rw remote-label?   uint32
+  |        |        +--rw (pw-class-or-specs)?
+  |        |        |  +--:(pw-class-template)
+  |        |        |  |  +--rw pw-class-template?   pw-template-ref
+  |        |        |  +--:(specs)
+  |        |        |     +--rw encap-type?          identityref {pw-short-config}?
+  |        |        |     +--rw tag-impose-vlan?     uint16 {pw-tag-impose-vlan-id}?
+  |        |        |     +--rw source-ipv6?         inet:ipv6-address {pw-ipv6-source}?
+  |        |        +--rw split-horizon-group! {configurable-bd-member-features}?
+  |        |        |  +--rw id    uint16 {configurable-bd-sh-group-number}?
+  |        |        +--rw mac {configurable-bd-member-features}?
+  |        |        |  +--rw learning-enabled?   boolean
+  |        |        |  +--rw limit
+  |        |        |  |  +--rw maximum?        uint32 {configurable-bd-mac-limit-max}?
+  |        |        |  |  +--rw action?         mac-limit-action {configurable-bd-mac-limit-actions}?
+  |        |        |  |  +--rw notification?   identityref {configurable-bd-mac-limit-notif}?
+  |        |        |  +--rw aging
+  |        |        |  |  +--rw time?   uint32
+  |        |        |  |  +--rw type?   mac-aging-type {configurable-bd-mac-aging-types}?
+  |        |        |  +--rw port-down {configurable-bd-mac-event-action}?
+  |        |        |  |  +--rw flush?   boolean
+  |        |        |  +--rw secure {configurable-bd-mac-secure}?
+  |        |        |     +--rw action?    mac-secure-action
+  |        |        |     +--rw logging?   boolean
+  |        |        |     +--rw enabled?   boolean
+  |        |        +--rw igmp-snooping {configurable-bd-snooping-profiles,configurable-bd-member-features}?
+  |        |        |  +--rw profile-name    string
+  |        |        +--rw mld-snooping {configurable-bd-snooping-profiles,configurable-bd-member-features}?
+  |        |        |  +--rw profile-name    string
+  |        |        +--rw dhcp-ipv4-snooping {configurable-bd-snooping-profiles,configurable-bd-member-features}?
+  |        |        |  +--rw profile-name    string
+  |        |        +--rw flooding {configurable-bd-flooding,configurable-bd-member-features}?
+  |        |        |  +--rw disabled?                   empty
+  |        |        |  +--rw disabled-unknown-unicast?   empty
+  |        |        +--rw storm-control {configurable-bd-storm-control,configurable-bd-member-features}?
+  |        |        |  +--rw thresholds* [traffic-class]
+  |        |        |  |  +--rw traffic-class    cbridge:eth-traffic-class
+  |        |        |  |  +--rw value            uint32
+  |        |        |  |  +--rw unit             enumeration
+  |        |        |  +--rw action?       identityref {configurable-storm-control-actions}?
+  |        |        +--rw backup
+  |        |           +--rw neighbor-ip-address?   inet:ip-address
+  |        |           +--rw vc-id?                 uint32
+  |        |           +--rw pw-class-template?     pw-template-ref
+  |        +--rw mtu?                             uint16 {configurable-bd-mtu}?
+  |        +--rw flooding-mode?                   enumeration {configurable-bd-flooding-mode}?
+  |        +--rw mac
+  |        |  +--rw learning-enabled?   boolean
+  |        |  +--rw limit
+  |        |  |  +--rw maximum?        uint32 {configurable-bd-mac-limit-max}?
+  |        |  |  +--rw action?         mac-limit-action {configurable-bd-mac-limit-actions}?
+  |        |  |  +--rw notification?   identityref {configurable-bd-mac-limit-notif}?
+  |        |  +--rw aging
+  |        |  |  +--rw time?   uint32
+  |        |  |  +--rw type?   mac-aging-type {configurable-bd-mac-aging-types}?
+  |        |  +--rw port-down {configurable-bd-mac-event-action}?
+  |        |  |  +--rw flush?   boolean
+  |        |  +--rw flooding {configurable-bd-flooding}?
+  |        |  |  +--rw disabled?                   empty
+  |        |  |  +--rw disabled-unknown-unicast?   empty
+  |        |  +--rw secure! {configurable-bd-mac-secure}?
+  |        |  |  +--rw action?    mac-secure-action
+  |        |  |  +--rw logging?   boolean
+  |        |  +--rw static {configurable-bd-static-mac}?
+  |        |     +--rw mac-addresses* [mac-addr]
+  |        |        +--rw mac-addr    yang:mac-address
+  |        |        +--rw drop        boolean
+  |        +--rw dynamic-arp-inspection! {configurable-bd-dai}?
+  |        |  +--rw address-validation!
+  |        |  |  +--rw dst-mac?   empty
+  |        |  |  +--rw src-mac?   empty
+  |        |  |  +--rw ipv4?      empty
+  |        |  +--rw logging?              boolean
+  |        +--rw ip-source-guard! {configurable-bd-ipsg}?
+  |        |  +--rw logging?   boolean
+  |        +--rw storm-control {configurable-bd-storm-control}?
+  |        |  +--rw thresholds* [traffic-class]
+  |        |  |  +--rw traffic-class    cbridge:eth-traffic-class
+  |        |  |  +--rw value            uint32
+  |        |  |  +--rw unit             enumeration
+  |        |  +--rw action?       identityref {configurable-storm-control-actions}?
+  |        +--rw igmp-snooping {configurable-bd-snooping-profiles}?
+  |        |  +--rw profile-name?   string
+  |        |  +--rw disabled?       empty
+  |        +--rw mld-snooping {configurable-bd-snooping-profiles}?
+  |        |  +--rw profile-name    string
+  |        +--rw dhcp-ipv4-snooping {configurable-bd-snooping-profiles}?
+  |           +--rw profile-name    string
+  +--ro bridge-domain-state
+     +--ro system-capabilities
+     |  +--ro max-bd?                    uint32
+     |  +--ro max-ac-per-bd?             uint32
+     |  +--ro max-pw-per-bd?             uint32
+     |  +--ro max-vfi-per-bd?            uint32
+     |  +--ro max-sh-group-per-bd?       uint32
+     |  +--ro max-interflex-if-per-bd?   uint32
+     +--ro module-capabilities
+     |  +--ro modules* [name]
+     |     +--ro name                   string
+     |     +--ro max-mac-per-bd?        uint32
+     |     +--ro max-pdd-edge-bd?       uint32
+     |     +--ro max-bd?                uint32
+     |     +--ro max-ac-per-bd?         uint32
+     |     +--ro max-pw-per-bd?         uint32
+     |     +--ro max-vfi-per-bd?        uint32
+     |     +--ro max-sh-group-per-bd?   uint32
+     +--ro bridge-domains
+     |  +--ro bridge-domain* [id]
+     |     +--ro id                    string
+     |     +--ro bd-state              bridge-domain-state-type
+     |     +--ro create-time?          yang:timestamp
+     |     +--ro last-status-change?   yang:timeticks
+     |     +--ro mac-limit-reached?    boolean
+     |     +--ro p2mp-pw-disabled?     boolean
+     |     +--ro members
+     |        +--ro ac-member* [interface]
+     |        |  +--ro interface           if:interface-state-ref
+     |        |  +--ro static-mac-count?   uint32
+     |        |  +--ro dai-stats
+     |        |  |  +--ro packet-drops?   yang:counter64
+     |        |  |  +--ro byte-drops?     yang:counter64
+     |        |  +--ro ipsg-stats
+     |        |  |  +--ro packet-drops?   yang:counter64
+     |        |  |  +--ro byte-drops?     yang:counter64
+     |        |  +--ro storm-control
+     |        |     +--ro drop-counter* [traffic-class]
+     |        |        +--ro traffic-class    cbridge:eth-traffic-class
+     |        |        +--ro packet-drops?    yang:counter64
+     |        |        +--ro octate-drops?    yang:counter64
+     |        +--ro vfi-member* [interface]
+     |        |  +--ro interface    if:interface-state-ref
+     |        |  +--ro flooding
+     |        |     +--ro status* [traffic-class]
+     |        |        +--ro traffic-class    eth-traffic-class
+     |        |        +--ro enabled?         boolean
+     |        +--ro access-pw-member* [vc-peer-address vc-id]
+     |           +--ro vc-peer-address    pw-oper-vc-peer-addr-ref
+     |           +--ro vc-id              pw-oper-vc-id-ref
+     |           +--ro flooding
+     |              +--ro status* [traffic-class]
+     |                 +--ro traffic-class    eth-traffic-class
+     |                 +--ro enabled?         boolean
+     +--ro mac-table* [bd-id mac-address]
+        +--ro bd-id          string
+        +--ro mac-address    yang:mac-address
+        +--ro mac-type?      enumeration
+        +--ro interface      if:interface-ref
+        +--ro secure-mac?    boolean
+        +--ro ntfy-mac?      boolean
+        +--ro age?           yang:timeticks
+        +--ro location?      string
+
+  rpcs:
+    +---x clear-bridge-domain {clear-bridge-domain}?
+    |  +---w input
+    |  |  +---w (bridge-domains)
+    |  |     +--:(all)
+    |  |     |  +---w all?     empty
+    |  |     +--:(bd-id)
+    |  |     |  +---w bd-id?   string
+    |  |     +--:(bg-id)
+    |  |        +---w bg-id?   string {configurable-bd-groups}?
+    |  +--ro output
+    |     +--ro errstr?   string
+    +---x clear-mac-address
+    |  +---w input
+    |  |  +---w bridge-domain
+    |  |  |  +---w bd-id    string
+    |  |  |  +---w bg-id    string {configurable-bd-groups}?
+    |  |  +---w interface?       if:interface-ref
+    |  |  +---w mac-address?     yang:mac-address
+    |  +--ro output
+    |     +--ro errstr?   string
+    +---x create-parameterized-bridge-domains {parameterized-bridge-domains}?
+       +---w input
+       |  +---w parameter?   enumeration
+       |  +---w member* [interface]
+       |     +---w interface    if:interface-ref
+       +--ro output
+          +--ro errstr?   string
+
+  notifications:
+    +---n bd-state-notification
+       +--ro id?         bd:bridge-domain-oper-ref
+       +--ro bd-state?   bridge-domain-state-type
+       +--ro time?       yang:timestamp
+Xpaths for model: cisco-bridge-domain.yang
+/bd:bridge-domain-config,container,
+/bd:bridge-domain-config/bd:global,container,
+/bd:bridge-domain-config/bd:global/bd:bd-state-notification-enabled,leaf,boolean
+/bd:bridge-domain-config/bd:global/bd:bd-state-notification-rate,leaf,uint32
+/bd:bridge-domain-config/bd:global/bd:pbb,container,
+/bd:bridge-domain-config/bd:global/bd:pbb/bd:backbone-src-mac,leaf,yang:mac-address
+/bd:bridge-domain-config/bd:bridge-groups,container,
+/bd:bridge-domain-config/bd:bridge-groups/bd:bridge-group,list,
+/bd:bridge-domain-config/bd:bridge-groups/bd:bridge-group/bd:name,leaf,string
+/bd:bridge-domain-config/bd:bridge-domains,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain,list,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:id,leaf,string
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:bridge-group,leaf,leafref
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:enabled,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:bd-status-change-notification,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member,list,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:interface,leaf,if:interface-ref
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:split-horizon-group,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:split-horizon-group/bd:id,leaf,uint16
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mac,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mac/bd:learning-enabled,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mac/bd:limit,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mac/bd:limit/bd:maximum,leaf,uint32
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mac/bd:limit/bd:action,leaf,mac-limit-action
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mac/bd:limit/bd:notification,leaf,identityref
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mac/bd:aging,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mac/bd:aging/bd:time,leaf,uint32
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mac/bd:aging/bd:type,leaf,mac-aging-type
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mac/bd:port-down,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mac/bd:port-down/bd:flush,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mac/bd:secure,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mac/bd:secure/bd:action,leaf,mac-secure-action
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mac/bd:secure/bd:logging,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mac/bd:secure/bd:enabled,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:igmp-snooping,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:igmp-snooping/bd:profile-name,leaf,string
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mld-snooping,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:mld-snooping/bd:profile-name,leaf,string
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:dhcp-ipv4-snooping,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:dhcp-ipv4-snooping/bd:profile-name,leaf,string
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:flooding,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:flooding/bd:disabled,leaf,empty
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:flooding/bd:disabled-unknown-unicast,leaf,empty
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:storm-control,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:storm-control/bd:thresholds,list,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:storm-control/bd:thresholds/bd:traffic-class,leaf,cbridge:eth-traffic-class
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:storm-control/bd:thresholds/bd:value,leaf,uint32
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:storm-control/bd:thresholds/bd:unit,leaf,enumeration
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:storm-control/bd:action,leaf,identityref
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:dynamic-arp-inspection,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:dynamic-arp-inspection/bd:address-validation,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:dynamic-arp-inspection/bd:address-validation/bd:dst-mac,leaf,empty
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:dynamic-arp-inspection/bd:address-validation/bd:src-mac,leaf,empty
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:dynamic-arp-inspection/bd:address-validation/bd:ipv4,leaf,empty
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:dynamic-arp-inspection/bd:logging,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:dynamic-arp-inspection/bd:enable,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:ip-source-guard,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:ip-source-guard/bd:logging,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:ip-source-guard/bd:enable,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:vfi-member,list,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:vfi-member/bd:interface,leaf,if:interface-ref
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:access-pw-if-member,list,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:access-pw-if-member/bd:interface,leaf,if:interface-ref
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec,list,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:neighbor-ip-address,leaf,inet:ip-address
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:vc-id,leaf,uint32
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:static-label,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:static-label/bd:local-label,leaf,uint32
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:static-label/bd:remote-label,leaf,uint32
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec,choice,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec,case,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:pw-class-template,leaf,pw-template-ref
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec,case,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:encap-type,leaf,identityref
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:tag-impose-vlan,leaf,uint16
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:source-ipv6,leaf,inet:ipv6-address
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:split-horizon-group,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:split-horizon-group/bd:id,leaf,uint16
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mac,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mac/bd:learning-enabled,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mac/bd:limit,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mac/bd:limit/bd:maximum,leaf,uint32
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mac/bd:limit/bd:action,leaf,mac-limit-action
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mac/bd:limit/bd:notification,leaf,identityref
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mac/bd:aging,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mac/bd:aging/bd:time,leaf,uint32
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mac/bd:aging/bd:type,leaf,mac-aging-type
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mac/bd:port-down,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mac/bd:port-down/bd:flush,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mac/bd:secure,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mac/bd:secure/bd:action,leaf,mac-secure-action
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mac/bd:secure/bd:logging,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mac/bd:secure/bd:enabled,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:igmp-snooping,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:igmp-snooping/bd:profile-name,leaf,string
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mld-snooping,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:mld-snooping/bd:profile-name,leaf,string
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:dhcp-ipv4-snooping,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:dhcp-ipv4-snooping/bd:profile-name,leaf,string
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:flooding,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:flooding/bd:disabled,leaf,empty
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:flooding/bd:disabled-unknown-unicast,leaf,empty
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:storm-control,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:storm-control/bd:thresholds,list,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:storm-control/bd:thresholds/bd:traffic-class,leaf,cbridge:eth-traffic-class
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:storm-control/bd:thresholds/bd:value,leaf,uint32
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:storm-control/bd:thresholds/bd:unit,leaf,enumeration
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:storm-control/bd:action,leaf,identityref
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:backup,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:backup/bd:neighbor-ip-address,leaf,inet:ip-address
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:backup/bd:vc-id,leaf,uint32
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:pw-neighbor-spec/bd:backup/bd:pw-class-template,leaf,pw-template-ref
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mtu,leaf,uint16
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:flooding-mode,leaf,enumeration
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:learning-enabled,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:limit,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:limit/bd:maximum,leaf,uint32
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:limit/bd:action,leaf,mac-limit-action
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:limit/bd:notification,leaf,identityref
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:aging,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:aging/bd:time,leaf,uint32
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:aging/bd:type,leaf,mac-aging-type
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:port-down,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:port-down/bd:flush,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:flooding,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:flooding/bd:disabled,leaf,empty
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:flooding/bd:disabled-unknown-unicast,leaf,empty
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:secure,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:secure/bd:action,leaf,mac-secure-action
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:secure/bd:logging,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:static,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:static/bd:mac-addresses,list,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:static/bd:mac-addresses/bd:mac-addr,leaf,yang:mac-address
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mac/bd:static/bd:mac-addresses/bd:drop,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:dynamic-arp-inspection,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:dynamic-arp-inspection/bd:address-validation,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:dynamic-arp-inspection/bd:address-validation/bd:dst-mac,leaf,empty
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:dynamic-arp-inspection/bd:address-validation/bd:src-mac,leaf,empty
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:dynamic-arp-inspection/bd:address-validation/bd:ipv4,leaf,empty
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:dynamic-arp-inspection/bd:logging,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:ip-source-guard,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:ip-source-guard/bd:logging,leaf,boolean
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:storm-control,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:storm-control/bd:thresholds,list,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:storm-control/bd:thresholds/bd:traffic-class,leaf,cbridge:eth-traffic-class
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:storm-control/bd:thresholds/bd:value,leaf,uint32
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:storm-control/bd:thresholds/bd:unit,leaf,enumeration
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:storm-control/bd:action,leaf,identityref
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:igmp-snooping,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:igmp-snooping/bd:profile-name,leaf,string
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:igmp-snooping/bd:disabled,leaf,empty
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mld-snooping,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:mld-snooping/bd:profile-name,leaf,string
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:dhcp-ipv4-snooping,container,
+/bd:bridge-domain-config/bd:bridge-domains/bd:bridge-domain/bd:dhcp-ipv4-snooping/bd:profile-name,leaf,string
+/bd:bridge-domain-state,container,
+/bd:bridge-domain-state/bd:system-capabilities,container,
+/bd:bridge-domain-state/bd:system-capabilities/bd:max-bd,leaf,uint32
+/bd:bridge-domain-state/bd:system-capabilities/bd:max-ac-per-bd,leaf,uint32
+/bd:bridge-domain-state/bd:system-capabilities/bd:max-pw-per-bd,leaf,uint32
+/bd:bridge-domain-state/bd:system-capabilities/bd:max-vfi-per-bd,leaf,uint32
+/bd:bridge-domain-state/bd:system-capabilities/bd:max-sh-group-per-bd,leaf,uint32
+/bd:bridge-domain-state/bd:system-capabilities/bd:max-interflex-if-per-bd,leaf,uint32
+/bd:bridge-domain-state/bd:module-capabilities,container,
+/bd:bridge-domain-state/bd:module-capabilities/bd:modules,list,
+/bd:bridge-domain-state/bd:module-capabilities/bd:modules/bd:name,leaf,string
+/bd:bridge-domain-state/bd:module-capabilities/bd:modules/bd:max-mac-per-bd,leaf,uint32
+/bd:bridge-domain-state/bd:module-capabilities/bd:modules/bd:max-pdd-edge-bd,leaf,uint32
+/bd:bridge-domain-state/bd:module-capabilities/bd:modules/bd:max-bd,leaf,uint32
+/bd:bridge-domain-state/bd:module-capabilities/bd:modules/bd:max-ac-per-bd,leaf,uint32
+/bd:bridge-domain-state/bd:module-capabilities/bd:modules/bd:max-pw-per-bd,leaf,uint32
+/bd:bridge-domain-state/bd:module-capabilities/bd:modules/bd:max-vfi-per-bd,leaf,uint32
+/bd:bridge-domain-state/bd:module-capabilities/bd:modules/bd:max-sh-group-per-bd,leaf,uint32
+/bd:bridge-domain-state/bd:bridge-domains,container,
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain,list,
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:id,leaf,string
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:bd-state,leaf,bridge-domain-state-type
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:create-time,leaf,yang:timestamp
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:last-status-change,leaf,yang:timeticks
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:mac-limit-reached,leaf,boolean
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:p2mp-pw-disabled,leaf,boolean
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members,container,
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member,list,
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:interface,leaf,if:interface-state-ref
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:static-mac-count,leaf,uint32
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:dai-stats,container,
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:dai-stats/bd:packet-drops,leaf,yang:counter64
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:dai-stats/bd:byte-drops,leaf,yang:counter64
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:ipsg-stats,container,
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:ipsg-stats/bd:packet-drops,leaf,yang:counter64
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:ipsg-stats/bd:byte-drops,leaf,yang:counter64
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:storm-control,container,
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:storm-control/bd:drop-counter,list,
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:storm-control/bd:drop-counter/bd:traffic-class,leaf,cbridge:eth-traffic-class
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:storm-control/bd:drop-counter/bd:packet-drops,leaf,yang:counter64
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:ac-member/bd:storm-control/bd:drop-counter/bd:octate-drops,leaf,yang:counter64
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:vfi-member,list,
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:vfi-member/bd:interface,leaf,if:interface-state-ref
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:vfi-member/bd:flooding,container,
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:vfi-member/bd:flooding/bd:status,list,
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:vfi-member/bd:flooding/bd:status/bd:traffic-class,leaf,eth-traffic-class
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:vfi-member/bd:flooding/bd:status/bd:enabled,leaf,boolean
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member,list,
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:vc-peer-address,leaf,pw-oper-vc-peer-addr-ref
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:vc-id,leaf,pw-oper-vc-id-ref
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:flooding,container,
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:flooding/bd:status,list,
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:flooding/bd:status/bd:traffic-class,leaf,eth-traffic-class
+/bd:bridge-domain-state/bd:bridge-domains/bd:bridge-domain/bd:members/bd:access-pw-member/bd:flooding/bd:status/bd:enabled,leaf,boolean
+/bd:bridge-domain-state/bd:mac-table,list,
+/bd:bridge-domain-state/bd:mac-table/bd:bd-id,leaf,string
+/bd:bridge-domain-state/bd:mac-table/bd:mac-address,leaf,yang:mac-address
+/bd:bridge-domain-state/bd:mac-table/bd:mac-type,leaf,enumeration
+/bd:bridge-domain-state/bd:mac-table/bd:interface,leaf,if:interface-ref
+/bd:bridge-domain-state/bd:mac-table/bd:secure-mac,leaf,boolean
+/bd:bridge-domain-state/bd:mac-table/bd:ntfy-mac,leaf,boolean
+/bd:bridge-domain-state/bd:mac-table/bd:age,leaf,yang:timeticks
+/bd:bridge-domain-state/bd:mac-table/bd:location,leaf,string

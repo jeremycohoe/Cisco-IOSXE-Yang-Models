@@ -1,0 +1,62 @@
+ 
+KPI for model: ietf-netconf-acm.yang
+module: ietf-netconf-acm
+  +--rw nacm
+     +--rw enable-nacm?              boolean
+     +--rw read-default?             action-type
+     +--rw write-default?            action-type
+     +--rw exec-default?             action-type
+     +--rw enable-external-groups?   boolean
+     +--ro denied-operations         yang:zero-based-counter32
+     +--ro denied-data-writes        yang:zero-based-counter32
+     +--ro denied-notifications      yang:zero-based-counter32
+     +--rw groups
+     |  +--rw group* [name]
+     |     +--rw name         group-name-type
+     |     +--rw user-name*   user-name-type
+     +--rw rule-list* [name]
+        +--rw name     string
+        +--rw group*   union
+        +--rw rule* [name]
+           +--rw name                       string
+           +--rw module-name?               union
+           +--rw (rule-type)?
+           |  +--:(protocol-operation)
+           |  |  +--rw rpc-name?            union
+           |  +--:(notification)
+           |  |  +--rw notification-name?   union
+           |  +--:(data-node)
+           |     +--rw path                 node-instance-identifier
+           +--rw access-operations?         union
+           +--rw action                     action-type
+           +--rw comment?                   string
+Xpaths for model: ietf-netconf-acm.yang
+/nacm:nacm,container,
+/nacm:nacm/nacm:enable-nacm,leaf,boolean
+/nacm:nacm/nacm:read-default,leaf,action-type
+/nacm:nacm/nacm:write-default,leaf,action-type
+/nacm:nacm/nacm:exec-default,leaf,action-type
+/nacm:nacm/nacm:enable-external-groups,leaf,boolean
+/nacm:nacm/nacm:denied-operations,leaf,yang:zero-based-counter32
+/nacm:nacm/nacm:denied-data-writes,leaf,yang:zero-based-counter32
+/nacm:nacm/nacm:denied-notifications,leaf,yang:zero-based-counter32
+/nacm:nacm/nacm:groups,container,
+/nacm:nacm/nacm:groups/nacm:group,list,
+/nacm:nacm/nacm:groups/nacm:group/nacm:name,leaf,group-name-type
+/nacm:nacm/nacm:groups/nacm:group/nacm:user-name,leaf-list,user-name-type
+/nacm:nacm/nacm:rule-list,list,
+/nacm:nacm/nacm:rule-list/nacm:name,leaf,string
+/nacm:nacm/nacm:rule-list/nacm:group,leaf-list,union
+/nacm:nacm/nacm:rule-list/nacm:rule,list,
+/nacm:nacm/nacm:rule-list/nacm:rule/nacm:name,leaf,string
+/nacm:nacm/nacm:rule-list/nacm:rule/nacm:module-name,leaf,union
+/nacm:nacm/nacm:rule-list/nacm:rule,choice,
+/nacm:nacm/nacm:rule-list/nacm:rule,case,
+/nacm:nacm/nacm:rule-list/nacm:rule/nacm:rpc-name,leaf,union
+/nacm:nacm/nacm:rule-list/nacm:rule,case,
+/nacm:nacm/nacm:rule-list/nacm:rule/nacm:notification-name,leaf,union
+/nacm:nacm/nacm:rule-list/nacm:rule,case,
+/nacm:nacm/nacm:rule-list/nacm:rule/nacm:path,leaf,node-instance-identifier
+/nacm:nacm/nacm:rule-list/nacm:rule/nacm:access-operations,leaf,union
+/nacm:nacm/nacm:rule-list/nacm:rule/nacm:action,leaf,action-type
+/nacm:nacm/nacm:rule-list/nacm:rule/nacm:comment,leaf,string

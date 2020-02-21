@@ -1,0 +1,92 @@
+ 
+KPI for model: Cisco-IOS-XE-udld.yang
+
+module: Cisco-IOS-XE-udld
+  augment /ios:native/ios:udld:
+    +--rw aggressive?   empty
+    +--rw enable?       empty
+    +--rw message
+    |  +--rw time?   uint8
+    +--rw recovery!
+       +--rw interval?   uint32
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw udld
+       +--rw port!
+          +--rw (port-choice)?
+             +--:(aggressive)
+             |  +--rw aggressive?   empty
+             +--:(disable)
+                +--rw disable?      empty
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw udld
+       +--rw port!
+          +--rw (port-choice)?
+             +--:(aggressive)
+             |  +--rw aggressive?   empty
+             +--:(disable)
+                +--rw disable?      empty
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw udld
+       +--rw port!
+          +--rw (port-choice)?
+             +--:(aggressive)
+             |  +--rw aggressive?   empty
+             +--:(disable)
+                +--rw disable?      empty
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw udld
+       +--rw port!
+          +--rw (port-choice)?
+             +--:(aggressive)
+             |  +--rw aggressive?   empty
+             +--:(disable)
+                +--rw disable?      empty
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw udld
+       +--rw port!
+          +--rw (port-choice)?
+             +--:(aggressive)
+             |  +--rw aggressive?   empty
+             +--:(disable)
+                +--rw disable?      empty
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw udld
+       +--rw port!
+          +--rw (port-choice)?
+             +--:(aggressive)
+             |  +--rw aggressive?   empty
+             +--:(disable)
+                +--rw disable?      empty
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw udld
+       +--rw port!
+          +--rw (port-choice)?
+             +--:(aggressive)
+             |  +--rw aggressive?   empty
+             +--:(disable)
+                +--rw disable?      empty
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw udld
+       +--rw port!
+          +--rw (port-choice)?
+             +--:(aggressive)
+             |  +--rw aggressive?   empty
+             +--:(disable)
+                +--rw disable?      empty
+  augment /ios:native/ios:interface/ios:Tunnel:
+    +--rw udld
+       +--rw port!
+          +--rw (port-choice)?
+             +--:(aggressive)
+             |  +--rw aggressive?   empty
+             +--:(disable)
+                +--rw disable?      empty
+  augment /ios:native/ios:interface/ios:Loopback:
+    +--rw udld
+       +--rw port!
+          +--rw (port-choice)?
+             +--:(aggressive)
+             |  +--rw aggressive?   empty
+             +--:(disable)
+                +--rw disable?      empty
+Xpaths for model: Cisco-IOS-XE-udld.yang

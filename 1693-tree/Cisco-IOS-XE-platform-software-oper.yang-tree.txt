@@ -1,0 +1,142 @@
+ 
+KPI for model: Cisco-IOS-XE-platform-software-oper.yang
+module: Cisco-IOS-XE-platform-software-oper
+  +--ro cisco-platform-software
+     +--ro system-usages
+     |  +--ro system-usage* [fru slotnum baynum chassisnum]
+     |     +--ro fru                      platform-sw-ios-xe-oper:b-fru
+     |     +--ro slotnum                  int16
+     |     +--ro baynum                   int16
+     |     +--ro chassisnum               int16
+     |     +--ro process-system-usages
+     |        +--ro process-system-usage* [pid]
+     |           +--ro pid                         uint32
+     |           +--ro name?                       string
+     |           +--ro total-run-time?             uint64
+     |           +--ro five-seconds?               uint64
+     |           +--ro allocated-memory?           uint64
+     |           +--ro allocated-memory-percent?   uint32
+     +--ro control-processes
+     |  +--ro control-process* [fru slotnum baynum chassisnum]
+     |     +--ro fru                       platform-sw-ios-xe-oper:b-fru
+     |     +--ro slotnum                   int16
+     |     +--ro baynum                    int16
+     |     +--ro chassisnum                int16
+     |     +--ro control-process-status?   string
+     |     +--ro updated?                  uint64
+     |     +--ro load-average-stats
+     |     |  +--ro load-average-status?   string
+     |     +--ro load-avg-minutes
+     |     |  +--ro load-avg-minute* [number]
+     |     |     +--ro number     uint64
+     |     |     +--ro average?   decimal64
+     |     |     +--ro status
+     |     |        +--ro condition?          string
+     |     |        +--ro threshold-status?   string
+     |     |        +--ro threshold-value?    decimal64
+     |     +--ro memory-stats
+     |     |  +--ro memory-status?       string
+     |     |  +--ro total?               uint64
+     |     |  +--ro used-number?         uint64
+     |     |  +--ro used-percent?        uint64
+     |     |  +--ro free-number?         uint64
+     |     |  +--ro free-percent?        uint64
+     |     |  +--ro available-number?    uint64
+     |     |  +--ro available-percent?   uint64
+     |     |  +--ro committed-number?    uint64
+     |     |  +--ro committed-percent?   uint8
+     |     |  +--ro status
+     |     |     +--ro warning-threshold-percent?    uint32
+     |     |     +--ro critical-threshold-percent?   uint32
+     |     +--ro per-core-stats
+     |        +--ro per-core-stat* [name]
+     |           +--ro name       uint32
+     |           +--ro user?      decimal64
+     |           +--ro system?    decimal64
+     |           +--ro nice?      decimal64
+     |           +--ro idle?      decimal64
+     |           +--ro irq?       decimal64
+     |           +--ro sirq?      decimal64
+     |           +--ro io-wait?   decimal64
+     +--ro q-filesystem* [fru slotnum baynum chassisnum]
+        +--ro fru           platform-sw-ios-xe-oper:b-fru
+        +--ro slotnum       int16
+        +--ro baynum        int16
+        +--ro chassisnum    int16
+        +--ro partitions* [name]
+        |  +--ro name          string
+        |  +--ro total-size?   uint64
+        |  +--ro used-size?    uint64
+        +--ro core-files* [filename]
+           +--ro filename    string
+           +--ro time?       yang:date-and-time
+Xpaths for model: Cisco-IOS-XE-platform-software-oper.yang
+/platform-sw-ios-xe-oper:cisco-platform-software,container,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:system-usages,container,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:system-usages/platform-sw-ios-xe-oper:system-usage,list,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:system-usages/platform-sw-ios-xe-oper:system-usage/platform-sw-ios-xe-oper:fru,leaf,platform-sw-ios-xe-oper:b-fru
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:system-usages/platform-sw-ios-xe-oper:system-usage/platform-sw-ios-xe-oper:slotnum,leaf,int16
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:system-usages/platform-sw-ios-xe-oper:system-usage/platform-sw-ios-xe-oper:baynum,leaf,int16
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:system-usages/platform-sw-ios-xe-oper:system-usage/platform-sw-ios-xe-oper:chassisnum,leaf,int16
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:system-usages/platform-sw-ios-xe-oper:system-usage/platform-sw-ios-xe-oper:process-system-usages,container,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:system-usages/platform-sw-ios-xe-oper:system-usage/platform-sw-ios-xe-oper:process-system-usages/platform-sw-ios-xe-oper:process-system-usage,list,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:system-usages/platform-sw-ios-xe-oper:system-usage/platform-sw-ios-xe-oper:process-system-usages/platform-sw-ios-xe-oper:process-system-usage/platform-sw-ios-xe-oper:pid,leaf,uint32
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:system-usages/platform-sw-ios-xe-oper:system-usage/platform-sw-ios-xe-oper:process-system-usages/platform-sw-ios-xe-oper:process-system-usage/platform-sw-ios-xe-oper:name,leaf,string
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:system-usages/platform-sw-ios-xe-oper:system-usage/platform-sw-ios-xe-oper:process-system-usages/platform-sw-ios-xe-oper:process-system-usage/platform-sw-ios-xe-oper:total-run-time,leaf,uint64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:system-usages/platform-sw-ios-xe-oper:system-usage/platform-sw-ios-xe-oper:process-system-usages/platform-sw-ios-xe-oper:process-system-usage/platform-sw-ios-xe-oper:five-seconds,leaf,uint64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:system-usages/platform-sw-ios-xe-oper:system-usage/platform-sw-ios-xe-oper:process-system-usages/platform-sw-ios-xe-oper:process-system-usage/platform-sw-ios-xe-oper:allocated-memory,leaf,uint64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:system-usages/platform-sw-ios-xe-oper:system-usage/platform-sw-ios-xe-oper:process-system-usages/platform-sw-ios-xe-oper:process-system-usage/platform-sw-ios-xe-oper:allocated-memory-percent,leaf,uint32
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes,container,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process,list,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:fru,leaf,platform-sw-ios-xe-oper:b-fru
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:slotnum,leaf,int16
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:baynum,leaf,int16
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:chassisnum,leaf,int16
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:control-process-status,leaf,string
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:updated,leaf,uint64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:load-average-stats,container,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:load-average-stats/platform-sw-ios-xe-oper:load-average-status,leaf,string
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:load-avg-minutes,container,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:load-avg-minutes/platform-sw-ios-xe-oper:load-avg-minute,list,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:load-avg-minutes/platform-sw-ios-xe-oper:load-avg-minute/platform-sw-ios-xe-oper:number,leaf,uint64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:load-avg-minutes/platform-sw-ios-xe-oper:load-avg-minute/platform-sw-ios-xe-oper:average,leaf,decimal64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:load-avg-minutes/platform-sw-ios-xe-oper:load-avg-minute/platform-sw-ios-xe-oper:status,container,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:load-avg-minutes/platform-sw-ios-xe-oper:load-avg-minute/platform-sw-ios-xe-oper:status/platform-sw-ios-xe-oper:condition,leaf,string
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:load-avg-minutes/platform-sw-ios-xe-oper:load-avg-minute/platform-sw-ios-xe-oper:status/platform-sw-ios-xe-oper:threshold-status,leaf,string
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:load-avg-minutes/platform-sw-ios-xe-oper:load-avg-minute/platform-sw-ios-xe-oper:status/platform-sw-ios-xe-oper:threshold-value,leaf,decimal64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:memory-stats,container,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:memory-stats/platform-sw-ios-xe-oper:memory-status,leaf,string
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:memory-stats/platform-sw-ios-xe-oper:total,leaf,uint64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:memory-stats/platform-sw-ios-xe-oper:used-number,leaf,uint64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:memory-stats/platform-sw-ios-xe-oper:used-percent,leaf,uint64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:memory-stats/platform-sw-ios-xe-oper:free-number,leaf,uint64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:memory-stats/platform-sw-ios-xe-oper:free-percent,leaf,uint64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:memory-stats/platform-sw-ios-xe-oper:available-number,leaf,uint64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:memory-stats/platform-sw-ios-xe-oper:available-percent,leaf,uint64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:memory-stats/platform-sw-ios-xe-oper:committed-number,leaf,uint64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:memory-stats/platform-sw-ios-xe-oper:committed-percent,leaf,uint8
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:memory-stats/platform-sw-ios-xe-oper:status,container,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:memory-stats/platform-sw-ios-xe-oper:status/platform-sw-ios-xe-oper:warning-threshold-percent,leaf,uint32
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:memory-stats/platform-sw-ios-xe-oper:status/platform-sw-ios-xe-oper:critical-threshold-percent,leaf,uint32
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:per-core-stats,container,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:per-core-stats/platform-sw-ios-xe-oper:per-core-stat,list,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:per-core-stats/platform-sw-ios-xe-oper:per-core-stat/platform-sw-ios-xe-oper:name,leaf,uint32
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:per-core-stats/platform-sw-ios-xe-oper:per-core-stat/platform-sw-ios-xe-oper:user,leaf,decimal64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:per-core-stats/platform-sw-ios-xe-oper:per-core-stat/platform-sw-ios-xe-oper:system,leaf,decimal64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:per-core-stats/platform-sw-ios-xe-oper:per-core-stat/platform-sw-ios-xe-oper:nice,leaf,decimal64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:per-core-stats/platform-sw-ios-xe-oper:per-core-stat/platform-sw-ios-xe-oper:idle,leaf,decimal64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:per-core-stats/platform-sw-ios-xe-oper:per-core-stat/platform-sw-ios-xe-oper:irq,leaf,decimal64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:per-core-stats/platform-sw-ios-xe-oper:per-core-stat/platform-sw-ios-xe-oper:sirq,leaf,decimal64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:control-processes/platform-sw-ios-xe-oper:control-process/platform-sw-ios-xe-oper:per-core-stats/platform-sw-ios-xe-oper:per-core-stat/platform-sw-ios-xe-oper:io-wait,leaf,decimal64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:q-filesystem,list,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:q-filesystem/platform-sw-ios-xe-oper:fru,leaf,platform-sw-ios-xe-oper:b-fru
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:q-filesystem/platform-sw-ios-xe-oper:slotnum,leaf,int16
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:q-filesystem/platform-sw-ios-xe-oper:baynum,leaf,int16
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:q-filesystem/platform-sw-ios-xe-oper:chassisnum,leaf,int16
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:q-filesystem/platform-sw-ios-xe-oper:partitions,list,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:q-filesystem/platform-sw-ios-xe-oper:partitions/platform-sw-ios-xe-oper:name,leaf,string
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:q-filesystem/platform-sw-ios-xe-oper:partitions/platform-sw-ios-xe-oper:total-size,leaf,uint64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:q-filesystem/platform-sw-ios-xe-oper:partitions/platform-sw-ios-xe-oper:used-size,leaf,uint64
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:q-filesystem/platform-sw-ios-xe-oper:core-files,list,
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:q-filesystem/platform-sw-ios-xe-oper:core-files/platform-sw-ios-xe-oper:filename,leaf,string
+/platform-sw-ios-xe-oper:cisco-platform-software/platform-sw-ios-xe-oper:q-filesystem/platform-sw-ios-xe-oper:core-files/platform-sw-ios-xe-oper:time,leaf,yang:date-and-time

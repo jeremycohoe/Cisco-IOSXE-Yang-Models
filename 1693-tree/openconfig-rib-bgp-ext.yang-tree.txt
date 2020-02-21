@@ -1,0 +1,25 @@
+ 
+KPI for model: openconfig-rib-bgp-ext.yang
+
+module: openconfig-rib-bgp-ext
+  augment /oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route:
+    +--ro reject-reason?   union
+  augment /oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route:
+    +--ro reject-reason?   union
+  augment /oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route:
+    +--ro reject-reason?   union
+  augment /oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route:
+    +--ro reject-reason?   union
+  augment /oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route:
+    +--ro reject-reason?   union
+  augment /oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route:
+    +--ro reject-reason?   union
+  augment /oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route:
+    +--ro reject-reason?   union
+  augment /oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route:
+    +--ro reject-reason?   union
+  augment /oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route:
+    +--ro reject-reason?   union
+  augment /oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route:
+    +--ro reject-reason?   union
+Xpaths for model: openconfig-rib-bgp-ext.yang

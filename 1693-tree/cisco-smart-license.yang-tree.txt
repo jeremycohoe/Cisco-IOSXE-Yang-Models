@@ -1,0 +1,329 @@
+ 
+KPI for model: cisco-smart-license.yang
+module: cisco-smart-license
+  +--rw licensing
+     +--rw config
+     |  +--rw enable?      boolean
+     |  +--rw custom-id?   string
+     |  +--rw privacy
+     |  |  +--rw hostname?   boolean
+     |  |  +--rw version?    boolean
+     |  +--rw utility
+     |  |  +--rw utility-enable?   boolean
+     |  |  +--rw customer-info
+     |  |     +--rw id?            string
+     |  |     +--rw name?          string
+     |  |     +--rw street?        string
+     |  |     +--rw city?          string
+     |  |     +--rw state?         string
+     |  |     +--rw country?       string
+     |  |     +--rw postal-code?   string
+     |  +--rw transport
+     |     +--rw transport-type?    transport-type-enum
+     |     +--rw transport-smart
+     |        +--rw (url-setting)?
+     |           +--:(set-default)
+     |           |  +--rw url-default?   boolean
+     |           +--:(set-urls)
+     |              +--rw urls
+     |                 +--rw url-registration?   inet:uri
+     |                 +--rw url-utility?        inet:uri
+     +--ro state
+        +--ro always-enabled?   boolean
+        +--ro smart-enabled?    boolean
+        +--ro version?          string
+        +--ro state-info
+           +--ro registration
+           |  +--ro registration-state?         registration-state-enum
+           |  +--ro registration-in-progress
+           |  |  +--ro start-time?   yang:date-and-time
+           |  +--ro registration-failed
+           |  |  +--ro fail-time?      yang:date-and-time
+           |  |  +--ro fail-message?   fail-message-type
+           |  +--ro registration-retry
+           |  |  +--ro retry-next-time?   yang:date-and-time
+           |  |  +--ro fail-time?         yang:date-and-time
+           |  |  +--ro fail-message?      fail-message-type
+           |  +--ro registration-complete
+           |  |  +--ro complete-time?        yang:date-and-time
+           |  |  +--ro last-renew-time?      yang:date-and-time
+           |  |  +--ro next-renew-time?      yang:date-and-time
+           |  |  +--ro expire-time?          yang:date-and-time
+           |  |  +--ro last-renew-success?   boolean
+           |  |  +--ro fail-message?         fail-message-type
+           |  |  +--ro smart-account?        string
+           |  |  +--ro virtual-account?      string
+           |  +--ro export-control-allowed?     boolean
+           +--ro authorization
+           |  +--ro authorization-state?                    authorization-state-enum
+           |  +--ro authorization-none
+           |  +--ro authorization-eval
+           |  |  +--ro seconds-left?   uint64
+           |  +--ro authorization-eval-expired
+           |  |  +--ro expire-time?   yang:date-and-time
+           |  +--ro authorization-authorized
+           |  |  +--ro last-comm-status-success?   boolean
+           |  |  +--ro fail-message?               fail-message-type
+           |  |  +--ro last-comm-time?             yang:date-and-time
+           |  |  +--ro next-comm-time?             yang:date-and-time
+           |  |  +--ro comm-deadline-time?         yang:date-and-time
+           |  +--ro authorization-authorized-reservation
+           |  |  +--ro reservation-time?   yang:date-and-time
+           |  +--ro authorization-out-of-compliance
+           |  |  +--ro last-comm-status-success?   boolean
+           |  |  +--ro fail-message?               fail-message-type
+           |  |  +--ro last-comm-time?             yang:date-and-time
+           |  |  +--ro next-comm-time?             yang:date-and-time
+           |  |  +--ro comm-deadline-time?         yang:date-and-time
+           |  |  +--ro ooc-time?                   yang:date-and-time
+           |  +--ro authorization-authorization-expired
+           |     +--ro last-comm-status-success?   boolean
+           |     +--ro fail-message?               fail-message-type
+           |     +--ro last-comm-time?             yang:date-and-time
+           |     +--ro next-comm-time?             yang:date-and-time
+           |     +--ro comm-deadline-time?         yang:date-and-time
+           +--ro utility
+           |  +--ro enabled?           boolean
+           |  +--ro reporting?         utility-reporting-type-enum
+           |  +--ro reporting-times
+           |  |  +--ro last-report-time?      yang:date-and-time
+           |  |  +--ro last-report-success?   boolean
+           |  |  +--ro fail-message?          fail-message-type
+           |  |  +--ro next-report-time?      yang:date-and-time
+           |  +--ro customer-info
+           |     +--ro id?            string
+           |     +--ro name?          string
+           |     +--ro street?        string
+           |     +--ro city?          string
+           |     +--ro state?         string
+           |     +--ro country?       string
+           |     +--ro postal-code?   string
+           +--ro custom-id?       string
+           +--ro transport
+           |  +--ro transport-type?   transport-type-enum
+           |  +--ro url-settings
+           |     +--ro url-registration?   inet:uri
+           |     +--ro url-utility?        inet:uri
+           +--ro privacy
+           |  +--ro hostname?   boolean
+           |  +--ro version?    boolean
+           +--ro evaluation
+           |  +--ro eval-in-use?        boolean
+           |  +--ro eval-expired?       boolean
+           |  +--ro eval-period-left
+           |  |  +--ro time-left?   uint32
+           |  +--ro eval-expire-time
+           |     +--ro expire-time?   yang:date-and-time
+           +--ro udi
+           |  +--ro pid?               string
+           |  +--ro sn?                string
+           |  +--ro vid?               string
+           |  +--ro uuid?              yang:uuid
+           |  +--ro suvi?              string
+           |  +--ro host-identifier?   string
+           |  +--ro mac-address?       yang:mac-address
+           +--ro usage* [entitlement-tag]
+              +--ro entitlement-tag     string
+              +--ro short-name?         string
+              +--ro license-name?       string
+              +--ro description?        string
+              +--ro count?              uint32
+              +--ro enforcement-mode?   enforcement-mode-enum
+              +--ro post-paid?          boolean
+              +--ro subscription-id?    string
+
+  rpcs:
+    +---x register-id-token
+    |  +---w input
+    |  |  +---w id-token?   string
+    |  |  +---w force?      boolean
+    |  +--ro output
+    |     +--ro return-code?   error-enum
+    +---x de-register
+    |  +--ro output
+    |     +--ro return-code?   error-enum
+    +---x renew-id
+    |  +--ro output
+    |     +--ro return-code?   error-enum
+    +---x renew-auth
+       +--ro output
+          +--ro return-code?   error-enum
+
+  notifications:
+    +---n ready
+    +---n enabled
+    +---n registration-fail
+    |  +--ro reason?    notif-register-failure-enum
+    |  +--ro message?   fail-message-type
+    +---n enforcement-mode
+    |  +--ro mode?   authorization-state-enum
+    +---n registration-success
+    +---n registration-expired
+    |  +--ro reason?    notif-register-failure-enum
+    |  +--ro message?   fail-message-type
+    +---n registration-renew-success
+    +---n registration-renew-fail
+    |  +--ro reason?    notif-register-failure-enum
+    |  +--ro message?   fail-message-type
+    +---n authorization-renew-success
+    +---n authorization-renew-fail
+    |  +--ro reason?    notif-register-failure-enum
+    |  +--ro message?   fail-message-type
+    +---n communications-fail
+    |  +--ro reason?    notif-register-failure-enum
+    |  +--ro message?   fail-message-type
+    +---n communications-restored
+    +---n registration-out-of-range
+    +---n evaluation-expiration-warning
+    |  +--ro seconds-left?   uint64
+    +---n evaluation-expired
+    |  +--ro expire-time?   yang:date-and-time
+    +---n registration-expiration-warning
+    |  +--ro expire-time?   yang:date-and-time
+    +---n de-register-success
+    +---n de-register-fail
+    |  +--ro reason?    notif-register-failure-enum
+    |  +--ro message?   fail-message-type
+    +---n utility-expired
+    |  +--ro reason?    notif-register-failure-enum
+    |  +--ro message?   fail-message-type
+    +---n utility-renewal-fail
+    |  +--ro reason?    notif-register-failure-enum
+    |  +--ro message?   fail-message-type
+    +---n utility-renewal-success
+    +---n utility-RUM-fail
+    |  +--ro reason?    notif-register-failure-enum
+    |  +--ro message?   fail-message-type
+    +---n utility-reporting-started
+    +---n utility-reporting-stopped
+Xpaths for model: cisco-smart-license.yang
+/cisco-smart-license:licensing,container,
+/cisco-smart-license:licensing/cisco-smart-license:config,container,
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:enable,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:custom-id,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:privacy,container,
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:privacy/cisco-smart-license:hostname,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:privacy/cisco-smart-license:version,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:utility,container,
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:utility/cisco-smart-license:utility-enable,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:utility/cisco-smart-license:customer-info,container,
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:utility/cisco-smart-license:customer-info/cisco-smart-license:id,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:utility/cisco-smart-license:customer-info/cisco-smart-license:name,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:utility/cisco-smart-license:customer-info/cisco-smart-license:street,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:utility/cisco-smart-license:customer-info/cisco-smart-license:city,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:utility/cisco-smart-license:customer-info/cisco-smart-license:state,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:utility/cisco-smart-license:customer-info/cisco-smart-license:country,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:utility/cisco-smart-license:customer-info/cisco-smart-license:postal-code,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:transport,container,
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:transport/cisco-smart-license:transport-type,leaf,transport-type-enum
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:transport/cisco-smart-license:transport-smart,container,
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:transport/cisco-smart-license:transport-smart,choice,
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:transport/cisco-smart-license:transport-smart,case,
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:transport/cisco-smart-license:transport-smart/cisco-smart-license:url-default,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:transport/cisco-smart-license:transport-smart,case,
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:transport/cisco-smart-license:transport-smart/cisco-smart-license:urls,container,
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:transport/cisco-smart-license:transport-smart/cisco-smart-license:urls/cisco-smart-license:url-registration,leaf,inet:uri
+/cisco-smart-license:licensing/cisco-smart-license:config/cisco-smart-license:transport/cisco-smart-license:transport-smart/cisco-smart-license:urls/cisco-smart-license:url-utility,leaf,inet:uri
+/cisco-smart-license:licensing/cisco-smart-license:state,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:always-enabled,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:smart-enabled,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:version,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-state,leaf,registration-state-enum
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-in-progress,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-in-progress/cisco-smart-license:start-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-failed,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-failed/cisco-smart-license:fail-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-failed/cisco-smart-license:fail-message,leaf,fail-message-type
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-retry,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-retry/cisco-smart-license:retry-next-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-retry/cisco-smart-license:fail-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-retry/cisco-smart-license:fail-message,leaf,fail-message-type
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-complete,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-complete/cisco-smart-license:complete-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-complete/cisco-smart-license:last-renew-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-complete/cisco-smart-license:next-renew-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-complete/cisco-smart-license:expire-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-complete/cisco-smart-license:last-renew-success,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-complete/cisco-smart-license:fail-message,leaf,fail-message-type
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-complete/cisco-smart-license:smart-account,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:registration-complete/cisco-smart-license:virtual-account,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:registration/cisco-smart-license:export-control-allowed,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-state,leaf,authorization-state-enum
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-none,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-eval,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-eval/cisco-smart-license:seconds-left,leaf,uint64
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-eval-expired,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-eval-expired/cisco-smart-license:expire-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-authorized,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-authorized/cisco-smart-license:last-comm-status-success,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-authorized/cisco-smart-license:fail-message,leaf,fail-message-type
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-authorized/cisco-smart-license:last-comm-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-authorized/cisco-smart-license:next-comm-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-authorized/cisco-smart-license:comm-deadline-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-authorized-reservation,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-authorized-reservation/cisco-smart-license:reservation-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-out-of-compliance,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-out-of-compliance/cisco-smart-license:last-comm-status-success,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-out-of-compliance/cisco-smart-license:fail-message,leaf,fail-message-type
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-out-of-compliance/cisco-smart-license:last-comm-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-out-of-compliance/cisco-smart-license:next-comm-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-out-of-compliance/cisco-smart-license:comm-deadline-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-out-of-compliance/cisco-smart-license:ooc-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-authorization-expired,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-authorization-expired/cisco-smart-license:last-comm-status-success,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-authorization-expired/cisco-smart-license:fail-message,leaf,fail-message-type
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-authorization-expired/cisco-smart-license:last-comm-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-authorization-expired/cisco-smart-license:next-comm-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:authorization/cisco-smart-license:authorization-authorization-expired/cisco-smart-license:comm-deadline-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility/cisco-smart-license:enabled,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility/cisco-smart-license:reporting,leaf,utility-reporting-type-enum
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility/cisco-smart-license:reporting-times,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility/cisco-smart-license:reporting-times/cisco-smart-license:last-report-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility/cisco-smart-license:reporting-times/cisco-smart-license:last-report-success,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility/cisco-smart-license:reporting-times/cisco-smart-license:fail-message,leaf,fail-message-type
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility/cisco-smart-license:reporting-times/cisco-smart-license:next-report-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility/cisco-smart-license:customer-info,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility/cisco-smart-license:customer-info/cisco-smart-license:id,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility/cisco-smart-license:customer-info/cisco-smart-license:name,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility/cisco-smart-license:customer-info/cisco-smart-license:street,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility/cisco-smart-license:customer-info/cisco-smart-license:city,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility/cisco-smart-license:customer-info/cisco-smart-license:state,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility/cisco-smart-license:customer-info/cisco-smart-license:country,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:utility/cisco-smart-license:customer-info/cisco-smart-license:postal-code,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:custom-id,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:transport,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:transport/cisco-smart-license:transport-type,leaf,transport-type-enum
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:transport/cisco-smart-license:url-settings,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:transport/cisco-smart-license:url-settings/cisco-smart-license:url-registration,leaf,inet:uri
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:transport/cisco-smart-license:url-settings/cisco-smart-license:url-utility,leaf,inet:uri
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:privacy,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:privacy/cisco-smart-license:hostname,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:privacy/cisco-smart-license:version,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:evaluation,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:evaluation/cisco-smart-license:eval-in-use,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:evaluation/cisco-smart-license:eval-expired,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:evaluation/cisco-smart-license:eval-period-left,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:evaluation/cisco-smart-license:eval-period-left/cisco-smart-license:time-left,leaf,uint32
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:evaluation/cisco-smart-license:eval-expire-time,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:evaluation/cisco-smart-license:eval-expire-time/cisco-smart-license:expire-time,leaf,yang:date-and-time
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:udi,container,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:udi/cisco-smart-license:pid,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:udi/cisco-smart-license:sn,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:udi/cisco-smart-license:vid,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:udi/cisco-smart-license:uuid,leaf,yang:uuid
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:udi/cisco-smart-license:suvi,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:udi/cisco-smart-license:host-identifier,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:udi/cisco-smart-license:mac-address,leaf,yang:mac-address
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:usage,list,
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:usage/cisco-smart-license:entitlement-tag,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:usage/cisco-smart-license:short-name,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:usage/cisco-smart-license:license-name,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:usage/cisco-smart-license:description,leaf,string
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:usage/cisco-smart-license:count,leaf,uint32
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:usage/cisco-smart-license:enforcement-mode,leaf,enforcement-mode-enum
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:usage/cisco-smart-license:post-paid,leaf,boolean
+/cisco-smart-license:licensing/cisco-smart-license:state/cisco-smart-license:state-info/cisco-smart-license:usage/cisco-smart-license:subscription-id,leaf,string

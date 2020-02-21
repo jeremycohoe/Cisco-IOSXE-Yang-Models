@@ -1,0 +1,116 @@
+ 
+KPI for model: Cisco-IOS-XE-mdt-cfg.yang
+module: Cisco-IOS-XE-mdt-cfg
+  +--rw mdt-config-data
+     +--rw mdt-subscription* [subscription-id]
+     |  +--rw subscription-id    uint32
+     |  +--rw base
+     |  |  +--rw stream?                    string
+     |  |  +--rw encoding?                  string
+     |  |  +--rw source-vrf?                string
+     |  |  +--rw source-address?            inet:ip-address
+     |  |  +--rw (update-trigger-choice)?
+     |  |  |  +--:(sub-upd-trig-none)
+     |  |  |  |  +--rw no-trigger?          uint32
+     |  |  |  +--:(sub-upd-trig-periodic)
+     |  |  |  |  +--rw period               uint32
+     |  |  |  +--:(sub-upd-trig-on-change)
+     |  |  |     +--rw no-synch-on-start?   boolean
+     |  |  +--rw (filter-type-choice)?
+     |  |     +--:(sub-filter-type-none)
+     |  |     |  +--rw no-filter?           uint32
+     |  |     +--:(sub-filter-type-xpath)
+     |  |     |  +--rw xpath?               string
+     |  |     +--:(sub-filter-type-tdl-uri)
+     |  |     |  +--rw tdl-uri?             string
+     |  |     +--:(sub-filter-type-tdl-transform)
+     |  |        +--rw transform-name?      string
+     |  +--rw mdt-receivers* [address port]
+     |     +--rw protocol?   string
+     |     +--rw profile?    string
+     |     +--rw address     inet:ip-address
+     |     +--rw port        uint16
+     +--rw mdt-xfrm* [name]
+        +--rw name              string
+        +--rw fully-specify?    boolean
+        +--rw mdt-xfrm-input* [table-name]
+        |  +--rw table-name              string
+        |  +--rw uri?                    string
+        |  +--rw mdt-xfrm-input-field* [field]
+        |  |  +--rw field    string
+        |  +--rw join-key?               string
+        |  +--rw attr-type?              mdt-cfg:mdt-xfrm-attr-type
+        |  +--rw lop?                    mdt-cfg:mdt-xfrm-logic-op
+        +--rw mdt-xfrm-op* [id]
+           +--rw id                     uint32
+           +--rw mdt-xfrm-op-filters* [filter-id]
+           |  +--rw filter-id    uint32
+           |  +--rw field?       string
+           |  +--rw op-event
+           |  |  +--rw onchange?   boolean
+           |  +--rw lop?         mdt-cfg:mdt-xfrm-logic-op
+           |  +--rw condition
+           |  |  +--rw operator?   mdt-cfg:mdt-xfrm-operator
+           |  |  +--rw value?      string
+           |  +--rw next-lop?    mdt-cfg:mdt-xfrm-logic-op
+           +--rw mdt-xfrm-op-fields* [field-id]
+              +--rw field-id    uint32
+              +--rw field?      string
+              +--rw op-type?    mdt-cfg:mdt-xfrm-op-type
+Xpaths for model: Cisco-IOS-XE-mdt-cfg.yang
+/mdt-cfg:mdt-config-data,container,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription,list,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:subscription-id,leaf,uint32
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base,container,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base/mdt-cfg:stream,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base/mdt-cfg:encoding,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base/mdt-cfg:source-vrf,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base/mdt-cfg:source-address,leaf,inet:ip-address
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base,choice,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base,case,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base/mdt-cfg:no-trigger,leaf,uint32
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base,case,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base/mdt-cfg:period,leaf,uint32
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base,case,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base/mdt-cfg:no-synch-on-start,leaf,boolean
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base,choice,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base,case,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base/mdt-cfg:no-filter,leaf,uint32
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base,case,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base/mdt-cfg:xpath,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base,case,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base/mdt-cfg:tdl-uri,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base,case,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:base/mdt-cfg:transform-name,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:mdt-receivers,list,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:mdt-receivers/mdt-cfg:protocol,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:mdt-receivers/mdt-cfg:profile,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:mdt-receivers/mdt-cfg:address,leaf,inet:ip-address
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-subscription/mdt-cfg:mdt-receivers/mdt-cfg:port,leaf,uint16
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm,list,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:name,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:fully-specify,leaf,boolean
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-input,list,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-input/mdt-cfg:table-name,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-input/mdt-cfg:uri,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-input/mdt-cfg:mdt-xfrm-input-field,list,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-input/mdt-cfg:mdt-xfrm-input-field/mdt-cfg:field,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-input/mdt-cfg:join-key,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-input/mdt-cfg:attr-type,leaf,mdt-cfg:mdt-xfrm-attr-type
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-input/mdt-cfg:lop,leaf,mdt-cfg:mdt-xfrm-logic-op
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op,list,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op/mdt-cfg:id,leaf,uint32
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op/mdt-cfg:mdt-xfrm-op-filters,list,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op/mdt-cfg:mdt-xfrm-op-filters/mdt-cfg:filter-id,leaf,uint32
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op/mdt-cfg:mdt-xfrm-op-filters/mdt-cfg:field,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op/mdt-cfg:mdt-xfrm-op-filters/mdt-cfg:op-event,container,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op/mdt-cfg:mdt-xfrm-op-filters/mdt-cfg:op-event/mdt-cfg:onchange,leaf,boolean
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op/mdt-cfg:mdt-xfrm-op-filters/mdt-cfg:lop,leaf,mdt-cfg:mdt-xfrm-logic-op
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op/mdt-cfg:mdt-xfrm-op-filters/mdt-cfg:condition,container,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op/mdt-cfg:mdt-xfrm-op-filters/mdt-cfg:condition/mdt-cfg:operator,leaf,mdt-cfg:mdt-xfrm-operator
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op/mdt-cfg:mdt-xfrm-op-filters/mdt-cfg:condition/mdt-cfg:value,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op/mdt-cfg:mdt-xfrm-op-filters/mdt-cfg:next-lop,leaf,mdt-cfg:mdt-xfrm-logic-op
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op/mdt-cfg:mdt-xfrm-op-fields,list,
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op/mdt-cfg:mdt-xfrm-op-fields/mdt-cfg:field-id,leaf,uint32
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op/mdt-cfg:mdt-xfrm-op-fields/mdt-cfg:field,leaf,string
+/mdt-cfg:mdt-config-data/mdt-cfg:mdt-xfrm/mdt-cfg:mdt-xfrm-op/mdt-cfg:mdt-xfrm-op-fields/mdt-cfg:op-type,leaf,mdt-cfg:mdt-xfrm-op-type

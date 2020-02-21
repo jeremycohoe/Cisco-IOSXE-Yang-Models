@@ -1,0 +1,72 @@
+ 
+KPI for model: ietf-interfaces.yang
+module: ietf-interfaces
+  +--rw interfaces
+  |  +--rw interface* [name]
+  |     +--rw name                        string
+  |     +--rw description?                string
+  |     +--rw type                        identityref
+  |     +--rw enabled?                    boolean
+  |     +--rw link-up-down-trap-enable?   enumeration {if-mib}?
+  +--ro interfaces-state
+     +--ro interface* [name]
+        +--ro name               string
+        +--ro type               identityref
+        +--ro admin-status       enumeration {if-mib}?
+        +--ro oper-status        enumeration
+        +--ro last-change?       yang:date-and-time
+        +--ro if-index           int32 {if-mib}?
+        +--ro phys-address?      yang:phys-address
+        +--ro higher-layer-if*   interface-state-ref
+        +--ro lower-layer-if*    interface-state-ref
+        +--ro speed?             yang:gauge64
+        +--ro statistics
+           +--ro discontinuity-time    yang:date-and-time
+           +--ro in-octets?            yang:counter64
+           +--ro in-unicast-pkts?      yang:counter64
+           +--ro in-broadcast-pkts?    yang:counter64
+           +--ro in-multicast-pkts?    yang:counter64
+           +--ro in-discards?          yang:counter32
+           +--ro in-errors?            yang:counter32
+           +--ro in-unknown-protos?    yang:counter32
+           +--ro out-octets?           yang:counter64
+           +--ro out-unicast-pkts?     yang:counter64
+           +--ro out-broadcast-pkts?   yang:counter64
+           +--ro out-multicast-pkts?   yang:counter64
+           +--ro out-discards?         yang:counter32
+           +--ro out-errors?           yang:counter32
+Xpaths for model: ietf-interfaces.yang
+/if:interfaces,container,
+/if:interfaces/if:interface,list,
+/if:interfaces/if:interface/if:name,leaf,string
+/if:interfaces/if:interface/if:description,leaf,string
+/if:interfaces/if:interface/if:type,leaf,identityref
+/if:interfaces/if:interface/if:enabled,leaf,boolean
+/if:interfaces/if:interface/if:link-up-down-trap-enable,leaf,enumeration
+/if:interfaces-state,container,
+/if:interfaces-state/if:interface,list,
+/if:interfaces-state/if:interface/if:name,leaf,string
+/if:interfaces-state/if:interface/if:type,leaf,identityref
+/if:interfaces-state/if:interface/if:admin-status,leaf,enumeration
+/if:interfaces-state/if:interface/if:oper-status,leaf,enumeration
+/if:interfaces-state/if:interface/if:last-change,leaf,yang:date-and-time
+/if:interfaces-state/if:interface/if:if-index,leaf,int32
+/if:interfaces-state/if:interface/if:phys-address,leaf,yang:phys-address
+/if:interfaces-state/if:interface/if:higher-layer-if,leaf-list,interface-state-ref
+/if:interfaces-state/if:interface/if:lower-layer-if,leaf-list,interface-state-ref
+/if:interfaces-state/if:interface/if:speed,leaf,yang:gauge64
+/if:interfaces-state/if:interface/if:statistics,container,
+/if:interfaces-state/if:interface/if:statistics/if:discontinuity-time,leaf,yang:date-and-time
+/if:interfaces-state/if:interface/if:statistics/if:in-octets,leaf,yang:counter64
+/if:interfaces-state/if:interface/if:statistics/if:in-unicast-pkts,leaf,yang:counter64
+/if:interfaces-state/if:interface/if:statistics/if:in-broadcast-pkts,leaf,yang:counter64
+/if:interfaces-state/if:interface/if:statistics/if:in-multicast-pkts,leaf,yang:counter64
+/if:interfaces-state/if:interface/if:statistics/if:in-discards,leaf,yang:counter32
+/if:interfaces-state/if:interface/if:statistics/if:in-errors,leaf,yang:counter32
+/if:interfaces-state/if:interface/if:statistics/if:in-unknown-protos,leaf,yang:counter32
+/if:interfaces-state/if:interface/if:statistics/if:out-octets,leaf,yang:counter64
+/if:interfaces-state/if:interface/if:statistics/if:out-unicast-pkts,leaf,yang:counter64
+/if:interfaces-state/if:interface/if:statistics/if:out-broadcast-pkts,leaf,yang:counter64
+/if:interfaces-state/if:interface/if:statistics/if:out-multicast-pkts,leaf,yang:counter64
+/if:interfaces-state/if:interface/if:statistics/if:out-discards,leaf,yang:counter32
+/if:interfaces-state/if:interface/if:statistics/if:out-errors,leaf,yang:counter32

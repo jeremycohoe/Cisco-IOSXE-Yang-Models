@@ -1,0 +1,1668 @@
+ 
+KPI for model: openconfig-bgp.yang
+module: openconfig-bgp
+  +--rw bgp
+     +--rw global
+     |  +--rw config!
+     |  |  +--rw as           inet:as-number
+     |  |  +--rw router-id?   yang:dotted-quad
+     |  +--ro state
+     |  |  +--ro as                inet:as-number
+     |  |  +--ro router-id?        yang:dotted-quad
+     |  |  +--ro total-paths?      uint32
+     |  |  +--ro total-prefixes?   uint32
+     |  +--rw default-route-distance
+     |  |  +--rw config
+     |  |  |  +--rw external-route-distance?   uint8
+     |  |  |  +--rw internal-route-distance?   uint8
+     |  |  +--ro state
+     |  |     +--ro external-route-distance?   uint8
+     |  |     +--ro internal-route-distance?   uint8
+     |  +--rw confederation
+     |  |  +--rw config
+     |  |  |  +--rw enabled?      boolean
+     |  |  |  +--rw identifier?   inet:as-number
+     |  |  |  +--rw member-as*    inet:as-number
+     |  |  +--ro state
+     |  |     +--ro enabled?      boolean
+     |  |     +--ro identifier?   inet:as-number
+     |  |     +--ro member-as*    inet:as-number
+     |  +--rw graceful-restart
+     |  |  +--rw config
+     |  |  |  +--rw enabled?             boolean
+     |  |  |  +--rw restart-time?        uint16
+     |  |  |  +--rw stale-routes-time?   decimal64
+     |  |  |  +--rw helper-only?         boolean
+     |  |  +--ro state
+     |  |     +--ro enabled?             boolean
+     |  |     +--ro restart-time?        uint16
+     |  |     +--ro stale-routes-time?   decimal64
+     |  |     +--ro helper-only?         boolean
+     |  +--rw use-multiple-paths
+     |  |  +--rw config
+     |  |  |  +--rw enabled?   boolean
+     |  |  +--ro state
+     |  |  |  +--ro enabled?   boolean
+     |  |  +--rw ebgp
+     |  |  |  +--rw config
+     |  |  |  |  +--rw allow-multiple-as?   boolean
+     |  |  |  |  +--rw maximum-paths?       uint32
+     |  |  |  +--ro state
+     |  |  |     +--ro allow-multiple-as?   boolean
+     |  |  |     +--ro maximum-paths?       uint32
+     |  |  +--rw ibgp
+     |  |     +--rw config
+     |  |     |  +--rw maximum-paths?   uint32
+     |  |     +--ro state
+     |  |        +--ro maximum-paths?   uint32
+     |  +--rw route-selection-options
+     |  |  +--rw config
+     |  |  |  +--rw always-compare-med?           boolean
+     |  |  |  +--rw ignore-as-path-length?        boolean
+     |  |  |  +--rw external-compare-router-id?   boolean
+     |  |  |  +--rw advertise-inactive-routes?    boolean
+     |  |  |  +--rw enable-aigp?                  boolean
+     |  |  |  +--rw ignore-next-hop-igp-metric?   boolean
+     |  |  +--ro state
+     |  |     +--ro always-compare-med?           boolean
+     |  |     +--ro ignore-as-path-length?        boolean
+     |  |     +--ro external-compare-router-id?   boolean
+     |  |     +--ro advertise-inactive-routes?    boolean
+     |  |     +--ro enable-aigp?                  boolean
+     |  |     +--ro ignore-next-hop-igp-metric?   boolean
+     |  +--rw afi-safis
+     |  |  +--rw afi-safi* [afi-safi-name]
+     |  |     +--rw afi-safi-name              -> ../config/afi-safi-name
+     |  |     +--rw config
+     |  |     |  +--rw afi-safi-name?   identityref
+     |  |     |  +--rw enabled?         boolean
+     |  |     +--ro state
+     |  |     |  +--ro afi-safi-name?    identityref
+     |  |     |  +--ro enabled?          boolean
+     |  |     |  +--ro total-paths?      uint32
+     |  |     |  +--ro total-prefixes?   uint32
+     |  |     +--rw graceful-restart
+     |  |     |  +--rw config
+     |  |     |  |  +--rw enabled?   boolean
+     |  |     |  +--ro state
+     |  |     |     +--ro enabled?   boolean
+     |  |     +--rw route-selection-options
+     |  |     |  +--rw config
+     |  |     |  |  +--rw always-compare-med?           boolean
+     |  |     |  |  +--rw ignore-as-path-length?        boolean
+     |  |     |  |  +--rw external-compare-router-id?   boolean
+     |  |     |  |  +--rw advertise-inactive-routes?    boolean
+     |  |     |  |  +--rw enable-aigp?                  boolean
+     |  |     |  |  +--rw ignore-next-hop-igp-metric?   boolean
+     |  |     |  +--ro state
+     |  |     |     +--ro always-compare-med?           boolean
+     |  |     |     +--ro ignore-as-path-length?        boolean
+     |  |     |     +--ro external-compare-router-id?   boolean
+     |  |     |     +--ro advertise-inactive-routes?    boolean
+     |  |     |     +--ro enable-aigp?                  boolean
+     |  |     |     +--ro ignore-next-hop-igp-metric?   boolean
+     |  |     +--rw use-multiple-paths
+     |  |     |  +--rw config
+     |  |     |  |  +--rw enabled?   boolean
+     |  |     |  +--ro state
+     |  |     |  |  +--ro enabled?   boolean
+     |  |     |  +--rw ebgp
+     |  |     |  |  +--rw config
+     |  |     |  |  |  +--rw allow-multiple-as?   boolean
+     |  |     |  |  |  +--rw maximum-paths?       uint32
+     |  |     |  |  +--ro state
+     |  |     |  |     +--ro allow-multiple-as?   boolean
+     |  |     |  |     +--ro maximum-paths?       uint32
+     |  |     |  +--rw ibgp
+     |  |     |     +--rw config
+     |  |     |     |  +--rw maximum-paths?   uint32
+     |  |     |     +--ro state
+     |  |     |        +--ro maximum-paths?   uint32
+     |  |     +--rw apply-policy
+     |  |     |  +--rw config
+     |  |     |  |  +--rw import-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |  |     |  |  +--rw default-import-policy?   default-policy-type
+     |  |     |  |  +--rw export-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |  |     |  |  +--rw default-export-policy?   default-policy-type
+     |  |     |  +--ro state
+     |  |     |     +--ro import-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |  |     |     +--ro default-import-policy?   default-policy-type
+     |  |     |     +--ro export-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |  |     |     +--ro default-export-policy?   default-policy-type
+     |  |     +--rw ipv4-unicast
+     |  |     |  +--rw prefix-limit
+     |  |     |  |  +--rw config
+     |  |     |  |  |  +--rw max-prefixes?             uint32
+     |  |     |  |  |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |  |     |  |  |  +--rw restart-timer?            decimal64
+     |  |     |  |  +--ro state
+     |  |     |  |     +--ro max-prefixes?             uint32
+     |  |     |  |     +--ro shutdown-threshold-pct?   oc-types:percentage
+     |  |     |  |     +--ro restart-timer?            decimal64
+     |  |     |  +--rw config
+     |  |     |  |  +--rw send-default-route?   boolean
+     |  |     |  +--ro state
+     |  |     |     +--ro send-default-route?   boolean
+     |  |     +--rw ipv6-unicast
+     |  |     |  +--rw prefix-limit
+     |  |     |  |  +--rw config
+     |  |     |  |  |  +--rw max-prefixes?             uint32
+     |  |     |  |  |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |  |     |  |  |  +--rw restart-timer?            decimal64
+     |  |     |  |  +--ro state
+     |  |     |  |     +--ro max-prefixes?             uint32
+     |  |     |  |     +--ro shutdown-threshold-pct?   oc-types:percentage
+     |  |     |  |     +--ro restart-timer?            decimal64
+     |  |     |  +--rw config
+     |  |     |  |  +--rw send-default-route?   boolean
+     |  |     |  +--ro state
+     |  |     |     +--ro send-default-route?   boolean
+     |  |     +--rw ipv4-labeled-unicast
+     |  |     |  +--rw prefix-limit
+     |  |     |     +--rw config
+     |  |     |     |  +--rw max-prefixes?             uint32
+     |  |     |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |  |     |     |  +--rw restart-timer?            decimal64
+     |  |     |     +--ro state
+     |  |     |        +--ro max-prefixes?             uint32
+     |  |     |        +--ro shutdown-threshold-pct?   oc-types:percentage
+     |  |     |        +--ro restart-timer?            decimal64
+     |  |     +--rw ipv6-labeled-unicast
+     |  |     |  +--rw prefix-limit
+     |  |     |     +--rw config
+     |  |     |     |  +--rw max-prefixes?             uint32
+     |  |     |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |  |     |     |  +--rw restart-timer?            decimal64
+     |  |     |     +--ro state
+     |  |     |        +--ro max-prefixes?             uint32
+     |  |     |        +--ro shutdown-threshold-pct?   oc-types:percentage
+     |  |     |        +--ro restart-timer?            decimal64
+     |  |     +--rw l3vpn-ipv4-unicast
+     |  |     |  +--rw prefix-limit
+     |  |     |     +--rw config
+     |  |     |     |  +--rw max-prefixes?             uint32
+     |  |     |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |  |     |     |  +--rw restart-timer?            decimal64
+     |  |     |     +--ro state
+     |  |     |        +--ro max-prefixes?             uint32
+     |  |     |        +--ro shutdown-threshold-pct?   oc-types:percentage
+     |  |     |        +--ro restart-timer?            decimal64
+     |  |     +--rw l3vpn-ipv6-unicast
+     |  |     |  +--rw prefix-limit
+     |  |     |     +--rw config
+     |  |     |     |  +--rw max-prefixes?             uint32
+     |  |     |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |  |     |     |  +--rw restart-timer?            decimal64
+     |  |     |     +--ro state
+     |  |     |        +--ro max-prefixes?             uint32
+     |  |     |        +--ro shutdown-threshold-pct?   oc-types:percentage
+     |  |     |        +--ro restart-timer?            decimal64
+     |  |     +--rw l3vpn-ipv4-multicast
+     |  |     |  +--rw prefix-limit
+     |  |     |     +--rw config
+     |  |     |     |  +--rw max-prefixes?             uint32
+     |  |     |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |  |     |     |  +--rw restart-timer?            decimal64
+     |  |     |     +--ro state
+     |  |     |        +--ro max-prefixes?             uint32
+     |  |     |        +--ro shutdown-threshold-pct?   oc-types:percentage
+     |  |     |        +--ro restart-timer?            decimal64
+     |  |     +--rw l3vpn-ipv6-multicast
+     |  |     |  +--rw prefix-limit
+     |  |     |     +--rw config
+     |  |     |     |  +--rw max-prefixes?             uint32
+     |  |     |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |  |     |     |  +--rw restart-timer?            decimal64
+     |  |     |     +--ro state
+     |  |     |        +--ro max-prefixes?             uint32
+     |  |     |        +--ro shutdown-threshold-pct?   oc-types:percentage
+     |  |     |        +--ro restart-timer?            decimal64
+     |  |     +--rw l2vpn-vpls
+     |  |     |  +--rw prefix-limit
+     |  |     |     +--rw config
+     |  |     |     |  +--rw max-prefixes?             uint32
+     |  |     |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |  |     |     |  +--rw restart-timer?            decimal64
+     |  |     |     +--ro state
+     |  |     |        +--ro max-prefixes?             uint32
+     |  |     |        +--ro shutdown-threshold-pct?   oc-types:percentage
+     |  |     |        +--ro restart-timer?            decimal64
+     |  |     +--rw l2vpn-evpn
+     |  |        +--rw prefix-limit
+     |  |           +--rw config
+     |  |           |  +--rw max-prefixes?             uint32
+     |  |           |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |  |           |  +--rw restart-timer?            decimal64
+     |  |           +--ro state
+     |  |              +--ro max-prefixes?             uint32
+     |  |              +--ro shutdown-threshold-pct?   oc-types:percentage
+     |  |              +--ro restart-timer?            decimal64
+     |  +--rw apply-policy
+     |     +--rw config
+     |     |  +--rw import-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |     |  +--rw default-import-policy?   default-policy-type
+     |     |  +--rw export-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |     |  +--rw default-export-policy?   default-policy-type
+     |     +--ro state
+     |        +--ro import-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |        +--ro default-import-policy?   default-policy-type
+     |        +--ro export-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |        +--ro default-export-policy?   default-policy-type
+     +--rw neighbors
+     |  +--rw neighbor* [neighbor-address]
+     |     +--rw neighbor-address      -> ../config/neighbor-address
+     |     +--rw config
+     |     |  +--rw peer-group?           -> ../../../../peer-groups/peer-group/peer-group-name
+     |     |  +--rw neighbor-address?     inet:ip-address
+     |     |  +--rw enabled?              boolean
+     |     |  +--rw peer-as?              inet:as-number
+     |     |  +--rw local-as?             inet:as-number
+     |     |  +--rw peer-type?            oc-bgp-types:peer-type
+     |     |  +--rw auth-password?        string
+     |     |  +--rw remove-private-as?    oc-bgp-types:remove-private-as-option
+     |     |  +--rw route-flap-damping?   boolean
+     |     |  +--rw send-community?       oc-bgp-types:community-type
+     |     |  +--rw description?          string
+     |     +--ro state
+     |     |  +--ro peer-group?                -> ../../../../peer-groups/peer-group/peer-group-name
+     |     |  +--ro neighbor-address?          inet:ip-address
+     |     |  +--ro enabled?                   boolean
+     |     |  +--ro peer-as?                   inet:as-number
+     |     |  +--ro local-as?                  inet:as-number
+     |     |  +--ro peer-type?                 oc-bgp-types:peer-type
+     |     |  +--ro auth-password?             string
+     |     |  +--ro remove-private-as?         oc-bgp-types:remove-private-as-option
+     |     |  +--ro route-flap-damping?        boolean
+     |     |  +--ro send-community?            oc-bgp-types:community-type
+     |     |  +--ro description?               string
+     |     |  +--ro session-state?             enumeration
+     |     |  +--ro last-established?          oc-types:timeticks64
+     |     |  +--ro established-transitions?   yang:counter64
+     |     |  +--ro supported-capabilities*    identityref
+     |     |  +--ro messages
+     |     |  |  +--ro sent
+     |     |  |  |  +--ro UPDATE?         uint64
+     |     |  |  |  +--ro NOTIFICATION?   uint64
+     |     |  |  +--ro received
+     |     |  |     +--ro UPDATE?         uint64
+     |     |  |     +--ro NOTIFICATION?   uint64
+     |     |  +--ro queues
+     |     |     +--ro input?    uint32
+     |     |     +--ro output?   uint32
+     |     +--rw timers
+     |     |  +--rw config
+     |     |  |  +--rw connect-retry?                    decimal64
+     |     |  |  +--rw hold-time?                        decimal64
+     |     |  |  +--rw keepalive-interval?               decimal64
+     |     |  |  +--rw minimum-advertisement-interval?   decimal64
+     |     |  +--ro state
+     |     |     +--ro connect-retry?                    decimal64
+     |     |     +--ro hold-time?                        decimal64
+     |     |     +--ro keepalive-interval?               decimal64
+     |     |     +--ro minimum-advertisement-interval?   decimal64
+     |     |     +--ro negotiated-hold-time?             decimal64
+     |     +--rw transport
+     |     |  +--rw config
+     |     |  |  +--rw tcp-mss?         uint16
+     |     |  |  +--rw mtu-discovery?   boolean
+     |     |  |  +--rw passive-mode?    boolean
+     |     |  |  +--rw local-address?   union
+     |     |  +--ro state
+     |     |     +--ro tcp-mss?          uint16
+     |     |     +--ro mtu-discovery?    boolean
+     |     |     +--ro passive-mode?     boolean
+     |     |     +--ro local-address?    union
+     |     |     +--ro local-port?       inet:port-number
+     |     |     +--ro remote-address?   inet:ip-address
+     |     |     +--ro remote-port?      inet:port-number
+     |     +--rw error-handling
+     |     |  +--rw config
+     |     |  |  +--rw treat-as-withdraw?   boolean
+     |     |  +--ro state
+     |     |     +--ro treat-as-withdraw?           boolean
+     |     |     +--ro erroneous-update-messages?   uint32
+     |     +--rw graceful-restart
+     |     |  +--rw config
+     |     |  |  +--rw enabled?             boolean
+     |     |  |  +--rw restart-time?        uint16
+     |     |  |  +--rw stale-routes-time?   decimal64
+     |     |  |  +--rw helper-only?         boolean
+     |     |  +--ro state
+     |     |     +--ro enabled?             boolean
+     |     |     +--ro restart-time?        uint16
+     |     |     +--ro stale-routes-time?   decimal64
+     |     |     +--ro helper-only?         boolean
+     |     |     +--ro peer-restart-time?   uint16
+     |     |     +--ro peer-restarting?     boolean
+     |     |     +--ro local-restarting?    boolean
+     |     |     +--ro mode?                enumeration
+     |     +--rw logging-options
+     |     |  +--rw config
+     |     |  |  +--rw log-neighbor-state-changes?   boolean
+     |     |  +--ro state
+     |     |     +--ro log-neighbor-state-changes?   boolean
+     |     +--rw ebgp-multihop
+     |     |  +--rw config
+     |     |  |  +--rw enabled?        boolean
+     |     |  |  +--rw multihop-ttl?   uint8
+     |     |  +--ro state
+     |     |     +--ro enabled?        boolean
+     |     |     +--ro multihop-ttl?   uint8
+     |     +--rw route-reflector
+     |     |  +--rw config
+     |     |  |  +--rw route-reflector-cluster-id?   oc-bgp-types:rr-cluster-id-type
+     |     |  |  +--rw route-reflector-client?       boolean
+     |     |  +--ro state
+     |     |     +--ro route-reflector-cluster-id?   oc-bgp-types:rr-cluster-id-type
+     |     |     +--ro route-reflector-client?       boolean
+     |     +--rw as-path-options
+     |     |  +--rw config
+     |     |  |  +--rw allow-own-as?      uint8
+     |     |  |  +--rw replace-peer-as?   boolean
+     |     |  +--ro state
+     |     |     +--ro allow-own-as?      uint8
+     |     |     +--ro replace-peer-as?   boolean
+     |     +--rw add-paths
+     |     |  +--rw config
+     |     |  |  +--rw receive?                  boolean
+     |     |  |  +--rw send-max?                 uint8
+     |     |  |  +--rw eligible-prefix-policy?   -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |     |  +--ro state
+     |     |     +--ro receive?                  boolean
+     |     |     +--ro send-max?                 uint8
+     |     |     +--ro eligible-prefix-policy?   -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |     +--rw use-multiple-paths
+     |     |  +--rw config
+     |     |  |  +--rw enabled?   boolean
+     |     |  +--ro state
+     |     |  |  +--ro enabled?   boolean
+     |     |  +--rw ebgp
+     |     |     +--rw config
+     |     |     |  +--rw allow-multiple-as?   boolean
+     |     |     +--ro state
+     |     |        +--ro allow-multiple-as?   boolean
+     |     +--rw apply-policy
+     |     |  +--rw config
+     |     |  |  +--rw import-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |     |  |  +--rw default-import-policy?   default-policy-type
+     |     |  |  +--rw export-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |     |  |  +--rw default-export-policy?   default-policy-type
+     |     |  +--ro state
+     |     |     +--ro import-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |     |     +--ro default-import-policy?   default-policy-type
+     |     |     +--ro export-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |     |     +--ro default-export-policy?   default-policy-type
+     |     +--rw afi-safis
+     |        +--rw afi-safi* [afi-safi-name]
+     |           +--rw afi-safi-name           -> ../config/afi-safi-name
+     |           +--rw config
+     |           |  +--rw afi-safi-name?   identityref
+     |           |  +--rw enabled?         boolean
+     |           +--ro state
+     |           |  +--ro afi-safi-name?   identityref
+     |           |  +--ro enabled?         boolean
+     |           |  +--ro active?          boolean
+     |           |  +--ro prefixes
+     |           |     +--ro received?    uint32
+     |           |     +--ro sent?        uint32
+     |           |     +--ro installed?   uint32
+     |           +--rw graceful-restart
+     |           |  +--rw config
+     |           |  |  +--rw enabled?   boolean
+     |           |  +--ro state
+     |           |     +--ro enabled?      boolean
+     |           |     +--ro received?     boolean
+     |           |     +--ro advertised?   boolean
+     |           +--rw apply-policy
+     |           |  +--rw config
+     |           |  |  +--rw import-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |           |  |  +--rw default-import-policy?   default-policy-type
+     |           |  |  +--rw export-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |           |  |  +--rw default-export-policy?   default-policy-type
+     |           |  +--ro state
+     |           |     +--ro import-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |           |     +--ro default-import-policy?   default-policy-type
+     |           |     +--ro export-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+     |           |     +--ro default-export-policy?   default-policy-type
+     |           +--rw ipv4-unicast
+     |           |  +--rw prefix-limit
+     |           |  |  +--rw config
+     |           |  |  |  +--rw max-prefixes?             uint32
+     |           |  |  |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |           |  |  |  +--rw restart-timer?            decimal64
+     |           |  |  +--ro state
+     |           |  |     +--ro max-prefixes?             uint32
+     |           |  |     +--ro shutdown-threshold-pct?   oc-types:percentage
+     |           |  |     +--ro restart-timer?            decimal64
+     |           |  +--rw config
+     |           |  |  +--rw send-default-route?   boolean
+     |           |  +--ro state
+     |           |     +--ro send-default-route?   boolean
+     |           +--rw ipv6-unicast
+     |           |  +--rw prefix-limit
+     |           |  |  +--rw config
+     |           |  |  |  +--rw max-prefixes?             uint32
+     |           |  |  |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |           |  |  |  +--rw restart-timer?            decimal64
+     |           |  |  +--ro state
+     |           |  |     +--ro max-prefixes?             uint32
+     |           |  |     +--ro shutdown-threshold-pct?   oc-types:percentage
+     |           |  |     +--ro restart-timer?            decimal64
+     |           |  +--rw config
+     |           |  |  +--rw send-default-route?   boolean
+     |           |  +--ro state
+     |           |     +--ro send-default-route?   boolean
+     |           +--rw ipv4-labeled-unicast
+     |           |  +--rw prefix-limit
+     |           |     +--rw config
+     |           |     |  +--rw max-prefixes?             uint32
+     |           |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |           |     |  +--rw restart-timer?            decimal64
+     |           |     +--ro state
+     |           |        +--ro max-prefixes?             uint32
+     |           |        +--ro shutdown-threshold-pct?   oc-types:percentage
+     |           |        +--ro restart-timer?            decimal64
+     |           +--rw ipv6-labeled-unicast
+     |           |  +--rw prefix-limit
+     |           |     +--rw config
+     |           |     |  +--rw max-prefixes?             uint32
+     |           |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |           |     |  +--rw restart-timer?            decimal64
+     |           |     +--ro state
+     |           |        +--ro max-prefixes?             uint32
+     |           |        +--ro shutdown-threshold-pct?   oc-types:percentage
+     |           |        +--ro restart-timer?            decimal64
+     |           +--rw l3vpn-ipv4-unicast
+     |           |  +--rw prefix-limit
+     |           |     +--rw config
+     |           |     |  +--rw max-prefixes?             uint32
+     |           |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |           |     |  +--rw restart-timer?            decimal64
+     |           |     +--ro state
+     |           |        +--ro max-prefixes?             uint32
+     |           |        +--ro shutdown-threshold-pct?   oc-types:percentage
+     |           |        +--ro restart-timer?            decimal64
+     |           +--rw l3vpn-ipv6-unicast
+     |           |  +--rw prefix-limit
+     |           |     +--rw config
+     |           |     |  +--rw max-prefixes?             uint32
+     |           |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |           |     |  +--rw restart-timer?            decimal64
+     |           |     +--ro state
+     |           |        +--ro max-prefixes?             uint32
+     |           |        +--ro shutdown-threshold-pct?   oc-types:percentage
+     |           |        +--ro restart-timer?            decimal64
+     |           +--rw l3vpn-ipv4-multicast
+     |           |  +--rw prefix-limit
+     |           |     +--rw config
+     |           |     |  +--rw max-prefixes?             uint32
+     |           |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |           |     |  +--rw restart-timer?            decimal64
+     |           |     +--ro state
+     |           |        +--ro max-prefixes?             uint32
+     |           |        +--ro shutdown-threshold-pct?   oc-types:percentage
+     |           |        +--ro restart-timer?            decimal64
+     |           +--rw l3vpn-ipv6-multicast
+     |           |  +--rw prefix-limit
+     |           |     +--rw config
+     |           |     |  +--rw max-prefixes?             uint32
+     |           |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |           |     |  +--rw restart-timer?            decimal64
+     |           |     +--ro state
+     |           |        +--ro max-prefixes?             uint32
+     |           |        +--ro shutdown-threshold-pct?   oc-types:percentage
+     |           |        +--ro restart-timer?            decimal64
+     |           +--rw l2vpn-vpls
+     |           |  +--rw prefix-limit
+     |           |     +--rw config
+     |           |     |  +--rw max-prefixes?             uint32
+     |           |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |           |     |  +--rw restart-timer?            decimal64
+     |           |     +--ro state
+     |           |        +--ro max-prefixes?             uint32
+     |           |        +--ro shutdown-threshold-pct?   oc-types:percentage
+     |           |        +--ro restart-timer?            decimal64
+     |           +--rw l2vpn-evpn
+     |           |  +--rw prefix-limit
+     |           |     +--rw config
+     |           |     |  +--rw max-prefixes?             uint32
+     |           |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+     |           |     |  +--rw restart-timer?            decimal64
+     |           |     +--ro state
+     |           |        +--ro max-prefixes?             uint32
+     |           |        +--ro shutdown-threshold-pct?   oc-types:percentage
+     |           |        +--ro restart-timer?            decimal64
+     |           +--rw use-multiple-paths
+     |              +--rw config
+     |              |  +--rw enabled?   boolean
+     |              +--ro state
+     |              |  +--ro enabled?   boolean
+     |              +--rw ebgp
+     |                 +--rw config
+     |                 |  +--rw allow-multiple-as?   boolean
+     |                 +--ro state
+     |                    +--ro allow-multiple-as?   boolean
+     +--rw peer-groups
+        +--rw peer-group* [peer-group-name]
+           +--rw peer-group-name       -> ../config/peer-group-name
+           +--rw config
+           |  +--rw peer-group-name?      string
+           |  +--rw peer-as?              inet:as-number
+           |  +--rw local-as?             inet:as-number
+           |  +--rw peer-type?            oc-bgp-types:peer-type
+           |  +--rw auth-password?        string
+           |  +--rw remove-private-as?    oc-bgp-types:remove-private-as-option
+           |  +--rw route-flap-damping?   boolean
+           |  +--rw send-community?       oc-bgp-types:community-type
+           |  +--rw description?          string
+           +--ro state
+           |  +--ro peer-group-name?      string
+           |  +--ro peer-as?              inet:as-number
+           |  +--ro local-as?             inet:as-number
+           |  +--ro peer-type?            oc-bgp-types:peer-type
+           |  +--ro auth-password?        string
+           |  +--ro remove-private-as?    oc-bgp-types:remove-private-as-option
+           |  +--ro route-flap-damping?   boolean
+           |  +--ro send-community?       oc-bgp-types:community-type
+           |  +--ro description?          string
+           |  +--ro total-paths?          uint32
+           |  +--ro total-prefixes?       uint32
+           +--rw timers
+           |  +--rw config
+           |  |  +--rw connect-retry?                    decimal64
+           |  |  +--rw hold-time?                        decimal64
+           |  |  +--rw keepalive-interval?               decimal64
+           |  |  +--rw minimum-advertisement-interval?   decimal64
+           |  +--ro state
+           |     +--ro connect-retry?                    decimal64
+           |     +--ro hold-time?                        decimal64
+           |     +--ro keepalive-interval?               decimal64
+           |     +--ro minimum-advertisement-interval?   decimal64
+           +--rw transport
+           |  +--rw config
+           |  |  +--rw tcp-mss?         uint16
+           |  |  +--rw mtu-discovery?   boolean
+           |  |  +--rw passive-mode?    boolean
+           |  |  +--rw local-address?   union
+           |  +--ro state
+           |     +--ro tcp-mss?         uint16
+           |     +--ro mtu-discovery?   boolean
+           |     +--ro passive-mode?    boolean
+           |     +--ro local-address?   union
+           +--rw error-handling
+           |  +--rw config
+           |  |  +--rw treat-as-withdraw?   boolean
+           |  +--ro state
+           |     +--ro treat-as-withdraw?   boolean
+           +--rw graceful-restart
+           |  +--rw config
+           |  |  +--rw enabled?             boolean
+           |  |  +--rw restart-time?        uint16
+           |  |  +--rw stale-routes-time?   decimal64
+           |  |  +--rw helper-only?         boolean
+           |  +--ro state
+           |     +--ro enabled?             boolean
+           |     +--ro restart-time?        uint16
+           |     +--ro stale-routes-time?   decimal64
+           |     +--ro helper-only?         boolean
+           +--rw logging-options
+           |  +--rw config
+           |  |  +--rw log-neighbor-state-changes?   boolean
+           |  +--ro state
+           |     +--ro log-neighbor-state-changes?   boolean
+           +--rw ebgp-multihop
+           |  +--rw config
+           |  |  +--rw enabled?        boolean
+           |  |  +--rw multihop-ttl?   uint8
+           |  +--ro state
+           |     +--ro enabled?        boolean
+           |     +--ro multihop-ttl?   uint8
+           +--rw route-reflector
+           |  +--rw config
+           |  |  +--rw route-reflector-cluster-id?   oc-bgp-types:rr-cluster-id-type
+           |  |  +--rw route-reflector-client?       boolean
+           |  +--ro state
+           |     +--ro route-reflector-cluster-id?   oc-bgp-types:rr-cluster-id-type
+           |     +--ro route-reflector-client?       boolean
+           +--rw as-path-options
+           |  +--rw config
+           |  |  +--rw allow-own-as?      uint8
+           |  |  +--rw replace-peer-as?   boolean
+           |  +--ro state
+           |     +--ro allow-own-as?      uint8
+           |     +--ro replace-peer-as?   boolean
+           +--rw add-paths
+           |  +--rw config
+           |  |  +--rw receive?                  boolean
+           |  |  +--rw send-max?                 uint8
+           |  |  +--rw eligible-prefix-policy?   -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+           |  +--ro state
+           |     +--ro receive?                  boolean
+           |     +--ro send-max?                 uint8
+           |     +--ro eligible-prefix-policy?   -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+           +--rw use-multiple-paths
+           |  +--rw config
+           |  |  +--rw enabled?   boolean
+           |  +--ro state
+           |  |  +--ro enabled?   boolean
+           |  +--rw ebgp
+           |  |  +--rw config
+           |  |  |  +--rw allow-multiple-as?   boolean
+           |  |  |  +--rw maximum-paths?       uint32
+           |  |  +--ro state
+           |  |     +--ro allow-multiple-as?   boolean
+           |  |     +--ro maximum-paths?       uint32
+           |  +--rw ibgp
+           |     +--rw config
+           |     |  +--rw maximum-paths?   uint32
+           |     +--ro state
+           |        +--ro maximum-paths?   uint32
+           +--rw apply-policy
+           |  +--rw config
+           |  |  +--rw import-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+           |  |  +--rw default-import-policy?   default-policy-type
+           |  |  +--rw export-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+           |  |  +--rw default-export-policy?   default-policy-type
+           |  +--ro state
+           |     +--ro import-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+           |     +--ro default-import-policy?   default-policy-type
+           |     +--ro export-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+           |     +--ro default-export-policy?   default-policy-type
+           +--rw afi-safis
+              +--rw afi-safi* [afi-safi-name]
+                 +--rw afi-safi-name              -> ../config/afi-safi-name
+                 +--rw config
+                 |  +--rw afi-safi-name?   identityref
+                 |  +--rw enabled?         boolean
+                 +--ro state
+                 |  +--ro afi-safi-name?   identityref
+                 |  +--ro enabled?         boolean
+                 +--rw graceful-restart
+                 |  +--rw config
+                 |  |  +--rw enabled?   boolean
+                 |  +--ro state
+                 |     +--ro enabled?   boolean
+                 +--rw route-selection-options
+                 |  +--rw config
+                 |  |  +--rw always-compare-med?           boolean
+                 |  |  +--rw ignore-as-path-length?        boolean
+                 |  |  +--rw external-compare-router-id?   boolean
+                 |  |  +--rw advertise-inactive-routes?    boolean
+                 |  |  +--rw enable-aigp?                  boolean
+                 |  |  +--rw ignore-next-hop-igp-metric?   boolean
+                 |  +--ro state
+                 |     +--ro always-compare-med?           boolean
+                 |     +--ro ignore-as-path-length?        boolean
+                 |     +--ro external-compare-router-id?   boolean
+                 |     +--ro advertise-inactive-routes?    boolean
+                 |     +--ro enable-aigp?                  boolean
+                 |     +--ro ignore-next-hop-igp-metric?   boolean
+                 +--rw use-multiple-paths
+                 |  +--rw config
+                 |  |  +--rw enabled?   boolean
+                 |  +--ro state
+                 |  |  +--ro enabled?   boolean
+                 |  +--rw ebgp
+                 |  |  +--rw config
+                 |  |  |  +--rw allow-multiple-as?   boolean
+                 |  |  |  +--rw maximum-paths?       uint32
+                 |  |  +--ro state
+                 |  |     +--ro allow-multiple-as?   boolean
+                 |  |     +--ro maximum-paths?       uint32
+                 |  +--rw ibgp
+                 |     +--rw config
+                 |     |  +--rw maximum-paths?   uint32
+                 |     +--ro state
+                 |        +--ro maximum-paths?   uint32
+                 +--rw apply-policy
+                 |  +--rw config
+                 |  |  +--rw import-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+                 |  |  +--rw default-import-policy?   default-policy-type
+                 |  |  +--rw export-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+                 |  |  +--rw default-export-policy?   default-policy-type
+                 |  +--ro state
+                 |     +--ro import-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+                 |     +--ro default-import-policy?   default-policy-type
+                 |     +--ro export-policy*           -> /oc-rpol:routing-policy/policy-definitions/policy-definition/name
+                 |     +--ro default-export-policy?   default-policy-type
+                 +--rw ipv4-unicast
+                 |  +--rw prefix-limit
+                 |  |  +--rw config
+                 |  |  |  +--rw max-prefixes?             uint32
+                 |  |  |  +--rw shutdown-threshold-pct?   oc-types:percentage
+                 |  |  |  +--rw restart-timer?            decimal64
+                 |  |  +--ro state
+                 |  |     +--ro max-prefixes?             uint32
+                 |  |     +--ro shutdown-threshold-pct?   oc-types:percentage
+                 |  |     +--ro restart-timer?            decimal64
+                 |  +--rw config
+                 |  |  +--rw send-default-route?   boolean
+                 |  +--ro state
+                 |     +--ro send-default-route?   boolean
+                 +--rw ipv6-unicast
+                 |  +--rw prefix-limit
+                 |  |  +--rw config
+                 |  |  |  +--rw max-prefixes?             uint32
+                 |  |  |  +--rw shutdown-threshold-pct?   oc-types:percentage
+                 |  |  |  +--rw restart-timer?            decimal64
+                 |  |  +--ro state
+                 |  |     +--ro max-prefixes?             uint32
+                 |  |     +--ro shutdown-threshold-pct?   oc-types:percentage
+                 |  |     +--ro restart-timer?            decimal64
+                 |  +--rw config
+                 |  |  +--rw send-default-route?   boolean
+                 |  +--ro state
+                 |     +--ro send-default-route?   boolean
+                 +--rw ipv4-labeled-unicast
+                 |  +--rw prefix-limit
+                 |     +--rw config
+                 |     |  +--rw max-prefixes?             uint32
+                 |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+                 |     |  +--rw restart-timer?            decimal64
+                 |     +--ro state
+                 |        +--ro max-prefixes?             uint32
+                 |        +--ro shutdown-threshold-pct?   oc-types:percentage
+                 |        +--ro restart-timer?            decimal64
+                 +--rw ipv6-labeled-unicast
+                 |  +--rw prefix-limit
+                 |     +--rw config
+                 |     |  +--rw max-prefixes?             uint32
+                 |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+                 |     |  +--rw restart-timer?            decimal64
+                 |     +--ro state
+                 |        +--ro max-prefixes?             uint32
+                 |        +--ro shutdown-threshold-pct?   oc-types:percentage
+                 |        +--ro restart-timer?            decimal64
+                 +--rw l3vpn-ipv4-unicast
+                 |  +--rw prefix-limit
+                 |     +--rw config
+                 |     |  +--rw max-prefixes?             uint32
+                 |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+                 |     |  +--rw restart-timer?            decimal64
+                 |     +--ro state
+                 |        +--ro max-prefixes?             uint32
+                 |        +--ro shutdown-threshold-pct?   oc-types:percentage
+                 |        +--ro restart-timer?            decimal64
+                 +--rw l3vpn-ipv6-unicast
+                 |  +--rw prefix-limit
+                 |     +--rw config
+                 |     |  +--rw max-prefixes?             uint32
+                 |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+                 |     |  +--rw restart-timer?            decimal64
+                 |     +--ro state
+                 |        +--ro max-prefixes?             uint32
+                 |        +--ro shutdown-threshold-pct?   oc-types:percentage
+                 |        +--ro restart-timer?            decimal64
+                 +--rw l3vpn-ipv4-multicast
+                 |  +--rw prefix-limit
+                 |     +--rw config
+                 |     |  +--rw max-prefixes?             uint32
+                 |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+                 |     |  +--rw restart-timer?            decimal64
+                 |     +--ro state
+                 |        +--ro max-prefixes?             uint32
+                 |        +--ro shutdown-threshold-pct?   oc-types:percentage
+                 |        +--ro restart-timer?            decimal64
+                 +--rw l3vpn-ipv6-multicast
+                 |  +--rw prefix-limit
+                 |     +--rw config
+                 |     |  +--rw max-prefixes?             uint32
+                 |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+                 |     |  +--rw restart-timer?            decimal64
+                 |     +--ro state
+                 |        +--ro max-prefixes?             uint32
+                 |        +--ro shutdown-threshold-pct?   oc-types:percentage
+                 |        +--ro restart-timer?            decimal64
+                 +--rw l2vpn-vpls
+                 |  +--rw prefix-limit
+                 |     +--rw config
+                 |     |  +--rw max-prefixes?             uint32
+                 |     |  +--rw shutdown-threshold-pct?   oc-types:percentage
+                 |     |  +--rw restart-timer?            decimal64
+                 |     +--ro state
+                 |        +--ro max-prefixes?             uint32
+                 |        +--ro shutdown-threshold-pct?   oc-types:percentage
+                 |        +--ro restart-timer?            decimal64
+                 +--rw l2vpn-evpn
+                    +--rw prefix-limit
+                       +--rw config
+                       |  +--rw max-prefixes?             uint32
+                       |  +--rw shutdown-threshold-pct?   oc-types:percentage
+                       |  +--rw restart-timer?            decimal64
+                       +--ro state
+                          +--ro max-prefixes?             uint32
+                          +--ro shutdown-threshold-pct?   oc-types:percentage
+                          +--ro restart-timer?            decimal64
+Xpaths for model: openconfig-bgp.yang
+/oc-bgp:bgp,container,
+/oc-bgp:bgp/oc-bgp:global,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:config/oc-bgp:as,leaf,inet:as-number
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:config/oc-bgp:router-id,leaf,yang:dotted-quad
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:state/oc-bgp:as,leaf,inet:as-number
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:state/oc-bgp:router-id,leaf,yang:dotted-quad
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:state/oc-bgp:total-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:state/oc-bgp:total-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:default-route-distance,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:default-route-distance/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:default-route-distance/oc-bgp:config/oc-bgp:external-route-distance,leaf,uint8
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:default-route-distance/oc-bgp:config/oc-bgp:internal-route-distance,leaf,uint8
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:default-route-distance/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:default-route-distance/oc-bgp:state/oc-bgp:external-route-distance,leaf,uint8
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:default-route-distance/oc-bgp:state/oc-bgp:internal-route-distance,leaf,uint8
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:confederation,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:confederation/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:confederation/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:confederation/oc-bgp:config/oc-bgp:identifier,leaf,inet:as-number
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:confederation/oc-bgp:config/oc-bgp:member-as,leaf-list,inet:as-number
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:confederation/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:confederation/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:confederation/oc-bgp:state/oc-bgp:identifier,leaf,inet:as-number
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:confederation/oc-bgp:state/oc-bgp:member-as,leaf-list,inet:as-number
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:graceful-restart,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:graceful-restart/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:graceful-restart/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:graceful-restart/oc-bgp:config/oc-bgp:restart-time,leaf,uint16
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:graceful-restart/oc-bgp:config/oc-bgp:stale-routes-time,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:graceful-restart/oc-bgp:config/oc-bgp:helper-only,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:graceful-restart/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:restart-time,leaf,uint16
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:stale-routes-time,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:helper-only,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:ebgp,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config/oc-bgp:allow-multiple-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state/oc-bgp:allow-multiple-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:ibgp,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:config/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:state/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:route-selection-options,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:route-selection-options/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:always-compare-med,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:ignore-as-path-length,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:external-compare-router-id,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:advertise-inactive-routes,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:enable-aigp,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:ignore-next-hop-igp-metric,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:route-selection-options/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:always-compare-med,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:ignore-as-path-length,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:external-compare-router-id,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:advertise-inactive-routes,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:enable-aigp,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:ignore-next-hop-igp-metric,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi,list,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:afi-safi-name,leaf,leafref
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:config/oc-bgp:afi-safi-name,leaf,identityref
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state/oc-bgp:afi-safi-name,leaf,identityref
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state/oc-bgp:total-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state/oc-bgp:total-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:always-compare-med,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:ignore-as-path-length,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:external-compare-router-id,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:advertise-inactive-routes,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:enable-aigp,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:ignore-next-hop-igp-metric,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:always-compare-med,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:ignore-as-path-length,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:external-compare-router-id,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:advertise-inactive-routes,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:enable-aigp,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:ignore-next-hop-igp-metric,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config/oc-bgp:allow-multiple-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state/oc-bgp:allow-multiple-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ibgp,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:config/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:state/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:import-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:default-import-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:export-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:default-export-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:import-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:default-import-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:export-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:default-export-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:config/oc-bgp:send-default-route,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:state/oc-bgp:send-default-route,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:config/oc-bgp:send-default-route,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:state/oc-bgp:send-default-route,leaf,boolean
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:apply-policy,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:apply-policy/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:import-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:default-import-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:export-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:default-export-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:apply-policy/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:import-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:default-import-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:export-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:global/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:default-export-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:neighbors,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor,list,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:neighbor-address,leaf,leafref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:config/oc-bgp:peer-group,leaf,leafref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:config/oc-bgp:neighbor-address,leaf,inet:ip-address
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:config/oc-bgp:peer-as,leaf,inet:as-number
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:config/oc-bgp:local-as,leaf,inet:as-number
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:config/oc-bgp:peer-type,leaf,oc-bgp-types:peer-type
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:config/oc-bgp:auth-password,leaf,string
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:config/oc-bgp:remove-private-as,leaf,oc-bgp-types:remove-private-as-option
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:config/oc-bgp:route-flap-damping,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:config/oc-bgp:send-community,leaf,oc-bgp-types:community-type
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:config/oc-bgp:description,leaf,string
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:peer-group,leaf,leafref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:neighbor-address,leaf,inet:ip-address
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:peer-as,leaf,inet:as-number
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:local-as,leaf,inet:as-number
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:peer-type,leaf,oc-bgp-types:peer-type
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:auth-password,leaf,string
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:remove-private-as,leaf,oc-bgp-types:remove-private-as-option
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:route-flap-damping,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:send-community,leaf,oc-bgp-types:community-type
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:description,leaf,string
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:session-state,leaf,enumeration
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:last-established,leaf,oc-types:timeticks64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:established-transitions,leaf,yang:counter64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:supported-capabilities,leaf-list,identityref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:messages,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:messages/oc-bgp:sent,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:messages/oc-bgp:sent/oc-bgp:UPDATE,leaf,uint64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:messages/oc-bgp:sent/oc-bgp:NOTIFICATION,leaf,uint64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:messages/oc-bgp:received,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:messages/oc-bgp:received/oc-bgp:UPDATE,leaf,uint64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:messages/oc-bgp:received/oc-bgp:NOTIFICATION,leaf,uint64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:queues,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:queues/oc-bgp:input,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:state/oc-bgp:queues/oc-bgp:output,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:timers,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:timers/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:timers/oc-bgp:config/oc-bgp:connect-retry,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:timers/oc-bgp:config/oc-bgp:hold-time,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:timers/oc-bgp:config/oc-bgp:keepalive-interval,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:timers/oc-bgp:config/oc-bgp:minimum-advertisement-interval,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:timers/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:timers/oc-bgp:state/oc-bgp:connect-retry,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:timers/oc-bgp:state/oc-bgp:hold-time,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:timers/oc-bgp:state/oc-bgp:keepalive-interval,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:timers/oc-bgp:state/oc-bgp:minimum-advertisement-interval,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:timers/oc-bgp:state/oc-bgp:negotiated-hold-time,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:transport,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:transport/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:transport/oc-bgp:config/oc-bgp:tcp-mss,leaf,uint16
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:transport/oc-bgp:config/oc-bgp:mtu-discovery,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:transport/oc-bgp:config/oc-bgp:passive-mode,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:transport/oc-bgp:config/oc-bgp:local-address,leaf,union
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:transport/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:transport/oc-bgp:state/oc-bgp:tcp-mss,leaf,uint16
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:transport/oc-bgp:state/oc-bgp:mtu-discovery,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:transport/oc-bgp:state/oc-bgp:passive-mode,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:transport/oc-bgp:state/oc-bgp:local-address,leaf,union
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:transport/oc-bgp:state/oc-bgp:local-port,leaf,inet:port-number
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:transport/oc-bgp:state/oc-bgp:remote-address,leaf,inet:ip-address
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:transport/oc-bgp:state/oc-bgp:remote-port,leaf,inet:port-number
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:error-handling,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:error-handling/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:error-handling/oc-bgp:config/oc-bgp:treat-as-withdraw,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:error-handling/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:error-handling/oc-bgp:state/oc-bgp:treat-as-withdraw,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:error-handling/oc-bgp:state/oc-bgp:erroneous-update-messages,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:graceful-restart,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:graceful-restart/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:graceful-restart/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:graceful-restart/oc-bgp:config/oc-bgp:restart-time,leaf,uint16
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:graceful-restart/oc-bgp:config/oc-bgp:stale-routes-time,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:graceful-restart/oc-bgp:config/oc-bgp:helper-only,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:graceful-restart/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:restart-time,leaf,uint16
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:stale-routes-time,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:helper-only,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:peer-restart-time,leaf,uint16
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:peer-restarting,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:local-restarting,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:mode,leaf,enumeration
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:logging-options,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:logging-options/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:logging-options/oc-bgp:config/oc-bgp:log-neighbor-state-changes,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:logging-options/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:logging-options/oc-bgp:state/oc-bgp:log-neighbor-state-changes,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:ebgp-multihop,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:ebgp-multihop/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:ebgp-multihop/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:ebgp-multihop/oc-bgp:config/oc-bgp:multihop-ttl,leaf,uint8
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:ebgp-multihop/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:ebgp-multihop/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:ebgp-multihop/oc-bgp:state/oc-bgp:multihop-ttl,leaf,uint8
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:route-reflector,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:route-reflector/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:route-reflector/oc-bgp:config/oc-bgp:route-reflector-cluster-id,leaf,oc-bgp-types:rr-cluster-id-type
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:route-reflector/oc-bgp:config/oc-bgp:route-reflector-client,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:route-reflector/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:route-reflector/oc-bgp:state/oc-bgp:route-reflector-cluster-id,leaf,oc-bgp-types:rr-cluster-id-type
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:route-reflector/oc-bgp:state/oc-bgp:route-reflector-client,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:as-path-options,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:as-path-options/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:as-path-options/oc-bgp:config/oc-bgp:allow-own-as,leaf,uint8
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:as-path-options/oc-bgp:config/oc-bgp:replace-peer-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:as-path-options/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:as-path-options/oc-bgp:state/oc-bgp:allow-own-as,leaf,uint8
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:as-path-options/oc-bgp:state/oc-bgp:replace-peer-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:add-paths,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:add-paths/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:add-paths/oc-bgp:config/oc-bgp:receive,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:add-paths/oc-bgp:config/oc-bgp:send-max,leaf,uint8
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:add-paths/oc-bgp:config/oc-bgp:eligible-prefix-policy,leaf,leafref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:add-paths/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:add-paths/oc-bgp:state/oc-bgp:receive,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:add-paths/oc-bgp:state/oc-bgp:send-max,leaf,uint8
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:add-paths/oc-bgp:state/oc-bgp:eligible-prefix-policy,leaf,leafref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:use-multiple-paths,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:use-multiple-paths/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:use-multiple-paths/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:use-multiple-paths/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:use-multiple-paths/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:use-multiple-paths/oc-bgp:ebgp,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config/oc-bgp:allow-multiple-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state/oc-bgp:allow-multiple-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:apply-policy,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:apply-policy/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:import-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:default-import-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:export-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:default-export-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:apply-policy/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:import-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:default-import-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:export-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:default-export-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi,list,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:afi-safi-name,leaf,leafref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:config/oc-bgp:afi-safi-name,leaf,identityref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state/oc-bgp:afi-safi-name,leaf,identityref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state/oc-bgp:active,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state/oc-bgp:prefixes,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state/oc-bgp:prefixes/oc-bgp:received,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state/oc-bgp:prefixes/oc-bgp:sent,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state/oc-bgp:prefixes/oc-bgp:installed,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:received,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:advertised,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:import-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:default-import-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:export-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:default-export-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:import-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:default-import-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:export-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:default-export-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:config/oc-bgp:send-default-route,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:state/oc-bgp:send-default-route,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:config/oc-bgp:send-default-route,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:state/oc-bgp:send-default-route,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config/oc-bgp:allow-multiple-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:neighbors/oc-bgp:neighbor/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state/oc-bgp:allow-multiple-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group,list,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:peer-group-name,leaf,leafref
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:config/oc-bgp:peer-group-name,leaf,string
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:config/oc-bgp:peer-as,leaf,inet:as-number
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:config/oc-bgp:local-as,leaf,inet:as-number
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:config/oc-bgp:peer-type,leaf,oc-bgp-types:peer-type
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:config/oc-bgp:auth-password,leaf,string
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:config/oc-bgp:remove-private-as,leaf,oc-bgp-types:remove-private-as-option
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:config/oc-bgp:route-flap-damping,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:config/oc-bgp:send-community,leaf,oc-bgp-types:community-type
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:config/oc-bgp:description,leaf,string
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:state/oc-bgp:peer-group-name,leaf,string
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:state/oc-bgp:peer-as,leaf,inet:as-number
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:state/oc-bgp:local-as,leaf,inet:as-number
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:state/oc-bgp:peer-type,leaf,oc-bgp-types:peer-type
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:state/oc-bgp:auth-password,leaf,string
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:state/oc-bgp:remove-private-as,leaf,oc-bgp-types:remove-private-as-option
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:state/oc-bgp:route-flap-damping,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:state/oc-bgp:send-community,leaf,oc-bgp-types:community-type
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:state/oc-bgp:description,leaf,string
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:state/oc-bgp:total-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:state/oc-bgp:total-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:timers,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:timers/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:timers/oc-bgp:config/oc-bgp:connect-retry,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:timers/oc-bgp:config/oc-bgp:hold-time,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:timers/oc-bgp:config/oc-bgp:keepalive-interval,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:timers/oc-bgp:config/oc-bgp:minimum-advertisement-interval,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:timers/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:timers/oc-bgp:state/oc-bgp:connect-retry,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:timers/oc-bgp:state/oc-bgp:hold-time,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:timers/oc-bgp:state/oc-bgp:keepalive-interval,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:timers/oc-bgp:state/oc-bgp:minimum-advertisement-interval,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:transport,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:transport/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:transport/oc-bgp:config/oc-bgp:tcp-mss,leaf,uint16
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:transport/oc-bgp:config/oc-bgp:mtu-discovery,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:transport/oc-bgp:config/oc-bgp:passive-mode,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:transport/oc-bgp:config/oc-bgp:local-address,leaf,union
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:transport/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:transport/oc-bgp:state/oc-bgp:tcp-mss,leaf,uint16
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:transport/oc-bgp:state/oc-bgp:mtu-discovery,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:transport/oc-bgp:state/oc-bgp:passive-mode,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:transport/oc-bgp:state/oc-bgp:local-address,leaf,union
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:error-handling,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:error-handling/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:error-handling/oc-bgp:config/oc-bgp:treat-as-withdraw,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:error-handling/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:error-handling/oc-bgp:state/oc-bgp:treat-as-withdraw,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:graceful-restart,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:graceful-restart/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:graceful-restart/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:graceful-restart/oc-bgp:config/oc-bgp:restart-time,leaf,uint16
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:graceful-restart/oc-bgp:config/oc-bgp:stale-routes-time,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:graceful-restart/oc-bgp:config/oc-bgp:helper-only,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:graceful-restart/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:restart-time,leaf,uint16
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:stale-routes-time,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:helper-only,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:logging-options,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:logging-options/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:logging-options/oc-bgp:config/oc-bgp:log-neighbor-state-changes,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:logging-options/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:logging-options/oc-bgp:state/oc-bgp:log-neighbor-state-changes,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:ebgp-multihop,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:ebgp-multihop/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:ebgp-multihop/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:ebgp-multihop/oc-bgp:config/oc-bgp:multihop-ttl,leaf,uint8
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:ebgp-multihop/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:ebgp-multihop/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:ebgp-multihop/oc-bgp:state/oc-bgp:multihop-ttl,leaf,uint8
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:route-reflector,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:route-reflector/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:route-reflector/oc-bgp:config/oc-bgp:route-reflector-cluster-id,leaf,oc-bgp-types:rr-cluster-id-type
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:route-reflector/oc-bgp:config/oc-bgp:route-reflector-client,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:route-reflector/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:route-reflector/oc-bgp:state/oc-bgp:route-reflector-cluster-id,leaf,oc-bgp-types:rr-cluster-id-type
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:route-reflector/oc-bgp:state/oc-bgp:route-reflector-client,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:as-path-options,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:as-path-options/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:as-path-options/oc-bgp:config/oc-bgp:allow-own-as,leaf,uint8
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:as-path-options/oc-bgp:config/oc-bgp:replace-peer-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:as-path-options/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:as-path-options/oc-bgp:state/oc-bgp:allow-own-as,leaf,uint8
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:as-path-options/oc-bgp:state/oc-bgp:replace-peer-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:add-paths,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:add-paths/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:add-paths/oc-bgp:config/oc-bgp:receive,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:add-paths/oc-bgp:config/oc-bgp:send-max,leaf,uint8
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:add-paths/oc-bgp:config/oc-bgp:eligible-prefix-policy,leaf,leafref
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:add-paths/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:add-paths/oc-bgp:state/oc-bgp:receive,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:add-paths/oc-bgp:state/oc-bgp:send-max,leaf,uint8
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:add-paths/oc-bgp:state/oc-bgp:eligible-prefix-policy,leaf,leafref
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:ebgp,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config/oc-bgp:allow-multiple-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state/oc-bgp:allow-multiple-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:ibgp,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:config/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:state/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:apply-policy,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:apply-policy/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:import-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:default-import-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:export-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:default-export-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:apply-policy/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:import-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:default-import-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:export-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:default-export-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi,list,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:afi-safi-name,leaf,leafref
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:config/oc-bgp:afi-safi-name,leaf,identityref
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state/oc-bgp:afi-safi-name,leaf,identityref
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:graceful-restart/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:always-compare-med,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:ignore-as-path-length,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:external-compare-router-id,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:advertise-inactive-routes,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:enable-aigp,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:config/oc-bgp:ignore-next-hop-igp-metric,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:always-compare-med,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:ignore-as-path-length,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:external-compare-router-id,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:advertise-inactive-routes,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:enable-aigp,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:route-selection-options/oc-bgp:state/oc-bgp:ignore-next-hop-igp-metric,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:config/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:state/oc-bgp:enabled,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config/oc-bgp:allow-multiple-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:config/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state/oc-bgp:allow-multiple-as,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ebgp/oc-bgp:state/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ibgp,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:config/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:use-multiple-paths/oc-bgp:ibgp/oc-bgp:state/oc-bgp:maximum-paths,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:import-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:default-import-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:export-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:config/oc-bgp:default-export-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:import-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:default-import-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:export-policy,leaf-list,leafref
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:apply-policy/oc-bgp:state/oc-bgp:default-export-policy,leaf,default-policy-type
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:config/oc-bgp:send-default-route,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-unicast/oc-bgp:state/oc-bgp:send-default-route,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:config/oc-bgp:send-default-route,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-unicast/oc-bgp:state/oc-bgp:send-default-route,leaf,boolean
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv4-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:ipv6-labeled-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-unicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv4-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l3vpn-ipv6-multicast/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-vpls/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:config,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:config/oc-bgp:restart-timer,leaf,decimal64
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:state,container,
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:max-prefixes,leaf,uint32
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:shutdown-threshold-pct,leaf,oc-types:percentage
+/oc-bgp:bgp/oc-bgp:peer-groups/oc-bgp:peer-group/oc-bgp:afi-safis/oc-bgp:afi-safi/oc-bgp:l2vpn-evpn/oc-bgp:prefix-limit/oc-bgp:state/oc-bgp:restart-timer,leaf,decimal64

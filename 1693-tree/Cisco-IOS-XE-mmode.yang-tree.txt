@@ -1,0 +1,37 @@
+ 
+KPI for model: Cisco-IOS-XE-mmode.yang
+
+module: Cisco-IOS-XE-mmode
+  augment /ios:native/ios:system:
+    +--rw mode
+       +--rw maintenance!
+          +--rw config-maintenance
+             +--rw failsafe?    uint8
+             +--rw on-reload
+             |  +--rw reset-reason
+             |     +--rw maintenance?   empty
+             +--rw template?    string
+             +--rw timeout?     uint8
+  augment /ios:native:
+    +--rw maintenance-template* [templ-name]
+       +--rw templ-name                  string
+       +--rw config-maintenance-templ
+          +--rw router
+          |  +--rw routing-protocol* [protocol instance]
+          |     +--rw protocol    enumeration
+          |     +--rw instance    uint16
+          +--rw hsrp* [interface group-number]
+          |  +--rw interface       string
+          |  +--rw group-number    uint16
+          +--rw vrrp* [interface group-number]
+          |  +--rw interface       string
+          |  +--rw group-number    uint16
+          +--rw vrrpv3* [interface group-number address-family]
+          |  +--rw interface         string
+          |  +--rw group-number      uint16
+          |  +--rw address-family    enumeration
+          +--rw shutdown
+          |  +--rw l2?   empty
+          +--rw ipmulticast
+             +--rw vrf*   string
+Xpaths for model: Cisco-IOS-XE-mmode.yang

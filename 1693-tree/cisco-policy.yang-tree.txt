@@ -1,0 +1,7 @@
+ 
+KPI for model: cisco-policy.yang
+
+module: cisco-policy
+  augment /ietf-policy:policies/ietf-policy:policy-entry:
+    +--rw policy-type?   identityref
+Xpaths for model: cisco-policy.yang

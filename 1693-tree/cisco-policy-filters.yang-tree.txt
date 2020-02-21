@@ -1,0 +1,174 @@
+ 
+KPI for model: cisco-policy-filters.yang
+
+module: cisco-policy-filters
+  augment /classifier:classifiers/classifier:classifier-entry:
+    +--rw classifier-entry-type?   identityref
+  augment /classifier:classifiers/classifier:classifier-entry/classifier:filter-entry/classifier:filter-param:
+    +--:(cos) {policy-types:match-cos-support}?
+    |  +--rw cos-cfgs
+    |     +--rw cos-cfg* [cos-min cos-max]
+    |        +--rw cos-min    policy-types:cos-type
+    |        +--rw cos-max    policy-types:cos-type
+    +--:(cos-inner-filter) {policy-types:match-cos-inner-support}?
+    |  +--rw cos-inner-cfgs
+    |     +--rw cos-inner-cfg* [cos-min cos-max]
+    |        +--rw cos-min    policy-types:cos-type
+    |        +--rw cos-max    policy-types:cos-type
+    +--:(ipv4-acl-name-filter) {policy-types:match-ipv4-acl-name-support}?
+    |  +--rw ipv4-acl-name-cfgs
+    |     +--rw ipv4-acl-name-cfg* [ip-acl-name]
+    |        +--rw ip-acl-name    policy-types:ip-acl-name-type
+    +--:(ipv6-acl-name-filter) {policy-types:match-ipv6-acl-name-support}?
+    |  +--rw ipv6-acl-name-cfgs
+    |     +--rw ipv6-acl-name-cfg* [ip-acl-name]
+    |        +--rw ip-acl-name    policy-types:ip-acl-name-type
+    +--:(ipv4-acl-filter) {policy-types:match-ipv4-acl-support}?
+    |  +--rw ipv4-acl-cfgs
+    |     +--rw ipv4-acl-cfg* [ip-acl]
+    |        +--rw ip-acl    policy-types:ip-acl-type
+    +--:(ipv6-acl-filter) {policy-types:match-ipv6-acl-support}?
+    |  +--rw ipv6-acl-cfgs
+    |     +--rw ipv6-acl-cfg* [ip-acl]
+    |        +--rw ip-acl    policy-types:ip-acl-type
+    +--:(input-interface) {policy-types:match-input-interface-support}?
+    |  +--rw input-interface-cfgs
+    |     +--rw input-interface-cfg* [if-name]
+    |        +--rw if-name    string
+    +--:(src-mac) {policy-types:match-src-mac-support}?
+    |  +--rw src-mac-cfgs
+    |     +--rw src-mac-cfg* [mac]
+    |        +--rw mac         yang:mac-address
+    |        +--rw mac-mask?   yang:mac-address
+    +--:(dst-mac) {policy-types:match-dst-mac-support}?
+    |  +--rw dst-mac-cfgs
+    |     +--rw dst-mac-cfg* [mac]
+    |        +--rw mac         yang:mac-address
+    |        +--rw mac-mask?   yang:mac-address
+    +--:(protocol-name) {policy-types:protocol-name-support}?
+    |  +--rw protocol-name-cfgs
+    |     +--rw protocol-name-cfg* [protocol-name]
+    |        +--rw protocol-name    policy-types:protocol-name
+    +--:(mpls-exp-top) {policy-types:match-mpls-exp-top-support}?
+    |  +--rw mpls-exp-top-cfgs
+    |     +--rw mpls-exp-top-cfg* [exp-min exp-max]
+    |        +--rw exp-min    policy-types:mpls-exp-type
+    |        +--rw exp-max    policy-types:mpls-exp-type
+    +--:(mpls-exp-imp) {policy-types:match-mpls-exp-imp-support}?
+    |  +--rw mpls-exp-imp-cfgs
+    |     +--rw mpls-exp-imp-cfg* [exp-min exp-max]
+    |        +--rw exp-min    policy-types:mpls-exp-type
+    |        +--rw exp-max    policy-types:mpls-exp-type
+    +--:(packet-length) {policy-types:match-packet-length-support}?
+    |  +--rw pkt-len-cfgs
+    |     +--rw pkt-len-cfg* [min-pkt-len max-pkt-len]
+    |        +--rw min-pkt-len    policy-types:pkt-len-type
+    |        +--rw max-pkt-len    policy-types:pkt-len-type
+    +--:(prec) {policy-types:match-prec-support}?
+    |  +--rw prec
+    |     +--rw (prec-par)?
+    |        +--:(prec-value)
+    |        |  +--rw prec-val-cfgs
+    |        |     +--rw prec-val-cfg* [prec-val]
+    |        |        +--rw prec-val    policy-types:prec-val-type
+    |        +--:(prec-attr)
+    |           +--rw prec-attr-cfgs
+    |              +--rw prec-attr-cfg* [prec-attr]
+    |                 +--rw prec-attr    policy-types:prec-attr-type
+    +--:(qos-group) {policy-types:match-qos-group-support}?
+    |  +--rw qos-group-cfgs
+    |     +--rw qos-group-cfg* [qos-group-min qos-group-max]
+    |        +--rw qos-group-min    policy-types:qos-group-type
+    |        +--rw qos-group-max    policy-types:qos-group-type
+    +--:(vlan) {policy-types:match-vlan-support}?
+    |  +--rw vlan-cfgs
+    |     +--rw vlan-cfg* [vlan-min vlan-max]
+    |        +--rw vlan-min    policy-types:vlan-type
+    |        +--rw vlan-max    policy-types:vlan-type
+    +--:(vlan-inner) {policy-types:match-vlan-inner-support}?
+    |  +--rw vlan-inner-cfgs
+    |     +--rw vlan-inner-cfg* [vlan-min vlan-max]
+    |        +--rw vlan-min    policy-types:vlan-type
+    |        +--rw vlan-max    policy-types:vlan-type
+    +--:(atm-clp) {policy-types:match-atm-clp-support}?
+    |  +--rw atm-clp-cfg
+    |     +--rw atm-clp?   empty
+    +--:(atm-vci) {policy-types:match-atm-vci-support}?
+    |  +--rw atm-vci-cfgs
+    |     +--rw atm-vci-cfg* [atm-vci-min atm-vci-max]
+    |        +--rw atm-vci-min    uint16
+    |        +--rw atm-vci-max    uint16
+    +--:(dei) {policy-types:match-dei-support}?
+    |  +--rw dei-cfg
+    |     +--rw dei-cfg?   policy-types:dei-type
+    +--:(dei-inner) {policy-types:match-dei-inner-support}?
+    |  +--rw dei-inner-cfg
+    |     +--rw dei-cfg?   policy-types:dei-type
+    +--:(flow-ip) {policy-types:match-flow-ip-support}?
+    |  +--rw flow-ip-cfg
+    |     +--rw flow-src-ip?   inet:ip-address-no-zone
+    |     +--rw flow-dst-ip?   inet:ip-address-no-zone
+    |     +--rw protocol?      inet:ip-version
+    |     +--rw src-port?      inet:port-number
+    |     +--rw dst-port?      inet:port-number
+    +--:(flow-record)
+    |  +--rw flow-record-cfg
+    |     +--rw flow-record-name?   policy-types:flow-record-type
+    +--:(fr-de) {policy-types:match-fr-de-support}?
+    |  +--rw fr-de-cfg
+    |     +--rw fr-de-val?   policy-types:fr-de-type
+    +--:(fr-dlci) {policy-types:match-fr-dlci-support}?
+    |  +--rw fr-dlci-cfgs
+    |     +--rw fr-dlci-cfg* [dlci-min dlci-max]
+    |        +--rw dlci-min    uint16
+    |        +--rw dlci-max    uint16
+    +--:(wlan-user-priority) {policy-types:match-wlan-user-priority-support}?
+    |  +--rw wlan-user-priority-cfgs
+    |     +--rw wlan-user-priority-cfg* [wlan-prio-min wlan-prio-max]
+    |        +--rw wlan-prio-min    policy-types:wlan-user-priority-type
+    |        +--rw wlan-prio-max    policy-types:wlan-user-priority-type
+    +--:(discard-class) {policy-types:match-discard-class-support}?
+    |  +--rw discard-class-cfgs
+    |     +--rw discard-class-cfg* [discard-class]
+    |        +--rw discard-class    policy-types:discard-class-type
+    +--:(class-map) {policy-types:match-class-map-support}?
+    |  +--rw class-map-cfgs
+    |     +--rw class-map-cfg* [class-map-name]
+    |        +--rw class-map-name    policy-types:class-map-type
+    +--:(metadata) {policy-types:match-metadata-support}?
+    |  +--rw metadata-cfg
+    |     +--rw cac?                      enumeration
+    |     +--rw called-uri?               string
+    |     +--rw calling-uri?              string
+    |     +--rw device-model?             string
+    |     +--rw global-session-id?        string
+    |     +--rw multi-party-session-id?   string
+    +--:(application) {policy-types:match-application-support}?
+    |  +--rw application-cfgs
+    |     +--rw application-cfg* [application-name application-cfg]
+    |        +--rw application-name    policy-types:application-type
+    |        +--rw application-cfg     policy-types:application-type
+    +--:(security-group) {policy-types:match-security-group-support}?
+    |  +--rw security-group
+    |     +--rw (group-par)?
+    |        +--:(group-name)
+    |        |  +--rw security-group-name-cfgs
+    |        |     +--rw security-group-name-cfg* [src-dst security-name]
+    |        |        +--rw src-dst          enumeration
+    |        |        +--rw security-name    string
+    |        +--:(group-tag)
+    |           +--rw security-group-tag-cfgs
+    |              +--rw security-group-tag-cfg* [id]
+    |                 +--rw id    string
+    +--:(ip-rtp) {policy-types:match-ip-rtp-support}?
+    |  +--rw ip-rtp-cfgs
+    |     +--rw ip-rtp-cfg* [starting-port-number port-range]
+    |        +--rw starting-port-number    uint16
+    |        +--rw port-range              uint16
+    +--:(vpls) {policy-types:match-vpls-support}?
+       +--rw vpls-cfg
+          +--rw broadcast?   empty
+          +--rw known?       empty
+          +--rw unknown?     empty
+          +--rw multicast?   empty
+Xpaths for model: cisco-policy-filters.yang

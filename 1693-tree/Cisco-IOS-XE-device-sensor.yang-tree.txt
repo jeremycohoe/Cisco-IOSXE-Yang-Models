@@ -1,0 +1,10 @@
+ 
+KPI for model: Cisco-IOS-XE-device-sensor.yang
+
+module: Cisco-IOS-XE-device-sensor
+  augment /ios:native:
+    +--rw device-sensor
+       +--rw accounting?   empty
+       +--rw notify
+          +--rw all-changes?   empty
+Xpaths for model: Cisco-IOS-XE-device-sensor.yang

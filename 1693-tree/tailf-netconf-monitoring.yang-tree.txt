@@ -1,0 +1,29 @@
+ 
+KPI for model: tailf-netconf-monitoring.yang
+
+module: tailf-netconf-monitoring
+  augment /ncm:netconf-state:
+    +--ro files
+       +--ro file* [name]
+          +--ro name       string
+          +--ro creator?   string
+          +--ro created?   yang:date-and-time
+          +--ro context?   union
+  augment /ncm:netconf-state/ncm:datastores/ncm:datastore:
+    +--ro transaction-id?   string
+  augment /ncm:netconf-state/ncm:datastores/ncm:datastore/ncm:locks:
+    +--ro transaction-lock!
+       +--ro locked-by-session    uint32
+  augment /ncm:netconf-state:
+    +--ro streams
+       +--ro stream* [name]
+          +--ro name                        string
+          +--ro description                 string
+          +--ro replay-support              boolean
+          +--ro replay-log-creation-time    yang:date-and-time
+          +--ro replay-log-aged-time?       yang:date-and-time
+          +--ro subscriber* [session-id]
+             +--ro session-id    uint32
+             +--ro start-time    yang:date-and-time
+             +--ro stop-time?    yang:date-and-time
+Xpaths for model: tailf-netconf-monitoring.yang

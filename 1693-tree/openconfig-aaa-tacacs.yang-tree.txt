@@ -1,0 +1,3 @@
+ 
+KPI for model: openconfig-aaa-tacacs.yang
+Xpaths for model: openconfig-aaa-tacacs.yang

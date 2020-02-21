@@ -1,0 +1,206 @@
+ 
+KPI for model: Cisco-IOS-XE-cellwan-oper.yang
+module: Cisco-IOS-XE-cellwan-oper
+  +--ro cellwan-oper-data
+     +--ro cellwan-hardware* [cellular-interface]
+     |  +--ro cellular-interface              string
+     |  +--ro cellular-firmware-version?      string
+     |  +--ro cellular-firmware-build-time?   string
+     |  +--ro cellular-hardware-version?      string
+     |  +--ro cellular-device-model?          string
+     |  +--ro cellular-imsi?                  string
+     |  +--ro cellular-imei?                  string
+     |  +--ro cellular-iccid?                 string
+     |  +--ro cellular-msisdn?                string
+     |  +--ro cellular-fsn?                   string
+     |  +--ro cellular-modem-status?          cellwan-ios-xe-oper:modem-status
+     |  +--ro cellular-modem-temperature?     int16
+     |  +--ro cellular-pri-skuid?             string
+     |  +--ro cellular-pri-version?           string
+     |  +--ro cellular-carrier?               string
+     |  +--ro cellular-oem-pri-version?       string
+     +--ro cellwan-radio* [cellular-interface]
+     |  +--ro cellular-interface      string
+     |  +--ro technology?             cellwan-ios-xe-oper:modem-technology
+     |  +--ro radio-power-mode?       cellwan-ios-xe-oper:cw-radio-power-status
+     |  +--ro radio-rx-channel?       uint32
+     |  +--ro radio-tx-channel?       uint32
+     |  +--ro radio-band?             uint32
+     |  +--ro bandwidth?              cellwan-ios-xe-oper:radio-bandwidth
+     |  +--ro radio-rssi?             int16
+     |  +--ro radio-rsrp?             int16
+     |  +--ro radio-rsrq?             int8
+     |  +--ro radio-snr?              decimal64
+     |  +--ro radio-rat-preference?   cellwan-ios-xe-oper:rat-preference
+     |  +--ro radio-rat-selected?     cellwan-ios-xe-oper:rat-technology
+     +--ro cellwan-network* [cellular-interface]
+     |  +--ro cellular-interface                  string
+     |  +--ro cellular-modem-time?                yang:date-and-time
+     |  +--ro radio-access-technology-selected?   cellwan-ios-xe-oper:rat-technology
+     |  +--ro current-service-status?             cellwan-ios-xe-oper:service-status
+     |  +--ro current-system-identifier?          uint16
+     |  +--ro current-network-identifier?         uint16
+     |  +--ro current-service-type?               cellwan-ios-xe-oper:modem-service
+     |  +--ro current-roaming-status?             string
+     |  +--ro network-selection-mode?             string
+     |  +--ro network-name?                       string
+     |  +--ro mobile-country-code?                uint16
+     |  +--ro mobile-network-code?                uint16
+     |  +--ro packet-switch-domain-state?         string
+     |  +--ro lte-carrier-aggregation?            cellwan-ios-xe-oper:lte-ca
+     |  +--ro registration-state?                 cellwan-ios-xe-oper:reg-state
+     |  +--ro emm-state?                          string
+     |  +--ro emm-substate?                       string
+     |  +--ro location-area-code?                 uint16
+     |  +--ro tracking-area-code?                 uint16
+     |  +--ro cell-id?                            uint64
+     |  +--ro negotiated-network-mtu?             uint16
+     +--ro cellwan-connection* [cellular-interface]
+     |  +--ro cellular-interface        string
+     |  +--ro active-profile?           uint64
+     |  +--ro cellular-packet-status?   cellwan-ios-xe-oper:packet-sess-status
+     |  +--ro tx-packets?               uint64
+     |  +--ro rx-packets?               uint64
+     |  +--ro tx-bytes?                 uint64
+     |  +--ro rx-bytes?                 uint64
+     |  +--ro ipv4-addr?                inet:ip-address
+     |  +--ro ipv6-addr?                inet:ip-address
+     |  +--ro ipv4-dns-pri?             inet:ip-address
+     |  +--ro ipv4-dns-sec?             inet:ip-address
+     |  +--ro ipv6-dns-pri?             inet:ip-address
+     |  +--ro ipv6-dns-sec?             inet:ip-address
+     |  +--ro scope?                    cellwan-ios-xe-oper:profile-scope
+     +--ro cellwan-security* [cellular-interface]
+     |  +--ro cellular-interface    string
+     |  +--ro active-sim?           int8
+     |  +--ro sim-num-switchover?   uint32
+     |  +--ro chv1-status?          cellwan-ios-xe-oper:cellwan-chv1-sim-status
+     |  +--ro sim-status?           cellwan-ios-xe-oper:cellwan-sim-status
+     |  +--ro sim-oper?             cellwan-ios-xe-oper:cellwan-sim-user-op
+     |  +--ro num-retries?          int8
+     +--ro cellwan-sms* [cellular-interface]
+     |  +--ro cellular-interface          string
+     |  +--ro in-sms-count?               uint16
+     |  +--ro in-sms-archived?            uint16
+     |  +--ro in-sms-deleted?             uint16
+     |  +--ro in-sms-max?                 uint16
+     |  +--ro in-sms-used?                uint16
+     |  +--ro sms-callback-count?         uint16
+     |  +--ro in-sms-arch-count?          uint16
+     |  +--ro in-sms-arch-error-count?    uint16
+     |  +--ro out-sms-count?              uint16
+     |  +--ro out-sms-error-count?        uint16
+     |  +--ro out-sms-pending?            uint16
+     |  +--ro out-sms-arch-count?         uint16
+     |  +--ro out-sms-arch-error-count?   uint16
+     +--ro cellwan-gps* [cellular-interface]
+        +--ro cellular-interface    string
+        +--ro gps-feature-state?    cellwan-ios-xe-oper:cwan-gps-feature-state
+        +--ro port-selected?        cellwan-ios-xe-oper:cwan-gps-port-selected
+        +--ro state?                cellwan-ios-xe-oper:cwan-gps-state
+        +--ro mode-selected?        cellwan-ios-xe-oper:cwan-gps-mode-selected
+        +--ro latitude?             string
+        +--ro longitude?            string
+        +--ro timestamp?            yang:date-and-time
+Xpaths for model: Cisco-IOS-XE-cellwan-oper.yang
+/cellwan-ios-xe-oper:cellwan-oper-data,container,
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware,list,
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-interface,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-firmware-version,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-firmware-build-time,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-hardware-version,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-device-model,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-imsi,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-imei,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-iccid,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-msisdn,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-fsn,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-modem-status,leaf,cellwan-ios-xe-oper:modem-status
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-modem-temperature,leaf,int16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-pri-skuid,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-pri-version,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-carrier,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-hardware/cellwan-ios-xe-oper:cellular-oem-pri-version,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-radio,list,
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-radio/cellwan-ios-xe-oper:cellular-interface,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-radio/cellwan-ios-xe-oper:technology,leaf,cellwan-ios-xe-oper:modem-technology
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-radio/cellwan-ios-xe-oper:radio-power-mode,leaf,cellwan-ios-xe-oper:cw-radio-power-status
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-radio/cellwan-ios-xe-oper:radio-rx-channel,leaf,uint32
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-radio/cellwan-ios-xe-oper:radio-tx-channel,leaf,uint32
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-radio/cellwan-ios-xe-oper:radio-band,leaf,uint32
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-radio/cellwan-ios-xe-oper:bandwidth,leaf,cellwan-ios-xe-oper:radio-bandwidth
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-radio/cellwan-ios-xe-oper:radio-rssi,leaf,int16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-radio/cellwan-ios-xe-oper:radio-rsrp,leaf,int16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-radio/cellwan-ios-xe-oper:radio-rsrq,leaf,int8
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-radio/cellwan-ios-xe-oper:radio-snr,leaf,decimal64
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-radio/cellwan-ios-xe-oper:radio-rat-preference,leaf,cellwan-ios-xe-oper:rat-preference
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-radio/cellwan-ios-xe-oper:radio-rat-selected,leaf,cellwan-ios-xe-oper:rat-technology
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network,list,
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:cellular-interface,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:cellular-modem-time,leaf,yang:date-and-time
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:radio-access-technology-selected,leaf,cellwan-ios-xe-oper:rat-technology
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:current-service-status,leaf,cellwan-ios-xe-oper:service-status
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:current-system-identifier,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:current-network-identifier,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:current-service-type,leaf,cellwan-ios-xe-oper:modem-service
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:current-roaming-status,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:network-selection-mode,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:network-name,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:mobile-country-code,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:mobile-network-code,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:packet-switch-domain-state,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:lte-carrier-aggregation,leaf,cellwan-ios-xe-oper:lte-ca
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:registration-state,leaf,cellwan-ios-xe-oper:reg-state
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:emm-state,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:emm-substate,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:location-area-code,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:tracking-area-code,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:cell-id,leaf,uint64
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-network/cellwan-ios-xe-oper:negotiated-network-mtu,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-connection,list,
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-connection/cellwan-ios-xe-oper:cellular-interface,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-connection/cellwan-ios-xe-oper:active-profile,leaf,uint64
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-connection/cellwan-ios-xe-oper:cellular-packet-status,leaf,cellwan-ios-xe-oper:packet-sess-status
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-connection/cellwan-ios-xe-oper:tx-packets,leaf,uint64
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-connection/cellwan-ios-xe-oper:rx-packets,leaf,uint64
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-connection/cellwan-ios-xe-oper:tx-bytes,leaf,uint64
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-connection/cellwan-ios-xe-oper:rx-bytes,leaf,uint64
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-connection/cellwan-ios-xe-oper:ipv4-addr,leaf,inet:ip-address
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-connection/cellwan-ios-xe-oper:ipv6-addr,leaf,inet:ip-address
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-connection/cellwan-ios-xe-oper:ipv4-dns-pri,leaf,inet:ip-address
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-connection/cellwan-ios-xe-oper:ipv4-dns-sec,leaf,inet:ip-address
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-connection/cellwan-ios-xe-oper:ipv6-dns-pri,leaf,inet:ip-address
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-connection/cellwan-ios-xe-oper:ipv6-dns-sec,leaf,inet:ip-address
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-connection/cellwan-ios-xe-oper:scope,leaf,cellwan-ios-xe-oper:profile-scope
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-security,list,
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-security/cellwan-ios-xe-oper:cellular-interface,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-security/cellwan-ios-xe-oper:active-sim,leaf,int8
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-security/cellwan-ios-xe-oper:sim-num-switchover,leaf,uint32
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-security/cellwan-ios-xe-oper:chv1-status,leaf,cellwan-ios-xe-oper:cellwan-chv1-sim-status
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-security/cellwan-ios-xe-oper:sim-status,leaf,cellwan-ios-xe-oper:cellwan-sim-status
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-security/cellwan-ios-xe-oper:sim-oper,leaf,cellwan-ios-xe-oper:cellwan-sim-user-op
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-security/cellwan-ios-xe-oper:num-retries,leaf,int8
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-sms,list,
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-sms/cellwan-ios-xe-oper:cellular-interface,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-sms/cellwan-ios-xe-oper:in-sms-count,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-sms/cellwan-ios-xe-oper:in-sms-archived,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-sms/cellwan-ios-xe-oper:in-sms-deleted,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-sms/cellwan-ios-xe-oper:in-sms-max,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-sms/cellwan-ios-xe-oper:in-sms-used,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-sms/cellwan-ios-xe-oper:sms-callback-count,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-sms/cellwan-ios-xe-oper:in-sms-arch-count,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-sms/cellwan-ios-xe-oper:in-sms-arch-error-count,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-sms/cellwan-ios-xe-oper:out-sms-count,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-sms/cellwan-ios-xe-oper:out-sms-error-count,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-sms/cellwan-ios-xe-oper:out-sms-pending,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-sms/cellwan-ios-xe-oper:out-sms-arch-count,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-sms/cellwan-ios-xe-oper:out-sms-arch-error-count,leaf,uint16
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-gps,list,
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-gps/cellwan-ios-xe-oper:cellular-interface,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-gps/cellwan-ios-xe-oper:gps-feature-state,leaf,cellwan-ios-xe-oper:cwan-gps-feature-state
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-gps/cellwan-ios-xe-oper:port-selected,leaf,cellwan-ios-xe-oper:cwan-gps-port-selected
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-gps/cellwan-ios-xe-oper:state,leaf,cellwan-ios-xe-oper:cwan-gps-state
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-gps/cellwan-ios-xe-oper:mode-selected,leaf,cellwan-ios-xe-oper:cwan-gps-mode-selected
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-gps/cellwan-ios-xe-oper:latitude,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-gps/cellwan-ios-xe-oper:longitude,leaf,string
+/cellwan-ios-xe-oper:cellwan-oper-data/cellwan-ios-xe-oper:cellwan-gps/cellwan-ios-xe-oper:timestamp,leaf,yang:date-and-time

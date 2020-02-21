@@ -1,0 +1,18 @@
+ 
+KPI for model: Cisco-IOS-XE-voice.yang
+
+module: Cisco-IOS-XE-voice
+  augment /ios:native:
+    +--rw voice
+    |  +--rw service* [type]
+    |     +--rw type    enumeration
+    |     +--rw fax
+    |        +--rw protocol?        enumeration
+    |        +--rw fallback?        enumeration
+    |        +--rw codec?           enumeration
+    |        +--rw ls-redundancy?   uint8
+    |        +--rw hs-redundancy?   uint8
+    |        +--rw version?         enumeration
+    +--rw voice-card* [slot]
+       +--rw slot    uint8
+Xpaths for model: Cisco-IOS-XE-voice.yang

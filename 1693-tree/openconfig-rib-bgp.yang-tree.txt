@@ -1,0 +1,688 @@
+ 
+KPI for model: openconfig-rib-bgp.yang
+module: openconfig-rib-bgp
+  +--ro bgp-rib
+     +--ro afi-safis
+        +--ro afi-safi* [afi-safi-name]
+           +--ro afi-safi-name    identityref
+           +--ro ipv4-unicast
+           |  +--ro loc-rib
+           |  |  +--ro num-routes?   uint64
+           |  |  +--ro routes
+           |  |     +--ro route* [prefix]
+           |  |        +--ro prefix        inet:ipv4-prefix
+           |  |        +--ro attributes
+           |  |           +--ro next-hops* [next-hop]
+           |  |              +--ro next-hop                inet:ip-address
+           |  |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+           |  |              +--ro as-path?                string
+           |  |              +--ro as4-path?               string
+           |  |              +--ro med?                    uint32
+           |  |              +--ro local-pref?             uint32
+           |  |              +--ro atomic-aggr?            boolean
+           |  |              +--ro aggregator
+           |  |              |  +--ro as?        uint32
+           |  |              |  +--ro as4?       uint32
+           |  |              |  +--ro address?   inet:ipv4-address
+           |  |              +--ro community*              oc-bgpt:bgp-std-community-type
+           |  |              +--ro originator-id?          inet:ipv4-address
+           |  |              +--ro cluster-list*           inet:ipv4-address
+           |  |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+           |  |              +--ro aigp?                   uint64
+           |  |              +--ro path-id?                uint32
+           |  |              +--ro unknown-attribute* [attr-type]
+           |  |              |  +--ro attr-type     uint16
+           |  |              |  +--ro attr-len?     uint16
+           |  |              |  +--ro attr-value?   binary
+           |  |              +--ro last-modified-date?     yang:date-and-time
+           |  |              +--ro last-update-received?   yang:date-and-time
+           |  |              +--ro valid-route?            boolean
+           |  |              +--ro invalid-reason?         identityref
+           |  |              +--ro best-path?              boolean
+           |  +--ro neighbors
+           |     +--ro neighbor* [neighbor-address]
+           |        +--ro neighbor-address    inet:ip-address
+           |        +--ro adj-rib-in-pre
+           |        |  +--ro num-routes?   uint64
+           |        |  +--ro routes
+           |        |     +--ro route* [prefix]
+           |        |        +--ro prefix        inet:ipv4-prefix
+           |        |        +--ro attributes
+           |        |           +--ro next-hops* [next-hop]
+           |        |              +--ro next-hop                inet:ip-address
+           |        |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+           |        |              +--ro as-path?                string
+           |        |              +--ro as4-path?               string
+           |        |              +--ro med?                    uint32
+           |        |              +--ro local-pref?             uint32
+           |        |              +--ro atomic-aggr?            boolean
+           |        |              +--ro aggregator
+           |        |              |  +--ro as?        uint32
+           |        |              |  +--ro as4?       uint32
+           |        |              |  +--ro address?   inet:ipv4-address
+           |        |              +--ro community*              oc-bgpt:bgp-std-community-type
+           |        |              +--ro originator-id?          inet:ipv4-address
+           |        |              +--ro cluster-list*           inet:ipv4-address
+           |        |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+           |        |              +--ro aigp?                   uint64
+           |        |              +--ro path-id?                uint32
+           |        |              +--ro unknown-attribute* [attr-type]
+           |        |              |  +--ro attr-type     uint16
+           |        |              |  +--ro attr-len?     uint16
+           |        |              |  +--ro attr-value?   binary
+           |        |              +--ro last-modified-date?     yang:date-and-time
+           |        |              +--ro last-update-received?   yang:date-and-time
+           |        |              +--ro valid-route?            boolean
+           |        |              +--ro invalid-reason?         identityref
+           |        |              +--ro best-path?              boolean
+           |        +--ro adj-rib-in-post
+           |        |  +--ro num-routes?   uint64
+           |        |  +--ro routes
+           |        |     +--ro route* [prefix]
+           |        |        +--ro prefix        inet:ipv4-prefix
+           |        |        +--ro attributes
+           |        |           +--ro next-hops* [next-hop]
+           |        |              +--ro next-hop                inet:ip-address
+           |        |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+           |        |              +--ro as-path?                string
+           |        |              +--ro as4-path?               string
+           |        |              +--ro med?                    uint32
+           |        |              +--ro local-pref?             uint32
+           |        |              +--ro atomic-aggr?            boolean
+           |        |              +--ro aggregator
+           |        |              |  +--ro as?        uint32
+           |        |              |  +--ro as4?       uint32
+           |        |              |  +--ro address?   inet:ipv4-address
+           |        |              +--ro community*              oc-bgpt:bgp-std-community-type
+           |        |              +--ro originator-id?          inet:ipv4-address
+           |        |              +--ro cluster-list*           inet:ipv4-address
+           |        |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+           |        |              +--ro aigp?                   uint64
+           |        |              +--ro path-id?                uint32
+           |        |              +--ro unknown-attribute* [attr-type]
+           |        |              |  +--ro attr-type     uint16
+           |        |              |  +--ro attr-len?     uint16
+           |        |              |  +--ro attr-value?   binary
+           |        |              +--ro last-modified-date?     yang:date-and-time
+           |        |              +--ro last-update-received?   yang:date-and-time
+           |        |              +--ro valid-route?            boolean
+           |        |              +--ro invalid-reason?         identityref
+           |        |              +--ro best-path?              boolean
+           |        +--ro adj-rib-out-pre
+           |        |  +--ro num-routes?   uint64
+           |        |  +--ro routes
+           |        |     +--ro route* [prefix]
+           |        |        +--ro prefix        inet:ipv4-prefix
+           |        |        +--ro attributes
+           |        |           +--ro next-hops* [next-hop]
+           |        |              +--ro next-hop                inet:ip-address
+           |        |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+           |        |              +--ro as-path?                string
+           |        |              +--ro as4-path?               string
+           |        |              +--ro med?                    uint32
+           |        |              +--ro local-pref?             uint32
+           |        |              +--ro atomic-aggr?            boolean
+           |        |              +--ro aggregator
+           |        |              |  +--ro as?        uint32
+           |        |              |  +--ro as4?       uint32
+           |        |              |  +--ro address?   inet:ipv4-address
+           |        |              +--ro community*              oc-bgpt:bgp-std-community-type
+           |        |              +--ro originator-id?          inet:ipv4-address
+           |        |              +--ro cluster-list*           inet:ipv4-address
+           |        |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+           |        |              +--ro aigp?                   uint64
+           |        |              +--ro path-id?                uint32
+           |        |              +--ro unknown-attribute* [attr-type]
+           |        |              |  +--ro attr-type     uint16
+           |        |              |  +--ro attr-len?     uint16
+           |        |              |  +--ro attr-value?   binary
+           |        |              +--ro last-modified-date?     yang:date-and-time
+           |        |              +--ro last-update-received?   yang:date-and-time
+           |        |              +--ro valid-route?            boolean
+           |        |              +--ro invalid-reason?         identityref
+           |        |              +--ro best-path?              boolean
+           |        +--ro adj-rib-out-post
+           |           +--ro num-routes?   uint64
+           |           +--ro routes
+           |              +--ro route* [prefix]
+           |                 +--ro prefix        inet:ipv4-prefix
+           |                 +--ro attributes
+           |                    +--ro next-hops* [next-hop]
+           |                       +--ro next-hop                inet:ip-address
+           |                       +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+           |                       +--ro as-path?                string
+           |                       +--ro as4-path?               string
+           |                       +--ro med?                    uint32
+           |                       +--ro local-pref?             uint32
+           |                       +--ro atomic-aggr?            boolean
+           |                       +--ro aggregator
+           |                       |  +--ro as?        uint32
+           |                       |  +--ro as4?       uint32
+           |                       |  +--ro address?   inet:ipv4-address
+           |                       +--ro community*              oc-bgpt:bgp-std-community-type
+           |                       +--ro originator-id?          inet:ipv4-address
+           |                       +--ro cluster-list*           inet:ipv4-address
+           |                       +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+           |                       +--ro aigp?                   uint64
+           |                       +--ro path-id?                uint32
+           |                       +--ro unknown-attribute* [attr-type]
+           |                       |  +--ro attr-type     uint16
+           |                       |  +--ro attr-len?     uint16
+           |                       |  +--ro attr-value?   binary
+           |                       +--ro last-modified-date?     yang:date-and-time
+           |                       +--ro last-update-received?   yang:date-and-time
+           |                       +--ro valid-route?            boolean
+           |                       +--ro invalid-reason?         identityref
+           |                       +--ro best-path?              boolean
+           +--ro ipv6-unicast
+              +--ro loc-rib
+              |  +--ro num-routes?   uint64
+              |  +--ro routes
+              |     +--ro route* [prefix]
+              |        +--ro prefix        inet:ipv6-prefix
+              |        +--ro attributes
+              |           +--ro next-hops* [next-hop]
+              |              +--ro next-hop                inet:ip-address
+              |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+              |              +--ro as-path?                string
+              |              +--ro as4-path?               string
+              |              +--ro med?                    uint32
+              |              +--ro local-pref?             uint32
+              |              +--ro atomic-aggr?            boolean
+              |              +--ro aggregator
+              |              |  +--ro as?        uint32
+              |              |  +--ro as4?       uint32
+              |              |  +--ro address?   inet:ipv4-address
+              |              +--ro community*              oc-bgpt:bgp-std-community-type
+              |              +--ro originator-id?          inet:ipv4-address
+              |              +--ro cluster-list*           inet:ipv4-address
+              |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+              |              +--ro aigp?                   uint64
+              |              +--ro path-id?                uint32
+              |              +--ro unknown-attribute* [attr-type]
+              |              |  +--ro attr-type     uint16
+              |              |  +--ro attr-len?     uint16
+              |              |  +--ro attr-value?   binary
+              |              +--ro last-modified-date?     yang:date-and-time
+              |              +--ro last-update-received?   yang:date-and-time
+              |              +--ro valid-route?            boolean
+              |              +--ro invalid-reason?         identityref
+              |              +--ro best-path?              boolean
+              +--ro neighbors
+                 +--ro neighbor* [neighbor-address]
+                    +--ro neighbor-address    inet:ip-address
+                    +--ro adj-rib-in-pre
+                    |  +--ro num-routes?   uint64
+                    |  +--ro routes
+                    |     +--ro route* [prefix]
+                    |        +--ro prefix        inet:ipv6-prefix
+                    |        +--ro attributes
+                    |           +--ro next-hops* [next-hop]
+                    |              +--ro next-hop                inet:ip-address
+                    |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+                    |              +--ro as-path?                string
+                    |              +--ro as4-path?               string
+                    |              +--ro med?                    uint32
+                    |              +--ro local-pref?             uint32
+                    |              +--ro atomic-aggr?            boolean
+                    |              +--ro aggregator
+                    |              |  +--ro as?        uint32
+                    |              |  +--ro as4?       uint32
+                    |              |  +--ro address?   inet:ipv4-address
+                    |              +--ro community*              oc-bgpt:bgp-std-community-type
+                    |              +--ro originator-id?          inet:ipv4-address
+                    |              +--ro cluster-list*           inet:ipv4-address
+                    |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+                    |              +--ro aigp?                   uint64
+                    |              +--ro path-id?                uint32
+                    |              +--ro unknown-attribute* [attr-type]
+                    |              |  +--ro attr-type     uint16
+                    |              |  +--ro attr-len?     uint16
+                    |              |  +--ro attr-value?   binary
+                    |              +--ro last-modified-date?     yang:date-and-time
+                    |              +--ro last-update-received?   yang:date-and-time
+                    |              +--ro valid-route?            boolean
+                    |              +--ro invalid-reason?         identityref
+                    |              +--ro best-path?              boolean
+                    +--ro adj-rib-in-post
+                    |  +--ro num-routes?   uint64
+                    |  +--ro routes
+                    |     +--ro route* [prefix]
+                    |        +--ro prefix        inet:ipv6-prefix
+                    |        +--ro attributes
+                    |           +--ro next-hops* [next-hop]
+                    |              +--ro next-hop                inet:ip-address
+                    |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+                    |              +--ro as-path?                string
+                    |              +--ro as4-path?               string
+                    |              +--ro med?                    uint32
+                    |              +--ro local-pref?             uint32
+                    |              +--ro atomic-aggr?            boolean
+                    |              +--ro aggregator
+                    |              |  +--ro as?        uint32
+                    |              |  +--ro as4?       uint32
+                    |              |  +--ro address?   inet:ipv4-address
+                    |              +--ro community*              oc-bgpt:bgp-std-community-type
+                    |              +--ro originator-id?          inet:ipv4-address
+                    |              +--ro cluster-list*           inet:ipv4-address
+                    |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+                    |              +--ro aigp?                   uint64
+                    |              +--ro path-id?                uint32
+                    |              +--ro unknown-attribute* [attr-type]
+                    |              |  +--ro attr-type     uint16
+                    |              |  +--ro attr-len?     uint16
+                    |              |  +--ro attr-value?   binary
+                    |              +--ro last-modified-date?     yang:date-and-time
+                    |              +--ro last-update-received?   yang:date-and-time
+                    |              +--ro valid-route?            boolean
+                    |              +--ro invalid-reason?         identityref
+                    |              +--ro best-path?              boolean
+                    +--ro adj-rib-out-pre
+                    |  +--ro num-routes?   uint64
+                    |  +--ro routes
+                    |     +--ro route* [prefix]
+                    |        +--ro prefix        inet:ipv6-prefix
+                    |        +--ro attributes
+                    |           +--ro next-hops* [next-hop]
+                    |              +--ro next-hop                inet:ip-address
+                    |              +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+                    |              +--ro as-path?                string
+                    |              +--ro as4-path?               string
+                    |              +--ro med?                    uint32
+                    |              +--ro local-pref?             uint32
+                    |              +--ro atomic-aggr?            boolean
+                    |              +--ro aggregator
+                    |              |  +--ro as?        uint32
+                    |              |  +--ro as4?       uint32
+                    |              |  +--ro address?   inet:ipv4-address
+                    |              +--ro community*              oc-bgpt:bgp-std-community-type
+                    |              +--ro originator-id?          inet:ipv4-address
+                    |              +--ro cluster-list*           inet:ipv4-address
+                    |              +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+                    |              +--ro aigp?                   uint64
+                    |              +--ro path-id?                uint32
+                    |              +--ro unknown-attribute* [attr-type]
+                    |              |  +--ro attr-type     uint16
+                    |              |  +--ro attr-len?     uint16
+                    |              |  +--ro attr-value?   binary
+                    |              +--ro last-modified-date?     yang:date-and-time
+                    |              +--ro last-update-received?   yang:date-and-time
+                    |              +--ro valid-route?            boolean
+                    |              +--ro invalid-reason?         identityref
+                    |              +--ro best-path?              boolean
+                    +--ro adj-rib-out-post
+                       +--ro num-routes?   uint64
+                       +--ro routes
+                          +--ro route* [prefix]
+                             +--ro prefix        inet:ipv6-prefix
+                             +--ro attributes
+                                +--ro next-hops* [next-hop]
+                                   +--ro next-hop                inet:ip-address
+                                   +--ro origin?                 oc-bgpt:bgp-origin-attr-type
+                                   +--ro as-path?                string
+                                   +--ro as4-path?               string
+                                   +--ro med?                    uint32
+                                   +--ro local-pref?             uint32
+                                   +--ro atomic-aggr?            boolean
+                                   +--ro aggregator
+                                   |  +--ro as?        uint32
+                                   |  +--ro as4?       uint32
+                                   |  +--ro address?   inet:ipv4-address
+                                   +--ro community*              oc-bgpt:bgp-std-community-type
+                                   +--ro originator-id?          inet:ipv4-address
+                                   +--ro cluster-list*           inet:ipv4-address
+                                   +--ro ext-community*          oc-bgpt:bgp-ext-community-type
+                                   +--ro aigp?                   uint64
+                                   +--ro path-id?                uint32
+                                   +--ro unknown-attribute* [attr-type]
+                                   |  +--ro attr-type     uint16
+                                   |  +--ro attr-len?     uint16
+                                   |  +--ro attr-value?   binary
+                                   +--ro last-modified-date?     yang:date-and-time
+                                   +--ro last-update-received?   yang:date-and-time
+                                   +--ro valid-route?            boolean
+                                   +--ro invalid-reason?         identityref
+                                   +--ro best-path?              boolean
+Xpaths for model: openconfig-rib-bgp.yang
+/oc-bgprib:bgp-rib,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:afi-safi-name,leaf,identityref
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:num-routes,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:prefix,leaf,inet:ipv4-prefix
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:next-hop,leaf,inet:ip-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:origin,leaf,oc-bgpt:bgp-origin-attr-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as4-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:med,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:local-pref,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:atomic-aggr,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as4,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:address,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:community,leaf-list,oc-bgpt:bgp-std-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:originator-id,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:cluster-list,leaf-list,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:ext-community,leaf-list,oc-bgpt:bgp-ext-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aigp,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:path-id,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-type,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-len,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-value,leaf,binary
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-modified-date,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-update-received,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:valid-route,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:invalid-reason,leaf,identityref
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:best-path,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:neighbor-address,leaf,inet:ip-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:num-routes,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:prefix,leaf,inet:ipv4-prefix
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:next-hop,leaf,inet:ip-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:origin,leaf,oc-bgpt:bgp-origin-attr-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as4-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:med,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:local-pref,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:atomic-aggr,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as4,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:address,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:community,leaf-list,oc-bgpt:bgp-std-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:originator-id,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:cluster-list,leaf-list,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:ext-community,leaf-list,oc-bgpt:bgp-ext-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aigp,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:path-id,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-type,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-len,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-value,leaf,binary
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-modified-date,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-update-received,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:valid-route,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:invalid-reason,leaf,identityref
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:best-path,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:num-routes,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:prefix,leaf,inet:ipv4-prefix
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:next-hop,leaf,inet:ip-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:origin,leaf,oc-bgpt:bgp-origin-attr-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as4-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:med,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:local-pref,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:atomic-aggr,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as4,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:address,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:community,leaf-list,oc-bgpt:bgp-std-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:originator-id,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:cluster-list,leaf-list,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:ext-community,leaf-list,oc-bgpt:bgp-ext-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aigp,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:path-id,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-type,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-len,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-value,leaf,binary
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-modified-date,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-update-received,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:valid-route,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:invalid-reason,leaf,identityref
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:best-path,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:num-routes,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:prefix,leaf,inet:ipv4-prefix
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:next-hop,leaf,inet:ip-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:origin,leaf,oc-bgpt:bgp-origin-attr-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as4-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:med,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:local-pref,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:atomic-aggr,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as4,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:address,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:community,leaf-list,oc-bgpt:bgp-std-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:originator-id,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:cluster-list,leaf-list,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:ext-community,leaf-list,oc-bgpt:bgp-ext-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aigp,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:path-id,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-type,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-len,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-value,leaf,binary
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-modified-date,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-update-received,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:valid-route,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:invalid-reason,leaf,identityref
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:best-path,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:num-routes,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:prefix,leaf,inet:ipv4-prefix
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:next-hop,leaf,inet:ip-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:origin,leaf,oc-bgpt:bgp-origin-attr-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as4-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:med,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:local-pref,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:atomic-aggr,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as4,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:address,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:community,leaf-list,oc-bgpt:bgp-std-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:originator-id,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:cluster-list,leaf-list,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:ext-community,leaf-list,oc-bgpt:bgp-ext-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aigp,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:path-id,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-type,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-len,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-value,leaf,binary
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-modified-date,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-update-received,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:valid-route,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:invalid-reason,leaf,identityref
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv4-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:best-path,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:num-routes,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:prefix,leaf,inet:ipv6-prefix
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:next-hop,leaf,inet:ip-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:origin,leaf,oc-bgpt:bgp-origin-attr-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as4-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:med,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:local-pref,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:atomic-aggr,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as4,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:address,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:community,leaf-list,oc-bgpt:bgp-std-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:originator-id,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:cluster-list,leaf-list,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:ext-community,leaf-list,oc-bgpt:bgp-ext-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aigp,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:path-id,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-type,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-len,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-value,leaf,binary
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-modified-date,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-update-received,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:valid-route,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:invalid-reason,leaf,identityref
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:loc-rib/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:best-path,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:neighbor-address,leaf,inet:ip-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:num-routes,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:prefix,leaf,inet:ipv6-prefix
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:next-hop,leaf,inet:ip-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:origin,leaf,oc-bgpt:bgp-origin-attr-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as4-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:med,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:local-pref,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:atomic-aggr,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as4,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:address,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:community,leaf-list,oc-bgpt:bgp-std-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:originator-id,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:cluster-list,leaf-list,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:ext-community,leaf-list,oc-bgpt:bgp-ext-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aigp,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:path-id,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-type,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-len,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-value,leaf,binary
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-modified-date,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-update-received,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:valid-route,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:invalid-reason,leaf,identityref
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:best-path,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:num-routes,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:prefix,leaf,inet:ipv6-prefix
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:next-hop,leaf,inet:ip-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:origin,leaf,oc-bgpt:bgp-origin-attr-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as4-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:med,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:local-pref,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:atomic-aggr,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as4,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:address,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:community,leaf-list,oc-bgpt:bgp-std-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:originator-id,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:cluster-list,leaf-list,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:ext-community,leaf-list,oc-bgpt:bgp-ext-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aigp,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:path-id,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-type,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-len,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-value,leaf,binary
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-modified-date,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-update-received,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:valid-route,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:invalid-reason,leaf,identityref
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-in-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:best-path,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:num-routes,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:prefix,leaf,inet:ipv6-prefix
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:next-hop,leaf,inet:ip-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:origin,leaf,oc-bgpt:bgp-origin-attr-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as4-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:med,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:local-pref,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:atomic-aggr,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as4,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:address,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:community,leaf-list,oc-bgpt:bgp-std-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:originator-id,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:cluster-list,leaf-list,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:ext-community,leaf-list,oc-bgpt:bgp-ext-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aigp,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:path-id,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-type,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-len,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-value,leaf,binary
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-modified-date,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-update-received,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:valid-route,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:invalid-reason,leaf,identityref
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-pre/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:best-path,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:num-routes,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:prefix,leaf,inet:ipv6-prefix
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:next-hop,leaf,inet:ip-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:origin,leaf,oc-bgpt:bgp-origin-attr-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:as4-path,leaf,string
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:med,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:local-pref,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:atomic-aggr,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator,container,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:as4,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aggregator/oc-bgprib:address,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:community,leaf-list,oc-bgpt:bgp-std-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:originator-id,leaf,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:cluster-list,leaf-list,inet:ipv4-address
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:ext-community,leaf-list,oc-bgpt:bgp-ext-community-type
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:aigp,leaf,uint64
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:path-id,leaf,uint32
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute,list,
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-type,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-len,leaf,uint16
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:unknown-attribute/oc-bgprib:attr-value,leaf,binary
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-modified-date,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:last-update-received,leaf,yang:date-and-time
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:valid-route,leaf,boolean
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:invalid-reason,leaf,identityref
+/oc-bgprib:bgp-rib/oc-bgprib:afi-safis/oc-bgprib:afi-safi/oc-bgprib:ipv6-unicast/oc-bgprib:neighbors/oc-bgprib:neighbor/oc-bgprib:adj-rib-out-post/oc-bgprib:routes/oc-bgprib:route/oc-bgprib:attributes/oc-bgprib:next-hops/oc-bgprib:best-path,leaf,boolean

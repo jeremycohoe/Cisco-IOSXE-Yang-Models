@@ -1,0 +1,173 @@
+ 
+KPI for model: ietf-yang-push.yang
+
+module: ietf-yang-push
+  augment /notif-bis:establish-subscription/notif-bis:input:
+    +---w (update-trigger)?
+    |  +--:(periodic)
+    |  |  +---w period               yang:timeticks
+    |  |  +---w anchor-time?         yang:date-and-time
+    |  +--:(on-change) {on-change}?
+    |     +---w no-synch-on-start?   empty
+    |     +---w dampening-period     yang:timeticks
+    |     +---w excluded-change*     change-type
+    +---w dscp?                      inet:dscp {notif-bis:configured-subscriptions}?
+    +---w subscription-priority?     uint8
+    +---w subscription-dependency?   string
+  augment /notif-bis:establish-subscription/notif-bis:input/notif-bis:filter-type:
+    +--:(update-filter)
+       +-- (update-filter)?
+          +--:(subtree)
+          |  +-- subtree-filter?   <anyxml>
+          +--:(xpath)
+             +-- xpath-filter?     yang:xpath1.0
+  augment /notif-bis:establish-subscription/notif-bis:output:
+    +--ro (update-trigger)?
+    |  +--:(periodic)
+    |  |  +--ro period               yang:timeticks
+    |  |  +--ro anchor-time?         yang:date-and-time
+    |  +--:(on-change) {on-change}?
+    |     +--ro no-synch-on-start?   empty
+    |     +--ro dampening-period     yang:timeticks
+    |     +--ro excluded-change*     change-type
+    +--ro dscp?                      inet:dscp {notif-bis:configured-subscriptions}?
+    +--ro subscription-priority?     uint8
+    +--ro subscription-dependency?   string
+  augment /notif-bis:establish-subscription/notif-bis:output/notif-bis:result/notif-bis:no-success/notif-bis:filter-type:
+    +--:(update-filter)
+       +-- (update-filter)?
+          +--:(subtree)
+          |  +-- subtree-filter?   <anyxml>
+          +--:(xpath)
+             +-- xpath-filter?     yang:xpath1.0
+  augment /notif-bis:modify-subscription/notif-bis:input:
+    +---w (update-trigger)?
+       +--:(periodic)
+       |  +---w period               yang:timeticks
+       |  +---w anchor-time?         yang:date-and-time
+       +--:(on-change) {on-change}?
+          +---w no-synch-on-start?   empty
+          +---w dampening-period     yang:timeticks
+          +---w excluded-change*     change-type
+  augment /notif-bis:modify-subscription/notif-bis:input/notif-bis:filter-type:
+    +--:(update-filter)
+       +-- (update-filter)?
+          +--:(subtree)
+          |  +-- subtree-filter?   <anyxml>
+          +--:(xpath)
+             +-- xpath-filter?     yang:xpath1.0
+  augment /notif-bis:modify-subscription/notif-bis:output:
+    +--ro (update-trigger)?
+    |  +--:(periodic)
+    |  |  +--ro period               yang:timeticks
+    |  |  +--ro anchor-time?         yang:date-and-time
+    |  +--:(on-change) {on-change}?
+    |     +--ro no-synch-on-start?   empty
+    |     +--ro dampening-period     yang:timeticks
+    |     +--ro excluded-change*     change-type
+    +--ro dscp?                      inet:dscp {notif-bis:configured-subscriptions}?
+    +--ro subscription-priority?     uint8
+    +--ro subscription-dependency?   string
+  augment /notif-bis:modify-subscription/notif-bis:output/notif-bis:result/notif-bis:no-success/notif-bis:filter-type:
+    +--:(update-filter)
+       +-- (update-filter)?
+          +--:(subtree)
+          |  +-- subtree-filter?   <anyxml>
+          +--:(xpath)
+             +-- xpath-filter?     yang:xpath1.0
+  augment /notif-bis:subscription-started:
+    +--ro (update-trigger)?
+    |  +--:(periodic)
+    |  |  +--ro period               yang:timeticks
+    |  |  +--ro anchor-time?         yang:date-and-time
+    |  +--:(on-change) {on-change}?
+    |     +--ro no-synch-on-start?   empty
+    |     +--ro dampening-period     yang:timeticks
+    |     +--ro excluded-change*     change-type
+    +--ro dscp?                      inet:dscp {notif-bis:configured-subscriptions}?
+    +--ro subscription-priority?     uint8
+    +--ro subscription-dependency?   string
+  augment /notif-bis:subscription-started/notif-bis:filter-type:
+    +--:(update-filter)
+       +-- (update-filter)?
+          +--:(subtree)
+          |  +-- subtree-filter?   <anyxml>
+          +--:(xpath)
+             +-- xpath-filter?     yang:xpath1.0
+  augment /notif-bis:subscription-modified:
+    +--ro (update-trigger)?
+    |  +--:(periodic)
+    |  |  +--ro period               yang:timeticks
+    |  |  +--ro anchor-time?         yang:date-and-time
+    |  +--:(on-change) {on-change}?
+    |     +--ro no-synch-on-start?   empty
+    |     +--ro dampening-period     yang:timeticks
+    |     +--ro excluded-change*     change-type
+    +--ro dscp?                      inet:dscp {notif-bis:configured-subscriptions}?
+    +--ro subscription-priority?     uint8
+    +--ro subscription-dependency?   string
+  augment /notif-bis:subscription-modified/notif-bis:filter-type:
+    +--:(update-filter)
+       +-- (update-filter)?
+          +--:(subtree)
+          |  +-- subtree-filter?   <anyxml>
+          +--:(xpath)
+             +-- xpath-filter?     yang:xpath1.0
+  augment /notif-bis:filters/notif-bis:filter/notif-bis:filter-type:
+    +--:(update-filter)
+       +--rw (update-filter)?
+          +--:(subtree)
+          |  +--rw subtree-filter?   <anyxml>
+          +--:(xpath)
+             +--rw xpath-filter?     yang:xpath1.0
+  augment /notif-bis:subscription-config/notif-bis:subscription:
+    +--rw (update-trigger)?
+    |  +--:(periodic)
+    |  |  +--rw period               yang:timeticks
+    |  |  +--rw anchor-time?         yang:date-and-time
+    |  +--:(on-change) {on-change}?
+    |     +--rw no-synch-on-start?   empty
+    |     +--rw dampening-period     yang:timeticks
+    |     +--rw excluded-change*     change-type
+    +--rw dscp?                      inet:dscp {notif-bis:configured-subscriptions}?
+    +--rw subscription-priority?     uint8
+    +--rw subscription-dependency?   string
+  augment /notif-bis:subscription-config/notif-bis:subscription/notif-bis:filter-type:
+    +--:(update-filter)
+       +--rw (update-filter)?
+          +--:(subtree)
+          |  +--rw subtree-filter?   <anyxml>
+          +--:(xpath)
+             +--rw xpath-filter?     yang:xpath1.0
+  augment /notif-bis:subscriptions/notif-bis:subscription:
+    +--ro (update-trigger)?
+    |  +--:(periodic)
+    |  |  +--ro period               yang:timeticks
+    |  |  +--ro anchor-time?         yang:date-and-time
+    |  +--:(on-change) {on-change}?
+    |     +--ro no-synch-on-start?   empty
+    |     +--ro dampening-period     yang:timeticks
+    |     +--ro excluded-change*     change-type
+    +--ro dscp?                      inet:dscp {notif-bis:configured-subscriptions}?
+    +--ro subscription-priority?     uint8
+    +--ro subscription-dependency?   string
+  augment /notif-bis:subscriptions/notif-bis:subscription/notif-bis:filter-type:
+    +--:(update-filter)
+       +--ro (update-filter)?
+          +--:(subtree)
+          |  +--ro subtree-filter?   <anyxml>
+          +--:(xpath)
+             +--ro xpath-filter?     yang:xpath1.0
+
+  notifications:
+    +---n push-update
+    |  +--ro subscription-id              notif-bis:subscription-id
+    |  +--ro time-of-update?              yang:date-and-time
+    |  +--ro updates-not-sent?            empty
+    |  +--ro datastore-contents-string?   string
+    +---n push-change-update {on-change}?
+       +--ro subscription-id             notif-bis:subscription-id
+       +--ro time-of-update?             yang:date-and-time
+       +--ro updates-not-sent?           empty
+       +--ro datastore-changes-string?   string
+Xpaths for model: ietf-yang-push.yang

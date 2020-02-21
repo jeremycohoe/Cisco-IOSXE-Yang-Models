@@ -1,0 +1,9 @@
+ 
+KPI for model: cisco-xe-openconfig-if-ethernet-ext.yang
+
+module: cisco-xe-openconfig-if-ethernet-ext
+  augment /oc-if:interfaces/oc-if:interface/oc-if-eth:ethernet/oc-if-eth:config:
+    +--rw switchport?   boolean
+  augment /oc-if:interfaces/oc-if:interface/oc-if-eth:ethernet/oc-if-eth:state:
+    +--ro switchport?   boolean
+Xpaths for model: cisco-xe-openconfig-if-ethernet-ext.yang

@@ -1,0 +1,7 @@
+ 
+KPI for model: Cisco-IOS-XE-avb.yang
+
+module: Cisco-IOS-XE-avb
+  augment /ios:native/ios:avb:
+    +--rw strict?   empty
+Xpaths for model: Cisco-IOS-XE-avb.yang

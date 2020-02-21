@@ -1,0 +1,67 @@
+ 
+KPI for model: Cisco-IOS-XE-zone.yang
+
+module: Cisco-IOS-XE-zone
+  augment /ios:native/ios:zone:
+    +--rw security* [id]
+       +--rw id             string
+       +--rw description?   string
+       +--rw protection?    string
+  augment /ios:native/ios:zone-pair:
+    +--rw security* [id]
+       +--rw id                string
+       +--rw source?           string
+       +--rw destination?      string
+       +--rw description?      string
+       +--rw service-policy
+          +--rw type
+             +--rw inspect?   string
+  augment /ios:native/ios:interface/ios:Ethernet:
+    +--rw zone-member
+       +--rw security?   string
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw zone-member
+       +--rw security?   string
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw zone-member
+       +--rw security?   string
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw zone-member
+       +--rw security?   string
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw zone-member
+       +--rw security?   string
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw zone-member
+       +--rw security?   string
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw zone-member
+       +--rw security?   string
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw zone-member
+       +--rw security?   string
+  augment /ios:native/ios:interface/ios:LISP:
+    +--rw zone-member
+       +--rw security?   string
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw zone-member
+       +--rw security?   string
+  augment /ios:native/ios:interface/ios:Loopback:
+    +--rw zone-member
+       +--rw security?   string
+  augment /ios:native/ios:interface/ios:Tunnel:
+    +--rw zone-member
+       +--rw security?   string
+  augment /ios:native/ios:interface/ios:Virtual-Template:
+    +--rw zone-member
+       +--rw security?   string
+  augment /ios:native/ios:interface/ios:Vlan:
+    +--rw zone-member
+       +--rw security?   string
+  augment /ios:native/ios:interface/ios:vasileft:
+    +--rw zone-member
+       +--rw security?   string
+  augment /ios:native/ios:interface/ios:vasiright:
+    +--rw zone-member
+       +--rw security?   string
+Xpaths for model: Cisco-IOS-XE-zone.yang

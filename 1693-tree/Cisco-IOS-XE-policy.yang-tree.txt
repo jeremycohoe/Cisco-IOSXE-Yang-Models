@@ -1,0 +1,2452 @@
+ 
+KPI for model: Cisco-IOS-XE-policy.yang
+
+module: Cisco-IOS-XE-policy
+  augment /ios:native/ios:policy:
+    +--rw class-map* [name]
+    |  +--rw name           string
+    |  +--rw type?          enumeration
+    |  +--rw subscriber?    empty
+    |  +--rw protocol?      enumeration
+    |  +--rw prematch       enumeration
+    |  +--rw description?   string
+    |  +--rw match
+    |  |  +--rw current-method-priority
+    |  |  |  +--rw eq?   uint8
+    |  |  |  +--rw gt?   uint8
+    |  |  |  +--rw lt?   uint8
+    |  |  +--rw application
+    |  |  |  +--rw application-group
+    |  |  |  |  +--rw telepresence-group?   empty
+    |  |  |  |  +--rw vmware-group?         empty
+    |  |  |  |  +--rw webex-group?          empty
+    |  |  |  +--rw attribute
+    |  |  |     +--rw media-type?   enumeration
+    |  |  +--rw access-group
+    |  |  |  +--rw index?   uint32
+    |  |  |  +--rw name*    string
+    |  |  +--rw any?                           empty
+    |  |  +--rw class-map*                     string
+    |  |  +--rw cos*                           uint8
+    |  |  +--rw destination-address
+    |  |  |  +--rw mac*   yang:mac-address
+    |  |  +--rw discard-class*                 uint8
+    |  |  +--rw dscp*                          ios-types:dscp-type
+    |  |  +--rw fr-de?                         empty
+    |  |  +--rw fr-dlci*                       uint16
+    |  |  +--rw group-object
+    |  |  |  +--rw security
+    |  |  |     +--rw source*        string
+    |  |  |     +--rw destination*   string
+    |  |  +--rw input-interface*               string
+    |  |  +--rw ip
+    |  |  |  +--rw dscp*         ios-types:dscp-type
+    |  |  |  +--rw precedence*   ios-types:precedence-type
+    |  |  |  +--rw rtp* [port1 port2]
+    |  |  |     +--rw port1    uint16
+    |  |  |     +--rw port2    uint16
+    |  |  +--rw non-client-nrt?                empty
+    |  |  +--rw mpls
+    |  |  |  +--rw experimental
+    |  |  |     +--rw topmost*   uint8
+    |  |  +--rw packet
+    |  |  |  +--rw length
+    |  |  |     +--rw max?   uint16
+    |  |  |     +--rw min?   uint16
+    |  |  +--rw precedence*                    ios-types:precedence-type
+    |  |  +--rw protocol
+    |  |  |  +--rw protocols-list* [protocols]
+    |  |  |  |  +--rw protocols    string
+    |  |  |  +--rw attribute
+    |  |  |     +--rw application-group* [name]
+    |  |  |     |  +--rw name    string
+    |  |  |     +--rw application-set* [name]
+    |  |  |     |  +--rw name    string
+    |  |  |     +--rw business-relevance* [name]
+    |  |  |     |  +--rw name    string
+    |  |  |     +--rw category* [name]
+    |  |  |     |  +--rw name    string
+    |  |  |     +--rw encrypted* [name]
+    |  |  |     |  +--rw name    string
+    |  |  |     +--rw sub-category* [name]
+    |  |  |     |  +--rw name    string
+    |  |  |     +--rw traffic-class* [name]
+    |  |  |     |  +--rw name    string
+    |  |  |     +--rw tunnel* [name]
+    |  |  |        +--rw name    string
+    |  |  +--rw qos-group*                     uint16
+    |  |  +--rw security-group
+    |  |  |  +--rw destination
+    |  |  |  |  +--rw tag?   uint16
+    |  |  |  +--rw source
+    |  |  |     +--rw tag?   uint16
+    |  |  +--rw service* [efp]
+    |  |  |  +--rw efp         uint16
+    |  |  |  +--rw instance?   empty
+    |  |  |  +--rw ethernet?   empty
+    |  |  +--rw source-address
+    |  |  |  +--rw mac*   yang:mac-address
+    |  |  +--rw vlan
+    |  |  |  +--rw inner*   union
+    |  |  |  +--rw value*   union
+    |  |  +--rw peer?                          string
+    |  |  +--rw activated-service-template* [service-name]
+    |  |  |  +--rw service-name    string
+    |  |  +--rw authorization-status
+    |  |  |  +--rw authorized?     empty
+    |  |  |  +--rw unauthorized?   empty
+    |  |  +--rw authorizing-method-priority
+    |  |  |  +--rw eq?   uint8
+    |  |  |  +--rw gt?   uint8
+    |  |  |  +--rw lt?   uint8
+    |  |  +--rw client-type?                   enumeration
+    |  |  +--rw device-type?                   string
+    |  |  +--rw interface?                     string
+    |  |  +--rw ip-address?                    inet:ipv4-address
+    |  |  +--rw ipv6-address?                  inet:ipv6-address
+    |  |  +--rw mac-address?                   ios-types:cisco-mac-address-type
+    |  |  +--rw method
+    |  |  |  +--rw dot1x?     empty
+    |  |  |  +--rw mab?       empty
+    |  |  |  +--rw webauth?   empty
+    |  |  +--rw oui?                           ios-types:cisco-mac-address-type
+    |  |  +--rw port-type?                     enumeration
+    |  |  +--rw result-type
+    |  |  |  +--rw method
+    |  |  |  |  +--rw dot1x
+    |  |  |  |  |  +--rw aaa-timeout?       empty
+    |  |  |  |  |  +--rw agent-not-found?   empty
+    |  |  |  |  |  +--rw authoritative?     empty
+    |  |  |  |  |  +--rw method-timeout?    empty
+    |  |  |  |  |  +--rw none?              empty
+    |  |  |  |  |  +--rw success?           empty
+    |  |  |  |  +--rw mab
+    |  |  |  |  |  +--rw aaa-timeout?       empty
+    |  |  |  |  |  +--rw agent-not-found?   empty
+    |  |  |  |  |  +--rw authoritative?     empty
+    |  |  |  |  |  +--rw method-timeout?    empty
+    |  |  |  |  |  +--rw none?              empty
+    |  |  |  |  |  +--rw success?           empty
+    |  |  |  |  +--rw webauth
+    |  |  |  |     +--rw aaa-timeout?       empty
+    |  |  |  |     +--rw agent-not-found?   empty
+    |  |  |  |     +--rw authoritative?     empty
+    |  |  |  |     +--rw method-timeout?    empty
+    |  |  |  |     +--rw none?              empty
+    |  |  |  |     +--rw success?           empty
+    |  |  |  +--rw aaa-timeout?       empty
+    |  |  |  +--rw agent-not-found?   empty
+    |  |  |  +--rw authoritative?     empty
+    |  |  |  +--rw method-timeout?    empty
+    |  |  |  +--rw none?              empty
+    |  |  |  +--rw success?           empty
+    |  |  +--rw service-template?              string
+    |  |  +--rw session-type?                  enumeration
+    |  |  +--rw sgt?                           uint16
+    |  |  +--rw ssid?                          string
+    |  |  +--rw tag?                           string
+    |  |  +--rw timer?                         string
+    |  |  +--rw user-role?                     string
+    |  |  +--rw username?                      string
+    |  |  +--rw not
+    |  |     +--rw current-method-priority
+    |  |     |  +--rw eq?   uint8
+    |  |     |  +--rw gt?   uint8
+    |  |     |  +--rw lt?   uint8
+    |  |     +--rw application
+    |  |     |  +--rw application-group
+    |  |     |  |  +--rw telepresence-group?   empty
+    |  |     |  |  +--rw vmware-group?         empty
+    |  |     |  |  +--rw webex-group?          empty
+    |  |     |  +--rw attribute
+    |  |     |     +--rw media-type?   enumeration
+    |  |     +--rw access-group
+    |  |     |  +--rw index?   uint32
+    |  |     |  +--rw name*    string
+    |  |     +--rw any?                       empty
+    |  |     +--rw class-map*                 string
+    |  |     +--rw cos*                       uint8
+    |  |     +--rw destination-address
+    |  |     |  +--rw mac*   yang:mac-address
+    |  |     +--rw discard-class*             uint8
+    |  |     +--rw dscp*                      ios-types:dscp-type
+    |  |     +--rw fr-de?                     empty
+    |  |     +--rw fr-dlci*                   uint16
+    |  |     +--rw group-object
+    |  |     |  +--rw security
+    |  |     |     +--rw source*        string
+    |  |     |     +--rw destination*   string
+    |  |     +--rw input-interface*           string
+    |  |     +--rw ip
+    |  |     |  +--rw dscp*         ios-types:dscp-type
+    |  |     |  +--rw precedence*   ios-types:precedence-type
+    |  |     |  +--rw rtp* [port1 port2]
+    |  |     |     +--rw port1    uint16
+    |  |     |     +--rw port2    uint16
+    |  |     +--rw non-client-nrt?            empty
+    |  |     +--rw mpls
+    |  |     |  +--rw experimental
+    |  |     |     +--rw topmost*   uint8
+    |  |     +--rw packet
+    |  |     |  +--rw length
+    |  |     |     +--rw max?   uint16
+    |  |     |     +--rw min?   uint16
+    |  |     +--rw precedence*                ios-types:precedence-type
+    |  |     +--rw protocol
+    |  |     |  +--rw protocols-list* [protocols]
+    |  |     |  |  +--rw protocols    string
+    |  |     |  +--rw attribute
+    |  |     |     +--rw application-group* [name]
+    |  |     |     |  +--rw name    string
+    |  |     |     +--rw application-set* [name]
+    |  |     |     |  +--rw name    string
+    |  |     |     +--rw business-relevance* [name]
+    |  |     |     |  +--rw name    string
+    |  |     |     +--rw category* [name]
+    |  |     |     |  +--rw name    string
+    |  |     |     +--rw encrypted* [name]
+    |  |     |     |  +--rw name    string
+    |  |     |     +--rw sub-category* [name]
+    |  |     |     |  +--rw name    string
+    |  |     |     +--rw traffic-class* [name]
+    |  |     |     |  +--rw name    string
+    |  |     |     +--rw tunnel* [name]
+    |  |     |        +--rw name    string
+    |  |     +--rw qos-group*                 uint16
+    |  |     +--rw security-group
+    |  |     |  +--rw destination
+    |  |     |  |  +--rw tag?   uint16
+    |  |     |  +--rw source
+    |  |     |     +--rw tag?   uint16
+    |  |     +--rw service* [efp]
+    |  |     |  +--rw efp         uint16
+    |  |     |  +--rw instance?   empty
+    |  |     |  +--rw ethernet?   empty
+    |  |     +--rw source-address
+    |  |     |  +--rw mac*   yang:mac-address
+    |  |     +--rw vlan
+    |  |     |  +--rw inner*   union
+    |  |     |  +--rw value*   union
+    |  |     +--rw peer?                      string
+    |  +--rw no-match
+    |     +--rw activated-service-template* [service-name]
+    |     |  +--rw service-name    string
+    |     +--rw authorization-status
+    |     |  +--rw authorized?     empty
+    |     |  +--rw unauthorized?   empty
+    |     +--rw authorizing-method-priority
+    |     |  +--rw eq?   uint8
+    |     |  +--rw gt?   uint8
+    |     |  +--rw lt?   uint8
+    |     +--rw client-type?                   enumeration
+    |     +--rw device-type?                   string
+    |     +--rw interface?                     string
+    |     +--rw ip-address?                    inet:ipv4-address
+    |     +--rw ipv6-address?                  inet:ipv6-address
+    |     +--rw mac-address?                   ios-types:cisco-mac-address-type
+    |     +--rw method
+    |     |  +--rw dot1x?     empty
+    |     |  +--rw mab?       empty
+    |     |  +--rw webauth?   empty
+    |     +--rw oui?                           ios-types:cisco-mac-address-type
+    |     +--rw port-type?                     enumeration
+    |     +--rw result-type
+    |     |  +--rw method
+    |     |  |  +--rw dot1x
+    |     |  |  |  +--rw aaa-timeout?       empty
+    |     |  |  |  +--rw agent-not-found?   empty
+    |     |  |  |  +--rw authoritative?     empty
+    |     |  |  |  +--rw method-timeout?    empty
+    |     |  |  |  +--rw none?              empty
+    |     |  |  |  +--rw success?           empty
+    |     |  |  +--rw mab
+    |     |  |  |  +--rw aaa-timeout?       empty
+    |     |  |  |  +--rw agent-not-found?   empty
+    |     |  |  |  +--rw authoritative?     empty
+    |     |  |  |  +--rw method-timeout?    empty
+    |     |  |  |  +--rw none?              empty
+    |     |  |  |  +--rw success?           empty
+    |     |  |  +--rw webauth
+    |     |  |     +--rw aaa-timeout?       empty
+    |     |  |     +--rw agent-not-found?   empty
+    |     |  |     +--rw authoritative?     empty
+    |     |  |     +--rw method-timeout?    empty
+    |     |  |     +--rw none?              empty
+    |     |  |     +--rw success?           empty
+    |     |  +--rw aaa-timeout?       empty
+    |     |  +--rw agent-not-found?   empty
+    |     |  +--rw authoritative?     empty
+    |     |  +--rw method-timeout?    empty
+    |     |  +--rw none?              empty
+    |     |  +--rw success?           empty
+    |     +--rw service-template?              string
+    |     +--rw session-type?                  enumeration
+    |     +--rw sgt?                           uint16
+    |     +--rw ssid?                          string
+    |     +--rw tag?                           string
+    |     +--rw timer?                         string
+    |     +--rw user-role?                     string
+    |     +--rw username?                      string
+    +--rw policy-map* [name]
+       +--rw name                 string
+       +--rw type?                enumeration
+       +--rw subscriber?          empty
+       +--rw protocol?            enumeration
+       +--rw event* [event-type]
+       |  +--rw event-type      enumeration
+       |  +--rw match-type?     enumeration
+       |  +--rw class-number* [number]
+       |     +--rw number            uint8
+       |     +--rw class?            union
+       |     +--rw execution-type?   enumeration
+       |     +--rw action-number* [number]
+       |        +--rw number                    uint8
+       |        +--rw terminate
+       |        |  +--rw dot1x?     empty
+       |        |  +--rw mab?       empty
+       |        |  +--rw webauth?   empty
+       |        +--rw replace?                  empty
+       |        +--rw clear-session?            empty
+       |        +--rw resume
+       |        |  +--rw reauthentication?   empty
+       |        +--rw authentication-restart?   uint16
+       |        +--rw pause
+       |        |  +--rw reauthentication?   empty
+       |        +--rw authorize?                empty
+       |        +--rw activate
+       |        |  +--rw service-template?   string
+       |        +--rw authenticate
+       |        |  +--rw using
+       |        |     +--rw method?          enumeration
+       |        |     +--rw both?            empty
+       |        |     +--rw retries?         uint8
+       |        |     +--rw retry-time?      uint16
+       |        |     +--rw priority?        uint8
+       |        |     +--rw parameter-map?   string
+       |        +--rw map
+       |           +--rw attribute-to-service
+       |              +--rw table?   string
+       +--rw class* [name]
+       |  +--rw name              class-name-type
+       |  +--rw type?             enumeration
+       |  +--rw insert-before?    string
+       |  +--rw appnav-policy
+       |  |  +--rw distribute* [service-node-group]
+       |  |  |  +--rw service-node-group    string
+       |  |  |  +--rw insert-before?        string
+       |  |  +--rw monitor-load?   enumeration
+       |  |  +--rw pass-through?   empty
+       |  +--rw avc
+       |  |  +--rw (avc-allow-or-drop)?
+       |  |     +--:(allow)
+       |  |     |  +--rw allow?   empty
+       |  |     +--:(deny)
+       |  |        +--rw deny?    empty
+       |  +--rw policy
+       |  |  +--rw action?          enumeration
+       |  |  +--rw log?             empty
+       |  |  +--rw parameter-map?   string
+       |  +--rw service-policy
+       |  |  +--rw type?         enumeration
+       |  |  +--rw policy-map?   string
+       |  +--rw pm-policy
+       |  |  +--rw flow
+       |  |  |  +--rw monitor?   string
+       |  |  +--rw monitor
+       |  |  |  +--rw metric
+       |  |  |     +--rw rtp
+       |  |  |        +--rw clock-rate* [number]
+       |  |  |           +--rw number       union
+       |  |  |           +--rw frequency?   uint32
+       |  |  +--rw react* [id]
+       |  |     +--rw id             uint16
+       |  |     +--rw mode?          enumeration
+       |  |     +--rw description?   string
+       |  |     +--rw action
+       |  |     |  +--rw snmp?     empty
+       |  |     |  +--rw syslog?   empty
+       |  |     +--rw alarm
+       |  |     |  +--rw severity?   enumeration
+       |  |     |  +--rw type
+       |  |     |     +--rw discrete?   empty
+       |  |     |     +--rw grouped
+       |  |     |        +--rw count?     uint16
+       |  |     |        +--rw percent?   uint8
+       |  |     +--rw threshold
+       |  |        +--rw value
+       |  |           +--rw ge?      string
+       |  |           +--rw gt?      string
+       |  |           +--rw le?      string
+       |  |           +--rw lt?      string
+       |  |           +--rw range
+       |  |              +--rw low?    string
+       |  |              +--rw high?   string
+       |  +--rw inspect-police
+       |  |  +--rw police
+       |  |     +--rw rate?    uint32
+       |  |     +--rw burst?   uint32
+       |  +--rw random-detect?    empty
+       |  +--rw action-list* [action-type]
+       |     +--rw action-type                          policy-action-type
+       |     +--rw (action-param)?
+       |        +--:(bandwidth-case)
+       |        |  +--rw bandwidth
+       |        |     +--rw bits?        uint32
+       |        |     +--rw percent?     ios-types:percentage
+       |        |     +--rw remaining
+       |        |        +--rw rem-option?   enumeration
+       |        |        +--rw percent?      ios-types:percentage
+       |        |        +--rw ratio?        uint16
+       |        |        +--rw account
+       |        |           +--rw user-defined?   int32
+       |        +--:(compression-case)
+       |        |  +--rw compression
+       |        |     +--rw header!
+       |        |        +--rw ip?   enumeration
+       |        +--:(estimate-case)
+       |        |  +--rw estimate
+       |        |     +--rw bandwidth!
+       |        |        +--rw delay-one-in
+       |        |        |  +--rw doi?            uint32
+       |        |        |  +--rw milliseconds?   uint32
+       |        |        +--rw drop-one-in?    uint32
+       |        +--:(forward-case)
+       |        |  +--rw forward
+       |        |     +--rw service-path?    uint32
+       |        |     +--rw service-index?   uint8
+       |        +--:(fair-queue-case)
+       |        |  +--rw fair-queue
+       |        |     +--rw dynamic-queues?   uint32
+       |        |     +--rw queue-limit?      uint16
+       |        +--:(netflow-sampler-case)
+       |        |  +--rw netflow-sampler?               string
+       |        +--:(police-case)
+       |        |  +--rw (police-choice)?
+       |        |     +--:(police-aggregate-case)
+       |        |     |  +--rw police-aggregate
+       |        |     |     +--rw police
+       |        |     |        +--rw aggregate?   string
+       |        |     +--:(police-policy-map-case)
+       |        |     |  +--rw police-policy-map
+       |        |     |     +--rw police
+       |        |     |        +--rw cir?       police-bps-type
+       |        |     |        +--rw bc?        police-burst-type
+       |        |     |        +--rw be?        police-burst-type
+       |        |     |        +--rw pir?       police-bps-type
+       |        |     |        +--rw pir-be
+       |        |     |        |  +--rw be?   police-burst-type
+       |        |     |        +--rw actions
+       |        |     |           +--rw conform-set-clp-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-clp-transmit?   empty
+       |        |     |           +--rw conform-set-cos-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |           +--rw conform-set-cos-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |           |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |           +--rw conform-set-discard-class-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-discard-class-transmit?   uint8
+       |        |     |           +--rw conform-set-dscp-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |           +--rw conform-set-dscp-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw conform-set-frde-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-frde-transmit?   empty
+       |        |     |           +--rw conform-set-mpls-exp-imposition-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw conform-set-mpls-exp-imposition-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |           |     +--rw table?                              -> /ios:native/table-map/name
+       |        |     |           +--rw conform-set-mpls-exp-topmost-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw conform-set-mpls-exp-topmost-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |           |     +--rw table?                           -> /ios:native/table-map/name
+       |        |     |           +--rw conform-set-prec-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |           +--rw conform-set-prec-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw conform-set-qos-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |           +--rw conform-set-qos-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |           |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |           +--rw conform-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw transmit?   empty
+       |        |     |           +--rw conform-drop
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw drop?   empty
+       |        |     |           +--rw exceed-dscp
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw dscp?   ios-types:dscp-type
+       |        |     |           +--rw exceed-set-clp-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-clp-transmit?   empty
+       |        |     |           +--rw exceed-set-cos-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |           |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |           +--rw exceed-set-discard-class-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-discard-class-transmit?   uint8
+       |        |     |           +--rw exceed-set-dscp-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-dscp-transmit
+       |        |     |           |        +--rw dscp
+       |        |     |           |           +--rw table?   enumeration
+       |        |     |           +--rw exceed-set-dscp-transmit-table
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw exceed-set-frde-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-frde-transmit?   empty
+       |        |     |           +--rw exceed-set-mpls-exp-imposition-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw exceed-set-mpls-exp-topmost-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw exceed-set-prec-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw exceed-set-qos-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |           +--rw exceed-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw transmit?   empty
+       |        |     |           +--rw exceed-drop
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw drop?   empty
+       |        |     |           +--rw violate-set-clp-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-clp-transmit?   empty
+       |        |     |           +--rw violate-set-cos-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |           |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |           +--rw violate-set-discard-class-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-discard-class-transmit?   uint8
+       |        |     |           +--rw violate-set-dscp-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw violate-set-frde-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-frde-transmit?   empty
+       |        |     |           +--rw violate-set-mpls-exp-imposition-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw violate-set-mpls-exp-topmost-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw violate-set-prec-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw violate-set-qos-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |           +--rw violate-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw transmit?   empty
+       |        |     |           +--rw violate-drop
+       |        |     |              +--rw violate-action
+       |        |     |                 +--rw drop?   empty
+       |        |     +--:(police-cir-percent-case)
+       |        |     |  +--rw police-cir-percent
+       |        |     |     +--rw police
+       |        |     |        +--rw cir
+       |        |     |           +--rw percent
+       |        |     |              +--rw percentage?   ios-types:percentage
+       |        |     |              +--rw bc?           uint16
+       |        |     |              +--rw bc-ms
+       |        |     |              |  +--rw ms?   empty
+       |        |     |              +--rw be?           uint16
+       |        |     |              +--rw be-ms
+       |        |     |              |  +--rw ms?   empty
+       |        |     |              +--rw pir
+       |        |     |              |  +--rw percent?   ios-types:percentage
+       |        |     |              +--rw pir-be
+       |        |     |              |  +--rw be?   uint16
+       |        |     |              +--rw pir-be-ms
+       |        |     |              |  +--rw ms?   empty
+       |        |     |              +--rw actions
+       |        |     |                 +--rw conform-set-clp-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-clp-transmit?   empty
+       |        |     |                 +--rw conform-set-cos-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |                 +--rw conform-set-cos-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |                 |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-set-discard-class-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-discard-class-transmit?   uint8
+       |        |     |                 +--rw conform-set-dscp-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |                 +--rw conform-set-dscp-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-set-frde-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-frde-transmit?   empty
+       |        |     |                 +--rw conform-set-mpls-exp-imposition-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw conform-set-mpls-exp-imposition-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |                 |     +--rw table?                              -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-set-mpls-exp-topmost-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw conform-set-mpls-exp-topmost-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |                 |     +--rw table?                           -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-set-prec-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |                 +--rw conform-set-prec-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-set-qos-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |                 +--rw conform-set-qos-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |                 |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw transmit?   empty
+       |        |     |                 +--rw conform-drop
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw drop?   empty
+       |        |     |                 +--rw exceed-dscp
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw dscp?   ios-types:dscp-type
+       |        |     |                 +--rw exceed-set-clp-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-clp-transmit?   empty
+       |        |     |                 +--rw exceed-set-cos-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |                 |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |                 +--rw exceed-set-discard-class-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-discard-class-transmit?   uint8
+       |        |     |                 +--rw exceed-set-dscp-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-dscp-transmit
+       |        |     |                 |        +--rw dscp
+       |        |     |                 |           +--rw table?   enumeration
+       |        |     |                 +--rw exceed-set-dscp-transmit-table
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw exceed-set-frde-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-frde-transmit?   empty
+       |        |     |                 +--rw exceed-set-mpls-exp-imposition-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw exceed-set-mpls-exp-topmost-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw exceed-set-prec-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw exceed-set-qos-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |                 +--rw exceed-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw transmit?   empty
+       |        |     |                 +--rw exceed-drop
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw drop?   empty
+       |        |     |                 +--rw violate-set-clp-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-clp-transmit?   empty
+       |        |     |                 +--rw violate-set-cos-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |                 |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |                 +--rw violate-set-discard-class-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-discard-class-transmit?   uint8
+       |        |     |                 +--rw violate-set-dscp-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw violate-set-frde-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-frde-transmit?   empty
+       |        |     |                 +--rw violate-set-mpls-exp-imposition-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw violate-set-mpls-exp-topmost-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw violate-set-prec-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw violate-set-qos-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |                 +--rw violate-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw transmit?   empty
+       |        |     |                 +--rw violate-drop
+       |        |     |                    +--rw violate-action
+       |        |     |                       +--rw drop?   empty
+       |        |     +--:(police-rate-unit-case)
+       |        |     |  +--rw police-rate-unit
+       |        |     |     +--rw police
+       |        |     |        +--rw rate
+       |        |     |           +--rw units?        uint64
+       |        |     |           +--rw xps?          police-pps-bps-type
+       |        |     |           +--rw burst
+       |        |     |           |  +--rw burst-value?   uint32
+       |        |     |           |  +--rw burst-type?    police-packets-bytes-type
+       |        |     |           +--rw peak-rate
+       |        |     |           |  +--rw peak-rate-value?   uint32
+       |        |     |           |  +--rw xps?               police-pps-bps-type
+       |        |     |           +--rw peak-burst
+       |        |     |           |  +--rw burst-value?   uint32
+       |        |     |           |  +--rw burst-type?    police-packets-bytes-type
+       |        |     |           +--rw actions
+       |        |     |              +--rw conform-set-clp-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-clp-transmit?   empty
+       |        |     |              +--rw conform-set-cos-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |              +--rw conform-set-cos-transmit-table
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |              |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |              +--rw conform-set-discard-class-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-discard-class-transmit?   uint8
+       |        |     |              +--rw conform-set-dscp-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |              +--rw conform-set-dscp-transmit-table
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |              |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |              +--rw conform-set-frde-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-frde-transmit?   empty
+       |        |     |              +--rw conform-set-mpls-exp-imposition-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |              +--rw conform-set-mpls-exp-imposition-transmit-table
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |              |     +--rw table?                              -> /ios:native/table-map/name
+       |        |     |              +--rw conform-set-mpls-exp-topmost-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |              +--rw conform-set-mpls-exp-topmost-transmit-table
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |              |     +--rw table?                           -> /ios:native/table-map/name
+       |        |     |              +--rw conform-set-prec-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |              +--rw conform-set-prec-transmit-table
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |              |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |              +--rw conform-set-qos-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |              +--rw conform-set-qos-transmit-table
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |              |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |              +--rw conform-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw transmit?   empty
+       |        |     |              +--rw conform-drop
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw drop?   empty
+       |        |     |              +--rw exceed-dscp
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw dscp?   ios-types:dscp-type
+       |        |     |              +--rw exceed-set-clp-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-clp-transmit?   empty
+       |        |     |              +--rw exceed-set-cos-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |              |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |              +--rw exceed-set-discard-class-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-discard-class-transmit?   uint8
+       |        |     |              +--rw exceed-set-dscp-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-dscp-transmit
+       |        |     |              |        +--rw dscp
+       |        |     |              |           +--rw table?   enumeration
+       |        |     |              +--rw exceed-set-dscp-transmit-table
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |              |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |              +--rw exceed-set-frde-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-frde-transmit?   empty
+       |        |     |              +--rw exceed-set-mpls-exp-imposition-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |              +--rw exceed-set-mpls-exp-topmost-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |              +--rw exceed-set-prec-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |              |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |              +--rw exceed-set-qos-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |              +--rw exceed-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw transmit?   empty
+       |        |     |              +--rw exceed-drop
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw drop?   empty
+       |        |     |              +--rw violate-set-clp-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-clp-transmit?   empty
+       |        |     |              +--rw violate-set-cos-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |              |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |              +--rw violate-set-discard-class-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-discard-class-transmit?   uint8
+       |        |     |              +--rw violate-set-dscp-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |              |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |              +--rw violate-set-frde-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-frde-transmit?   empty
+       |        |     |              +--rw violate-set-mpls-exp-imposition-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |              +--rw violate-set-mpls-exp-topmost-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |              +--rw violate-set-prec-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |              |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |              +--rw violate-set-qos-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |              +--rw violate-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw transmit?   empty
+       |        |     |              +--rw violate-drop
+       |        |     |                 +--rw violate-action
+       |        |     |                    +--rw drop?   empty
+       |        |     +--:(police-rate-percent-case)
+       |        |     |  +--rw police-rate-percent
+       |        |     |     +--rw police
+       |        |     |        +--rw rate
+       |        |     |           +--rw percent
+       |        |     |              +--rw percentage?      ios-types:percentage
+       |        |     |              +--rw burst?           uint16
+       |        |     |              +--rw ms?              empty
+       |        |     |              +--rw peak-rate
+       |        |     |              |  +--rw percent?   ios-types:percentage
+       |        |     |              +--rw peak-burst?      uint16
+       |        |     |              +--rw peak-burst-ms
+       |        |     |              |  +--rw ms?   empty
+       |        |     |              +--rw actions
+       |        |     |                 +--rw conform-set-clp-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-clp-transmit?   empty
+       |        |     |                 +--rw conform-set-cos-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |                 +--rw conform-set-cos-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |                 |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-set-discard-class-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-discard-class-transmit?   uint8
+       |        |     |                 +--rw conform-set-dscp-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |                 +--rw conform-set-dscp-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-set-frde-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-frde-transmit?   empty
+       |        |     |                 +--rw conform-set-mpls-exp-imposition-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw conform-set-mpls-exp-imposition-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |                 |     +--rw table?                              -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-set-mpls-exp-topmost-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw conform-set-mpls-exp-topmost-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |                 |     +--rw table?                           -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-set-prec-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |                 +--rw conform-set-prec-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-set-qos-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |                 +--rw conform-set-qos-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |                 |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw transmit?   empty
+       |        |     |                 +--rw conform-drop
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw drop?   empty
+       |        |     |                 +--rw exceed-dscp
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw dscp?   ios-types:dscp-type
+       |        |     |                 +--rw exceed-set-clp-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-clp-transmit?   empty
+       |        |     |                 +--rw exceed-set-cos-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |                 |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |                 +--rw exceed-set-discard-class-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-discard-class-transmit?   uint8
+       |        |     |                 +--rw exceed-set-dscp-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-dscp-transmit
+       |        |     |                 |        +--rw dscp
+       |        |     |                 |           +--rw table?   enumeration
+       |        |     |                 +--rw exceed-set-dscp-transmit-table
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw exceed-set-frde-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-frde-transmit?   empty
+       |        |     |                 +--rw exceed-set-mpls-exp-imposition-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw exceed-set-mpls-exp-topmost-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw exceed-set-prec-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw exceed-set-qos-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |                 +--rw exceed-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw transmit?   empty
+       |        |     |                 +--rw exceed-drop
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw drop?   empty
+       |        |     |                 +--rw violate-set-clp-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-clp-transmit?   empty
+       |        |     |                 +--rw violate-set-cos-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |                 |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |                 +--rw violate-set-discard-class-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-discard-class-transmit?   uint8
+       |        |     |                 +--rw violate-set-dscp-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw violate-set-frde-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-frde-transmit?   empty
+       |        |     |                 +--rw violate-set-mpls-exp-imposition-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw violate-set-mpls-exp-topmost-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw violate-set-prec-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw violate-set-qos-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |                 +--rw violate-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw transmit?   empty
+       |        |     |                 +--rw violate-drop
+       |        |     |                    +--rw violate-action
+       |        |     |                       +--rw drop?   empty
+       |        |     +--:(police-rate-pdp-case)
+       |        |     |  +--rw police-rate-pdp
+       |        |     |     +--rw police
+       |        |     |        +--rw rate
+       |        |     |           +--rw pdp
+       |        |     |              +--rw burst?        police-burst-type
+       |        |     |              +--rw peak-rate?    enumeration
+       |        |     |              +--rw peak-burst?   police-burst-type
+       |        |     |              +--rw actions
+       |        |     |                 +--rw conform-set-clp-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-clp-transmit?   empty
+       |        |     |                 +--rw conform-set-cos-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |                 +--rw conform-set-cos-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |                 |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-set-discard-class-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-discard-class-transmit?   uint8
+       |        |     |                 +--rw conform-set-dscp-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |                 +--rw conform-set-dscp-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-set-frde-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-frde-transmit?   empty
+       |        |     |                 +--rw conform-set-mpls-exp-imposition-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw conform-set-mpls-exp-imposition-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |                 |     +--rw table?                              -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-set-mpls-exp-topmost-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw conform-set-mpls-exp-topmost-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |                 |     +--rw table?                           -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-set-prec-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |                 +--rw conform-set-prec-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-set-qos-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |                 +--rw conform-set-qos-transmit-table
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |                 |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |                 +--rw conform-transmit
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw transmit?   empty
+       |        |     |                 +--rw conform-drop
+       |        |     |                 |  +--rw conform-action
+       |        |     |                 |     +--rw drop?   empty
+       |        |     |                 +--rw exceed-dscp
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw dscp?   ios-types:dscp-type
+       |        |     |                 +--rw exceed-set-clp-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-clp-transmit?   empty
+       |        |     |                 +--rw exceed-set-cos-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |                 |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |                 +--rw exceed-set-discard-class-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-discard-class-transmit?   uint8
+       |        |     |                 +--rw exceed-set-dscp-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-dscp-transmit
+       |        |     |                 |        +--rw dscp
+       |        |     |                 |           +--rw table?   enumeration
+       |        |     |                 +--rw exceed-set-dscp-transmit-table
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw exceed-set-frde-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-frde-transmit?   empty
+       |        |     |                 +--rw exceed-set-mpls-exp-imposition-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw exceed-set-mpls-exp-topmost-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw exceed-set-prec-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw exceed-set-qos-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |                 +--rw exceed-transmit
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw transmit?   empty
+       |        |     |                 +--rw exceed-drop
+       |        |     |                 |  +--rw exceed-action
+       |        |     |                 |     +--rw drop?   empty
+       |        |     |                 +--rw violate-set-clp-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-clp-transmit?   empty
+       |        |     |                 +--rw violate-set-cos-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |                 |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |                 +--rw violate-set-discard-class-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-discard-class-transmit?   uint8
+       |        |     |                 +--rw violate-set-dscp-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw violate-set-frde-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-frde-transmit?   empty
+       |        |     |                 +--rw violate-set-mpls-exp-imposition-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw violate-set-mpls-exp-topmost-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |                 +--rw violate-set-prec-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |                 |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |                 +--rw violate-set-qos-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |                 +--rw violate-transmit
+       |        |     |                 |  +--rw violate-action
+       |        |     |                 |     +--rw transmit?   empty
+       |        |     |                 +--rw violate-drop
+       |        |     |                    +--rw violate-action
+       |        |     |                       +--rw drop?   empty
+       |        |     +--:(police-target-bitrate-case)
+       |        |     |  +--rw police-target-bitrate
+       |        |     |     +--rw police
+       |        |     |        +--rw bit-rate?             uint64
+       |        |     |        +--rw confirm_burst-byte?   uint64
+       |        |     |        +--rw excess_burst-byte?    uint64
+       |        |     |        +--rw conform-action?       empty
+       |        |     |        +--rw transmit?             empty
+       |        |     |        +--rw exceed-action?        empty
+       |        |     |        +--rw drop?                 empty
+       |        |     |        +--rw set-dscp-transmit?    empty
+       |        |     |        +--rw dscp?                 empty
+       |        |     |        +--rw table?                string
+       |        |     |        +--rw actions
+       |        |     |           +--rw conform-set-clp-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-clp-transmit?   empty
+       |        |     |           +--rw conform-set-cos-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |           +--rw conform-set-cos-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |           |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |           +--rw conform-set-discard-class-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-discard-class-transmit?   uint8
+       |        |     |           +--rw conform-set-dscp-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |           +--rw conform-set-dscp-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw conform-set-frde-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-frde-transmit?   empty
+       |        |     |           +--rw conform-set-mpls-exp-imposition-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw conform-set-mpls-exp-imposition-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |           |     +--rw table?                              -> /ios:native/table-map/name
+       |        |     |           +--rw conform-set-mpls-exp-topmost-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw conform-set-mpls-exp-topmost-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |           |     +--rw table?                           -> /ios:native/table-map/name
+       |        |     |           +--rw conform-set-prec-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |           +--rw conform-set-prec-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw conform-set-qos-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |           +--rw conform-set-qos-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |           |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |           +--rw conform-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw transmit?   empty
+       |        |     |           +--rw conform-drop
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw drop?   empty
+       |        |     |           +--rw exceed-dscp
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw dscp?   ios-types:dscp-type
+       |        |     |           +--rw exceed-set-clp-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-clp-transmit?   empty
+       |        |     |           +--rw exceed-set-cos-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |           |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |           +--rw exceed-set-discard-class-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-discard-class-transmit?   uint8
+       |        |     |           +--rw exceed-set-dscp-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-dscp-transmit
+       |        |     |           |        +--rw dscp
+       |        |     |           |           +--rw table?   enumeration
+       |        |     |           +--rw exceed-set-dscp-transmit-table
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw exceed-set-frde-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-frde-transmit?   empty
+       |        |     |           +--rw exceed-set-mpls-exp-imposition-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw exceed-set-mpls-exp-topmost-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw exceed-set-prec-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw exceed-set-qos-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |           +--rw exceed-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw transmit?   empty
+       |        |     |           +--rw exceed-drop
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw drop?   empty
+       |        |     |           +--rw violate-set-clp-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-clp-transmit?   empty
+       |        |     |           +--rw violate-set-cos-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |           |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |           +--rw violate-set-discard-class-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-discard-class-transmit?   uint8
+       |        |     |           +--rw violate-set-dscp-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw violate-set-frde-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-frde-transmit?   empty
+       |        |     |           +--rw violate-set-mpls-exp-imposition-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw violate-set-mpls-exp-topmost-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw violate-set-prec-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw violate-set-qos-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |           +--rw violate-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw transmit?   empty
+       |        |     |           +--rw violate-drop
+       |        |     |              +--rw violate-action
+       |        |     |                 +--rw drop?   empty
+       |        |     +--:(police-flow-case)
+       |        |     |  +--rw police-flow
+       |        |     |     +--rw police
+       |        |     |        +--rw flow
+       |        |     |           +--rw mask?           enumeration
+       |        |     |           +--rw bps?            police-bps-type
+       |        |     |           +--rw burst-normal?   police-burst-type
+       |        |     |           +--rw actions
+       |        |     |              +--rw conform-set-clp-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-clp-transmit?   empty
+       |        |     |              +--rw conform-set-cos-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |              +--rw conform-set-cos-transmit-table
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |              |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |              +--rw conform-set-discard-class-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-discard-class-transmit?   uint8
+       |        |     |              +--rw conform-set-dscp-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |              +--rw conform-set-dscp-transmit-table
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |              |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |              +--rw conform-set-frde-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-frde-transmit?   empty
+       |        |     |              +--rw conform-set-mpls-exp-imposition-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |              +--rw conform-set-mpls-exp-imposition-transmit-table
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |              |     +--rw table?                              -> /ios:native/table-map/name
+       |        |     |              +--rw conform-set-mpls-exp-topmost-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |              +--rw conform-set-mpls-exp-topmost-transmit-table
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |              |     +--rw table?                           -> /ios:native/table-map/name
+       |        |     |              +--rw conform-set-prec-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |              +--rw conform-set-prec-transmit-table
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |              |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |              +--rw conform-set-qos-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |              +--rw conform-set-qos-transmit-table
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |              |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |              +--rw conform-transmit
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw transmit?   empty
+       |        |     |              +--rw conform-drop
+       |        |     |              |  +--rw conform-action
+       |        |     |              |     +--rw drop?   empty
+       |        |     |              +--rw exceed-dscp
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw dscp?   ios-types:dscp-type
+       |        |     |              +--rw exceed-set-clp-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-clp-transmit?   empty
+       |        |     |              +--rw exceed-set-cos-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |              |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |              +--rw exceed-set-discard-class-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-discard-class-transmit?   uint8
+       |        |     |              +--rw exceed-set-dscp-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-dscp-transmit
+       |        |     |              |        +--rw dscp
+       |        |     |              |           +--rw table?   enumeration
+       |        |     |              +--rw exceed-set-dscp-transmit-table
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |              |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |              +--rw exceed-set-frde-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-frde-transmit?   empty
+       |        |     |              +--rw exceed-set-mpls-exp-imposition-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |              +--rw exceed-set-mpls-exp-topmost-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |              +--rw exceed-set-prec-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |              |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |              +--rw exceed-set-qos-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |              +--rw exceed-transmit
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw transmit?   empty
+       |        |     |              +--rw exceed-drop
+       |        |     |              |  +--rw exceed-action
+       |        |     |              |     +--rw drop?   empty
+       |        |     |              +--rw violate-set-clp-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-clp-transmit?   empty
+       |        |     |              +--rw violate-set-cos-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |              |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |              +--rw violate-set-discard-class-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-discard-class-transmit?   uint8
+       |        |     |              +--rw violate-set-dscp-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |              |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |              +--rw violate-set-frde-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-frde-transmit?   empty
+       |        |     |              +--rw violate-set-mpls-exp-imposition-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |              +--rw violate-set-mpls-exp-topmost-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |              +--rw violate-set-prec-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |              |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |              +--rw violate-set-qos-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |              +--rw violate-transmit
+       |        |     |              |  +--rw violate-action
+       |        |     |              |     +--rw transmit?   empty
+       |        |     |              +--rw violate-drop
+       |        |     |                 +--rw violate-action
+       |        |     |                    +--rw drop?   empty
+       |        |     +--:(police-catalyst-case)
+       |        |     |  +--rw police-catalyst
+       |        |     |     +--rw police
+       |        |     |        +--rw bps-value?    string
+       |        |     |        +--rw bps?          empty
+       |        |     |        +--rw byte-value?   string
+       |        |     |        +--rw byte?         empty
+       |        |     |        +--rw actions
+       |        |     |           +--rw conform-set-clp-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-clp-transmit?   empty
+       |        |     |           +--rw conform-set-cos-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |           +--rw conform-set-cos-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |           |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |           +--rw conform-set-discard-class-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-discard-class-transmit?   uint8
+       |        |     |           +--rw conform-set-dscp-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |           +--rw conform-set-dscp-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw conform-set-frde-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-frde-transmit?   empty
+       |        |     |           +--rw conform-set-mpls-exp-imposition-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw conform-set-mpls-exp-imposition-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |           |     +--rw table?                              -> /ios:native/table-map/name
+       |        |     |           +--rw conform-set-mpls-exp-topmost-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw conform-set-mpls-exp-topmost-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |           |     +--rw table?                           -> /ios:native/table-map/name
+       |        |     |           +--rw conform-set-prec-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |           +--rw conform-set-prec-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw conform-set-qos-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |           +--rw conform-set-qos-transmit-table
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |           |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |           +--rw conform-transmit
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw transmit?   empty
+       |        |     |           +--rw conform-drop
+       |        |     |           |  +--rw conform-action
+       |        |     |           |     +--rw drop?   empty
+       |        |     |           +--rw exceed-dscp
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw dscp?   ios-types:dscp-type
+       |        |     |           +--rw exceed-set-clp-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-clp-transmit?   empty
+       |        |     |           +--rw exceed-set-cos-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |           |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |           +--rw exceed-set-discard-class-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-discard-class-transmit?   uint8
+       |        |     |           +--rw exceed-set-dscp-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-dscp-transmit
+       |        |     |           |        +--rw dscp
+       |        |     |           |           +--rw table?   enumeration
+       |        |     |           +--rw exceed-set-dscp-transmit-table
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw exceed-set-frde-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-frde-transmit?   empty
+       |        |     |           +--rw exceed-set-mpls-exp-imposition-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw exceed-set-mpls-exp-topmost-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw exceed-set-prec-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw exceed-set-qos-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |           +--rw exceed-transmit
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw transmit?   empty
+       |        |     |           +--rw exceed-drop
+       |        |     |           |  +--rw exceed-action
+       |        |     |           |     +--rw drop?   empty
+       |        |     |           +--rw violate-set-clp-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-clp-transmit?   empty
+       |        |     |           +--rw violate-set-cos-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-cos-transmit?   ios-types:cos_value-type
+       |        |     |           |     +--rw table?              -> /ios:native/table-map/name
+       |        |     |           +--rw violate-set-discard-class-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-discard-class-transmit?   uint8
+       |        |     |           +--rw violate-set-dscp-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-dscp-transmit?   ios-types:dscp-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw violate-set-frde-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-frde-transmit?   empty
+       |        |     |           +--rw violate-set-mpls-exp-imposition-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-mpls-exp-imposition-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw violate-set-mpls-exp-topmost-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-mpls-exp-topmost-transmit?   ios-types:exp_value-type
+       |        |     |           +--rw violate-set-prec-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-prec-transmit?   ios-types:prec_value-type
+       |        |     |           |     +--rw table?               -> /ios:native/table-map/name
+       |        |     |           +--rw violate-set-qos-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw set-qos-transmit?   ios-types:qos_value-type
+       |        |     |           +--rw violate-transmit
+       |        |     |           |  +--rw violate-action
+       |        |     |           |     +--rw transmit?   empty
+       |        |     |           +--rw violate-drop
+       |        |     |              +--rw violate-action
+       |        |     |                 +--rw drop?   empty
+       |        |     +--:(police-switch-case)
+       |        |        +--rw police-switch
+       |        |           +--rw police
+       |        |              +--rw cir?             uint32
+       |        |              +--rw bc?              uint32
+       |        |              +--rw exceed-action?   enumeration
+       |        +--:(priority-case)
+       |        |  +--rw priority
+       |        |     +--rw level?             uint8
+       |        |     +--rw (priority-type)?
+       |        |     |  +--:(kilo-bits)
+       |        |     |  |  +--rw kilo-bits?   uint32
+       |        |     |  +--:(percent)
+       |        |     |     +--rw percent?     uint16
+       |        |     +--rw burst?             uint32
+       |        +--:(queue-buffers-case)
+       |        |  +--rw queue-buffers
+       |        |     +--rw ratio?   uint8
+       |        +--:(queue-limit-case)
+       |        |  +--rw queue-limit
+       |        |  |  +--rw queue-limit-value?   uint32
+       |        |  |  +--rw queue-limit-type?    enumeration
+       |        |  +--rw queue-limit-dscp
+       |        |     +--rw dscp* [dscp-val]
+       |        |        +--rw dscp-val     ios-types:dscp-type
+       |        |        +--rw values?      empty
+       |        |        +--rw dscp-val1?   ios-types:dscp-type
+       |        |        +--rw percent?     uint8
+       |        +--:(random-detect)
+       |        |  +--rw random-detect
+       |        |     +--rw aggregate!
+       |        |     |  +--rw minimum-thresh?     uint32
+       |        |     |  +--rw maximum-thresh?     uint32
+       |        |     |  +--rw mark-probability?   empty
+       |        |     |  +--rw denominator?        uint32
+       |        |     +--rw cos-based?                        empty
+       |        |     +--rw cos
+       |        |     |  +--rw cos-val?              uint16
+       |        |     |  +--rw min-threshold?        uint32
+       |        |     |  +--rw min-threshold-unit?   bytes-ms-us-type
+       |        |     |  +--rw max-threshold?        uint32
+       |        |     |  +--rw max-threshold-unit?   bytes-ms-us-type
+       |        |     |  +--rw denominator?          uint16
+       |        |     +--rw discard-class-based?              empty
+       |        |     +--rw discard-class
+       |        |     |  +--rw dclass?               uint16
+       |        |     |  +--rw min-threshold?        uint32
+       |        |     |  +--rw min-threshold-unit?   bytes-ms-us-type
+       |        |     |  +--rw max-threshold?        uint32
+       |        |     |  +--rw max-threshold-unit?   bytes-ms-us-type
+       |        |     |  +--rw denominator?          uint16
+       |        |     +--rw dscp-based?                       empty
+       |        |     +--rw dscp* [dscp-val]
+       |        |     |  +--rw dscp-val              ios-types:dscp-type
+       |        |     |  +--rw min-threshold?        uint32
+       |        |     |  +--rw min-threshold-unit?   bytes-ms-us-type
+       |        |     |  +--rw max-threshold?        uint32
+       |        |     |  +--rw max-threshold-unit?   bytes-ms-us-type
+       |        |     |  +--rw denominator?          uint16
+       |        |     +--rw ecn?                              empty
+       |        |     +--rw exponential-weighting-constant?   uint16
+       |        |     +--rw precedence-based?                 empty
+       |        |     +--rw precedence
+       |        |        +--rw prec?                 precedence-type2
+       |        |        +--rw min-threshold?        uint32
+       |        |        +--rw min-threshold-unit?   bytes-ms-us-type
+       |        |        +--rw max-threshold?        uint32
+       |        |        +--rw max-threshold-unit?   bytes-ms-us-type
+       |        |        +--rw denominator?          uint16
+       |        +--:(service-policy-case)
+       |        |  +--rw service-policy?                -> /ios:native/policy/policy-map/name
+       |        +--:(set-case)
+       |        |  +--rw set
+       |        |     +--rw atm-clp?         empty
+       |        |     +--rw cos
+       |        |     |  +--rw (cos-type)?
+       |        |     |     +--:(a)
+       |        |     |     |  +--rw val?             uint16
+       |        |     |     +--:(b)
+       |        |     |        +--rw pack?            enumeration
+       |        |     |        +--rw user-priority?   empty
+       |        |     |        +--rw table?           string
+       |        |     +--rw discard-class?   uint16
+       |        |     +--rw dscp
+       |        |     |  +--rw dscp!
+       |        |     |  |  +--rw table?   string
+       |        |     |  +--rw tunnel?     empty
+       |        |     |  +--rw dscp-val?   ios-types:dscp-type
+       |        |     +--rw fr-de?           empty
+       |        |     +--rw ip
+       |        |     |  +--rw (ip-choice)?
+       |        |     |     +--:(dscp)
+       |        |     |     |  +--rw dscp
+       |        |     |     |     +--rw tunnel?     empty
+       |        |     |     |     +--rw dscp-val?   ios-types:dscp-type
+       |        |     |     +--:(precedence)
+       |        |     |        +--rw precedence!
+       |        |     |           +--rw precedence-val?   ios-types:precedence-type
+       |        |     +--rw mpls
+       |        |     |  +--rw experimental
+       |        |     |     +--rw imposition
+       |        |     |     |  +--rw exp-value?   uint8
+       |        |     |     +--rw topmost
+       |        |     |        +--rw exp-value?   uint8
+       |        |     +--rw qos-group
+       |        |        +--rw qos-group-value?   uint8
+       |        +--:(shape-case)
+       |        |  +--rw shape
+       |        |     +--rw adaptive?         uint32
+       |        |     +--rw average
+       |        |     |  +--rw (average-choice)?
+       |        |     |     +--:(a)
+       |        |     |     |  +--rw bit-rate?                      uint64
+       |        |     |     |  +--rw bits-per-interval-sustained?   uint32
+       |        |     |     |  +--rw bits-per-interval-excess?      uint32
+       |        |     |     |  +--rw account
+       |        |     |     |     +--rw user-defined?   int32
+       |        |     |     +--:(b)
+       |        |     |        +--rw percent?                       ios-types:percentage
+       |        |     |        +--rw burst-size-sustained?          uint16
+       |        |     |        +--rw ms?                            empty
+       |        |     |        +--rw bse
+       |        |     |           +--rw burst-size-excess?   uint16
+       |        |     |           +--rw ms?                  empty
+       |        |     +--rw fecn-adapt?       empty
+       |        |     +--rw fr-voice-adapt!
+       |        |     |  +--rw deactivation?   uint16
+       |        |     +--rw max-buffers?      uint16
+       |        +--:(trust-case)
+       |           +--rw trust?                         enumeration
+       +--rw description?         string
+       +--rw sequence-interval?   uint16
+  augment /ios:native/ios:parameter-map/ios:type:
+    +--rw cws-tunnel
+       +--rw global!
+          +--rw fail-open?       empty
+          +--rw license
+          |  +--rw unencypted
+          |  |  +--rw hex-string?   string
+          |  +--rw encrypted
+          |     +--rw hex-string?   string
+          +--rw logging?         empty
+          +--rw primary!
+          |  +--rw tower
+          |     +--rw ipv4?   inet:ipv4-address
+          |     +--rw name?   string
+          +--rw redirect-list?   union
+          +--rw secondary!
+          |  +--rw tower
+          |     +--rw ipv4?   inet:ipv4-address
+          |     +--rw name?   string
+          +--rw whitelist!
+             +--rw acl
+             |  +--rw acl-number?   union
+             |  +--rw name?         string
+             +--rw domain-name
+             |  +--rw regex?   string
+             +--rw download!
+                +--rw interval?   uint16
+  augment /ios:native/ios:parameter-map/ios:type:
+    +--rw inspect* [name]
+       +--rw name                      string
+       +--rw alert
+       |  +--rw on?   empty
+       +--rw application-inspect
+       |  +--rw dns?       boolean
+       |  +--rw exec?      boolean
+       |  +--rw ftp?       boolean
+       |  +--rw gtp?       boolean
+       |  +--rw h323?      boolean
+       |  +--rw http?      boolean
+       |  +--rw imap?      boolean
+       |  +--rw login?     boolean
+       |  +--rw msrpc?     boolean
+       |  +--rw netbios?   boolean
+       |  +--rw pop3?      boolean
+       |  +--rw rtsp?      boolean
+       |  +--rw shell?     boolean
+       |  +--rw sip?       boolean
+       |  +--rw skinny?    boolean
+       |  +--rw smtp?      boolean
+       |  +--rw sunrpc?    boolean
+       |  +--rw tftp?      boolean
+       +--rw audit-trail
+       |  +--rw on?   empty
+       +--rw dns-timeout?              uint32
+       +--rw icmp
+       |  +--rw idle-time
+       |     +--rw timeout?       uint32
+       |     +--rw ageout-time?   uint32
+       +--rw icmp-unreachable-allow?   empty
+       +--rw log
+       |  +--rw dropped-packets?   empty
+       +--rw max-incomplete
+       |  +--rw high?   uint32
+       |  +--rw low?    uint32
+       +--rw one-minute
+       |  +--rw high?   uint32
+       |  +--rw low?    uint32
+       +--rw sessions
+       |  +--rw maximum?   uint32
+       |  +--rw packet?    uint8
+       |  +--rw rate
+       |     +--rw high
+       |     |  +--rw value?   uint32
+       |     |  +--rw time?    uint32
+       |     +--rw low
+       |        +--rw value?   uint32
+       |        +--rw time?    uint32
+       +--rw tcp
+       |  +--rw finwait-time
+       |  |  +--rw timeout?       uint32
+       |  |  +--rw ageout-time?   uint32
+       |  +--rw half-close
+       |  |  +--rw reset
+       |  |     +--rw off?   empty
+       |  +--rw half-open
+       |  |  +--rw reset
+       |  |     +--rw off?   empty
+       |  +--rw idle
+       |  |  +--rw reset
+       |  |     +--rw off?   empty
+       |  +--rw idle-time
+       |  |  +--rw timeout?       uint32
+       |  |  +--rw ageout-time?   uint32
+       |  +--rw max-incomplete
+       |  |  +--rw host
+       |  |     +--rw value?        uint32
+       |  |     +--rw block-time?   uint16
+       |  +--rw synwait-time
+       |  |  +--rw timeout?       uint32
+       |  |  +--rw ageout-time?   uint32
+       |  +--rw window-scale-enforcement
+       |     +--rw loose?   empty
+       +--rw udp
+       |  +--rw half-open
+       |  |  +--rw idle-time
+       |  |     +--rw timeout?       uint32
+       |  |     +--rw ageout-time?   uint32
+       |  +--rw idle-time
+       |     +--rw timeout?       uint32
+       |     +--rw ageout-time?   uint32
+       +--rw zone-mismatch
+          +--rw drop?   empty
+  augment /ios:native/ios:parameter-map/ios:type:
+    +--rw inspect-global-deprecate
+       +--rw inspect
+          +--rw global!
+             +--rw alert
+             |  +--rw on?   empty
+             +--rw lisp
+             |  +--rw inner-packet-inspection?   empty
+             +--rw log
+             |  +--rw dropped-packets?   empty
+             |  +--rw flow-export
+             |     +--rw template
+             |     |  +--rw timeout-rate?   uint32
+             |     +--rw v9
+             |        +--rw udp
+             |           +--rw destination
+             |              +--rw dst-ip?     inet:ipv4-address
+             |              +--rw dst-port?   uint16
+             +--rw max-incomplete
+             |  +--rw half-open-sessions
+             |  |  +--rw number?             uint32
+             |  |  +--rw aggressive-aging
+             |  |     +--rw (absolute-percent)?
+             |  |        +--:(absolute-case)
+             |  |        |  +--rw high?           uint64
+             |  |        |  +--rw low?            uint64
+             |  |        +--:(percent-case)
+             |  |           +--rw high-percent?   uint8
+             |  |           +--rw low-percent?    uint8
+             |  +--rw icmp?                 uint32
+             |  +--rw tcp?                  uint32
+             |  +--rw udp?                  uint32
+             +--rw multi-tenancy?    empty
+             +--rw per-box
+             |  +--rw aggressive-aging
+             |  |  +--rw (absolute-percent)?
+             |  |     +--:(absolute-case)
+             |  |     |  +--rw high?           uint64
+             |  |     |  +--rw low?            uint64
+             |  |     +--:(percent-case)
+             |  |        +--rw high-percent?   uint8
+             |  |        +--rw low-percent?    uint8
+             |  +--rw max-incomplete
+             |  |  +--rw half-open-sessions
+             |  |  |  +--rw number?             uint32
+             |  |  |  +--rw aggressive-aging
+             |  |  |     +--rw (absolute-percent)?
+             |  |  |        +--:(absolute-case)
+             |  |  |        |  +--rw high?           uint64
+             |  |  |        |  +--rw low?            uint64
+             |  |  |        +--:(percent-case)
+             |  |  |           +--rw high-percent?   uint8
+             |  |  |           +--rw low-percent?    uint8
+             |  |  +--rw icmp?                 uint32
+             |  |  +--rw tcp?                  uint32
+             |  |  +--rw udp?                  uint32
+             |  +--rw tcp
+             |     +--rw syn-flood
+             |        +--rw limit?   uint32
+             +--rw session
+             |  +--rw packet?   uint8
+             |  +--rw total?    uint32
+             +--rw tcp
+             |  +--rw syn-flood
+             |     +--rw limit?   uint32
+             +--rw vrf* [id]
+                +--rw id         string
+                +--rw inspect?   string
+  augment /ios:native/ios:parameter-map/ios:type:
+    +--rw inspect-global!
+       +--rw aggressive-aging
+       |  +--rw (absolute-percent)?
+       |     +--:(absolute-case)
+       |     |  +--rw high?           uint64
+       |     |  +--rw low?            uint64
+       |     +--:(percent-case)
+       |        +--rw high-percent?   uint8
+       |        +--rw low-percent?    uint8
+       +--rw alert
+       |  +--rw on?   empty
+       +--rw icmp-unreachable-allow?   empty
+       +--rw inspect
+       |  +--rw name?   string
+       |  +--rw vrf* [id]
+       |     +--rw id      string
+       |     +--rw name?   string
+       +--rw lisp
+       |  +--rw inner-packet-inspection?   empty
+       +--rw log
+       |  +--rw dropped-packets?   empty
+       |  +--rw flow-export
+       |     +--rw template
+       |     |  +--rw timeout-rate?   uint32
+       |     +--rw v9
+       |        +--rw udp
+       |           +--rw destination
+       |              +--rw dst-ip?     inet:ipv4-address
+       |              +--rw dst-port?   uint16
+       +--rw max-incomplete
+       |  +--rw half-open-sessions
+       |  |  +--rw number?             uint32
+       |  |  +--rw aggressive-aging
+       |  |     +--rw (absolute-percent)?
+       |  |        +--:(absolute-case)
+       |  |        |  +--rw high?           uint64
+       |  |        |  +--rw low?            uint64
+       |  |        +--:(percent-case)
+       |  |           +--rw high-percent?   uint8
+       |  |           +--rw low-percent?    uint8
+       |  +--rw icmp?                 uint32
+       |  +--rw tcp?                  uint32
+       |  +--rw udp?                  uint32
+       +--rw multi-tenancy?            empty
+       +--rw tcp
+       |  +--rw syn-flood
+       |  |  +--rw limit?   uint32
+       |  +--rw window-scale-enforcement
+       |     +--rw loose?   empty
+       +--rw zone-mismatch
+          +--rw drop?   empty
+  augment /ios:native/ios:parameter-map/ios:type:
+    +--rw inspect-vrf* [name]
+       +--rw name              string
+       +--rw alert
+       |  +--rw on?   empty
+       +--rw max-incomplete
+       |  +--rw half-open-sessions
+       |  |  +--rw number?   uint32
+       |  +--rw icmp?                 uint32
+       |  +--rw tcp?                  uint32
+       |  +--rw udp?                  uint32
+       +--rw session
+       |  +--rw total?   uint32
+       +--rw tcp
+          +--rw syn-flood
+             +--rw limit?   uint32
+  augment /ios:native/ios:parameter-map/ios:type:
+    +--rw inspect-zone* [name]
+       +--rw name                string
+       +--rw alert
+       |  +--rw on?   empty
+       +--rw max-destination?    uint32
+       +--rw tcp
+       |  +--rw syn-flood
+       |     +--rw rate
+       |        +--rw per-destination?   uint32
+       +--rw threat-detection
+          +--rw basic-threat?   empty
+          +--rw rate
+             +--rw fw-drop
+             |  +--rw average-time-frame?   uint16
+             |  +--rw average-threshold?    uint32
+             |  +--rw burst-threshold?      uint32
+             +--rw inspect-drop
+             |  +--rw average-time-frame?   uint16
+             |  +--rw average-threshold?    uint32
+             |  +--rw burst-threshold?      uint32
+             +--rw syn-attack
+                +--rw average-time-frame?   uint16
+                +--rw average-threshold?    uint32
+                +--rw burst-threshold?      uint32
+  augment /ios:native/ios:parameter-map/ios:type:
+    +--rw regex* [name]
+       +--rw name       string
+       +--rw pattern* [regexp]
+          +--rw regexp    string
+  augment /ios:native/ios:parameter-map/ios:type:
+    +--rw webauth* [name]
+       +--rw name                      string
+       +--rw captive-bypass-portal?    empty
+       +--rw consent
+       |  +--rw email?   empty
+       +--rw custom-page
+       |  +--rw login
+       |  |  +--rw device?    string
+       |  |  +--rw expired
+       |  |     +--rw device?   string
+       |  +--rw failure
+       |  |  +--rw device?   string
+       |  +--rw success
+       |     +--rw device?   string
+       +--rw login-auth-bypass
+       |  +--rw ip-access-list
+       |     +--rw name?               string
+       |     +--rw domain-name-list?   string
+       +--rw logout-window-disabled?   empty
+       +--rw max-http-conns?           uint8
+       +--rw redirect
+       |  +--rw append
+       |  |  +--rw ap-mac
+       |  |  |  +--rw tag?   string
+       |  |  +--rw client-mac
+       |  |  |  +--rw tag?   string
+       |  |  +--rw wlan-ssid
+       |  |     +--rw tag?   string
+       |  +--rw portal
+       |  |  +--rw ipv4?   inet:ipv4-address
+       |  |  +--rw ipv6?   inet:ipv6-address
+       |  +--rw for-login?    string
+       |  +--rw on-failure?   string
+       |  +--rw on-success?   string
+       +--rw sleeping-client
+       |  +--rw timeout?   uint32
+       +--rw success-window-disable?   empty
+       +--rw timeout
+       |  +--rw init-state!
+       |  |  +--rw sec?   uint32
+       |  +--rw fin-wait
+       |     +--rw msec?   uint32
+       +--rw type?                     enumeration
+  augment /ios:native/ios:parameter-map/ios:type:
+    +--rw webauth-global
+       +--rw webauth
+          +--rw global!
+             +--rw captive-bypass-portal?    empty
+             +--rw consent
+             |  +--rw email?   empty
+             +--rw custom-page
+             |  +--rw login
+             |  |  +--rw device?    string
+             |  |  +--rw expired
+             |  |     +--rw device?   string
+             |  +--rw failure
+             |  |  +--rw device?   string
+             |  +--rw success
+             |     +--rw device?   string
+             +--rw intercept-https-enable?   empty
+             +--rw login-auth-bypass
+             |  +--rw ip-access-list
+             |     +--rw name?               string
+             |     +--rw domain-name-list?   string
+             +--rw logout-window-disabled?   empty
+             +--rw max-http-conns?           uint8
+             +--rw redirect
+             |  +--rw append
+             |  |  +--rw ap-mac
+             |  |  |  +--rw tag?   string
+             |  |  +--rw client-mac
+             |  |  |  +--rw tag?   string
+             |  |  +--rw wlan-ssid
+             |  |     +--rw tag?   string
+             |  +--rw portal
+             |  |  +--rw ipv4?   inet:ipv4-address
+             |  |  +--rw ipv6?   inet:ipv6-address
+             |  +--rw for-login?    string
+             |  +--rw on-failure?   string
+             |  +--rw on-success?   string
+             +--rw sleeping-client
+             |  +--rw timeout?   uint32
+             +--rw success-window-disable?   empty
+             +--rw timeout
+             |  +--rw init-state!
+             |  |  +--rw sec?   uint32
+             |  +--rw fin-wait
+             |     +--rw msec?   uint32
+             +--rw type?                     enumeration
+             +--rw virtual-ip
+             |  +--rw ipv4
+             |  |  +--rw address?        inet:ipv4-address
+             |  |  +--rw virtual-host?   string
+             |  +--rw ipv6
+             |     +--rw address?        inet:ipv6-address
+             |     +--rw virtual-host?   string
+             +--rw watch-list
+                +--rw enabled?                  empty
+                +--rw dynamic-expiry-timeout?   uint32
+                +--rw add-item
+                   +--rw ipv4?   inet:ipv4-address
+                   +--rw ipv6?   inet:ipv6-address
+  augment /ios:native/ios:control-plane:
+    +--rw service-policy
+       +--rw input?    string
+       +--rw output?   string
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:ATM:
+    +--rw service-policy
+       +--rw input?    string
+       +--rw output?   string
+  augment /ios:native/ios:interface/ios:ATM-subinterface:
+    +--rw service-policy
+       +--rw input?    string
+       +--rw output?   string
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:Port-channel:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:Loopback:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:Tunnel:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:LISP:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:VirtualPortGroup:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:Virtual-Template:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:vasileft:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:vasiright:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:Vlan:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:BDI:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+  augment /ios:native/ios:interface/ios:Cellular:
+    +--rw service-policy
+       +--rw history?   empty
+       +--rw input?     string
+       +--rw output?    string
+       +--rw type
+          +--rw control
+          |  +--rw subscriber?   string
+          +--rw performance-monitor
+          |  +--rw direction?   enumeration
+          |  +--rw name?        string
+          +--rw service-chain
+             +--rw input
+             |  +--rw name?   string
+             +--rw output
+                +--rw name?   string
+Xpaths for model: Cisco-IOS-XE-policy.yang

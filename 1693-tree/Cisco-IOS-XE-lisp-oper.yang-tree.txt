@@ -1,0 +1,452 @@
+ 
+KPI for model: Cisco-IOS-XE-lisp-oper.yang
+module: Cisco-IOS-XE-lisp-oper
+  +--ro lisp-state
+     +--ro lisp-routers* [top-id]
+        +--ro top-id          uint32
+        +--ro site-id?        uint64
+        +--ro xtr-id*         uint8
+        +--ro instances* [iid]
+        |  +--ro iid                   uint32
+        |  +--ro af* [iaftype]
+        |  |  +--ro iaftype                                         lisp-ios-xe-oper:lisp-iaftype-type
+        |  |  +--ro role
+        |  |  |  +--ro is-ms?     boolean
+        |  |  |  +--ro is-mr?     boolean
+        |  |  |  +--ro is-itr?    boolean
+        |  |  |  +--ro is-etr?    boolean
+        |  |  |  +--ro is-pitr?   boolean
+        |  |  |  +--ro is-petr?   boolean
+        |  |  +--ro map-cache* [afi prefix]
+        |  |  |  +--ro up-time?                yang:date-and-time
+        |  |  |  +--ro last-modified-time?     yang:date-and-time
+        |  |  |  +--ro last-update-time?       yang:date-and-time
+        |  |  |  +--ro ttl?                    uint32
+        |  |  |  +--ro is-authoritative?       boolean
+        |  |  |  +--ro is-static?              boolean
+        |  |  |  +--ro is-negative?            boolean
+        |  |  |  +--ro nmr-action?             lisp-ios-xe-oper:lisp-map-reply-action-type
+        |  |  |  +--ro expiry-time?            yang:date-and-time
+        |  |  |  +--ro encapsulated-packets?   uint64
+        |  |  |  +--ro encapsulated-octets?    uint64
+        |  |  |  +--ro is-active?              boolean
+        |  |  |  +--ro map-cache-rloc* [afi address]
+        |  |  |  |  +--ro state?                    lisp-ios-xe-oper:lisp-rloc-state-type
+        |  |  |  |  +--ro creation-time?            yang:date-and-time
+        |  |  |  |  +--ro last-state-change-time?   yang:date-and-time
+        |  |  |  |  +--ro rloc-probe-rtt?           uint32
+        |  |  |  |  +--ro params
+        |  |  |  |  |  +--ro priority?         uint8
+        |  |  |  |  |  +--ro weight?           uint8
+        |  |  |  |  |  +--ro mcast-priority?   uint8
+        |  |  |  |  |  +--ro mcast-weight?     uint8
+        |  |  |  |  +--ro afi                       lisp-ios-xe-oper:lisp-address-family-type
+        |  |  |  |  +--ro address                   string
+        |  |  |  +--ro afi                     lisp-ios-xe-oper:lisp-address-family-type
+        |  |  |  +--ro prefix                  string
+        |  |  +--ro l2-domain-id?                                   uint32
+        |  |  +--ro map-cache-size?                                 uint32
+        |  |  +--ro map-cache-limit?                                uint32
+        |  |  +--ro etr-map-cache-ttl?                              uint32
+        |  |  +--ro registration-more-specific?                     uint32
+        |  |  +--ro registration-more-specific-warning-threshold?   uint32
+        |  |  +--ro registration-more-specific-limit?               uint32
+        |  |  +--ro map-cache-threshold?                            uint32
+        |  |  +--ro map-requests-in?                                uint64
+        |  |  +--ro map-requests-out?                               uint64
+        |  |  +--ro encapsulated-map-requests-in?                   uint64
+        |  |  +--ro encapsulated-map-requests-out?                  uint64
+        |  |  +--ro rloc-probe-map-requests-in?                     uint64
+        |  |  +--ro rloc-probe-map-requests-out?                    uint64
+        |  |  +--ro map-requests-expired-on-queue?                  uint64
+        |  |  +--ro map-requests-no-reply?                          uint64
+        |  |  +--ro map-requests-from-disallowed-locators?          uint64
+        |  |  +--ro smr-map-requests-in?                            uint64
+        |  |  +--ro smr-map-requests-out?                           uint64
+        |  |  +--ro ddt-itr-map-requests-dropped?                   uint64
+        |  |  +--ro ddt-itr-map-requests-nonce-collision?           uint64
+        |  |  +--ro ddt-itr-map-requests-bad-xtr-nonce?             uint64
+        |  |  +--ro mr-map-requests-forwarded?                      uint64
+        |  |  +--ro ms-map-requests-forwarded?                      uint64
+        |  |  +--ro to-alt-map-requests-out?                        uint64
+        |  |  +--ro map-reply-records-in?                           uint64
+        |  |  +--ro map-reply-records-out?                          uint64
+        |  |  +--ro authoritative-records-in?                       uint64
+        |  |  +--ro authoritative-records-out?                      uint64
+        |  |  +--ro non-authoritative-records-in?                   uint64
+        |  |  +--ro non-authoritative-records-out?                  uint64
+        |  |  +--ro negative-records-in?                            uint64
+        |  |  +--ro negative-records-out?                           uint64
+        |  |  +--ro rloc-probe-records-in?                          uint64
+        |  |  +--ro rloc-probe-records-out?                         uint64
+        |  |  +--ro ms-proxy-reply-records-out?                     uint64
+        |  |  +--ro wlc-subscribe-in?                               uint64
+        |  |  +--ro wlc-subscribe-out?                              uint64
+        |  |  +--ro wlc-subscribe-in-failure?                       uint64
+        |  |  +--ro wlc-subscribe-out-failure?                      uint64
+        |  |  +--ro wlc-unsubscribe-in?                             uint64
+        |  |  +--ro wlc-unsubscribe-out?                            uint64
+        |  |  +--ro wlc-unsubscribe-in-failure?                     uint64
+        |  |  +--ro wlc-unsubscribe-out-failure?                    uint64
+        |  |  +--ro map-register-records-in?                        uint64
+        |  |  +--ro map-register-records-out?                       uint64
+        |  |  +--ro map-registers-ms-disabled?                      uint64
+        |  |  +--ro map-registers-auth-failed?                      uint64
+        |  |  +--ro map-registers-from-disallowed-locators?         uint64
+        |  |  +--ro wlc-map-register-records-in?                    uint64
+        |  |  +--ro wlc-map-register-records-out?                   uint64
+        |  |  +--ro wlc-map-register-records-in-ap?                 uint64
+        |  |  +--ro wlc-map-register-records-out-ap?                uint64
+        |  |  +--ro wlc-map-register-records-in-client?             uint64
+        |  |  +--ro wlc-map-register-records-out-client?            uint64
+        |  |  +--ro wlc-map-register-records-in-failure?            uint64
+        |  |  +--ro wlc-map-register-records-out-failure?           uint64
+        |  |  +--ro map-notify-records-in?                          uint64
+        |  |  +--ro map-notify-records-out?                         uint64
+        |  |  +--ro map-notify-auth-failed?                         uint64
+        |  |  +--ro wlc-map-notify-records-in?                      uint64
+        |  |  +--ro wlc-map-notify-records-out?                     uint64
+        |  |  +--ro wlc-map-notify-records-in-ap?                   uint64
+        |  |  +--ro wlc-map-notify-records-out-ap?                  uint64
+        |  |  +--ro wlc-map-notify-records-in-client?               uint64
+        |  |  +--ro wlc-map-notify-records-out-client?              uint64
+        |  |  +--ro wlc-map-notify-records-in-failure?              uint64
+        |  |  +--ro wlc-map-notify-records-out-failure?             uint64
+        |  |  +--ro mapping-record-ttl-alerts?                      uint64
+        |  |  +--ro remote-eid-entries-created?                     uint64
+        |  |  +--ro remote-eid-entries-deleted?                     uint64
+        |  |  +--ro remote-eid-nsf-replay-entries-created?          uint64
+        |  |  +--ro forwarding-data-signals-processed?              uint64
+        |  |  +--ro forwarding-data-signals-dropped?                uint64
+        |  |  +--ro forwarding-reachability-reports-processed?      uint64
+        |  |  +--ro forwarding-reachability-reports-dropped?        uint64
+        |  |  +--ro is-etr-accept-mapping?                          boolean
+        |  |  +--ro is-etr-accept-mapping-verify?                   boolean
+        |  |  +--ro local-dbase* [afi prefix]
+        |  |  |  +--ro lsb?                uint32
+        |  |  |  +--ro is-reachable?       boolean
+        |  |  |  +--ro local-dbase-rloc* [afi address]
+        |  |  |  |  +--ro params
+        |  |  |  |  |  +--ro priority?         uint8
+        |  |  |  |  |  +--ro weight?           uint8
+        |  |  |  |  |  +--ro mcast-priority?   uint8
+        |  |  |  |  |  +--ro mcast-weight?     uint8
+        |  |  |  |  +--ro state?      lisp-ios-xe-oper:lisp-rloc-state-type
+        |  |  |  |  +--ro is-local?   boolean
+        |  |  |  |  +--ro afi         lisp-ios-xe-oper:lisp-address-family-type
+        |  |  |  |  +--ro address     string
+        |  |  |  +--ro is-proxy?           boolean
+        |  |  |  +--ro afi                 lisp-ios-xe-oper:lisp-address-family-type
+        |  |  |  +--ro prefix              string
+        |  |  +--ro ms-registrations* [afi prefix]
+        |  |  |  +--ro last-registration-source
+        |  |  |  |  +--ro afi?       lisp-ios-xe-oper:lisp-address-family-type
+        |  |  |  |  +--ro address?   string
+        |  |  |  +--ro last-registration-source-port?   uint16
+        |  |  |  +--ro creation-time?                   yang:date-and-time
+        |  |  |  +--ro last-registration-time?          yang:date-and-time
+        |  |  |  +--ro site-name?                       string
+        |  |  |  +--ro site-description?                string
+        |  |  |  +--ro is-registered?                   boolean
+        |  |  |  +--ro authentication-error?            uint64
+        |  |  |  +--ro rloc-mismatch-error?             uint64
+        |  |  |  +--ro etr-registrations* [source-address source-port]
+        |  |  |  |  +--ro last-registration-time?   yang:date-and-time
+        |  |  |  |  +--ro ttl?                      uint32
+        |  |  |  |  +--ro proxy-reply?              boolean
+        |  |  |  |  +--ro wants-map-notify?         boolean
+        |  |  |  |  +--ro ms-registration-rloc* [afi address]
+        |  |  |  |  |  +--ro params
+        |  |  |  |  |  |  +--ro priority?         uint8
+        |  |  |  |  |  |  +--ro weight?           uint8
+        |  |  |  |  |  |  +--ro mcast-priority?   uint8
+        |  |  |  |  |  |  +--ro mcast-weight?     uint8
+        |  |  |  |  |  +--ro state?      lisp-ios-xe-oper:lisp-rloc-state-type
+        |  |  |  |  |  +--ro is-local?   boolean
+        |  |  |  |  |  +--ro afi         lisp-ios-xe-oper:lisp-address-family-type
+        |  |  |  |  |  +--ro address     string
+        |  |  |  |  +--ro source-address            inet:ip-address
+        |  |  |  |  +--ro source-port               uint16
+        |  |  |  +--ro afi                              lisp-ios-xe-oper:lisp-address-family-type
+        |  |  |  +--ro prefix                           string
+        |  |  +--ro map-servers* [afi address]
+        |  |  |  +--ro state?     lisp-ios-xe-oper:lisp-rloc-state-type
+        |  |  |  +--ro afi        lisp-ios-xe-oper:lisp-address-family-type
+        |  |  |  +--ro address    string
+        |  |  +--ro map-resolvers* [afi address]
+        |  |  |  +--ro state?     lisp-ios-xe-oper:lisp-rloc-state-type
+        |  |  |  +--ro afi        lisp-ios-xe-oper:lisp-address-family-type
+        |  |  |  +--ro address    string
+        |  |  +--ro proxy-etrs* [afi address]
+        |  |     +--ro params
+        |  |     |  +--ro priority?         uint8
+        |  |     |  +--ro weight?           uint8
+        |  |     |  +--ro mcast-priority?   uint8
+        |  |     |  +--ro mcast-weight?     uint8
+        |  |     +--ro state?     lisp-ios-xe-oper:lisp-rloc-state-type
+        |  |     +--ro afi        lisp-ios-xe-oper:lisp-address-family-type
+        |  |     +--ro address    string
+        |  +--ro vrf-name?             string
+        |  +--ro is-rloc-probing?      boolean
+        |  +--ro ms-eid-membership* [rloc]
+        |  |  +--ro rloc             inet:ip-address
+        |  |  +--ro member-since?    yang:date-and-time
+        |  |  +--ro is-gleaned?      boolean
+        |  |  +--ro is-configured?   boolean
+        |  +--ro etr-eid-membership* [rloc]
+        |     +--ro rloc                  inet:ip-address
+        |     +--ro member-since?         yang:date-and-time
+        |     +--ro is-learned-from-ms?   boolean
+        |     +--ro is-configured?        boolean
+        +--ro sessions* [local-address peer-address local-port peer-port]
+        |  +--ro state?                    lisp-ios-xe-oper:lisp-session-state-type
+        |  +--ro last-state-change-time?   yang:date-and-time
+        |  +--ro is-role-active?           boolean
+        |  +--ro is-routable?              boolean
+        |  +--ro messages-in?              uint64
+        |  +--ro messages-out?             uint64
+        |  +--ro bytes-in?                 uint64
+        |  +--ro bytes-out?                uint64
+        |  +--ro local-address             inet:ip-address
+        |  +--ro peer-address              inet:ip-address
+        |  +--ro local-port                uint16
+        |  +--ro peer-port                 uint16
+        +--ro local-rlocs* [afi address]
+        |  +--ro state?      lisp-ios-xe-oper:lisp-rloc-state-type
+        |  +--ro is-local?   boolean
+        |  +--ro afi         lisp-ios-xe-oper:lisp-address-family-type
+        |  +--ro address     string
+        +--ro prefix-lists* [name]
+           +--ro name                 string
+           +--ro count?               uint64
+           +--ro prefix-list-entry* [afi prefix]
+              +--ro source-has-static?     boolean
+              +--ro source-has-rib?        boolean
+              +--ro source-has-site-reg?   boolean
+              +--ro afi                    lisp-ios-xe-oper:lisp-address-family-type
+              +--ro prefix                 string
+Xpaths for model: Cisco-IOS-XE-lisp-oper.yang
+/lisp-ios-xe-oper:lisp-state,container,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:top-id,leaf,uint32
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:site-id,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:xtr-id,leaf-list,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:iid,leaf,uint32
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:iaftype,leaf,lisp-ios-xe-oper:lisp-iaftype-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:role,container,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:role/lisp-ios-xe-oper:is-ms,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:role/lisp-ios-xe-oper:is-mr,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:role/lisp-ios-xe-oper:is-itr,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:role/lisp-ios-xe-oper:is-etr,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:role/lisp-ios-xe-oper:is-pitr,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:role/lisp-ios-xe-oper:is-petr,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:up-time,leaf,yang:date-and-time
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:last-modified-time,leaf,yang:date-and-time
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:last-update-time,leaf,yang:date-and-time
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:ttl,leaf,uint32
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:is-authoritative,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:is-static,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:is-negative,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:nmr-action,leaf,lisp-ios-xe-oper:lisp-map-reply-action-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:expiry-time,leaf,yang:date-and-time
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:encapsulated-packets,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:encapsulated-octets,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:is-active,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:map-cache-rloc,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:map-cache-rloc/lisp-ios-xe-oper:state,leaf,lisp-ios-xe-oper:lisp-rloc-state-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:map-cache-rloc/lisp-ios-xe-oper:creation-time,leaf,yang:date-and-time
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:map-cache-rloc/lisp-ios-xe-oper:last-state-change-time,leaf,yang:date-and-time
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:map-cache-rloc/lisp-ios-xe-oper:rloc-probe-rtt,leaf,uint32
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:map-cache-rloc/lisp-ios-xe-oper:params,container,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:map-cache-rloc/lisp-ios-xe-oper:params/lisp-ios-xe-oper:priority,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:map-cache-rloc/lisp-ios-xe-oper:params/lisp-ios-xe-oper:weight,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:map-cache-rloc/lisp-ios-xe-oper:params/lisp-ios-xe-oper:mcast-priority,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:map-cache-rloc/lisp-ios-xe-oper:params/lisp-ios-xe-oper:mcast-weight,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:map-cache-rloc/lisp-ios-xe-oper:afi,leaf,lisp-ios-xe-oper:lisp-address-family-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:map-cache-rloc/lisp-ios-xe-oper:address,leaf,string
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:afi,leaf,lisp-ios-xe-oper:lisp-address-family-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache/lisp-ios-xe-oper:prefix,leaf,string
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:l2-domain-id,leaf,uint32
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache-size,leaf,uint32
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache-limit,leaf,uint32
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:etr-map-cache-ttl,leaf,uint32
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:registration-more-specific,leaf,uint32
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:registration-more-specific-warning-threshold,leaf,uint32
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:registration-more-specific-limit,leaf,uint32
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-cache-threshold,leaf,uint32
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-requests-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-requests-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:encapsulated-map-requests-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:encapsulated-map-requests-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:rloc-probe-map-requests-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:rloc-probe-map-requests-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-requests-expired-on-queue,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-requests-no-reply,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-requests-from-disallowed-locators,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:smr-map-requests-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:smr-map-requests-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ddt-itr-map-requests-dropped,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ddt-itr-map-requests-nonce-collision,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ddt-itr-map-requests-bad-xtr-nonce,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:mr-map-requests-forwarded,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-map-requests-forwarded,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:to-alt-map-requests-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-reply-records-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-reply-records-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:authoritative-records-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:authoritative-records-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:non-authoritative-records-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:non-authoritative-records-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:negative-records-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:negative-records-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:rloc-probe-records-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:rloc-probe-records-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-proxy-reply-records-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-subscribe-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-subscribe-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-subscribe-in-failure,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-subscribe-out-failure,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-unsubscribe-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-unsubscribe-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-unsubscribe-in-failure,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-unsubscribe-out-failure,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-register-records-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-register-records-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-registers-ms-disabled,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-registers-auth-failed,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-registers-from-disallowed-locators,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-register-records-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-register-records-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-register-records-in-ap,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-register-records-out-ap,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-register-records-in-client,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-register-records-out-client,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-register-records-in-failure,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-register-records-out-failure,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-notify-records-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-notify-records-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-notify-auth-failed,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-notify-records-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-notify-records-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-notify-records-in-ap,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-notify-records-out-ap,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-notify-records-in-client,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-notify-records-out-client,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-notify-records-in-failure,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:wlc-map-notify-records-out-failure,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:mapping-record-ttl-alerts,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:remote-eid-entries-created,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:remote-eid-entries-deleted,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:remote-eid-nsf-replay-entries-created,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:forwarding-data-signals-processed,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:forwarding-data-signals-dropped,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:forwarding-reachability-reports-processed,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:forwarding-reachability-reports-dropped,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:is-etr-accept-mapping,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:is-etr-accept-mapping-verify,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase/lisp-ios-xe-oper:lsb,leaf,uint32
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase/lisp-ios-xe-oper:is-reachable,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase/lisp-ios-xe-oper:local-dbase-rloc,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase/lisp-ios-xe-oper:local-dbase-rloc/lisp-ios-xe-oper:params,container,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase/lisp-ios-xe-oper:local-dbase-rloc/lisp-ios-xe-oper:params/lisp-ios-xe-oper:priority,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase/lisp-ios-xe-oper:local-dbase-rloc/lisp-ios-xe-oper:params/lisp-ios-xe-oper:weight,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase/lisp-ios-xe-oper:local-dbase-rloc/lisp-ios-xe-oper:params/lisp-ios-xe-oper:mcast-priority,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase/lisp-ios-xe-oper:local-dbase-rloc/lisp-ios-xe-oper:params/lisp-ios-xe-oper:mcast-weight,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase/lisp-ios-xe-oper:local-dbase-rloc/lisp-ios-xe-oper:state,leaf,lisp-ios-xe-oper:lisp-rloc-state-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase/lisp-ios-xe-oper:local-dbase-rloc/lisp-ios-xe-oper:is-local,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase/lisp-ios-xe-oper:local-dbase-rloc/lisp-ios-xe-oper:afi,leaf,lisp-ios-xe-oper:lisp-address-family-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase/lisp-ios-xe-oper:local-dbase-rloc/lisp-ios-xe-oper:address,leaf,string
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase/lisp-ios-xe-oper:is-proxy,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase/lisp-ios-xe-oper:afi,leaf,lisp-ios-xe-oper:lisp-address-family-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:local-dbase/lisp-ios-xe-oper:prefix,leaf,string
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:last-registration-source,container,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:last-registration-source/lisp-ios-xe-oper:afi,leaf,lisp-ios-xe-oper:lisp-address-family-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:last-registration-source/lisp-ios-xe-oper:address,leaf,string
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:last-registration-source-port,leaf,uint16
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:creation-time,leaf,yang:date-and-time
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:last-registration-time,leaf,yang:date-and-time
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:site-name,leaf,string
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:site-description,leaf,string
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:is-registered,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:authentication-error,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:rloc-mismatch-error,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:last-registration-time,leaf,yang:date-and-time
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:ttl,leaf,uint32
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:proxy-reply,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:wants-map-notify,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:ms-registration-rloc,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:ms-registration-rloc/lisp-ios-xe-oper:params,container,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:ms-registration-rloc/lisp-ios-xe-oper:params/lisp-ios-xe-oper:priority,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:ms-registration-rloc/lisp-ios-xe-oper:params/lisp-ios-xe-oper:weight,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:ms-registration-rloc/lisp-ios-xe-oper:params/lisp-ios-xe-oper:mcast-priority,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:ms-registration-rloc/lisp-ios-xe-oper:params/lisp-ios-xe-oper:mcast-weight,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:ms-registration-rloc/lisp-ios-xe-oper:state,leaf,lisp-ios-xe-oper:lisp-rloc-state-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:ms-registration-rloc/lisp-ios-xe-oper:is-local,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:ms-registration-rloc/lisp-ios-xe-oper:afi,leaf,lisp-ios-xe-oper:lisp-address-family-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:ms-registration-rloc/lisp-ios-xe-oper:address,leaf,string
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:source-address,leaf,inet:ip-address
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:etr-registrations/lisp-ios-xe-oper:source-port,leaf,uint16
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:afi,leaf,lisp-ios-xe-oper:lisp-address-family-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:ms-registrations/lisp-ios-xe-oper:prefix,leaf,string
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-servers,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-servers/lisp-ios-xe-oper:state,leaf,lisp-ios-xe-oper:lisp-rloc-state-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-servers/lisp-ios-xe-oper:afi,leaf,lisp-ios-xe-oper:lisp-address-family-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-servers/lisp-ios-xe-oper:address,leaf,string
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-resolvers,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-resolvers/lisp-ios-xe-oper:state,leaf,lisp-ios-xe-oper:lisp-rloc-state-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-resolvers/lisp-ios-xe-oper:afi,leaf,lisp-ios-xe-oper:lisp-address-family-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:map-resolvers/lisp-ios-xe-oper:address,leaf,string
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:proxy-etrs,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:proxy-etrs/lisp-ios-xe-oper:params,container,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:proxy-etrs/lisp-ios-xe-oper:params/lisp-ios-xe-oper:priority,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:proxy-etrs/lisp-ios-xe-oper:params/lisp-ios-xe-oper:weight,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:proxy-etrs/lisp-ios-xe-oper:params/lisp-ios-xe-oper:mcast-priority,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:proxy-etrs/lisp-ios-xe-oper:params/lisp-ios-xe-oper:mcast-weight,leaf,uint8
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:proxy-etrs/lisp-ios-xe-oper:state,leaf,lisp-ios-xe-oper:lisp-rloc-state-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:proxy-etrs/lisp-ios-xe-oper:afi,leaf,lisp-ios-xe-oper:lisp-address-family-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:af/lisp-ios-xe-oper:proxy-etrs/lisp-ios-xe-oper:address,leaf,string
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:vrf-name,leaf,string
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:is-rloc-probing,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:ms-eid-membership,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:ms-eid-membership/lisp-ios-xe-oper:rloc,leaf,inet:ip-address
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:ms-eid-membership/lisp-ios-xe-oper:member-since,leaf,yang:date-and-time
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:ms-eid-membership/lisp-ios-xe-oper:is-gleaned,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:ms-eid-membership/lisp-ios-xe-oper:is-configured,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:etr-eid-membership,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:etr-eid-membership/lisp-ios-xe-oper:rloc,leaf,inet:ip-address
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:etr-eid-membership/lisp-ios-xe-oper:member-since,leaf,yang:date-and-time
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:etr-eid-membership/lisp-ios-xe-oper:is-learned-from-ms,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:instances/lisp-ios-xe-oper:etr-eid-membership/lisp-ios-xe-oper:is-configured,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:sessions,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:sessions/lisp-ios-xe-oper:state,leaf,lisp-ios-xe-oper:lisp-session-state-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:sessions/lisp-ios-xe-oper:last-state-change-time,leaf,yang:date-and-time
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:sessions/lisp-ios-xe-oper:is-role-active,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:sessions/lisp-ios-xe-oper:is-routable,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:sessions/lisp-ios-xe-oper:messages-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:sessions/lisp-ios-xe-oper:messages-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:sessions/lisp-ios-xe-oper:bytes-in,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:sessions/lisp-ios-xe-oper:bytes-out,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:sessions/lisp-ios-xe-oper:local-address,leaf,inet:ip-address
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:sessions/lisp-ios-xe-oper:peer-address,leaf,inet:ip-address
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:sessions/lisp-ios-xe-oper:local-port,leaf,uint16
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:sessions/lisp-ios-xe-oper:peer-port,leaf,uint16
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:local-rlocs,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:local-rlocs/lisp-ios-xe-oper:state,leaf,lisp-ios-xe-oper:lisp-rloc-state-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:local-rlocs/lisp-ios-xe-oper:is-local,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:local-rlocs/lisp-ios-xe-oper:afi,leaf,lisp-ios-xe-oper:lisp-address-family-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:local-rlocs/lisp-ios-xe-oper:address,leaf,string
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:prefix-lists,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:prefix-lists/lisp-ios-xe-oper:name,leaf,string
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:prefix-lists/lisp-ios-xe-oper:count,leaf,uint64
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:prefix-lists/lisp-ios-xe-oper:prefix-list-entry,list,
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:prefix-lists/lisp-ios-xe-oper:prefix-list-entry/lisp-ios-xe-oper:source-has-static,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:prefix-lists/lisp-ios-xe-oper:prefix-list-entry/lisp-ios-xe-oper:source-has-rib,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:prefix-lists/lisp-ios-xe-oper:prefix-list-entry/lisp-ios-xe-oper:source-has-site-reg,leaf,boolean
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:prefix-lists/lisp-ios-xe-oper:prefix-list-entry/lisp-ios-xe-oper:afi,leaf,lisp-ios-xe-oper:lisp-address-family-type
+/lisp-ios-xe-oper:lisp-state/lisp-ios-xe-oper:lisp-routers/lisp-ios-xe-oper:prefix-lists/lisp-ios-xe-oper:prefix-list-entry/lisp-ios-xe-oper:prefix,leaf,string

@@ -1,0 +1,3 @@
+ 
+KPI for model: pim.yang
+Xpaths for model: pim.yang

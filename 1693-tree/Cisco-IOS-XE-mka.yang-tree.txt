@@ -1,0 +1,70 @@
+ 
+KPI for model: Cisco-IOS-XE-mka.yang
+
+module: Cisco-IOS-XE-mka
+  augment /ios:native/ios:mka:
+    +--rw policy* [name]
+       +--rw name                      string
+       +--rw key-server
+       |  +--rw priority?   uint8
+       +--rw macsec-cipher-suite
+       |  +--rw gcm-aes-128?   empty
+       |  +--rw gcm-aes-256?   empty
+       +--rw confidentiality-offset?   enumeration
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw mka
+       +--rw policy
+       |  +--rw name?   string
+       +--rw pre-shared-key
+          +--rw key-chain
+             +--rw name?   string
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw mka
+       +--rw policy
+       |  +--rw name?   string
+       +--rw pre-shared-key
+          +--rw key-chain
+             +--rw name?   string
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw mka
+       +--rw policy
+       |  +--rw name?   string
+       +--rw pre-shared-key
+          +--rw key-chain
+             +--rw name?   string
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw mka
+       +--rw policy
+       |  +--rw name?   string
+       +--rw pre-shared-key
+          +--rw key-chain
+             +--rw name?   string
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw mka
+       +--rw policy
+       |  +--rw name?   string
+       +--rw pre-shared-key
+          +--rw key-chain
+             +--rw name?   string
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw mka
+       +--rw policy
+       |  +--rw name?   string
+       +--rw pre-shared-key
+          +--rw key-chain
+             +--rw name?   string
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw mka
+       +--rw policy
+       |  +--rw name?   string
+       +--rw pre-shared-key
+          +--rw key-chain
+             +--rw name?   string
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw mka
+       +--rw policy
+       |  +--rw name?   string
+       +--rw pre-shared-key
+          +--rw key-chain
+             +--rw name?   string
+Xpaths for model: Cisco-IOS-XE-mka.yang

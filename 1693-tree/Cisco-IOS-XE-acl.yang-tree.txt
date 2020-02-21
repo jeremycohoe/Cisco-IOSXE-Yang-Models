@@ -1,0 +1,905 @@
+ 
+KPI for model: Cisco-IOS-XE-acl.yang
+
+module: Cisco-IOS-XE-acl
+  augment /ios:native/ios:mac:
+    +--rw access-list
+       +--rw extended* [id]
+          +--rw id       string
+          +--rw entry* [action values]
+             +--rw action    enumeration
+             +--rw values    string
+  augment /ios:native/ios:ip/ios:access-list:
+    +--rw standard* [name]
+    |  +--rw name                    ios-types:std-acl-type
+    |  +--rw access-list-seq-rule* [sequence]
+    |  |  +--rw sequence        uint64
+    |  |  +--rw (deny-permit)?
+    |  |  |  +--:(deny)
+    |  |  |  |  +--rw deny
+    |  |  |  |     +--rw std-ace
+    |  |  |  |        +--rw (source-choice)?
+    |  |  |  |        |  +--:(ipv4-prefix-case)
+    |  |  |  |        |  |  +--rw ipv4-prefix?   ios-types:ipv4-host
+    |  |  |  |        |  |  +--rw mask?          inet:ipv4-address
+    |  |  |  |        |  +--:(any-case)
+    |  |  |  |        |  |  +--rw any?           empty
+    |  |  |  |        |  +--:(host-case)
+    |  |  |  |        |     +--rw host?          ios-types:ipv4-host
+    |  |  |  |        +--rw log?                 empty
+    |  |  |  +--:(permit)
+    |  |  |     +--rw permit
+    |  |  |        +--rw std-ace
+    |  |  |           +--rw (source-choice)?
+    |  |  |           |  +--:(ipv4-prefix-case)
+    |  |  |           |  |  +--rw ipv4-prefix?   ios-types:ipv4-host
+    |  |  |           |  |  +--rw mask?          inet:ipv4-address
+    |  |  |           |  +--:(any-case)
+    |  |  |           |  |  +--rw any?           empty
+    |  |  |           |  +--:(host-case)
+    |  |  |           |     +--rw host?          ios-types:ipv4-host
+    |  |  |           +--rw log?                 empty
+    |  |  +--rw remark?         string
+    |  +--rw default
+    |     +--rw access-list-seq-rule* [sequence]
+    |        +--rw sequence        uint64
+    |        +--rw (deny-permit)?
+    |        |  +--:(deny)
+    |        |  |  +--rw deny
+    |        |  |     +--rw std-ace
+    |        |  |        +--rw (source-choice)?
+    |        |  |        |  +--:(ipv4-prefix-case)
+    |        |  |        |  |  +--rw ipv4-prefix?   ios-types:ipv4-host
+    |        |  |        |  |  +--rw mask?          inet:ipv4-address
+    |        |  |        |  +--:(any-case)
+    |        |  |        |  |  +--rw any?           empty
+    |        |  |        |  +--:(host-case)
+    |        |  |        |     +--rw host?          ios-types:ipv4-host
+    |        |  |        +--rw log?                 empty
+    |        |  +--:(permit)
+    |        |     +--rw permit
+    |        |        +--rw std-ace
+    |        |           +--rw (source-choice)?
+    |        |           |  +--:(ipv4-prefix-case)
+    |        |           |  |  +--rw ipv4-prefix?   ios-types:ipv4-host
+    |        |           |  |  +--rw mask?          inet:ipv4-address
+    |        |           |  +--:(any-case)
+    |        |           |  |  +--rw any?           empty
+    |        |           |  +--:(host-case)
+    |        |           |     +--rw host?          ios-types:ipv4-host
+    |        |           +--rw log?                 empty
+    |        +--rw remark?         string
+    +--rw role-based* [name]
+    |  +--rw name                    string
+    |  +--rw access-list-seq-rule* [sequence]
+    |  |  +--rw sequence    uint64
+    |  |  +--rw ace-rule
+    |  |  |  +--rw action?                 enumeration
+    |  |  |  +--rw protocol?               union
+    |  |  |  +--rw object-group-str?       string
+    |  |  |  +--rw ack?                    empty
+    |  |  |  +--rw fin?                    empty
+    |  |  |  +--rw psh?                    empty
+    |  |  |  +--rw rst?                    empty
+    |  |  |  +--rw syn?                    empty
+    |  |  |  +--rw urg?                    empty
+    |  |  |  +--rw established?            empty
+    |  |  |  +--rw dscp?                   ios-types:dscp-type
+    |  |  |  +--rw fragments?              empty
+    |  |  |  +--rw log?                    empty
+    |  |  |  +--rw log-input?              empty
+    |  |  |  +--rw option?                 union
+    |  |  |  +--rw precedence?             union
+    |  |  |  +--rw time-range?             string
+    |  |  |  +--rw tos?                    union
+    |  |  |  +--rw ttl
+    |  |  |  |  +--rw (ttl-choice)?
+    |  |  |  |     +--:(eq-case)
+    |  |  |  |     |  +--rw eq?      uint8
+    |  |  |  |     +--:(gt-case)
+    |  |  |  |     |  +--rw gt?      uint8
+    |  |  |  |     +--:(lt-case)
+    |  |  |  |     |  +--rw lt?      uint8
+    |  |  |  |     +--:(neq-case)
+    |  |  |  |     |  +--rw neq?     uint8
+    |  |  |  |     +--:(range-case)
+    |  |  |  |        +--rw range
+    |  |  |  |           +--rw value1?   uint8
+    |  |  |  |           +--rw value2?   uint8
+    |  |  |  +--rw match-all
+    |  |  |  |  +--rw plusack?    empty
+    |  |  |  |  +--rw plusfin?    empty
+    |  |  |  |  +--rw pluspsh?    empty
+    |  |  |  |  +--rw plusrst?    empty
+    |  |  |  |  +--rw plussyn?    empty
+    |  |  |  |  +--rw plusurg?    empty
+    |  |  |  |  +--rw minusack?   empty
+    |  |  |  |  +--rw minusfin?   empty
+    |  |  |  |  +--rw minuspsh?   empty
+    |  |  |  |  +--rw minusrst?   empty
+    |  |  |  |  +--rw minussyn?   empty
+    |  |  |  |  +--rw minusurg?   empty
+    |  |  |  +--rw match-any
+    |  |  |  |  +--rw plusack?    empty
+    |  |  |  |  +--rw plusfin?    empty
+    |  |  |  |  +--rw pluspsh?    empty
+    |  |  |  |  +--rw plusrst?    empty
+    |  |  |  |  +--rw plussyn?    empty
+    |  |  |  |  +--rw plusurg?    empty
+    |  |  |  |  +--rw minusack?   empty
+    |  |  |  |  +--rw minusfin?   empty
+    |  |  |  |  +--rw minuspsh?   empty
+    |  |  |  |  +--rw minusrst?   empty
+    |  |  |  |  +--rw minussyn?   empty
+    |  |  |  |  +--rw minusurg?   empty
+    |  |  |  +--rw (icmp-msg-choice)?
+    |  |  |  |  +--:(icmp-msg-type-code)
+    |  |  |  |  |  +--rw msg-type?         uint8
+    |  |  |  |  |  +--rw msg-code?         uint8
+    |  |  |  |  +--:(named-msg-type-case)
+    |  |  |  |     +--rw named-msg-type?   enumeration
+    |  |  |  +--rw src
+    |  |  |  |  +--rw (source-choice)?
+    |  |  |  |  |  +--:(host-case)
+    |  |  |  |  |  |  +--rw source-host?            ios-types:ip-host
+    |  |  |  |  |  +--:(address-case)
+    |  |  |  |  |  |  +--rw source-address?         inet:ipv6-address
+    |  |  |  |  |  |  +--rw source-wildcard-bits?   inet:ipv6-address
+    |  |  |  |  |  +--:(prefix-case)
+    |  |  |  |  |  |  +--rw source-prefix?          ios-types:ipv6-prefix
+    |  |  |  |  |  +--:(any-case)
+    |  |  |  |  |     +--rw any?                    empty
+    |  |  |  |  +--rw (src-port-choice)?
+    |  |  |  |  |  +--:(src-eq-case)
+    |  |  |  |  |  |  +--rw src-eq?                 acl-port-type
+    |  |  |  |  |  +--:(src-gt-case)
+    |  |  |  |  |  |  +--rw src-gt?                 acl-port-type
+    |  |  |  |  |  +--:(src-lt-case)
+    |  |  |  |  |  |  +--rw src-lt?                 acl-port-type
+    |  |  |  |  |  +--:(src-neq-case)
+    |  |  |  |  |  |  +--rw src-neq?                acl-port-type
+    |  |  |  |  |  +--:(src-range-case)
+    |  |  |  |  |     +--rw src-range1?             acl-port-type
+    |  |  |  |  |     +--rw src-range2?             acl-port-type
+    |  |  |  |  +--rw dst
+    |  |  |  |     +--rw (destination-choice)?
+    |  |  |  |     |  +--:(host-case)
+    |  |  |  |     |  |  +--rw destination-host?            ios-types:ip-host
+    |  |  |  |     |  +--:(address-case)
+    |  |  |  |     |  |  +--rw destination-address?         inet:ipv6-address
+    |  |  |  |     |  |  +--rw destination-wildcard-bits?   inet:ipv6-address
+    |  |  |  |     |  +--:(prefix-case)
+    |  |  |  |     |  |  +--rw destination-prefix?          ios-types:ipv6-prefix
+    |  |  |  |     |  +--:(any-case)
+    |  |  |  |     |     +--rw destination-any?             empty
+    |  |  |  |     +--rw (dst-port-choice)?
+    |  |  |  |        +--:(dst-eq-case)
+    |  |  |  |        |  +--rw dst-eq?                      acl-port-type
+    |  |  |  |        +--:(dst-gt-case)
+    |  |  |  |        |  +--rw dst-gt?                      acl-port-type
+    |  |  |  |        +--:(dst-lt-case)
+    |  |  |  |        |  +--rw dst-lt?                      acl-port-type
+    |  |  |  |        +--:(dst-neq-case)
+    |  |  |  |        |  +--rw dst-neq?                     acl-port-type
+    |  |  |  |        +--:(dst-range-case)
+    |  |  |  |           +--rw dst-range1?                  acl-port-type
+    |  |  |  |           +--rw dst-range2?                  acl-port-type
+    |  |  |  +--rw dst
+    |  |  |     +--rw (destination-choice)?
+    |  |  |     |  +--:(host-case)
+    |  |  |     |  |  +--rw destination-host?            ios-types:ip-host
+    |  |  |     |  +--:(address-case)
+    |  |  |     |  |  +--rw destination-address?         inet:ipv6-address
+    |  |  |     |  |  +--rw destination-wildcard-bits?   inet:ipv6-address
+    |  |  |     |  +--:(prefix-case)
+    |  |  |     |  |  +--rw destination-prefix?          ios-types:ipv6-prefix
+    |  |  |     |  +--:(any-case)
+    |  |  |     |     +--rw destination-any?             empty
+    |  |  |     +--rw (dst-port-choice)?
+    |  |  |        +--:(dst-eq-case)
+    |  |  |        |  +--rw dst-eq?                      acl-port-type
+    |  |  |        +--:(dst-gt-case)
+    |  |  |        |  +--rw dst-gt?                      acl-port-type
+    |  |  |        +--:(dst-lt-case)
+    |  |  |        |  +--rw dst-lt?                      acl-port-type
+    |  |  |        +--:(dst-neq-case)
+    |  |  |        |  +--rw dst-neq?                     acl-port-type
+    |  |  |        +--:(dst-range-case)
+    |  |  |           +--rw dst-range1?                  acl-port-type
+    |  |  |           +--rw dst-range2?                  acl-port-type
+    |  |  +--rw remark?     string
+    |  +--rw default
+    |     +--rw access-list-seq-rule* [sequence]
+    |        +--rw sequence    uint64
+    |        +--rw ace-rule
+    |        |  +--rw action?                 enumeration
+    |        |  +--rw protocol?               union
+    |        |  +--rw object-group-str?       string
+    |        |  +--rw ack?                    empty
+    |        |  +--rw fin?                    empty
+    |        |  +--rw psh?                    empty
+    |        |  +--rw rst?                    empty
+    |        |  +--rw syn?                    empty
+    |        |  +--rw urg?                    empty
+    |        |  +--rw established?            empty
+    |        |  +--rw dscp?                   ios-types:dscp-type
+    |        |  +--rw fragments?              empty
+    |        |  +--rw log?                    empty
+    |        |  +--rw log-input?              empty
+    |        |  +--rw option?                 union
+    |        |  +--rw precedence?             union
+    |        |  +--rw time-range?             string
+    |        |  +--rw tos?                    union
+    |        |  +--rw ttl
+    |        |  |  +--rw (ttl-choice)?
+    |        |  |     +--:(eq-case)
+    |        |  |     |  +--rw eq?      uint8
+    |        |  |     +--:(gt-case)
+    |        |  |     |  +--rw gt?      uint8
+    |        |  |     +--:(lt-case)
+    |        |  |     |  +--rw lt?      uint8
+    |        |  |     +--:(neq-case)
+    |        |  |     |  +--rw neq?     uint8
+    |        |  |     +--:(range-case)
+    |        |  |        +--rw range
+    |        |  |           +--rw value1?   uint8
+    |        |  |           +--rw value2?   uint8
+    |        |  +--rw match-all
+    |        |  |  +--rw plusack?    empty
+    |        |  |  +--rw plusfin?    empty
+    |        |  |  +--rw pluspsh?    empty
+    |        |  |  +--rw plusrst?    empty
+    |        |  |  +--rw plussyn?    empty
+    |        |  |  +--rw plusurg?    empty
+    |        |  |  +--rw minusack?   empty
+    |        |  |  +--rw minusfin?   empty
+    |        |  |  +--rw minuspsh?   empty
+    |        |  |  +--rw minusrst?   empty
+    |        |  |  +--rw minussyn?   empty
+    |        |  |  +--rw minusurg?   empty
+    |        |  +--rw match-any
+    |        |  |  +--rw plusack?    empty
+    |        |  |  +--rw plusfin?    empty
+    |        |  |  +--rw pluspsh?    empty
+    |        |  |  +--rw plusrst?    empty
+    |        |  |  +--rw plussyn?    empty
+    |        |  |  +--rw plusurg?    empty
+    |        |  |  +--rw minusack?   empty
+    |        |  |  +--rw minusfin?   empty
+    |        |  |  +--rw minuspsh?   empty
+    |        |  |  +--rw minusrst?   empty
+    |        |  |  +--rw minussyn?   empty
+    |        |  |  +--rw minusurg?   empty
+    |        |  +--rw (icmp-msg-choice)?
+    |        |  |  +--:(icmp-msg-type-code)
+    |        |  |  |  +--rw msg-type?         uint8
+    |        |  |  |  +--rw msg-code?         uint8
+    |        |  |  +--:(named-msg-type-case)
+    |        |  |     +--rw named-msg-type?   enumeration
+    |        |  +--rw src
+    |        |  |  +--rw (source-choice)?
+    |        |  |  |  +--:(host-case)
+    |        |  |  |  |  +--rw source-host?            ios-types:ip-host
+    |        |  |  |  +--:(address-case)
+    |        |  |  |  |  +--rw source-address?         inet:ipv6-address
+    |        |  |  |  |  +--rw source-wildcard-bits?   inet:ipv6-address
+    |        |  |  |  +--:(prefix-case)
+    |        |  |  |  |  +--rw source-prefix?          ios-types:ipv6-prefix
+    |        |  |  |  +--:(any-case)
+    |        |  |  |     +--rw any?                    empty
+    |        |  |  +--rw (src-port-choice)?
+    |        |  |  |  +--:(src-eq-case)
+    |        |  |  |  |  +--rw src-eq?                 acl-port-type
+    |        |  |  |  +--:(src-gt-case)
+    |        |  |  |  |  +--rw src-gt?                 acl-port-type
+    |        |  |  |  +--:(src-lt-case)
+    |        |  |  |  |  +--rw src-lt?                 acl-port-type
+    |        |  |  |  +--:(src-neq-case)
+    |        |  |  |  |  +--rw src-neq?                acl-port-type
+    |        |  |  |  +--:(src-range-case)
+    |        |  |  |     +--rw src-range1?             acl-port-type
+    |        |  |  |     +--rw src-range2?             acl-port-type
+    |        |  |  +--rw dst
+    |        |  |     +--rw (destination-choice)?
+    |        |  |     |  +--:(host-case)
+    |        |  |     |  |  +--rw destination-host?            ios-types:ip-host
+    |        |  |     |  +--:(address-case)
+    |        |  |     |  |  +--rw destination-address?         inet:ipv6-address
+    |        |  |     |  |  +--rw destination-wildcard-bits?   inet:ipv6-address
+    |        |  |     |  +--:(prefix-case)
+    |        |  |     |  |  +--rw destination-prefix?          ios-types:ipv6-prefix
+    |        |  |     |  +--:(any-case)
+    |        |  |     |     +--rw destination-any?             empty
+    |        |  |     +--rw (dst-port-choice)?
+    |        |  |        +--:(dst-eq-case)
+    |        |  |        |  +--rw dst-eq?                      acl-port-type
+    |        |  |        +--:(dst-gt-case)
+    |        |  |        |  +--rw dst-gt?                      acl-port-type
+    |        |  |        +--:(dst-lt-case)
+    |        |  |        |  +--rw dst-lt?                      acl-port-type
+    |        |  |        +--:(dst-neq-case)
+    |        |  |        |  +--rw dst-neq?                     acl-port-type
+    |        |  |        +--:(dst-range-case)
+    |        |  |           +--rw dst-range1?                  acl-port-type
+    |        |  |           +--rw dst-range2?                  acl-port-type
+    |        |  +--rw dst
+    |        |     +--rw (destination-choice)?
+    |        |     |  +--:(host-case)
+    |        |     |  |  +--rw destination-host?            ios-types:ip-host
+    |        |     |  +--:(address-case)
+    |        |     |  |  +--rw destination-address?         inet:ipv6-address
+    |        |     |  |  +--rw destination-wildcard-bits?   inet:ipv6-address
+    |        |     |  +--:(prefix-case)
+    |        |     |  |  +--rw destination-prefix?          ios-types:ipv6-prefix
+    |        |     |  +--:(any-case)
+    |        |     |     +--rw destination-any?             empty
+    |        |     +--rw (dst-port-choice)?
+    |        |        +--:(dst-eq-case)
+    |        |        |  +--rw dst-eq?                      acl-port-type
+    |        |        +--:(dst-gt-case)
+    |        |        |  +--rw dst-gt?                      acl-port-type
+    |        |        +--:(dst-lt-case)
+    |        |        |  +--rw dst-lt?                      acl-port-type
+    |        |        +--:(dst-neq-case)
+    |        |        |  +--rw dst-neq?                     acl-port-type
+    |        |        +--:(dst-range-case)
+    |        |           +--rw dst-range1?                  acl-port-type
+    |        |           +--rw dst-range2?                  acl-port-type
+    |        +--rw remark?     string
+    +--rw extended* [name]
+    |  +--rw name                    ios-types:ext-acl-type
+    |  +--rw access-list-seq-rule* [sequence]
+    |  |  +--rw sequence    uint64
+    |  |  +--rw ace-rule
+    |  |  |  +--rw action?                    enumeration
+    |  |  |  +--rw protocol?                  union
+    |  |  |  +--rw object-group-str?          string
+    |  |  |  +--rw (source-choice)?
+    |  |  |  |  +--:(ipv4-prefix-case)
+    |  |  |  |  |  +--rw ipv4-address         inet:ipv4-address
+    |  |  |  |  |  +--rw mask                 inet:ipv4-address
+    |  |  |  |  +--:(any-case)
+    |  |  |  |  |  +--rw any?                 empty
+    |  |  |  |  +--:(host-case)
+    |  |  |  |  |  +--rw host?                ios-types:ipv4-host
+    |  |  |  |  +--:(object-group-case)
+    |  |  |  |     +--rw object-group?        string
+    |  |  |  +--rw (src-port-choice)?
+    |  |  |  |  +--:(src-eq-case)
+    |  |  |  |  |  +--rw src-eq?              acl-port-type
+    |  |  |  |  +--:(src-gt-case)
+    |  |  |  |  |  +--rw src-gt?              acl-port-type
+    |  |  |  |  +--:(src-lt-case)
+    |  |  |  |  |  +--rw src-lt?              acl-port-type
+    |  |  |  |  +--:(src-neq-case)
+    |  |  |  |  |  +--rw src-neq?             acl-port-type
+    |  |  |  |  +--:(src-range-case)
+    |  |  |  |     +--rw src-range1?          acl-port-type
+    |  |  |  |     +--rw src-range2?          acl-port-type
+    |  |  |  +--rw (destination-choice)?
+    |  |  |  |  +--:(ipv4-prefix-case)
+    |  |  |  |  |  +--rw dest-ipv4-address    inet:ipv4-address
+    |  |  |  |  |  +--rw dest-mask            inet:ipv4-address
+    |  |  |  |  +--:(any-case)
+    |  |  |  |  |  +--rw dst-any?             empty
+    |  |  |  |  +--:(host-case)
+    |  |  |  |  |  +--rw dst-host?            ios-types:ipv4-host
+    |  |  |  |  +--:(object-group-case)
+    |  |  |  |     +--rw dst-object-group?    string
+    |  |  |  +--rw (dst-port-choice)?
+    |  |  |  |  +--:(dst-eq-case)
+    |  |  |  |  |  +--rw dst-eq?              acl-port-type
+    |  |  |  |  +--:(dst-gt-case)
+    |  |  |  |  |  +--rw dst-gt?              acl-port-type
+    |  |  |  |  +--:(dst-lt-case)
+    |  |  |  |  |  +--rw dst-lt?              acl-port-type
+    |  |  |  |  +--:(dst-neq-case)
+    |  |  |  |  |  +--rw dst-neq?             acl-port-type
+    |  |  |  |  +--:(dst-range-case)
+    |  |  |  |     +--rw dst-range1?          acl-port-type
+    |  |  |  |     +--rw dst-range2?          acl-port-type
+    |  |  |  +--rw ack?                       empty
+    |  |  |  +--rw fin?                       empty
+    |  |  |  +--rw psh?                       empty
+    |  |  |  +--rw rst?                       empty
+    |  |  |  +--rw syn?                       empty
+    |  |  |  +--rw urg?                       empty
+    |  |  |  +--rw established?               empty
+    |  |  |  +--rw dscp?                      ios-types:dscp-type
+    |  |  |  +--rw fragments?                 empty
+    |  |  |  +--rw log?                       empty
+    |  |  |  +--rw log-input?                 empty
+    |  |  |  +--rw option?                    union
+    |  |  |  +--rw precedence?                union
+    |  |  |  +--rw time-range?                string
+    |  |  |  +--rw tos?                       union
+    |  |  |  +--rw ttl
+    |  |  |  |  +--rw (ttl-choice)?
+    |  |  |  |     +--:(eq-case)
+    |  |  |  |     |  +--rw eq?      uint8
+    |  |  |  |     +--:(gt-case)
+    |  |  |  |     |  +--rw gt?      uint8
+    |  |  |  |     +--:(lt-case)
+    |  |  |  |     |  +--rw lt?      uint8
+    |  |  |  |     +--:(neq-case)
+    |  |  |  |     |  +--rw neq?     uint8
+    |  |  |  |     +--:(range-case)
+    |  |  |  |        +--rw range
+    |  |  |  |           +--rw value1?   uint8
+    |  |  |  |           +--rw value2?   uint8
+    |  |  |  +--rw match-all
+    |  |  |  |  +--rw plusack?    empty
+    |  |  |  |  +--rw plusfin?    empty
+    |  |  |  |  +--rw pluspsh?    empty
+    |  |  |  |  +--rw plusrst?    empty
+    |  |  |  |  +--rw plussyn?    empty
+    |  |  |  |  +--rw plusurg?    empty
+    |  |  |  |  +--rw minusack?   empty
+    |  |  |  |  +--rw minusfin?   empty
+    |  |  |  |  +--rw minuspsh?   empty
+    |  |  |  |  +--rw minusrst?   empty
+    |  |  |  |  +--rw minussyn?   empty
+    |  |  |  |  +--rw minusurg?   empty
+    |  |  |  +--rw match-any
+    |  |  |  |  +--rw plusack?    empty
+    |  |  |  |  +--rw plusfin?    empty
+    |  |  |  |  +--rw pluspsh?    empty
+    |  |  |  |  +--rw plusrst?    empty
+    |  |  |  |  +--rw plussyn?    empty
+    |  |  |  |  +--rw plusurg?    empty
+    |  |  |  |  +--rw minusack?   empty
+    |  |  |  |  +--rw minusfin?   empty
+    |  |  |  |  +--rw minuspsh?   empty
+    |  |  |  |  +--rw minusrst?   empty
+    |  |  |  |  +--rw minussyn?   empty
+    |  |  |  |  +--rw minusurg?   empty
+    |  |  |  +--rw (icmp-msg-choice)?
+    |  |  |     +--:(icmp-msg-type-code)
+    |  |  |     |  +--rw msg-type?            uint8
+    |  |  |     |  +--rw msg-code?            uint8
+    |  |  |     +--:(named-msg-type-case)
+    |  |  |        +--rw named-msg-type?      enumeration
+    |  |  +--rw remark?     string
+    |  +--rw default
+    |     +--rw access-list-seq-rule* [sequence]
+    |        +--rw sequence    uint64
+    |        +--rw ace-rule
+    |        |  +--rw action?                    enumeration
+    |        |  +--rw protocol?                  union
+    |        |  +--rw object-group-str?          string
+    |        |  +--rw (source-choice)?
+    |        |  |  +--:(ipv4-prefix-case)
+    |        |  |  |  +--rw ipv4-address         inet:ipv4-address
+    |        |  |  |  +--rw mask                 inet:ipv4-address
+    |        |  |  +--:(any-case)
+    |        |  |  |  +--rw any?                 empty
+    |        |  |  +--:(host-case)
+    |        |  |  |  +--rw host?                ios-types:ipv4-host
+    |        |  |  +--:(object-group-case)
+    |        |  |     +--rw object-group?        string
+    |        |  +--rw (src-port-choice)?
+    |        |  |  +--:(src-eq-case)
+    |        |  |  |  +--rw src-eq?              acl-port-type
+    |        |  |  +--:(src-gt-case)
+    |        |  |  |  +--rw src-gt?              acl-port-type
+    |        |  |  +--:(src-lt-case)
+    |        |  |  |  +--rw src-lt?              acl-port-type
+    |        |  |  +--:(src-neq-case)
+    |        |  |  |  +--rw src-neq?             acl-port-type
+    |        |  |  +--:(src-range-case)
+    |        |  |     +--rw src-range1?          acl-port-type
+    |        |  |     +--rw src-range2?          acl-port-type
+    |        |  +--rw (destination-choice)?
+    |        |  |  +--:(ipv4-prefix-case)
+    |        |  |  |  +--rw dest-ipv4-address    inet:ipv4-address
+    |        |  |  |  +--rw dest-mask            inet:ipv4-address
+    |        |  |  +--:(any-case)
+    |        |  |  |  +--rw dst-any?             empty
+    |        |  |  +--:(host-case)
+    |        |  |  |  +--rw dst-host?            ios-types:ipv4-host
+    |        |  |  +--:(object-group-case)
+    |        |  |     +--rw dst-object-group?    string
+    |        |  +--rw (dst-port-choice)?
+    |        |  |  +--:(dst-eq-case)
+    |        |  |  |  +--rw dst-eq?              acl-port-type
+    |        |  |  +--:(dst-gt-case)
+    |        |  |  |  +--rw dst-gt?              acl-port-type
+    |        |  |  +--:(dst-lt-case)
+    |        |  |  |  +--rw dst-lt?              acl-port-type
+    |        |  |  +--:(dst-neq-case)
+    |        |  |  |  +--rw dst-neq?             acl-port-type
+    |        |  |  +--:(dst-range-case)
+    |        |  |     +--rw dst-range1?          acl-port-type
+    |        |  |     +--rw dst-range2?          acl-port-type
+    |        |  +--rw ack?                       empty
+    |        |  +--rw fin?                       empty
+    |        |  +--rw psh?                       empty
+    |        |  +--rw rst?                       empty
+    |        |  +--rw syn?                       empty
+    |        |  +--rw urg?                       empty
+    |        |  +--rw established?               empty
+    |        |  +--rw dscp?                      ios-types:dscp-type
+    |        |  +--rw fragments?                 empty
+    |        |  +--rw log?                       empty
+    |        |  +--rw log-input?                 empty
+    |        |  +--rw option?                    union
+    |        |  +--rw precedence?                union
+    |        |  +--rw time-range?                string
+    |        |  +--rw tos?                       union
+    |        |  +--rw ttl
+    |        |  |  +--rw (ttl-choice)?
+    |        |  |     +--:(eq-case)
+    |        |  |     |  +--rw eq?      uint8
+    |        |  |     +--:(gt-case)
+    |        |  |     |  +--rw gt?      uint8
+    |        |  |     +--:(lt-case)
+    |        |  |     |  +--rw lt?      uint8
+    |        |  |     +--:(neq-case)
+    |        |  |     |  +--rw neq?     uint8
+    |        |  |     +--:(range-case)
+    |        |  |        +--rw range
+    |        |  |           +--rw value1?   uint8
+    |        |  |           +--rw value2?   uint8
+    |        |  +--rw match-all
+    |        |  |  +--rw plusack?    empty
+    |        |  |  +--rw plusfin?    empty
+    |        |  |  +--rw pluspsh?    empty
+    |        |  |  +--rw plusrst?    empty
+    |        |  |  +--rw plussyn?    empty
+    |        |  |  +--rw plusurg?    empty
+    |        |  |  +--rw minusack?   empty
+    |        |  |  +--rw minusfin?   empty
+    |        |  |  +--rw minuspsh?   empty
+    |        |  |  +--rw minusrst?   empty
+    |        |  |  +--rw minussyn?   empty
+    |        |  |  +--rw minusurg?   empty
+    |        |  +--rw match-any
+    |        |  |  +--rw plusack?    empty
+    |        |  |  +--rw plusfin?    empty
+    |        |  |  +--rw pluspsh?    empty
+    |        |  |  +--rw plusrst?    empty
+    |        |  |  +--rw plussyn?    empty
+    |        |  |  +--rw plusurg?    empty
+    |        |  |  +--rw minusack?   empty
+    |        |  |  +--rw minusfin?   empty
+    |        |  |  +--rw minuspsh?   empty
+    |        |  |  +--rw minusrst?   empty
+    |        |  |  +--rw minussyn?   empty
+    |        |  |  +--rw minusurg?   empty
+    |        |  +--rw (icmp-msg-choice)?
+    |        |     +--:(icmp-msg-type-code)
+    |        |     |  +--rw msg-type?            uint8
+    |        |     |  +--rw msg-code?            uint8
+    |        |     +--:(named-msg-type-case)
+    |        |        +--rw named-msg-type?      enumeration
+    |        +--rw remark?     string
+    +--rw helper
+    |  +--rw egress?   empty
+    |  +--rw check?    empty
+    +--rw log-update
+    |  +--rw threshold?   uint64
+    +--rw logging
+    |  +--rw hash-generation?   empty
+    |  +--rw interval?          uint64
+    +--rw match-local-traffic?   empty
+    +--rw persistent?            empty
+    +--rw resequence
+       +--rw numbers?        union
+       +--rw start-seq-no?   uint64
+       +--rw step-seq-no?    uint64
+  augment /ios:native/ios:ipv6/ios:access-list:
+    +--rw named-acl* [name]
+    |  +--rw name                    string
+    |  +--rw access-list-seq-rule* [sequence]
+    |  |  +--rw sequence    uint64
+    |  |  +--rw ace-rule
+    |  |  |  +--rw action?                            enumeration
+    |  |  |  +--rw protocol?                          union
+    |  |  |  +--rw (source-choice)?
+    |  |  |  |  +--:(host-case)
+    |  |  |  |  |  +--rw source-host?                 ios-types:ip-host
+    |  |  |  |  +--:(address-case)
+    |  |  |  |  |  +--rw source-address?              inet:ipv6-address
+    |  |  |  |  |  +--rw source-wildcard-bits?        inet:ipv6-address
+    |  |  |  |  +--:(prefix-case)
+    |  |  |  |  |  +--rw source-prefix?               ios-types:ipv6-prefix
+    |  |  |  |  +--:(any-case)
+    |  |  |  |     +--rw any?                         empty
+    |  |  |  +--rw (src-port-choice)?
+    |  |  |  |  +--:(src-eq-case)
+    |  |  |  |  |  +--rw src-eq?                      acl-port-type
+    |  |  |  |  +--:(src-gt-case)
+    |  |  |  |  |  +--rw src-gt?                      acl-port-type
+    |  |  |  |  +--:(src-lt-case)
+    |  |  |  |  |  +--rw src-lt?                      acl-port-type
+    |  |  |  |  +--:(src-neq-case)
+    |  |  |  |  |  +--rw src-neq?                     acl-port-type
+    |  |  |  |  +--:(src-range-case)
+    |  |  |  |     +--rw src-range1?                  acl-port-type
+    |  |  |  |     +--rw src-range2?                  acl-port-type
+    |  |  |  +--rw (destination-choice)?
+    |  |  |  |  +--:(host-case)
+    |  |  |  |  |  +--rw destination-host?            ios-types:ip-host
+    |  |  |  |  +--:(address-case)
+    |  |  |  |  |  +--rw destination-address?         inet:ipv6-address
+    |  |  |  |  |  +--rw destination-wildcard-bits?   inet:ipv6-address
+    |  |  |  |  +--:(prefix-case)
+    |  |  |  |  |  +--rw destination-prefix?          ios-types:ipv6-prefix
+    |  |  |  |  +--:(any-case)
+    |  |  |  |     +--rw destination-any?             empty
+    |  |  |  +--rw (dst-port-choice)?
+    |  |  |  |  +--:(dst-eq-case)
+    |  |  |  |  |  +--rw dst-eq?                      acl-port-type
+    |  |  |  |  +--:(dst-gt-case)
+    |  |  |  |  |  +--rw dst-gt?                      acl-port-type
+    |  |  |  |  +--:(dst-lt-case)
+    |  |  |  |  |  +--rw dst-lt?                      acl-port-type
+    |  |  |  |  +--:(dst-neq-case)
+    |  |  |  |  |  +--rw dst-neq?                     acl-port-type
+    |  |  |  |  +--:(dst-range-case)
+    |  |  |  |     +--rw dst-range1?                  acl-port-type
+    |  |  |  |     +--rw dst-range2?                  acl-port-type
+    |  |  |  +--rw ack?                               empty
+    |  |  |  +--rw fin?                               empty
+    |  |  |  +--rw psh?                               empty
+    |  |  |  +--rw rst?                               empty
+    |  |  |  +--rw syn?                               empty
+    |  |  |  +--rw urg?                               empty
+    |  |  |  +--rw established?                       empty
+    |  |  |  +--rw auth?                              empty
+    |  |  |  +--rw dest-option?                       empty
+    |  |  |  +--rw dscp?                              ios-types:dscp-type
+    |  |  |  +--rw flow-label?                        uint32
+    |  |  |  +--rw fragments?                         empty
+    |  |  |  +--rw hbh?                               empty
+    |  |  |  +--rw log?                               empty
+    |  |  |  +--rw log-input?                         empty
+    |  |  |  +--rw mobility?                          empty
+    |  |  |  +--rw mobility-type?                     ios-types:mobility-type
+    |  |  |  +--rw routing?                           empty
+    |  |  |  +--rw routing-type?                      uint8
+    |  |  |  +--rw time-range?                        string
+    |  |  |  +--rw (icmp_choice)?
+    |  |  |     +--:(msg-type-code)
+    |  |  |     |  +--rw msg-type-case?               uint8
+    |  |  |     |  +--rw msg-code?                    uint8
+    |  |  |     +--:(named-msg-type-case)
+    |  |  |        +--rw named-msg-type?              enumeration
+    |  |  +--rw remark?     string
+    |  +--rw default
+    |     +--rw access-list-seq-rule* [sequence]
+    |        +--rw sequence    uint64
+    |        +--rw ace-rule
+    |        |  +--rw action?                            enumeration
+    |        |  +--rw protocol?                          union
+    |        |  +--rw (source-choice)?
+    |        |  |  +--:(host-case)
+    |        |  |  |  +--rw source-host?                 ios-types:ip-host
+    |        |  |  +--:(address-case)
+    |        |  |  |  +--rw source-address?              inet:ipv6-address
+    |        |  |  |  +--rw source-wildcard-bits?        inet:ipv6-address
+    |        |  |  +--:(prefix-case)
+    |        |  |  |  +--rw source-prefix?               ios-types:ipv6-prefix
+    |        |  |  +--:(any-case)
+    |        |  |     +--rw any?                         empty
+    |        |  +--rw (src-port-choice)?
+    |        |  |  +--:(src-eq-case)
+    |        |  |  |  +--rw src-eq?                      acl-port-type
+    |        |  |  +--:(src-gt-case)
+    |        |  |  |  +--rw src-gt?                      acl-port-type
+    |        |  |  +--:(src-lt-case)
+    |        |  |  |  +--rw src-lt?                      acl-port-type
+    |        |  |  +--:(src-neq-case)
+    |        |  |  |  +--rw src-neq?                     acl-port-type
+    |        |  |  +--:(src-range-case)
+    |        |  |     +--rw src-range1?                  acl-port-type
+    |        |  |     +--rw src-range2?                  acl-port-type
+    |        |  +--rw (destination-choice)?
+    |        |  |  +--:(host-case)
+    |        |  |  |  +--rw destination-host?            ios-types:ip-host
+    |        |  |  +--:(address-case)
+    |        |  |  |  +--rw destination-address?         inet:ipv6-address
+    |        |  |  |  +--rw destination-wildcard-bits?   inet:ipv6-address
+    |        |  |  +--:(prefix-case)
+    |        |  |  |  +--rw destination-prefix?          ios-types:ipv6-prefix
+    |        |  |  +--:(any-case)
+    |        |  |     +--rw destination-any?             empty
+    |        |  +--rw (dst-port-choice)?
+    |        |  |  +--:(dst-eq-case)
+    |        |  |  |  +--rw dst-eq?                      acl-port-type
+    |        |  |  +--:(dst-gt-case)
+    |        |  |  |  +--rw dst-gt?                      acl-port-type
+    |        |  |  +--:(dst-lt-case)
+    |        |  |  |  +--rw dst-lt?                      acl-port-type
+    |        |  |  +--:(dst-neq-case)
+    |        |  |  |  +--rw dst-neq?                     acl-port-type
+    |        |  |  +--:(dst-range-case)
+    |        |  |     +--rw dst-range1?                  acl-port-type
+    |        |  |     +--rw dst-range2?                  acl-port-type
+    |        |  +--rw ack?                               empty
+    |        |  +--rw fin?                               empty
+    |        |  +--rw psh?                               empty
+    |        |  +--rw rst?                               empty
+    |        |  +--rw syn?                               empty
+    |        |  +--rw urg?                               empty
+    |        |  +--rw established?                       empty
+    |        |  +--rw auth?                              empty
+    |        |  +--rw dest-option?                       empty
+    |        |  +--rw dscp?                              ios-types:dscp-type
+    |        |  +--rw flow-label?                        uint32
+    |        |  +--rw fragments?                         empty
+    |        |  +--rw hbh?                               empty
+    |        |  +--rw log?                               empty
+    |        |  +--rw log-input?                         empty
+    |        |  +--rw mobility?                          empty
+    |        |  +--rw mobility-type?                     ios-types:mobility-type
+    |        |  +--rw routing?                           empty
+    |        |  +--rw routing-type?                      uint8
+    |        |  +--rw time-range?                        string
+    |        |  +--rw (icmp_choice)?
+    |        |     +--:(msg-type-code)
+    |        |     |  +--rw msg-type-case?               uint8
+    |        |     |  +--rw msg-code?                    uint8
+    |        |     +--:(named-msg-type-case)
+    |        |        +--rw named-msg-type?              enumeration
+    |        +--rw remark?     string
+    +--rw named-rb-acl* [name]
+    |  +--rw name                    string
+    |  +--rw role-based?             empty
+    |  +--rw access-list-seq-rule* [sequence]
+    |  |  +--rw sequence    uint64
+    |  |  +--rw ace-rule
+    |  |  |  +--rw action?                            enumeration
+    |  |  |  +--rw protocol?                          union
+    |  |  |  +--rw (source-choice)?
+    |  |  |  |  +--:(host-case)
+    |  |  |  |  |  +--rw source-host?                 ios-types:ip-host
+    |  |  |  |  +--:(address-case)
+    |  |  |  |  |  +--rw source-address?              inet:ipv6-address
+    |  |  |  |  |  +--rw source-wildcard-bits?        inet:ipv6-address
+    |  |  |  |  +--:(prefix-case)
+    |  |  |  |  |  +--rw source-prefix?               ios-types:ipv6-prefix
+    |  |  |  |  +--:(any-case)
+    |  |  |  |     +--rw any?                         empty
+    |  |  |  +--rw (src-port-choice)?
+    |  |  |  |  +--:(src-eq-case)
+    |  |  |  |  |  +--rw src-eq?                      acl-port-type
+    |  |  |  |  +--:(src-gt-case)
+    |  |  |  |  |  +--rw src-gt?                      acl-port-type
+    |  |  |  |  +--:(src-lt-case)
+    |  |  |  |  |  +--rw src-lt?                      acl-port-type
+    |  |  |  |  +--:(src-neq-case)
+    |  |  |  |  |  +--rw src-neq?                     acl-port-type
+    |  |  |  |  +--:(src-range-case)
+    |  |  |  |     +--rw src-range1?                  acl-port-type
+    |  |  |  |     +--rw src-range2?                  acl-port-type
+    |  |  |  +--rw (destination-choice)?
+    |  |  |  |  +--:(host-case)
+    |  |  |  |  |  +--rw destination-host?            ios-types:ip-host
+    |  |  |  |  +--:(address-case)
+    |  |  |  |  |  +--rw destination-address?         inet:ipv6-address
+    |  |  |  |  |  +--rw destination-wildcard-bits?   inet:ipv6-address
+    |  |  |  |  +--:(prefix-case)
+    |  |  |  |  |  +--rw destination-prefix?          ios-types:ipv6-prefix
+    |  |  |  |  +--:(any-case)
+    |  |  |  |     +--rw destination-any?             empty
+    |  |  |  +--rw (dst-port-choice)?
+    |  |  |  |  +--:(dst-eq-case)
+    |  |  |  |  |  +--rw dst-eq?                      acl-port-type
+    |  |  |  |  +--:(dst-gt-case)
+    |  |  |  |  |  +--rw dst-gt?                      acl-port-type
+    |  |  |  |  +--:(dst-lt-case)
+    |  |  |  |  |  +--rw dst-lt?                      acl-port-type
+    |  |  |  |  +--:(dst-neq-case)
+    |  |  |  |  |  +--rw dst-neq?                     acl-port-type
+    |  |  |  |  +--:(dst-range-case)
+    |  |  |  |     +--rw dst-range1?                  acl-port-type
+    |  |  |  |     +--rw dst-range2?                  acl-port-type
+    |  |  |  +--rw ack?                               empty
+    |  |  |  +--rw fin?                               empty
+    |  |  |  +--rw psh?                               empty
+    |  |  |  +--rw rst?                               empty
+    |  |  |  +--rw syn?                               empty
+    |  |  |  +--rw urg?                               empty
+    |  |  |  +--rw established?                       empty
+    |  |  |  +--rw auth?                              empty
+    |  |  |  +--rw dest-option?                       empty
+    |  |  |  +--rw dscp?                              ios-types:dscp-type
+    |  |  |  +--rw flow-label?                        uint32
+    |  |  |  +--rw fragments?                         empty
+    |  |  |  +--rw hbh?                               empty
+    |  |  |  +--rw log?                               empty
+    |  |  |  +--rw log-input?                         empty
+    |  |  |  +--rw mobility?                          empty
+    |  |  |  +--rw mobility-type?                     ios-types:mobility-type
+    |  |  |  +--rw routing?                           empty
+    |  |  |  +--rw routing-type?                      uint8
+    |  |  |  +--rw time-range?                        string
+    |  |  |  +--rw (icmp_choice)?
+    |  |  |     +--:(msg-type-code)
+    |  |  |     |  +--rw msg-type-case?               uint8
+    |  |  |     |  +--rw msg-code?                    uint8
+    |  |  |     +--:(named-msg-type-case)
+    |  |  |        +--rw named-msg-type?              enumeration
+    |  |  +--rw remark?     string
+    |  +--rw default
+    |     +--rw access-list-seq-rule* [sequence]
+    |        +--rw sequence    uint64
+    |        +--rw ace-rule
+    |        |  +--rw action?                            enumeration
+    |        |  +--rw protocol?                          union
+    |        |  +--rw (source-choice)?
+    |        |  |  +--:(host-case)
+    |        |  |  |  +--rw source-host?                 ios-types:ip-host
+    |        |  |  +--:(address-case)
+    |        |  |  |  +--rw source-address?              inet:ipv6-address
+    |        |  |  |  +--rw source-wildcard-bits?        inet:ipv6-address
+    |        |  |  +--:(prefix-case)
+    |        |  |  |  +--rw source-prefix?               ios-types:ipv6-prefix
+    |        |  |  +--:(any-case)
+    |        |  |     +--rw any?                         empty
+    |        |  +--rw (src-port-choice)?
+    |        |  |  +--:(src-eq-case)
+    |        |  |  |  +--rw src-eq?                      acl-port-type
+    |        |  |  +--:(src-gt-case)
+    |        |  |  |  +--rw src-gt?                      acl-port-type
+    |        |  |  +--:(src-lt-case)
+    |        |  |  |  +--rw src-lt?                      acl-port-type
+    |        |  |  +--:(src-neq-case)
+    |        |  |  |  +--rw src-neq?                     acl-port-type
+    |        |  |  +--:(src-range-case)
+    |        |  |     +--rw src-range1?                  acl-port-type
+    |        |  |     +--rw src-range2?                  acl-port-type
+    |        |  +--rw (destination-choice)?
+    |        |  |  +--:(host-case)
+    |        |  |  |  +--rw destination-host?            ios-types:ip-host
+    |        |  |  +--:(address-case)
+    |        |  |  |  +--rw destination-address?         inet:ipv6-address
+    |        |  |  |  +--rw destination-wildcard-bits?   inet:ipv6-address
+    |        |  |  +--:(prefix-case)
+    |        |  |  |  +--rw destination-prefix?          ios-types:ipv6-prefix
+    |        |  |  +--:(any-case)
+    |        |  |     +--rw destination-any?             empty
+    |        |  +--rw (dst-port-choice)?
+    |        |  |  +--:(dst-eq-case)
+    |        |  |  |  +--rw dst-eq?                      acl-port-type
+    |        |  |  +--:(dst-gt-case)
+    |        |  |  |  +--rw dst-gt?                      acl-port-type
+    |        |  |  +--:(dst-lt-case)
+    |        |  |  |  +--rw dst-lt?                      acl-port-type
+    |        |  |  +--:(dst-neq-case)
+    |        |  |  |  +--rw dst-neq?                     acl-port-type
+    |        |  |  +--:(dst-range-case)
+    |        |  |     +--rw dst-range1?                  acl-port-type
+    |        |  |     +--rw dst-range2?                  acl-port-type
+    |        |  +--rw ack?                               empty
+    |        |  +--rw fin?                               empty
+    |        |  +--rw psh?                               empty
+    |        |  +--rw rst?                               empty
+    |        |  +--rw syn?                               empty
+    |        |  +--rw urg?                               empty
+    |        |  +--rw established?                       empty
+    |        |  +--rw auth?                              empty
+    |        |  +--rw dest-option?                       empty
+    |        |  +--rw dscp?                              ios-types:dscp-type
+    |        |  +--rw flow-label?                        uint32
+    |        |  +--rw fragments?                         empty
+    |        |  +--rw hbh?                               empty
+    |        |  +--rw log?                               empty
+    |        |  +--rw log-input?                         empty
+    |        |  +--rw mobility?                          empty
+    |        |  +--rw mobility-type?                     ios-types:mobility-type
+    |        |  +--rw routing?                           empty
+    |        |  +--rw routing-type?                      uint8
+    |        |  +--rw time-range?                        string
+    |        |  +--rw (icmp_choice)?
+    |        |     +--:(msg-type-code)
+    |        |     |  +--rw msg-type-case?               uint8
+    |        |     |  +--rw msg-code?                    uint8
+    |        |     +--:(named-msg-type-case)
+    |        |        +--rw named-msg-type?              enumeration
+    |        +--rw remark?     string
+    +--rw log-update
+    |  +--rw threshold?   uint64
+    +--rw match-local-traffic?   empty
+Xpaths for model: Cisco-IOS-XE-acl.yang

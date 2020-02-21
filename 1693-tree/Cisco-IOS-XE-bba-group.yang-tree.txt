@@ -1,0 +1,18 @@
+ 
+KPI for model: Cisco-IOS-XE-bba-group.yang
+
+module: Cisco-IOS-XE-bba-group
+  augment /ios:native:
+    +--rw bba-group
+       +--rw pppoe* [id]
+          +--rw id                  union
+          +--rw vendor-tag
+          |  +--rw circuit-id
+          |  |  +--rw service?   empty
+          |  +--rw dsl-sync-rate
+          |  |  +--rw service?   empty
+          |  +--rw remote-id
+          |  |  +--rw service?   empty
+          |  +--rw strip?           empty
+          +--rw virtual-template?   uint16
+Xpaths for model: Cisco-IOS-XE-bba-group.yang

@@ -1,0 +1,26 @@
+ 
+KPI for model: Cisco-IOS-XE-environment-oper.yang
+module: Cisco-IOS-XE-environment-oper
+  +--ro environment-sensors
+     +--ro environment-sensor* [name location]
+        +--ro state?                     string
+        +--ro current-reading?           uint32
+        +--ro sensor-units?              environment-ios-xe-oper:sensor-units-type
+        +--ro low-critical-threshold?    int32
+        +--ro low-normal-threshold?      int32
+        +--ro high-normal-threshold?     int32
+        +--ro high-critical-threshold?   int32
+        +--ro name                       string
+        +--ro location                   string
+Xpaths for model: Cisco-IOS-XE-environment-oper.yang
+/environment-ios-xe-oper:environment-sensors,container,
+/environment-ios-xe-oper:environment-sensors/environment-ios-xe-oper:environment-sensor,list,
+/environment-ios-xe-oper:environment-sensors/environment-ios-xe-oper:environment-sensor/environment-ios-xe-oper:state,leaf,string
+/environment-ios-xe-oper:environment-sensors/environment-ios-xe-oper:environment-sensor/environment-ios-xe-oper:current-reading,leaf,uint32
+/environment-ios-xe-oper:environment-sensors/environment-ios-xe-oper:environment-sensor/environment-ios-xe-oper:sensor-units,leaf,environment-ios-xe-oper:sensor-units-type
+/environment-ios-xe-oper:environment-sensors/environment-ios-xe-oper:environment-sensor/environment-ios-xe-oper:low-critical-threshold,leaf,int32
+/environment-ios-xe-oper:environment-sensors/environment-ios-xe-oper:environment-sensor/environment-ios-xe-oper:low-normal-threshold,leaf,int32
+/environment-ios-xe-oper:environment-sensors/environment-ios-xe-oper:environment-sensor/environment-ios-xe-oper:high-normal-threshold,leaf,int32
+/environment-ios-xe-oper:environment-sensors/environment-ios-xe-oper:environment-sensor/environment-ios-xe-oper:high-critical-threshold,leaf,int32
+/environment-ios-xe-oper:environment-sensors/environment-ios-xe-oper:environment-sensor/environment-ios-xe-oper:name,leaf,string
+/environment-ios-xe-oper:environment-sensors/environment-ios-xe-oper:environment-sensor/environment-ios-xe-oper:location,leaf,string

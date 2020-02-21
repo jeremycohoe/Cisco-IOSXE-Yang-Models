@@ -1,0 +1,65 @@
+ 
+KPI for model: Cisco-IOS-XE-pathmgr.yang
+
+module: Cisco-IOS-XE-pathmgr
+  augment /ios:native:
+    +--rw pm-agent!
+       +--rw config-pm-agent
+          +--rw device
+          |  +--rw id
+          |  |  +--rw device_range* [device_id_range]
+          |  |     +--rw device_id_range    uint32
+          |  |     +--rw name?              string
+          |  +--rw type
+          |     +--rw ntr!
+          |     |  +--rw rtr!
+          |     |  |  +--rw xtr?   empty
+          |     |  +--rw xtr!
+          |     |     +--rw rtr?   empty
+          |     +--rw pxtr?   empty
+          |     +--rw rtr!
+          |     |  +--rw ntr?   empty
+          |     |  +--rw xtr!
+          |     |     +--rw ntr?   empty
+          |     +--rw xtr!
+          |        +--rw ntr?   empty
+          |        +--rw rtr?   empty
+          +--rw instance-id* [instance_id_range]
+          |  +--rw instance_id_range           uint32
+          |  +--rw config-pm-agent-instance
+          |     +--rw enterprise-prefix
+          |        +--rw ipv4
+          |        |  +--rw prefix-list?   string
+          |        +--rw ipv6
+          |           +--rw prefix-list?   string
+          +--rw region
+          |  +--rw id
+          |     +--rw region_id_range* [region_id_range]
+          |        +--rw region_id_range    uint32
+          |        +--rw name?              string
+          +--rw shutdown?      empty
+          +--rw site
+          |  +--rw id
+          |     +--rw site_id_range* [site_id_range]
+          |        +--rw site_id_range    uint32
+          |        +--rw name?            string
+          +--rw tenant
+          |  +--rw id
+          |     +--rw tenant_id_range* [tenant_id_range]
+          |        +--rw tenant_id_range    uint32
+          |        +--rw name?              string
+          +--rw pmcs
+             +--rw ipv4
+             |  +--rw pmcs_ipv4* [ipv4]
+             |     +--rw ipv4      inet:ipv4-address
+             |     +--rw backup?   empty
+             |     +--rw ipv6
+             |        +--rw pmcs_ipv6* [ipv6]
+             |           +--rw ipv6      inet:ipv6-address
+             |           +--rw backup?   empty
+             +--rw ipv6
+                +--rw ipv6* [ipv6]
+                   +--rw ipv6      inet:ipv6-address
+                   +--rw backup?   empty
+                   +--rw ipv4?     inet:ipv4-address
+Xpaths for model: Cisco-IOS-XE-pathmgr.yang

@@ -1,0 +1,869 @@
+ 
+KPI for model: Cisco-IOS-XE-template.yang
+
+module: Cisco-IOS-XE-template
+  augment /ios:native/ios:template:
+    +--rw template_details* [template_name]
+    |  +--rw template_name     string
+    |  +--rw ethernet
+    |  |  +--rw oam
+    |  |     +--rw link-monitor
+    |  |     |  +--rw frame
+    |  |     |  |  +--rw threshold
+    |  |     |  |     +--rw high
+    |  |     |  |     |  +--rw high-range?   uint16
+    |  |     |  |     |  +--rw none?         empty
+    |  |     |  |     +--rw low?    uint16
+    |  |     |  +--rw window?           uint16
+    |  |     |  +--rw frame-period
+    |  |     |  |  +--rw threshold
+    |  |     |  |  |  +--rw high
+    |  |     |  |  |  |  +--rw high-range?   uint16
+    |  |     |  |  |  |  +--rw none?         empty
+    |  |     |  |  |  +--rw low?    uint16
+    |  |     |  |  +--rw window?      uint16
+    |  |     |  +--rw frame-seconds
+    |  |     |  |  +--rw threshold
+    |  |     |  |  |  +--rw high
+    |  |     |  |  |  |  +--rw high-range?   uint16
+    |  |     |  |  |  |  +--rw none?         empty
+    |  |     |  |  |  +--rw low?    uint16
+    |  |     |  |  +--rw window?      uint16
+    |  |     |  +--rw high-threshold
+    |  |     |  |  +--rw action
+    |  |     |  |     +--rw error-disable-interface?   empty
+    |  |     |  +--rw receive-crc
+    |  |     |  |  +--rw threshold
+    |  |     |  |  |  +--rw high
+    |  |     |  |  |  |  +--rw high-range?   uint16
+    |  |     |  |  |  |  +--rw none?         empty
+    |  |     |  |  |  +--rw low?    uint16
+    |  |     |  |  +--rw window?      uint16
+    |  |     |  +--rw symbol-period
+    |  |     |  |  +--rw threshold
+    |  |     |  |  |  +--rw high
+    |  |     |  |  |  |  +--rw high-range?   uint16
+    |  |     |  |  |  |  +--rw none?         empty
+    |  |     |  |  |  +--rw low?    uint16
+    |  |     |  |  +--rw window?      uint16
+    |  |     |  +--rw transmit-crc
+    |  |     |     +--rw threshold
+    |  |     |     |  +--rw high
+    |  |     |     |  |  +--rw high-range?   uint16
+    |  |     |     |  |  +--rw none?         empty
+    |  |     |     |  +--rw low?    uint16
+    |  |     |     +--rw window?      uint16
+    |  |     +--rw remote-failure
+    |  |        +--rw critical-event
+    |  |        |  +--rw action
+    |  |        |     +--rw error-disable-interface?   empty
+    |  |        +--rw dying-gasp
+    |  |        |  +--rw action!
+    |  |        |     +--rw error-disable-interface?   empty
+    |  |        +--rw link-fault
+    |  |           +--rw action!
+    |  |              +--rw error-disable-interface?   empty
+    |  +--rw service-policy
+    |  |  +--rw input
+    |  |  |  +--rw policy-map-name?   string
+    |  |  +--rw output
+    |  |     +--rw policy-map-name?   string
+    |  +--rw switchport {ios-features:switching-platform}?
+    |  |  +--rw mode
+    |  |  |  +--rw trunk?    empty
+    |  |  |  +--rw access?   empty
+    |  |  +--rw nonegotiate?     empty
+    |  |  +--rw block
+    |  |  |  +--rw unicast?   empty
+    |  |  +--rw port-security!
+    |  |  |  +--rw aging
+    |  |  |  |  +--rw static?   empty
+    |  |  |  |  +--rw time?     uint16
+    |  |  |  |  +--rw type!
+    |  |  |  |     +--rw inactivity?   empty
+    |  |  |  +--rw maximum
+    |  |  |  |  +--rw range* [range]
+    |  |  |  |     +--rw range    uint16
+    |  |  |  |     +--rw vlan!
+    |  |  |  |        +--rw access?   empty
+    |  |  |  +--rw violation
+    |  |  |     +--rw protect?    empty
+    |  |  |     +--rw restrict?   empty
+    |  |  |     +--rw shutdown?   empty
+    |  |  +--rw access
+    |  |  |  +--rw vlan?   uint16
+    |  |  +--rw voice
+    |  |     +--rw vlan?   uint16
+    |  +--rw spanning-tree!
+    |  |  +--rw bpduguard
+    |  |  |  +--rw enable?   empty
+    |  |  +--rw service-policy?   empty
+    |  |  +--rw portfast!
+    |  |     +--rw disable?   empty
+    |  |     +--rw edge?      empty
+    |  |     +--rw network?   empty
+    |  +--rw storm-control {ios-features:switching-platform}?
+    |  |  +--rw broadcast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw multicast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw action
+    |  |     +--rw shutdown?   empty
+    |  |     +--rw trap?       empty
+    |  +--rw load-interval?    uint16
+    |  +--rw ip
+    |     +--rw dhcp {ios-features:switching-platform}?
+    |        +--rw snooping
+    |           +--rw limit
+    |           |  +--rw rate?   uint16
+    |           +--rw trust?   empty
+    +--rw IP_CAMERA_INTERFACE_TEMPLATE {ios-features:switching-platform}?
+    |  +--rw service-policy
+    |  |  +--rw input
+    |  |  |  +--rw policy-map-name?   string
+    |  |  +--rw output
+    |  |     +--rw policy-map-name?   string
+    |  +--rw switchport {ios-features:switching-platform}?
+    |  |  +--rw mode
+    |  |  |  +--rw trunk?    empty
+    |  |  |  +--rw access?   empty
+    |  |  +--rw nonegotiate?     empty
+    |  |  +--rw block
+    |  |  |  +--rw unicast?   empty
+    |  |  +--rw port-security!
+    |  |  |  +--rw aging
+    |  |  |  |  +--rw static?   empty
+    |  |  |  |  +--rw time?     uint16
+    |  |  |  |  +--rw type!
+    |  |  |  |     +--rw inactivity?   empty
+    |  |  |  +--rw maximum
+    |  |  |  |  +--rw range* [range]
+    |  |  |  |     +--rw range    uint16
+    |  |  |  |     +--rw vlan!
+    |  |  |  |        +--rw access?   empty
+    |  |  |  +--rw violation
+    |  |  |     +--rw protect?    empty
+    |  |  |     +--rw restrict?   empty
+    |  |  |     +--rw shutdown?   empty
+    |  |  +--rw access
+    |  |  |  +--rw vlan?   uint16
+    |  |  +--rw voice
+    |  |     +--rw vlan?   uint16
+    |  +--rw spanning-tree!
+    |  |  +--rw bpduguard
+    |  |  |  +--rw enable?   empty
+    |  |  +--rw service-policy?   empty
+    |  |  +--rw portfast!
+    |  |     +--rw disable?   empty
+    |  |     +--rw edge?      empty
+    |  |     +--rw network?   empty
+    |  +--rw storm-control {ios-features:switching-platform}?
+    |  |  +--rw broadcast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw multicast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw action
+    |  |     +--rw shutdown?   empty
+    |  |     +--rw trap?       empty
+    |  +--rw load-interval?    uint16
+    |  +--rw ip
+    |     +--rw dhcp {ios-features:switching-platform}?
+    |        +--rw snooping
+    |           +--rw limit
+    |           |  +--rw rate?   uint16
+    |           +--rw trust?   empty
+    +--rw LAP_INTERFACE_TEMPLATE {ios-features:switching-platform}?
+    |  +--rw service-policy
+    |  |  +--rw input
+    |  |  |  +--rw policy-map-name?   string
+    |  |  +--rw output
+    |  |     +--rw policy-map-name?   string
+    |  +--rw switchport {ios-features:switching-platform}?
+    |  |  +--rw mode
+    |  |  |  +--rw trunk?    empty
+    |  |  |  +--rw access?   empty
+    |  |  +--rw nonegotiate?     empty
+    |  |  +--rw block
+    |  |  |  +--rw unicast?   empty
+    |  |  +--rw port-security!
+    |  |  |  +--rw aging
+    |  |  |  |  +--rw static?   empty
+    |  |  |  |  +--rw time?     uint16
+    |  |  |  |  +--rw type!
+    |  |  |  |     +--rw inactivity?   empty
+    |  |  |  +--rw maximum
+    |  |  |  |  +--rw range* [range]
+    |  |  |  |     +--rw range    uint16
+    |  |  |  |     +--rw vlan!
+    |  |  |  |        +--rw access?   empty
+    |  |  |  +--rw violation
+    |  |  |     +--rw protect?    empty
+    |  |  |     +--rw restrict?   empty
+    |  |  |     +--rw shutdown?   empty
+    |  |  +--rw access
+    |  |  |  +--rw vlan?   uint16
+    |  |  +--rw voice
+    |  |     +--rw vlan?   uint16
+    |  +--rw spanning-tree!
+    |  |  +--rw bpduguard
+    |  |  |  +--rw enable?   empty
+    |  |  +--rw service-policy?   empty
+    |  |  +--rw portfast!
+    |  |     +--rw disable?   empty
+    |  |     +--rw edge?      empty
+    |  |     +--rw network?   empty
+    |  +--rw storm-control {ios-features:switching-platform}?
+    |  |  +--rw broadcast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw multicast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw action
+    |  |     +--rw shutdown?   empty
+    |  |     +--rw trap?       empty
+    |  +--rw load-interval?    uint16
+    |  +--rw ip
+    |     +--rw dhcp {ios-features:switching-platform}?
+    |        +--rw snooping
+    |           +--rw limit
+    |           |  +--rw rate?   uint16
+    |           +--rw trust?   empty
+    +--rw AP_INTERFACE_TEMPLATE {ios-features:switching-platform}?
+    |  +--rw service-policy
+    |  |  +--rw input
+    |  |  |  +--rw policy-map-name?   string
+    |  |  +--rw output
+    |  |     +--rw policy-map-name?   string
+    |  +--rw switchport {ios-features:switching-platform}?
+    |  |  +--rw mode
+    |  |  |  +--rw trunk?    empty
+    |  |  |  +--rw access?   empty
+    |  |  +--rw nonegotiate?     empty
+    |  |  +--rw block
+    |  |  |  +--rw unicast?   empty
+    |  |  +--rw port-security!
+    |  |  |  +--rw aging
+    |  |  |  |  +--rw static?   empty
+    |  |  |  |  +--rw time?     uint16
+    |  |  |  |  +--rw type!
+    |  |  |  |     +--rw inactivity?   empty
+    |  |  |  +--rw maximum
+    |  |  |  |  +--rw range* [range]
+    |  |  |  |     +--rw range    uint16
+    |  |  |  |     +--rw vlan!
+    |  |  |  |        +--rw access?   empty
+    |  |  |  +--rw violation
+    |  |  |     +--rw protect?    empty
+    |  |  |     +--rw restrict?   empty
+    |  |  |     +--rw shutdown?   empty
+    |  |  +--rw access
+    |  |  |  +--rw vlan?   uint16
+    |  |  +--rw voice
+    |  |     +--rw vlan?   uint16
+    |  +--rw spanning-tree!
+    |  |  +--rw bpduguard
+    |  |  |  +--rw enable?   empty
+    |  |  +--rw service-policy?   empty
+    |  |  +--rw portfast!
+    |  |     +--rw disable?   empty
+    |  |     +--rw edge?      empty
+    |  |     +--rw network?   empty
+    |  +--rw storm-control {ios-features:switching-platform}?
+    |  |  +--rw broadcast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw multicast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw action
+    |  |     +--rw shutdown?   empty
+    |  |     +--rw trap?       empty
+    |  +--rw load-interval?    uint16
+    |  +--rw ip
+    |     +--rw dhcp {ios-features:switching-platform}?
+    |        +--rw snooping
+    |           +--rw limit
+    |           |  +--rw rate?   uint16
+    |           +--rw trust?   empty
+    +--rw DMP_INTERFACE_TEMPLATE! {ios-features:switching-platform}?
+    |  +--rw service-policy
+    |  |  +--rw input
+    |  |  |  +--rw policy-map-name?   string
+    |  |  +--rw output
+    |  |     +--rw policy-map-name?   string
+    |  +--rw switchport {ios-features:switching-platform}?
+    |  |  +--rw mode
+    |  |  |  +--rw trunk?    empty
+    |  |  |  +--rw access?   empty
+    |  |  +--rw nonegotiate?     empty
+    |  |  +--rw block
+    |  |  |  +--rw unicast?   empty
+    |  |  +--rw port-security!
+    |  |  |  +--rw aging
+    |  |  |  |  +--rw static?   empty
+    |  |  |  |  +--rw time?     uint16
+    |  |  |  |  +--rw type!
+    |  |  |  |     +--rw inactivity?   empty
+    |  |  |  +--rw maximum
+    |  |  |  |  +--rw range* [range]
+    |  |  |  |     +--rw range    uint16
+    |  |  |  |     +--rw vlan!
+    |  |  |  |        +--rw access?   empty
+    |  |  |  +--rw violation
+    |  |  |     +--rw protect?    empty
+    |  |  |     +--rw restrict?   empty
+    |  |  |     +--rw shutdown?   empty
+    |  |  +--rw access
+    |  |  |  +--rw vlan?   uint16
+    |  |  +--rw voice
+    |  |     +--rw vlan?   uint16
+    |  +--rw spanning-tree!
+    |  |  +--rw bpduguard
+    |  |  |  +--rw enable?   empty
+    |  |  +--rw service-policy?   empty
+    |  |  +--rw portfast!
+    |  |     +--rw disable?   empty
+    |  |     +--rw edge?      empty
+    |  |     +--rw network?   empty
+    |  +--rw storm-control {ios-features:switching-platform}?
+    |  |  +--rw broadcast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw multicast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw action
+    |  |     +--rw shutdown?   empty
+    |  |     +--rw trap?       empty
+    |  +--rw load-interval?    uint16
+    |  +--rw ip
+    |     +--rw dhcp {ios-features:switching-platform}?
+    |        +--rw snooping
+    |           +--rw limit
+    |           |  +--rw rate?   uint16
+    |           +--rw trust?   empty
+    +--rw IP_PHONE_INTERFACE_TEMPLATE! {ios-features:switching-platform}?
+    |  +--rw service-policy
+    |  |  +--rw input
+    |  |  |  +--rw policy-map-name?   string
+    |  |  +--rw output
+    |  |     +--rw policy-map-name?   string
+    |  +--rw switchport {ios-features:switching-platform}?
+    |  |  +--rw mode
+    |  |  |  +--rw trunk?    empty
+    |  |  |  +--rw access?   empty
+    |  |  +--rw nonegotiate?     empty
+    |  |  +--rw block
+    |  |  |  +--rw unicast?   empty
+    |  |  +--rw port-security!
+    |  |  |  +--rw aging
+    |  |  |  |  +--rw static?   empty
+    |  |  |  |  +--rw time?     uint16
+    |  |  |  |  +--rw type!
+    |  |  |  |     +--rw inactivity?   empty
+    |  |  |  +--rw maximum
+    |  |  |  |  +--rw range* [range]
+    |  |  |  |     +--rw range    uint16
+    |  |  |  |     +--rw vlan!
+    |  |  |  |        +--rw access?   empty
+    |  |  |  +--rw violation
+    |  |  |     +--rw protect?    empty
+    |  |  |     +--rw restrict?   empty
+    |  |  |     +--rw shutdown?   empty
+    |  |  +--rw access
+    |  |  |  +--rw vlan?   uint16
+    |  |  +--rw voice
+    |  |     +--rw vlan?   uint16
+    |  +--rw spanning-tree!
+    |  |  +--rw bpduguard
+    |  |  |  +--rw enable?   empty
+    |  |  +--rw service-policy?   empty
+    |  |  +--rw portfast!
+    |  |     +--rw disable?   empty
+    |  |     +--rw edge?      empty
+    |  |     +--rw network?   empty
+    |  +--rw storm-control {ios-features:switching-platform}?
+    |  |  +--rw broadcast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw multicast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw action
+    |  |     +--rw shutdown?   empty
+    |  |     +--rw trap?       empty
+    |  +--rw load-interval?    uint16
+    |  +--rw ip
+    |     +--rw dhcp {ios-features:switching-platform}?
+    |        +--rw snooping
+    |           +--rw limit
+    |           |  +--rw rate?   uint16
+    |           +--rw trust?   empty
+    +--rw MSP_CAMERA_INTERFACE_TEMPLATE {ios-features:switching-platform}?
+    |  +--rw service-policy
+    |  |  +--rw input
+    |  |  |  +--rw policy-map-name?   string
+    |  |  +--rw output
+    |  |     +--rw policy-map-name?   string
+    |  +--rw switchport {ios-features:switching-platform}?
+    |  |  +--rw mode
+    |  |  |  +--rw trunk?    empty
+    |  |  |  +--rw access?   empty
+    |  |  +--rw nonegotiate?     empty
+    |  |  +--rw block
+    |  |  |  +--rw unicast?   empty
+    |  |  +--rw port-security!
+    |  |  |  +--rw aging
+    |  |  |  |  +--rw static?   empty
+    |  |  |  |  +--rw time?     uint16
+    |  |  |  |  +--rw type!
+    |  |  |  |     +--rw inactivity?   empty
+    |  |  |  +--rw maximum
+    |  |  |  |  +--rw range* [range]
+    |  |  |  |     +--rw range    uint16
+    |  |  |  |     +--rw vlan!
+    |  |  |  |        +--rw access?   empty
+    |  |  |  +--rw violation
+    |  |  |     +--rw protect?    empty
+    |  |  |     +--rw restrict?   empty
+    |  |  |     +--rw shutdown?   empty
+    |  |  +--rw access
+    |  |  |  +--rw vlan?   uint16
+    |  |  +--rw voice
+    |  |     +--rw vlan?   uint16
+    |  +--rw spanning-tree!
+    |  |  +--rw bpduguard
+    |  |  |  +--rw enable?   empty
+    |  |  +--rw service-policy?   empty
+    |  |  +--rw portfast!
+    |  |     +--rw disable?   empty
+    |  |     +--rw edge?      empty
+    |  |     +--rw network?   empty
+    |  +--rw storm-control {ios-features:switching-platform}?
+    |  |  +--rw broadcast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw multicast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw action
+    |  |     +--rw shutdown?   empty
+    |  |     +--rw trap?       empty
+    |  +--rw load-interval?    uint16
+    |  +--rw ip
+    |     +--rw dhcp {ios-features:switching-platform}?
+    |        +--rw snooping
+    |           +--rw limit
+    |           |  +--rw rate?   uint16
+    |           +--rw trust?   empty
+    +--rw MSP_VC_INTERFACE_TEMPLATE {ios-features:switching-platform}?
+    |  +--rw service-policy
+    |  |  +--rw input
+    |  |  |  +--rw policy-map-name?   string
+    |  |  +--rw output
+    |  |     +--rw policy-map-name?   string
+    |  +--rw switchport {ios-features:switching-platform}?
+    |  |  +--rw mode
+    |  |  |  +--rw trunk?    empty
+    |  |  |  +--rw access?   empty
+    |  |  +--rw nonegotiate?     empty
+    |  |  +--rw block
+    |  |  |  +--rw unicast?   empty
+    |  |  +--rw port-security!
+    |  |  |  +--rw aging
+    |  |  |  |  +--rw static?   empty
+    |  |  |  |  +--rw time?     uint16
+    |  |  |  |  +--rw type!
+    |  |  |  |     +--rw inactivity?   empty
+    |  |  |  +--rw maximum
+    |  |  |  |  +--rw range* [range]
+    |  |  |  |     +--rw range    uint16
+    |  |  |  |     +--rw vlan!
+    |  |  |  |        +--rw access?   empty
+    |  |  |  +--rw violation
+    |  |  |     +--rw protect?    empty
+    |  |  |     +--rw restrict?   empty
+    |  |  |     +--rw shutdown?   empty
+    |  |  +--rw access
+    |  |  |  +--rw vlan?   uint16
+    |  |  +--rw voice
+    |  |     +--rw vlan?   uint16
+    |  +--rw spanning-tree!
+    |  |  +--rw bpduguard
+    |  |  |  +--rw enable?   empty
+    |  |  +--rw service-policy?   empty
+    |  |  +--rw portfast!
+    |  |     +--rw disable?   empty
+    |  |     +--rw edge?      empty
+    |  |     +--rw network?   empty
+    |  +--rw storm-control {ios-features:switching-platform}?
+    |  |  +--rw broadcast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw multicast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw action
+    |  |     +--rw shutdown?   empty
+    |  |     +--rw trap?       empty
+    |  +--rw load-interval?    uint16
+    |  +--rw ip
+    |     +--rw dhcp {ios-features:switching-platform}?
+    |        +--rw snooping
+    |           +--rw limit
+    |           |  +--rw rate?   uint16
+    |           +--rw trust?   empty
+    +--rw PRINTER_INTERFACE_TEMPLATE {ios-features:switching-platform}?
+    |  +--rw service-policy
+    |  |  +--rw input
+    |  |  |  +--rw policy-map-name?   string
+    |  |  +--rw output
+    |  |     +--rw policy-map-name?   string
+    |  +--rw switchport {ios-features:switching-platform}?
+    |  |  +--rw mode
+    |  |  |  +--rw trunk?    empty
+    |  |  |  +--rw access?   empty
+    |  |  +--rw nonegotiate?     empty
+    |  |  +--rw block
+    |  |  |  +--rw unicast?   empty
+    |  |  +--rw port-security!
+    |  |  |  +--rw aging
+    |  |  |  |  +--rw static?   empty
+    |  |  |  |  +--rw time?     uint16
+    |  |  |  |  +--rw type!
+    |  |  |  |     +--rw inactivity?   empty
+    |  |  |  +--rw maximum
+    |  |  |  |  +--rw range* [range]
+    |  |  |  |     +--rw range    uint16
+    |  |  |  |     +--rw vlan!
+    |  |  |  |        +--rw access?   empty
+    |  |  |  +--rw violation
+    |  |  |     +--rw protect?    empty
+    |  |  |     +--rw restrict?   empty
+    |  |  |     +--rw shutdown?   empty
+    |  |  +--rw access
+    |  |  |  +--rw vlan?   uint16
+    |  |  +--rw voice
+    |  |     +--rw vlan?   uint16
+    |  +--rw spanning-tree!
+    |  |  +--rw bpduguard
+    |  |  |  +--rw enable?   empty
+    |  |  +--rw service-policy?   empty
+    |  |  +--rw portfast!
+    |  |     +--rw disable?   empty
+    |  |     +--rw edge?      empty
+    |  |     +--rw network?   empty
+    |  +--rw storm-control {ios-features:switching-platform}?
+    |  |  +--rw broadcast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw multicast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw action
+    |  |     +--rw shutdown?   empty
+    |  |     +--rw trap?       empty
+    |  +--rw load-interval?    uint16
+    |  +--rw ip
+    |     +--rw dhcp {ios-features:switching-platform}?
+    |        +--rw snooping
+    |           +--rw limit
+    |           |  +--rw rate?   uint16
+    |           +--rw trust?   empty
+    +--rw ROUTER_INTERFACE_TEMPLATE {ios-features:switching-platform}?
+    |  +--rw service-policy
+    |  |  +--rw input
+    |  |  |  +--rw policy-map-name?   string
+    |  |  +--rw output
+    |  |     +--rw policy-map-name?   string
+    |  +--rw switchport {ios-features:switching-platform}?
+    |  |  +--rw mode
+    |  |  |  +--rw trunk?    empty
+    |  |  |  +--rw access?   empty
+    |  |  +--rw nonegotiate?     empty
+    |  |  +--rw block
+    |  |  |  +--rw unicast?   empty
+    |  |  +--rw port-security!
+    |  |  |  +--rw aging
+    |  |  |  |  +--rw static?   empty
+    |  |  |  |  +--rw time?     uint16
+    |  |  |  |  +--rw type!
+    |  |  |  |     +--rw inactivity?   empty
+    |  |  |  +--rw maximum
+    |  |  |  |  +--rw range* [range]
+    |  |  |  |     +--rw range    uint16
+    |  |  |  |     +--rw vlan!
+    |  |  |  |        +--rw access?   empty
+    |  |  |  +--rw violation
+    |  |  |     +--rw protect?    empty
+    |  |  |     +--rw restrict?   empty
+    |  |  |     +--rw shutdown?   empty
+    |  |  +--rw access
+    |  |  |  +--rw vlan?   uint16
+    |  |  +--rw voice
+    |  |     +--rw vlan?   uint16
+    |  +--rw spanning-tree!
+    |  |  +--rw bpduguard
+    |  |  |  +--rw enable?   empty
+    |  |  +--rw service-policy?   empty
+    |  |  +--rw portfast!
+    |  |     +--rw disable?   empty
+    |  |     +--rw edge?      empty
+    |  |     +--rw network?   empty
+    |  +--rw storm-control {ios-features:switching-platform}?
+    |  |  +--rw broadcast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw multicast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw action
+    |  |     +--rw shutdown?   empty
+    |  |     +--rw trap?       empty
+    |  +--rw load-interval?    uint16
+    |  +--rw ip
+    |     +--rw dhcp {ios-features:switching-platform}?
+    |        +--rw snooping
+    |           +--rw limit
+    |           |  +--rw rate?   uint16
+    |           +--rw trust?   empty
+    +--rw SWITCH_INTERFACE_TEMPLATE {ios-features:switching-platform}?
+    |  +--rw service-policy
+    |  |  +--rw input
+    |  |  |  +--rw policy-map-name?   string
+    |  |  +--rw output
+    |  |     +--rw policy-map-name?   string
+    |  +--rw switchport {ios-features:switching-platform}?
+    |  |  +--rw mode
+    |  |  |  +--rw trunk?    empty
+    |  |  |  +--rw access?   empty
+    |  |  +--rw nonegotiate?     empty
+    |  |  +--rw block
+    |  |  |  +--rw unicast?   empty
+    |  |  +--rw port-security!
+    |  |  |  +--rw aging
+    |  |  |  |  +--rw static?   empty
+    |  |  |  |  +--rw time?     uint16
+    |  |  |  |  +--rw type!
+    |  |  |  |     +--rw inactivity?   empty
+    |  |  |  +--rw maximum
+    |  |  |  |  +--rw range* [range]
+    |  |  |  |     +--rw range    uint16
+    |  |  |  |     +--rw vlan!
+    |  |  |  |        +--rw access?   empty
+    |  |  |  +--rw violation
+    |  |  |     +--rw protect?    empty
+    |  |  |     +--rw restrict?   empty
+    |  |  |     +--rw shutdown?   empty
+    |  |  +--rw access
+    |  |  |  +--rw vlan?   uint16
+    |  |  +--rw voice
+    |  |     +--rw vlan?   uint16
+    |  +--rw spanning-tree!
+    |  |  +--rw bpduguard
+    |  |  |  +--rw enable?   empty
+    |  |  +--rw service-policy?   empty
+    |  |  +--rw portfast!
+    |  |     +--rw disable?   empty
+    |  |     +--rw edge?      empty
+    |  |     +--rw network?   empty
+    |  +--rw storm-control {ios-features:switching-platform}?
+    |  |  +--rw broadcast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw multicast
+    |  |  |  +--rw level
+    |  |  |     +--rw pps
+    |  |  |     |  +--rw threshold?   string
+    |  |  |     +--rw bps
+    |  |  |     |  +--rw threshold?   decimal64
+    |  |  |     |  +--rw b-unit?      string
+    |  |  |     +--rw threshold?   decimal64
+    |  |  +--rw action
+    |  |     +--rw shutdown?   empty
+    |  |     +--rw trap?       empty
+    |  +--rw load-interval?    uint16
+    |  +--rw ip
+    |     +--rw dhcp {ios-features:switching-platform}?
+    |        +--rw snooping
+    |           +--rw limit
+    |           |  +--rw rate?   uint16
+    |           +--rw trust?   empty
+    +--rw TP_INTERFACE_TEMPLATE {ios-features:switching-platform}?
+       +--rw service-policy
+       |  +--rw input
+       |  |  +--rw policy-map-name?   string
+       |  +--rw output
+       |     +--rw policy-map-name?   string
+       +--rw switchport {ios-features:switching-platform}?
+       |  +--rw mode
+       |  |  +--rw trunk?    empty
+       |  |  +--rw access?   empty
+       |  +--rw nonegotiate?     empty
+       |  +--rw block
+       |  |  +--rw unicast?   empty
+       |  +--rw port-security!
+       |  |  +--rw aging
+       |  |  |  +--rw static?   empty
+       |  |  |  +--rw time?     uint16
+       |  |  |  +--rw type!
+       |  |  |     +--rw inactivity?   empty
+       |  |  +--rw maximum
+       |  |  |  +--rw range* [range]
+       |  |  |     +--rw range    uint16
+       |  |  |     +--rw vlan!
+       |  |  |        +--rw access?   empty
+       |  |  +--rw violation
+       |  |     +--rw protect?    empty
+       |  |     +--rw restrict?   empty
+       |  |     +--rw shutdown?   empty
+       |  +--rw access
+       |  |  +--rw vlan?   uint16
+       |  +--rw voice
+       |     +--rw vlan?   uint16
+       +--rw spanning-tree!
+       |  +--rw bpduguard
+       |  |  +--rw enable?   empty
+       |  +--rw service-policy?   empty
+       |  +--rw portfast!
+       |     +--rw disable?   empty
+       |     +--rw edge?      empty
+       |     +--rw network?   empty
+       +--rw storm-control {ios-features:switching-platform}?
+       |  +--rw broadcast
+       |  |  +--rw level
+       |  |     +--rw pps
+       |  |     |  +--rw threshold?   string
+       |  |     +--rw bps
+       |  |     |  +--rw threshold?   decimal64
+       |  |     |  +--rw b-unit?      string
+       |  |     +--rw threshold?   decimal64
+       |  +--rw multicast
+       |  |  +--rw level
+       |  |     +--rw pps
+       |  |     |  +--rw threshold?   string
+       |  |     +--rw bps
+       |  |     |  +--rw threshold?   decimal64
+       |  |     |  +--rw b-unit?      string
+       |  |     +--rw threshold?   decimal64
+       |  +--rw action
+       |     +--rw shutdown?   empty
+       |     +--rw trap?       empty
+       +--rw load-interval?    uint16
+       +--rw ip
+          +--rw dhcp {ios-features:switching-platform}?
+             +--rw snooping
+                +--rw limit
+                |  +--rw rate?   uint16
+                +--rw trust?   empty
+Xpaths for model: Cisco-IOS-XE-template.yang

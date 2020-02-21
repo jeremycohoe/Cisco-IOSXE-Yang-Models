@@ -1,0 +1,12 @@
+ 
+KPI for model: cisco-xe-openconfig-system-ext.yang
+
+module: cisco-xe-openconfig-system-ext
+  augment /oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:config:
+    +--rw vrf?   string
+  augment /oc-sys:system/oc-sys:logging/oc-sys:remote-servers/oc-sys:remote-server/oc-sys:state:
+    +--ro vrf?   string
+  augment /oc-sys:system/oc-sys:state:
+    +--ro license
+       +--ro eula?   string
+Xpaths for model: cisco-xe-openconfig-system-ext.yang

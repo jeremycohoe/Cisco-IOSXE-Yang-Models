@@ -1,0 +1,322 @@
+ 
+KPI for model: Cisco-IOS-XE-diagnostics.yang
+
+module: Cisco-IOS-XE-diagnostics
+  augment /ios:native:
+    +--rw diagnostic
+       +--rw bootup
+       |  +--rw level?   enumeration
+       +--rw event-log
+       |  +--rw size?   uint16
+       +--rw monitor
+       |  +--rw interval
+       |  |  +--rw switch
+       |  |     +--rw switch* [number]
+       |  |        +--rw number    uint8
+       |  |        +--rw test
+       |  |           +--rw test-ids* [id]
+       |  |           |  +--rw id                string
+       |  |           |  +--rw hh-mm-ss?         ios-types:hhmmss-type
+       |  |           |  +--rw milli-seconds?    uint16
+       |  |           |  +--rw number-of-days?   uint16
+       |  |           +--rw all
+       |  |              +--rw hh-mm-ss?         ios-types:hhmmss-type
+       |  |              +--rw milli-seconds?    uint16
+       |  |              +--rw number-of-days?   uint16
+       |  +--rw switch* [number]
+       |  |  +--rw number    uint8
+       |  |  +--rw test
+       |  |     +--rw (test-id)?
+       |  |        +--:(id)
+       |  |        |  +--rw id?    string
+       |  |        +--:(all)
+       |  |           +--rw all?   empty
+       |  +--rw syslog?      empty
+       |  +--rw threshold
+       |     +--rw switch* [number]
+       |        +--rw number    uint8
+       |        +--rw test
+       |           +--rw test-ids* [id]
+       |           |  +--rw id         string
+       |           |  +--rw failure
+       |           |     +--rw count* [range]
+       |           |        +--rw range            uint16
+       |           |        +--rw days?            uint32
+       |           |        +--rw hours?           uint32
+       |           |        +--rw milli-seconds?   uint32
+       |           |        +--rw minutes?         uint32
+       |           |        +--rw runs?            uint16
+       |           |        +--rw seconds?         uint32
+       |           +--rw all
+       |              +--rw failure
+       |                 +--rw count* [range]
+       |                    +--rw range            uint16
+       |                    +--rw days?            uint32
+       |                    +--rw hours?           uint32
+       |                    +--rw milli-seconds?   uint32
+       |                    +--rw minutes?         uint32
+       |                    +--rw runs?            uint16
+       |                    +--rw seconds?         uint32
+       +--rw schedule
+          +--rw switch* [switch-number]
+             +--rw switch-number    uint8
+             +--rw test
+                +--rw test-ids* [id]
+                |  +--rw id        string
+                |  +--rw daily
+                |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |  +--rw on
+                |  |  +--rw month?          ios-types:month-type
+                |  |  +--rw day-of-month?   uint16
+                |  |  +--rw Year?           uint16
+                |  |  +--rw hh-mm?          ios-types:hhmm-type
+                |  +--rw weekly
+                |  |  +--rw day?     ios-types:weekday-type
+                |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |  +--rw port
+                |     +--rw interface-port-number* [number]
+                |     |  +--rw number    uint8
+                |     |  +--rw daily
+                |     |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |     |  +--rw on
+                |     |  |  +--rw month?          ios-types:month-type
+                |     |  |  +--rw day-of-month?   uint16
+                |     |  |  +--rw Year?           uint16
+                |     |  |  +--rw hh-mm?          ios-types:hhmm-type
+                |     |  +--rw weekly
+                |     |     +--rw day?     ios-types:weekday-type
+                |     |     +--rw hh-mm?   ios-types:hhmm-type
+                |     +--rw port-number-list* [number-list]
+                |     |  +--rw number-list    string
+                |     |  +--rw daily
+                |     |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |     |  +--rw on
+                |     |  |  +--rw month?          ios-types:month-type
+                |     |  |  +--rw day-of-month?   uint16
+                |     |  |  +--rw Year?           uint16
+                |     |  |  +--rw hh-mm?          ios-types:hhmm-type
+                |     |  +--rw weekly
+                |     |     +--rw day?     ios-types:weekday-type
+                |     |     +--rw hh-mm?   ios-types:hhmm-type
+                |     +--rw all
+                |        +--rw daily
+                |        |  +--rw hh-mm?   ios-types:hhmm-type
+                |        +--rw on
+                |        |  +--rw month?          ios-types:month-type
+                |        |  +--rw day-of-month?   uint16
+                |        |  +--rw Year?           uint16
+                |        |  +--rw hh-mm?          ios-types:hhmm-type
+                |        +--rw weekly
+                |           +--rw day?     ios-types:weekday-type
+                |           +--rw hh-mm?   ios-types:hhmm-type
+                +--rw all
+                |  +--rw daily
+                |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |  +--rw on
+                |  |  +--rw month?          ios-types:month-type
+                |  |  +--rw day-of-month?   uint16
+                |  |  +--rw Year?           uint16
+                |  |  +--rw hh-mm?          ios-types:hhmm-type
+                |  +--rw weekly
+                |  |  +--rw day?     ios-types:weekday-type
+                |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |  +--rw port
+                |     +--rw interface-port-number* [number]
+                |     |  +--rw number    uint8
+                |     |  +--rw daily
+                |     |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |     |  +--rw on
+                |     |  |  +--rw month?          ios-types:month-type
+                |     |  |  +--rw day-of-month?   uint16
+                |     |  |  +--rw Year?           uint16
+                |     |  |  +--rw hh-mm?          ios-types:hhmm-type
+                |     |  +--rw weekly
+                |     |     +--rw day?     ios-types:weekday-type
+                |     |     +--rw hh-mm?   ios-types:hhmm-type
+                |     +--rw port-number-list* [number-list]
+                |     |  +--rw number-list    string
+                |     |  +--rw daily
+                |     |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |     |  +--rw on
+                |     |  |  +--rw month?          ios-types:month-type
+                |     |  |  +--rw day-of-month?   uint16
+                |     |  |  +--rw Year?           uint16
+                |     |  |  +--rw hh-mm?          ios-types:hhmm-type
+                |     |  +--rw weekly
+                |     |     +--rw day?     ios-types:weekday-type
+                |     |     +--rw hh-mm?   ios-types:hhmm-type
+                |     +--rw all
+                |        +--rw daily
+                |        |  +--rw hh-mm?   ios-types:hhmm-type
+                |        +--rw on
+                |        |  +--rw month?          ios-types:month-type
+                |        |  +--rw day-of-month?   uint16
+                |        |  +--rw Year?           uint16
+                |        |  +--rw hh-mm?          ios-types:hhmm-type
+                |        +--rw weekly
+                |           +--rw day?     ios-types:weekday-type
+                |           +--rw hh-mm?   ios-types:hhmm-type
+                +--rw basic
+                |  +--rw daily
+                |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |  +--rw on
+                |  |  +--rw month?          ios-types:month-type
+                |  |  +--rw day-of-month?   uint16
+                |  |  +--rw Year?           uint16
+                |  |  +--rw hh-mm?          ios-types:hhmm-type
+                |  +--rw weekly
+                |  |  +--rw day?     ios-types:weekday-type
+                |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |  +--rw port
+                |     +--rw interface-port-number* [number]
+                |     |  +--rw number    uint8
+                |     |  +--rw daily
+                |     |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |     |  +--rw on
+                |     |  |  +--rw month?          ios-types:month-type
+                |     |  |  +--rw day-of-month?   uint16
+                |     |  |  +--rw Year?           uint16
+                |     |  |  +--rw hh-mm?          ios-types:hhmm-type
+                |     |  +--rw weekly
+                |     |     +--rw day?     ios-types:weekday-type
+                |     |     +--rw hh-mm?   ios-types:hhmm-type
+                |     +--rw port-number-list* [number-list]
+                |     |  +--rw number-list    string
+                |     |  +--rw daily
+                |     |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |     |  +--rw on
+                |     |  |  +--rw month?          ios-types:month-type
+                |     |  |  +--rw day-of-month?   uint16
+                |     |  |  +--rw Year?           uint16
+                |     |  |  +--rw hh-mm?          ios-types:hhmm-type
+                |     |  +--rw weekly
+                |     |     +--rw day?     ios-types:weekday-type
+                |     |     +--rw hh-mm?   ios-types:hhmm-type
+                |     +--rw all
+                |        +--rw daily
+                |        |  +--rw hh-mm?   ios-types:hhmm-type
+                |        +--rw on
+                |        |  +--rw month?          ios-types:month-type
+                |        |  +--rw day-of-month?   uint16
+                |        |  +--rw Year?           uint16
+                |        |  +--rw hh-mm?          ios-types:hhmm-type
+                |        +--rw weekly
+                |           +--rw day?     ios-types:weekday-type
+                |           +--rw hh-mm?   ios-types:hhmm-type
+                +--rw complete
+                |  +--rw daily
+                |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |  +--rw on
+                |  |  +--rw month?          ios-types:month-type
+                |  |  +--rw day-of-month?   uint16
+                |  |  +--rw Year?           uint16
+                |  |  +--rw hh-mm?          ios-types:hhmm-type
+                |  +--rw weekly
+                |     +--rw day?     ios-types:weekday-type
+                |     +--rw hh-mm?   ios-types:hhmm-type
+                +--rw minimal
+                |  +--rw daily
+                |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |  +--rw on
+                |  |  +--rw month?          ios-types:month-type
+                |  |  +--rw day-of-month?   uint16
+                |  |  +--rw Year?           uint16
+                |  |  +--rw hh-mm?          ios-types:hhmm-type
+                |  +--rw weekly
+                |     +--rw day?     ios-types:weekday-type
+                |     +--rw hh-mm?   ios-types:hhmm-type
+                +--rw non-disruptive
+                |  +--rw daily
+                |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |  +--rw on
+                |  |  +--rw month?          ios-types:month-type
+                |  |  +--rw day-of-month?   uint16
+                |  |  +--rw Year?           uint16
+                |  |  +--rw hh-mm?          ios-types:hhmm-type
+                |  +--rw weekly
+                |  |  +--rw day?     ios-types:weekday-type
+                |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |  +--rw port
+                |     +--rw interface-port-number* [number]
+                |     |  +--rw number    uint8
+                |     |  +--rw daily
+                |     |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |     |  +--rw on
+                |     |  |  +--rw month?          ios-types:month-type
+                |     |  |  +--rw day-of-month?   uint16
+                |     |  |  +--rw Year?           uint16
+                |     |  |  +--rw hh-mm?          ios-types:hhmm-type
+                |     |  +--rw weekly
+                |     |     +--rw day?     ios-types:weekday-type
+                |     |     +--rw hh-mm?   ios-types:hhmm-type
+                |     +--rw port-number-list* [number-list]
+                |     |  +--rw number-list    string
+                |     |  +--rw daily
+                |     |  |  +--rw hh-mm?   ios-types:hhmm-type
+                |     |  +--rw on
+                |     |  |  +--rw month?          ios-types:month-type
+                |     |  |  +--rw day-of-month?   uint16
+                |     |  |  +--rw Year?           uint16
+                |     |  |  +--rw hh-mm?          ios-types:hhmm-type
+                |     |  +--rw weekly
+                |     |     +--rw day?     ios-types:weekday-type
+                |     |     +--rw hh-mm?   ios-types:hhmm-type
+                |     +--rw all
+                |        +--rw daily
+                |        |  +--rw hh-mm?   ios-types:hhmm-type
+                |        +--rw on
+                |        |  +--rw month?          ios-types:month-type
+                |        |  +--rw day-of-month?   uint16
+                |        |  +--rw Year?           uint16
+                |        |  +--rw hh-mm?          ios-types:hhmm-type
+                |        +--rw weekly
+                |           +--rw day?     ios-types:weekday-type
+                |           +--rw hh-mm?   ios-types:hhmm-type
+                +--rw per-port
+                   +--rw daily
+                   |  +--rw hh-mm?   ios-types:hhmm-type
+                   +--rw on
+                   |  +--rw month?          ios-types:month-type
+                   |  +--rw day-of-month?   uint16
+                   |  +--rw Year?           uint16
+                   |  +--rw hh-mm?          ios-types:hhmm-type
+                   +--rw weekly
+                   |  +--rw day?     ios-types:weekday-type
+                   |  +--rw hh-mm?   ios-types:hhmm-type
+                   +--rw port
+                      +--rw interface-port-number* [number]
+                      |  +--rw number    uint8
+                      |  +--rw daily
+                      |  |  +--rw hh-mm?   ios-types:hhmm-type
+                      |  +--rw on
+                      |  |  +--rw month?          ios-types:month-type
+                      |  |  +--rw day-of-month?   uint16
+                      |  |  +--rw Year?           uint16
+                      |  |  +--rw hh-mm?          ios-types:hhmm-type
+                      |  +--rw weekly
+                      |     +--rw day?     ios-types:weekday-type
+                      |     +--rw hh-mm?   ios-types:hhmm-type
+                      +--rw port-number-list* [number-list]
+                      |  +--rw number-list    string
+                      |  +--rw daily
+                      |  |  +--rw hh-mm?   ios-types:hhmm-type
+                      |  +--rw on
+                      |  |  +--rw month?          ios-types:month-type
+                      |  |  +--rw day-of-month?   uint16
+                      |  |  +--rw Year?           uint16
+                      |  |  +--rw hh-mm?          ios-types:hhmm-type
+                      |  +--rw weekly
+                      |     +--rw day?     ios-types:weekday-type
+                      |     +--rw hh-mm?   ios-types:hhmm-type
+                      +--rw all
+                         +--rw daily
+                         |  +--rw hh-mm?   ios-types:hhmm-type
+                         +--rw on
+                         |  +--rw month?          ios-types:month-type
+                         |  +--rw day-of-month?   uint16
+                         |  +--rw Year?           uint16
+                         |  +--rw hh-mm?          ios-types:hhmm-type
+                         +--rw weekly
+                            +--rw day?     ios-types:weekday-type
+                            +--rw hh-mm?   ios-types:hhmm-type
+Xpaths for model: Cisco-IOS-XE-diagnostics.yang

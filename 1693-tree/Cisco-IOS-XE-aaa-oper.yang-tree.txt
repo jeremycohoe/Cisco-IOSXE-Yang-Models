@@ -1,0 +1,126 @@
+ 
+KPI for model: Cisco-IOS-XE-aaa-oper.yang
+module: Cisco-IOS-XE-aaa-oper
+  +--ro aaa-data
+     +--ro aaa-radius-stats* [group-name radius-server-ip auth-port acct-port]
+     |  +--ro group-name                        string
+     |  +--ro radius-server-ip                  inet:ip-address
+     |  +--ro auth-port                         uint16
+     |  +--ro acct-port                         uint16
+     |  +--ro authen-retried-access-requests?   uint32
+     |  +--ro authen-access-accepts?            uint32
+     |  +--ro authen-access-rejects?            uint32
+     |  +--ro authen-timeout-access-requests?   uint32
+     |  +--ro author-retried-access-requests?   uint32
+     |  +--ro author-access-accepts?            uint32
+     |  +--ro author-access-rejects?            uint32
+     |  +--ro author-timeout-access-requests?   uint32
+     |  +--ro connection-opens?                 uint32
+     |  +--ro connection-closes?                uint32
+     |  +--ro connection-aborts?                uint32
+     |  +--ro connection-failures?              uint32
+     |  +--ro connection-timeouts?              uint32
+     |  +--ro authen-messages-sent?             uint32
+     |  +--ro author-messages-sent?             uint32
+     |  +--ro acct-messages-sent?               uint32
+     |  +--ro authen-messages-received?         uint32
+     |  +--ro author-messages-received?         uint32
+     |  +--ro authen-errors-received?           uint32
+     |  +--ro author-errors-received?           uint32
+     |  +--ro acct-errors-received?             uint32
+     |  +--ro stats-time?                       yang:date-and-time
+     +--ro aaa-tacacs-stats* [group-name tacacs-server-address port]
+     |  +--ro group-name               string
+     |  +--ro tacacs-server-address    inet:ip-address
+     |  +--ro port                     uint16
+     |  +--ro connection-opens?        uint32
+     |  +--ro connection-closes?       uint32
+     |  +--ro connection-aborts?       uint32
+     |  +--ro connection-failures?     uint32
+     |  +--ro connection-timeouts?     uint32
+     |  +--ro messages-sent?           uint32
+     |  +--ro messages-received?       uint32
+     |  +--ro errors-received?         uint32
+     |  +--ro stats-start-time?        yang:date-and-time
+     +--ro aaa-ldap-counters* [ldap-server-address ldap-server-port]
+     |  +--ro ldap-server-address    inet:ip-address
+     |  +--ro ldap-server-port       uint16
+     |  +--ro connection-opens?      uint32
+     |  +--ro messages-sent?         uint32
+     |  +--ro messages-received?     uint32
+     |  +--ro errors-received?       uint32
+     |  +--ro connection-closes?     uint32
+     |  +--ro connection-aborts?     uint32
+     |  +--ro connection-failures?   uint32
+     |  +--ro connection-timeouts?   uint32
+     |  +--ro counters-start-time?   yang:date-and-time
+     +--ro aaa-users* [username]
+        +--ro username        string
+        +--ro aaa-sessions* [aaa-uid]
+           +--ro aaa-uid       uint32
+           +--ro session-id?   uint32
+           +--ro ip-addr?      inet:ip-address
+           +--ro protocol?     aaa-ios-xe-oper:aaa-sess-prot-type
+           +--ro login-time?   yang:date-and-time
+Xpaths for model: Cisco-IOS-XE-aaa-oper.yang
+/aaa-ios-xe-oper:aaa-data,container,
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats,list,
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:group-name,leaf,string
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:radius-server-ip,leaf,inet:ip-address
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:auth-port,leaf,uint16
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:acct-port,leaf,uint16
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:authen-retried-access-requests,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:authen-access-accepts,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:authen-access-rejects,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:authen-timeout-access-requests,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:author-retried-access-requests,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:author-access-accepts,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:author-access-rejects,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:author-timeout-access-requests,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:connection-opens,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:connection-closes,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:connection-aborts,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:connection-failures,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:connection-timeouts,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:authen-messages-sent,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:author-messages-sent,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:acct-messages-sent,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:authen-messages-received,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:author-messages-received,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:authen-errors-received,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:author-errors-received,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:acct-errors-received,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-radius-stats/aaa-ios-xe-oper:stats-time,leaf,yang:date-and-time
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-tacacs-stats,list,
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-tacacs-stats/aaa-ios-xe-oper:group-name,leaf,string
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-tacacs-stats/aaa-ios-xe-oper:tacacs-server-address,leaf,inet:ip-address
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-tacacs-stats/aaa-ios-xe-oper:port,leaf,uint16
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-tacacs-stats/aaa-ios-xe-oper:connection-opens,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-tacacs-stats/aaa-ios-xe-oper:connection-closes,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-tacacs-stats/aaa-ios-xe-oper:connection-aborts,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-tacacs-stats/aaa-ios-xe-oper:connection-failures,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-tacacs-stats/aaa-ios-xe-oper:connection-timeouts,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-tacacs-stats/aaa-ios-xe-oper:messages-sent,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-tacacs-stats/aaa-ios-xe-oper:messages-received,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-tacacs-stats/aaa-ios-xe-oper:errors-received,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-tacacs-stats/aaa-ios-xe-oper:stats-start-time,leaf,yang:date-and-time
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-ldap-counters,list,
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-ldap-counters/aaa-ios-xe-oper:ldap-server-address,leaf,inet:ip-address
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-ldap-counters/aaa-ios-xe-oper:ldap-server-port,leaf,uint16
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-ldap-counters/aaa-ios-xe-oper:connection-opens,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-ldap-counters/aaa-ios-xe-oper:messages-sent,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-ldap-counters/aaa-ios-xe-oper:messages-received,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-ldap-counters/aaa-ios-xe-oper:errors-received,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-ldap-counters/aaa-ios-xe-oper:connection-closes,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-ldap-counters/aaa-ios-xe-oper:connection-aborts,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-ldap-counters/aaa-ios-xe-oper:connection-failures,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-ldap-counters/aaa-ios-xe-oper:connection-timeouts,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-ldap-counters/aaa-ios-xe-oper:counters-start-time,leaf,yang:date-and-time
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-users,list,
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-users/aaa-ios-xe-oper:username,leaf,string
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-users/aaa-ios-xe-oper:aaa-sessions,list,
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-users/aaa-ios-xe-oper:aaa-sessions/aaa-ios-xe-oper:aaa-uid,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-users/aaa-ios-xe-oper:aaa-sessions/aaa-ios-xe-oper:session-id,leaf,uint32
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-users/aaa-ios-xe-oper:aaa-sessions/aaa-ios-xe-oper:ip-addr,leaf,inet:ip-address
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-users/aaa-ios-xe-oper:aaa-sessions/aaa-ios-xe-oper:protocol,leaf,aaa-ios-xe-oper:aaa-sess-prot-type
+/aaa-ios-xe-oper:aaa-data/aaa-ios-xe-oper:aaa-users/aaa-ios-xe-oper:aaa-sessions/aaa-ios-xe-oper:login-time,leaf,yang:date-and-time

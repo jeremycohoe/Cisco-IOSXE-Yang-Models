@@ -1,0 +1,72 @@
+ 
+KPI for model: Cisco-IOS-XE-dhcp-oper.yang
+module: Cisco-IOS-XE-dhcp-oper
+  +--ro dhcp-oper-data
+     +--ro dhcpv4-server-oper* [pool-name client-ip vrf-name]
+     |  +--ro pool-name         string
+     |  +--ro client-ip         inet:ip-address
+     |  +--ro vrf-name          string
+     |  +--ro client-id-type?   dhcp-ios-xe-oper:dhcp-client-id-type
+     |  +--ro client-id?        string
+     |  +--ro expiration
+     |  |  +--ro (expiration-time-choice)?
+     |  |     +--:(dhcp-expiration-time)
+     |  |     |  +--ro time?       yang:date-and-time
+     |  |     +--:(dhcp-expiration-infinite)
+     |  |        +--ro infinite?   empty
+     |  +--ro type?             dhcp-ios-xe-oper:dhcp-server-binding-type
+     |  +--ro state?            dhcp-ios-xe-oper:dhcp-server-binding-state
+     |  +--ro interface?        string
+     +--ro dhcpv4-client-oper* [if-name client-addr vrf-name]
+        +--ro if-name                  string
+        +--ro client-addr              inet:ip-address
+        +--ro vrf-name                 string
+        +--ro state?                   dhcp-ios-xe-oper:dhcp-client-state
+        +--ro lease-server-addr?       inet:ip-address
+        +--ro gateway-addr?            inet:ip-address
+        +--ro lease-time?              uint32
+        +--ro lease-expiry
+        |  +--ro (expiration-time-choice)?
+        |     +--:(dhcp-expiration-time)
+        |     |  +--ro time?       yang:date-and-time
+        |     +--:(dhcp-expiration-infinite)
+        |        +--ro infinite?   empty
+        +--ro lease-remaining?         uint32
+        +--ro dns-address?             inet:ip-address
+        +--ro dns-address-secondary?   inet:ip-address
+        +--ro subnet-mask?             inet:ip-address
+Xpaths for model: Cisco-IOS-XE-dhcp-oper.yang
+/dhcp-ios-xe-oper:dhcp-oper-data,container,
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-server-oper,list,
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-server-oper/dhcp-ios-xe-oper:pool-name,leaf,string
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-server-oper/dhcp-ios-xe-oper:client-ip,leaf,inet:ip-address
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-server-oper/dhcp-ios-xe-oper:vrf-name,leaf,string
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-server-oper/dhcp-ios-xe-oper:client-id-type,leaf,dhcp-ios-xe-oper:dhcp-client-id-type
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-server-oper/dhcp-ios-xe-oper:client-id,leaf,string
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-server-oper/dhcp-ios-xe-oper:expiration,container,
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-server-oper/dhcp-ios-xe-oper:expiration,choice,
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-server-oper/dhcp-ios-xe-oper:expiration,case,
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-server-oper/dhcp-ios-xe-oper:expiration/dhcp-ios-xe-oper:time,leaf,yang:date-and-time
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-server-oper/dhcp-ios-xe-oper:expiration,case,
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-server-oper/dhcp-ios-xe-oper:expiration/dhcp-ios-xe-oper:infinite,leaf,empty
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-server-oper/dhcp-ios-xe-oper:type,leaf,dhcp-ios-xe-oper:dhcp-server-binding-type
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-server-oper/dhcp-ios-xe-oper:state,leaf,dhcp-ios-xe-oper:dhcp-server-binding-state
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-server-oper/dhcp-ios-xe-oper:interface,leaf,string
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper,list,
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:if-name,leaf,string
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:client-addr,leaf,inet:ip-address
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:vrf-name,leaf,string
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:state,leaf,dhcp-ios-xe-oper:dhcp-client-state
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:lease-server-addr,leaf,inet:ip-address
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:gateway-addr,leaf,inet:ip-address
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:lease-time,leaf,uint32
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:lease-expiry,container,
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:lease-expiry,choice,
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:lease-expiry,case,
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:lease-expiry/dhcp-ios-xe-oper:time,leaf,yang:date-and-time
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:lease-expiry,case,
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:lease-expiry/dhcp-ios-xe-oper:infinite,leaf,empty
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:lease-remaining,leaf,uint32
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:dns-address,leaf,inet:ip-address
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:dns-address-secondary,leaf,inet:ip-address
+/dhcp-ios-xe-oper:dhcp-oper-data/dhcp-ios-xe-oper:dhcpv4-client-oper/dhcp-ios-xe-oper:subnet-mask,leaf,inet:ip-address

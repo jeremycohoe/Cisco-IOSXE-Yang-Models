@@ -1,0 +1,108 @@
+ 
+KPI for model: Cisco-IOS-XE-ntp-oper.yang
+module: Cisco-IOS-XE-ntp-oper
+  +--ro ntp-oper-data
+     +--ro ntp-status-info!
+        +--ro refid
+        |  +--ro (refid-pkt-type-choice)?
+        |     +--:(ntp-ref-state-resolved-with-ip-addr)
+        |     |  +--ro ip-addr?            inet:ip-address
+        |     +--:(ntp-ref-state-kod)
+        |     |  +--ro kod-data
+        |     |     +--ro kod-type?   ntp-ios-xe-oper:kiss-code-type
+        |     +--:(ntp-ref-state-resolved-with-clk-source)
+        |     |  +--ro ref-clk-src-data
+        |     |     +--ro ref-clk-src-type?   ntp-ios-xe-oper:ref-clock-source-type
+        |     +--:(ntp-ref-state-bad-state)
+        |        +--ro exception-code?     uint32
+        +--ro reftime?            yang:date-and-time
+        +--ro sys-poll?           uint8
+        +--ro stratum?            uint32
+        +--ro root-delay?         decimal64
+        +--ro root-disp?          decimal64
+        +--ro offset?             decimal64
+        +--ro ntp-associations* [assoc-id]
+        |  +--ro assoc-id                      uint16
+        |  +--ro peer-reach?                   uint8
+        |  +--ro peer-stratum?                 uint32
+        |  +--ro refid
+        |  |  +--ro (refid-pkt-type-choice)?
+        |  |     +--:(ntp-ref-state-resolved-with-ip-addr)
+        |  |     |  +--ro ip-addr?            inet:ip-address
+        |  |     +--:(ntp-ref-state-kod)
+        |  |     |  +--ro kod-data
+        |  |     |     +--ro kod-type?   ntp-ios-xe-oper:kiss-code-type
+        |  |     +--:(ntp-ref-state-resolved-with-clk-source)
+        |  |     |  +--ro ref-clk-src-data
+        |  |     |     +--ro ref-clk-src-type?   ntp-ios-xe-oper:ref-clock-source-type
+        |  |     +--:(ntp-ref-state-bad-state)
+        |  |        +--ro exception-code?     uint32
+        |  +--ro reftime?                      yang:date-and-time
+        |  +--ro last-poll-time?               uint64
+        |  +--ro poll?                         uint32
+        |  +--ro delay?                        decimal64
+        |  +--ro offset?                       decimal64
+        |  +--ro jitter?                       decimal64
+        |  +--ro ntp-address
+        |  |  +--ro ip-addr?    inet:ip-address
+        |  |  +--ro vrf-name?   string
+        |  +--ro num-events?                   uint8
+        |  +--ro last-peer-event?              ntp-ios-xe-oper:peer-event
+        |  +--ro peer-selection-status?        ntp-ios-xe-oper:peer-select-status
+        |  +--ro peer-authentication-status?   ntp-ios-xe-oper:peer-auth-status
+        |  +--ro serv-type?                    ntp-ios-xe-oper:server-type
+        |  +--ro psw-crypto?                   ntp-ios-xe-oper:peer-status-word
+        +--ro freq-drift-ppm?     decimal64
+Xpaths for model: Cisco-IOS-XE-ntp-oper.yang
+/ntp-ios-xe-oper:ntp-oper-data,container,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info,container,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:refid,container,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:refid,choice,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:refid,case,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:refid/ntp-ios-xe-oper:ip-addr,leaf,inet:ip-address
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:refid,case,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:refid/ntp-ios-xe-oper:kod-data,container,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:refid/ntp-ios-xe-oper:kod-data/ntp-ios-xe-oper:kod-type,leaf,ntp-ios-xe-oper:kiss-code-type
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:refid,case,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:refid/ntp-ios-xe-oper:ref-clk-src-data,container,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:refid/ntp-ios-xe-oper:ref-clk-src-data/ntp-ios-xe-oper:ref-clk-src-type,leaf,ntp-ios-xe-oper:ref-clock-source-type
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:refid,case,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:refid/ntp-ios-xe-oper:exception-code,leaf,uint32
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:reftime,leaf,yang:date-and-time
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:sys-poll,leaf,uint8
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:stratum,leaf,uint32
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:root-delay,leaf,decimal64
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:root-disp,leaf,decimal64
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:offset,leaf,decimal64
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations,list,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:assoc-id,leaf,uint16
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:peer-reach,leaf,uint8
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:peer-stratum,leaf,uint32
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:refid,container,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:refid,choice,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:refid,case,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:refid/ntp-ios-xe-oper:ip-addr,leaf,inet:ip-address
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:refid,case,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:refid/ntp-ios-xe-oper:kod-data,container,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:refid/ntp-ios-xe-oper:kod-data/ntp-ios-xe-oper:kod-type,leaf,ntp-ios-xe-oper:kiss-code-type
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:refid,case,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:refid/ntp-ios-xe-oper:ref-clk-src-data,container,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:refid/ntp-ios-xe-oper:ref-clk-src-data/ntp-ios-xe-oper:ref-clk-src-type,leaf,ntp-ios-xe-oper:ref-clock-source-type
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:refid,case,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:refid/ntp-ios-xe-oper:exception-code,leaf,uint32
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:reftime,leaf,yang:date-and-time
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:last-poll-time,leaf,uint64
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:poll,leaf,uint32
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:delay,leaf,decimal64
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:offset,leaf,decimal64
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:jitter,leaf,decimal64
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:ntp-address,container,
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:ntp-address/ntp-ios-xe-oper:ip-addr,leaf,inet:ip-address
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:ntp-address/ntp-ios-xe-oper:vrf-name,leaf,string
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:num-events,leaf,uint8
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:last-peer-event,leaf,ntp-ios-xe-oper:peer-event
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:peer-selection-status,leaf,ntp-ios-xe-oper:peer-select-status
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:peer-authentication-status,leaf,ntp-ios-xe-oper:peer-auth-status
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:serv-type,leaf,ntp-ios-xe-oper:server-type
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:ntp-associations/ntp-ios-xe-oper:psw-crypto,leaf,ntp-ios-xe-oper:peer-status-word
+/ntp-ios-xe-oper:ntp-oper-data/ntp-ios-xe-oper:ntp-status-info/ntp-ios-xe-oper:freq-drift-ppm,leaf,decimal64

@@ -1,0 +1,302 @@
+ 
+KPI for model: Cisco-IOS-XE-rpc.yang
+module: Cisco-IOS-XE-rpc
+
+  rpcs:
+    +---x switch
+    |  +---w input
+    |  |  +---w _switch-number    uint8
+    |  |  +---w (pri-renum-stack)
+    |  |     +--:(priority-case)
+    |  |     |  +---w priority?   uint8
+    |  |     +--:(renumver-case)
+    |  |     |  +---w renumber?   uint8
+    |  |     +--:(stack-case)
+    |  |        +---w statck
+    |  |           +---w port?   uint8
+    |  +--ro output
+    |     +--ro result?   string
+    +---x default
+    |  +---w input
+    |  |  +---w (default-choice)
+    |  |     +--:(interface-case)
+    |  |        +---w interface?   string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x clear
+    |  +---w input
+    |  |  +---w (clear-choice)
+    |  |     +--:(interface-case)
+    |  |     |  +---w interface?   string
+    |  |     +--:(count-case)
+    |  |     |  +---w count?       string
+    |  |     +--:(flow-case)
+    |  |     |  +---w flow
+    |  |     |     +---w (flow-choice)?
+    |  |     |        +--:(monitor-case)
+    |  |     |        |  +---w monitor
+    |  |     |        |     +---w name                  string
+    |  |     |        |     +---w (monitor-option)?
+    |  |     |        |        +--:(force-export)
+    |  |     |        |        |  +---w force-export?   empty
+    |  |     |        |        +--:(statistics)
+    |  |     |        |        |  +---w statistics?     empty
+    |  |     |        |        +--:(cache)
+    |  |     |        |           +---w cache
+    |  |     |        |              +---w force-export?   empty
+    |  |     |        +--:(export-case)
+    |  |     |           +---w exporter
+    |  |     |              +---w name?         string
+    |  |     |              +---w statistics?   empty
+    |  |     +--:(ip-case)
+    |  |     |  +---w ip
+    |  |     |     +---w (ip-protocol)?
+    |  |     |        +--:(dhcp-case)
+    |  |     |        |  +---w dhcp
+    |  |     |        |     +---w binding
+    |  |     |        |        +---w vrf?    string
+    |  |     |        |        +---w _all    string
+    |  |     |        +--:(ospf-case)
+    |  |     |        |  +---w ospf
+    |  |     |        |     +---w _id?       uint16
+    |  |     |        |     +---w process?   empty
+    |  |     |        +--:(bgp-case)
+    |  |     |           +---w bgp
+    |  |     |              +---w _peer-address?   union
+    |  |     |              +---w vrf?             string
+    |  |     +--:(arp-cache-case)
+    |  |     |  +---w arp-cache!
+    |  |     |     +---w vrf?         string
+    |  |     |     +---w interface?   string
+    |  |     |     +---w _ip?         inet:ipv4-address
+    |  |     +--:(aaa-case)
+    |  |     |  +---w aaa
+    |  |     |     +---w local
+    |  |     |        +---w user
+    |  |     |           +---w lockout
+    |  |     |              +---w username?   string
+    |  |     +--:(platform-case)
+    |  |     |  +---w platform
+    |  |     |     +---w hardware
+    |  |     |        +---w qfp
+    |  |     |           +---w active
+    |  |     |              +---w feature
+    |  |     |                 +---w firewall
+    |  |     |                    +---w drop?   empty
+    |  |     +--:(zone-pair-case)
+    |  |        +---w zone-pair
+    |  |           +---w counter?   empty
+    |  +--ro output
+    |     +--ro result?   string
+    +---x release
+    |  +---w input
+    |  |  +---w dhcp?   string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x reload
+    |  +---w input
+    |  |  +---w force?    boolean
+    |  |  +---w reason?   string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x cellular
+    |  +---w input
+    |  |  +---w _if-name?   string
+    |  |  +---w lte
+    |  |     +---w (action)?
+    |  |        +--:(tech)
+    |  |        |  +---w technology
+    |  |        |     +---w (action)?
+    |  |        |        +--:(lte)
+    |  |        |        |  +---w lte?    empty
+    |  |        |        +--:(auto)
+    |  |        |        |  +---w auto?   empty
+    |  |        |        +--:(umts)
+    |  |        |           +---w umts?   empty
+    |  |        +--:(modem-reset)
+    |  |        |  +---w modem-reset?   empty
+    |  |        +--:(profile)
+    |  |           +---w profile
+    |  |              +---w (prof)?
+    |  |                 +--:(delete)
+    |  |                 |  +---w delete
+    |  |                 |     +---w _profile-id?   uint8
+    |  |                 +--:(create)
+    |  |                    +---w create
+    |  |                       +---w _profile-id?      uint8
+    |  |                       +---w _prof_name?       string
+    |  |                       +---w (auth)?
+    |  |                       |  +--:(none)
+    |  |                       |  |  +---w none?       empty
+    |  |                       |  +--:(chap)
+    |  |                       |  |  +---w chap?       empty
+    |  |                       |  +--:(pap)
+    |  |                       |  |  +---w pap?        empty
+    |  |                       |  +--:(pap_chap)
+    |  |                       |     +---w pap_chap?   empty
+    |  |                       +---w _user_name?       string
+    |  |                       +---w _password?        string
+    |  |                       +---w (pdn)?
+    |  |                          +--:(ipv4)
+    |  |                          |  +---w ipv4?       empty
+    |  |                          +--:(ipv6)
+    |  |                          |  +---w ipv6?       empty
+    |  |                          +--:(ipv4v6)
+    |  |                             +---w ipv4v6?     empty
+    |  +--ro output
+    |     +--ro result?   string
+    +---x license
+    |  +---w input
+    |  |  +---w smart
+    |  |     +---w (smart-choice)
+    |  |        +--:(register-case)
+    |  |        |  +---w register
+    |  |        |     +---w idtoken    string
+    |  |        |     +---w force?     empty
+    |  |        +--:(deregister-case)
+    |  |        |  +---w deregister?   empty
+    |  |        +--:(renew-case)
+    |  |           +---w renew
+    |  |              +---w (renew-choice)
+    |  |                 +--:(ID)
+    |  |                 |  +---w ID?     empty
+    |  |                 +--:(auth)
+    |  |                    +---w auth?   empty
+    |  +--ro output
+    |     +--ro result?   string
+    +---x service
+    |  +---w input
+    |  |  +---w sd-avc
+    |  |     +---w (sd-avc-choice)
+    |  |        +--:(activate-case)
+    |  |        |  +---w activate?      empty
+    |  |        +--:(configure-case)
+    |  |        |  +---w configure
+    |  |        |     +---w gateway
+    |  |        |        +---w interface?    string
+    |  |        |        +---w service-ip?   inet:ipv4-address
+    |  |        |        +---w activate?     empty
+    |  |        +--:(connect-case)
+    |  |        |  +---w connect?       empty
+    |  |        +--:(help-case)
+    |  |        |  +---w help?          empty
+    |  |        +--:(deactivate-case)
+    |  |        |  +---w deactivate?    empty
+    |  |        +--:(install-case)
+    |  |        |  +---w install
+    |  |        |     +---w package?   string
+    |  |        +--:(status-case)
+    |  |        |  +---w status?        empty
+    |  |        +--:(unconfigure-case)
+    |  |        |  +---w unconfigure?   empty
+    |  |        +--:(uninstall-case)
+    |  |        |  +---w uninstall?     empty
+    |  |        +--:(upgrade-case)
+    |  |           +---w upgrade
+    |  |              +---w package?   string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x virtual-service
+    |  +---w input
+    |  |  +---w (operation)
+    |  |     +--:(install)
+    |  |     |  +---w install
+    |  |     |     +---w name?      string
+    |  |     |     +---w package?   string
+    |  |     |     +---w media?     string
+    |  |     +--:(uninstall)
+    |  |     |  +---w uninstall
+    |  |     |     +---w name?   string
+    |  |     +--:(upgrade)
+    |  |        +---w upgrade
+    |  |           +---w name?      string
+    |  |           +---w package?   string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x copy
+    |  +---w input
+    |  |  +---w _source         string
+    |  |  +---w _destination    string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x delete
+    |  +---w input
+    |  |  +---w _filename    string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x app-hosting
+    |  +---w input
+    |  |  +---w (lifecycle)
+    |  |     +--:(install)
+    |  |     |  +---w install
+    |  |     |     +---w appid?     string
+    |  |     |     +---w package?   string
+    |  |     +--:(uninstall)
+    |  |     |  +---w uninstall
+    |  |     |     +---w appid?   string
+    |  |     +--:(activate)
+    |  |     |  +---w activate
+    |  |     |     +---w appid?   string
+    |  |     +--:(deactivate)
+    |  |     |  +---w deactivate
+    |  |     |     +---w appid?   string
+    |  |     +--:(start)
+    |  |     |  +---w start
+    |  |     |     +---w appid?   string
+    |  |     +--:(stop)
+    |  |        +---w stop
+    |  |           +---w appid?   string
+    |  +--ro output
+    |     +--ro result?   string
+    +---x guestshell
+    |  +---w input
+    |  |  +---w (action)
+    |  |     +--:(destroy-case)
+    |  |     |  +---w destroy?   empty
+    |  |     +--:(disable-case)
+    |  |     |  +---w disable?   empty
+    |  |     +--:(enable-case)
+    |  |        +---w enable?    empty
+    |  +--ro output
+    |     +--ro result?   string
+    +---x start
+    |  +---w input
+    |  |  +---w maintenance?   empty
+    |  +--ro output
+    |     +--ro result?   string
+    +---x stop
+    |  +---w input
+    |  |  +---w maintenance?   empty
+    |  +--ro output
+    |     +--ro result?   string
+    +---x utd
+       +---w input
+       |  +---w threat-inspection
+       |     +---w signature
+       |        +---w (method)?
+       |           +--:(_saved)
+       |           |  +---w _saved
+       |           |     +---w update    empty
+       |           +--:(_manual)
+       |              +---w _manual
+       |                 +---w update
+       |                    +---w server
+       |                       +---w (type)?
+       |                          +--:(cisco)
+       |                          |  +---w cisco
+       |                          |     +---w username    string
+       |                          |     +---w password    string
+       |                          +--:(url)
+       |                             +---w url
+       |                                +---w (url-uname-passwd)?
+       |                                   +--:(_credentials)
+       |                                   |  +---w _credentials
+       |                                   |     +---w _url        string
+       |                                   |     +---w username    string
+       |                                   |     +---w password    string
+       |                                   +--:(_no-credentials)
+       |                                      +---w _no-credentials
+       |                                         +---w _url    string
+       +--ro output
+          +--ro result?   string
+Xpaths for model: Cisco-IOS-XE-rpc.yang

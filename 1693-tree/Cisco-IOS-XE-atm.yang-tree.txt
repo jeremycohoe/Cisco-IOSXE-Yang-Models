@@ -1,0 +1,797 @@
+ 
+KPI for model: Cisco-IOS-XE-atm.yang
+
+module: Cisco-IOS-XE-atm
+  augment /ios:native/ios:interface/ios:ATM:
+    +--rw ip
+    |  +--rw address?         inet:ipv4-address
+    |  +--rw split-horizon?   empty
+    +--rw atm
+    |  +--rw bandwidth?          enumeration
+    |  +--rw enable-ilmi-trap?   boolean
+    |  +--rw ilmi-keepalive?     empty
+    |  +--rw route-bridged?      enumeration
+    |  +--rw pvp* [pvp-number]
+    |     +--rw pvp-number                 uint16
+    |     +--rw l2transport?               empty
+    |     +--rw (xconnect-choice)?
+    |        +--:(xconnect)
+    |        |  +--rw xconnect
+    |        |     +--rw address?         inet:ipv4-address
+    |        |     +--rw vcid?            uint32
+    |        |     +--rw encapsulation?   enumeration
+    |        |     +--rw manual?          empty
+    |        |     +--rw pw-class?        string
+    |        |     +--rw sequencing?      enumeration
+    |        |     +--rw backup
+    |        |     |  +--rw peer
+    |        |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+    |        |     |  |  +--rw vcid?                  uint32
+    |        |     |  |  +--rw pw-class?              string
+    |        |     |  |  +--rw priority?              uint8
+    |        |     |  +--rw delay
+    |        |     |     +--rw min?   uint32
+    |        |     |     +--rw max?   uint32
+    |        |     +--rw mtu?             uint32
+    |        +--:(xconnect-pw-class)
+    |           +--rw xconnect-pw-class
+    |              +--rw xconnect
+    |                 +--rw address?    inet:ipv4-address
+    |                 +--rw vcid?       uint32
+    |                 +--rw pw-class?   string
+    |                 +--rw udp
+    |                    +--rw port
+    |                       +--rw local?    uint32
+    |                       +--rw remote?   uint32
+    +--rw load-interval?   uint32
+    +--rw cdp?             enumeration
+    +--rw cem* [number]
+    |  +--rw number                     uint32
+    |  +--rw (xconnect-choice)?
+    |     +--:(xconnect)
+    |     |  +--rw xconnect
+    |     |     +--rw address?         inet:ipv4-address
+    |     |     +--rw vcid?            uint32
+    |     |     +--rw encapsulation?   enumeration
+    |     |     +--rw manual?          empty
+    |     |     +--rw pw-class?        string
+    |     |     +--rw sequencing?      enumeration
+    |     |     +--rw backup
+    |     |     |  +--rw peer
+    |     |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+    |     |     |  |  +--rw vcid?                  uint32
+    |     |     |  |  +--rw pw-class?              string
+    |     |     |  |  +--rw priority?              uint8
+    |     |     |  +--rw delay
+    |     |     |     +--rw min?   uint32
+    |     |     |     +--rw max?   uint32
+    |     |     +--rw mtu?             uint32
+    |     +--:(xconnect-pw-class)
+    |        +--rw xconnect-pw-class
+    |           +--rw xconnect
+    |              +--rw address?    inet:ipv4-address
+    |              +--rw vcid?       uint32
+    |              +--rw pw-class?   string
+    |              +--rw udp
+    |                 +--rw port
+    |                    +--rw local?    uint32
+    |                    +--rw remote?   uint32
+    +--rw pvc* [local-vpi-vci]
+       +--rw local-vpi-vci              string
+       +--rw remote-vpi-vci?            string
+       +--rw l2transport?               empty
+       +--rw ubr?                       uint32
+       +--rw ubrplus
+       |  +--rw PCR?   uint32
+       |  +--rw MCR?   uint32
+       +--rw cbr?                       uint32
+       +--rw vbr?                       uint32
+       +--rw vbr-rt?                    uint32
+       +--rw vbr-nrt?                   uint32
+       +--rw oam-pvc!
+       |  +--rw loopback-frequency?   uint32
+       |  +--rw manage?               empty
+       +--rw service-policy
+       |  +--rw input?    string
+       |  +--rw output?   string
+       +--rw encapsulation
+       |  +--rw aal5autoppp
+       |  |  +--rw Virtual-Template?   uint32
+       |  +--rw aal5ciscoppp
+       |  |  +--rw Virtual-Template?   uint32
+       |  +--rw aal5mux
+       |  |  +--rw ppp
+       |  |     +--rw Virtual-Template?   uint32
+       |  |     +--rw dialer?             empty
+       |  +--rw aal5nlpid?      empty
+       |  +--rw aal5snap?       empty
+       +--rw (xconnect-choice)?
+          +--:(xconnect)
+          |  +--rw xconnect
+          |     +--rw address?         inet:ipv4-address
+          |     +--rw vcid?            uint32
+          |     +--rw encapsulation?   enumeration
+          |     +--rw manual?          empty
+          |     +--rw pw-class?        string
+          |     +--rw sequencing?      enumeration
+          |     +--rw backup
+          |     |  +--rw peer
+          |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+          |     |  |  +--rw vcid?                  uint32
+          |     |  |  +--rw pw-class?              string
+          |     |  |  +--rw priority?              uint8
+          |     |  +--rw delay
+          |     |     +--rw min?   uint32
+          |     |     +--rw max?   uint32
+          |     +--rw mtu?             uint32
+          +--:(xconnect-pw-class)
+             +--rw xconnect-pw-class
+                +--rw xconnect
+                   +--rw address?    inet:ipv4-address
+                   +--rw vcid?       uint32
+                   +--rw pw-class?   string
+                   +--rw udp
+                      +--rw port
+                         +--rw local?    uint32
+                         +--rw remote?   uint32
+  augment /ios:native/ios:interface/ios:ATM-subinterface/ios:ATM:
+    +--rw ip
+    |  +--rw address?         inet:ipv4-address
+    |  +--rw split-horizon?   empty
+    +--rw atm
+    |  +--rw bandwidth?          enumeration
+    |  +--rw enable-ilmi-trap?   boolean
+    |  +--rw ilmi-keepalive?     empty
+    |  +--rw route-bridged?      enumeration
+    |  +--rw pvp* [pvp-number]
+    |     +--rw pvp-number                 uint16
+    |     +--rw l2transport?               empty
+    |     +--rw (xconnect-choice)?
+    |        +--:(xconnect)
+    |        |  +--rw xconnect
+    |        |     +--rw address?         inet:ipv4-address
+    |        |     +--rw vcid?            uint32
+    |        |     +--rw encapsulation?   enumeration
+    |        |     +--rw manual?          empty
+    |        |     +--rw pw-class?        string
+    |        |     +--rw sequencing?      enumeration
+    |        |     +--rw backup
+    |        |     |  +--rw peer
+    |        |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+    |        |     |  |  +--rw vcid?                  uint32
+    |        |     |  |  +--rw pw-class?              string
+    |        |     |  |  +--rw priority?              uint8
+    |        |     |  +--rw delay
+    |        |     |     +--rw min?   uint32
+    |        |     |     +--rw max?   uint32
+    |        |     +--rw mtu?             uint32
+    |        +--:(xconnect-pw-class)
+    |           +--rw xconnect-pw-class
+    |              +--rw xconnect
+    |                 +--rw address?    inet:ipv4-address
+    |                 +--rw vcid?       uint32
+    |                 +--rw pw-class?   string
+    |                 +--rw udp
+    |                    +--rw port
+    |                       +--rw local?    uint32
+    |                       +--rw remote?   uint32
+    +--rw load-interval?   uint32
+    +--rw cdp?             enumeration
+    +--rw cem* [number]
+    |  +--rw number                     uint32
+    |  +--rw (xconnect-choice)?
+    |     +--:(xconnect)
+    |     |  +--rw xconnect
+    |     |     +--rw address?         inet:ipv4-address
+    |     |     +--rw vcid?            uint32
+    |     |     +--rw encapsulation?   enumeration
+    |     |     +--rw manual?          empty
+    |     |     +--rw pw-class?        string
+    |     |     +--rw sequencing?      enumeration
+    |     |     +--rw backup
+    |     |     |  +--rw peer
+    |     |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+    |     |     |  |  +--rw vcid?                  uint32
+    |     |     |  |  +--rw pw-class?              string
+    |     |     |  |  +--rw priority?              uint8
+    |     |     |  +--rw delay
+    |     |     |     +--rw min?   uint32
+    |     |     |     +--rw max?   uint32
+    |     |     +--rw mtu?             uint32
+    |     +--:(xconnect-pw-class)
+    |        +--rw xconnect-pw-class
+    |           +--rw xconnect
+    |              +--rw address?    inet:ipv4-address
+    |              +--rw vcid?       uint32
+    |              +--rw pw-class?   string
+    |              +--rw udp
+    |                 +--rw port
+    |                    +--rw local?    uint32
+    |                    +--rw remote?   uint32
+    +--rw pvc* [local-vpi-vci]
+       +--rw local-vpi-vci              string
+       +--rw remote-vpi-vci?            string
+       +--rw l2transport?               empty
+       +--rw ubr?                       uint32
+       +--rw ubrplus
+       |  +--rw PCR?   uint32
+       |  +--rw MCR?   uint32
+       +--rw cbr?                       uint32
+       +--rw vbr?                       uint32
+       +--rw vbr-rt?                    uint32
+       +--rw vbr-nrt?                   uint32
+       +--rw oam-pvc!
+       |  +--rw loopback-frequency?   uint32
+       |  +--rw manage?               empty
+       +--rw service-policy
+       |  +--rw input?    string
+       |  +--rw output?   string
+       +--rw encapsulation
+       |  +--rw aal5autoppp
+       |  |  +--rw Virtual-Template?   uint32
+       |  +--rw aal5ciscoppp
+       |  |  +--rw Virtual-Template?   uint32
+       |  +--rw aal5mux
+       |  |  +--rw ppp
+       |  |     +--rw Virtual-Template?   uint32
+       |  |     +--rw dialer?             empty
+       |  +--rw aal5nlpid?      empty
+       |  +--rw aal5snap?       empty
+       +--rw (xconnect-choice)?
+          +--:(xconnect)
+          |  +--rw xconnect
+          |     +--rw address?         inet:ipv4-address
+          |     +--rw vcid?            uint32
+          |     +--rw encapsulation?   enumeration
+          |     +--rw manual?          empty
+          |     +--rw pw-class?        string
+          |     +--rw sequencing?      enumeration
+          |     +--rw backup
+          |     |  +--rw peer
+          |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+          |     |  |  +--rw vcid?                  uint32
+          |     |  |  +--rw pw-class?              string
+          |     |  |  +--rw priority?              uint8
+          |     |  +--rw delay
+          |     |     +--rw min?   uint32
+          |     |     +--rw max?   uint32
+          |     +--rw mtu?             uint32
+          +--:(xconnect-pw-class)
+             +--rw xconnect-pw-class
+                +--rw xconnect
+                   +--rw address?    inet:ipv4-address
+                   +--rw vcid?       uint32
+                   +--rw pw-class?   string
+                   +--rw udp
+                      +--rw port
+                         +--rw local?    uint32
+                         +--rw remote?   uint32
+  augment /ios:native/ios:interface/ios:ATM-ACR:
+    +--rw ip
+    |  +--rw address?         inet:ipv4-address
+    |  +--rw split-horizon?   empty
+    +--rw atm
+    |  +--rw bandwidth?          enumeration
+    |  +--rw enable-ilmi-trap?   boolean
+    |  +--rw ilmi-keepalive?     empty
+    |  +--rw route-bridged?      enumeration
+    |  +--rw pvp* [pvp-number]
+    |     +--rw pvp-number                 uint16
+    |     +--rw l2transport?               empty
+    |     +--rw (xconnect-choice)?
+    |        +--:(xconnect)
+    |        |  +--rw xconnect
+    |        |     +--rw address?         inet:ipv4-address
+    |        |     +--rw vcid?            uint32
+    |        |     +--rw encapsulation?   enumeration
+    |        |     +--rw manual?          empty
+    |        |     +--rw pw-class?        string
+    |        |     +--rw sequencing?      enumeration
+    |        |     +--rw backup
+    |        |     |  +--rw peer
+    |        |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+    |        |     |  |  +--rw vcid?                  uint32
+    |        |     |  |  +--rw pw-class?              string
+    |        |     |  |  +--rw priority?              uint8
+    |        |     |  +--rw delay
+    |        |     |     +--rw min?   uint32
+    |        |     |     +--rw max?   uint32
+    |        |     +--rw mtu?             uint32
+    |        +--:(xconnect-pw-class)
+    |           +--rw xconnect-pw-class
+    |              +--rw xconnect
+    |                 +--rw address?    inet:ipv4-address
+    |                 +--rw vcid?       uint32
+    |                 +--rw pw-class?   string
+    |                 +--rw udp
+    |                    +--rw port
+    |                       +--rw local?    uint32
+    |                       +--rw remote?   uint32
+    +--rw load-interval?   uint32
+    +--rw cdp?             enumeration
+    +--rw cem* [number]
+    |  +--rw number                     uint32
+    |  +--rw (xconnect-choice)?
+    |     +--:(xconnect)
+    |     |  +--rw xconnect
+    |     |     +--rw address?         inet:ipv4-address
+    |     |     +--rw vcid?            uint32
+    |     |     +--rw encapsulation?   enumeration
+    |     |     +--rw manual?          empty
+    |     |     +--rw pw-class?        string
+    |     |     +--rw sequencing?      enumeration
+    |     |     +--rw backup
+    |     |     |  +--rw peer
+    |     |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+    |     |     |  |  +--rw vcid?                  uint32
+    |     |     |  |  +--rw pw-class?              string
+    |     |     |  |  +--rw priority?              uint8
+    |     |     |  +--rw delay
+    |     |     |     +--rw min?   uint32
+    |     |     |     +--rw max?   uint32
+    |     |     +--rw mtu?             uint32
+    |     +--:(xconnect-pw-class)
+    |        +--rw xconnect-pw-class
+    |           +--rw xconnect
+    |              +--rw address?    inet:ipv4-address
+    |              +--rw vcid?       uint32
+    |              +--rw pw-class?   string
+    |              +--rw udp
+    |                 +--rw port
+    |                    +--rw local?    uint32
+    |                    +--rw remote?   uint32
+    +--rw pvc* [local-vpi-vci]
+       +--rw local-vpi-vci              string
+       +--rw remote-vpi-vci?            string
+       +--rw l2transport?               empty
+       +--rw ubr?                       uint32
+       +--rw ubrplus
+       |  +--rw PCR?   uint32
+       |  +--rw MCR?   uint32
+       +--rw cbr?                       uint32
+       +--rw vbr?                       uint32
+       +--rw vbr-rt?                    uint32
+       +--rw vbr-nrt?                   uint32
+       +--rw oam-pvc!
+       |  +--rw loopback-frequency?   uint32
+       |  +--rw manage?               empty
+       +--rw service-policy
+       |  +--rw input?    string
+       |  +--rw output?   string
+       +--rw encapsulation
+       |  +--rw aal5autoppp
+       |  |  +--rw Virtual-Template?   uint32
+       |  +--rw aal5ciscoppp
+       |  |  +--rw Virtual-Template?   uint32
+       |  +--rw aal5mux
+       |  |  +--rw ppp
+       |  |     +--rw Virtual-Template?   uint32
+       |  |     +--rw dialer?             empty
+       |  +--rw aal5nlpid?      empty
+       |  +--rw aal5snap?       empty
+       +--rw (xconnect-choice)?
+          +--:(xconnect)
+          |  +--rw xconnect
+          |     +--rw address?         inet:ipv4-address
+          |     +--rw vcid?            uint32
+          |     +--rw encapsulation?   enumeration
+          |     +--rw manual?          empty
+          |     +--rw pw-class?        string
+          |     +--rw sequencing?      enumeration
+          |     +--rw backup
+          |     |  +--rw peer
+          |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+          |     |  |  +--rw vcid?                  uint32
+          |     |  |  +--rw pw-class?              string
+          |     |  |  +--rw priority?              uint8
+          |     |  +--rw delay
+          |     |     +--rw min?   uint32
+          |     |     +--rw max?   uint32
+          |     +--rw mtu?             uint32
+          +--:(xconnect-pw-class)
+             +--rw xconnect-pw-class
+                +--rw xconnect
+                   +--rw address?    inet:ipv4-address
+                   +--rw vcid?       uint32
+                   +--rw pw-class?   string
+                   +--rw udp
+                      +--rw port
+                         +--rw local?    uint32
+                         +--rw remote?   uint32
+  augment /ios:native/ios:interface/ios:ATM-ACRsubinterface/ios:ATM-ACR:
+    +--rw ip
+    |  +--rw address?         inet:ipv4-address
+    |  +--rw split-horizon?   empty
+    +--rw atm
+    |  +--rw bandwidth?          enumeration
+    |  +--rw enable-ilmi-trap?   boolean
+    |  +--rw ilmi-keepalive?     empty
+    |  +--rw route-bridged?      enumeration
+    |  +--rw pvp* [pvp-number]
+    |     +--rw pvp-number                 uint16
+    |     +--rw l2transport?               empty
+    |     +--rw (xconnect-choice)?
+    |        +--:(xconnect)
+    |        |  +--rw xconnect
+    |        |     +--rw address?         inet:ipv4-address
+    |        |     +--rw vcid?            uint32
+    |        |     +--rw encapsulation?   enumeration
+    |        |     +--rw manual?          empty
+    |        |     +--rw pw-class?        string
+    |        |     +--rw sequencing?      enumeration
+    |        |     +--rw backup
+    |        |     |  +--rw peer
+    |        |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+    |        |     |  |  +--rw vcid?                  uint32
+    |        |     |  |  +--rw pw-class?              string
+    |        |     |  |  +--rw priority?              uint8
+    |        |     |  +--rw delay
+    |        |     |     +--rw min?   uint32
+    |        |     |     +--rw max?   uint32
+    |        |     +--rw mtu?             uint32
+    |        +--:(xconnect-pw-class)
+    |           +--rw xconnect-pw-class
+    |              +--rw xconnect
+    |                 +--rw address?    inet:ipv4-address
+    |                 +--rw vcid?       uint32
+    |                 +--rw pw-class?   string
+    |                 +--rw udp
+    |                    +--rw port
+    |                       +--rw local?    uint32
+    |                       +--rw remote?   uint32
+    +--rw load-interval?   uint32
+    +--rw cdp?             enumeration
+    +--rw cem* [number]
+    |  +--rw number                     uint32
+    |  +--rw (xconnect-choice)?
+    |     +--:(xconnect)
+    |     |  +--rw xconnect
+    |     |     +--rw address?         inet:ipv4-address
+    |     |     +--rw vcid?            uint32
+    |     |     +--rw encapsulation?   enumeration
+    |     |     +--rw manual?          empty
+    |     |     +--rw pw-class?        string
+    |     |     +--rw sequencing?      enumeration
+    |     |     +--rw backup
+    |     |     |  +--rw peer
+    |     |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+    |     |     |  |  +--rw vcid?                  uint32
+    |     |     |  |  +--rw pw-class?              string
+    |     |     |  |  +--rw priority?              uint8
+    |     |     |  +--rw delay
+    |     |     |     +--rw min?   uint32
+    |     |     |     +--rw max?   uint32
+    |     |     +--rw mtu?             uint32
+    |     +--:(xconnect-pw-class)
+    |        +--rw xconnect-pw-class
+    |           +--rw xconnect
+    |              +--rw address?    inet:ipv4-address
+    |              +--rw vcid?       uint32
+    |              +--rw pw-class?   string
+    |              +--rw udp
+    |                 +--rw port
+    |                    +--rw local?    uint32
+    |                    +--rw remote?   uint32
+    +--rw pvc* [local-vpi-vci]
+       +--rw local-vpi-vci              string
+       +--rw remote-vpi-vci?            string
+       +--rw l2transport?               empty
+       +--rw ubr?                       uint32
+       +--rw ubrplus
+       |  +--rw PCR?   uint32
+       |  +--rw MCR?   uint32
+       +--rw cbr?                       uint32
+       +--rw vbr?                       uint32
+       +--rw vbr-rt?                    uint32
+       +--rw vbr-nrt?                   uint32
+       +--rw oam-pvc!
+       |  +--rw loopback-frequency?   uint32
+       |  +--rw manage?               empty
+       +--rw service-policy
+       |  +--rw input?    string
+       |  +--rw output?   string
+       +--rw encapsulation
+       |  +--rw aal5autoppp
+       |  |  +--rw Virtual-Template?   uint32
+       |  +--rw aal5ciscoppp
+       |  |  +--rw Virtual-Template?   uint32
+       |  +--rw aal5mux
+       |  |  +--rw ppp
+       |  |     +--rw Virtual-Template?   uint32
+       |  |     +--rw dialer?             empty
+       |  +--rw aal5nlpid?      empty
+       |  +--rw aal5snap?       empty
+       +--rw (xconnect-choice)?
+          +--:(xconnect)
+          |  +--rw xconnect
+          |     +--rw address?         inet:ipv4-address
+          |     +--rw vcid?            uint32
+          |     +--rw encapsulation?   enumeration
+          |     +--rw manual?          empty
+          |     +--rw pw-class?        string
+          |     +--rw sequencing?      enumeration
+          |     +--rw backup
+          |     |  +--rw peer
+          |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+          |     |  |  +--rw vcid?                  uint32
+          |     |  |  +--rw pw-class?              string
+          |     |  |  +--rw priority?              uint8
+          |     |  +--rw delay
+          |     |     +--rw min?   uint32
+          |     |     +--rw max?   uint32
+          |     +--rw mtu?             uint32
+          +--:(xconnect-pw-class)
+             +--rw xconnect-pw-class
+                +--rw xconnect
+                   +--rw address?    inet:ipv4-address
+                   +--rw vcid?       uint32
+                   +--rw pw-class?   string
+                   +--rw udp
+                      +--rw port
+                         +--rw local?    uint32
+                         +--rw remote?   uint32
+  augment /ios:native/ios:interface/ios:CEM:
+    +--rw ip
+    |  +--rw address?         inet:ipv4-address
+    |  +--rw split-horizon?   empty
+    +--rw atm
+    |  +--rw bandwidth?          enumeration
+    |  +--rw enable-ilmi-trap?   boolean
+    |  +--rw ilmi-keepalive?     empty
+    |  +--rw route-bridged?      enumeration
+    |  +--rw pvp* [pvp-number]
+    |     +--rw pvp-number                 uint16
+    |     +--rw l2transport?               empty
+    |     +--rw (xconnect-choice)?
+    |        +--:(xconnect)
+    |        |  +--rw xconnect
+    |        |     +--rw address?         inet:ipv4-address
+    |        |     +--rw vcid?            uint32
+    |        |     +--rw encapsulation?   enumeration
+    |        |     +--rw manual?          empty
+    |        |     +--rw pw-class?        string
+    |        |     +--rw sequencing?      enumeration
+    |        |     +--rw backup
+    |        |     |  +--rw peer
+    |        |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+    |        |     |  |  +--rw vcid?                  uint32
+    |        |     |  |  +--rw pw-class?              string
+    |        |     |  |  +--rw priority?              uint8
+    |        |     |  +--rw delay
+    |        |     |     +--rw min?   uint32
+    |        |     |     +--rw max?   uint32
+    |        |     +--rw mtu?             uint32
+    |        +--:(xconnect-pw-class)
+    |           +--rw xconnect-pw-class
+    |              +--rw xconnect
+    |                 +--rw address?    inet:ipv4-address
+    |                 +--rw vcid?       uint32
+    |                 +--rw pw-class?   string
+    |                 +--rw udp
+    |                    +--rw port
+    |                       +--rw local?    uint32
+    |                       +--rw remote?   uint32
+    +--rw load-interval?   uint32
+    +--rw cdp?             enumeration
+    +--rw cem* [number]
+    |  +--rw number                     uint32
+    |  +--rw (xconnect-choice)?
+    |     +--:(xconnect)
+    |     |  +--rw xconnect
+    |     |     +--rw address?         inet:ipv4-address
+    |     |     +--rw vcid?            uint32
+    |     |     +--rw encapsulation?   enumeration
+    |     |     +--rw manual?          empty
+    |     |     +--rw pw-class?        string
+    |     |     +--rw sequencing?      enumeration
+    |     |     +--rw backup
+    |     |     |  +--rw peer
+    |     |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+    |     |     |  |  +--rw vcid?                  uint32
+    |     |     |  |  +--rw pw-class?              string
+    |     |     |  |  +--rw priority?              uint8
+    |     |     |  +--rw delay
+    |     |     |     +--rw min?   uint32
+    |     |     |     +--rw max?   uint32
+    |     |     +--rw mtu?             uint32
+    |     +--:(xconnect-pw-class)
+    |        +--rw xconnect-pw-class
+    |           +--rw xconnect
+    |              +--rw address?    inet:ipv4-address
+    |              +--rw vcid?       uint32
+    |              +--rw pw-class?   string
+    |              +--rw udp
+    |                 +--rw port
+    |                    +--rw local?    uint32
+    |                    +--rw remote?   uint32
+    +--rw pvc* [local-vpi-vci]
+       +--rw local-vpi-vci              string
+       +--rw remote-vpi-vci?            string
+       +--rw l2transport?               empty
+       +--rw ubr?                       uint32
+       +--rw ubrplus
+       |  +--rw PCR?   uint32
+       |  +--rw MCR?   uint32
+       +--rw cbr?                       uint32
+       +--rw vbr?                       uint32
+       +--rw vbr-rt?                    uint32
+       +--rw vbr-nrt?                   uint32
+       +--rw oam-pvc!
+       |  +--rw loopback-frequency?   uint32
+       |  +--rw manage?               empty
+       +--rw service-policy
+       |  +--rw input?    string
+       |  +--rw output?   string
+       +--rw encapsulation
+       |  +--rw aal5autoppp
+       |  |  +--rw Virtual-Template?   uint32
+       |  +--rw aal5ciscoppp
+       |  |  +--rw Virtual-Template?   uint32
+       |  +--rw aal5mux
+       |  |  +--rw ppp
+       |  |     +--rw Virtual-Template?   uint32
+       |  |     +--rw dialer?             empty
+       |  +--rw aal5nlpid?      empty
+       |  +--rw aal5snap?       empty
+       +--rw (xconnect-choice)?
+          +--:(xconnect)
+          |  +--rw xconnect
+          |     +--rw address?         inet:ipv4-address
+          |     +--rw vcid?            uint32
+          |     +--rw encapsulation?   enumeration
+          |     +--rw manual?          empty
+          |     +--rw pw-class?        string
+          |     +--rw sequencing?      enumeration
+          |     +--rw backup
+          |     |  +--rw peer
+          |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+          |     |  |  +--rw vcid?                  uint32
+          |     |  |  +--rw pw-class?              string
+          |     |  |  +--rw priority?              uint8
+          |     |  +--rw delay
+          |     |     +--rw min?   uint32
+          |     |     +--rw max?   uint32
+          |     +--rw mtu?             uint32
+          +--:(xconnect-pw-class)
+             +--rw xconnect-pw-class
+                +--rw xconnect
+                   +--rw address?    inet:ipv4-address
+                   +--rw vcid?       uint32
+                   +--rw pw-class?   string
+                   +--rw udp
+                      +--rw port
+                         +--rw local?    uint32
+                         +--rw remote?   uint32
+  augment /ios:native/ios:interface/ios:CEM-ACR:
+    +--rw ip
+    |  +--rw address?         inet:ipv4-address
+    |  +--rw split-horizon?   empty
+    +--rw atm
+    |  +--rw bandwidth?          enumeration
+    |  +--rw enable-ilmi-trap?   boolean
+    |  +--rw ilmi-keepalive?     empty
+    |  +--rw route-bridged?      enumeration
+    |  +--rw pvp* [pvp-number]
+    |     +--rw pvp-number                 uint16
+    |     +--rw l2transport?               empty
+    |     +--rw (xconnect-choice)?
+    |        +--:(xconnect)
+    |        |  +--rw xconnect
+    |        |     +--rw address?         inet:ipv4-address
+    |        |     +--rw vcid?            uint32
+    |        |     +--rw encapsulation?   enumeration
+    |        |     +--rw manual?          empty
+    |        |     +--rw pw-class?        string
+    |        |     +--rw sequencing?      enumeration
+    |        |     +--rw backup
+    |        |     |  +--rw peer
+    |        |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+    |        |     |  |  +--rw vcid?                  uint32
+    |        |     |  |  +--rw pw-class?              string
+    |        |     |  |  +--rw priority?              uint8
+    |        |     |  +--rw delay
+    |        |     |     +--rw min?   uint32
+    |        |     |     +--rw max?   uint32
+    |        |     +--rw mtu?             uint32
+    |        +--:(xconnect-pw-class)
+    |           +--rw xconnect-pw-class
+    |              +--rw xconnect
+    |                 +--rw address?    inet:ipv4-address
+    |                 +--rw vcid?       uint32
+    |                 +--rw pw-class?   string
+    |                 +--rw udp
+    |                    +--rw port
+    |                       +--rw local?    uint32
+    |                       +--rw remote?   uint32
+    +--rw load-interval?   uint32
+    +--rw cdp?             enumeration
+    +--rw cem* [number]
+    |  +--rw number                     uint32
+    |  +--rw (xconnect-choice)?
+    |     +--:(xconnect)
+    |     |  +--rw xconnect
+    |     |     +--rw address?         inet:ipv4-address
+    |     |     +--rw vcid?            uint32
+    |     |     +--rw encapsulation?   enumeration
+    |     |     +--rw manual?          empty
+    |     |     +--rw pw-class?        string
+    |     |     +--rw sequencing?      enumeration
+    |     |     +--rw backup
+    |     |     |  +--rw peer
+    |     |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+    |     |     |  |  +--rw vcid?                  uint32
+    |     |     |  |  +--rw pw-class?              string
+    |     |     |  |  +--rw priority?              uint8
+    |     |     |  +--rw delay
+    |     |     |     +--rw min?   uint32
+    |     |     |     +--rw max?   uint32
+    |     |     +--rw mtu?             uint32
+    |     +--:(xconnect-pw-class)
+    |        +--rw xconnect-pw-class
+    |           +--rw xconnect
+    |              +--rw address?    inet:ipv4-address
+    |              +--rw vcid?       uint32
+    |              +--rw pw-class?   string
+    |              +--rw udp
+    |                 +--rw port
+    |                    +--rw local?    uint32
+    |                    +--rw remote?   uint32
+    +--rw pvc* [local-vpi-vci]
+       +--rw local-vpi-vci              string
+       +--rw remote-vpi-vci?            string
+       +--rw l2transport?               empty
+       +--rw ubr?                       uint32
+       +--rw ubrplus
+       |  +--rw PCR?   uint32
+       |  +--rw MCR?   uint32
+       +--rw cbr?                       uint32
+       +--rw vbr?                       uint32
+       +--rw vbr-rt?                    uint32
+       +--rw vbr-nrt?                   uint32
+       +--rw oam-pvc!
+       |  +--rw loopback-frequency?   uint32
+       |  +--rw manage?               empty
+       +--rw service-policy
+       |  +--rw input?    string
+       |  +--rw output?   string
+       +--rw encapsulation
+       |  +--rw aal5autoppp
+       |  |  +--rw Virtual-Template?   uint32
+       |  +--rw aal5ciscoppp
+       |  |  +--rw Virtual-Template?   uint32
+       |  +--rw aal5mux
+       |  |  +--rw ppp
+       |  |     +--rw Virtual-Template?   uint32
+       |  |     +--rw dialer?             empty
+       |  +--rw aal5nlpid?      empty
+       |  +--rw aal5snap?       empty
+       +--rw (xconnect-choice)?
+          +--:(xconnect)
+          |  +--rw xconnect
+          |     +--rw address?         inet:ipv4-address
+          |     +--rw vcid?            uint32
+          |     +--rw encapsulation?   enumeration
+          |     +--rw manual?          empty
+          |     +--rw pw-class?        string
+          |     +--rw sequencing?      enumeration
+          |     +--rw backup
+          |     |  +--rw peer
+          |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+          |     |  |  +--rw vcid?                  uint32
+          |     |  |  +--rw pw-class?              string
+          |     |  |  +--rw priority?              uint8
+          |     |  +--rw delay
+          |     |     +--rw min?   uint32
+          |     |     +--rw max?   uint32
+          |     +--rw mtu?             uint32
+          +--:(xconnect-pw-class)
+             +--rw xconnect-pw-class
+                +--rw xconnect
+                   +--rw address?    inet:ipv4-address
+                   +--rw vcid?       uint32
+                   +--rw pw-class?   string
+                   +--rw udp
+                      +--rw port
+                         +--rw local?    uint32
+                         +--rw remote?   uint32
+Xpaths for model: Cisco-IOS-XE-atm.yang

@@ -1,0 +1,357 @@
+ 
+KPI for model: Cisco-IOS-XE-spanning-tree.yang
+
+module: Cisco-IOS-XE-spanning-tree
+  augment /ios:native/ios:spanning-tree:
+    +--rw backbonefast?   empty
+    +--rw bridge
+    |  +--rw priority?    uint8
+    |  +--rw ID?          string
+    |  +--rw assurance?   boolean
+    +--rw etherchannel
+    |  +--rw guard
+    |     +--rw misconfig?   boolean
+    +--rw extend
+    |  +--rw system-id?   empty
+    +--rw logging?        empty
+    +--rw loopguard
+    |  +--rw default?   empty
+    +--rw mst
+    |  +--rw instance-range* [id]
+    |  |  +--rw id          union
+    |  |  +--rw priority?   uint16
+    |  |  +--rw root?       enumeration
+    |  +--rw configuration
+    |  |  +--rw name?           string
+    |  |  +--rw instance* [id]
+    |  |  |  +--rw id      uint16
+    |  |  |  +--rw vlan*   union
+    |  |  +--rw private-vlan
+    |  |  |  +--rw synchronize?   empty
+    |  |  +--rw revision?       uint16
+    |  +--rw forward-time?     uint8
+    |  +--rw hello-time?       uint8
+    |  +--rw max-age?          uint8
+    |  +--rw max-hops?         uint8
+    +--rw optimize
+    |  +--rw bpdu
+    |     +--rw transmission?   boolean
+    +--rw pathcost
+    |  +--rw method
+    |     +--rw long?    empty
+    |     +--rw short?   empty
+    +--rw portfast
+    |  +--rw bpdufilter
+    |  |  +--rw default?   empty
+    |  +--rw bpduguard
+    |  |  +--rw default?   empty
+    |  +--rw default?      empty
+    +--rw transmit
+    |  +--rw hold-count?   uint8
+    +--rw uplinkfast!
+    |  +--rw max-update-rate?   uint32
+    +--rw mode?           enumeration
+    +--rw vlan* [id]
+       +--rw id              string
+       +--rw max-age?        uint8
+       +--rw forward-time?   uint8
+       +--rw hello-time?     uint8
+       +--rw priority?       uint16
+       +--rw root
+          +--rw primary
+          |  +--rw diameter?     uint8
+          |  +--rw hello-time?   uint8
+          +--rw secondary
+             +--rw diameter?     uint8
+             +--rw hello-time?   uint8
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw spanning-tree
+       +--rw bpdufilter?      enumeration
+       +--rw bpduguard
+       |  +--rw (bpduguard-choice)?
+       |     +--:(disable)
+       |     |  +--rw disable?   empty
+       |     +--:(enable)
+       |        +--rw enable?    empty
+       +--rw cost?            uint32
+       +--rw guard?           enumeration
+       +--rw link-type?       enumeration
+       +--rw portfast!
+       |  +--rw disable?   empty
+       |  +--rw trunk?     empty
+       |  +--rw edge?      empty
+       +--rw port-priority?   uint8
+       +--rw vlan* [vlan-ids]
+       |  +--rw vlan-ids         string
+       |  +--rw cost?            uint32
+       |  +--rw port-priority?   uint16
+       +--rw loopguard
+       |  +--rw default?   empty
+       +--rw mst
+          +--rw mst-instance* [instance]
+          |  +--rw instance         string
+          |  +--rw cost?            uint32
+          |  +--rw port-priority?   uint16
+          +--rw pre-standard?   empty
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw spanning-tree
+       +--rw bpdufilter?      enumeration
+       +--rw bpduguard
+       |  +--rw (bpduguard-choice)?
+       |     +--:(disable)
+       |     |  +--rw disable?   empty
+       |     +--:(enable)
+       |        +--rw enable?    empty
+       +--rw cost?            uint32
+       +--rw guard?           enumeration
+       +--rw link-type?       enumeration
+       +--rw portfast!
+       |  +--rw disable?   empty
+       |  +--rw trunk?     empty
+       |  +--rw edge?      empty
+       +--rw port-priority?   uint8
+       +--rw vlan* [vlan-ids]
+       |  +--rw vlan-ids         string
+       |  +--rw cost?            uint32
+       |  +--rw port-priority?   uint16
+       +--rw loopguard
+       |  +--rw default?   empty
+       +--rw mst
+          +--rw mst-instance* [instance]
+          |  +--rw instance         string
+          |  +--rw cost?            uint32
+          |  +--rw port-priority?   uint16
+          +--rw pre-standard?   empty
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw spanning-tree
+       +--rw bpdufilter?      enumeration
+       +--rw bpduguard
+       |  +--rw (bpduguard-choice)?
+       |     +--:(disable)
+       |     |  +--rw disable?   empty
+       |     +--:(enable)
+       |        +--rw enable?    empty
+       +--rw cost?            uint32
+       +--rw guard?           enumeration
+       +--rw link-type?       enumeration
+       +--rw portfast!
+       |  +--rw disable?   empty
+       |  +--rw trunk?     empty
+       |  +--rw edge?      empty
+       +--rw port-priority?   uint8
+       +--rw vlan* [vlan-ids]
+       |  +--rw vlan-ids         string
+       |  +--rw cost?            uint32
+       |  +--rw port-priority?   uint16
+       +--rw loopguard
+       |  +--rw default?   empty
+       +--rw mst
+          +--rw mst-instance* [instance]
+          |  +--rw instance         string
+          |  +--rw cost?            uint32
+          |  +--rw port-priority?   uint16
+          +--rw pre-standard?   empty
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw spanning-tree
+       +--rw bpdufilter?      enumeration
+       +--rw bpduguard
+       |  +--rw (bpduguard-choice)?
+       |     +--:(disable)
+       |     |  +--rw disable?   empty
+       |     +--:(enable)
+       |        +--rw enable?    empty
+       +--rw cost?            uint32
+       +--rw guard?           enumeration
+       +--rw link-type?       enumeration
+       +--rw portfast!
+       |  +--rw disable?   empty
+       |  +--rw trunk?     empty
+       |  +--rw edge?      empty
+       +--rw port-priority?   uint8
+       +--rw vlan* [vlan-ids]
+       |  +--rw vlan-ids         string
+       |  +--rw cost?            uint32
+       |  +--rw port-priority?   uint16
+       +--rw loopguard
+       |  +--rw default?   empty
+       +--rw mst
+          +--rw mst-instance* [instance]
+          |  +--rw instance         string
+          |  +--rw cost?            uint32
+          |  +--rw port-priority?   uint16
+          +--rw pre-standard?   empty
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw spanning-tree
+       +--rw bpdufilter?      enumeration
+       +--rw bpduguard
+       |  +--rw (bpduguard-choice)?
+       |     +--:(disable)
+       |     |  +--rw disable?   empty
+       |     +--:(enable)
+       |        +--rw enable?    empty
+       +--rw cost?            uint32
+       +--rw guard?           enumeration
+       +--rw link-type?       enumeration
+       +--rw portfast!
+       |  +--rw disable?   empty
+       |  +--rw trunk?     empty
+       |  +--rw edge?      empty
+       +--rw port-priority?   uint8
+       +--rw vlan* [vlan-ids]
+       |  +--rw vlan-ids         string
+       |  +--rw cost?            uint32
+       |  +--rw port-priority?   uint16
+       +--rw loopguard
+       |  +--rw default?   empty
+       +--rw mst
+          +--rw mst-instance* [instance]
+          |  +--rw instance         string
+          |  +--rw cost?            uint32
+          |  +--rw port-priority?   uint16
+          +--rw pre-standard?   empty
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw spanning-tree
+       +--rw bpdufilter?      enumeration
+       +--rw bpduguard
+       |  +--rw (bpduguard-choice)?
+       |     +--:(disable)
+       |     |  +--rw disable?   empty
+       |     +--:(enable)
+       |        +--rw enable?    empty
+       +--rw cost?            uint32
+       +--rw guard?           enumeration
+       +--rw link-type?       enumeration
+       +--rw portfast!
+       |  +--rw disable?   empty
+       |  +--rw trunk?     empty
+       |  +--rw edge?      empty
+       +--rw port-priority?   uint8
+       +--rw vlan* [vlan-ids]
+       |  +--rw vlan-ids         string
+       |  +--rw cost?            uint32
+       |  +--rw port-priority?   uint16
+       +--rw loopguard
+       |  +--rw default?   empty
+       +--rw mst
+          +--rw mst-instance* [instance]
+          |  +--rw instance         string
+          |  +--rw cost?            uint32
+          |  +--rw port-priority?   uint16
+          +--rw pre-standard?   empty
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw spanning-tree
+       +--rw bpdufilter?      enumeration
+       +--rw bpduguard
+       |  +--rw (bpduguard-choice)?
+       |     +--:(disable)
+       |     |  +--rw disable?   empty
+       |     +--:(enable)
+       |        +--rw enable?    empty
+       +--rw cost?            uint32
+       +--rw guard?           enumeration
+       +--rw link-type?       enumeration
+       +--rw portfast!
+       |  +--rw disable?   empty
+       |  +--rw trunk?     empty
+       |  +--rw edge?      empty
+       +--rw port-priority?   uint8
+       +--rw vlan* [vlan-ids]
+       |  +--rw vlan-ids         string
+       |  +--rw cost?            uint32
+       |  +--rw port-priority?   uint16
+       +--rw loopguard
+       |  +--rw default?   empty
+       +--rw mst
+          +--rw mst-instance* [instance]
+          |  +--rw instance         string
+          |  +--rw cost?            uint32
+          |  +--rw port-priority?   uint16
+          +--rw pre-standard?   empty
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw spanning-tree
+       +--rw bpdufilter?      enumeration
+       +--rw bpduguard
+       |  +--rw (bpduguard-choice)?
+       |     +--:(disable)
+       |     |  +--rw disable?   empty
+       |     +--:(enable)
+       |        +--rw enable?    empty
+       +--rw cost?            uint32
+       +--rw guard?           enumeration
+       +--rw link-type?       enumeration
+       +--rw portfast!
+       |  +--rw disable?   empty
+       |  +--rw trunk?     empty
+       |  +--rw edge?      empty
+       +--rw port-priority?   uint8
+       +--rw vlan* [vlan-ids]
+       |  +--rw vlan-ids         string
+       |  +--rw cost?            uint32
+       |  +--rw port-priority?   uint16
+       +--rw loopguard
+       |  +--rw default?   empty
+       +--rw mst
+          +--rw mst-instance* [instance]
+          |  +--rw instance         string
+          |  +--rw cost?            uint32
+          |  +--rw port-priority?   uint16
+          +--rw pre-standard?   empty
+  augment /ios:native/ios:interface/ios:Port-channel:
+    +--rw spanning-tree
+       +--rw bpdufilter?      enumeration
+       +--rw bpduguard
+       |  +--rw (bpduguard-choice)?
+       |     +--:(disable)
+       |     |  +--rw disable?   empty
+       |     +--:(enable)
+       |        +--rw enable?    empty
+       +--rw cost?            uint32
+       +--rw guard?           enumeration
+       +--rw link-type?       enumeration
+       +--rw portfast!
+       |  +--rw disable?   empty
+       |  +--rw trunk?     empty
+       |  +--rw edge?      empty
+       +--rw port-priority?   uint8
+       +--rw vlan* [vlan-ids]
+       |  +--rw vlan-ids         string
+       |  +--rw cost?            uint32
+       |  +--rw port-priority?   uint16
+       +--rw loopguard
+       |  +--rw default?   empty
+       +--rw mst
+          +--rw mst-instance* [instance]
+          |  +--rw instance         string
+          |  +--rw cost?            uint32
+          |  +--rw port-priority?   uint16
+          +--rw pre-standard?   empty
+  augment /ios:native/ios:interface/ios:Vlan:
+    +--rw spanning-tree
+       +--rw bpdufilter?      enumeration
+       +--rw bpduguard
+       |  +--rw (bpduguard-choice)?
+       |     +--:(disable)
+       |     |  +--rw disable?   empty
+       |     +--:(enable)
+       |        +--rw enable?    empty
+       +--rw cost?            uint32
+       +--rw guard?           enumeration
+       +--rw link-type?       enumeration
+       +--rw portfast!
+       |  +--rw disable?   empty
+       |  +--rw trunk?     empty
+       |  +--rw edge?      empty
+       +--rw port-priority?   uint8
+       +--rw vlan* [vlan-ids]
+       |  +--rw vlan-ids         string
+       |  +--rw cost?            uint32
+       |  +--rw port-priority?   uint16
+       +--rw loopguard
+       |  +--rw default?   empty
+       +--rw mst
+          +--rw mst-instance* [instance]
+          |  +--rw instance         string
+          |  +--rw cost?            uint32
+          |  +--rw port-priority?   uint16
+          +--rw pre-standard?   empty
+Xpaths for model: Cisco-IOS-XE-spanning-tree.yang

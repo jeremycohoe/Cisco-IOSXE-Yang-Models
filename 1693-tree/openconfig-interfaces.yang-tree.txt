@@ -1,0 +1,160 @@
+ 
+KPI for model: openconfig-interfaces.yang
+module: openconfig-interfaces
+  +--rw interfaces
+     +--rw interface* [name]
+        +--rw name             -> ../config/name
+        +--rw config
+        |  +--rw name?            string
+        |  +--rw type             identityref
+        |  +--rw mtu?             uint16
+        |  +--rw loopback-mode?   boolean
+        |  +--rw description?     string
+        |  +--rw enabled?         boolean
+        +--ro state
+        |  +--ro name?            string
+        |  +--ro type             identityref
+        |  +--ro mtu?             uint16
+        |  +--ro loopback-mode?   boolean
+        |  +--ro description?     string
+        |  +--ro enabled?         boolean
+        |  +--ro ifindex?         uint32
+        |  +--ro admin-status     enumeration
+        |  +--ro oper-status      enumeration
+        |  +--ro last-change?     oc-types:timeticks64
+        |  +--ro counters
+        |     +--ro in-octets?             oc-yang:counter64
+        |     +--ro in-unicast-pkts?       oc-yang:counter64
+        |     +--ro in-broadcast-pkts?     oc-yang:counter64
+        |     +--ro in-multicast-pkts?     oc-yang:counter64
+        |     +--ro in-discards?           oc-yang:counter64
+        |     +--ro in-errors?             oc-yang:counter64
+        |     +--ro in-unknown-protos?     oc-yang:counter64
+        |     +--ro in-fcs-errors?         oc-yang:counter64
+        |     +--ro out-octets?            oc-yang:counter64
+        |     +--ro out-unicast-pkts?      oc-yang:counter64
+        |     +--ro out-broadcast-pkts?    oc-yang:counter64
+        |     +--ro out-multicast-pkts?    oc-yang:counter64
+        |     +--ro out-discards?          oc-yang:counter64
+        |     +--ro out-errors?            oc-yang:counter64
+        |     +--ro carrier-transitions?   oc-yang:counter64
+        |     +--ro last-clear?            oc-types:timeticks64
+        +--rw hold-time
+        |  +--rw config
+        |  |  +--rw up?     uint32
+        |  |  +--rw down?   uint32
+        |  +--ro state
+        |     +--ro up?     uint32
+        |     +--ro down?   uint32
+        +--rw subinterfaces
+           +--rw subinterface* [index]
+              +--rw index     -> ../config/index
+              +--rw config
+              |  +--rw index?         uint32
+              |  +--rw description?   string
+              |  +--rw enabled?       boolean
+              +--ro state
+                 +--ro index?          uint32
+                 +--ro description?    string
+                 +--ro enabled?        boolean
+                 +--ro name?           string
+                 +--ro ifindex?        uint32
+                 +--ro admin-status    enumeration
+                 +--ro oper-status     enumeration
+                 +--ro last-change?    oc-types:timeticks64
+                 +--ro counters
+                    +--ro in-octets?             oc-yang:counter64
+                    +--ro in-unicast-pkts?       oc-yang:counter64
+                    +--ro in-broadcast-pkts?     oc-yang:counter64
+                    +--ro in-multicast-pkts?     oc-yang:counter64
+                    +--ro in-discards?           oc-yang:counter64
+                    +--ro in-errors?             oc-yang:counter64
+                    +--ro in-unknown-protos?     oc-yang:counter64
+                    +--ro in-fcs-errors?         oc-yang:counter64
+                    +--ro out-octets?            oc-yang:counter64
+                    +--ro out-unicast-pkts?      oc-yang:counter64
+                    +--ro out-broadcast-pkts?    oc-yang:counter64
+                    +--ro out-multicast-pkts?    oc-yang:counter64
+                    +--ro out-discards?          oc-yang:counter64
+                    +--ro out-errors?            oc-yang:counter64
+                    +--ro carrier-transitions?   oc-yang:counter64
+                    +--ro last-clear?            oc-types:timeticks64
+Xpaths for model: openconfig-interfaces.yang
+/oc-if:interfaces,container,
+/oc-if:interfaces/oc-if:interface,list,
+/oc-if:interfaces/oc-if:interface/oc-if:name,leaf,leafref
+/oc-if:interfaces/oc-if:interface/oc-if:config,container,
+/oc-if:interfaces/oc-if:interface/oc-if:config/oc-if:name,leaf,string
+/oc-if:interfaces/oc-if:interface/oc-if:config/oc-if:type,leaf,identityref
+/oc-if:interfaces/oc-if:interface/oc-if:config/oc-if:mtu,leaf,uint16
+/oc-if:interfaces/oc-if:interface/oc-if:config/oc-if:loopback-mode,leaf,boolean
+/oc-if:interfaces/oc-if:interface/oc-if:config/oc-if:description,leaf,string
+/oc-if:interfaces/oc-if:interface/oc-if:config/oc-if:enabled,leaf,boolean
+/oc-if:interfaces/oc-if:interface/oc-if:state,container,
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:name,leaf,string
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:type,leaf,identityref
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:mtu,leaf,uint16
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:loopback-mode,leaf,boolean
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:description,leaf,string
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:enabled,leaf,boolean
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:ifindex,leaf,uint32
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:admin-status,leaf,enumeration
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:oper-status,leaf,enumeration
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:last-change,leaf,oc-types:timeticks64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters,container,
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:in-octets,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:in-unicast-pkts,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:in-broadcast-pkts,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:in-multicast-pkts,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:in-discards,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:in-errors,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:in-unknown-protos,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:in-fcs-errors,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:out-octets,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:out-unicast-pkts,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:out-broadcast-pkts,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:out-multicast-pkts,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:out-discards,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:out-errors,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:carrier-transitions,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:state/oc-if:counters/oc-if:last-clear,leaf,oc-types:timeticks64
+/oc-if:interfaces/oc-if:interface/oc-if:hold-time,container,
+/oc-if:interfaces/oc-if:interface/oc-if:hold-time/oc-if:config,container,
+/oc-if:interfaces/oc-if:interface/oc-if:hold-time/oc-if:config/oc-if:up,leaf,uint32
+/oc-if:interfaces/oc-if:interface/oc-if:hold-time/oc-if:config/oc-if:down,leaf,uint32
+/oc-if:interfaces/oc-if:interface/oc-if:hold-time/oc-if:state,container,
+/oc-if:interfaces/oc-if:interface/oc-if:hold-time/oc-if:state/oc-if:up,leaf,uint32
+/oc-if:interfaces/oc-if:interface/oc-if:hold-time/oc-if:state/oc-if:down,leaf,uint32
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces,container,
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface,list,
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:index,leaf,leafref
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:config,container,
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:config/oc-if:index,leaf,uint32
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:config/oc-if:description,leaf,string
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:config/oc-if:enabled,leaf,boolean
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state,container,
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:index,leaf,uint32
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:description,leaf,string
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:enabled,leaf,boolean
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:name,leaf,string
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:ifindex,leaf,uint32
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:admin-status,leaf,enumeration
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:oper-status,leaf,enumeration
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:last-change,leaf,oc-types:timeticks64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters,container,
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:in-octets,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:in-unicast-pkts,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:in-broadcast-pkts,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:in-multicast-pkts,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:in-discards,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:in-errors,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:in-unknown-protos,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:in-fcs-errors,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:out-octets,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:out-unicast-pkts,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:out-broadcast-pkts,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:out-multicast-pkts,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:out-discards,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:out-errors,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:carrier-transitions,leaf,oc-yang:counter64
+/oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface/oc-if:state/oc-if:counters/oc-if:last-clear,leaf,oc-types:timeticks64

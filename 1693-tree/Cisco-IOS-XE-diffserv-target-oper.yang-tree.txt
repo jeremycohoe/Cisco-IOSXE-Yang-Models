@@ -1,0 +1,62 @@
+ 
+KPI for model: Cisco-IOS-XE-diffserv-target-oper.yang
+module: Cisco-IOS-XE-diffserv-target-oper
+  +--ro diffserv-interfaces-state
+     +--ro diffserv-interface* [name]
+        +--ro name                     string
+        +--ro diffserv-target-entry* [direction policy-name]
+           +--ro direction                                identityref
+           +--ro policy-name                              string
+           +--ro diffserv-target-classifier-statistics* [classifier-entry-name parent-path]
+              +--ro classifier-entry-name          string
+              +--ro parent-path                    string
+              +--ro classifier-entry-statistics
+              |  +--ro classified-pkts?    uint64
+              |  +--ro classified-bytes?   uint64
+              |  +--ro classified-rate?    uint64
+              +--ro meter-statistics* [meter-id]
+              |  +--ro meter-id               uint16
+              |  +--ro meter-succeed-pkts?    uint64
+              |  +--ro meter-succeed-bytes?   uint64
+              |  +--ro meter-failed-pkts?     uint64
+              |  +--ro meter-failed-bytes?    uint64
+              +--ro queuing-statistics
+                 +--ro output-pkts?        uint64
+                 +--ro output-bytes?       uint64
+                 +--ro queue-size-pkts?    uint64
+                 +--ro queue-size-bytes?   uint64
+                 +--ro drop-pkts?          uint64
+                 +--ro drop-bytes?         uint64
+                 +--ro wred-stats
+                    +--ro early-drop-pkts?    uint64
+                    +--ro early-drop-bytes?   uint64
+Xpaths for model: Cisco-IOS-XE-diffserv-target-oper.yang
+/diffserv-target-oper:diffserv-interfaces-state,container,
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface,list,
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:name,leaf,string
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry,list,
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:direction,leaf,identityref
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:policy-name,leaf,string
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics,list,
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:classifier-entry-name,leaf,string
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:parent-path,leaf,string
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:classifier-entry-statistics,container,
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:classifier-entry-statistics/diffserv-target-oper:classified-pkts,leaf,uint64
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:classifier-entry-statistics/diffserv-target-oper:classified-bytes,leaf,uint64
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:classifier-entry-statistics/diffserv-target-oper:classified-rate,leaf,uint64
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:meter-statistics,list,
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:meter-statistics/diffserv-target-oper:meter-id,leaf,uint16
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:meter-statistics/diffserv-target-oper:meter-succeed-pkts,leaf,uint64
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:meter-statistics/diffserv-target-oper:meter-succeed-bytes,leaf,uint64
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:meter-statistics/diffserv-target-oper:meter-failed-pkts,leaf,uint64
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:meter-statistics/diffserv-target-oper:meter-failed-bytes,leaf,uint64
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:queuing-statistics,container,
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:queuing-statistics/diffserv-target-oper:output-pkts,leaf,uint64
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:queuing-statistics/diffserv-target-oper:output-bytes,leaf,uint64
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:queuing-statistics/diffserv-target-oper:queue-size-pkts,leaf,uint64
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:queuing-statistics/diffserv-target-oper:queue-size-bytes,leaf,uint64
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:queuing-statistics/diffserv-target-oper:drop-pkts,leaf,uint64
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:queuing-statistics/diffserv-target-oper:drop-bytes,leaf,uint64
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:queuing-statistics/diffserv-target-oper:wred-stats,container,
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:queuing-statistics/diffserv-target-oper:wred-stats/diffserv-target-oper:early-drop-pkts,leaf,uint64
+/diffserv-target-oper:diffserv-interfaces-state/diffserv-target-oper:diffserv-interface/diffserv-target-oper:diffserv-target-entry/diffserv-target-oper:diffserv-target-classifier-statistics/diffserv-target-oper:queuing-statistics/diffserv-target-oper:wred-stats/diffserv-target-oper:early-drop-bytes,leaf,uint64

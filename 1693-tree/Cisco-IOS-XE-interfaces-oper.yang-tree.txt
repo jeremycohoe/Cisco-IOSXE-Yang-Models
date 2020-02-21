@@ -1,0 +1,752 @@
+ 
+KPI for model: Cisco-IOS-XE-interfaces-oper.yang
+module: Cisco-IOS-XE-interfaces-oper
+  +--ro interfaces
+     +--ro interface* [name]
+        +--ro name                            string
+        +--ro interface-type?                 interfaces-ios-xe-oper:ietf-intf-type
+        +--ro admin-status?                   interfaces-ios-xe-oper:intf-state
+        +--ro oper-status?                    interfaces-ios-xe-oper:oper-state
+        +--ro last-change?                    yang:date-and-time
+        +--ro if-index?                       int32
+        +--ro phys-address?                   yang:mac-address
+        +--ro higher-layer-if*                string
+        +--ro lower-layer-if*                 string
+        +--ro speed?                          uint64
+        +--ro statistics
+        |  +--ro discontinuity-time?   yang:date-and-time
+        |  +--ro in-octets?            uint64
+        |  +--ro in-unicast-pkts?      uint64
+        |  +--ro in-broadcast-pkts?    uint64
+        |  +--ro in-multicast-pkts?    uint64
+        |  +--ro in-discards?          uint32
+        |  +--ro in-errors?            uint32
+        |  +--ro in-unknown-protos?    uint32
+        |  +--ro out-octets?           uint32
+        |  +--ro out-unicast-pkts?     uint64
+        |  +--ro out-broadcast-pkts?   uint64
+        |  +--ro out-multicast-pkts?   uint64
+        |  +--ro out-discards?         uint64
+        |  +--ro out-errors?           uint64
+        |  +--ro rx-pps?               uint64
+        |  +--ro rx-kbps?              uint64
+        |  +--ro tx-pps?               uint64
+        |  +--ro tx-kbps?              uint64
+        |  +--ro num-flaps?            uint64
+        |  +--ro in-crc-errors?        uint64
+        +--ro diffserv-info* [direction policy-name]
+        |  +--ro direction                           interfaces-ios-xe-oper:qos-direction
+        |  +--ro policy-name                         string
+        |  +--ro diffserv-target-classifier-stats* [classifier-entry-name parent-path]
+        |  |  +--ro classifier-entry-name     string
+        |  |  +--ro parent-path               string
+        |  |  +--ro classifier-entry-stats
+        |  |  |  +--ro classified-pkts?    uint64
+        |  |  |  +--ro classified-bytes?   uint64
+        |  |  |  +--ro classified-rate?    uint64
+        |  |  +--ro meter-stats* [meter-id]
+        |  |  |  +--ro meter-id               uint16
+        |  |  |  +--ro meter-succeed-pkts?    uint64
+        |  |  |  +--ro meter-succeed-bytes?   uint64
+        |  |  |  +--ro meter-failed-pkts?     uint64
+        |  |  |  +--ro meter-failed-bytes?    uint64
+        |  |  +--ro queuing-stats
+        |  |  |  +--ro output-pkts?        uint64
+        |  |  |  +--ro output-bytes?       uint64
+        |  |  |  +--ro queue-size-pkts?    uint64
+        |  |  |  +--ro queue-size-bytes?   uint64
+        |  |  |  +--ro drop-pkts?          uint64
+        |  |  |  +--ro drop-bytes?         uint64
+        |  |  |  +--ro wred-stats
+        |  |  |  |  +--ro early-drop-pkts?          uint64
+        |  |  |  |  +--ro early-drop-bytes?         uint64
+        |  |  |  |  +--ro mean-queue-depth?         uint16
+        |  |  |  |  +--ro transmitted-pkts?         uint64
+        |  |  |  |  +--ro transmitted-bytes?        uint64
+        |  |  |  |  +--ro tail-drop-pkts?           uint64
+        |  |  |  |  +--ro tail-drop-bytes?          uint64
+        |  |  |  |  +--ro drop-pkts-flow?           uint64
+        |  |  |  |  +--ro drop-pkts-no-buffer?      uint64
+        |  |  |  |  +--ro queue-peak-size-pkts?     uint64
+        |  |  |  |  +--ro queue-peak-size-bytes?    uint64
+        |  |  |  |  +--ro bandwidth-exceed-drops?   uint64
+        |  |  |  +--ro cac-stats
+        |  |  |     +--ro num-admitted-flows?       uint32
+        |  |  |     +--ro num-non-admitted-flows?   uint32
+        |  |  +--ro subclass-list* [match-type]
+        |  |  |  +--ro match-type                interfaces-ios-xe-oper:qos-match-type
+        |  |  |  +--ro cos-counters* [cos-min cos-max]
+        |  |  |  |  +--ro cos-min                  uint32
+        |  |  |  |  +--ro cos-max                  uint32
+        |  |  |  |  +--ro wred-tx-pkts?            uint64
+        |  |  |  |  +--ro wred-tx-bytes?           uint64
+        |  |  |  |  +--ro wred-tail-drop-pkts?     uint64
+        |  |  |  |  +--ro wred-tail-drop-bytes?    uint64
+        |  |  |  |  +--ro wred-early-drop-pkts?    uint64
+        |  |  |  |  +--ro wred-early-drop-bytes?   uint64
+        |  |  |  +--ro cos-default
+        |  |  |  |  +--ro wred-tx-pkts?            uint64
+        |  |  |  |  +--ro wred-tx-bytes?           uint64
+        |  |  |  |  +--ro wred-tail-drop-pkts?     uint64
+        |  |  |  |  +--ro wred-tail-drop-bytes?    uint64
+        |  |  |  |  +--ro wred-early-drop-pkts?    uint64
+        |  |  |  |  +--ro wred-early-drop-bytes?   uint64
+        |  |  |  +--ro dscp-counters* [dscp-min dscp-max]
+        |  |  |  |  +--ro dscp-min                 uint32
+        |  |  |  |  +--ro dscp-max                 uint32
+        |  |  |  |  +--ro wred-tx-pkts?            uint64
+        |  |  |  |  +--ro wred-tx-bytes?           uint64
+        |  |  |  |  +--ro wred-tail-drop-pkts?     uint64
+        |  |  |  |  +--ro wred-tail-drop-bytes?    uint64
+        |  |  |  |  +--ro wred-early-drop-pkts?    uint64
+        |  |  |  |  +--ro wred-early-drop-bytes?   uint64
+        |  |  |  +--ro dscp-default
+        |  |  |  |  +--ro wred-tx-pkts?            uint64
+        |  |  |  |  +--ro wred-tx-bytes?           uint64
+        |  |  |  |  +--ro wred-tail-drop-pkts?     uint64
+        |  |  |  |  +--ro wred-tail-drop-bytes?    uint64
+        |  |  |  |  +--ro wred-early-drop-pkts?    uint64
+        |  |  |  |  +--ro wred-early-drop-bytes?   uint64
+        |  |  |  +--ro discard-class-counters* [disc-class-min disc-class-max]
+        |  |  |  |  +--ro disc-class-min           uint32
+        |  |  |  |  +--ro disc-class-max           uint32
+        |  |  |  |  +--ro wred-tx-pkts?            uint64
+        |  |  |  |  +--ro wred-tx-bytes?           uint64
+        |  |  |  |  +--ro wred-tail-drop-pkts?     uint64
+        |  |  |  |  +--ro wred-tail-drop-bytes?    uint64
+        |  |  |  |  +--ro wred-early-drop-pkts?    uint64
+        |  |  |  |  +--ro wred-early-drop-bytes?   uint64
+        |  |  |  +--ro disc-class-default
+        |  |  |  |  +--ro wred-tx-pkts?            uint64
+        |  |  |  |  +--ro wred-tx-bytes?           uint64
+        |  |  |  |  +--ro wred-tail-drop-pkts?     uint64
+        |  |  |  |  +--ro wred-tail-drop-bytes?    uint64
+        |  |  |  |  +--ro wred-early-drop-pkts?    uint64
+        |  |  |  |  +--ro wred-early-drop-bytes?   uint64
+        |  |  |  +--ro precedence-counters* [prec-min prec-max]
+        |  |  |  |  +--ro prec-min                 uint32
+        |  |  |  |  +--ro prec-max                 uint32
+        |  |  |  |  +--ro wred-tx-pkts?            uint64
+        |  |  |  |  +--ro wred-tx-bytes?           uint64
+        |  |  |  |  +--ro wred-tail-drop-pkts?     uint64
+        |  |  |  |  +--ro wred-tail-drop-bytes?    uint64
+        |  |  |  |  +--ro wred-early-drop-pkts?    uint64
+        |  |  |  |  +--ro wred-early-drop-bytes?   uint64
+        |  |  |  +--ro prec-default
+        |  |  |  |  +--ro wred-tx-pkts?            uint64
+        |  |  |  |  +--ro wred-tx-bytes?           uint64
+        |  |  |  |  +--ro wred-tail-drop-pkts?     uint64
+        |  |  |  |  +--ro wred-tail-drop-bytes?    uint64
+        |  |  |  |  +--ro wred-early-drop-pkts?    uint64
+        |  |  |  |  +--ro wred-early-drop-bytes?   uint64
+        |  |  |  +--ro mpls-exp-counters* [exp-min exp-max]
+        |  |  |  |  +--ro exp-min                  uint32
+        |  |  |  |  +--ro exp-max                  uint32
+        |  |  |  |  +--ro wred-tx-pkts?            uint64
+        |  |  |  |  +--ro wred-tx-bytes?           uint64
+        |  |  |  |  +--ro wred-tail-drop-pkts?     uint64
+        |  |  |  |  +--ro wred-tail-drop-bytes?    uint64
+        |  |  |  |  +--ro wred-early-drop-pkts?    uint64
+        |  |  |  |  +--ro wred-early-drop-bytes?   uint64
+        |  |  |  +--ro mpls-exp-default
+        |  |  |  |  +--ro wred-tx-pkts?            uint64
+        |  |  |  |  +--ro wred-tx-bytes?           uint64
+        |  |  |  |  +--ro wred-tail-drop-pkts?     uint64
+        |  |  |  |  +--ro wred-tail-drop-bytes?    uint64
+        |  |  |  |  +--ro wred-early-drop-pkts?    uint64
+        |  |  |  |  +--ro wred-early-drop-bytes?   uint64
+        |  |  |  +--ro dei-counters* [dei-min dei-max]
+        |  |  |  |  +--ro dei-min                  uint32
+        |  |  |  |  +--ro dei-max                  uint32
+        |  |  |  |  +--ro wred-tx-pkts?            uint64
+        |  |  |  |  +--ro wred-tx-bytes?           uint64
+        |  |  |  |  +--ro wred-tail-drop-pkts?     uint64
+        |  |  |  |  +--ro wred-tail-drop-bytes?    uint64
+        |  |  |  |  +--ro wred-early-drop-pkts?    uint64
+        |  |  |  |  +--ro wred-early-drop-bytes?   uint64
+        |  |  |  +--ro dei-counts-default
+        |  |  |  |  +--ro wred-tx-pkts?            uint64
+        |  |  |  |  +--ro wred-tx-bytes?           uint64
+        |  |  |  |  +--ro wred-tail-drop-pkts?     uint64
+        |  |  |  |  +--ro wred-tail-drop-bytes?    uint64
+        |  |  |  |  +--ro wred-early-drop-pkts?    uint64
+        |  |  |  |  +--ro wred-early-drop-bytes?   uint64
+        |  |  |  +--ro clp-counters* [clp-val]
+        |  |  |  |  +--ro clp-val                  uint32
+        |  |  |  |  +--ro wred-tx-pkts?            uint64
+        |  |  |  |  +--ro wred-tx-bytes?           uint64
+        |  |  |  |  +--ro wred-tail-drop-pkts?     uint64
+        |  |  |  |  +--ro wred-tail-drop-bytes?    uint64
+        |  |  |  |  +--ro wred-early-drop-pkts?    uint64
+        |  |  |  |  +--ro wred-early-drop-bytes?   uint64
+        |  |  |  +--ro clp-default
+        |  |  |     +--ro wred-tx-pkts?            uint64
+        |  |  |     +--ro wred-tx-bytes?           uint64
+        |  |  |     +--ro wred-tail-drop-pkts?     uint64
+        |  |  |     +--ro wred-tail-drop-bytes?    uint64
+        |  |  |     +--ro wred-early-drop-pkts?    uint64
+        |  |  |     +--ro wred-early-drop-bytes?   uint64
+        |  |  +--ro marking-stats
+        |  |     +--ro marking-dscp-stats-val
+        |  |     |  +--ro dscp?          uint32
+        |  |     |  +--ro marked-pkts?   uint64
+        |  |     +--ro marking-dscp-tunnel-stats-val
+        |  |     |  +--ro dscp-val?      uint32
+        |  |     |  +--ro marked-pkts?   uint64
+        |  |     +--ro marking-cos-stats-val
+        |  |     |  +--ro cos-val?       uint32
+        |  |     |  +--ro marked-pkts?   uint64
+        |  |     +--ro marking-cos-inner-stats-val
+        |  |     |  +--ro cos-inner-val?   uint32
+        |  |     |  +--ro marked-pkts?     uint64
+        |  |     +--ro marking-discard-class-stats-val
+        |  |     |  +--ro disc-class-val?   uint32
+        |  |     |  +--ro marked-pkts?      uint64
+        |  |     +--ro marking-qos-grp-stats-val
+        |  |     |  +--ro qos-grp-val?   uint32
+        |  |     |  +--ro marked-pkts?   uint64
+        |  |     +--ro marking-prec-stats-val
+        |  |     |  +--ro prec-val?      uint32
+        |  |     |  +--ro marked-pkts?   uint64
+        |  |     +--ro marking-prec-tunnel-stats-val
+        |  |     |  +--ro prec-val?      uint32
+        |  |     |  +--ro marked-pkts?   uint64
+        |  |     +--ro marking-mpls-exp-imp-stats-val
+        |  |     |  +--ro mpls-exp-imp-val?   uint32
+        |  |     |  +--ro marked-pkts?        uint64
+        |  |     +--ro marking-mpls-exp-top-stats-val
+        |  |     |  +--ro mpls-exp-top-val?   uint32
+        |  |     |  +--ro marked-pkts?        uint64
+        |  |     +--ro marking-fr-de-stats-val
+        |  |     |  +--ro fr-de?         boolean
+        |  |     |  +--ro marked-pkts?   uint64
+        |  |     +--ro marking-fr-fecn-becn-stats-val
+        |  |     |  +--ro fecn-becn-val?   uint32
+        |  |     |  +--ro marked-pkts?     uint64
+        |  |     +--ro marking-atm-clp-stats-val
+        |  |     |  +--ro atm-clp-val?   uint8
+        |  |     |  +--ro marked-pkts?   uint64
+        |  |     +--ro marking-vlan-inner-stats-val
+        |  |     |  +--ro vlan-inner-val?   uint32
+        |  |     |  +--ro marked-pkts?      uint64
+        |  |     +--ro marking-dei-stats-val
+        |  |     |  +--ro dei-imp-value?   uint32
+        |  |     |  +--ro marked-pkts?     uint64
+        |  |     +--ro marking-dei-imp-stats-val
+        |  |     |  +--ro dei-imp-value?   uint32
+        |  |     |  +--ro marked-pkts?     uint64
+        |  |     +--ro marking-srp-priority-stats-val
+        |  |     |  +--ro srp-priority-value?   uint8
+        |  |     |  +--ro marked-pkts?          uint64
+        |  |     +--ro marking-wlan-user-priority-stats-val
+        |  |        +--ro wlan-user-priority-value?   uint8
+        |  |        +--ro marked-pkts?                uint64
+        |  +--ro priority-oper-list* [priority-level]
+        |     +--ro priority-level                   uint16
+        |     +--ro agg-priority-stats
+        |     |  +--ro output-pkts?           uint64
+        |     |  +--ro output-bytes?          uint64
+        |     |  +--ro queue-size-pkts?       uint64
+        |     |  +--ro queue-size-bytes?      uint64
+        |     |  +--ro drop-pkts?             uint64
+        |     |  +--ro drop-bytes?            uint64
+        |     |  +--ro drop-pkts-flow?        uint64
+        |     |  +--ro drop-pkts-no-buffer?   uint64
+        |     +--ro qlimit-default-thresh
+        |     |  +--ro bytes?                    uint64
+        |     |  +--ro thresh-size-metric?       uint32
+        |     |  +--ro unit-val?                 interfaces-ios-xe-oper:thresh-unit
+        |     |  +--ro threshold-interval?       uint64
+        |     |  +--ro thresh-interval-metric?   uint32
+        |     |  +--ro interval-unit-val?        interfaces-ios-xe-oper:thresh-unit
+        |     +--ro qlimit-cos-thresh-list* [cos-min cos-max]
+        |     |  +--ro cos-min                   uint32
+        |     |  +--ro cos-max                   uint32
+        |     |  +--ro bytes?                    uint64
+        |     |  +--ro thresh-size-metric?       uint32
+        |     |  +--ro unit-val?                 interfaces-ios-xe-oper:thresh-unit
+        |     |  +--ro threshold-interval?       uint64
+        |     |  +--ro thresh-interval-metric?   uint32
+        |     |  +--ro interval-unit-val?        interfaces-ios-xe-oper:thresh-unit
+        |     +--ro qlimit-disc-class-thresh-list* [disc-class-min disc-class-max]
+        |     |  +--ro disc-class-min            uint32
+        |     |  +--ro disc-class-max            uint32
+        |     |  +--ro bytes?                    uint64
+        |     |  +--ro thresh-size-metric?       uint32
+        |     |  +--ro unit-val?                 interfaces-ios-xe-oper:thresh-unit
+        |     |  +--ro threshold-interval?       uint64
+        |     |  +--ro thresh-interval-metric?   uint32
+        |     |  +--ro interval-unit-val?        interfaces-ios-xe-oper:thresh-unit
+        |     +--ro qlimit-qos-grp-thresh-list* [qos-group-min qos-group-max]
+        |     |  +--ro qos-group-min             uint32
+        |     |  +--ro qos-group-max             uint32
+        |     |  +--ro bytes?                    uint64
+        |     |  +--ro thresh-size-metric?       uint32
+        |     |  +--ro unit-val?                 interfaces-ios-xe-oper:thresh-unit
+        |     |  +--ro threshold-interval?       uint64
+        |     |  +--ro thresh-interval-metric?   uint32
+        |     |  +--ro interval-unit-val?        interfaces-ios-xe-oper:thresh-unit
+        |     +--ro qlimit-mpls-exp-thresh-list* [exp-min exp-max]
+        |     |  +--ro exp-min                   uint32
+        |     |  +--ro exp-max                   uint32
+        |     |  +--ro bytes?                    uint64
+        |     |  +--ro thresh-size-metric?       uint32
+        |     |  +--ro unit-val?                 interfaces-ios-xe-oper:thresh-unit
+        |     |  +--ro threshold-interval?       uint64
+        |     |  +--ro thresh-interval-metric?   uint32
+        |     |  +--ro interval-unit-val?        interfaces-ios-xe-oper:thresh-unit
+        |     +--ro qlimit-dscp-thresh-list* [dscp-min dscp-max]
+        |        +--ro dscp-min                  uint32
+        |        +--ro dscp-max                  uint32
+        |        +--ro bytes?                    uint64
+        |        +--ro thresh-size-metric?       uint32
+        |        +--ro unit-val?                 interfaces-ios-xe-oper:thresh-unit
+        |        +--ro threshold-interval?       uint64
+        |        +--ro thresh-interval-metric?   uint32
+        |        +--ro interval-unit-val?        interfaces-ios-xe-oper:thresh-unit
+        +--ro vrf?                            string
+        +--ro ipv4?                           inet:ip-address
+        +--ro ipv4-subnet-mask?               inet:ip-address
+        +--ro description?                    string
+        +--ro mtu?                            uint32
+        +--ro input-security-acl?             string
+        +--ro output-security-acl?            string
+        +--ro v4-protocol-stats
+        |  +--ro in-pkts?                uint64
+        |  +--ro in-octets?              uint64
+        |  +--ro in-error-pkts?          uint64
+        |  +--ro in-forwarded-pkts?      uint64
+        |  +--ro in-forwarded-octets?    uint64
+        |  +--ro in-discarded-pkts?      uint64
+        |  +--ro out-pkts?               uint64
+        |  +--ro out-octets?             uint64
+        |  +--ro out-error-pkts?         uint64
+        |  +--ro out-forwarded-pkts?     uint64
+        |  +--ro out-forwarded-octets?   uint64
+        |  +--ro out-discarded-pkts?     uint64
+        +--ro v6-protocol-stats
+        |  +--ro in-pkts?                uint64
+        |  +--ro in-octets?              uint64
+        |  +--ro in-error-pkts?          uint64
+        |  +--ro in-forwarded-pkts?      uint64
+        |  +--ro in-forwarded-octets?    uint64
+        |  +--ro in-discarded-pkts?      uint64
+        |  +--ro out-pkts?               uint64
+        |  +--ro out-octets?             uint64
+        |  +--ro out-error-pkts?         uint64
+        |  +--ro out-forwarded-pkts?     uint64
+        |  +--ro out-forwarded-octets?   uint64
+        |  +--ro out-discarded-pkts?     uint64
+        +--ro bia-address?                    yang:mac-address
+        +--ro ipv6-addrs*                     inet:ip-address
+        +--ro lag-aggregate-state* [aggregate-id]
+        |  +--ro aggregate-id    string
+        |  +--ro lag-type?       interfaces-ios-xe-oper:aggregation-type
+        |  +--ro min-links?      uint16
+        |  +--ro lag-speed?      uint32
+        |  +--ro members*        string
+        +--ro ipv4-tcp-adjust-mss?            uint16
+        +--ro ipv6-tcp-adjust-mss?            uint16
+        +--ro (interface-class-choice)?
+           +--:(interface-class-ethernet)
+           |  +--ro ether-state
+           |  |  +--ro negotiated-duplex-mode?   interfaces-ios-xe-oper:ether-duplex
+           |  |  +--ro negotiated-port-speed?    interfaces-ios-xe-oper:ether-speed
+           |  |  +--ro auto-negotiate?           boolean
+           |  |  +--ro enable-flow-control?      boolean
+           |  +--ro ether-stats
+           |     +--ro in-mac-control-frames?    uint64
+           |     +--ro in-mac-pause-frames?      uint64
+           |     +--ro in-oversize-frames?       uint64
+           |     +--ro in-jabber-frames?         uint64
+           |     +--ro in-fragment-frames?       uint64
+           |     +--ro in-8021q-frames?          uint64
+           |     +--ro out-mac-control-frames?   uint64
+           |     +--ro out-mac-pause-frames?     uint64
+           |     +--ro out-8021q-frames?         uint64
+           +--:(interface-class-t1e1serial)
+           |  +--ro serial-state
+           |  |  +--ro crc-type?   interfaces-ios-xe-oper:serial-crc
+           |  |  +--ro loopback?   interfaces-ios-xe-oper:t1e1-loopback-mode
+           |  |  +--ro keeplive?   uint32
+           |  |  +--ro timeslot?   uint32
+           |  |  +--ro subrate?    interfaces-ios-xe-oper:subrate-speed
+           |  +--ro serial-stats
+           |     +--ro in-abort-clock-error?   uint32
+           +--:(interface-class-unspecified)
+              +--ro intf-class-unspecified?   boolean
+Xpaths for model: Cisco-IOS-XE-interfaces-oper.yang
+/interfaces-ios-xe-oper:interfaces,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:name,leaf,string
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:interface-type,leaf,interfaces-ios-xe-oper:ietf-intf-type
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:admin-status,leaf,interfaces-ios-xe-oper:intf-state
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:oper-status,leaf,interfaces-ios-xe-oper:oper-state
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:last-change,leaf,yang:date-and-time
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:if-index,leaf,int32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:phys-address,leaf,yang:mac-address
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:higher-layer-if,leaf-list,string
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:lower-layer-if,leaf-list,string
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:speed,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:discontinuity-time,leaf,yang:date-and-time
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:in-octets,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:in-unicast-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:in-broadcast-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:in-multicast-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:in-discards,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:in-errors,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:in-unknown-protos,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:out-octets,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:out-unicast-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:out-broadcast-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:out-multicast-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:out-discards,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:out-errors,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:rx-pps,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:rx-kbps,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:tx-pps,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:tx-kbps,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:num-flaps,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:statistics/interfaces-ios-xe-oper:in-crc-errors,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:direction,leaf,interfaces-ios-xe-oper:qos-direction
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:policy-name,leaf,string
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:classifier-entry-name,leaf,string
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:parent-path,leaf,string
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:classifier-entry-stats,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:classifier-entry-stats/interfaces-ios-xe-oper:classified-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:classifier-entry-stats/interfaces-ios-xe-oper:classified-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:classifier-entry-stats/interfaces-ios-xe-oper:classified-rate,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:meter-stats,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:meter-stats/interfaces-ios-xe-oper:meter-id,leaf,uint16
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:meter-stats/interfaces-ios-xe-oper:meter-succeed-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:meter-stats/interfaces-ios-xe-oper:meter-succeed-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:meter-stats/interfaces-ios-xe-oper:meter-failed-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:meter-stats/interfaces-ios-xe-oper:meter-failed-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:output-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:output-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:queue-size-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:queue-size-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:wred-stats,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:wred-stats/interfaces-ios-xe-oper:early-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:wred-stats/interfaces-ios-xe-oper:early-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:wred-stats/interfaces-ios-xe-oper:mean-queue-depth,leaf,uint16
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:wred-stats/interfaces-ios-xe-oper:transmitted-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:wred-stats/interfaces-ios-xe-oper:transmitted-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:wred-stats/interfaces-ios-xe-oper:tail-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:wred-stats/interfaces-ios-xe-oper:tail-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:wred-stats/interfaces-ios-xe-oper:drop-pkts-flow,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:wred-stats/interfaces-ios-xe-oper:drop-pkts-no-buffer,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:wred-stats/interfaces-ios-xe-oper:queue-peak-size-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:wred-stats/interfaces-ios-xe-oper:queue-peak-size-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:wred-stats/interfaces-ios-xe-oper:bandwidth-exceed-drops,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:cac-stats,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:cac-stats/interfaces-ios-xe-oper:num-admitted-flows,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:queuing-stats/interfaces-ios-xe-oper:cac-stats/interfaces-ios-xe-oper:num-non-admitted-flows,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:match-type,leaf,interfaces-ios-xe-oper:qos-match-type
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-counters,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-counters/interfaces-ios-xe-oper:cos-min,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-counters/interfaces-ios-xe-oper:cos-max,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-counters/interfaces-ios-xe-oper:wred-tx-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-counters/interfaces-ios-xe-oper:wred-tx-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-counters/interfaces-ios-xe-oper:wred-tail-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-counters/interfaces-ios-xe-oper:wred-tail-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-counters/interfaces-ios-xe-oper:wred-early-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-counters/interfaces-ios-xe-oper:wred-early-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-default,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-default/interfaces-ios-xe-oper:wred-tx-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-default/interfaces-ios-xe-oper:wred-tx-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-default/interfaces-ios-xe-oper:wred-tail-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-default/interfaces-ios-xe-oper:wred-tail-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-default/interfaces-ios-xe-oper:wred-early-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:cos-default/interfaces-ios-xe-oper:wred-early-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-counters,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-counters/interfaces-ios-xe-oper:dscp-min,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-counters/interfaces-ios-xe-oper:dscp-max,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-counters/interfaces-ios-xe-oper:wred-tx-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-counters/interfaces-ios-xe-oper:wred-tx-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-counters/interfaces-ios-xe-oper:wred-tail-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-counters/interfaces-ios-xe-oper:wred-tail-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-counters/interfaces-ios-xe-oper:wred-early-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-counters/interfaces-ios-xe-oper:wred-early-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-default,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-default/interfaces-ios-xe-oper:wred-tx-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-default/interfaces-ios-xe-oper:wred-tx-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-default/interfaces-ios-xe-oper:wred-tail-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-default/interfaces-ios-xe-oper:wred-tail-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-default/interfaces-ios-xe-oper:wred-early-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dscp-default/interfaces-ios-xe-oper:wred-early-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:discard-class-counters,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:discard-class-counters/interfaces-ios-xe-oper:disc-class-min,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:discard-class-counters/interfaces-ios-xe-oper:disc-class-max,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:discard-class-counters/interfaces-ios-xe-oper:wred-tx-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:discard-class-counters/interfaces-ios-xe-oper:wred-tx-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:discard-class-counters/interfaces-ios-xe-oper:wred-tail-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:discard-class-counters/interfaces-ios-xe-oper:wred-tail-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:discard-class-counters/interfaces-ios-xe-oper:wred-early-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:discard-class-counters/interfaces-ios-xe-oper:wred-early-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:disc-class-default,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:disc-class-default/interfaces-ios-xe-oper:wred-tx-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:disc-class-default/interfaces-ios-xe-oper:wred-tx-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:disc-class-default/interfaces-ios-xe-oper:wred-tail-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:disc-class-default/interfaces-ios-xe-oper:wred-tail-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:disc-class-default/interfaces-ios-xe-oper:wred-early-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:disc-class-default/interfaces-ios-xe-oper:wred-early-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:precedence-counters,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:precedence-counters/interfaces-ios-xe-oper:prec-min,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:precedence-counters/interfaces-ios-xe-oper:prec-max,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:precedence-counters/interfaces-ios-xe-oper:wred-tx-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:precedence-counters/interfaces-ios-xe-oper:wred-tx-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:precedence-counters/interfaces-ios-xe-oper:wred-tail-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:precedence-counters/interfaces-ios-xe-oper:wred-tail-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:precedence-counters/interfaces-ios-xe-oper:wred-early-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:precedence-counters/interfaces-ios-xe-oper:wred-early-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:prec-default,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:prec-default/interfaces-ios-xe-oper:wred-tx-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:prec-default/interfaces-ios-xe-oper:wred-tx-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:prec-default/interfaces-ios-xe-oper:wred-tail-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:prec-default/interfaces-ios-xe-oper:wred-tail-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:prec-default/interfaces-ios-xe-oper:wred-early-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:prec-default/interfaces-ios-xe-oper:wred-early-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-counters,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-counters/interfaces-ios-xe-oper:exp-min,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-counters/interfaces-ios-xe-oper:exp-max,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-counters/interfaces-ios-xe-oper:wred-tx-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-counters/interfaces-ios-xe-oper:wred-tx-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-counters/interfaces-ios-xe-oper:wred-tail-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-counters/interfaces-ios-xe-oper:wred-tail-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-counters/interfaces-ios-xe-oper:wred-early-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-counters/interfaces-ios-xe-oper:wred-early-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-default,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-default/interfaces-ios-xe-oper:wred-tx-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-default/interfaces-ios-xe-oper:wred-tx-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-default/interfaces-ios-xe-oper:wred-tail-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-default/interfaces-ios-xe-oper:wred-tail-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-default/interfaces-ios-xe-oper:wred-early-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:mpls-exp-default/interfaces-ios-xe-oper:wred-early-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counters,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counters/interfaces-ios-xe-oper:dei-min,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counters/interfaces-ios-xe-oper:dei-max,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counters/interfaces-ios-xe-oper:wred-tx-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counters/interfaces-ios-xe-oper:wred-tx-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counters/interfaces-ios-xe-oper:wred-tail-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counters/interfaces-ios-xe-oper:wred-tail-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counters/interfaces-ios-xe-oper:wred-early-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counters/interfaces-ios-xe-oper:wred-early-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counts-default,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counts-default/interfaces-ios-xe-oper:wred-tx-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counts-default/interfaces-ios-xe-oper:wred-tx-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counts-default/interfaces-ios-xe-oper:wred-tail-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counts-default/interfaces-ios-xe-oper:wred-tail-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counts-default/interfaces-ios-xe-oper:wred-early-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:dei-counts-default/interfaces-ios-xe-oper:wred-early-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:clp-counters,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:clp-counters/interfaces-ios-xe-oper:clp-val,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:clp-counters/interfaces-ios-xe-oper:wred-tx-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:clp-counters/interfaces-ios-xe-oper:wred-tx-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:clp-counters/interfaces-ios-xe-oper:wred-tail-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:clp-counters/interfaces-ios-xe-oper:wred-tail-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:clp-counters/interfaces-ios-xe-oper:wred-early-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:clp-counters/interfaces-ios-xe-oper:wred-early-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:clp-default,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:clp-default/interfaces-ios-xe-oper:wred-tx-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:clp-default/interfaces-ios-xe-oper:wred-tx-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:clp-default/interfaces-ios-xe-oper:wred-tail-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:clp-default/interfaces-ios-xe-oper:wred-tail-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:clp-default/interfaces-ios-xe-oper:wred-early-drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:subclass-list/interfaces-ios-xe-oper:clp-default/interfaces-ios-xe-oper:wred-early-drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-dscp-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-dscp-stats-val/interfaces-ios-xe-oper:dscp,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-dscp-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-dscp-tunnel-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-dscp-tunnel-stats-val/interfaces-ios-xe-oper:dscp-val,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-dscp-tunnel-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-cos-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-cos-stats-val/interfaces-ios-xe-oper:cos-val,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-cos-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-cos-inner-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-cos-inner-stats-val/interfaces-ios-xe-oper:cos-inner-val,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-cos-inner-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-discard-class-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-discard-class-stats-val/interfaces-ios-xe-oper:disc-class-val,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-discard-class-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-qos-grp-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-qos-grp-stats-val/interfaces-ios-xe-oper:qos-grp-val,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-qos-grp-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-prec-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-prec-stats-val/interfaces-ios-xe-oper:prec-val,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-prec-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-prec-tunnel-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-prec-tunnel-stats-val/interfaces-ios-xe-oper:prec-val,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-prec-tunnel-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-mpls-exp-imp-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-mpls-exp-imp-stats-val/interfaces-ios-xe-oper:mpls-exp-imp-val,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-mpls-exp-imp-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-mpls-exp-top-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-mpls-exp-top-stats-val/interfaces-ios-xe-oper:mpls-exp-top-val,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-mpls-exp-top-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-fr-de-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-fr-de-stats-val/interfaces-ios-xe-oper:fr-de,leaf,boolean
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-fr-de-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-fr-fecn-becn-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-fr-fecn-becn-stats-val/interfaces-ios-xe-oper:fecn-becn-val,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-fr-fecn-becn-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-atm-clp-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-atm-clp-stats-val/interfaces-ios-xe-oper:atm-clp-val,leaf,uint8
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-atm-clp-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-vlan-inner-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-vlan-inner-stats-val/interfaces-ios-xe-oper:vlan-inner-val,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-vlan-inner-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-dei-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-dei-stats-val/interfaces-ios-xe-oper:dei-imp-value,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-dei-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-dei-imp-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-dei-imp-stats-val/interfaces-ios-xe-oper:dei-imp-value,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-dei-imp-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-srp-priority-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-srp-priority-stats-val/interfaces-ios-xe-oper:srp-priority-value,leaf,uint8
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-srp-priority-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-wlan-user-priority-stats-val,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-wlan-user-priority-stats-val/interfaces-ios-xe-oper:wlan-user-priority-value,leaf,uint8
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:diffserv-target-classifier-stats/interfaces-ios-xe-oper:marking-stats/interfaces-ios-xe-oper:marking-wlan-user-priority-stats-val/interfaces-ios-xe-oper:marked-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:priority-level,leaf,uint16
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:agg-priority-stats,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:agg-priority-stats/interfaces-ios-xe-oper:output-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:agg-priority-stats/interfaces-ios-xe-oper:output-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:agg-priority-stats/interfaces-ios-xe-oper:queue-size-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:agg-priority-stats/interfaces-ios-xe-oper:queue-size-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:agg-priority-stats/interfaces-ios-xe-oper:drop-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:agg-priority-stats/interfaces-ios-xe-oper:drop-bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:agg-priority-stats/interfaces-ios-xe-oper:drop-pkts-flow,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:agg-priority-stats/interfaces-ios-xe-oper:drop-pkts-no-buffer,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-default-thresh,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-default-thresh/interfaces-ios-xe-oper:bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-default-thresh/interfaces-ios-xe-oper:thresh-size-metric,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-default-thresh/interfaces-ios-xe-oper:unit-val,leaf,interfaces-ios-xe-oper:thresh-unit
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-default-thresh/interfaces-ios-xe-oper:threshold-interval,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-default-thresh/interfaces-ios-xe-oper:thresh-interval-metric,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-default-thresh/interfaces-ios-xe-oper:interval-unit-val,leaf,interfaces-ios-xe-oper:thresh-unit
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-cos-thresh-list,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-cos-thresh-list/interfaces-ios-xe-oper:cos-min,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-cos-thresh-list/interfaces-ios-xe-oper:cos-max,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-cos-thresh-list/interfaces-ios-xe-oper:bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-cos-thresh-list/interfaces-ios-xe-oper:thresh-size-metric,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-cos-thresh-list/interfaces-ios-xe-oper:unit-val,leaf,interfaces-ios-xe-oper:thresh-unit
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-cos-thresh-list/interfaces-ios-xe-oper:threshold-interval,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-cos-thresh-list/interfaces-ios-xe-oper:thresh-interval-metric,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-cos-thresh-list/interfaces-ios-xe-oper:interval-unit-val,leaf,interfaces-ios-xe-oper:thresh-unit
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-disc-class-thresh-list,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-disc-class-thresh-list/interfaces-ios-xe-oper:disc-class-min,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-disc-class-thresh-list/interfaces-ios-xe-oper:disc-class-max,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-disc-class-thresh-list/interfaces-ios-xe-oper:bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-disc-class-thresh-list/interfaces-ios-xe-oper:thresh-size-metric,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-disc-class-thresh-list/interfaces-ios-xe-oper:unit-val,leaf,interfaces-ios-xe-oper:thresh-unit
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-disc-class-thresh-list/interfaces-ios-xe-oper:threshold-interval,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-disc-class-thresh-list/interfaces-ios-xe-oper:thresh-interval-metric,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-disc-class-thresh-list/interfaces-ios-xe-oper:interval-unit-val,leaf,interfaces-ios-xe-oper:thresh-unit
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-qos-grp-thresh-list,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-qos-grp-thresh-list/interfaces-ios-xe-oper:qos-group-min,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-qos-grp-thresh-list/interfaces-ios-xe-oper:qos-group-max,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-qos-grp-thresh-list/interfaces-ios-xe-oper:bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-qos-grp-thresh-list/interfaces-ios-xe-oper:thresh-size-metric,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-qos-grp-thresh-list/interfaces-ios-xe-oper:unit-val,leaf,interfaces-ios-xe-oper:thresh-unit
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-qos-grp-thresh-list/interfaces-ios-xe-oper:threshold-interval,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-qos-grp-thresh-list/interfaces-ios-xe-oper:thresh-interval-metric,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-qos-grp-thresh-list/interfaces-ios-xe-oper:interval-unit-val,leaf,interfaces-ios-xe-oper:thresh-unit
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-mpls-exp-thresh-list,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-mpls-exp-thresh-list/interfaces-ios-xe-oper:exp-min,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-mpls-exp-thresh-list/interfaces-ios-xe-oper:exp-max,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-mpls-exp-thresh-list/interfaces-ios-xe-oper:bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-mpls-exp-thresh-list/interfaces-ios-xe-oper:thresh-size-metric,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-mpls-exp-thresh-list/interfaces-ios-xe-oper:unit-val,leaf,interfaces-ios-xe-oper:thresh-unit
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-mpls-exp-thresh-list/interfaces-ios-xe-oper:threshold-interval,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-mpls-exp-thresh-list/interfaces-ios-xe-oper:thresh-interval-metric,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-mpls-exp-thresh-list/interfaces-ios-xe-oper:interval-unit-val,leaf,interfaces-ios-xe-oper:thresh-unit
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-dscp-thresh-list,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-dscp-thresh-list/interfaces-ios-xe-oper:dscp-min,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-dscp-thresh-list/interfaces-ios-xe-oper:dscp-max,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-dscp-thresh-list/interfaces-ios-xe-oper:bytes,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-dscp-thresh-list/interfaces-ios-xe-oper:thresh-size-metric,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-dscp-thresh-list/interfaces-ios-xe-oper:unit-val,leaf,interfaces-ios-xe-oper:thresh-unit
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-dscp-thresh-list/interfaces-ios-xe-oper:threshold-interval,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-dscp-thresh-list/interfaces-ios-xe-oper:thresh-interval-metric,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:diffserv-info/interfaces-ios-xe-oper:priority-oper-list/interfaces-ios-xe-oper:qlimit-dscp-thresh-list/interfaces-ios-xe-oper:interval-unit-val,leaf,interfaces-ios-xe-oper:thresh-unit
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:vrf,leaf,string
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ipv4,leaf,inet:ip-address
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ipv4-subnet-mask,leaf,inet:ip-address
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:description,leaf,string
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:mtu,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:input-security-acl,leaf,string
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:output-security-acl,leaf,string
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v4-protocol-stats,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v4-protocol-stats/interfaces-ios-xe-oper:in-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v4-protocol-stats/interfaces-ios-xe-oper:in-octets,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v4-protocol-stats/interfaces-ios-xe-oper:in-error-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v4-protocol-stats/interfaces-ios-xe-oper:in-forwarded-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v4-protocol-stats/interfaces-ios-xe-oper:in-forwarded-octets,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v4-protocol-stats/interfaces-ios-xe-oper:in-discarded-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v4-protocol-stats/interfaces-ios-xe-oper:out-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v4-protocol-stats/interfaces-ios-xe-oper:out-octets,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v4-protocol-stats/interfaces-ios-xe-oper:out-error-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v4-protocol-stats/interfaces-ios-xe-oper:out-forwarded-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v4-protocol-stats/interfaces-ios-xe-oper:out-forwarded-octets,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v4-protocol-stats/interfaces-ios-xe-oper:out-discarded-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v6-protocol-stats,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v6-protocol-stats/interfaces-ios-xe-oper:in-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v6-protocol-stats/interfaces-ios-xe-oper:in-octets,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v6-protocol-stats/interfaces-ios-xe-oper:in-error-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v6-protocol-stats/interfaces-ios-xe-oper:in-forwarded-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v6-protocol-stats/interfaces-ios-xe-oper:in-forwarded-octets,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v6-protocol-stats/interfaces-ios-xe-oper:in-discarded-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v6-protocol-stats/interfaces-ios-xe-oper:out-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v6-protocol-stats/interfaces-ios-xe-oper:out-octets,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v6-protocol-stats/interfaces-ios-xe-oper:out-error-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v6-protocol-stats/interfaces-ios-xe-oper:out-forwarded-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v6-protocol-stats/interfaces-ios-xe-oper:out-forwarded-octets,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:v6-protocol-stats/interfaces-ios-xe-oper:out-discarded-pkts,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:bia-address,leaf,yang:mac-address
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ipv6-addrs,leaf-list,inet:ip-address
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:lag-aggregate-state,list,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:lag-aggregate-state/interfaces-ios-xe-oper:aggregate-id,leaf,string
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:lag-aggregate-state/interfaces-ios-xe-oper:lag-type,leaf,interfaces-ios-xe-oper:aggregation-type
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:lag-aggregate-state/interfaces-ios-xe-oper:min-links,leaf,uint16
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:lag-aggregate-state/interfaces-ios-xe-oper:lag-speed,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:lag-aggregate-state/interfaces-ios-xe-oper:members,leaf-list,string
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ipv4-tcp-adjust-mss,leaf,uint16
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ipv6-tcp-adjust-mss,leaf,uint16
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface,choice,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface,case,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ether-state,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ether-state/interfaces-ios-xe-oper:negotiated-duplex-mode,leaf,interfaces-ios-xe-oper:ether-duplex
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ether-state/interfaces-ios-xe-oper:negotiated-port-speed,leaf,interfaces-ios-xe-oper:ether-speed
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ether-state/interfaces-ios-xe-oper:auto-negotiate,leaf,boolean
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ether-state/interfaces-ios-xe-oper:enable-flow-control,leaf,boolean
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ether-stats,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ether-stats/interfaces-ios-xe-oper:in-mac-control-frames,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ether-stats/interfaces-ios-xe-oper:in-mac-pause-frames,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ether-stats/interfaces-ios-xe-oper:in-oversize-frames,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ether-stats/interfaces-ios-xe-oper:in-jabber-frames,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ether-stats/interfaces-ios-xe-oper:in-fragment-frames,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ether-stats/interfaces-ios-xe-oper:in-8021q-frames,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ether-stats/interfaces-ios-xe-oper:out-mac-control-frames,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ether-stats/interfaces-ios-xe-oper:out-mac-pause-frames,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:ether-stats/interfaces-ios-xe-oper:out-8021q-frames,leaf,uint64
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface,case,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:serial-state,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:serial-state/interfaces-ios-xe-oper:crc-type,leaf,interfaces-ios-xe-oper:serial-crc
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:serial-state/interfaces-ios-xe-oper:loopback,leaf,interfaces-ios-xe-oper:t1e1-loopback-mode
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:serial-state/interfaces-ios-xe-oper:keeplive,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:serial-state/interfaces-ios-xe-oper:timeslot,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:serial-state/interfaces-ios-xe-oper:subrate,leaf,interfaces-ios-xe-oper:subrate-speed
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:serial-stats,container,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:serial-stats/interfaces-ios-xe-oper:in-abort-clock-error,leaf,uint32
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface,case,
+/interfaces-ios-xe-oper:interfaces/interfaces-ios-xe-oper:interface/interfaces-ios-xe-oper:intf-class-unspecified,leaf,boolean

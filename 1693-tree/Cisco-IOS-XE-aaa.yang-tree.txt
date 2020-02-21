@@ -1,0 +1,1790 @@
+ 
+KPI for model: Cisco-IOS-XE-aaa.yang
+
+module: Cisco-IOS-XE-aaa
+  augment /ios:native/ios:aaa:
+    +--rw new-model?        empty
+    +--rw group
+    |  +--rw server
+    |     +--rw tacacsplus* [name]
+    |     |  +--rw name              string
+    |     |  +--rw server
+    |     |  |  +--rw name* [name]
+    |     |  |  |  +--rw name    string
+    |     |  |  +--rw direct* [name]
+    |     |  |     +--rw name    inet:host
+    |     |  +--rw server-private* [name]
+    |     |  |  +--rw name       ios-types:host-type
+    |     |  |  +--rw port?      uint16
+    |     |  |  +--rw timeout?   uint16
+    |     |  |  +--rw key
+    |     |  |     +--rw encryption?   enumeration
+    |     |  |     +--rw key?          string
+    |     |  +--rw ip
+    |     |     +--rw tacacs
+    |     |     |  +--rw source-interface
+    |     |     |     +--rw (interface-choice)?
+    |     |     |        +--:(AppNav-Compress)
+    |     |     |        |  +--rw AppNav-Compress?             uint16
+    |     |     |        +--:(AppNav-UnCompress)
+    |     |     |        |  +--rw AppNav-UnCompress?           uint16
+    |     |     |        +--:(ATM)
+    |     |     |        |  +--rw ATM?                         string
+    |     |     |        +--:(ATM-subinterface)
+    |     |     |        |  +--rw ATM-subinterface
+    |     |     |        |     +--rw ATM?   string
+    |     |     |        +--:(ATM-ACR)
+    |     |     |        |  +--rw ATM-ACR?                     string
+    |     |     |        +--:(ATM-ACRsubinterface)
+    |     |     |        |  +--rw ATM-ACRsubinterface
+    |     |     |        |     +--rw ATM-ACR?   string
+    |     |     |        +--:(BDI)
+    |     |     |        |  +--rw BDI?                         string
+    |     |     |        +--:(CEM)
+    |     |     |        |  +--rw CEM?                         string
+    |     |     |        +--:(CEM-ACR)
+    |     |     |        |  +--rw CEM-ACR?                     uint8
+    |     |     |        +--:(Embedded-Service-Engine)
+    |     |     |        |  +--rw Embedded-Service-Engine?     string
+    |     |     |        +--:(Ethernet)
+    |     |     |        |  +--rw Ethernet?                    string
+    |     |     |        +--:(FastEthernet)
+    |     |     |        |  +--rw FastEthernet?                string
+    |     |     |        +--:(GigabitEthernet)
+    |     |     |        |  +--rw GigabitEthernet?             string
+    |     |     |        +--:(FiveGigabitEthernet)
+    |     |     |        |  +--rw FiveGigabitEthernet?         string
+    |     |     |        +--:(TwentyFiveGigE)
+    |     |     |        |  +--rw TwentyFiveGigE?              string
+    |     |     |        +--:(TwoGigabitEthernet)
+    |     |     |        |  +--rw TwoGigabitEthernet?          string
+    |     |     |        +--:(FortyGigabitEthernet)
+    |     |     |        |  +--rw FortyGigabitEthernet?        string
+    |     |     |        +--:(HundredGigE)
+    |     |     |        |  +--rw HundredGigE?                 string
+    |     |     |        +--:(LISP)
+    |     |     |        |  +--rw LISP?                        string
+    |     |     |        +--:(LISP-subinterface)
+    |     |     |        |  +--rw LISP-subinterface
+    |     |     |        |     +--rw LISP?   string
+    |     |     |        +--:(Loopback)
+    |     |     |        |  +--rw Loopback?                    uint32
+    |     |     |        +--:(Multilink)
+    |     |     |        |  +--rw Multilink?                   uint16
+    |     |     |        +--:(nve)
+    |     |     |        |  +--rw nve?                         uint16
+    |     |     |        +--:(overlay)
+    |     |     |        |  +--rw overlay?                     uint16
+    |     |     |        +--:(Port-channel)
+    |     |     |        |  +--rw Port-channel?                uint32
+    |     |     |        +--:(Port-channel-subinterface)
+    |     |     |        |  +--rw Port-channel-subinterface
+    |     |     |        |     +--rw Port-channel?   string
+    |     |     |        +--:(pseudowire)
+    |     |     |        |  +--rw pseudowire?                  uint32
+    |     |     |        +--:(SM)
+    |     |     |        |  +--rw SM?                          string
+    |     |     |        +--:(Cellular)
+    |     |     |        |  +--rw Cellular?                    string
+    |     |     |        +--:(Serial)
+    |     |     |        |  +--rw Serial?                      string
+    |     |     |        +--:(TenGigabitEthernet)
+    |     |     |        |  +--rw TenGigabitEthernet?          string
+    |     |     |        +--:(Tunnel)
+    |     |     |        |  +--rw Tunnel?                      uint32
+    |     |     |        +--:(Virtual-Template)
+    |     |     |        |  +--rw Virtual-Template?            uint16
+    |     |     |        +--:(Vlan)
+    |     |     |        |  +--rw Vlan?                        uint16
+    |     |     |        +--:(VirtualPortGroup)
+    |     |     |        |  +--rw VirtualPortGroup?            uint16
+    |     |     |        +--:(vasileft)
+    |     |     |        |  +--rw vasileft?                    uint16
+    |     |     |        +--:(vasiright)
+    |     |     |           +--rw vasiright?                   uint16
+    |     |     +--rw vrf
+    |     |        +--rw forwarding?   string
+    |     +--rw tacacs* [name]
+    |     |  +--rw name    string
+    |     +--rw radius* [name]
+    |        +--rw name              string
+    |        +--rw server
+    |        |  +--rw name* [name]
+    |        |  |  +--rw name    string
+    |        |  +--rw direct* [name]
+    |        |     +--rw name         inet:host
+    |        |     +--rw auth-port?   uint16
+    |        |     +--rw acct-port?   uint16
+    |        +--rw subscriber
+    |        |  +--rw mac-filtering
+    |        |     +--rw security-mode?   enumeration
+    |        +--rw mac-delimiter?    enumeration
+    |        +--rw server-private* [name]
+    |        |  +--rw name          ios-types:host-type
+    |        |  +--rw auth-port?    uint16
+    |        |  +--rw acct-port?    uint16
+    |        |  +--rw timeout?      uint16
+    |        |  +--rw retransmit?   uint8
+    |        |  +--rw key
+    |        |     +--rw encryption?   enumeration
+    |        |     +--rw key?          string
+    |        +--rw deadtime?         uint16
+    |        +--rw ip
+    |        |  +--rw radius
+    |        |  |  +--rw source-interface
+    |        |  |     +--rw (interface-choice)?
+    |        |  |        +--:(AppNav-Compress)
+    |        |  |        |  +--rw AppNav-Compress?             uint16
+    |        |  |        +--:(AppNav-UnCompress)
+    |        |  |        |  +--rw AppNav-UnCompress?           uint16
+    |        |  |        +--:(ATM)
+    |        |  |        |  +--rw ATM?                         string
+    |        |  |        +--:(ATM-subinterface)
+    |        |  |        |  +--rw ATM-subinterface
+    |        |  |        |     +--rw ATM?   string
+    |        |  |        +--:(ATM-ACR)
+    |        |  |        |  +--rw ATM-ACR?                     string
+    |        |  |        +--:(ATM-ACRsubinterface)
+    |        |  |        |  +--rw ATM-ACRsubinterface
+    |        |  |        |     +--rw ATM-ACR?   string
+    |        |  |        +--:(BDI)
+    |        |  |        |  +--rw BDI?                         string
+    |        |  |        +--:(CEM)
+    |        |  |        |  +--rw CEM?                         string
+    |        |  |        +--:(CEM-ACR)
+    |        |  |        |  +--rw CEM-ACR?                     uint8
+    |        |  |        +--:(Embedded-Service-Engine)
+    |        |  |        |  +--rw Embedded-Service-Engine?     string
+    |        |  |        +--:(Ethernet)
+    |        |  |        |  +--rw Ethernet?                    string
+    |        |  |        +--:(FastEthernet)
+    |        |  |        |  +--rw FastEthernet?                string
+    |        |  |        +--:(GigabitEthernet)
+    |        |  |        |  +--rw GigabitEthernet?             string
+    |        |  |        +--:(FiveGigabitEthernet)
+    |        |  |        |  +--rw FiveGigabitEthernet?         string
+    |        |  |        +--:(TwentyFiveGigE)
+    |        |  |        |  +--rw TwentyFiveGigE?              string
+    |        |  |        +--:(TwoGigabitEthernet)
+    |        |  |        |  +--rw TwoGigabitEthernet?          string
+    |        |  |        +--:(FortyGigabitEthernet)
+    |        |  |        |  +--rw FortyGigabitEthernet?        string
+    |        |  |        +--:(HundredGigE)
+    |        |  |        |  +--rw HundredGigE?                 string
+    |        |  |        +--:(LISP)
+    |        |  |        |  +--rw LISP?                        string
+    |        |  |        +--:(LISP-subinterface)
+    |        |  |        |  +--rw LISP-subinterface
+    |        |  |        |     +--rw LISP?   string
+    |        |  |        +--:(Loopback)
+    |        |  |        |  +--rw Loopback?                    uint32
+    |        |  |        +--:(Multilink)
+    |        |  |        |  +--rw Multilink?                   uint16
+    |        |  |        +--:(nve)
+    |        |  |        |  +--rw nve?                         uint16
+    |        |  |        +--:(overlay)
+    |        |  |        |  +--rw overlay?                     uint16
+    |        |  |        +--:(Port-channel)
+    |        |  |        |  +--rw Port-channel?                uint32
+    |        |  |        +--:(Port-channel-subinterface)
+    |        |  |        |  +--rw Port-channel-subinterface
+    |        |  |        |     +--rw Port-channel?   string
+    |        |  |        +--:(pseudowire)
+    |        |  |        |  +--rw pseudowire?                  uint32
+    |        |  |        +--:(SM)
+    |        |  |        |  +--rw SM?                          string
+    |        |  |        +--:(Cellular)
+    |        |  |        |  +--rw Cellular?                    string
+    |        |  |        +--:(Serial)
+    |        |  |        |  +--rw Serial?                      string
+    |        |  |        +--:(TenGigabitEthernet)
+    |        |  |        |  +--rw TenGigabitEthernet?          string
+    |        |  |        +--:(Tunnel)
+    |        |  |        |  +--rw Tunnel?                      uint32
+    |        |  |        +--:(Virtual-Template)
+    |        |  |        |  +--rw Virtual-Template?            uint16
+    |        |  |        +--:(Vlan)
+    |        |  |        |  +--rw Vlan?                        uint16
+    |        |  |        +--:(VirtualPortGroup)
+    |        |  |        |  +--rw VirtualPortGroup?            uint16
+    |        |  |        +--:(vasileft)
+    |        |  |        |  +--rw vasileft?                    uint16
+    |        |  |        +--:(vasiright)
+    |        |  |           +--rw vasiright?                   uint16
+    |        |  +--rw vrf
+    |        |     +--rw forwarding?   string
+    |        +--rw load-balance
+    |           +--rw method
+    |              +--rw least-outstanding!
+    |                 +--rw batch-size?                uint32
+    |                 +--rw ignore-preferred-server?   empty
+    +--rw attribute
+    |  +--rw list* [name]
+    |     +--rw name         string
+    |     +--rw attribute
+    |        +--rw type
+    |           +--rw password?    string
+    |           +--rw mandatory?   empty
+    |           +--rw tag?         uint8
+    +--rw authentication
+    |  +--rw attempts
+    |  |  +--rw login?   uint8
+    |  +--rw dot1x
+    |  |  +--rw dot1x-list* [name]
+    |  |  |  +--rw name     string
+    |  |  |  +--rw group?   union
+    |  |  |  +--rw local?   empty
+    |  |  |  +--rw cache?   union
+    |  |  +--rw default
+    |  |     +--rw group?   union
+    |  |     +--rw local?   empty
+    |  |     +--rw cache?   union
+    |  +--rw enable
+    |  |  +--rw default
+    |  |     +--rw group?    union
+    |  |     +--rw enable?   empty
+    |  |     +--rw line?     empty
+    |  |     +--rw none?     empty
+    |  +--rw eou
+    |  |  +--rw default
+    |  |     +--rw group
+    |  |        +--rw radius?   empty
+    |  +--rw login* [name]
+    |  |  +--rw name    union
+    |  |  +--rw a1
+    |  |  |  +--rw (auth-login-choice)?
+    |  |  |     +--:(none)
+    |  |  |     |  +--rw none?          empty
+    |  |  |     +--:(krb5)
+    |  |  |     |  +--rw krb5?          empty
+    |  |  |     +--:(krb5-telnet)
+    |  |  |     |  +--rw krb5-telnet?   empty
+    |  |  |     +--:(line)
+    |  |  |     |  +--rw line?          empty
+    |  |  |     +--:(enable)
+    |  |  |     |  +--rw enable?        empty
+    |  |  |     +--:(local)
+    |  |  |     |  +--rw local?         empty
+    |  |  |     +--:(local-case)
+    |  |  |     |  +--rw local-case?    empty
+    |  |  |     +--:(group)
+    |  |  |     |  +--rw group?         union
+    |  |  |     +--:(cache)
+    |  |  |        +--rw cache?         union
+    |  |  +--rw a2
+    |  |  |  +--rw (auth-login-choice)?
+    |  |  |     +--:(group)
+    |  |  |     |  +--rw group?         union
+    |  |  |     +--:(cache)
+    |  |  |     |  +--rw cache?         union
+    |  |  |     +--:(none)
+    |  |  |     |  +--rw none?          empty
+    |  |  |     +--:(krb5)
+    |  |  |     |  +--rw krb5?          empty
+    |  |  |     +--:(krb5-telnet)
+    |  |  |     |  +--rw krb5-telnet?   empty
+    |  |  |     +--:(line)
+    |  |  |     |  +--rw line?          empty
+    |  |  |     +--:(enable)
+    |  |  |     |  +--rw enable?        empty
+    |  |  |     +--:(local)
+    |  |  |     |  +--rw local?         empty
+    |  |  |     +--:(local-case)
+    |  |  |        +--rw local-case?    empty
+    |  |  +--rw a3
+    |  |  |  +--rw (auth-login-choice)?
+    |  |  |     +--:(group)
+    |  |  |     |  +--rw group?         union
+    |  |  |     +--:(cache)
+    |  |  |     |  +--rw cache?         union
+    |  |  |     +--:(none)
+    |  |  |     |  +--rw none?          empty
+    |  |  |     +--:(krb5)
+    |  |  |     |  +--rw krb5?          empty
+    |  |  |     +--:(krb5-telnet)
+    |  |  |     |  +--rw krb5-telnet?   empty
+    |  |  |     +--:(line)
+    |  |  |     |  +--rw line?          empty
+    |  |  |     +--:(enable)
+    |  |  |     |  +--rw enable?        empty
+    |  |  |     +--:(local)
+    |  |  |     |  +--rw local?         empty
+    |  |  |     +--:(local-case)
+    |  |  |        +--rw local-case?    empty
+    |  |  +--rw a4
+    |  |     +--rw (auth-login-choice)?
+    |  |        +--:(group)
+    |  |        |  +--rw group?         union
+    |  |        +--:(cache)
+    |  |        |  +--rw cache?         union
+    |  |        +--:(none)
+    |  |        |  +--rw none?          empty
+    |  |        +--:(krb5)
+    |  |        |  +--rw krb5?          empty
+    |  |        +--:(krb5-telnet)
+    |  |        |  +--rw krb5-telnet?   empty
+    |  |        +--:(line)
+    |  |        |  +--rw line?          empty
+    |  |        +--:(enable)
+    |  |        |  +--rw enable?        empty
+    |  |        +--:(local)
+    |  |        |  +--rw local?         empty
+    |  |        +--:(local-case)
+    |  |           +--rw local-case?    empty
+    |  +--rw onep
+    |  |  +--rw default
+    |  |     +--rw local!
+    |  +--rw ppp* [id]
+    |     +--rw id    string
+    |     +--rw a1
+    |     |  +--rw (auth-choice)?
+    |     |     +--:(if-needed)
+    |     |     |  +--rw if-needed?    empty
+    |     |     +--:(none)
+    |     |     |  +--rw none?         empty
+    |     |     +--:(krb5)
+    |     |     |  +--rw krb5?         empty
+    |     |     +--:(local)
+    |     |     |  +--rw local?        empty
+    |     |     +--:(local-case)
+    |     |     |  +--rw local-case?   empty
+    |     |     +--:(group)
+    |     |     |  +--rw group?        union
+    |     |     +--:(cache)
+    |     |        +--rw cache?        union
+    |     +--rw a2
+    |     |  +--rw (auth-choice)?
+    |     |     +--:(group)
+    |     |     |  +--rw group?        union
+    |     |     +--:(cache)
+    |     |     |  +--rw cache?        union
+    |     |     +--:(none)
+    |     |     |  +--rw none?         empty
+    |     |     +--:(krb5)
+    |     |     |  +--rw krb5?         empty
+    |     |     +--:(local)
+    |     |     |  +--rw local?        empty
+    |     |     +--:(local-case)
+    |     |        +--rw local-case?   empty
+    |     +--rw a3
+    |     |  +--rw (auth-choice)?
+    |     |     +--:(group)
+    |     |     |  +--rw group?        union
+    |     |     +--:(cache)
+    |     |     |  +--rw cache?        union
+    |     |     +--:(none)
+    |     |     |  +--rw none?         empty
+    |     |     +--:(krb5)
+    |     |     |  +--rw krb5?         empty
+    |     |     +--:(local)
+    |     |     |  +--rw local?        empty
+    |     |     +--:(local-case)
+    |     |        +--rw local-case?   empty
+    |     +--rw a4
+    |        +--rw (auth-choice)?
+    |           +--:(group)
+    |           |  +--rw group?        union
+    |           +--:(cache)
+    |           |  +--rw cache?        union
+    |           +--:(none)
+    |           |  +--rw none?         empty
+    |           +--:(krb5)
+    |           |  +--rw krb5?         empty
+    |           +--:(local)
+    |           |  +--rw local?        empty
+    |           +--:(local-case)
+    |              +--rw local-case?   empty
+    +--rw local
+    |  +--rw authentication
+    |     +--rw authorization
+    |     |  +--rw authen-type?     union
+    |     |  +--rw authorization?   union
+    |     +--rw attempts
+    |        +--rw max-fail?   uint16
+    +--rw authorization
+    |  +--rw auth-type
+    |  |  +--rw default
+    |  |     +--rw group?   enumeration
+    |  +--rw commands* [level list-name]
+    |  |  +--rw level               uint8
+    |  |  +--rw list-name           union
+    |  |  +--rw group?              union
+    |  |  +--rw if-authenticated?   empty
+    |  |  +--rw local?              empty
+    |  |  +--rw none?               empty
+    |  +--rw console?               empty
+    |  +--rw config-commands?       empty
+    |  +--rw configuration
+    |  |  +--rw default
+    |  |     +--rw group
+    |  |        +--rw group-name* [group-name]
+    |  |           +--rw group-name    string
+    |  +--rw credential-download
+    |  |  +--rw default
+    |  |  |  +--rw local?              empty
+    |  |  |  +--rw cache?              union
+    |  |  |  +--rw group?              union
+    |  |  |  +--rw if-authenticated?   empty
+    |  |  |  +--rw none?               empty
+    |  |  +--rw authorization-list* [name]
+    |  |     +--rw name                string
+    |  |     +--rw local?              empty
+    |  |     +--rw cache?              union
+    |  |     +--rw group?              union
+    |  |     +--rw if-authenticated?   empty
+    |  |     +--rw none?               empty
+    |  +--rw exec* [name]
+    |  |  +--rw name    string
+    |  |  +--rw a1
+    |  |  |  +--rw (auth-exec-choice)?
+    |  |  |     +--:(if-authenticated)
+    |  |  |     |  +--rw if-authenticated?   empty
+    |  |  |     +--:(none)
+    |  |  |     |  +--rw none?               empty
+    |  |  |     +--:(krb5-instance)
+    |  |  |     |  +--rw krb5-instance?      empty
+    |  |  |     +--:(local)
+    |  |  |     |  +--rw local?              empty
+    |  |  |     +--:(group)
+    |  |  |     |  +--rw group?              union
+    |  |  |     +--:(cache)
+    |  |  |        +--rw cache?              union
+    |  |  +--rw a2
+    |  |  |  +--rw (auth-exec-choice)?
+    |  |  |     +--:(group)
+    |  |  |     |  +--rw group?              union
+    |  |  |     +--:(cache)
+    |  |  |     |  +--rw cache?              union
+    |  |  |     +--:(if-authenticated)
+    |  |  |     |  +--rw if-authenticated?   empty
+    |  |  |     +--:(none)
+    |  |  |     |  +--rw none?               empty
+    |  |  |     +--:(krb5-instance)
+    |  |  |     |  +--rw krb5-instance?      empty
+    |  |  |     +--:(local)
+    |  |  |        +--rw local?              empty
+    |  |  +--rw a3
+    |  |  |  +--rw (auth-exec-choice)?
+    |  |  |     +--:(group)
+    |  |  |     |  +--rw group?              union
+    |  |  |     +--:(cache)
+    |  |  |     |  +--rw cache?              union
+    |  |  |     +--:(none)
+    |  |  |     |  +--rw none?               empty
+    |  |  |     +--:(if-authenticated)
+    |  |  |     |  +--rw if-authenticated?   empty
+    |  |  |     +--:(krb5-instance)
+    |  |  |     |  +--rw krb5-instance?      empty
+    |  |  |     +--:(local)
+    |  |  |        +--rw local?              empty
+    |  |  +--rw a4
+    |  |     +--rw (auth-exec-choice)?
+    |  |        +--:(group)
+    |  |        |  +--rw group?              union
+    |  |        +--:(cache)
+    |  |        |  +--rw cache?              union
+    |  |        +--:(none)
+    |  |        |  +--rw none?               empty
+    |  |        +--:(if-authenticated)
+    |  |        |  +--rw if-authenticated?   empty
+    |  |        +--:(krb5-instance)
+    |  |        |  +--rw krb5-instance?      empty
+    |  |        +--:(local)
+    |  |           +--rw local?              empty
+    |  +--rw eventmanager* [name]
+    |  |  +--rw name     string
+    |  |  +--rw group?   union
+    |  |  +--rw local?   empty
+    |  |  +--rw none?    empty
+    |  +--rw network* [id]
+    |  |  +--rw id    union
+    |  |  +--rw a1
+    |  |  |  +--rw (auth-choice)?
+    |  |  |     +--:(if-authenticated)
+    |  |  |     |  +--rw if-authenticated?   empty
+    |  |  |     +--:(none)
+    |  |  |     |  +--rw none?               empty
+    |  |  |     +--:(local)
+    |  |  |     |  +--rw local?              empty
+    |  |  |     +--:(group)
+    |  |  |     |  +--rw group?              union
+    |  |  |     +--:(cache)
+    |  |  |        +--rw cache?              union
+    |  |  +--rw a2
+    |  |  |  +--rw (auth-choice)?
+    |  |  |     +--:(group)
+    |  |  |     |  +--rw group?              union
+    |  |  |     +--:(cache)
+    |  |  |     |  +--rw cache?              union
+    |  |  |     +--:(if-authenticated)
+    |  |  |     |  +--rw if-authenticated?   empty
+    |  |  |     +--:(none)
+    |  |  |     |  +--rw none?               empty
+    |  |  |     +--:(local)
+    |  |  |        +--rw local?              empty
+    |  |  +--rw a3
+    |  |  |  +--rw (auth-choice)?
+    |  |  |     +--:(group)
+    |  |  |     |  +--rw group?              union
+    |  |  |     +--:(cache)
+    |  |  |     |  +--rw cache?              union
+    |  |  |     +--:(none)
+    |  |  |     |  +--rw none?               empty
+    |  |  |     +--:(if-authenticated)
+    |  |  |     |  +--rw if-authenticated?   empty
+    |  |  |     +--:(local)
+    |  |  |        +--rw local?              empty
+    |  |  +--rw a4
+    |  |     +--rw (auth-choice)?
+    |  |        +--:(group)
+    |  |        |  +--rw group?              union
+    |  |        +--:(cache)
+    |  |        |  +--rw cache?              union
+    |  |        +--:(none)
+    |  |        |  +--rw none?               empty
+    |  |        +--:(if-authenticated)
+    |  |        |  +--rw if-authenticated?   empty
+    |  |        +--:(local)
+    |  |           +--rw local?              empty
+    |  +--rw auth-proxy
+    |  |  +--rw default
+    |  |     +--rw local?   empty
+    |  |     +--rw group?   union
+    |  +--rw onep
+    |     +--rw default
+    |        +--rw group
+    |           +--rw group-word* [group-word]
+    |              +--rw group-word    string
+    +--rw accounting
+    |  +--rw commands* [level list-name]
+    |  |  +--rw level          uint8
+    |  |  +--rw list-name      union
+    |  |  +--rw action-type?   enumeration
+    |  |  +--rw broadcast?     empty
+    |  |  +--rw group?         union
+    |  +--rw connection* [name]
+    |  |  +--rw name                string
+    |  |  +--rw (accounting-choice)?
+    |  |     +--:(none)
+    |  |     |  +--rw none?         empty
+    |  |     +--:(start-stop)
+    |  |     |  +--rw start-stop
+    |  |     |     +--rw broadcast?   empty
+    |  |     |     +--rw group?       union
+    |  |     +--:(stop-only)
+    |  |        +--rw stop-only
+    |  |           +--rw broadcast?   empty
+    |  |           +--rw group?       union
+    |  +--rw delay-start
+    |  |  +--rw extended-delay?   uint8
+    |  |  +--rw all?              empty
+    |  +--rw dot1x
+    |  |  +--rw default
+    |  |  |  +--rw start-stop
+    |  |  |     +--rw broadcast?   empty
+    |  |  |     +--rw group?       union
+    |  |  +--rw accounting-list* [name]
+    |  |     +--rw name          string
+    |  |     +--rw start-stop
+    |  |        +--rw broadcast?   empty
+    |  |        +--rw group?       union
+    |  +--rw identity
+    |  |  +--rw default
+    |  |  |  +--rw start-stop
+    |  |  |     +--rw broadcast?   empty
+    |  |  |     +--rw group?       union
+    |  |  +--rw accounting-list* [name]
+    |  |     +--rw name          string
+    |  |     +--rw start-stop
+    |  |        +--rw broadcast?   empty
+    |  |        +--rw group?       union
+    |  +--rw exec* [name]
+    |  |  +--rw name                string
+    |  |  +--rw (accounting-choice)?
+    |  |     +--:(none)
+    |  |     |  +--rw none?         empty
+    |  |     +--:(start-stop)
+    |  |     |  +--rw start-stop
+    |  |     |     +--rw broadcast?   empty
+    |  |     |     +--rw group?       union
+    |  |     +--:(stop-only)
+    |  |        +--rw stop-only
+    |  |           +--rw broadcast?   empty
+    |  |           +--rw group?       union
+    |  +--rw exec-submode
+    |  |  +--rw exec* [name]
+    |  |     +--rw name           string
+    |  |     +--rw action-type
+    |  |        +--rw (accounting-choice)?
+    |  |           +--:(none)
+    |  |           |  +--rw none?         empty
+    |  |           +--:(start-stop)
+    |  |           |  +--rw start-stop
+    |  |           |     +--rw broadcast?   empty
+    |  |           |     +--rw group?       union
+    |  |           +--:(stop-only)
+    |  |              +--rw stop-only
+    |  |                 +--rw broadcast?   empty
+    |  |                 +--rw group?       union
+    |  +--rw network* [id]
+    |  |  +--rw id                 union
+    |  |  +--rw start-stop
+    |  |  |  +--rw group?   union
+    |  |  +--rw (network-choice)?
+    |  |     +--:(a)
+    |  |     |  +--rw none?        empty
+    |  |     +--:(b)
+    |  |        +--rw mode?        enumeration
+    |  |        +--rw broadcast?   empty
+    |  |        +--rw a1
+    |  |        |  +--rw group?   union
+    |  |        +--rw a2
+    |  |        |  +--rw group?   union
+    |  |        +--rw a3
+    |  |        |  +--rw group?   union
+    |  |        +--rw a4
+    |  |           +--rw group?   union
+    |  +--rw send
+    |  |  +--rw counters
+    |  |  |  +--rw ipv6?   empty
+    |  |  +--rw stop-record
+    |  |     +--rw always?           empty
+    |  |     +--rw authentication
+    |  |        +--rw failure!
+    |  |        |  +--rw vrf?   string
+    |  |        +--rw success
+    |  |           +--rw remote-server!
+    |  |              +--rw vrf?   string
+    |  +--rw suppress
+    |  |  +--rw null-username?   empty
+    |  +--rw system
+    |  |  +--rw (default-guarantee-first)?
+    |  |     +--:(default-case)
+    |  |     |  +--rw default!
+    |  |     |     +--rw none?         empty
+    |  |     |     +--rw start-stop
+    |  |     |     |  +--rw broadcast?   empty
+    |  |     |     |  +--rw group?       union
+    |  |     |     +--rw vrf?          string
+    |  |     +--:(guarantee-first-case)
+    |  |        +--rw guarantee-first?   boolean
+    |  +--rw update
+    |  |  +--rw periodic?   uint32
+    |  +--rw auth-proxy
+    |     +--rw default
+    |        +--rw start-stop
+    |           +--rw group?   string
+    +--rw server
+    |  +--rw radius
+    |     +--rw dynamic-author!
+    |     |  +--rw port?         uint16
+    |     |  +--rw client* [ip]
+    |     |  |  +--rw ip            union
+    |     |  |  +--rw dtls?         empty
+    |     |  |  +--rw vrf* [name]
+    |     |  |  |  +--rw name          string
+    |     |  |  |  +--rw dtls?         empty
+    |     |  |  |  +--rw server-key
+    |     |  |  |     +--rw key?      enumeration
+    |     |  |  |     +--rw string?   string
+    |     |  |  +--rw server-key
+    |     |  |     +--rw key?      enumeration
+    |     |  |     +--rw string?   string
+    |     |  +--rw server-key
+    |     |  |  +--rw key?      enumeration
+    |     |  |  +--rw string?   string
+    |     |  +--rw domain
+    |     |  |  +--rw delimiter?   string
+    |     |  |  +--rw stripping!
+    |     |  |     +--rw right-to-left?   empty
+    |     |  +--rw auth-type?    enumeration
+    |     |  +--rw ignore
+    |     |     +--rw retransmission?   empty
+    |     |     +--rw server-key?       empty
+    |     |     +--rw session-key?      empty
+    |     +--rw policy-device!
+    |     |  +--rw accounting
+    |     |  |  +--rw port?   uint16
+    |     |  +--rw authentication
+    |     |  |  +--rw port?   uint16
+    |     |  +--rw client* [ip]
+    |     |  |  +--rw ip      union
+    |     |  |  +--rw port?   uint16
+    |     |  |  +--rw vrf* [name]
+    |     |  |  |  +--rw name    string
+    |     |  |  |  +--rw port?   uint16
+    |     |  |  |  +--rw key
+    |     |  |  |     +--rw key?      enumeration
+    |     |  |  |     +--rw string?   string
+    |     |  |  +--rw key
+    |     |  |     +--rw key?      enumeration
+    |     |  |     +--rw string?   string
+    |     |  +--rw key
+    |     |  |  +--rw key?      enumeration
+    |     |  |  +--rw string?   string
+    |     |  +--rw message-authenticator
+    |     |     +--rw ignore?   empty
+    |     +--rw proxy!
+    |     |  +--rw accounting
+    |     |  |  +--rw method-list
+    |     |  |  |  +--rw (method)?
+    |     |  |  |     +--:(method-name)
+    |     |  |  |     |  +--rw method-name?   string
+    |     |  |  |     +--:(default)
+    |     |  |  |        +--rw default?       empty
+    |     |  |  +--rw port?          uint16
+    |     |  +--rw authentication
+    |     |  |  +--rw method-list
+    |     |  |  |  +--rw (method)?
+    |     |  |  |     +--:(method-name)
+    |     |  |  |     |  +--rw method-name?   string
+    |     |  |  |     +--:(default)
+    |     |  |  |        +--rw default?       empty
+    |     |  |  +--rw port?          uint16
+    |     |  +--rw calling-station-id
+    |     |  |  +--rw format
+    |     |  |     +--rw (type)?
+    |     |  |        +--:(mac-address)
+    |     |  |        |  +--rw mac-address
+    |     |  |        |     +--rw (mac-format)?
+    |     |  |        |        +--:(default)
+    |     |  |        |        |  +--rw default!
+    |     |  |        |        |     +--rw type?   enumeration
+    |     |  |        |        +--:(ietf)
+    |     |  |        |        |  +--rw ietf!
+    |     |  |        |        |     +--rw type?   enumeration
+    |     |  |        |        +--:(none)
+    |     |  |        |        |  +--rw none?          empty
+    |     |  |        |        +--:(one-byte)
+    |     |  |        |        |  +--rw one-byte
+    |     |  |        |        |     +--rw delimiter
+    |     |  |        |        |        +--rw (delimeter-type)?
+    |     |  |        |        |           +--:(colon)
+    |     |  |        |        |           |  +--rw colon!
+    |     |  |        |        |           |     +--rw type?   enumeration
+    |     |  |        |        |           +--:(dot)
+    |     |  |        |        |           |  +--rw dot!
+    |     |  |        |        |           |     +--rw type?   enumeration
+    |     |  |        |        |           +--:(hyphen)
+    |     |  |        |        |              +--rw hyphen!
+    |     |  |        |        |                 +--rw type?   enumeration
+    |     |  |        |        +--:(three-byte)
+    |     |  |        |        |  +--rw three-byte
+    |     |  |        |        |     +--rw delimiter
+    |     |  |        |        |        +--rw (delimeter-type)?
+    |     |  |        |        |           +--:(colon)
+    |     |  |        |        |           |  +--rw colon!
+    |     |  |        |        |           |     +--rw type?   enumeration
+    |     |  |        |        |           +--:(dot)
+    |     |  |        |        |           |  +--rw dot!
+    |     |  |        |        |           |     +--rw type?   enumeration
+    |     |  |        |        |           +--:(hyphen)
+    |     |  |        |        |              +--rw hyphen!
+    |     |  |        |        |                 +--rw type?   enumeration
+    |     |  |        |        +--:(two-byte)
+    |     |  |        |        |  +--rw two-byte
+    |     |  |        |        |     +--rw delimiter
+    |     |  |        |        |        +--rw (delimeter-type)?
+    |     |  |        |        |           +--:(colon)
+    |     |  |        |        |           |  +--rw colon!
+    |     |  |        |        |           |     +--rw type?   enumeration
+    |     |  |        |        |           +--:(dot)
+    |     |  |        |        |           |  +--rw dot!
+    |     |  |        |        |           |     +--rw type?   enumeration
+    |     |  |        |        |           +--:(hyphen)
+    |     |  |        |        |              +--rw hyphen!
+    |     |  |        |        |                 +--rw type?   enumeration
+    |     |  |        |        +--:(unformatted)
+    |     |  |        |           +--rw unformatted!
+    |     |  |        |              +--rw type?   enumeration
+    |     |  |        +--:(msisdn)
+    |     |  |           +--rw msisdn?        empty
+    |     |  +--rw eap-user
+    |     |  |  +--rw ignore-open-session?   empty
+    |     |  +--rw filter
+    |     |  |  +--rw access
+    |     |  |  |  +--rw (filter-type)?
+    |     |  |  |     +--:(ack)
+    |     |  |  |     |  +--rw ack
+    |     |  |  |     |     +--rw word1?   string
+    |     |  |  |     |     +--rw word2?   string
+    |     |  |  |     |     +--rw word3?   string
+    |     |  |  |     |     +--rw word4?   string
+    |     |  |  |     +--:(drop)
+    |     |  |  |     |  +--rw drop
+    |     |  |  |     |     +--rw word1?   string
+    |     |  |  |     |     +--rw word2?   string
+    |     |  |  |     |     +--rw word3?   string
+    |     |  |  |     |     +--rw word4?   string
+    |     |  |  |     +--:(ignore)
+    |     |  |  |        +--rw ignore
+    |     |  |  |           +--rw word1?   string
+    |     |  |  |           +--rw word2?   string
+    |     |  |  |           +--rw word3?   string
+    |     |  |  |           +--rw word4?   string
+    |     |  |  +--rw accounting
+    |     |  |  |  +--rw (filter-type)?
+    |     |  |  |     +--:(ack)
+    |     |  |  |     |  +--rw ack
+    |     |  |  |     |     +--rw word1?   string
+    |     |  |  |     |     +--rw word2?   string
+    |     |  |  |     |     +--rw word3?   string
+    |     |  |  |     |     +--rw word4?   string
+    |     |  |  |     +--:(drop)
+    |     |  |  |     |  +--rw drop
+    |     |  |  |     |     +--rw word1?   string
+    |     |  |  |     |     +--rw word2?   string
+    |     |  |  |     |     +--rw word3?   string
+    |     |  |  |     |     +--rw word4?   string
+    |     |  |  |     +--:(ignore)
+    |     |  |  |        +--rw ignore
+    |     |  |  |           +--rw word1?   string
+    |     |  |  |           +--rw word2?   string
+    |     |  |  |           +--rw word3?   string
+    |     |  |  |           +--rw word4?   string
+    |     |  |  +--rw attribute
+    |     |  |     +--rw (attr-type)?
+    |     |  |        +--:(allow)
+    |     |  |        |  +--rw allow?   string
+    |     |  |        +--:(block)
+    |     |  |           +--rw block?   string
+    |     |  +--rw key
+    |     |  |  +--rw key?      enumeration
+    |     |  |  +--rw string?   string
+    |     |  +--rw message-authenticator
+    |     |  |  +--rw ignore!
+    |     |  |     +--rw accounting?   empty
+    |     |  +--rw mode
+    |     |  |  +--rw pass-through?   empty
+    |     |  +--rw pwlan-session
+    |     |  |  +--rw reconnect?   empty
+    |     |  +--rw re-authentication
+    |     |  |  +--rw do-not-apply?   empty
+    |     |  +--rw session-identifier
+    |     |  |  +--rw attribute?   uint8
+    |     |  |  +--rw vsa
+    |     |  |     +--rw vendor?   uint16
+    |     |  |     +--rw type?     uint8
+    |     |  +--rw timer
+    |     |  |  +--rw disconnect
+    |     |  |  |  +--rw acct-stop?     uint16
+    |     |  |  |  +--rw reauth-fail?   uint16
+    |     |  |  +--rw ip-address?   uint16
+    |     |  |  +--rw reconnect?    uint16
+    |     |  |  +--rw request?      uint16
+    |     |  |  +--rw roaming?      uint16
+    |     |  +--rw client-ip
+    |     |  |  +--rw client* [ip]
+    |     |  |     +--rw ip                       union
+    |     |  |     +--rw accounting
+    |     |  |     |  +--rw method-list
+    |     |  |     |  |  +--rw (method)?
+    |     |  |     |  |     +--:(method-name)
+    |     |  |     |  |     |  +--rw method-name?   string
+    |     |  |     |  |     +--:(default)
+    |     |  |     |  |        +--rw default?       empty
+    |     |  |     |  +--rw port?          uint16
+    |     |  |     +--rw authentication
+    |     |  |     |  +--rw method-list
+    |     |  |     |  |  +--rw (method)?
+    |     |  |     |  |     +--:(method-name)
+    |     |  |     |  |     |  +--rw method-name?   string
+    |     |  |     |  |     +--:(default)
+    |     |  |     |  |        +--rw default?       empty
+    |     |  |     |  +--rw port?          uint16
+    |     |  |     +--rw calling-station-id
+    |     |  |     |  +--rw format
+    |     |  |     |     +--rw (type)?
+    |     |  |     |        +--:(mac-address)
+    |     |  |     |        |  +--rw mac-address
+    |     |  |     |        |     +--rw (mac-format)?
+    |     |  |     |        |        +--:(default)
+    |     |  |     |        |        |  +--rw default!
+    |     |  |     |        |        |     +--rw type?   enumeration
+    |     |  |     |        |        +--:(ietf)
+    |     |  |     |        |        |  +--rw ietf!
+    |     |  |     |        |        |     +--rw type?   enumeration
+    |     |  |     |        |        +--:(none)
+    |     |  |     |        |        |  +--rw none?          empty
+    |     |  |     |        |        +--:(one-byte)
+    |     |  |     |        |        |  +--rw one-byte
+    |     |  |     |        |        |     +--rw delimiter
+    |     |  |     |        |        |        +--rw (delimeter-type)?
+    |     |  |     |        |        |           +--:(colon)
+    |     |  |     |        |        |           |  +--rw colon!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(dot)
+    |     |  |     |        |        |           |  +--rw dot!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(hyphen)
+    |     |  |     |        |        |              +--rw hyphen!
+    |     |  |     |        |        |                 +--rw type?   enumeration
+    |     |  |     |        |        +--:(three-byte)
+    |     |  |     |        |        |  +--rw three-byte
+    |     |  |     |        |        |     +--rw delimiter
+    |     |  |     |        |        |        +--rw (delimeter-type)?
+    |     |  |     |        |        |           +--:(colon)
+    |     |  |     |        |        |           |  +--rw colon!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(dot)
+    |     |  |     |        |        |           |  +--rw dot!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(hyphen)
+    |     |  |     |        |        |              +--rw hyphen!
+    |     |  |     |        |        |                 +--rw type?   enumeration
+    |     |  |     |        |        +--:(two-byte)
+    |     |  |     |        |        |  +--rw two-byte
+    |     |  |     |        |        |     +--rw delimiter
+    |     |  |     |        |        |        +--rw (delimeter-type)?
+    |     |  |     |        |        |           +--:(colon)
+    |     |  |     |        |        |           |  +--rw colon!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(dot)
+    |     |  |     |        |        |           |  +--rw dot!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(hyphen)
+    |     |  |     |        |        |              +--rw hyphen!
+    |     |  |     |        |        |                 +--rw type?   enumeration
+    |     |  |     |        |        +--:(unformatted)
+    |     |  |     |        |           +--rw unformatted!
+    |     |  |     |        |              +--rw type?   enumeration
+    |     |  |     |        +--:(msisdn)
+    |     |  |     |           +--rw msisdn?        empty
+    |     |  |     +--rw eap-user
+    |     |  |     |  +--rw ignore-open-session?   empty
+    |     |  |     +--rw filter
+    |     |  |     |  +--rw access
+    |     |  |     |  |  +--rw (filter-type)?
+    |     |  |     |  |     +--:(ack)
+    |     |  |     |  |     |  +--rw ack
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(drop)
+    |     |  |     |  |     |  +--rw drop
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(ignore)
+    |     |  |     |  |        +--rw ignore
+    |     |  |     |  |           +--rw word1?   string
+    |     |  |     |  |           +--rw word2?   string
+    |     |  |     |  |           +--rw word3?   string
+    |     |  |     |  |           +--rw word4?   string
+    |     |  |     |  +--rw accounting
+    |     |  |     |  |  +--rw (filter-type)?
+    |     |  |     |  |     +--:(ack)
+    |     |  |     |  |     |  +--rw ack
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(drop)
+    |     |  |     |  |     |  +--rw drop
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(ignore)
+    |     |  |     |  |        +--rw ignore
+    |     |  |     |  |           +--rw word1?   string
+    |     |  |     |  |           +--rw word2?   string
+    |     |  |     |  |           +--rw word3?   string
+    |     |  |     |  |           +--rw word4?   string
+    |     |  |     |  +--rw attribute
+    |     |  |     |     +--rw (attr-type)?
+    |     |  |     |        +--:(allow)
+    |     |  |     |        |  +--rw allow?   string
+    |     |  |     |        +--:(block)
+    |     |  |     |           +--rw block?   string
+    |     |  |     +--rw key
+    |     |  |     |  +--rw key?      enumeration
+    |     |  |     |  +--rw string?   string
+    |     |  |     +--rw message-authenticator
+    |     |  |     |  +--rw ignore!
+    |     |  |     |     +--rw accounting?   empty
+    |     |  |     +--rw mode
+    |     |  |     |  +--rw pass-through?   empty
+    |     |  |     +--rw pwlan-session
+    |     |  |     |  +--rw reconnect?   empty
+    |     |  |     +--rw re-authentication
+    |     |  |     |  +--rw do-not-apply?   empty
+    |     |  |     +--rw session-identifier
+    |     |  |     |  +--rw attribute?   uint8
+    |     |  |     |  +--rw vsa
+    |     |  |     |     +--rw vendor?   uint16
+    |     |  |     |     +--rw type?     uint8
+    |     |  |     +--rw timer
+    |     |  |        +--rw disconnect
+    |     |  |        |  +--rw acct-stop?     uint16
+    |     |  |        |  +--rw reauth-fail?   uint16
+    |     |  |        +--rw ip-address?   uint16
+    |     |  |        +--rw reconnect?    uint16
+    |     |  |        +--rw request?      uint16
+    |     |  |        +--rw roaming?      uint16
+    |     |  +--rw client-ip-mask
+    |     |  |  +--rw client* [ip mask]
+    |     |  |     +--rw ip                       union
+    |     |  |     +--rw mask                     union
+    |     |  |     +--rw accounting
+    |     |  |     |  +--rw method-list
+    |     |  |     |  |  +--rw (method)?
+    |     |  |     |  |     +--:(method-name)
+    |     |  |     |  |     |  +--rw method-name?   string
+    |     |  |     |  |     +--:(default)
+    |     |  |     |  |        +--rw default?       empty
+    |     |  |     |  +--rw port?          uint16
+    |     |  |     +--rw authentication
+    |     |  |     |  +--rw method-list
+    |     |  |     |  |  +--rw (method)?
+    |     |  |     |  |     +--:(method-name)
+    |     |  |     |  |     |  +--rw method-name?   string
+    |     |  |     |  |     +--:(default)
+    |     |  |     |  |        +--rw default?       empty
+    |     |  |     |  +--rw port?          uint16
+    |     |  |     +--rw calling-station-id
+    |     |  |     |  +--rw format
+    |     |  |     |     +--rw (type)?
+    |     |  |     |        +--:(mac-address)
+    |     |  |     |        |  +--rw mac-address
+    |     |  |     |        |     +--rw (mac-format)?
+    |     |  |     |        |        +--:(default)
+    |     |  |     |        |        |  +--rw default!
+    |     |  |     |        |        |     +--rw type?   enumeration
+    |     |  |     |        |        +--:(ietf)
+    |     |  |     |        |        |  +--rw ietf!
+    |     |  |     |        |        |     +--rw type?   enumeration
+    |     |  |     |        |        +--:(none)
+    |     |  |     |        |        |  +--rw none?          empty
+    |     |  |     |        |        +--:(one-byte)
+    |     |  |     |        |        |  +--rw one-byte
+    |     |  |     |        |        |     +--rw delimiter
+    |     |  |     |        |        |        +--rw (delimeter-type)?
+    |     |  |     |        |        |           +--:(colon)
+    |     |  |     |        |        |           |  +--rw colon!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(dot)
+    |     |  |     |        |        |           |  +--rw dot!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(hyphen)
+    |     |  |     |        |        |              +--rw hyphen!
+    |     |  |     |        |        |                 +--rw type?   enumeration
+    |     |  |     |        |        +--:(three-byte)
+    |     |  |     |        |        |  +--rw three-byte
+    |     |  |     |        |        |     +--rw delimiter
+    |     |  |     |        |        |        +--rw (delimeter-type)?
+    |     |  |     |        |        |           +--:(colon)
+    |     |  |     |        |        |           |  +--rw colon!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(dot)
+    |     |  |     |        |        |           |  +--rw dot!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(hyphen)
+    |     |  |     |        |        |              +--rw hyphen!
+    |     |  |     |        |        |                 +--rw type?   enumeration
+    |     |  |     |        |        +--:(two-byte)
+    |     |  |     |        |        |  +--rw two-byte
+    |     |  |     |        |        |     +--rw delimiter
+    |     |  |     |        |        |        +--rw (delimeter-type)?
+    |     |  |     |        |        |           +--:(colon)
+    |     |  |     |        |        |           |  +--rw colon!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(dot)
+    |     |  |     |        |        |           |  +--rw dot!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(hyphen)
+    |     |  |     |        |        |              +--rw hyphen!
+    |     |  |     |        |        |                 +--rw type?   enumeration
+    |     |  |     |        |        +--:(unformatted)
+    |     |  |     |        |           +--rw unformatted!
+    |     |  |     |        |              +--rw type?   enumeration
+    |     |  |     |        +--:(msisdn)
+    |     |  |     |           +--rw msisdn?        empty
+    |     |  |     +--rw eap-user
+    |     |  |     |  +--rw ignore-open-session?   empty
+    |     |  |     +--rw filter
+    |     |  |     |  +--rw access
+    |     |  |     |  |  +--rw (filter-type)?
+    |     |  |     |  |     +--:(ack)
+    |     |  |     |  |     |  +--rw ack
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(drop)
+    |     |  |     |  |     |  +--rw drop
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(ignore)
+    |     |  |     |  |        +--rw ignore
+    |     |  |     |  |           +--rw word1?   string
+    |     |  |     |  |           +--rw word2?   string
+    |     |  |     |  |           +--rw word3?   string
+    |     |  |     |  |           +--rw word4?   string
+    |     |  |     |  +--rw accounting
+    |     |  |     |  |  +--rw (filter-type)?
+    |     |  |     |  |     +--:(ack)
+    |     |  |     |  |     |  +--rw ack
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(drop)
+    |     |  |     |  |     |  +--rw drop
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(ignore)
+    |     |  |     |  |        +--rw ignore
+    |     |  |     |  |           +--rw word1?   string
+    |     |  |     |  |           +--rw word2?   string
+    |     |  |     |  |           +--rw word3?   string
+    |     |  |     |  |           +--rw word4?   string
+    |     |  |     |  +--rw attribute
+    |     |  |     |     +--rw (attr-type)?
+    |     |  |     |        +--:(allow)
+    |     |  |     |        |  +--rw allow?   string
+    |     |  |     |        +--:(block)
+    |     |  |     |           +--rw block?   string
+    |     |  |     +--rw key
+    |     |  |     |  +--rw key?      enumeration
+    |     |  |     |  +--rw string?   string
+    |     |  |     +--rw message-authenticator
+    |     |  |     |  +--rw ignore!
+    |     |  |     |     +--rw accounting?   empty
+    |     |  |     +--rw mode
+    |     |  |     |  +--rw pass-through?   empty
+    |     |  |     +--rw pwlan-session
+    |     |  |     |  +--rw reconnect?   empty
+    |     |  |     +--rw re-authentication
+    |     |  |     |  +--rw do-not-apply?   empty
+    |     |  |     +--rw session-identifier
+    |     |  |     |  +--rw attribute?   uint8
+    |     |  |     |  +--rw vsa
+    |     |  |     |     +--rw vendor?   uint16
+    |     |  |     |     +--rw type?     uint8
+    |     |  |     +--rw timer
+    |     |  |        +--rw disconnect
+    |     |  |        |  +--rw acct-stop?     uint16
+    |     |  |        |  +--rw reauth-fail?   uint16
+    |     |  |        +--rw ip-address?   uint16
+    |     |  |        +--rw reconnect?    uint16
+    |     |  |        +--rw request?      uint16
+    |     |  |        +--rw roaming?      uint16
+    |     |  +--rw client-ip-vrf
+    |     |  |  +--rw client* [ip vrf]
+    |     |  |     +--rw ip                       union
+    |     |  |     +--rw vrf                      string
+    |     |  |     +--rw accounting
+    |     |  |     |  +--rw method-list
+    |     |  |     |  |  +--rw (method)?
+    |     |  |     |  |     +--:(method-name)
+    |     |  |     |  |     |  +--rw method-name?   string
+    |     |  |     |  |     +--:(default)
+    |     |  |     |  |        +--rw default?       empty
+    |     |  |     |  +--rw port?          uint16
+    |     |  |     +--rw authentication
+    |     |  |     |  +--rw method-list
+    |     |  |     |  |  +--rw (method)?
+    |     |  |     |  |     +--:(method-name)
+    |     |  |     |  |     |  +--rw method-name?   string
+    |     |  |     |  |     +--:(default)
+    |     |  |     |  |        +--rw default?       empty
+    |     |  |     |  +--rw port?          uint16
+    |     |  |     +--rw calling-station-id
+    |     |  |     |  +--rw format
+    |     |  |     |     +--rw (type)?
+    |     |  |     |        +--:(mac-address)
+    |     |  |     |        |  +--rw mac-address
+    |     |  |     |        |     +--rw (mac-format)?
+    |     |  |     |        |        +--:(default)
+    |     |  |     |        |        |  +--rw default!
+    |     |  |     |        |        |     +--rw type?   enumeration
+    |     |  |     |        |        +--:(ietf)
+    |     |  |     |        |        |  +--rw ietf!
+    |     |  |     |        |        |     +--rw type?   enumeration
+    |     |  |     |        |        +--:(none)
+    |     |  |     |        |        |  +--rw none?          empty
+    |     |  |     |        |        +--:(one-byte)
+    |     |  |     |        |        |  +--rw one-byte
+    |     |  |     |        |        |     +--rw delimiter
+    |     |  |     |        |        |        +--rw (delimeter-type)?
+    |     |  |     |        |        |           +--:(colon)
+    |     |  |     |        |        |           |  +--rw colon!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(dot)
+    |     |  |     |        |        |           |  +--rw dot!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(hyphen)
+    |     |  |     |        |        |              +--rw hyphen!
+    |     |  |     |        |        |                 +--rw type?   enumeration
+    |     |  |     |        |        +--:(three-byte)
+    |     |  |     |        |        |  +--rw three-byte
+    |     |  |     |        |        |     +--rw delimiter
+    |     |  |     |        |        |        +--rw (delimeter-type)?
+    |     |  |     |        |        |           +--:(colon)
+    |     |  |     |        |        |           |  +--rw colon!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(dot)
+    |     |  |     |        |        |           |  +--rw dot!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(hyphen)
+    |     |  |     |        |        |              +--rw hyphen!
+    |     |  |     |        |        |                 +--rw type?   enumeration
+    |     |  |     |        |        +--:(two-byte)
+    |     |  |     |        |        |  +--rw two-byte
+    |     |  |     |        |        |     +--rw delimiter
+    |     |  |     |        |        |        +--rw (delimeter-type)?
+    |     |  |     |        |        |           +--:(colon)
+    |     |  |     |        |        |           |  +--rw colon!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(dot)
+    |     |  |     |        |        |           |  +--rw dot!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(hyphen)
+    |     |  |     |        |        |              +--rw hyphen!
+    |     |  |     |        |        |                 +--rw type?   enumeration
+    |     |  |     |        |        +--:(unformatted)
+    |     |  |     |        |           +--rw unformatted!
+    |     |  |     |        |              +--rw type?   enumeration
+    |     |  |     |        +--:(msisdn)
+    |     |  |     |           +--rw msisdn?        empty
+    |     |  |     +--rw eap-user
+    |     |  |     |  +--rw ignore-open-session?   empty
+    |     |  |     +--rw filter
+    |     |  |     |  +--rw access
+    |     |  |     |  |  +--rw (filter-type)?
+    |     |  |     |  |     +--:(ack)
+    |     |  |     |  |     |  +--rw ack
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(drop)
+    |     |  |     |  |     |  +--rw drop
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(ignore)
+    |     |  |     |  |        +--rw ignore
+    |     |  |     |  |           +--rw word1?   string
+    |     |  |     |  |           +--rw word2?   string
+    |     |  |     |  |           +--rw word3?   string
+    |     |  |     |  |           +--rw word4?   string
+    |     |  |     |  +--rw accounting
+    |     |  |     |  |  +--rw (filter-type)?
+    |     |  |     |  |     +--:(ack)
+    |     |  |     |  |     |  +--rw ack
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(drop)
+    |     |  |     |  |     |  +--rw drop
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(ignore)
+    |     |  |     |  |        +--rw ignore
+    |     |  |     |  |           +--rw word1?   string
+    |     |  |     |  |           +--rw word2?   string
+    |     |  |     |  |           +--rw word3?   string
+    |     |  |     |  |           +--rw word4?   string
+    |     |  |     |  +--rw attribute
+    |     |  |     |     +--rw (attr-type)?
+    |     |  |     |        +--:(allow)
+    |     |  |     |        |  +--rw allow?   string
+    |     |  |     |        +--:(block)
+    |     |  |     |           +--rw block?   string
+    |     |  |     +--rw key
+    |     |  |     |  +--rw key?      enumeration
+    |     |  |     |  +--rw string?   string
+    |     |  |     +--rw message-authenticator
+    |     |  |     |  +--rw ignore!
+    |     |  |     |     +--rw accounting?   empty
+    |     |  |     +--rw mode
+    |     |  |     |  +--rw pass-through?   empty
+    |     |  |     +--rw pwlan-session
+    |     |  |     |  +--rw reconnect?   empty
+    |     |  |     +--rw re-authentication
+    |     |  |     |  +--rw do-not-apply?   empty
+    |     |  |     +--rw session-identifier
+    |     |  |     |  +--rw attribute?   uint8
+    |     |  |     |  +--rw vsa
+    |     |  |     |     +--rw vendor?   uint16
+    |     |  |     |     +--rw type?     uint8
+    |     |  |     +--rw timer
+    |     |  |        +--rw disconnect
+    |     |  |        |  +--rw acct-stop?     uint16
+    |     |  |        |  +--rw reauth-fail?   uint16
+    |     |  |        +--rw ip-address?   uint16
+    |     |  |        +--rw reconnect?    uint16
+    |     |  |        +--rw request?      uint16
+    |     |  |        +--rw roaming?      uint16
+    |     |  +--rw client-ip-mask-vrf
+    |     |  |  +--rw client* [ip mask vrf]
+    |     |  |     +--rw ip                       union
+    |     |  |     +--rw mask                     union
+    |     |  |     +--rw vrf                      string
+    |     |  |     +--rw accounting
+    |     |  |     |  +--rw method-list
+    |     |  |     |  |  +--rw (method)?
+    |     |  |     |  |     +--:(method-name)
+    |     |  |     |  |     |  +--rw method-name?   string
+    |     |  |     |  |     +--:(default)
+    |     |  |     |  |        +--rw default?       empty
+    |     |  |     |  +--rw port?          uint16
+    |     |  |     +--rw authentication
+    |     |  |     |  +--rw method-list
+    |     |  |     |  |  +--rw (method)?
+    |     |  |     |  |     +--:(method-name)
+    |     |  |     |  |     |  +--rw method-name?   string
+    |     |  |     |  |     +--:(default)
+    |     |  |     |  |        +--rw default?       empty
+    |     |  |     |  +--rw port?          uint16
+    |     |  |     +--rw calling-station-id
+    |     |  |     |  +--rw format
+    |     |  |     |     +--rw (type)?
+    |     |  |     |        +--:(mac-address)
+    |     |  |     |        |  +--rw mac-address
+    |     |  |     |        |     +--rw (mac-format)?
+    |     |  |     |        |        +--:(default)
+    |     |  |     |        |        |  +--rw default!
+    |     |  |     |        |        |     +--rw type?   enumeration
+    |     |  |     |        |        +--:(ietf)
+    |     |  |     |        |        |  +--rw ietf!
+    |     |  |     |        |        |     +--rw type?   enumeration
+    |     |  |     |        |        +--:(none)
+    |     |  |     |        |        |  +--rw none?          empty
+    |     |  |     |        |        +--:(one-byte)
+    |     |  |     |        |        |  +--rw one-byte
+    |     |  |     |        |        |     +--rw delimiter
+    |     |  |     |        |        |        +--rw (delimeter-type)?
+    |     |  |     |        |        |           +--:(colon)
+    |     |  |     |        |        |           |  +--rw colon!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(dot)
+    |     |  |     |        |        |           |  +--rw dot!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(hyphen)
+    |     |  |     |        |        |              +--rw hyphen!
+    |     |  |     |        |        |                 +--rw type?   enumeration
+    |     |  |     |        |        +--:(three-byte)
+    |     |  |     |        |        |  +--rw three-byte
+    |     |  |     |        |        |     +--rw delimiter
+    |     |  |     |        |        |        +--rw (delimeter-type)?
+    |     |  |     |        |        |           +--:(colon)
+    |     |  |     |        |        |           |  +--rw colon!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(dot)
+    |     |  |     |        |        |           |  +--rw dot!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(hyphen)
+    |     |  |     |        |        |              +--rw hyphen!
+    |     |  |     |        |        |                 +--rw type?   enumeration
+    |     |  |     |        |        +--:(two-byte)
+    |     |  |     |        |        |  +--rw two-byte
+    |     |  |     |        |        |     +--rw delimiter
+    |     |  |     |        |        |        +--rw (delimeter-type)?
+    |     |  |     |        |        |           +--:(colon)
+    |     |  |     |        |        |           |  +--rw colon!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(dot)
+    |     |  |     |        |        |           |  +--rw dot!
+    |     |  |     |        |        |           |     +--rw type?   enumeration
+    |     |  |     |        |        |           +--:(hyphen)
+    |     |  |     |        |        |              +--rw hyphen!
+    |     |  |     |        |        |                 +--rw type?   enumeration
+    |     |  |     |        |        +--:(unformatted)
+    |     |  |     |        |           +--rw unformatted!
+    |     |  |     |        |              +--rw type?   enumeration
+    |     |  |     |        +--:(msisdn)
+    |     |  |     |           +--rw msisdn?        empty
+    |     |  |     +--rw eap-user
+    |     |  |     |  +--rw ignore-open-session?   empty
+    |     |  |     +--rw filter
+    |     |  |     |  +--rw access
+    |     |  |     |  |  +--rw (filter-type)?
+    |     |  |     |  |     +--:(ack)
+    |     |  |     |  |     |  +--rw ack
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(drop)
+    |     |  |     |  |     |  +--rw drop
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(ignore)
+    |     |  |     |  |        +--rw ignore
+    |     |  |     |  |           +--rw word1?   string
+    |     |  |     |  |           +--rw word2?   string
+    |     |  |     |  |           +--rw word3?   string
+    |     |  |     |  |           +--rw word4?   string
+    |     |  |     |  +--rw accounting
+    |     |  |     |  |  +--rw (filter-type)?
+    |     |  |     |  |     +--:(ack)
+    |     |  |     |  |     |  +--rw ack
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(drop)
+    |     |  |     |  |     |  +--rw drop
+    |     |  |     |  |     |     +--rw word1?   string
+    |     |  |     |  |     |     +--rw word2?   string
+    |     |  |     |  |     |     +--rw word3?   string
+    |     |  |     |  |     |     +--rw word4?   string
+    |     |  |     |  |     +--:(ignore)
+    |     |  |     |  |        +--rw ignore
+    |     |  |     |  |           +--rw word1?   string
+    |     |  |     |  |           +--rw word2?   string
+    |     |  |     |  |           +--rw word3?   string
+    |     |  |     |  |           +--rw word4?   string
+    |     |  |     |  +--rw attribute
+    |     |  |     |     +--rw (attr-type)?
+    |     |  |     |        +--:(allow)
+    |     |  |     |        |  +--rw allow?   string
+    |     |  |     |        +--:(block)
+    |     |  |     |           +--rw block?   string
+    |     |  |     +--rw key
+    |     |  |     |  +--rw key?      enumeration
+    |     |  |     |  +--rw string?   string
+    |     |  |     +--rw message-authenticator
+    |     |  |     |  +--rw ignore!
+    |     |  |     |     +--rw accounting?   empty
+    |     |  |     +--rw mode
+    |     |  |     |  +--rw pass-through?   empty
+    |     |  |     +--rw pwlan-session
+    |     |  |     |  +--rw reconnect?   empty
+    |     |  |     +--rw re-authentication
+    |     |  |     |  +--rw do-not-apply?   empty
+    |     |  |     +--rw session-identifier
+    |     |  |     |  +--rw attribute?   uint8
+    |     |  |     |  +--rw vsa
+    |     |  |     |     +--rw vendor?   uint16
+    |     |  |     |     +--rw type?     uint8
+    |     |  |     +--rw timer
+    |     |  |        +--rw disconnect
+    |     |  |        |  +--rw acct-stop?     uint16
+    |     |  |        |  +--rw reauth-fail?   uint16
+    |     |  |        +--rw ip-address?   uint16
+    |     |  |        +--rw reconnect?    uint16
+    |     |  |        +--rw request?      uint16
+    |     |  |        +--rw roaming?      uint16
+    |     |  +--rw send
+    |     |     +--rw vsa
+    |     |        +--rw rpclient-source-address!
+    |     |           +--rw accounting?       empty
+    |     |           +--rw authentication?   empty
+    |     +--rw sesm!
+    |        +--rw client* [ip]
+    |        |  +--rw ip     union
+    |        |  +--rw vrf* [name]
+    |        |  |  +--rw name    string
+    |        |  |  +--rw key
+    |        |  |     +--rw key?      enumeration
+    |        |  |     +--rw string?   string
+    |        |  +--rw key
+    |        |     +--rw key?      enumeration
+    |        |     +--rw string?   string
+    |        +--rw key
+    |        |  +--rw key?      enumeration
+    |        |  +--rw string?   string
+    |        +--rw message-authenticator
+    |        |  +--rw ignore?   empty
+    |        +--rw port?                    uint16
+    +--rw session-id?       enumeration
+    +--rw login
+    |  +--rw display?                   enumeration
+    |  +--rw success-track-conf-time?   uint8
+    +--rw max-sessions?     uint16
+    +--rw memory
+    |  +--rw threshold
+    |     +--rw accounting
+    |     |  +--rw disable?   uint8
+    |     +--rw authentication
+    |        +--rw reject?   uint8
+    +--rw password?         enumeration
+    +--rw policy
+    |  +--rw interface-config?   enumeration
+    +--rw route
+    |  +--rw download
+    |     +--rw update-period?   uint16
+    |     +--rw authorization?   string
+    +--rw traceback?        enumeration
+  augment /ios:native/ios:radius:
+    +--rw filter* [id]
+    |  +--rw id       string
+    |  +--rw match?   enumeration
+    +--rw server* [id]
+       +--rw id                 string
+       +--rw address
+       |  +--rw ipv4
+       |     +--rw host?        string
+       |     +--rw auth-port?   uint16
+       |     +--rw acct-port?   uint16
+       +--rw timeout?           uint16
+       +--rw automate-tester
+       |  +--rw username?    string
+       |  +--rw at-option?   enumeration
+       +--rw backoff
+       |  +--rw exponential!
+       |     +--rw max-delay?       uint8
+       |     +--rw backoff-retry?   uint8
+       +--rw key
+       |  +--rw encryption?   enumeration
+       |  +--rw key?          string
+       +--rw pac
+       |  +--rw key
+       |     +--rw encryption?   enumeration
+       |     +--rw key?          string
+       +--rw retransmit?        uint8
+  augment /ios:native/ios:radius-server:
+    +--rw attribute* [number]
+    |  +--rw number            uint32
+    |  +--rw send-attribute*   enumeration
+    |  +--rw access-request
+    |  |  +--rw include?   empty
+    |  +--rw attri31
+    |     +--rw attri31-list* [calling-station-id]
+    |        +--rw calling-station-id    enumeration
+    |        +--rw id-mac
+    |        |  +--rw format?    enumeration
+    |        |  +--rw lu-case?   enumeration
+    |        +--rw id-send
+    |           +--rw nas-port-detail?   empty
+    |           +--rw mac-only?          empty
+    +--rw dead-criteria
+    |  +--rw time?    uint8
+    |  +--rw tries?   uint8
+    +--rw deadtime?        uint32
+    +--rw host* [id]
+    |  +--rw id            union
+    |  +--rw auth-port?    uint16
+    |  +--rw acct-port?    uint16
+    |  +--rw retransmit?   uint8
+    |  +--rw test
+    |  |  +--rw username* [name]
+    |  |     +--rw name    string
+    |  |     +--rw key
+    |  |        +--rw encryption?   enumeration
+    |  |        +--rw clear-key?    string
+    |  +--rw timeout?      uint16
+    |  +--rw key?          union
+    |  +--rw clear-key?    string
+    +--rw key
+    |  +--rw encryption?   enumeration
+    |  +--rw clear-key?    string
+    +--rw retransmit?      uint8
+    +--rw source-ports
+    |  +--rw extended?   empty
+    +--rw timeout?         uint16
+    +--rw vsa
+       +--rw disallow
+       |  +--rw unknown?   empty
+       +--rw send!
+          +--rw accounting!
+          |  +--rw threegpp2?   empty
+          +--rw authentication!
+          |  +--rw threegpp2?   empty
+          +--rw cisco-nas-port!
+             +--rw threegpp2?   empty
+  augment /ios:native/ios:ip:
+    +--rw radius
+       +--rw source-interface
+          +--rw (interface-choice)?
+             +--:(AppNav-Compress)
+             |  +--rw AppNav-Compress?             uint16
+             +--:(AppNav-UnCompress)
+             |  +--rw AppNav-UnCompress?           uint16
+             +--:(ATM)
+             |  +--rw ATM?                         string
+             +--:(ATM-subinterface)
+             |  +--rw ATM-subinterface
+             |     +--rw ATM?   string
+             +--:(ATM-ACR)
+             |  +--rw ATM-ACR?                     string
+             +--:(ATM-ACRsubinterface)
+             |  +--rw ATM-ACRsubinterface
+             |     +--rw ATM-ACR?   string
+             +--:(BDI)
+             |  +--rw BDI?                         string
+             +--:(CEM)
+             |  +--rw CEM?                         string
+             +--:(CEM-ACR)
+             |  +--rw CEM-ACR?                     uint8
+             +--:(Embedded-Service-Engine)
+             |  +--rw Embedded-Service-Engine?     string
+             +--:(Ethernet)
+             |  +--rw Ethernet?                    string
+             +--:(FastEthernet)
+             |  +--rw FastEthernet?                string
+             +--:(GigabitEthernet)
+             |  +--rw GigabitEthernet?             string
+             +--:(FiveGigabitEthernet)
+             |  +--rw FiveGigabitEthernet?         string
+             +--:(TwentyFiveGigE)
+             |  +--rw TwentyFiveGigE?              string
+             +--:(TwoGigabitEthernet)
+             |  +--rw TwoGigabitEthernet?          string
+             +--:(FortyGigabitEthernet)
+             |  +--rw FortyGigabitEthernet?        string
+             +--:(HundredGigE)
+             |  +--rw HundredGigE?                 string
+             +--:(LISP)
+             |  +--rw LISP?                        string
+             +--:(LISP-subinterface)
+             |  +--rw LISP-subinterface
+             |     +--rw LISP?   string
+             +--:(Loopback)
+             |  +--rw Loopback?                    uint32
+             +--:(Multilink)
+             |  +--rw Multilink?                   uint16
+             +--:(nve)
+             |  +--rw nve?                         uint16
+             +--:(overlay)
+             |  +--rw overlay?                     uint16
+             +--:(Port-channel)
+             |  +--rw Port-channel?                uint32
+             +--:(Port-channel-subinterface)
+             |  +--rw Port-channel-subinterface
+             |     +--rw Port-channel?   string
+             +--:(pseudowire)
+             |  +--rw pseudowire?                  uint32
+             +--:(SM)
+             |  +--rw SM?                          string
+             +--:(Cellular)
+             |  +--rw Cellular?                    string
+             +--:(Serial)
+             |  +--rw Serial?                      string
+             +--:(TenGigabitEthernet)
+             |  +--rw TenGigabitEthernet?          string
+             +--:(Tunnel)
+             |  +--rw Tunnel?                      uint32
+             +--:(Virtual-Template)
+             |  +--rw Virtual-Template?            uint16
+             +--:(Vlan)
+             |  +--rw Vlan?                        uint16
+             +--:(VirtualPortGroup)
+             |  +--rw VirtualPortGroup?            uint16
+             +--:(vasileft)
+             |  +--rw vasileft?                    uint16
+             +--:(vasiright)
+                +--rw vasiright?                   uint16
+  augment /ios:native/ios:tacacs:
+    +--rw server* [name]
+       +--rw name       string
+       +--rw address
+       |  +--rw ipv4?   union
+       +--rw port?      uint16
+       +--rw timeout?   uint16
+       +--rw key
+          +--rw encryption?   enumeration
+          +--rw key?          string
+  augment /ios:native/ios:tacacs-server:
+    +--rw host* [name]
+    |  +--rw name              ios-types:host-type
+    |  +--rw port?             uint16
+    |  +--rw key?              union
+    |  +--rw encryption-key?   string
+    |  +--rw timeout?          uint16
+    +--rw timeout?            uint16
+    +--rw directed-request!
+    |  +--rw restricted?    empty
+    |  +--rw no-truncate?   empty
+    +--rw key
+       +--rw encryption?   enumeration
+       +--rw key?          string
+  augment /ios:native/ios:ip:
+    +--rw tacacs
+       +--rw source-interface
+          +--rw (interface-choice)?
+             +--:(AppNav-Compress)
+             |  +--rw AppNav-Compress?             uint16
+             +--:(AppNav-UnCompress)
+             |  +--rw AppNav-UnCompress?           uint16
+             +--:(ATM)
+             |  +--rw ATM?                         string
+             +--:(ATM-subinterface)
+             |  +--rw ATM-subinterface
+             |     +--rw ATM?   string
+             +--:(ATM-ACR)
+             |  +--rw ATM-ACR?                     string
+             +--:(ATM-ACRsubinterface)
+             |  +--rw ATM-ACRsubinterface
+             |     +--rw ATM-ACR?   string
+             +--:(BDI)
+             |  +--rw BDI?                         string
+             +--:(CEM)
+             |  +--rw CEM?                         string
+             +--:(CEM-ACR)
+             |  +--rw CEM-ACR?                     uint8
+             +--:(Embedded-Service-Engine)
+             |  +--rw Embedded-Service-Engine?     string
+             +--:(Ethernet)
+             |  +--rw Ethernet?                    string
+             +--:(FastEthernet)
+             |  +--rw FastEthernet?                string
+             +--:(GigabitEthernet)
+             |  +--rw GigabitEthernet?             string
+             +--:(FiveGigabitEthernet)
+             |  +--rw FiveGigabitEthernet?         string
+             +--:(TwentyFiveGigE)
+             |  +--rw TwentyFiveGigE?              string
+             +--:(TwoGigabitEthernet)
+             |  +--rw TwoGigabitEthernet?          string
+             +--:(FortyGigabitEthernet)
+             |  +--rw FortyGigabitEthernet?        string
+             +--:(HundredGigE)
+             |  +--rw HundredGigE?                 string
+             +--:(LISP)
+             |  +--rw LISP?                        string
+             +--:(LISP-subinterface)
+             |  +--rw LISP-subinterface
+             |     +--rw LISP?   string
+             +--:(Loopback)
+             |  +--rw Loopback?                    uint32
+             +--:(Multilink)
+             |  +--rw Multilink?                   uint16
+             +--:(nve)
+             |  +--rw nve?                         uint16
+             +--:(overlay)
+             |  +--rw overlay?                     uint16
+             +--:(Port-channel)
+             |  +--rw Port-channel?                uint32
+             +--:(Port-channel-subinterface)
+             |  +--rw Port-channel-subinterface
+             |     +--rw Port-channel?   string
+             +--:(pseudowire)
+             |  +--rw pseudowire?                  uint32
+             +--:(SM)
+             |  +--rw SM?                          string
+             +--:(Cellular)
+             |  +--rw Cellular?                    string
+             +--:(Serial)
+             |  +--rw Serial?                      string
+             +--:(TenGigabitEthernet)
+             |  +--rw TenGigabitEthernet?          string
+             +--:(Tunnel)
+             |  +--rw Tunnel?                      uint32
+             +--:(Virtual-Template)
+             |  +--rw Virtual-Template?            uint16
+             +--:(Vlan)
+             |  +--rw Vlan?                        uint16
+             +--:(VirtualPortGroup)
+             |  +--rw VirtualPortGroup?            uint16
+             +--:(vasileft)
+             |  +--rw vasileft?                    uint16
+             +--:(vasiright)
+                +--rw vasiright?                   uint16
+Xpaths for model: Cisco-IOS-XE-aaa.yang

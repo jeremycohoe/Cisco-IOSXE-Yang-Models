@@ -1,0 +1,467 @@
+ 
+KPI for model: Cisco-IOS-XE-cts.yang
+
+module: Cisco-IOS-XE-cts
+  augment /ios:native/ios:cts:
+    +--rw cache
+    |  +--rw enable?       empty
+    |  +--rw nv-storage
+    |     +--rw nv-storage?   enumeration
+    +--rw critical-authentication-conf?   empty
+    +--rw critical-authentication!
+    |  +--rw default
+    |  |  +--rw peer-sgt
+    |  |  |  +--rw range* [range]
+    |  |  |     +--rw range      uint16
+    |  |  |     +--rw trusted?   empty
+    |  |  +--rw pmk
+    |  |     +--rw type?     enumeration
+    |  |     +--rw secret?   string
+    |  +--rw fallback
+    |     +--rw Cached?    empty
+    |     +--rw default?   empty
+    +--rw authorization
+    |  +--rw list?   string
+    +--rw dot1x-server-timeout?           uint16
+    +--rw dot1x-supp-timeout?             uint16
+    +--rw logging?                        enumeration
+    +--rw role-based
+    |  +--rw sgt-caching?         empty
+    |  +--rw permissions
+    |  |  +--rw default
+    |  |  |  +--rw name?   string
+    |  |  +--rw from
+    |  |     +--rw range* [range]
+    |  |        +--rw range    uint16
+    |  |        +--rw to
+    |  |           +--rw range* [range]
+    |  |              +--rw range    uint16
+    |  |              +--rw name?    string
+    |  +--rw enforcement-only
+    |  |  +--rw enforcement?   empty
+    |  +--rw enforcement
+    |  |  +--rw logging-interval?   uint32
+    |  |  +--rw vlan-list* [id]
+    |  |     +--rw id    union
+    |  +--rw monitor
+    |  |  +--rw all?   empty
+    |  +--rw sgt-map* [ip sgt]
+    |  |  +--rw ip      union
+    |  |  +--rw sgt     uint16
+    |  |  +--rw vrf?    string
+    |  |  +--rw host?   empty
+    |  +--rw sgt-map-vlan-list
+    |     +--rw sgt-map* [vlan-list]
+    |        +--rw vlan-list    union
+    |        +--rw sgt?         int16
+    +--rw server
+    |  +--rw deadtime?       uint32
+    |  +--rw key-wrap
+    |  |  +--rw enable?   empty
+    |  +--rw load-balance
+    |  |  +--rw method
+    |  |     +--rw least-outstanding!
+    |  |        +--rw batch-size?                uint32
+    |  |        +--rw ignore-preferred-server?   empty
+    |  +--rw test
+    |     +--rw server* [ip]
+    |     |  +--rw ip           inet:ipv4-address
+    |     |  +--rw deadtime?    uint32
+    |     |  +--rw enable?      boolean
+    |     |  +--rw idle-time?   uint32
+    |     +--rw all
+    |        +--rw deadtime?    uint32
+    |        +--rw enable?      boolean
+    |        +--rw idle-time?   uint32
+    +--rw sgt?                            uint16
+    +--rw sg-epg?                         enumeration
+    +--rw sxp
+       +--rw default
+       |  +--rw password
+       |  |  +--rw type?     enumeration
+       |  |  +--rw secret?   string
+       |  +--rw source-ip?   inet:ipv4-address
+       +--rw connection
+       |  +--rw peer
+       |     +--rw ipv4* [ipv4]
+       |        +--rw ipv4        inet:ipv4-address
+       |        +--rw source
+       |        |  +--rw ipv4* [ipv4]
+       |        |     +--rw ipv4        inet:ipv4-address
+       |        |     +--rw password* [password-type]
+       |        |        +--rw password-type    enumeration
+       |        |        +--rw mode
+       |        |           +--rw local!
+       |        |           |  +--rw both!
+       |        |           |  |  +--rw vrf?   string
+       |        |           |  +--rw listener!
+       |        |           |  |  +--rw hold-time
+       |        |           |  |  |  +--rw min-time?   uint16
+       |        |           |  |  |  +--rw max-time?   uint16
+       |        |           |  |  |  +--rw vrf?        string
+       |        |           |  |  +--rw vrf?         string
+       |        |           |  +--rw speaker!
+       |        |           |     +--rw hold-time
+       |        |           |     |  +--rw min-time?   uint16
+       |        |           |     |  +--rw vrf?        string
+       |        |           |     +--rw vrf?         string
+       |        |           +--rw peer!
+       |        |              +--rw both!
+       |        |              |  +--rw vrf?   string
+       |        |              +--rw listener!
+       |        |              |  +--rw hold-time
+       |        |              |  |  +--rw min-time?   uint16
+       |        |              |  |  +--rw vrf?        string
+       |        |              |  +--rw vrf?         string
+       |        |              +--rw speaker!
+       |        |                 +--rw hold-time
+       |        |                 |  +--rw min-time?   uint16
+       |        |                 |  +--rw max-time?   uint16
+       |        |                 |  +--rw vrf?        string
+       |        |                 +--rw vrf?         string
+       |        +--rw password* [password-type]
+       |           +--rw password-type    enumeration
+       |           +--rw mode
+       |              +--rw local!
+       |              |  +--rw both!
+       |              |  |  +--rw vrf?   string
+       |              |  +--rw listener!
+       |              |  |  +--rw hold-time
+       |              |  |  |  +--rw min-time?   uint16
+       |              |  |  |  +--rw max-time?   uint16
+       |              |  |  |  +--rw vrf?        string
+       |              |  |  +--rw vrf?         string
+       |              |  +--rw speaker!
+       |              |     +--rw hold-time
+       |              |     |  +--rw min-time?   uint16
+       |              |     |  +--rw vrf?        string
+       |              |     +--rw vrf?         string
+       |              +--rw peer!
+       |                 +--rw both!
+       |                 |  +--rw vrf?   string
+       |                 +--rw listener!
+       |                 |  +--rw hold-time
+       |                 |  |  +--rw min-time?   uint16
+       |                 |  |  +--rw vrf?        string
+       |                 |  +--rw vrf?         string
+       |                 +--rw speaker!
+       |                    +--rw hold-time
+       |                    |  +--rw min-time?   uint16
+       |                    |  +--rw max-time?   uint16
+       |                    |  +--rw vrf?        string
+       |                    +--rw vrf?         string
+       +--rw enable?       empty
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw cts
+       +--rw manual!
+       |  +--rw policy
+       |  |  +--rw static
+       |  |     +--rw sgt?       uint16
+       |  |     +--rw trusted?   empty
+       |  +--rw sap
+       |  |  +--rw pmk* [word]
+       |  |     +--rw word         string
+       |  |     +--rw mode-list
+       |  |        +--rw gcm-encrypt!
+       |  |        |  +--rw gmac!
+       |  |        |     +--rw null?   empty
+       |  |        +--rw no-encap!
+       |  |           +--rw gmac!
+       |  |              +--rw gcm-encrypt?   empty
+       |  +--rw propagate
+       |     +--rw sgt?   boolean
+       +--rw role-based
+          +--rw sgt-cache*     enumeration
+          +--rw enforcement?   empty
+          +--rw sgt-map
+             +--rw security-group?   string
+             +--rw sgt?              uint16
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw cts
+       +--rw manual!
+       |  +--rw policy
+       |  |  +--rw static
+       |  |     +--rw sgt?       uint16
+       |  |     +--rw trusted?   empty
+       |  +--rw sap
+       |  |  +--rw pmk* [word]
+       |  |     +--rw word         string
+       |  |     +--rw mode-list
+       |  |        +--rw gcm-encrypt!
+       |  |        |  +--rw gmac!
+       |  |        |     +--rw null?   empty
+       |  |        +--rw no-encap!
+       |  |           +--rw gmac!
+       |  |              +--rw gcm-encrypt?   empty
+       |  +--rw propagate
+       |     +--rw sgt?   boolean
+       +--rw role-based
+          +--rw sgt-cache*     enumeration
+          +--rw enforcement?   empty
+          +--rw sgt-map
+             +--rw security-group?   string
+             +--rw sgt?              uint16
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw cts
+       +--rw manual!
+       |  +--rw policy
+       |  |  +--rw static
+       |  |     +--rw sgt?       uint16
+       |  |     +--rw trusted?   empty
+       |  +--rw sap
+       |  |  +--rw pmk* [word]
+       |  |     +--rw word         string
+       |  |     +--rw mode-list
+       |  |        +--rw gcm-encrypt!
+       |  |        |  +--rw gmac!
+       |  |        |     +--rw null?   empty
+       |  |        +--rw no-encap!
+       |  |           +--rw gmac!
+       |  |              +--rw gcm-encrypt?   empty
+       |  +--rw propagate
+       |     +--rw sgt?   boolean
+       +--rw role-based
+          +--rw sgt-cache*     enumeration
+          +--rw enforcement?   empty
+          +--rw sgt-map
+             +--rw security-group?   string
+             +--rw sgt?              uint16
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw cts
+       +--rw manual!
+       |  +--rw policy
+       |  |  +--rw static
+       |  |     +--rw sgt?       uint16
+       |  |     +--rw trusted?   empty
+       |  +--rw sap
+       |  |  +--rw pmk* [word]
+       |  |     +--rw word         string
+       |  |     +--rw mode-list
+       |  |        +--rw gcm-encrypt!
+       |  |        |  +--rw gmac!
+       |  |        |     +--rw null?   empty
+       |  |        +--rw no-encap!
+       |  |           +--rw gmac!
+       |  |              +--rw gcm-encrypt?   empty
+       |  +--rw propagate
+       |     +--rw sgt?   boolean
+       +--rw role-based
+          +--rw sgt-cache*     enumeration
+          +--rw enforcement?   empty
+          +--rw sgt-map
+             +--rw security-group?   string
+             +--rw sgt?              uint16
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw cts
+       +--rw manual!
+       |  +--rw policy
+       |  |  +--rw static
+       |  |     +--rw sgt?       uint16
+       |  |     +--rw trusted?   empty
+       |  +--rw sap
+       |  |  +--rw pmk* [word]
+       |  |     +--rw word         string
+       |  |     +--rw mode-list
+       |  |        +--rw gcm-encrypt!
+       |  |        |  +--rw gmac!
+       |  |        |     +--rw null?   empty
+       |  |        +--rw no-encap!
+       |  |           +--rw gmac!
+       |  |              +--rw gcm-encrypt?   empty
+       |  +--rw propagate
+       |     +--rw sgt?   boolean
+       +--rw role-based
+          +--rw sgt-cache*     enumeration
+          +--rw enforcement?   empty
+          +--rw sgt-map
+             +--rw security-group?   string
+             +--rw sgt?              uint16
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw cts
+       +--rw manual!
+       |  +--rw policy
+       |  |  +--rw static
+       |  |     +--rw sgt?       uint16
+       |  |     +--rw trusted?   empty
+       |  +--rw sap
+       |  |  +--rw pmk* [word]
+       |  |     +--rw word         string
+       |  |     +--rw mode-list
+       |  |        +--rw gcm-encrypt!
+       |  |        |  +--rw gmac!
+       |  |        |     +--rw null?   empty
+       |  |        +--rw no-encap!
+       |  |           +--rw gmac!
+       |  |              +--rw gcm-encrypt?   empty
+       |  +--rw propagate
+       |     +--rw sgt?   boolean
+       +--rw role-based
+          +--rw sgt-cache*     enumeration
+          +--rw enforcement?   empty
+          +--rw sgt-map
+             +--rw security-group?   string
+             +--rw sgt?              uint16
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw cts
+       +--rw manual!
+       |  +--rw policy
+       |  |  +--rw static
+       |  |     +--rw sgt?       uint16
+       |  |     +--rw trusted?   empty
+       |  +--rw sap
+       |  |  +--rw pmk* [word]
+       |  |     +--rw word         string
+       |  |     +--rw mode-list
+       |  |        +--rw gcm-encrypt!
+       |  |        |  +--rw gmac!
+       |  |        |     +--rw null?   empty
+       |  |        +--rw no-encap!
+       |  |           +--rw gmac!
+       |  |              +--rw gcm-encrypt?   empty
+       |  +--rw propagate
+       |     +--rw sgt?   boolean
+       +--rw role-based
+          +--rw enforcement?   empty
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw cts
+       +--rw manual!
+       |  +--rw policy
+       |  |  +--rw static
+       |  |     +--rw sgt?       uint16
+       |  |     +--rw trusted?   empty
+       |  +--rw sap
+       |  |  +--rw pmk* [word]
+       |  |     +--rw word         string
+       |  |     +--rw mode-list
+       |  |        +--rw gcm-encrypt!
+       |  |        |  +--rw gmac!
+       |  |        |     +--rw null?   empty
+       |  |        +--rw no-encap!
+       |  |           +--rw gmac!
+       |  |              +--rw gcm-encrypt?   empty
+       |  +--rw propagate
+       |     +--rw sgt?   boolean
+       +--rw role-based
+          +--rw enforcement?   empty
+  augment /ios:native/ios:interface/ios:Loopback:
+    +--rw cts
+       +--rw manual!
+          +--rw policy
+          |  +--rw static
+          |     +--rw sgt?       uint16
+          |     +--rw trusted?   empty
+          +--rw sap
+          |  +--rw pmk* [word]
+          |     +--rw word         string
+          |     +--rw mode-list
+          |        +--rw gcm-encrypt!
+          |        |  +--rw gmac!
+          |        |     +--rw null?   empty
+          |        +--rw no-encap!
+          |           +--rw gmac!
+          |              +--rw gcm-encrypt?   empty
+          +--rw propagate
+             +--rw sgt?   boolean
+  augment /ios:native/ios:interface/ios:Tunnel:
+    +--rw cts
+       +--rw manual!
+       |  +--rw policy
+       |  |  +--rw static
+       |  |     +--rw sgt?       uint16
+       |  |     +--rw trusted?   empty
+       |  +--rw sap
+       |  |  +--rw pmk* [word]
+       |  |     +--rw word         string
+       |  |     +--rw mode-list
+       |  |        +--rw gcm-encrypt!
+       |  |        |  +--rw gmac!
+       |  |        |     +--rw null?   empty
+       |  |        +--rw no-encap!
+       |  |           +--rw gmac!
+       |  |              +--rw gcm-encrypt?   empty
+       |  +--rw propagate
+       |     +--rw sgt?   boolean
+       +--rw role-based
+       |  +--rw sgt-cache*     enumeration
+       |  +--rw enforcement?   empty
+       |  +--rw sgt-map
+       |     +--rw security-group?   string
+       |     +--rw sgt?              uint16
+       +--rw sgt?          enumeration
+  augment /ios:native/ios:interface/ios:Port-channel:
+    +--rw cts
+       +--rw manual!
+          +--rw policy
+          |  +--rw static
+          |     +--rw sgt?       uint16
+          |     +--rw trusted?   empty
+          +--rw sap
+          |  +--rw pmk* [word]
+          |     +--rw word         string
+          |     +--rw mode-list
+          |        +--rw gcm-encrypt!
+          |        |  +--rw gmac!
+          |        |     +--rw null?   empty
+          |        +--rw no-encap!
+          |           +--rw gmac!
+          |              +--rw gcm-encrypt?   empty
+          +--rw propagate
+             +--rw sgt?   boolean
+  augment /ios:native/ios:interface/ios:Virtual-Template:
+    +--rw cts
+       +--rw manual!
+          +--rw policy
+          |  +--rw static
+          |     +--rw sgt?       uint16
+          |     +--rw trusted?   empty
+          +--rw sap
+          |  +--rw pmk* [word]
+          |     +--rw word         string
+          |     +--rw mode-list
+          |        +--rw gcm-encrypt!
+          |        |  +--rw gmac!
+          |        |     +--rw null?   empty
+          |        +--rw no-encap!
+          |           +--rw gmac!
+          |              +--rw gcm-encrypt?   empty
+          +--rw propagate
+             +--rw sgt?   boolean
+  augment /ios:native/ios:interface/ios:VirtualPortGroup:
+    +--rw cts
+       +--rw manual!
+          +--rw policy
+          |  +--rw static
+          |     +--rw sgt?       uint16
+          |     +--rw trusted?   empty
+          +--rw sap
+          |  +--rw pmk* [word]
+          |     +--rw word         string
+          |     +--rw mode-list
+          |        +--rw gcm-encrypt!
+          |        |  +--rw gmac!
+          |        |     +--rw null?   empty
+          |        +--rw no-encap!
+          |           +--rw gmac!
+          |              +--rw gcm-encrypt?   empty
+          +--rw propagate
+             +--rw sgt?   boolean
+  augment /ios:native/ios:interface/ios:Vlan:
+    +--rw cts
+       +--rw manual!
+          +--rw policy
+          |  +--rw static
+          |     +--rw sgt?       uint16
+          |     +--rw trusted?   empty
+          +--rw sap
+          |  +--rw pmk* [word]
+          |     +--rw word         string
+          |     +--rw mode-list
+          |        +--rw gcm-encrypt!
+          |        |  +--rw gmac!
+          |        |     +--rw null?   empty
+          |        +--rw no-encap!
+          |           +--rw gmac!
+          |              +--rw gcm-encrypt?   empty
+          +--rw propagate
+             +--rw sgt?   boolean
+Xpaths for model: Cisco-IOS-XE-cts.yang

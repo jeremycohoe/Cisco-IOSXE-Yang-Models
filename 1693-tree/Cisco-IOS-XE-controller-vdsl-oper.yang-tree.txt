@@ -1,0 +1,52 @@
+ 
+KPI for model: Cisco-IOS-XE-controller-vdsl-oper.yang
+module: Cisco-IOS-XE-controller-vdsl-oper
+  +--ro vdsl-oper-data
+     +--ro vdsl-info* [slot-num subslot-num]
+        +--ro state?              vdsl-ios-xe-oper:idb-states
+        +--ro mode?               vdsl-ios-xe-oper:mode-tc
+        +--ro modem-status?       string
+        +--ro trained-mode?       string
+        +--ro firmware-version?   string
+        +--ro phy-version?        string
+        +--ro cpe-stats
+        |  +--ro chip-vendor?        string
+        |  +--ro line-attenuation?   string
+        |  +--ro noise-margin?       string
+        |  +--ro attainable-rate?    uint32
+        |  +--ro actual-power?       string
+        |  +--ro speed?              uint32
+        +--ro co-stats
+        |  +--ro chip-vendor?        string
+        |  +--ro line-attenuation?   string
+        |  +--ro noise-margin?       string
+        |  +--ro attainable-rate?    uint32
+        |  +--ro actual-power?       string
+        |  +--ro speed?              uint32
+        +--ro slot-num            uint32
+        +--ro subslot-num         uint32
+Xpaths for model: Cisco-IOS-XE-controller-vdsl-oper.yang
+/vdsl-ios-xe-oper:vdsl-oper-data,container,
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info,list,
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:state,leaf,vdsl-ios-xe-oper:idb-states
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:mode,leaf,vdsl-ios-xe-oper:mode-tc
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:modem-status,leaf,string
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:trained-mode,leaf,string
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:firmware-version,leaf,string
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:phy-version,leaf,string
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:cpe-stats,container,
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:cpe-stats/vdsl-ios-xe-oper:chip-vendor,leaf,string
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:cpe-stats/vdsl-ios-xe-oper:line-attenuation,leaf,string
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:cpe-stats/vdsl-ios-xe-oper:noise-margin,leaf,string
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:cpe-stats/vdsl-ios-xe-oper:attainable-rate,leaf,uint32
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:cpe-stats/vdsl-ios-xe-oper:actual-power,leaf,string
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:cpe-stats/vdsl-ios-xe-oper:speed,leaf,uint32
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:co-stats,container,
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:co-stats/vdsl-ios-xe-oper:chip-vendor,leaf,string
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:co-stats/vdsl-ios-xe-oper:line-attenuation,leaf,string
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:co-stats/vdsl-ios-xe-oper:noise-margin,leaf,string
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:co-stats/vdsl-ios-xe-oper:attainable-rate,leaf,uint32
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:co-stats/vdsl-ios-xe-oper:actual-power,leaf,string
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:co-stats/vdsl-ios-xe-oper:speed,leaf,uint32
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:slot-num,leaf,uint32
+/vdsl-ios-xe-oper:vdsl-oper-data/vdsl-ios-xe-oper:vdsl-info/vdsl-ios-xe-oper:subslot-num,leaf,uint32

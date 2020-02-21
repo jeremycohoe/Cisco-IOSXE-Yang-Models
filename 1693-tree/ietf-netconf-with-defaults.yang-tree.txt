@@ -1,0 +1,11 @@
+ 
+KPI for model: ietf-netconf-with-defaults.yang
+
+module: ietf-netconf-with-defaults
+  augment /nc:get-config/nc:input:
+    +---w with-defaults?   with-defaults-mode
+  augment /nc:get/nc:input:
+    +---w with-defaults?   with-defaults-mode
+  augment /nc:copy-config/nc:input:
+    +---w with-defaults?   with-defaults-mode
+Xpaths for model: ietf-netconf-with-defaults.yang

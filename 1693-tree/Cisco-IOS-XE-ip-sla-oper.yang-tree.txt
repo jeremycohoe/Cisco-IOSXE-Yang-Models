@@ -1,0 +1,206 @@
+ 
+KPI for model: Cisco-IOS-XE-ip-sla-oper.yang
+module: Cisco-IOS-XE-ip-sla-oper
+  +--ro ip-sla-stats
+     +--ro sla-oper-entry* [oper-id]
+        +--ro oper-id                   uint32
+        +--ro oper-type?                ip-sla-ios-xe-oper:sla-oper-type
+        +--ro latest-return-code?       ip-sla-ios-xe-oper:sla-return-code
+        +--ro success-count?            uint32
+        +--ro failure-count?            uint32
+        +--ro latest-oper-start-time?   yang:date-and-time
+        +--ro rtt-info
+        |  +--ro latest-rtt
+        |  |  +--ro (latestrtt-choice)?
+        |  |     +--:(rtt-known)
+        |  |     |  +--ro rtt?              uint64
+        |  |     +--:(rtt-unknown)
+        |  |     |  +--ro unknown?          empty
+        |  |     +--:(rtt-could-not-find)
+        |  |        +--ro could-not-find?   empty
+        |  +--ro time-to-live
+        |     +--ro (timetolive-choice)?
+        |        +--:(ttl-finite)
+        |        |  +--ro ttl?       uint64
+        |        +--:(ttl-forever)
+        |           +--ro forever?   empty
+        +--ro measure-stats
+        |  +--ro intv-start-time?   yang:date-and-time
+        |  +--ro init-count?        uint32
+        |  +--ro complete-count?    uint32
+        |  +--ro valid?             boolean
+        +--ro stats
+           +--ro rtt
+           |  +--ro rtt-count?         uint32
+           |  +--ro sla-time-values
+           |     +--ro min?        uint32
+           |     +--ro avg?        uint32
+           |     +--ro max?        uint32
+           |     +--ro accuracy?   ip-sla-ios-xe-oper:accuracy-type
+           +--ro oneway-latency
+           |  +--ro sample-count?   uint32
+           |  +--ro sd
+           |  |  +--ro min?        uint32
+           |  |  +--ro avg?        uint32
+           |  |  +--ro max?        uint32
+           |  |  +--ro accuracy?   ip-sla-ios-xe-oper:accuracy-type
+           |  +--ro ds
+           |     +--ro min?        uint32
+           |     +--ro avg?        uint32
+           |     +--ro max?        uint32
+           |     +--ro accuracy?   ip-sla-ios-xe-oper:accuracy-type
+           +--ro jitter
+           |  +--ro sd-sample-count?   uint32
+           |  +--ro ds-sample-count?   uint32
+           |  +--ro sd
+           |  |  +--ro min?        uint32
+           |  |  +--ro avg?        uint32
+           |  |  +--ro max?        uint32
+           |  |  +--ro accuracy?   ip-sla-ios-xe-oper:accuracy-type
+           |  +--ro ds
+           |     +--ro min?        uint32
+           |     +--ro avg?        uint32
+           |     +--ro max?        uint32
+           |     +--ro accuracy?   ip-sla-ios-xe-oper:accuracy-type
+           +--ro over-threshold
+           |  +--ro rtt-count?   uint32
+           |  +--ro percent?     uint8
+           +--ro packet-loss
+           |  +--ro unprocessed-packets?   uint32
+           |  +--ro sd-count?              uint32
+           |  +--ro sd-loss
+           |  |  +--ro loss-period-count?           uint32
+           |  |  +--ro loss-period-len-min?         uint32
+           |  |  +--ro loss-period-len-max?         uint32
+           |  |  +--ro inter-loss-period-len-min?   uint32
+           |  |  +--ro inter-loss-period-len-max?   uint32
+           |  +--ro ds-count?              uint32
+           |  +--ro ds-loss
+           |  |  +--ro loss-period-count?           uint32
+           |  |  +--ro loss-period-len-min?         uint32
+           |  |  +--ro loss-period-len-max?         uint32
+           |  |  +--ro inter-loss-period-len-min?   uint32
+           |  |  +--ro inter-loss-period-len-max?   uint32
+           |  +--ro out-of-sequence?       uint32
+           |  +--ro drops?                 uint32
+           |  +--ro late-arrivals?         uint32
+           |  +--ro skipped-packets?       uint32
+           +--ro icmp-packet-loss
+           |  +--ro late-arrivals?               uint32
+           |  +--ro out-of-sequence?             uint32
+           |  +--ro out-of-sequence-sd?          uint32
+           |  +--ro out-of-sequence-ds?          uint32
+           |  +--ro out-of-sequence-both?        uint32
+           |  +--ro skipped-packets?             uint32
+           |  +--ro unprocessed-packets?         uint32
+           |  +--ro packet-loss?                 uint32
+           |  +--ro loss-period-count?           uint32
+           |  +--ro loss-period-len-min?         uint32
+           |  +--ro loss-period-len-max?         uint32
+           |  +--ro inter-loss-period-len-min?   uint32
+           |  +--ro inter-loss-period-len-max?   uint32
+           +--ro voice-score
+              +--ro icpif?   uint32
+              +--ro mos?     uint32
+Xpaths for model: Cisco-IOS-XE-ip-sla-oper.yang
+/ip-sla-ios-xe-oper:ip-sla-stats,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry,list,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:oper-id,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:oper-type,leaf,ip-sla-ios-xe-oper:sla-oper-type
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:latest-return-code,leaf,ip-sla-ios-xe-oper:sla-return-code
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:success-count,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:failure-count,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:latest-oper-start-time,leaf,yang:date-and-time
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:rtt-info,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:rtt-info/ip-sla-ios-xe-oper:latest-rtt,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:rtt-info/ip-sla-ios-xe-oper:latest-rtt,choice,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:rtt-info/ip-sla-ios-xe-oper:latest-rtt,case,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:rtt-info/ip-sla-ios-xe-oper:latest-rtt/ip-sla-ios-xe-oper:rtt,leaf,uint64
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:rtt-info/ip-sla-ios-xe-oper:latest-rtt,case,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:rtt-info/ip-sla-ios-xe-oper:latest-rtt/ip-sla-ios-xe-oper:unknown,leaf,empty
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:rtt-info/ip-sla-ios-xe-oper:latest-rtt,case,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:rtt-info/ip-sla-ios-xe-oper:latest-rtt/ip-sla-ios-xe-oper:could-not-find,leaf,empty
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:rtt-info/ip-sla-ios-xe-oper:time-to-live,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:rtt-info/ip-sla-ios-xe-oper:time-to-live,choice,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:rtt-info/ip-sla-ios-xe-oper:time-to-live,case,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:rtt-info/ip-sla-ios-xe-oper:time-to-live/ip-sla-ios-xe-oper:ttl,leaf,uint64
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:rtt-info/ip-sla-ios-xe-oper:time-to-live,case,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:rtt-info/ip-sla-ios-xe-oper:time-to-live/ip-sla-ios-xe-oper:forever,leaf,empty
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:measure-stats,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:measure-stats/ip-sla-ios-xe-oper:intv-start-time,leaf,yang:date-and-time
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:measure-stats/ip-sla-ios-xe-oper:init-count,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:measure-stats/ip-sla-ios-xe-oper:complete-count,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:measure-stats/ip-sla-ios-xe-oper:valid,leaf,boolean
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:rtt,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:rtt/ip-sla-ios-xe-oper:rtt-count,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:rtt/ip-sla-ios-xe-oper:sla-time-values,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:rtt/ip-sla-ios-xe-oper:sla-time-values/ip-sla-ios-xe-oper:min,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:rtt/ip-sla-ios-xe-oper:sla-time-values/ip-sla-ios-xe-oper:avg,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:rtt/ip-sla-ios-xe-oper:sla-time-values/ip-sla-ios-xe-oper:max,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:rtt/ip-sla-ios-xe-oper:sla-time-values/ip-sla-ios-xe-oper:accuracy,leaf,ip-sla-ios-xe-oper:accuracy-type
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:oneway-latency,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:oneway-latency/ip-sla-ios-xe-oper:sample-count,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:oneway-latency/ip-sla-ios-xe-oper:sd,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:oneway-latency/ip-sla-ios-xe-oper:sd/ip-sla-ios-xe-oper:min,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:oneway-latency/ip-sla-ios-xe-oper:sd/ip-sla-ios-xe-oper:avg,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:oneway-latency/ip-sla-ios-xe-oper:sd/ip-sla-ios-xe-oper:max,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:oneway-latency/ip-sla-ios-xe-oper:sd/ip-sla-ios-xe-oper:accuracy,leaf,ip-sla-ios-xe-oper:accuracy-type
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:oneway-latency/ip-sla-ios-xe-oper:ds,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:oneway-latency/ip-sla-ios-xe-oper:ds/ip-sla-ios-xe-oper:min,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:oneway-latency/ip-sla-ios-xe-oper:ds/ip-sla-ios-xe-oper:avg,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:oneway-latency/ip-sla-ios-xe-oper:ds/ip-sla-ios-xe-oper:max,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:oneway-latency/ip-sla-ios-xe-oper:ds/ip-sla-ios-xe-oper:accuracy,leaf,ip-sla-ios-xe-oper:accuracy-type
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:jitter,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:jitter/ip-sla-ios-xe-oper:sd-sample-count,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:jitter/ip-sla-ios-xe-oper:ds-sample-count,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:jitter/ip-sla-ios-xe-oper:sd,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:jitter/ip-sla-ios-xe-oper:sd/ip-sla-ios-xe-oper:min,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:jitter/ip-sla-ios-xe-oper:sd/ip-sla-ios-xe-oper:avg,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:jitter/ip-sla-ios-xe-oper:sd/ip-sla-ios-xe-oper:max,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:jitter/ip-sla-ios-xe-oper:sd/ip-sla-ios-xe-oper:accuracy,leaf,ip-sla-ios-xe-oper:accuracy-type
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:jitter/ip-sla-ios-xe-oper:ds,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:jitter/ip-sla-ios-xe-oper:ds/ip-sla-ios-xe-oper:min,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:jitter/ip-sla-ios-xe-oper:ds/ip-sla-ios-xe-oper:avg,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:jitter/ip-sla-ios-xe-oper:ds/ip-sla-ios-xe-oper:max,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:jitter/ip-sla-ios-xe-oper:ds/ip-sla-ios-xe-oper:accuracy,leaf,ip-sla-ios-xe-oper:accuracy-type
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:over-threshold,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:over-threshold/ip-sla-ios-xe-oper:rtt-count,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:over-threshold/ip-sla-ios-xe-oper:percent,leaf,uint8
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:unprocessed-packets,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:sd-count,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:sd-loss,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:sd-loss/ip-sla-ios-xe-oper:loss-period-count,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:sd-loss/ip-sla-ios-xe-oper:loss-period-len-min,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:sd-loss/ip-sla-ios-xe-oper:loss-period-len-max,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:sd-loss/ip-sla-ios-xe-oper:inter-loss-period-len-min,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:sd-loss/ip-sla-ios-xe-oper:inter-loss-period-len-max,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:ds-count,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:ds-loss,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:ds-loss/ip-sla-ios-xe-oper:loss-period-count,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:ds-loss/ip-sla-ios-xe-oper:loss-period-len-min,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:ds-loss/ip-sla-ios-xe-oper:loss-period-len-max,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:ds-loss/ip-sla-ios-xe-oper:inter-loss-period-len-min,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:ds-loss/ip-sla-ios-xe-oper:inter-loss-period-len-max,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:out-of-sequence,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:drops,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:late-arrivals,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:packet-loss/ip-sla-ios-xe-oper:skipped-packets,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:icmp-packet-loss,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:icmp-packet-loss/ip-sla-ios-xe-oper:late-arrivals,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:icmp-packet-loss/ip-sla-ios-xe-oper:out-of-sequence,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:icmp-packet-loss/ip-sla-ios-xe-oper:out-of-sequence-sd,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:icmp-packet-loss/ip-sla-ios-xe-oper:out-of-sequence-ds,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:icmp-packet-loss/ip-sla-ios-xe-oper:out-of-sequence-both,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:icmp-packet-loss/ip-sla-ios-xe-oper:skipped-packets,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:icmp-packet-loss/ip-sla-ios-xe-oper:unprocessed-packets,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:icmp-packet-loss/ip-sla-ios-xe-oper:packet-loss,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:icmp-packet-loss/ip-sla-ios-xe-oper:loss-period-count,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:icmp-packet-loss/ip-sla-ios-xe-oper:loss-period-len-min,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:icmp-packet-loss/ip-sla-ios-xe-oper:loss-period-len-max,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:icmp-packet-loss/ip-sla-ios-xe-oper:inter-loss-period-len-min,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:icmp-packet-loss/ip-sla-ios-xe-oper:inter-loss-period-len-max,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:voice-score,container,
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:voice-score/ip-sla-ios-xe-oper:icpif,leaf,uint32
+/ip-sla-ios-xe-oper:ip-sla-stats/ip-sla-ios-xe-oper:sla-oper-entry/ip-sla-ios-xe-oper:stats/ip-sla-ios-xe-oper:voice-score/ip-sla-ios-xe-oper:mos,leaf,uint32

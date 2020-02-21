@@ -1,0 +1,4216 @@
+ 
+KPI for model: Cisco-IOS-XE-ethernet.yang
+
+module: Cisco-IOS-XE-ethernet
+  augment /ios:native:
+    +--rw esmc {ios-features:esmc}?
+       +--rw process?   empty
+  augment /ios:native/ios:ethernet:
+    +--rw evc* [name] {ios-features:eth-evc}?
+    |  +--rw name    string
+    +--rw lmi
+    |  +--rw ce?       empty
+    |  +--rw global?   empty
+    +--rw cfm
+       +--rw ais
+       |  +--rw link-status
+       |     +--rw global!
+       |        +--rw cfm-Mode__config-ais-link-cfm
+       |           +--rw disable?   empty
+       |           +--rw level?     uint8
+       |           +--rw period
+       |              +--rw tp-1?    empty
+       |              +--rw tp-60?   empty
+       +--rw alarm
+       |  +--rw delay?          uint16
+       |  +--rw notification
+       |  |  +--rw all?                     empty
+       |  |  +--rw error-xcon?              empty
+       |  |  +--rw mac-remote-error-xcon?   empty
+       |  |  +--rw none?                    empty
+       |  |  +--rw remote-error-xcon?       empty
+       |  |  +--rw xcon?                    empty
+       |  +--rw packet?         uint16
+       |  +--rw reset?          uint16
+       +--rw ieee?         empty
+       +--rw global?       empty
+       +--rw domain* [name]
+       |  +--rw name       string
+       |  +--rw level?     uint8
+       |  +--rw service* [name]
+       |     +--rw name                string
+       |     +--rw evc?                string {ios-features:eth-evc}?
+       |     +--rw vlan?               uint16
+       |     +--rw continuity-check!
+       +--rw logging!
+       |  +--rw ais?     empty
+       |  +--rw alarm
+       |     +--rw cisco?   empty
+       |     +--rw ieee?    empty
+       +--rw mep
+       |  +--rw crosscheck
+       |     +--rw start-delay?   uint16
+       +--rw mip
+       |  +--rw auto-create
+       |  |  +--rw level
+       |  |     +--rw mef-num* [mef-num]
+       |  |        +--rw mef-num    uint8
+       |  |        +--rw evc?       string
+       |  |        +--rw vlan?      uint16
+       |  +--rw filter?        empty
+       +--rw traceroute
+          +--rw cache!
+             +--rw hold-time?   uint16
+             +--rw size?        uint16
+  augment /ios:native/ios:port-channel:
+    +--rw auto?             empty
+    +--rw load-balance
+    |  +--rw load-balance?   enumeration
+    |  +--rw extended!
+    |     +--rw extended*   enumeration
+    +--rw load-balancing
+       +--rw vlan-manual?   empty
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw carrier-delay
+    |  +--rw (delay-choice)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds?   uint8
+    |  |  +--:(msec)
+    |  |     +--rw msec?      uint16
+    |  +--rw down
+    |  |  +--rw (delay-choice)?
+    |  |     +--:(seconds)
+    |  |     |  +--rw seconds?   uint8
+    |  |     +--:(msec)
+    |  |        +--rw msec?      uint16
+    |  +--rw up
+    |     +--rw (delay-choice)?
+    |        +--:(seconds)
+    |        |  +--rw seconds?   uint8
+    |        +--:(msec)
+    |           +--rw msec?      uint16
+    +--rw channel-group
+    |  +--rw number?       uint16
+    |  +--rw mode?         enumeration
+    |  +--rw non-silent?   empty
+    |  +--rw link?         uint8
+    |  +--rw auto?         empty
+    +--rw channel-protocol?   enumeration
+    +--rw ethernet
+    |  +--rw oam!
+    |  |  +--rw link-monitor
+    |  |  |  +--rw frame
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw thresh?   uint16
+    |  |  |  |  |  |  +--rw none?     empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-period
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw f-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-seconds
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw e-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw high-threshold
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw on?               empty
+    |  |  |  +--rw receive-crc
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw crc-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?         empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw supported?        empty
+    |  |  |  +--rw symbol-period
+    |  |  |     +--rw threshold
+    |  |  |     |  +--rw high
+    |  |  |     |  |  +--rw err-thresh?   uint16
+    |  |  |     |  |  +--rw none?         empty
+    |  |  |     |  +--rw low?    uint16
+    |  |  |     +--rw window?      uint16
+    |  |  +--rw max-rate?          uint8
+    |  |  +--rw min-rate?          uint8
+    |  |  +--rw mode?              enumeration
+    |  |  +--rw remote-failure
+    |  |  |  +--rw critical-event
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw dying-gasp
+    |  |  |  |  +--rw action!
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw link-fault
+    |  |  |     +--rw action!
+    |  |  |        +--rw error-disable-interface?   empty
+    |  |  +--rw remote-loopback
+    |  |  |  +--rw supported?   empty
+    |  |  |  +--rw timeout?     uint8
+    |  |  +--rw timeout?           uint8
+    |  +--rw dot1ad
+    |     +--rw (dot1ad-choice)?
+    |        +--:(nni)
+    |        |  +--rw nni?   empty
+    |        +--:(uni)
+    |           +--rw uni
+    |              +--rw (uni-choice)?
+    |                 +--:(c-port)
+    |                 |  +--rw c-port?   empty
+    |                 +--:(s-port)
+    |                    +--rw s-port?   empty
+    +--rw eapol
+    |  +--rw destination-address
+    |     +--rw broadcast-address?   empty
+    +--rw synchronous
+    |  +--rw mode?   empty
+    +--rw speed
+    |  +--rw (speed-choice)?
+    |     +--:(auto)
+    |     |  +--rw auto?          empty
+    |     +--:(value-10)
+    |     |  +--rw value-10?      empty
+    |     +--:(value-100)
+    |     |  +--rw value-100?     empty
+    |     +--:(value-1000)
+    |     |  +--rw value-1000?    empty
+    |     +--:(value-10000)
+    |     |  +--rw value-10000?   empty
+    |     +--:(nonegotiate)
+    |        +--rw nonegotiate?   empty
+    +--rw duplex?             enumeration
+    +--rw negotiation
+    |  +--rw auto?   boolean
+    +--rw plim
+    |  +--rw ethernet
+    |  |  +--rw vlan
+    |  |     +--rw filter
+    |  |        +--rw disable?   empty
+    |  +--rw qos
+    |     +--rw input
+    |        +--rw queue
+    |           +--rw (priority)?
+    |              +--:(low)
+    |              |  +--rw zero
+    |              |     +--rw pause
+    |              |        +--rw enable?      boolean
+    |              |        +--rw threshold?   uint8
+    |              +--:(high)
+    |                 +--rw strict-priority
+    |                    +--rw pause
+    |                       +--rw enable?      boolean
+    |                       +--rw threshold?   uint8
+    +--rw pppoe
+    |  +--rw enable!
+    |  |  +--rw group?   union
+    |  +--rw max-sessions?   uint16
+    +--rw service
+    |  +--rw instance* [id]
+    |     +--rw id                    uint32
+    |     +--rw trunk?                empty
+    |     +--rw GigabitEthernet?      empty
+    |     +--rw ethernet?             empty
+    |     +--rw ethernet-evc-name?    string
+    |     +--rw description?          string
+    |     +--rw evc-name?             string
+    |     +--rw encapsulation
+    |     |  +--rw default?           empty
+    |     |  +--rw dot1ad
+    |     |  |  +--rw id*      union
+    |     |  |  +--rw cos*     uint8
+    |     |  |  +--rw dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*   enumeration
+    |     |  |  +--rw exact?   empty
+    |     |  +--rw dot1q
+    |     |  |  +--rw id*             union
+    |     |  |  +--rw cos*            uint8
+    |     |  |  +--rw second-dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*          enumeration
+    |     |  |  +--rw exact?          empty
+    |     |  |  +--rw vlan-type?      enumeration
+    |     |  +--rw priority-tagged!
+    |     |  |  +--rw cos-container
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*           enumeration
+    |     |  +--rw untagged!
+    |     +--rw ip
+    |     |  +--rw acl
+    |     |  |  +--rw access-group?   ios-types:exp-acl-type
+    |     |  |  +--rw in?             empty
+    |     |  |  +--rw out?            empty
+    |     |  +--rw dhcp
+    |     |  |  +--rw relay
+    |     |  |     +--rw information
+    |     |  |        +--rw option
+    |     |  |           +--rw subscriber-id?   string
+    |     |  +--rw verify
+    |     |     +--rw source?          empty
+    |     |     +--rw vlan?            empty
+    |     |     +--rw dhcp-snooping?   empty
+    |     |     +--rw port-security?   empty
+    |     +--rw ipv6
+    |     |  +--rw traffic-filter?   string
+    |     |  +--rw in?               empty
+    |     |  +--rw out?              empty
+    |     +--rw rewrite
+    |     |  +--rw ingress
+    |     |     +--rw tag
+    |     |        +--rw pop
+    |     |        |  +--rw way?    enumeration
+    |     |        |  +--rw mode?   enumeration
+    |     |        +--rw push
+    |     |        |  +--rw dot1q?   uint16
+    |     |        |  +--rw mode?    enumeration
+    |     |        +--rw translate
+    |     |           +--rw t1-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t1-to-2
+    |     |           |  +--rw dot1q?          uint16
+    |     |           |  +--rw second-dot1q?   uint16
+    |     |           |  +--rw mode?           enumeration
+    |     |           +--rw t2-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t2-to-2
+    |     |              +--rw dot1q?          uint16
+    |     |              +--rw second-dot1q?   uint16
+    |     |              +--rw mode?           enumeration
+    |     +--rw group?                uint32
+    |     +--rw errdisable
+    |     |  +--rw recovery
+    |     |     +--rw cause
+    |     |        +--rw mac-security?   uint32
+    |     +--rw ethernet-container
+    |     |  +--rw ethernet
+    |     |     +--rw lmi
+    |     |     |  +--rw ce-vlan
+    |     |     |     +--rw map
+    |     |     |        +--rw (map-choice)?
+    |     |     |           +--:(any)
+    |     |     |           |  +--rw any?          empty
+    |     |     |           +--:(default)
+    |     |     |           |  +--rw default?      empty
+    |     |     |           +--:(untagged)
+    |     |     |           |  +--rw untagged?     empty
+    |     |     |           +--:(vlan-range)
+    |     |     |              +--rw vlan-range?   string
+    |     |     +--rw loopback
+    |     |        +--rw permit
+    |     |           +--rw external?   empty
+    |     |           +--rw internal?   empty
+    |     +--rw snmp
+    |     |  +--rw trap
+    |     |  |  +--rw link-status?   empty
+    |     |  +--rw ifindex
+    |     |     +--rw persist?   empty
+    |     +--rw bridge-domain
+    |     |  +--rw bridge-id?            uint16
+    |     |  +--rw split-horizon
+    |     |  |  +--rw group?   uint8
+    |     |  +--rw from-encapsulation?   empty
+    |     +--rw mac
+    |     |  +--rw security!
+    |     |  |  +--rw maximum
+    |     |  |  |  +--rw addresses?   uint16
+    |     |  |  +--rw violation?   enumeration
+    |     |  +--rw access-group* [acl-name]
+    |     |     +--rw acl-name    string
+    |     |     +--rw in?         empty
+    |     |     +--rw out?        empty
+    |     +--rw service-policy
+    |     |  +--rw input* [name]
+    |     |  |  +--rw name    string
+    |     |  +--rw output* [name]
+    |     |     +--rw name    string
+    |     +--rw shutdown?             empty
+    |     +--rw cfm
+    |     |  +--rw encapsulation
+    |     |  |  +--rw dot1ad
+    |     |  |  |  +--rw vlan-id?   uint16
+    |     |  |  |  +--rw cos?       uint8
+    |     |  |  |  +--rw dot1q?     uint16
+    |     |  |  +--rw dot1q
+    |     |  |     +--rw vlan-id?        uint16
+    |     |  |     +--rw cos?            uint8
+    |     |  |     +--rw second-dot1q?   uint16
+    |     |  +--rw mep
+    |     |  |  +--rw domain?   string
+    |     |  |  +--rw mpid?     uint16
+    |     |  +--rw mip
+    |     |     +--rw level?   uint8
+    |     +--rw l2protocol
+    |        +--rw discard!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw peer!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw forward!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw tunnel!
+    |           +--rw protocol*   enumeration
+    +--rw lacp
+    |  +--rw port-priority?   uint32
+    |  +--rw rate?            enumeration
+    +--rw macsec?             empty {ios-features:macsec}?
+    +--rw macsec-option {ios-features:macsec}?
+       +--rw macsec
+          +--rw dot1q-in-clear?      enumeration
+          +--rw replay-protection
+             +--rw window-size?   uint32
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw carrier-delay
+    |  +--rw (delay-choice)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds?   uint8
+    |  |  +--:(msec)
+    |  |     +--rw msec?      uint16
+    |  +--rw down
+    |  |  +--rw (delay-choice)?
+    |  |     +--:(seconds)
+    |  |     |  +--rw seconds?   uint8
+    |  |     +--:(msec)
+    |  |        +--rw msec?      uint16
+    |  +--rw up
+    |     +--rw (delay-choice)?
+    |        +--:(seconds)
+    |        |  +--rw seconds?   uint8
+    |        +--:(msec)
+    |           +--rw msec?      uint16
+    +--rw channel-group
+    |  +--rw number?       uint16
+    |  +--rw mode?         enumeration
+    |  +--rw non-silent?   empty
+    |  +--rw link?         uint8
+    |  +--rw auto?         empty
+    +--rw channel-protocol?   enumeration
+    +--rw ethernet
+    |  +--rw oam!
+    |  |  +--rw link-monitor
+    |  |  |  +--rw frame
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw thresh?   uint16
+    |  |  |  |  |  |  +--rw none?     empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-period
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw f-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-seconds
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw e-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw high-threshold
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw on?               empty
+    |  |  |  +--rw receive-crc
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw crc-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?         empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw supported?        empty
+    |  |  |  +--rw symbol-period
+    |  |  |     +--rw threshold
+    |  |  |     |  +--rw high
+    |  |  |     |  |  +--rw err-thresh?   uint16
+    |  |  |     |  |  +--rw none?         empty
+    |  |  |     |  +--rw low?    uint16
+    |  |  |     +--rw window?      uint16
+    |  |  +--rw max-rate?          uint8
+    |  |  +--rw min-rate?          uint8
+    |  |  +--rw mode?              enumeration
+    |  |  +--rw remote-failure
+    |  |  |  +--rw critical-event
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw dying-gasp
+    |  |  |  |  +--rw action!
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw link-fault
+    |  |  |     +--rw action!
+    |  |  |        +--rw error-disable-interface?   empty
+    |  |  +--rw remote-loopback
+    |  |  |  +--rw supported?   empty
+    |  |  |  +--rw timeout?     uint8
+    |  |  +--rw timeout?           uint8
+    |  +--rw dot1ad
+    |     +--rw (dot1ad-choice)?
+    |        +--:(nni)
+    |        |  +--rw nni?   empty
+    |        +--:(uni)
+    |           +--rw uni
+    |              +--rw (uni-choice)?
+    |                 +--:(c-port)
+    |                 |  +--rw c-port?   empty
+    |                 +--:(s-port)
+    |                    +--rw s-port?   empty
+    +--rw eapol
+    |  +--rw destination-address
+    |     +--rw broadcast-address?   empty
+    +--rw synchronous
+    |  +--rw mode?   empty
+    +--rw speed
+    |  +--rw (speed-choice)?
+    |     +--:(auto)
+    |     |  +--rw auto?          empty
+    |     +--:(value-10)
+    |     |  +--rw value-10?      empty
+    |     +--:(value-100)
+    |     |  +--rw value-100?     empty
+    |     +--:(value-1000)
+    |     |  +--rw value-1000?    empty
+    |     +--:(value-10000)
+    |     |  +--rw value-10000?   empty
+    |     +--:(nonegotiate)
+    |        +--rw nonegotiate?   empty
+    +--rw duplex?             enumeration
+    +--rw negotiation
+    |  +--rw auto?   boolean
+    +--rw plim
+    |  +--rw ethernet
+    |  |  +--rw vlan
+    |  |     +--rw filter
+    |  |        +--rw disable?   empty
+    |  +--rw qos
+    |     +--rw input
+    |        +--rw queue
+    |           +--rw (priority)?
+    |              +--:(low)
+    |              |  +--rw zero
+    |              |     +--rw pause
+    |              |        +--rw enable?      boolean
+    |              |        +--rw threshold?   uint8
+    |              +--:(high)
+    |                 +--rw strict-priority
+    |                    +--rw pause
+    |                       +--rw enable?      boolean
+    |                       +--rw threshold?   uint8
+    +--rw pppoe
+    |  +--rw enable!
+    |  |  +--rw group?   union
+    |  +--rw max-sessions?   uint16
+    +--rw service
+    |  +--rw instance* [id]
+    |     +--rw id                    uint32
+    |     +--rw trunk?                empty
+    |     +--rw GigabitEthernet?      empty
+    |     +--rw ethernet?             empty
+    |     +--rw ethernet-evc-name?    string
+    |     +--rw description?          string
+    |     +--rw evc-name?             string
+    |     +--rw encapsulation
+    |     |  +--rw default?           empty
+    |     |  +--rw dot1ad
+    |     |  |  +--rw id*      union
+    |     |  |  +--rw cos*     uint8
+    |     |  |  +--rw dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*   enumeration
+    |     |  |  +--rw exact?   empty
+    |     |  +--rw dot1q
+    |     |  |  +--rw id*             union
+    |     |  |  +--rw cos*            uint8
+    |     |  |  +--rw second-dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*          enumeration
+    |     |  |  +--rw exact?          empty
+    |     |  |  +--rw vlan-type?      enumeration
+    |     |  +--rw priority-tagged!
+    |     |  |  +--rw cos-container
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*           enumeration
+    |     |  +--rw untagged!
+    |     +--rw ip
+    |     |  +--rw acl
+    |     |  |  +--rw access-group?   ios-types:exp-acl-type
+    |     |  |  +--rw in?             empty
+    |     |  |  +--rw out?            empty
+    |     |  +--rw dhcp
+    |     |  |  +--rw relay
+    |     |  |     +--rw information
+    |     |  |        +--rw option
+    |     |  |           +--rw subscriber-id?   string
+    |     |  +--rw verify
+    |     |     +--rw source?          empty
+    |     |     +--rw vlan?            empty
+    |     |     +--rw dhcp-snooping?   empty
+    |     |     +--rw port-security?   empty
+    |     +--rw ipv6
+    |     |  +--rw traffic-filter?   string
+    |     |  +--rw in?               empty
+    |     |  +--rw out?              empty
+    |     +--rw rewrite
+    |     |  +--rw ingress
+    |     |     +--rw tag
+    |     |        +--rw pop
+    |     |        |  +--rw way?    enumeration
+    |     |        |  +--rw mode?   enumeration
+    |     |        +--rw push
+    |     |        |  +--rw dot1q?   uint16
+    |     |        |  +--rw mode?    enumeration
+    |     |        +--rw translate
+    |     |           +--rw t1-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t1-to-2
+    |     |           |  +--rw dot1q?          uint16
+    |     |           |  +--rw second-dot1q?   uint16
+    |     |           |  +--rw mode?           enumeration
+    |     |           +--rw t2-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t2-to-2
+    |     |              +--rw dot1q?          uint16
+    |     |              +--rw second-dot1q?   uint16
+    |     |              +--rw mode?           enumeration
+    |     +--rw group?                uint32
+    |     +--rw errdisable
+    |     |  +--rw recovery
+    |     |     +--rw cause
+    |     |        +--rw mac-security?   uint32
+    |     +--rw ethernet-container
+    |     |  +--rw ethernet
+    |     |     +--rw lmi
+    |     |     |  +--rw ce-vlan
+    |     |     |     +--rw map
+    |     |     |        +--rw (map-choice)?
+    |     |     |           +--:(any)
+    |     |     |           |  +--rw any?          empty
+    |     |     |           +--:(default)
+    |     |     |           |  +--rw default?      empty
+    |     |     |           +--:(untagged)
+    |     |     |           |  +--rw untagged?     empty
+    |     |     |           +--:(vlan-range)
+    |     |     |              +--rw vlan-range?   string
+    |     |     +--rw loopback
+    |     |        +--rw permit
+    |     |           +--rw external?   empty
+    |     |           +--rw internal?   empty
+    |     +--rw snmp
+    |     |  +--rw trap
+    |     |  |  +--rw link-status?   empty
+    |     |  +--rw ifindex
+    |     |     +--rw persist?   empty
+    |     +--rw bridge-domain
+    |     |  +--rw bridge-id?            uint16
+    |     |  +--rw split-horizon
+    |     |  |  +--rw group?   uint8
+    |     |  +--rw from-encapsulation?   empty
+    |     +--rw mac
+    |     |  +--rw security!
+    |     |  |  +--rw maximum
+    |     |  |  |  +--rw addresses?   uint16
+    |     |  |  +--rw violation?   enumeration
+    |     |  +--rw access-group* [acl-name]
+    |     |     +--rw acl-name    string
+    |     |     +--rw in?         empty
+    |     |     +--rw out?        empty
+    |     +--rw service-policy
+    |     |  +--rw input* [name]
+    |     |  |  +--rw name    string
+    |     |  +--rw output* [name]
+    |     |     +--rw name    string
+    |     +--rw shutdown?             empty
+    |     +--rw cfm
+    |     |  +--rw encapsulation
+    |     |  |  +--rw dot1ad
+    |     |  |  |  +--rw vlan-id?   uint16
+    |     |  |  |  +--rw cos?       uint8
+    |     |  |  |  +--rw dot1q?     uint16
+    |     |  |  +--rw dot1q
+    |     |  |     +--rw vlan-id?        uint16
+    |     |  |     +--rw cos?            uint8
+    |     |  |     +--rw second-dot1q?   uint16
+    |     |  +--rw mep
+    |     |  |  +--rw domain?   string
+    |     |  |  +--rw mpid?     uint16
+    |     |  +--rw mip
+    |     |     +--rw level?   uint8
+    |     +--rw l2protocol
+    |        +--rw discard!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw peer!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw forward!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw tunnel!
+    |           +--rw protocol*   enumeration
+    +--rw lacp
+    |  +--rw port-priority?   uint32
+    |  +--rw rate?            enumeration
+    +--rw macsec?             empty {ios-features:macsec}?
+    +--rw macsec-option {ios-features:macsec}?
+       +--rw macsec
+          +--rw dot1q-in-clear?      enumeration
+          +--rw replay-protection
+             +--rw window-size?   uint32
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw carrier-delay
+    |  +--rw (delay-choice)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds?   uint8
+    |  |  +--:(msec)
+    |  |     +--rw msec?      uint16
+    |  +--rw down
+    |  |  +--rw (delay-choice)?
+    |  |     +--:(seconds)
+    |  |     |  +--rw seconds?   uint8
+    |  |     +--:(msec)
+    |  |        +--rw msec?      uint16
+    |  +--rw up
+    |     +--rw (delay-choice)?
+    |        +--:(seconds)
+    |        |  +--rw seconds?   uint8
+    |        +--:(msec)
+    |           +--rw msec?      uint16
+    +--rw channel-group
+    |  +--rw number?       uint16
+    |  +--rw mode?         enumeration
+    |  +--rw non-silent?   empty
+    |  +--rw link?         uint8
+    |  +--rw auto?         empty
+    +--rw channel-protocol?   enumeration
+    +--rw ethernet
+    |  +--rw oam!
+    |  |  +--rw link-monitor
+    |  |  |  +--rw frame
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw thresh?   uint16
+    |  |  |  |  |  |  +--rw none?     empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-period
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw f-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-seconds
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw e-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw high-threshold
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw on?               empty
+    |  |  |  +--rw receive-crc
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw crc-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?         empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw supported?        empty
+    |  |  |  +--rw symbol-period
+    |  |  |     +--rw threshold
+    |  |  |     |  +--rw high
+    |  |  |     |  |  +--rw err-thresh?   uint16
+    |  |  |     |  |  +--rw none?         empty
+    |  |  |     |  +--rw low?    uint16
+    |  |  |     +--rw window?      uint16
+    |  |  +--rw max-rate?          uint8
+    |  |  +--rw min-rate?          uint8
+    |  |  +--rw mode?              enumeration
+    |  |  +--rw remote-failure
+    |  |  |  +--rw critical-event
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw dying-gasp
+    |  |  |  |  +--rw action!
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw link-fault
+    |  |  |     +--rw action!
+    |  |  |        +--rw error-disable-interface?   empty
+    |  |  +--rw remote-loopback
+    |  |  |  +--rw supported?   empty
+    |  |  |  +--rw timeout?     uint8
+    |  |  +--rw timeout?           uint8
+    |  +--rw dot1ad
+    |     +--rw (dot1ad-choice)?
+    |        +--:(nni)
+    |        |  +--rw nni?   empty
+    |        +--:(uni)
+    |           +--rw uni
+    |              +--rw (uni-choice)?
+    |                 +--:(c-port)
+    |                 |  +--rw c-port?   empty
+    |                 +--:(s-port)
+    |                    +--rw s-port?   empty
+    +--rw eapol
+    |  +--rw destination-address
+    |     +--rw broadcast-address?   empty
+    +--rw synchronous
+    |  +--rw mode?   empty
+    +--rw speed
+    |  +--rw (speed-choice)?
+    |     +--:(auto)
+    |     |  +--rw auto?          empty
+    |     +--:(value-10)
+    |     |  +--rw value-10?      empty
+    |     +--:(value-100)
+    |     |  +--rw value-100?     empty
+    |     +--:(value-1000)
+    |     |  +--rw value-1000?    empty
+    |     +--:(value-10000)
+    |     |  +--rw value-10000?   empty
+    |     +--:(nonegotiate)
+    |        +--rw nonegotiate?   empty
+    +--rw duplex?             enumeration
+    +--rw negotiation
+    |  +--rw auto?   boolean
+    +--rw plim
+    |  +--rw ethernet
+    |  |  +--rw vlan
+    |  |     +--rw filter
+    |  |        +--rw disable?   empty
+    |  +--rw qos
+    |     +--rw input
+    |        +--rw queue
+    |           +--rw (priority)?
+    |              +--:(low)
+    |              |  +--rw zero
+    |              |     +--rw pause
+    |              |        +--rw enable?      boolean
+    |              |        +--rw threshold?   uint8
+    |              +--:(high)
+    |                 +--rw strict-priority
+    |                    +--rw pause
+    |                       +--rw enable?      boolean
+    |                       +--rw threshold?   uint8
+    +--rw pppoe
+    |  +--rw enable!
+    |  |  +--rw group?   union
+    |  +--rw max-sessions?   uint16
+    +--rw service
+    |  +--rw instance* [id]
+    |     +--rw id                    uint32
+    |     +--rw trunk?                empty
+    |     +--rw GigabitEthernet?      empty
+    |     +--rw ethernet?             empty
+    |     +--rw ethernet-evc-name?    string
+    |     +--rw description?          string
+    |     +--rw evc-name?             string
+    |     +--rw encapsulation
+    |     |  +--rw default?           empty
+    |     |  +--rw dot1ad
+    |     |  |  +--rw id*      union
+    |     |  |  +--rw cos*     uint8
+    |     |  |  +--rw dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*   enumeration
+    |     |  |  +--rw exact?   empty
+    |     |  +--rw dot1q
+    |     |  |  +--rw id*             union
+    |     |  |  +--rw cos*            uint8
+    |     |  |  +--rw second-dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*          enumeration
+    |     |  |  +--rw exact?          empty
+    |     |  |  +--rw vlan-type?      enumeration
+    |     |  +--rw priority-tagged!
+    |     |  |  +--rw cos-container
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*           enumeration
+    |     |  +--rw untagged!
+    |     +--rw ip
+    |     |  +--rw acl
+    |     |  |  +--rw access-group?   ios-types:exp-acl-type
+    |     |  |  +--rw in?             empty
+    |     |  |  +--rw out?            empty
+    |     |  +--rw dhcp
+    |     |  |  +--rw relay
+    |     |  |     +--rw information
+    |     |  |        +--rw option
+    |     |  |           +--rw subscriber-id?   string
+    |     |  +--rw verify
+    |     |     +--rw source?          empty
+    |     |     +--rw vlan?            empty
+    |     |     +--rw dhcp-snooping?   empty
+    |     |     +--rw port-security?   empty
+    |     +--rw ipv6
+    |     |  +--rw traffic-filter?   string
+    |     |  +--rw in?               empty
+    |     |  +--rw out?              empty
+    |     +--rw rewrite
+    |     |  +--rw ingress
+    |     |     +--rw tag
+    |     |        +--rw pop
+    |     |        |  +--rw way?    enumeration
+    |     |        |  +--rw mode?   enumeration
+    |     |        +--rw push
+    |     |        |  +--rw dot1q?   uint16
+    |     |        |  +--rw mode?    enumeration
+    |     |        +--rw translate
+    |     |           +--rw t1-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t1-to-2
+    |     |           |  +--rw dot1q?          uint16
+    |     |           |  +--rw second-dot1q?   uint16
+    |     |           |  +--rw mode?           enumeration
+    |     |           +--rw t2-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t2-to-2
+    |     |              +--rw dot1q?          uint16
+    |     |              +--rw second-dot1q?   uint16
+    |     |              +--rw mode?           enumeration
+    |     +--rw group?                uint32
+    |     +--rw errdisable
+    |     |  +--rw recovery
+    |     |     +--rw cause
+    |     |        +--rw mac-security?   uint32
+    |     +--rw ethernet-container
+    |     |  +--rw ethernet
+    |     |     +--rw lmi
+    |     |     |  +--rw ce-vlan
+    |     |     |     +--rw map
+    |     |     |        +--rw (map-choice)?
+    |     |     |           +--:(any)
+    |     |     |           |  +--rw any?          empty
+    |     |     |           +--:(default)
+    |     |     |           |  +--rw default?      empty
+    |     |     |           +--:(untagged)
+    |     |     |           |  +--rw untagged?     empty
+    |     |     |           +--:(vlan-range)
+    |     |     |              +--rw vlan-range?   string
+    |     |     +--rw loopback
+    |     |        +--rw permit
+    |     |           +--rw external?   empty
+    |     |           +--rw internal?   empty
+    |     +--rw snmp
+    |     |  +--rw trap
+    |     |  |  +--rw link-status?   empty
+    |     |  +--rw ifindex
+    |     |     +--rw persist?   empty
+    |     +--rw bridge-domain
+    |     |  +--rw bridge-id?            uint16
+    |     |  +--rw split-horizon
+    |     |  |  +--rw group?   uint8
+    |     |  +--rw from-encapsulation?   empty
+    |     +--rw mac
+    |     |  +--rw security!
+    |     |  |  +--rw maximum
+    |     |  |  |  +--rw addresses?   uint16
+    |     |  |  +--rw violation?   enumeration
+    |     |  +--rw access-group* [acl-name]
+    |     |     +--rw acl-name    string
+    |     |     +--rw in?         empty
+    |     |     +--rw out?        empty
+    |     +--rw service-policy
+    |     |  +--rw input* [name]
+    |     |  |  +--rw name    string
+    |     |  +--rw output* [name]
+    |     |     +--rw name    string
+    |     +--rw shutdown?             empty
+    |     +--rw cfm
+    |     |  +--rw encapsulation
+    |     |  |  +--rw dot1ad
+    |     |  |  |  +--rw vlan-id?   uint16
+    |     |  |  |  +--rw cos?       uint8
+    |     |  |  |  +--rw dot1q?     uint16
+    |     |  |  +--rw dot1q
+    |     |  |     +--rw vlan-id?        uint16
+    |     |  |     +--rw cos?            uint8
+    |     |  |     +--rw second-dot1q?   uint16
+    |     |  +--rw mep
+    |     |  |  +--rw domain?   string
+    |     |  |  +--rw mpid?     uint16
+    |     |  +--rw mip
+    |     |     +--rw level?   uint8
+    |     +--rw l2protocol
+    |        +--rw discard!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw peer!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw forward!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw tunnel!
+    |           +--rw protocol*   enumeration
+    +--rw lacp
+    |  +--rw port-priority?   uint32
+    |  +--rw rate?            enumeration
+    +--rw macsec?             empty {ios-features:macsec}?
+    +--rw macsec-option {ios-features:macsec}?
+       +--rw macsec
+          +--rw dot1q-in-clear?      enumeration
+          +--rw replay-protection
+             +--rw window-size?   uint32
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw carrier-delay
+    |  +--rw (delay-choice)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds?   uint8
+    |  |  +--:(msec)
+    |  |     +--rw msec?      uint16
+    |  +--rw down
+    |  |  +--rw (delay-choice)?
+    |  |     +--:(seconds)
+    |  |     |  +--rw seconds?   uint8
+    |  |     +--:(msec)
+    |  |        +--rw msec?      uint16
+    |  +--rw up
+    |     +--rw (delay-choice)?
+    |        +--:(seconds)
+    |        |  +--rw seconds?   uint8
+    |        +--:(msec)
+    |           +--rw msec?      uint16
+    +--rw channel-group
+    |  +--rw number?       uint16
+    |  +--rw mode?         enumeration
+    |  +--rw non-silent?   empty
+    |  +--rw link?         uint8
+    |  +--rw auto?         empty
+    +--rw channel-protocol?   enumeration
+    +--rw ethernet
+    |  +--rw oam!
+    |  |  +--rw link-monitor
+    |  |  |  +--rw frame
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw thresh?   uint16
+    |  |  |  |  |  |  +--rw none?     empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-period
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw f-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-seconds
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw e-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw high-threshold
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw on?               empty
+    |  |  |  +--rw receive-crc
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw crc-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?         empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw supported?        empty
+    |  |  |  +--rw symbol-period
+    |  |  |     +--rw threshold
+    |  |  |     |  +--rw high
+    |  |  |     |  |  +--rw err-thresh?   uint16
+    |  |  |     |  |  +--rw none?         empty
+    |  |  |     |  +--rw low?    uint16
+    |  |  |     +--rw window?      uint16
+    |  |  +--rw max-rate?          uint8
+    |  |  +--rw min-rate?          uint8
+    |  |  +--rw mode?              enumeration
+    |  |  +--rw remote-failure
+    |  |  |  +--rw critical-event
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw dying-gasp
+    |  |  |  |  +--rw action!
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw link-fault
+    |  |  |     +--rw action!
+    |  |  |        +--rw error-disable-interface?   empty
+    |  |  +--rw remote-loopback
+    |  |  |  +--rw supported?   empty
+    |  |  |  +--rw timeout?     uint8
+    |  |  +--rw timeout?           uint8
+    |  +--rw dot1ad
+    |     +--rw (dot1ad-choice)?
+    |        +--:(nni)
+    |        |  +--rw nni?   empty
+    |        +--:(uni)
+    |           +--rw uni
+    |              +--rw (uni-choice)?
+    |                 +--:(c-port)
+    |                 |  +--rw c-port?   empty
+    |                 +--:(s-port)
+    |                    +--rw s-port?   empty
+    +--rw eapol
+    |  +--rw destination-address
+    |     +--rw broadcast-address?   empty
+    +--rw synchronous
+    |  +--rw mode?   empty
+    +--rw speed
+    |  +--rw (speed-choice)?
+    |     +--:(auto)
+    |     |  +--rw auto?          empty
+    |     +--:(value-10)
+    |     |  +--rw value-10?      empty
+    |     +--:(value-100)
+    |     |  +--rw value-100?     empty
+    |     +--:(value-1000)
+    |     |  +--rw value-1000?    empty
+    |     +--:(value-10000)
+    |     |  +--rw value-10000?   empty
+    |     +--:(nonegotiate)
+    |        +--rw nonegotiate?   empty
+    +--rw duplex?             enumeration
+    +--rw negotiation
+    |  +--rw auto?   boolean
+    +--rw plim
+    |  +--rw ethernet
+    |  |  +--rw vlan
+    |  |     +--rw filter
+    |  |        +--rw disable?   empty
+    |  +--rw qos
+    |     +--rw input
+    |        +--rw queue
+    |           +--rw (priority)?
+    |              +--:(low)
+    |              |  +--rw zero
+    |              |     +--rw pause
+    |              |        +--rw enable?      boolean
+    |              |        +--rw threshold?   uint8
+    |              +--:(high)
+    |                 +--rw strict-priority
+    |                    +--rw pause
+    |                       +--rw enable?      boolean
+    |                       +--rw threshold?   uint8
+    +--rw pppoe
+    |  +--rw enable!
+    |  |  +--rw group?   union
+    |  +--rw max-sessions?   uint16
+    +--rw service
+    |  +--rw instance* [id]
+    |     +--rw id                    uint32
+    |     +--rw trunk?                empty
+    |     +--rw GigabitEthernet?      empty
+    |     +--rw ethernet?             empty
+    |     +--rw ethernet-evc-name?    string
+    |     +--rw description?          string
+    |     +--rw evc-name?             string
+    |     +--rw encapsulation
+    |     |  +--rw default?           empty
+    |     |  +--rw dot1ad
+    |     |  |  +--rw id*      union
+    |     |  |  +--rw cos*     uint8
+    |     |  |  +--rw dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*   enumeration
+    |     |  |  +--rw exact?   empty
+    |     |  +--rw dot1q
+    |     |  |  +--rw id*             union
+    |     |  |  +--rw cos*            uint8
+    |     |  |  +--rw second-dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*          enumeration
+    |     |  |  +--rw exact?          empty
+    |     |  |  +--rw vlan-type?      enumeration
+    |     |  +--rw priority-tagged!
+    |     |  |  +--rw cos-container
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*           enumeration
+    |     |  +--rw untagged!
+    |     +--rw ip
+    |     |  +--rw acl
+    |     |  |  +--rw access-group?   ios-types:exp-acl-type
+    |     |  |  +--rw in?             empty
+    |     |  |  +--rw out?            empty
+    |     |  +--rw dhcp
+    |     |  |  +--rw relay
+    |     |  |     +--rw information
+    |     |  |        +--rw option
+    |     |  |           +--rw subscriber-id?   string
+    |     |  +--rw verify
+    |     |     +--rw source?          empty
+    |     |     +--rw vlan?            empty
+    |     |     +--rw dhcp-snooping?   empty
+    |     |     +--rw port-security?   empty
+    |     +--rw ipv6
+    |     |  +--rw traffic-filter?   string
+    |     |  +--rw in?               empty
+    |     |  +--rw out?              empty
+    |     +--rw rewrite
+    |     |  +--rw ingress
+    |     |     +--rw tag
+    |     |        +--rw pop
+    |     |        |  +--rw way?    enumeration
+    |     |        |  +--rw mode?   enumeration
+    |     |        +--rw push
+    |     |        |  +--rw dot1q?   uint16
+    |     |        |  +--rw mode?    enumeration
+    |     |        +--rw translate
+    |     |           +--rw t1-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t1-to-2
+    |     |           |  +--rw dot1q?          uint16
+    |     |           |  +--rw second-dot1q?   uint16
+    |     |           |  +--rw mode?           enumeration
+    |     |           +--rw t2-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t2-to-2
+    |     |              +--rw dot1q?          uint16
+    |     |              +--rw second-dot1q?   uint16
+    |     |              +--rw mode?           enumeration
+    |     +--rw group?                uint32
+    |     +--rw errdisable
+    |     |  +--rw recovery
+    |     |     +--rw cause
+    |     |        +--rw mac-security?   uint32
+    |     +--rw ethernet-container
+    |     |  +--rw ethernet
+    |     |     +--rw lmi
+    |     |     |  +--rw ce-vlan
+    |     |     |     +--rw map
+    |     |     |        +--rw (map-choice)?
+    |     |     |           +--:(any)
+    |     |     |           |  +--rw any?          empty
+    |     |     |           +--:(default)
+    |     |     |           |  +--rw default?      empty
+    |     |     |           +--:(untagged)
+    |     |     |           |  +--rw untagged?     empty
+    |     |     |           +--:(vlan-range)
+    |     |     |              +--rw vlan-range?   string
+    |     |     +--rw loopback
+    |     |        +--rw permit
+    |     |           +--rw external?   empty
+    |     |           +--rw internal?   empty
+    |     +--rw snmp
+    |     |  +--rw trap
+    |     |  |  +--rw link-status?   empty
+    |     |  +--rw ifindex
+    |     |     +--rw persist?   empty
+    |     +--rw bridge-domain
+    |     |  +--rw bridge-id?            uint16
+    |     |  +--rw split-horizon
+    |     |  |  +--rw group?   uint8
+    |     |  +--rw from-encapsulation?   empty
+    |     +--rw mac
+    |     |  +--rw security!
+    |     |  |  +--rw maximum
+    |     |  |  |  +--rw addresses?   uint16
+    |     |  |  +--rw violation?   enumeration
+    |     |  +--rw access-group* [acl-name]
+    |     |     +--rw acl-name    string
+    |     |     +--rw in?         empty
+    |     |     +--rw out?        empty
+    |     +--rw service-policy
+    |     |  +--rw input* [name]
+    |     |  |  +--rw name    string
+    |     |  +--rw output* [name]
+    |     |     +--rw name    string
+    |     +--rw shutdown?             empty
+    |     +--rw cfm
+    |     |  +--rw encapsulation
+    |     |  |  +--rw dot1ad
+    |     |  |  |  +--rw vlan-id?   uint16
+    |     |  |  |  +--rw cos?       uint8
+    |     |  |  |  +--rw dot1q?     uint16
+    |     |  |  +--rw dot1q
+    |     |  |     +--rw vlan-id?        uint16
+    |     |  |     +--rw cos?            uint8
+    |     |  |     +--rw second-dot1q?   uint16
+    |     |  +--rw mep
+    |     |  |  +--rw domain?   string
+    |     |  |  +--rw mpid?     uint16
+    |     |  +--rw mip
+    |     |     +--rw level?   uint8
+    |     +--rw l2protocol
+    |        +--rw discard!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw peer!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw forward!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw tunnel!
+    |           +--rw protocol*   enumeration
+    +--rw lacp
+    |  +--rw port-priority?   uint32
+    |  +--rw rate?            enumeration
+    +--rw macsec?             empty {ios-features:macsec}?
+    +--rw macsec-option {ios-features:macsec}?
+       +--rw macsec
+          +--rw dot1q-in-clear?      enumeration
+          +--rw replay-protection
+             +--rw window-size?   uint32
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw carrier-delay
+    |  +--rw (delay-choice)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds?   uint8
+    |  |  +--:(msec)
+    |  |     +--rw msec?      uint16
+    |  +--rw down
+    |  |  +--rw (delay-choice)?
+    |  |     +--:(seconds)
+    |  |     |  +--rw seconds?   uint8
+    |  |     +--:(msec)
+    |  |        +--rw msec?      uint16
+    |  +--rw up
+    |     +--rw (delay-choice)?
+    |        +--:(seconds)
+    |        |  +--rw seconds?   uint8
+    |        +--:(msec)
+    |           +--rw msec?      uint16
+    +--rw channel-group
+    |  +--rw number?       uint16
+    |  +--rw mode?         enumeration
+    |  +--rw non-silent?   empty
+    |  +--rw link?         uint8
+    |  +--rw auto?         empty
+    +--rw channel-protocol?   enumeration
+    +--rw ethernet
+    |  +--rw oam!
+    |  |  +--rw link-monitor
+    |  |  |  +--rw frame
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw thresh?   uint16
+    |  |  |  |  |  |  +--rw none?     empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-period
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw f-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-seconds
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw e-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw high-threshold
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw on?               empty
+    |  |  |  +--rw receive-crc
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw crc-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?         empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw supported?        empty
+    |  |  |  +--rw symbol-period
+    |  |  |     +--rw threshold
+    |  |  |     |  +--rw high
+    |  |  |     |  |  +--rw err-thresh?   uint16
+    |  |  |     |  |  +--rw none?         empty
+    |  |  |     |  +--rw low?    uint16
+    |  |  |     +--rw window?      uint16
+    |  |  +--rw max-rate?          uint8
+    |  |  +--rw min-rate?          uint8
+    |  |  +--rw mode?              enumeration
+    |  |  +--rw remote-failure
+    |  |  |  +--rw critical-event
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw dying-gasp
+    |  |  |  |  +--rw action!
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw link-fault
+    |  |  |     +--rw action!
+    |  |  |        +--rw error-disable-interface?   empty
+    |  |  +--rw remote-loopback
+    |  |  |  +--rw supported?   empty
+    |  |  |  +--rw timeout?     uint8
+    |  |  +--rw timeout?           uint8
+    |  +--rw dot1ad
+    |     +--rw (dot1ad-choice)?
+    |        +--:(nni)
+    |        |  +--rw nni?   empty
+    |        +--:(uni)
+    |           +--rw uni
+    |              +--rw (uni-choice)?
+    |                 +--:(c-port)
+    |                 |  +--rw c-port?   empty
+    |                 +--:(s-port)
+    |                    +--rw s-port?   empty
+    +--rw eapol
+    |  +--rw destination-address
+    |     +--rw broadcast-address?   empty
+    +--rw synchronous
+    |  +--rw mode?   empty
+    +--rw speed
+    |  +--rw (speed-choice)?
+    |     +--:(auto)
+    |     |  +--rw auto?          empty
+    |     +--:(value-10)
+    |     |  +--rw value-10?      empty
+    |     +--:(value-100)
+    |     |  +--rw value-100?     empty
+    |     +--:(value-1000)
+    |     |  +--rw value-1000?    empty
+    |     +--:(value-10000)
+    |     |  +--rw value-10000?   empty
+    |     +--:(nonegotiate)
+    |        +--rw nonegotiate?   empty
+    +--rw duplex?             enumeration
+    +--rw negotiation
+    |  +--rw auto?   boolean
+    +--rw plim
+    |  +--rw ethernet
+    |  |  +--rw vlan
+    |  |     +--rw filter
+    |  |        +--rw disable?   empty
+    |  +--rw qos
+    |     +--rw input
+    |        +--rw queue
+    |           +--rw (priority)?
+    |              +--:(low)
+    |              |  +--rw zero
+    |              |     +--rw pause
+    |              |        +--rw enable?      boolean
+    |              |        +--rw threshold?   uint8
+    |              +--:(high)
+    |                 +--rw strict-priority
+    |                    +--rw pause
+    |                       +--rw enable?      boolean
+    |                       +--rw threshold?   uint8
+    +--rw pppoe
+    |  +--rw enable!
+    |  |  +--rw group?   union
+    |  +--rw max-sessions?   uint16
+    +--rw service
+    |  +--rw instance* [id]
+    |     +--rw id                    uint32
+    |     +--rw trunk?                empty
+    |     +--rw GigabitEthernet?      empty
+    |     +--rw ethernet?             empty
+    |     +--rw ethernet-evc-name?    string
+    |     +--rw description?          string
+    |     +--rw evc-name?             string
+    |     +--rw encapsulation
+    |     |  +--rw default?           empty
+    |     |  +--rw dot1ad
+    |     |  |  +--rw id*      union
+    |     |  |  +--rw cos*     uint8
+    |     |  |  +--rw dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*   enumeration
+    |     |  |  +--rw exact?   empty
+    |     |  +--rw dot1q
+    |     |  |  +--rw id*             union
+    |     |  |  +--rw cos*            uint8
+    |     |  |  +--rw second-dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*          enumeration
+    |     |  |  +--rw exact?          empty
+    |     |  |  +--rw vlan-type?      enumeration
+    |     |  +--rw priority-tagged!
+    |     |  |  +--rw cos-container
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*           enumeration
+    |     |  +--rw untagged!
+    |     +--rw ip
+    |     |  +--rw acl
+    |     |  |  +--rw access-group?   ios-types:exp-acl-type
+    |     |  |  +--rw in?             empty
+    |     |  |  +--rw out?            empty
+    |     |  +--rw dhcp
+    |     |  |  +--rw relay
+    |     |  |     +--rw information
+    |     |  |        +--rw option
+    |     |  |           +--rw subscriber-id?   string
+    |     |  +--rw verify
+    |     |     +--rw source?          empty
+    |     |     +--rw vlan?            empty
+    |     |     +--rw dhcp-snooping?   empty
+    |     |     +--rw port-security?   empty
+    |     +--rw ipv6
+    |     |  +--rw traffic-filter?   string
+    |     |  +--rw in?               empty
+    |     |  +--rw out?              empty
+    |     +--rw rewrite
+    |     |  +--rw ingress
+    |     |     +--rw tag
+    |     |        +--rw pop
+    |     |        |  +--rw way?    enumeration
+    |     |        |  +--rw mode?   enumeration
+    |     |        +--rw push
+    |     |        |  +--rw dot1q?   uint16
+    |     |        |  +--rw mode?    enumeration
+    |     |        +--rw translate
+    |     |           +--rw t1-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t1-to-2
+    |     |           |  +--rw dot1q?          uint16
+    |     |           |  +--rw second-dot1q?   uint16
+    |     |           |  +--rw mode?           enumeration
+    |     |           +--rw t2-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t2-to-2
+    |     |              +--rw dot1q?          uint16
+    |     |              +--rw second-dot1q?   uint16
+    |     |              +--rw mode?           enumeration
+    |     +--rw group?                uint32
+    |     +--rw errdisable
+    |     |  +--rw recovery
+    |     |     +--rw cause
+    |     |        +--rw mac-security?   uint32
+    |     +--rw ethernet-container
+    |     |  +--rw ethernet
+    |     |     +--rw lmi
+    |     |     |  +--rw ce-vlan
+    |     |     |     +--rw map
+    |     |     |        +--rw (map-choice)?
+    |     |     |           +--:(any)
+    |     |     |           |  +--rw any?          empty
+    |     |     |           +--:(default)
+    |     |     |           |  +--rw default?      empty
+    |     |     |           +--:(untagged)
+    |     |     |           |  +--rw untagged?     empty
+    |     |     |           +--:(vlan-range)
+    |     |     |              +--rw vlan-range?   string
+    |     |     +--rw loopback
+    |     |        +--rw permit
+    |     |           +--rw external?   empty
+    |     |           +--rw internal?   empty
+    |     +--rw snmp
+    |     |  +--rw trap
+    |     |  |  +--rw link-status?   empty
+    |     |  +--rw ifindex
+    |     |     +--rw persist?   empty
+    |     +--rw bridge-domain
+    |     |  +--rw bridge-id?            uint16
+    |     |  +--rw split-horizon
+    |     |  |  +--rw group?   uint8
+    |     |  +--rw from-encapsulation?   empty
+    |     +--rw mac
+    |     |  +--rw security!
+    |     |  |  +--rw maximum
+    |     |  |  |  +--rw addresses?   uint16
+    |     |  |  +--rw violation?   enumeration
+    |     |  +--rw access-group* [acl-name]
+    |     |     +--rw acl-name    string
+    |     |     +--rw in?         empty
+    |     |     +--rw out?        empty
+    |     +--rw service-policy
+    |     |  +--rw input* [name]
+    |     |  |  +--rw name    string
+    |     |  +--rw output* [name]
+    |     |     +--rw name    string
+    |     +--rw shutdown?             empty
+    |     +--rw cfm
+    |     |  +--rw encapsulation
+    |     |  |  +--rw dot1ad
+    |     |  |  |  +--rw vlan-id?   uint16
+    |     |  |  |  +--rw cos?       uint8
+    |     |  |  |  +--rw dot1q?     uint16
+    |     |  |  +--rw dot1q
+    |     |  |     +--rw vlan-id?        uint16
+    |     |  |     +--rw cos?            uint8
+    |     |  |     +--rw second-dot1q?   uint16
+    |     |  +--rw mep
+    |     |  |  +--rw domain?   string
+    |     |  |  +--rw mpid?     uint16
+    |     |  +--rw mip
+    |     |     +--rw level?   uint8
+    |     +--rw l2protocol
+    |        +--rw discard!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw peer!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw forward!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw tunnel!
+    |           +--rw protocol*   enumeration
+    +--rw lacp
+    |  +--rw port-priority?   uint32
+    |  +--rw rate?            enumeration
+    +--rw macsec?             empty {ios-features:macsec}?
+    +--rw macsec-option {ios-features:macsec}?
+       +--rw macsec
+          +--rw dot1q-in-clear?      enumeration
+          +--rw replay-protection
+             +--rw window-size?   uint32
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw carrier-delay
+    |  +--rw (delay-choice)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds?   uint8
+    |  |  +--:(msec)
+    |  |     +--rw msec?      uint16
+    |  +--rw down
+    |  |  +--rw (delay-choice)?
+    |  |     +--:(seconds)
+    |  |     |  +--rw seconds?   uint8
+    |  |     +--:(msec)
+    |  |        +--rw msec?      uint16
+    |  +--rw up
+    |     +--rw (delay-choice)?
+    |        +--:(seconds)
+    |        |  +--rw seconds?   uint8
+    |        +--:(msec)
+    |           +--rw msec?      uint16
+    +--rw channel-group
+    |  +--rw number?       uint16
+    |  +--rw mode?         enumeration
+    |  +--rw non-silent?   empty
+    |  +--rw link?         uint8
+    |  +--rw auto?         empty
+    +--rw channel-protocol?   enumeration
+    +--rw ethernet
+    |  +--rw oam!
+    |  |  +--rw link-monitor
+    |  |  |  +--rw frame
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw thresh?   uint16
+    |  |  |  |  |  |  +--rw none?     empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-period
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw f-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-seconds
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw e-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw high-threshold
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw on?               empty
+    |  |  |  +--rw receive-crc
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw crc-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?         empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw supported?        empty
+    |  |  |  +--rw symbol-period
+    |  |  |     +--rw threshold
+    |  |  |     |  +--rw high
+    |  |  |     |  |  +--rw err-thresh?   uint16
+    |  |  |     |  |  +--rw none?         empty
+    |  |  |     |  +--rw low?    uint16
+    |  |  |     +--rw window?      uint16
+    |  |  +--rw max-rate?          uint8
+    |  |  +--rw min-rate?          uint8
+    |  |  +--rw mode?              enumeration
+    |  |  +--rw remote-failure
+    |  |  |  +--rw critical-event
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw dying-gasp
+    |  |  |  |  +--rw action!
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw link-fault
+    |  |  |     +--rw action!
+    |  |  |        +--rw error-disable-interface?   empty
+    |  |  +--rw remote-loopback
+    |  |  |  +--rw supported?   empty
+    |  |  |  +--rw timeout?     uint8
+    |  |  +--rw timeout?           uint8
+    |  +--rw dot1ad
+    |     +--rw (dot1ad-choice)?
+    |        +--:(nni)
+    |        |  +--rw nni?   empty
+    |        +--:(uni)
+    |           +--rw uni
+    |              +--rw (uni-choice)?
+    |                 +--:(c-port)
+    |                 |  +--rw c-port?   empty
+    |                 +--:(s-port)
+    |                    +--rw s-port?   empty
+    +--rw eapol
+    |  +--rw destination-address
+    |     +--rw broadcast-address?   empty
+    +--rw synchronous
+    |  +--rw mode?   empty
+    +--rw speed
+    |  +--rw (speed-choice)?
+    |     +--:(auto)
+    |     |  +--rw auto?          empty
+    |     +--:(value-10)
+    |     |  +--rw value-10?      empty
+    |     +--:(value-100)
+    |     |  +--rw value-100?     empty
+    |     +--:(value-1000)
+    |     |  +--rw value-1000?    empty
+    |     +--:(value-10000)
+    |     |  +--rw value-10000?   empty
+    |     +--:(nonegotiate)
+    |        +--rw nonegotiate?   empty
+    +--rw duplex?             enumeration
+    +--rw negotiation
+    |  +--rw auto?   boolean
+    +--rw plim
+    |  +--rw ethernet
+    |  |  +--rw vlan
+    |  |     +--rw filter
+    |  |        +--rw disable?   empty
+    |  +--rw qos
+    |     +--rw input
+    |        +--rw queue
+    |           +--rw (priority)?
+    |              +--:(low)
+    |              |  +--rw zero
+    |              |     +--rw pause
+    |              |        +--rw enable?      boolean
+    |              |        +--rw threshold?   uint8
+    |              +--:(high)
+    |                 +--rw strict-priority
+    |                    +--rw pause
+    |                       +--rw enable?      boolean
+    |                       +--rw threshold?   uint8
+    +--rw pppoe
+    |  +--rw enable!
+    |  |  +--rw group?   union
+    |  +--rw max-sessions?   uint16
+    +--rw service
+    |  +--rw instance* [id]
+    |     +--rw id                    uint32
+    |     +--rw trunk?                empty
+    |     +--rw GigabitEthernet?      empty
+    |     +--rw ethernet?             empty
+    |     +--rw ethernet-evc-name?    string
+    |     +--rw description?          string
+    |     +--rw evc-name?             string
+    |     +--rw encapsulation
+    |     |  +--rw default?           empty
+    |     |  +--rw dot1ad
+    |     |  |  +--rw id*      union
+    |     |  |  +--rw cos*     uint8
+    |     |  |  +--rw dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*   enumeration
+    |     |  |  +--rw exact?   empty
+    |     |  +--rw dot1q
+    |     |  |  +--rw id*             union
+    |     |  |  +--rw cos*            uint8
+    |     |  |  +--rw second-dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*          enumeration
+    |     |  |  +--rw exact?          empty
+    |     |  |  +--rw vlan-type?      enumeration
+    |     |  +--rw priority-tagged!
+    |     |  |  +--rw cos-container
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*           enumeration
+    |     |  +--rw untagged!
+    |     +--rw ip
+    |     |  +--rw acl
+    |     |  |  +--rw access-group?   ios-types:exp-acl-type
+    |     |  |  +--rw in?             empty
+    |     |  |  +--rw out?            empty
+    |     |  +--rw dhcp
+    |     |  |  +--rw relay
+    |     |  |     +--rw information
+    |     |  |        +--rw option
+    |     |  |           +--rw subscriber-id?   string
+    |     |  +--rw verify
+    |     |     +--rw source?          empty
+    |     |     +--rw vlan?            empty
+    |     |     +--rw dhcp-snooping?   empty
+    |     |     +--rw port-security?   empty
+    |     +--rw ipv6
+    |     |  +--rw traffic-filter?   string
+    |     |  +--rw in?               empty
+    |     |  +--rw out?              empty
+    |     +--rw rewrite
+    |     |  +--rw ingress
+    |     |     +--rw tag
+    |     |        +--rw pop
+    |     |        |  +--rw way?    enumeration
+    |     |        |  +--rw mode?   enumeration
+    |     |        +--rw push
+    |     |        |  +--rw dot1q?   uint16
+    |     |        |  +--rw mode?    enumeration
+    |     |        +--rw translate
+    |     |           +--rw t1-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t1-to-2
+    |     |           |  +--rw dot1q?          uint16
+    |     |           |  +--rw second-dot1q?   uint16
+    |     |           |  +--rw mode?           enumeration
+    |     |           +--rw t2-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t2-to-2
+    |     |              +--rw dot1q?          uint16
+    |     |              +--rw second-dot1q?   uint16
+    |     |              +--rw mode?           enumeration
+    |     +--rw group?                uint32
+    |     +--rw errdisable
+    |     |  +--rw recovery
+    |     |     +--rw cause
+    |     |        +--rw mac-security?   uint32
+    |     +--rw ethernet-container
+    |     |  +--rw ethernet
+    |     |     +--rw lmi
+    |     |     |  +--rw ce-vlan
+    |     |     |     +--rw map
+    |     |     |        +--rw (map-choice)?
+    |     |     |           +--:(any)
+    |     |     |           |  +--rw any?          empty
+    |     |     |           +--:(default)
+    |     |     |           |  +--rw default?      empty
+    |     |     |           +--:(untagged)
+    |     |     |           |  +--rw untagged?     empty
+    |     |     |           +--:(vlan-range)
+    |     |     |              +--rw vlan-range?   string
+    |     |     +--rw loopback
+    |     |        +--rw permit
+    |     |           +--rw external?   empty
+    |     |           +--rw internal?   empty
+    |     +--rw snmp
+    |     |  +--rw trap
+    |     |  |  +--rw link-status?   empty
+    |     |  +--rw ifindex
+    |     |     +--rw persist?   empty
+    |     +--rw bridge-domain
+    |     |  +--rw bridge-id?            uint16
+    |     |  +--rw split-horizon
+    |     |  |  +--rw group?   uint8
+    |     |  +--rw from-encapsulation?   empty
+    |     +--rw mac
+    |     |  +--rw security!
+    |     |  |  +--rw maximum
+    |     |  |  |  +--rw addresses?   uint16
+    |     |  |  +--rw violation?   enumeration
+    |     |  +--rw access-group* [acl-name]
+    |     |     +--rw acl-name    string
+    |     |     +--rw in?         empty
+    |     |     +--rw out?        empty
+    |     +--rw service-policy
+    |     |  +--rw input* [name]
+    |     |  |  +--rw name    string
+    |     |  +--rw output* [name]
+    |     |     +--rw name    string
+    |     +--rw shutdown?             empty
+    |     +--rw cfm
+    |     |  +--rw encapsulation
+    |     |  |  +--rw dot1ad
+    |     |  |  |  +--rw vlan-id?   uint16
+    |     |  |  |  +--rw cos?       uint8
+    |     |  |  |  +--rw dot1q?     uint16
+    |     |  |  +--rw dot1q
+    |     |  |     +--rw vlan-id?        uint16
+    |     |  |     +--rw cos?            uint8
+    |     |  |     +--rw second-dot1q?   uint16
+    |     |  +--rw mep
+    |     |  |  +--rw domain?   string
+    |     |  |  +--rw mpid?     uint16
+    |     |  +--rw mip
+    |     |     +--rw level?   uint8
+    |     +--rw l2protocol
+    |        +--rw discard!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw peer!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw forward!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw tunnel!
+    |           +--rw protocol*   enumeration
+    +--rw lacp
+    |  +--rw port-priority?   uint32
+    |  +--rw rate?            enumeration
+    +--rw macsec?             empty {ios-features:macsec}?
+    +--rw macsec-option {ios-features:macsec}?
+       +--rw macsec
+          +--rw dot1q-in-clear?      enumeration
+          +--rw replay-protection
+             +--rw window-size?   uint32
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw carrier-delay
+    |  +--rw (delay-choice)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds?   uint8
+    |  |  +--:(msec)
+    |  |     +--rw msec?      uint16
+    |  +--rw down
+    |  |  +--rw (delay-choice)?
+    |  |     +--:(seconds)
+    |  |     |  +--rw seconds?   uint8
+    |  |     +--:(msec)
+    |  |        +--rw msec?      uint16
+    |  +--rw up
+    |     +--rw (delay-choice)?
+    |        +--:(seconds)
+    |        |  +--rw seconds?   uint8
+    |        +--:(msec)
+    |           +--rw msec?      uint16
+    +--rw channel-group
+    |  +--rw number?       uint16
+    |  +--rw mode?         enumeration
+    |  +--rw non-silent?   empty
+    |  +--rw link?         uint8
+    |  +--rw auto?         empty
+    +--rw channel-protocol?   enumeration
+    +--rw ethernet
+    |  +--rw oam!
+    |  |  +--rw link-monitor
+    |  |  |  +--rw frame
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw thresh?   uint16
+    |  |  |  |  |  |  +--rw none?     empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-period
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw f-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-seconds
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw e-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw high-threshold
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw on?               empty
+    |  |  |  +--rw receive-crc
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw crc-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?         empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw supported?        empty
+    |  |  |  +--rw symbol-period
+    |  |  |     +--rw threshold
+    |  |  |     |  +--rw high
+    |  |  |     |  |  +--rw err-thresh?   uint16
+    |  |  |     |  |  +--rw none?         empty
+    |  |  |     |  +--rw low?    uint16
+    |  |  |     +--rw window?      uint16
+    |  |  +--rw max-rate?          uint8
+    |  |  +--rw min-rate?          uint8
+    |  |  +--rw mode?              enumeration
+    |  |  +--rw remote-failure
+    |  |  |  +--rw critical-event
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw dying-gasp
+    |  |  |  |  +--rw action!
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw link-fault
+    |  |  |     +--rw action!
+    |  |  |        +--rw error-disable-interface?   empty
+    |  |  +--rw remote-loopback
+    |  |  |  +--rw supported?   empty
+    |  |  |  +--rw timeout?     uint8
+    |  |  +--rw timeout?           uint8
+    |  +--rw dot1ad
+    |     +--rw (dot1ad-choice)?
+    |        +--:(nni)
+    |        |  +--rw nni?   empty
+    |        +--:(uni)
+    |           +--rw uni
+    |              +--rw (uni-choice)?
+    |                 +--:(c-port)
+    |                 |  +--rw c-port?   empty
+    |                 +--:(s-port)
+    |                    +--rw s-port?   empty
+    +--rw eapol
+    |  +--rw destination-address
+    |     +--rw broadcast-address?   empty
+    +--rw synchronous
+    |  +--rw mode?   empty
+    +--rw speed
+    |  +--rw (speed-choice)?
+    |     +--:(auto)
+    |     |  +--rw auto?          empty
+    |     +--:(value-10)
+    |     |  +--rw value-10?      empty
+    |     +--:(value-100)
+    |     |  +--rw value-100?     empty
+    |     +--:(value-1000)
+    |     |  +--rw value-1000?    empty
+    |     +--:(value-10000)
+    |     |  +--rw value-10000?   empty
+    |     +--:(nonegotiate)
+    |        +--rw nonegotiate?   empty
+    +--rw duplex?             enumeration
+    +--rw negotiation
+    |  +--rw auto?   boolean
+    +--rw plim
+    |  +--rw ethernet
+    |  |  +--rw vlan
+    |  |     +--rw filter
+    |  |        +--rw disable?   empty
+    |  +--rw qos
+    |     +--rw input
+    |        +--rw queue
+    |           +--rw (priority)?
+    |              +--:(low)
+    |              |  +--rw zero
+    |              |     +--rw pause
+    |              |        +--rw enable?      boolean
+    |              |        +--rw threshold?   uint8
+    |              +--:(high)
+    |                 +--rw strict-priority
+    |                    +--rw pause
+    |                       +--rw enable?      boolean
+    |                       +--rw threshold?   uint8
+    +--rw pppoe
+    |  +--rw enable!
+    |  |  +--rw group?   union
+    |  +--rw max-sessions?   uint16
+    +--rw service
+    |  +--rw instance* [id]
+    |     +--rw id                    uint32
+    |     +--rw trunk?                empty
+    |     +--rw GigabitEthernet?      empty
+    |     +--rw ethernet?             empty
+    |     +--rw ethernet-evc-name?    string
+    |     +--rw description?          string
+    |     +--rw evc-name?             string
+    |     +--rw encapsulation
+    |     |  +--rw default?           empty
+    |     |  +--rw dot1ad
+    |     |  |  +--rw id*      union
+    |     |  |  +--rw cos*     uint8
+    |     |  |  +--rw dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*   enumeration
+    |     |  |  +--rw exact?   empty
+    |     |  +--rw dot1q
+    |     |  |  +--rw id*             union
+    |     |  |  +--rw cos*            uint8
+    |     |  |  +--rw second-dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*          enumeration
+    |     |  |  +--rw exact?          empty
+    |     |  |  +--rw vlan-type?      enumeration
+    |     |  +--rw priority-tagged!
+    |     |  |  +--rw cos-container
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*           enumeration
+    |     |  +--rw untagged!
+    |     +--rw ip
+    |     |  +--rw acl
+    |     |  |  +--rw access-group?   ios-types:exp-acl-type
+    |     |  |  +--rw in?             empty
+    |     |  |  +--rw out?            empty
+    |     |  +--rw dhcp
+    |     |  |  +--rw relay
+    |     |  |     +--rw information
+    |     |  |        +--rw option
+    |     |  |           +--rw subscriber-id?   string
+    |     |  +--rw verify
+    |     |     +--rw source?          empty
+    |     |     +--rw vlan?            empty
+    |     |     +--rw dhcp-snooping?   empty
+    |     |     +--rw port-security?   empty
+    |     +--rw ipv6
+    |     |  +--rw traffic-filter?   string
+    |     |  +--rw in?               empty
+    |     |  +--rw out?              empty
+    |     +--rw rewrite
+    |     |  +--rw ingress
+    |     |     +--rw tag
+    |     |        +--rw pop
+    |     |        |  +--rw way?    enumeration
+    |     |        |  +--rw mode?   enumeration
+    |     |        +--rw push
+    |     |        |  +--rw dot1q?   uint16
+    |     |        |  +--rw mode?    enumeration
+    |     |        +--rw translate
+    |     |           +--rw t1-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t1-to-2
+    |     |           |  +--rw dot1q?          uint16
+    |     |           |  +--rw second-dot1q?   uint16
+    |     |           |  +--rw mode?           enumeration
+    |     |           +--rw t2-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t2-to-2
+    |     |              +--rw dot1q?          uint16
+    |     |              +--rw second-dot1q?   uint16
+    |     |              +--rw mode?           enumeration
+    |     +--rw group?                uint32
+    |     +--rw errdisable
+    |     |  +--rw recovery
+    |     |     +--rw cause
+    |     |        +--rw mac-security?   uint32
+    |     +--rw ethernet-container
+    |     |  +--rw ethernet
+    |     |     +--rw lmi
+    |     |     |  +--rw ce-vlan
+    |     |     |     +--rw map
+    |     |     |        +--rw (map-choice)?
+    |     |     |           +--:(any)
+    |     |     |           |  +--rw any?          empty
+    |     |     |           +--:(default)
+    |     |     |           |  +--rw default?      empty
+    |     |     |           +--:(untagged)
+    |     |     |           |  +--rw untagged?     empty
+    |     |     |           +--:(vlan-range)
+    |     |     |              +--rw vlan-range?   string
+    |     |     +--rw loopback
+    |     |        +--rw permit
+    |     |           +--rw external?   empty
+    |     |           +--rw internal?   empty
+    |     +--rw snmp
+    |     |  +--rw trap
+    |     |  |  +--rw link-status?   empty
+    |     |  +--rw ifindex
+    |     |     +--rw persist?   empty
+    |     +--rw bridge-domain
+    |     |  +--rw bridge-id?            uint16
+    |     |  +--rw split-horizon
+    |     |  |  +--rw group?   uint8
+    |     |  +--rw from-encapsulation?   empty
+    |     +--rw mac
+    |     |  +--rw security!
+    |     |  |  +--rw maximum
+    |     |  |  |  +--rw addresses?   uint16
+    |     |  |  +--rw violation?   enumeration
+    |     |  +--rw access-group* [acl-name]
+    |     |     +--rw acl-name    string
+    |     |     +--rw in?         empty
+    |     |     +--rw out?        empty
+    |     +--rw service-policy
+    |     |  +--rw input* [name]
+    |     |  |  +--rw name    string
+    |     |  +--rw output* [name]
+    |     |     +--rw name    string
+    |     +--rw shutdown?             empty
+    |     +--rw cfm
+    |     |  +--rw encapsulation
+    |     |  |  +--rw dot1ad
+    |     |  |  |  +--rw vlan-id?   uint16
+    |     |  |  |  +--rw cos?       uint8
+    |     |  |  |  +--rw dot1q?     uint16
+    |     |  |  +--rw dot1q
+    |     |  |     +--rw vlan-id?        uint16
+    |     |  |     +--rw cos?            uint8
+    |     |  |     +--rw second-dot1q?   uint16
+    |     |  +--rw mep
+    |     |  |  +--rw domain?   string
+    |     |  |  +--rw mpid?     uint16
+    |     |  +--rw mip
+    |     |     +--rw level?   uint8
+    |     +--rw l2protocol
+    |        +--rw discard!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw peer!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw forward!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw tunnel!
+    |           +--rw protocol*   enumeration
+    +--rw lacp
+    |  +--rw port-priority?   uint32
+    |  +--rw rate?            enumeration
+    +--rw macsec?             empty {ios-features:macsec}?
+    +--rw macsec-option {ios-features:macsec}?
+       +--rw macsec
+          +--rw dot1q-in-clear?      enumeration
+          +--rw replay-protection
+             +--rw window-size?   uint32
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw carrier-delay
+    |  +--rw (delay-choice)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds?   uint8
+    |  |  +--:(msec)
+    |  |     +--rw msec?      uint16
+    |  +--rw down
+    |  |  +--rw (delay-choice)?
+    |  |     +--:(seconds)
+    |  |     |  +--rw seconds?   uint8
+    |  |     +--:(msec)
+    |  |        +--rw msec?      uint16
+    |  +--rw up
+    |     +--rw (delay-choice)?
+    |        +--:(seconds)
+    |        |  +--rw seconds?   uint8
+    |        +--:(msec)
+    |           +--rw msec?      uint16
+    +--rw channel-group
+    |  +--rw number?       uint16
+    |  +--rw mode?         enumeration
+    |  +--rw non-silent?   empty
+    |  +--rw link?         uint8
+    |  +--rw auto?         empty
+    +--rw channel-protocol?   enumeration
+    +--rw ethernet
+    |  +--rw oam!
+    |  |  +--rw link-monitor
+    |  |  |  +--rw frame
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw thresh?   uint16
+    |  |  |  |  |  |  +--rw none?     empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-period
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw f-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-seconds
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw e-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw high-threshold
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw on?               empty
+    |  |  |  +--rw receive-crc
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw crc-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?         empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw supported?        empty
+    |  |  |  +--rw symbol-period
+    |  |  |     +--rw threshold
+    |  |  |     |  +--rw high
+    |  |  |     |  |  +--rw err-thresh?   uint16
+    |  |  |     |  |  +--rw none?         empty
+    |  |  |     |  +--rw low?    uint16
+    |  |  |     +--rw window?      uint16
+    |  |  +--rw max-rate?          uint8
+    |  |  +--rw min-rate?          uint8
+    |  |  +--rw mode?              enumeration
+    |  |  +--rw remote-failure
+    |  |  |  +--rw critical-event
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw dying-gasp
+    |  |  |  |  +--rw action!
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw link-fault
+    |  |  |     +--rw action!
+    |  |  |        +--rw error-disable-interface?   empty
+    |  |  +--rw remote-loopback
+    |  |  |  +--rw supported?   empty
+    |  |  |  +--rw timeout?     uint8
+    |  |  +--rw timeout?           uint8
+    |  +--rw dot1ad
+    |     +--rw (dot1ad-choice)?
+    |        +--:(nni)
+    |        |  +--rw nni?   empty
+    |        +--:(uni)
+    |           +--rw uni
+    |              +--rw (uni-choice)?
+    |                 +--:(c-port)
+    |                 |  +--rw c-port?   empty
+    |                 +--:(s-port)
+    |                    +--rw s-port?   empty
+    +--rw eapol
+    |  +--rw destination-address
+    |     +--rw broadcast-address?   empty
+    +--rw synchronous
+    |  +--rw mode?   empty
+    +--rw speed
+    |  +--rw (speed-choice)?
+    |     +--:(auto)
+    |     |  +--rw auto?          empty
+    |     +--:(value-10)
+    |     |  +--rw value-10?      empty
+    |     +--:(value-100)
+    |     |  +--rw value-100?     empty
+    |     +--:(value-1000)
+    |     |  +--rw value-1000?    empty
+    |     +--:(value-10000)
+    |     |  +--rw value-10000?   empty
+    |     +--:(nonegotiate)
+    |        +--rw nonegotiate?   empty
+    +--rw duplex?             enumeration
+    +--rw negotiation
+    |  +--rw auto?   boolean
+    +--rw plim
+    |  +--rw ethernet
+    |  |  +--rw vlan
+    |  |     +--rw filter
+    |  |        +--rw disable?   empty
+    |  +--rw qos
+    |     +--rw input
+    |        +--rw queue
+    |           +--rw (priority)?
+    |              +--:(low)
+    |              |  +--rw zero
+    |              |     +--rw pause
+    |              |        +--rw enable?      boolean
+    |              |        +--rw threshold?   uint8
+    |              +--:(high)
+    |                 +--rw strict-priority
+    |                    +--rw pause
+    |                       +--rw enable?      boolean
+    |                       +--rw threshold?   uint8
+    +--rw pppoe
+    |  +--rw enable!
+    |  |  +--rw group?   union
+    |  +--rw max-sessions?   uint16
+    +--rw service
+    |  +--rw instance* [id]
+    |     +--rw id                    uint32
+    |     +--rw trunk?                empty
+    |     +--rw GigabitEthernet?      empty
+    |     +--rw ethernet?             empty
+    |     +--rw ethernet-evc-name?    string
+    |     +--rw description?          string
+    |     +--rw evc-name?             string
+    |     +--rw encapsulation
+    |     |  +--rw default?           empty
+    |     |  +--rw dot1ad
+    |     |  |  +--rw id*      union
+    |     |  |  +--rw cos*     uint8
+    |     |  |  +--rw dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*   enumeration
+    |     |  |  +--rw exact?   empty
+    |     |  +--rw dot1q
+    |     |  |  +--rw id*             union
+    |     |  |  +--rw cos*            uint8
+    |     |  |  +--rw second-dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*          enumeration
+    |     |  |  +--rw exact?          empty
+    |     |  |  +--rw vlan-type?      enumeration
+    |     |  +--rw priority-tagged!
+    |     |  |  +--rw cos-container
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*           enumeration
+    |     |  +--rw untagged!
+    |     +--rw ip
+    |     |  +--rw acl
+    |     |  |  +--rw access-group?   ios-types:exp-acl-type
+    |     |  |  +--rw in?             empty
+    |     |  |  +--rw out?            empty
+    |     |  +--rw dhcp
+    |     |  |  +--rw relay
+    |     |  |     +--rw information
+    |     |  |        +--rw option
+    |     |  |           +--rw subscriber-id?   string
+    |     |  +--rw verify
+    |     |     +--rw source?          empty
+    |     |     +--rw vlan?            empty
+    |     |     +--rw dhcp-snooping?   empty
+    |     |     +--rw port-security?   empty
+    |     +--rw ipv6
+    |     |  +--rw traffic-filter?   string
+    |     |  +--rw in?               empty
+    |     |  +--rw out?              empty
+    |     +--rw rewrite
+    |     |  +--rw ingress
+    |     |     +--rw tag
+    |     |        +--rw pop
+    |     |        |  +--rw way?    enumeration
+    |     |        |  +--rw mode?   enumeration
+    |     |        +--rw push
+    |     |        |  +--rw dot1q?   uint16
+    |     |        |  +--rw mode?    enumeration
+    |     |        +--rw translate
+    |     |           +--rw t1-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t1-to-2
+    |     |           |  +--rw dot1q?          uint16
+    |     |           |  +--rw second-dot1q?   uint16
+    |     |           |  +--rw mode?           enumeration
+    |     |           +--rw t2-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t2-to-2
+    |     |              +--rw dot1q?          uint16
+    |     |              +--rw second-dot1q?   uint16
+    |     |              +--rw mode?           enumeration
+    |     +--rw group?                uint32
+    |     +--rw errdisable
+    |     |  +--rw recovery
+    |     |     +--rw cause
+    |     |        +--rw mac-security?   uint32
+    |     +--rw ethernet-container
+    |     |  +--rw ethernet
+    |     |     +--rw lmi
+    |     |     |  +--rw ce-vlan
+    |     |     |     +--rw map
+    |     |     |        +--rw (map-choice)?
+    |     |     |           +--:(any)
+    |     |     |           |  +--rw any?          empty
+    |     |     |           +--:(default)
+    |     |     |           |  +--rw default?      empty
+    |     |     |           +--:(untagged)
+    |     |     |           |  +--rw untagged?     empty
+    |     |     |           +--:(vlan-range)
+    |     |     |              +--rw vlan-range?   string
+    |     |     +--rw loopback
+    |     |        +--rw permit
+    |     |           +--rw external?   empty
+    |     |           +--rw internal?   empty
+    |     +--rw snmp
+    |     |  +--rw trap
+    |     |  |  +--rw link-status?   empty
+    |     |  +--rw ifindex
+    |     |     +--rw persist?   empty
+    |     +--rw bridge-domain
+    |     |  +--rw bridge-id?            uint16
+    |     |  +--rw split-horizon
+    |     |  |  +--rw group?   uint8
+    |     |  +--rw from-encapsulation?   empty
+    |     +--rw mac
+    |     |  +--rw security!
+    |     |  |  +--rw maximum
+    |     |  |  |  +--rw addresses?   uint16
+    |     |  |  +--rw violation?   enumeration
+    |     |  +--rw access-group* [acl-name]
+    |     |     +--rw acl-name    string
+    |     |     +--rw in?         empty
+    |     |     +--rw out?        empty
+    |     +--rw service-policy
+    |     |  +--rw input* [name]
+    |     |  |  +--rw name    string
+    |     |  +--rw output* [name]
+    |     |     +--rw name    string
+    |     +--rw shutdown?             empty
+    |     +--rw cfm
+    |     |  +--rw encapsulation
+    |     |  |  +--rw dot1ad
+    |     |  |  |  +--rw vlan-id?   uint16
+    |     |  |  |  +--rw cos?       uint8
+    |     |  |  |  +--rw dot1q?     uint16
+    |     |  |  +--rw dot1q
+    |     |  |     +--rw vlan-id?        uint16
+    |     |  |     +--rw cos?            uint8
+    |     |  |     +--rw second-dot1q?   uint16
+    |     |  +--rw mep
+    |     |  |  +--rw domain?   string
+    |     |  |  +--rw mpid?     uint16
+    |     |  +--rw mip
+    |     |     +--rw level?   uint8
+    |     +--rw l2protocol
+    |        +--rw discard!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw peer!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw forward!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw tunnel!
+    |           +--rw protocol*   enumeration
+    +--rw macsec?             empty {ios-features:macsec}?
+    +--rw macsec-option {ios-features:macsec}?
+       +--rw macsec
+          +--rw dot1q-in-clear?      enumeration
+          +--rw replay-protection
+             +--rw window-size?   uint32
+  augment /ios:native/ios:interface/ios:Port-channel:
+    +--rw carrier-delay
+    |  +--rw (delay-choice)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds?   uint8
+    |  |  +--:(msec)
+    |  |     +--rw msec?      uint16
+    |  +--rw down
+    |  |  +--rw (delay-choice)?
+    |  |     +--:(seconds)
+    |  |     |  +--rw seconds?   uint8
+    |  |     +--:(msec)
+    |  |        +--rw msec?      uint16
+    |  +--rw up
+    |     +--rw (delay-choice)?
+    |        +--:(seconds)
+    |        |  +--rw seconds?   uint8
+    |        +--:(msec)
+    |           +--rw msec?      uint16
+    +--rw channel-group
+    |  +--rw number?       uint16
+    |  +--rw mode?         enumeration
+    |  +--rw non-silent?   empty
+    |  +--rw link?         uint8
+    |  +--rw auto?         empty
+    +--rw channel-protocol?   enumeration
+    +--rw ethernet
+    |  +--rw oam!
+    |  |  +--rw link-monitor
+    |  |  |  +--rw frame
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw thresh?   uint16
+    |  |  |  |  |  |  +--rw none?     empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-period
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw f-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-seconds
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw e-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw high-threshold
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw on?               empty
+    |  |  |  +--rw receive-crc
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw crc-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?         empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw supported?        empty
+    |  |  |  +--rw symbol-period
+    |  |  |     +--rw threshold
+    |  |  |     |  +--rw high
+    |  |  |     |  |  +--rw err-thresh?   uint16
+    |  |  |     |  |  +--rw none?         empty
+    |  |  |     |  +--rw low?    uint16
+    |  |  |     +--rw window?      uint16
+    |  |  +--rw max-rate?          uint8
+    |  |  +--rw min-rate?          uint8
+    |  |  +--rw mode?              enumeration
+    |  |  +--rw remote-failure
+    |  |  |  +--rw critical-event
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw dying-gasp
+    |  |  |  |  +--rw action!
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw link-fault
+    |  |  |     +--rw action!
+    |  |  |        +--rw error-disable-interface?   empty
+    |  |  +--rw remote-loopback
+    |  |  |  +--rw supported?   empty
+    |  |  |  +--rw timeout?     uint8
+    |  |  +--rw timeout?           uint8
+    |  +--rw dot1ad
+    |     +--rw (dot1ad-choice)?
+    |        +--:(nni)
+    |        |  +--rw nni?   empty
+    |        +--:(uni)
+    |           +--rw uni
+    |              +--rw (uni-choice)?
+    |                 +--:(c-port)
+    |                 |  +--rw c-port?   empty
+    |                 +--:(s-port)
+    |                    +--rw s-port?   empty
+    +--rw eapol
+    |  +--rw destination-address
+    |     +--rw broadcast-address?   empty
+    +--rw synchronous
+    |  +--rw mode?   empty
+    +--rw speed
+    |  +--rw (speed-choice)?
+    |     +--:(auto)
+    |     |  +--rw auto?          empty
+    |     +--:(value-10)
+    |     |  +--rw value-10?      empty
+    |     +--:(value-100)
+    |     |  +--rw value-100?     empty
+    |     +--:(value-1000)
+    |     |  +--rw value-1000?    empty
+    |     +--:(value-10000)
+    |     |  +--rw value-10000?   empty
+    |     +--:(nonegotiate)
+    |        +--rw nonegotiate?   empty
+    +--rw duplex?             enumeration
+    +--rw negotiation
+    |  +--rw auto?   boolean
+    +--rw plim
+    |  +--rw ethernet
+    |  |  +--rw vlan
+    |  |     +--rw filter
+    |  |        +--rw disable?   empty
+    |  +--rw qos
+    |     +--rw input
+    |        +--rw queue
+    |           +--rw (priority)?
+    |              +--:(low)
+    |              |  +--rw zero
+    |              |     +--rw pause
+    |              |        +--rw enable?      boolean
+    |              |        +--rw threshold?   uint8
+    |              +--:(high)
+    |                 +--rw strict-priority
+    |                    +--rw pause
+    |                       +--rw enable?      boolean
+    |                       +--rw threshold?   uint8
+    +--rw pppoe
+    |  +--rw enable!
+    |  |  +--rw group?   union
+    |  +--rw max-sessions?   uint16
+    +--rw service
+    |  +--rw instance* [id]
+    |     +--rw id                    uint32
+    |     +--rw trunk?                empty
+    |     +--rw GigabitEthernet?      empty
+    |     +--rw ethernet?             empty
+    |     +--rw ethernet-evc-name?    string
+    |     +--rw description?          string
+    |     +--rw evc-name?             string
+    |     +--rw encapsulation
+    |     |  +--rw default?           empty
+    |     |  +--rw dot1ad
+    |     |  |  +--rw id*      union
+    |     |  |  +--rw cos*     uint8
+    |     |  |  +--rw dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*   enumeration
+    |     |  |  +--rw exact?   empty
+    |     |  +--rw dot1q
+    |     |  |  +--rw id*             union
+    |     |  |  +--rw cos*            uint8
+    |     |  |  +--rw second-dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*          enumeration
+    |     |  |  +--rw exact?          empty
+    |     |  |  +--rw vlan-type?      enumeration
+    |     |  +--rw priority-tagged!
+    |     |  |  +--rw cos-container
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*           enumeration
+    |     |  +--rw untagged!
+    |     +--rw ip
+    |     |  +--rw acl
+    |     |  |  +--rw access-group?   ios-types:exp-acl-type
+    |     |  |  +--rw in?             empty
+    |     |  |  +--rw out?            empty
+    |     |  +--rw dhcp
+    |     |  |  +--rw relay
+    |     |  |     +--rw information
+    |     |  |        +--rw option
+    |     |  |           +--rw subscriber-id?   string
+    |     |  +--rw verify
+    |     |     +--rw source?          empty
+    |     |     +--rw vlan?            empty
+    |     |     +--rw dhcp-snooping?   empty
+    |     |     +--rw port-security?   empty
+    |     +--rw ipv6
+    |     |  +--rw traffic-filter?   string
+    |     |  +--rw in?               empty
+    |     |  +--rw out?              empty
+    |     +--rw rewrite
+    |     |  +--rw ingress
+    |     |     +--rw tag
+    |     |        +--rw pop
+    |     |        |  +--rw way?    enumeration
+    |     |        |  +--rw mode?   enumeration
+    |     |        +--rw push
+    |     |        |  +--rw dot1q?   uint16
+    |     |        |  +--rw mode?    enumeration
+    |     |        +--rw translate
+    |     |           +--rw t1-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t1-to-2
+    |     |           |  +--rw dot1q?          uint16
+    |     |           |  +--rw second-dot1q?   uint16
+    |     |           |  +--rw mode?           enumeration
+    |     |           +--rw t2-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t2-to-2
+    |     |              +--rw dot1q?          uint16
+    |     |              +--rw second-dot1q?   uint16
+    |     |              +--rw mode?           enumeration
+    |     +--rw group?                uint32
+    |     +--rw errdisable
+    |     |  +--rw recovery
+    |     |     +--rw cause
+    |     |        +--rw mac-security?   uint32
+    |     +--rw ethernet-container
+    |     |  +--rw ethernet
+    |     |     +--rw lmi
+    |     |     |  +--rw ce-vlan
+    |     |     |     +--rw map
+    |     |     |        +--rw (map-choice)?
+    |     |     |           +--:(any)
+    |     |     |           |  +--rw any?          empty
+    |     |     |           +--:(default)
+    |     |     |           |  +--rw default?      empty
+    |     |     |           +--:(untagged)
+    |     |     |           |  +--rw untagged?     empty
+    |     |     |           +--:(vlan-range)
+    |     |     |              +--rw vlan-range?   string
+    |     |     +--rw loopback
+    |     |        +--rw permit
+    |     |           +--rw external?   empty
+    |     |           +--rw internal?   empty
+    |     +--rw snmp
+    |     |  +--rw trap
+    |     |  |  +--rw link-status?   empty
+    |     |  +--rw ifindex
+    |     |     +--rw persist?   empty
+    |     +--rw bridge-domain
+    |     |  +--rw bridge-id?            uint16
+    |     |  +--rw split-horizon
+    |     |  |  +--rw group?   uint8
+    |     |  +--rw from-encapsulation?   empty
+    |     +--rw mac
+    |     |  +--rw security!
+    |     |  |  +--rw maximum
+    |     |  |  |  +--rw addresses?   uint16
+    |     |  |  +--rw violation?   enumeration
+    |     |  +--rw access-group* [acl-name]
+    |     |     +--rw acl-name    string
+    |     |     +--rw in?         empty
+    |     |     +--rw out?        empty
+    |     +--rw service-policy
+    |     |  +--rw input* [name]
+    |     |  |  +--rw name    string
+    |     |  +--rw output* [name]
+    |     |     +--rw name    string
+    |     +--rw shutdown?             empty
+    |     +--rw cfm
+    |     |  +--rw encapsulation
+    |     |  |  +--rw dot1ad
+    |     |  |  |  +--rw vlan-id?   uint16
+    |     |  |  |  +--rw cos?       uint8
+    |     |  |  |  +--rw dot1q?     uint16
+    |     |  |  +--rw dot1q
+    |     |  |     +--rw vlan-id?        uint16
+    |     |  |     +--rw cos?            uint8
+    |     |  |     +--rw second-dot1q?   uint16
+    |     |  +--rw mep
+    |     |  |  +--rw domain?   string
+    |     |  |  +--rw mpid?     uint16
+    |     |  +--rw mip
+    |     |     +--rw level?   uint8
+    |     +--rw l2protocol
+    |        +--rw discard!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw peer!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw forward!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw tunnel!
+    |           +--rw protocol*   enumeration
+    +--rw lacp
+    |  +--rw failover?          enumeration
+    |  +--rw fast-switchover?   empty
+    |  +--rw max-bundle?        uint8
+    |  +--rw min-bundle?        uint8
+    +--rw mlacp
+       +--rw interchassis
+          +--rw group?   uint32
+  augment /ios:native/ios:interface/ios:Port-channel-subinterface/ios:Port-channel:
+    +--rw carrier-delay
+    |  +--rw (delay-choice)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds?   uint8
+    |  |  +--:(msec)
+    |  |     +--rw msec?      uint16
+    |  +--rw down
+    |  |  +--rw (delay-choice)?
+    |  |     +--:(seconds)
+    |  |     |  +--rw seconds?   uint8
+    |  |     +--:(msec)
+    |  |        +--rw msec?      uint16
+    |  +--rw up
+    |     +--rw (delay-choice)?
+    |        +--:(seconds)
+    |        |  +--rw seconds?   uint8
+    |        +--:(msec)
+    |           +--rw msec?      uint16
+    +--rw channel-group
+    |  +--rw number?       uint16
+    |  +--rw mode?         enumeration
+    |  +--rw non-silent?   empty
+    |  +--rw link?         uint8
+    |  +--rw auto?         empty
+    +--rw channel-protocol?   enumeration
+    +--rw ethernet
+    |  +--rw oam!
+    |  |  +--rw link-monitor
+    |  |  |  +--rw frame
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw thresh?   uint16
+    |  |  |  |  |  |  +--rw none?     empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-period
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw f-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-seconds
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw e-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw high-threshold
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw on?               empty
+    |  |  |  +--rw receive-crc
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw crc-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?         empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw supported?        empty
+    |  |  |  +--rw symbol-period
+    |  |  |     +--rw threshold
+    |  |  |     |  +--rw high
+    |  |  |     |  |  +--rw err-thresh?   uint16
+    |  |  |     |  |  +--rw none?         empty
+    |  |  |     |  +--rw low?    uint16
+    |  |  |     +--rw window?      uint16
+    |  |  +--rw max-rate?          uint8
+    |  |  +--rw min-rate?          uint8
+    |  |  +--rw mode?              enumeration
+    |  |  +--rw remote-failure
+    |  |  |  +--rw critical-event
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw dying-gasp
+    |  |  |  |  +--rw action!
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw link-fault
+    |  |  |     +--rw action!
+    |  |  |        +--rw error-disable-interface?   empty
+    |  |  +--rw remote-loopback
+    |  |  |  +--rw supported?   empty
+    |  |  |  +--rw timeout?     uint8
+    |  |  +--rw timeout?           uint8
+    |  +--rw dot1ad
+    |     +--rw (dot1ad-choice)?
+    |        +--:(nni)
+    |        |  +--rw nni?   empty
+    |        +--:(uni)
+    |           +--rw uni
+    |              +--rw (uni-choice)?
+    |                 +--:(c-port)
+    |                 |  +--rw c-port?   empty
+    |                 +--:(s-port)
+    |                    +--rw s-port?   empty
+    +--rw eapol
+    |  +--rw destination-address
+    |     +--rw broadcast-address?   empty
+    +--rw synchronous
+    |  +--rw mode?   empty
+    +--rw speed
+    |  +--rw (speed-choice)?
+    |     +--:(auto)
+    |     |  +--rw auto?          empty
+    |     +--:(value-10)
+    |     |  +--rw value-10?      empty
+    |     +--:(value-100)
+    |     |  +--rw value-100?     empty
+    |     +--:(value-1000)
+    |     |  +--rw value-1000?    empty
+    |     +--:(value-10000)
+    |     |  +--rw value-10000?   empty
+    |     +--:(nonegotiate)
+    |        +--rw nonegotiate?   empty
+    +--rw duplex?             enumeration
+    +--rw negotiation
+    |  +--rw auto?   boolean
+    +--rw plim
+    |  +--rw ethernet
+    |  |  +--rw vlan
+    |  |     +--rw filter
+    |  |        +--rw disable?   empty
+    |  +--rw qos
+    |     +--rw input
+    |        +--rw queue
+    |           +--rw (priority)?
+    |              +--:(low)
+    |              |  +--rw zero
+    |              |     +--rw pause
+    |              |        +--rw enable?      boolean
+    |              |        +--rw threshold?   uint8
+    |              +--:(high)
+    |                 +--rw strict-priority
+    |                    +--rw pause
+    |                       +--rw enable?      boolean
+    |                       +--rw threshold?   uint8
+    +--rw pppoe
+    |  +--rw enable!
+    |  |  +--rw group?   union
+    |  +--rw max-sessions?   uint16
+    +--rw service
+       +--rw instance* [id]
+          +--rw id                    uint32
+          +--rw trunk?                empty
+          +--rw GigabitEthernet?      empty
+          +--rw ethernet?             empty
+          +--rw ethernet-evc-name?    string
+          +--rw description?          string
+          +--rw evc-name?             string
+          +--rw encapsulation
+          |  +--rw default?           empty
+          |  +--rw dot1ad
+          |  |  +--rw id*      union
+          |  |  +--rw cos*     uint8
+          |  |  +--rw dot1q*   union
+          |  |  +--rw cos2
+          |  |  |  +--rw cos*   uint8
+          |  |  +--rw etype*   enumeration
+          |  |  +--rw exact?   empty
+          |  +--rw dot1q
+          |  |  +--rw id*             union
+          |  |  +--rw cos*            uint8
+          |  |  +--rw second-dot1q*   union
+          |  |  +--rw cos2
+          |  |  |  +--rw cos*   uint8
+          |  |  +--rw etype*          enumeration
+          |  |  +--rw exact?          empty
+          |  |  +--rw vlan-type?      enumeration
+          |  +--rw priority-tagged!
+          |  |  +--rw cos-container
+          |  |  |  +--rw cos*   uint8
+          |  |  +--rw etype*           enumeration
+          |  +--rw untagged!
+          +--rw ip
+          |  +--rw acl
+          |  |  +--rw access-group?   ios-types:exp-acl-type
+          |  |  +--rw in?             empty
+          |  |  +--rw out?            empty
+          |  +--rw dhcp
+          |  |  +--rw relay
+          |  |     +--rw information
+          |  |        +--rw option
+          |  |           +--rw subscriber-id?   string
+          |  +--rw verify
+          |     +--rw source?          empty
+          |     +--rw vlan?            empty
+          |     +--rw dhcp-snooping?   empty
+          |     +--rw port-security?   empty
+          +--rw ipv6
+          |  +--rw traffic-filter?   string
+          |  +--rw in?               empty
+          |  +--rw out?              empty
+          +--rw rewrite
+          |  +--rw ingress
+          |     +--rw tag
+          |        +--rw pop
+          |        |  +--rw way?    enumeration
+          |        |  +--rw mode?   enumeration
+          |        +--rw push
+          |        |  +--rw dot1q?   uint16
+          |        |  +--rw mode?    enumeration
+          |        +--rw translate
+          |           +--rw t1-to-1
+          |           |  +--rw dot1q?   uint16
+          |           |  +--rw mode?    enumeration
+          |           +--rw t1-to-2
+          |           |  +--rw dot1q?          uint16
+          |           |  +--rw second-dot1q?   uint16
+          |           |  +--rw mode?           enumeration
+          |           +--rw t2-to-1
+          |           |  +--rw dot1q?   uint16
+          |           |  +--rw mode?    enumeration
+          |           +--rw t2-to-2
+          |              +--rw dot1q?          uint16
+          |              +--rw second-dot1q?   uint16
+          |              +--rw mode?           enumeration
+          +--rw group?                uint32
+          +--rw errdisable
+          |  +--rw recovery
+          |     +--rw cause
+          |        +--rw mac-security?   uint32
+          +--rw ethernet-container
+          |  +--rw ethernet
+          |     +--rw lmi
+          |     |  +--rw ce-vlan
+          |     |     +--rw map
+          |     |        +--rw (map-choice)?
+          |     |           +--:(any)
+          |     |           |  +--rw any?          empty
+          |     |           +--:(default)
+          |     |           |  +--rw default?      empty
+          |     |           +--:(untagged)
+          |     |           |  +--rw untagged?     empty
+          |     |           +--:(vlan-range)
+          |     |              +--rw vlan-range?   string
+          |     +--rw loopback
+          |        +--rw permit
+          |           +--rw external?   empty
+          |           +--rw internal?   empty
+          +--rw snmp
+          |  +--rw trap
+          |  |  +--rw link-status?   empty
+          |  +--rw ifindex
+          |     +--rw persist?   empty
+          +--rw bridge-domain
+          |  +--rw bridge-id?            uint16
+          |  +--rw split-horizon
+          |  |  +--rw group?   uint8
+          |  +--rw from-encapsulation?   empty
+          +--rw mac
+          |  +--rw security!
+          |  |  +--rw maximum
+          |  |  |  +--rw addresses?   uint16
+          |  |  +--rw violation?   enumeration
+          |  +--rw access-group* [acl-name]
+          |     +--rw acl-name    string
+          |     +--rw in?         empty
+          |     +--rw out?        empty
+          +--rw service-policy
+          |  +--rw input* [name]
+          |  |  +--rw name    string
+          |  +--rw output* [name]
+          |     +--rw name    string
+          +--rw shutdown?             empty
+          +--rw cfm
+          |  +--rw encapsulation
+          |  |  +--rw dot1ad
+          |  |  |  +--rw vlan-id?   uint16
+          |  |  |  +--rw cos?       uint8
+          |  |  |  +--rw dot1q?     uint16
+          |  |  +--rw dot1q
+          |  |     +--rw vlan-id?        uint16
+          |  |     +--rw cos?            uint8
+          |  |     +--rw second-dot1q?   uint16
+          |  +--rw mep
+          |  |  +--rw domain?   string
+          |  |  +--rw mpid?     uint16
+          |  +--rw mip
+          |     +--rw level?   uint8
+          +--rw l2protocol
+             +--rw discard!
+             |  +--rw protocol*   enumeration
+             +--rw peer!
+             |  +--rw protocol*   enumeration
+             +--rw forward!
+             |  +--rw protocol*   enumeration
+             +--rw tunnel!
+                +--rw protocol*   enumeration
+  augment /ios:native/ios:interface/ios:VirtualPortGroup:
+    +--rw carrier-delay
+    |  +--rw (delay-choice)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds?   uint8
+    |  |  +--:(msec)
+    |  |     +--rw msec?      uint16
+    |  +--rw down
+    |  |  +--rw (delay-choice)?
+    |  |     +--:(seconds)
+    |  |     |  +--rw seconds?   uint8
+    |  |     +--:(msec)
+    |  |        +--rw msec?      uint16
+    |  +--rw up
+    |     +--rw (delay-choice)?
+    |        +--:(seconds)
+    |        |  +--rw seconds?   uint8
+    |        +--:(msec)
+    |           +--rw msec?      uint16
+    +--rw channel-group
+    |  +--rw number?       uint16
+    |  +--rw mode?         enumeration
+    |  +--rw non-silent?   empty
+    |  +--rw link?         uint8
+    |  +--rw auto?         empty
+    +--rw channel-protocol?   enumeration
+    +--rw ethernet
+    |  +--rw oam!
+    |  |  +--rw link-monitor
+    |  |  |  +--rw frame
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw thresh?   uint16
+    |  |  |  |  |  |  +--rw none?     empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-period
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw f-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-seconds
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw e-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw high-threshold
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw on?               empty
+    |  |  |  +--rw receive-crc
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw crc-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?         empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw supported?        empty
+    |  |  |  +--rw symbol-period
+    |  |  |     +--rw threshold
+    |  |  |     |  +--rw high
+    |  |  |     |  |  +--rw err-thresh?   uint16
+    |  |  |     |  |  +--rw none?         empty
+    |  |  |     |  +--rw low?    uint16
+    |  |  |     +--rw window?      uint16
+    |  |  +--rw max-rate?          uint8
+    |  |  +--rw min-rate?          uint8
+    |  |  +--rw mode?              enumeration
+    |  |  +--rw remote-failure
+    |  |  |  +--rw critical-event
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw dying-gasp
+    |  |  |  |  +--rw action!
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw link-fault
+    |  |  |     +--rw action!
+    |  |  |        +--rw error-disable-interface?   empty
+    |  |  +--rw remote-loopback
+    |  |  |  +--rw supported?   empty
+    |  |  |  +--rw timeout?     uint8
+    |  |  +--rw timeout?           uint8
+    |  +--rw dot1ad
+    |     +--rw (dot1ad-choice)?
+    |        +--:(nni)
+    |        |  +--rw nni?   empty
+    |        +--:(uni)
+    |           +--rw uni
+    |              +--rw (uni-choice)?
+    |                 +--:(c-port)
+    |                 |  +--rw c-port?   empty
+    |                 +--:(s-port)
+    |                    +--rw s-port?   empty
+    +--rw eapol
+    |  +--rw destination-address
+    |     +--rw broadcast-address?   empty
+    +--rw synchronous
+    |  +--rw mode?   empty
+    +--rw speed
+    |  +--rw (speed-choice)?
+    |     +--:(auto)
+    |     |  +--rw auto?          empty
+    |     +--:(value-10)
+    |     |  +--rw value-10?      empty
+    |     +--:(value-100)
+    |     |  +--rw value-100?     empty
+    |     +--:(value-1000)
+    |     |  +--rw value-1000?    empty
+    |     +--:(value-10000)
+    |     |  +--rw value-10000?   empty
+    |     +--:(nonegotiate)
+    |        +--rw nonegotiate?   empty
+    +--rw duplex?             enumeration
+    +--rw negotiation
+    |  +--rw auto?   boolean
+    +--rw plim
+    |  +--rw ethernet
+    |  |  +--rw vlan
+    |  |     +--rw filter
+    |  |        +--rw disable?   empty
+    |  +--rw qos
+    |     +--rw input
+    |        +--rw queue
+    |           +--rw (priority)?
+    |              +--:(low)
+    |              |  +--rw zero
+    |              |     +--rw pause
+    |              |        +--rw enable?      boolean
+    |              |        +--rw threshold?   uint8
+    |              +--:(high)
+    |                 +--rw strict-priority
+    |                    +--rw pause
+    |                       +--rw enable?      boolean
+    |                       +--rw threshold?   uint8
+    +--rw pppoe
+    |  +--rw enable!
+    |  |  +--rw group?   union
+    |  +--rw max-sessions?   uint16
+    +--rw service
+    |  +--rw instance* [id]
+    |     +--rw id                    uint32
+    |     +--rw trunk?                empty
+    |     +--rw GigabitEthernet?      empty
+    |     +--rw ethernet?             empty
+    |     +--rw ethernet-evc-name?    string
+    |     +--rw description?          string
+    |     +--rw evc-name?             string
+    |     +--rw encapsulation
+    |     |  +--rw default?           empty
+    |     |  +--rw dot1ad
+    |     |  |  +--rw id*      union
+    |     |  |  +--rw cos*     uint8
+    |     |  |  +--rw dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*   enumeration
+    |     |  |  +--rw exact?   empty
+    |     |  +--rw dot1q
+    |     |  |  +--rw id*             union
+    |     |  |  +--rw cos*            uint8
+    |     |  |  +--rw second-dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*          enumeration
+    |     |  |  +--rw exact?          empty
+    |     |  |  +--rw vlan-type?      enumeration
+    |     |  +--rw priority-tagged!
+    |     |  |  +--rw cos-container
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*           enumeration
+    |     |  +--rw untagged!
+    |     +--rw ip
+    |     |  +--rw acl
+    |     |  |  +--rw access-group?   ios-types:exp-acl-type
+    |     |  |  +--rw in?             empty
+    |     |  |  +--rw out?            empty
+    |     |  +--rw dhcp
+    |     |  |  +--rw relay
+    |     |  |     +--rw information
+    |     |  |        +--rw option
+    |     |  |           +--rw subscriber-id?   string
+    |     |  +--rw verify
+    |     |     +--rw source?          empty
+    |     |     +--rw vlan?            empty
+    |     |     +--rw dhcp-snooping?   empty
+    |     |     +--rw port-security?   empty
+    |     +--rw ipv6
+    |     |  +--rw traffic-filter?   string
+    |     |  +--rw in?               empty
+    |     |  +--rw out?              empty
+    |     +--rw rewrite
+    |     |  +--rw ingress
+    |     |     +--rw tag
+    |     |        +--rw pop
+    |     |        |  +--rw way?    enumeration
+    |     |        |  +--rw mode?   enumeration
+    |     |        +--rw push
+    |     |        |  +--rw dot1q?   uint16
+    |     |        |  +--rw mode?    enumeration
+    |     |        +--rw translate
+    |     |           +--rw t1-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t1-to-2
+    |     |           |  +--rw dot1q?          uint16
+    |     |           |  +--rw second-dot1q?   uint16
+    |     |           |  +--rw mode?           enumeration
+    |     |           +--rw t2-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t2-to-2
+    |     |              +--rw dot1q?          uint16
+    |     |              +--rw second-dot1q?   uint16
+    |     |              +--rw mode?           enumeration
+    |     +--rw group?                uint32
+    |     +--rw errdisable
+    |     |  +--rw recovery
+    |     |     +--rw cause
+    |     |        +--rw mac-security?   uint32
+    |     +--rw ethernet-container
+    |     |  +--rw ethernet
+    |     |     +--rw lmi
+    |     |     |  +--rw ce-vlan
+    |     |     |     +--rw map
+    |     |     |        +--rw (map-choice)?
+    |     |     |           +--:(any)
+    |     |     |           |  +--rw any?          empty
+    |     |     |           +--:(default)
+    |     |     |           |  +--rw default?      empty
+    |     |     |           +--:(untagged)
+    |     |     |           |  +--rw untagged?     empty
+    |     |     |           +--:(vlan-range)
+    |     |     |              +--rw vlan-range?   string
+    |     |     +--rw loopback
+    |     |        +--rw permit
+    |     |           +--rw external?   empty
+    |     |           +--rw internal?   empty
+    |     +--rw snmp
+    |     |  +--rw trap
+    |     |  |  +--rw link-status?   empty
+    |     |  +--rw ifindex
+    |     |     +--rw persist?   empty
+    |     +--rw bridge-domain
+    |     |  +--rw bridge-id?            uint16
+    |     |  +--rw split-horizon
+    |     |  |  +--rw group?   uint8
+    |     |  +--rw from-encapsulation?   empty
+    |     +--rw mac
+    |     |  +--rw security!
+    |     |  |  +--rw maximum
+    |     |  |  |  +--rw addresses?   uint16
+    |     |  |  +--rw violation?   enumeration
+    |     |  +--rw access-group* [acl-name]
+    |     |     +--rw acl-name    string
+    |     |     +--rw in?         empty
+    |     |     +--rw out?        empty
+    |     +--rw service-policy
+    |     |  +--rw input* [name]
+    |     |  |  +--rw name    string
+    |     |  +--rw output* [name]
+    |     |     +--rw name    string
+    |     +--rw shutdown?             empty
+    |     +--rw cfm
+    |     |  +--rw encapsulation
+    |     |  |  +--rw dot1ad
+    |     |  |  |  +--rw vlan-id?   uint16
+    |     |  |  |  +--rw cos?       uint8
+    |     |  |  |  +--rw dot1q?     uint16
+    |     |  |  +--rw dot1q
+    |     |  |     +--rw vlan-id?        uint16
+    |     |  |     +--rw cos?            uint8
+    |     |  |     +--rw second-dot1q?   uint16
+    |     |  +--rw mep
+    |     |  |  +--rw domain?   string
+    |     |  |  +--rw mpid?     uint16
+    |     |  +--rw mip
+    |     |     +--rw level?   uint8
+    |     +--rw l2protocol
+    |        +--rw discard!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw peer!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw forward!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw tunnel!
+    |           +--rw protocol*   enumeration
+    +--rw lacp
+       +--rw port-priority?   uint32
+       +--rw rate?            enumeration
+  augment /ios:native/ios:interface/ios:Virtual-Template:
+    +--rw carrier-delay
+    |  +--rw (delay-choice)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds?   uint8
+    |  |  +--:(msec)
+    |  |     +--rw msec?      uint16
+    |  +--rw down
+    |  |  +--rw (delay-choice)?
+    |  |     +--:(seconds)
+    |  |     |  +--rw seconds?   uint8
+    |  |     +--:(msec)
+    |  |        +--rw msec?      uint16
+    |  +--rw up
+    |     +--rw (delay-choice)?
+    |        +--:(seconds)
+    |        |  +--rw seconds?   uint8
+    |        +--:(msec)
+    |           +--rw msec?      uint16
+    +--rw channel-group
+    |  +--rw number?       uint16
+    |  +--rw mode?         enumeration
+    |  +--rw non-silent?   empty
+    |  +--rw link?         uint8
+    |  +--rw auto?         empty
+    +--rw channel-protocol?   enumeration
+    +--rw ethernet
+    |  +--rw oam!
+    |  |  +--rw link-monitor
+    |  |  |  +--rw frame
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw thresh?   uint16
+    |  |  |  |  |  |  +--rw none?     empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-period
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw f-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-seconds
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw e-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw high-threshold
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw on?               empty
+    |  |  |  +--rw receive-crc
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw crc-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?         empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw supported?        empty
+    |  |  |  +--rw symbol-period
+    |  |  |     +--rw threshold
+    |  |  |     |  +--rw high
+    |  |  |     |  |  +--rw err-thresh?   uint16
+    |  |  |     |  |  +--rw none?         empty
+    |  |  |     |  +--rw low?    uint16
+    |  |  |     +--rw window?      uint16
+    |  |  +--rw max-rate?          uint8
+    |  |  +--rw min-rate?          uint8
+    |  |  +--rw mode?              enumeration
+    |  |  +--rw remote-failure
+    |  |  |  +--rw critical-event
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw dying-gasp
+    |  |  |  |  +--rw action!
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw link-fault
+    |  |  |     +--rw action!
+    |  |  |        +--rw error-disable-interface?   empty
+    |  |  +--rw remote-loopback
+    |  |  |  +--rw supported?   empty
+    |  |  |  +--rw timeout?     uint8
+    |  |  +--rw timeout?           uint8
+    |  +--rw dot1ad
+    |     +--rw (dot1ad-choice)?
+    |        +--:(nni)
+    |        |  +--rw nni?   empty
+    |        +--:(uni)
+    |           +--rw uni
+    |              +--rw (uni-choice)?
+    |                 +--:(c-port)
+    |                 |  +--rw c-port?   empty
+    |                 +--:(s-port)
+    |                    +--rw s-port?   empty
+    +--rw eapol
+    |  +--rw destination-address
+    |     +--rw broadcast-address?   empty
+    +--rw synchronous
+    |  +--rw mode?   empty
+    +--rw speed
+    |  +--rw (speed-choice)?
+    |     +--:(auto)
+    |     |  +--rw auto?          empty
+    |     +--:(value-10)
+    |     |  +--rw value-10?      empty
+    |     +--:(value-100)
+    |     |  +--rw value-100?     empty
+    |     +--:(value-1000)
+    |     |  +--rw value-1000?    empty
+    |     +--:(value-10000)
+    |     |  +--rw value-10000?   empty
+    |     +--:(nonegotiate)
+    |        +--rw nonegotiate?   empty
+    +--rw duplex?             enumeration
+    +--rw negotiation
+    |  +--rw auto?   boolean
+    +--rw plim
+    |  +--rw ethernet
+    |  |  +--rw vlan
+    |  |     +--rw filter
+    |  |        +--rw disable?   empty
+    |  +--rw qos
+    |     +--rw input
+    |        +--rw queue
+    |           +--rw (priority)?
+    |              +--:(low)
+    |              |  +--rw zero
+    |              |     +--rw pause
+    |              |        +--rw enable?      boolean
+    |              |        +--rw threshold?   uint8
+    |              +--:(high)
+    |                 +--rw strict-priority
+    |                    +--rw pause
+    |                       +--rw enable?      boolean
+    |                       +--rw threshold?   uint8
+    +--rw pppoe
+    |  +--rw enable!
+    |  |  +--rw group?   union
+    |  +--rw max-sessions?   uint16
+    +--rw service
+    |  +--rw instance* [id]
+    |     +--rw id                    uint32
+    |     +--rw trunk?                empty
+    |     +--rw GigabitEthernet?      empty
+    |     +--rw ethernet?             empty
+    |     +--rw ethernet-evc-name?    string
+    |     +--rw description?          string
+    |     +--rw evc-name?             string
+    |     +--rw encapsulation
+    |     |  +--rw default?           empty
+    |     |  +--rw dot1ad
+    |     |  |  +--rw id*      union
+    |     |  |  +--rw cos*     uint8
+    |     |  |  +--rw dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*   enumeration
+    |     |  |  +--rw exact?   empty
+    |     |  +--rw dot1q
+    |     |  |  +--rw id*             union
+    |     |  |  +--rw cos*            uint8
+    |     |  |  +--rw second-dot1q*   union
+    |     |  |  +--rw cos2
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*          enumeration
+    |     |  |  +--rw exact?          empty
+    |     |  |  +--rw vlan-type?      enumeration
+    |     |  +--rw priority-tagged!
+    |     |  |  +--rw cos-container
+    |     |  |  |  +--rw cos*   uint8
+    |     |  |  +--rw etype*           enumeration
+    |     |  +--rw untagged!
+    |     +--rw ip
+    |     |  +--rw acl
+    |     |  |  +--rw access-group?   ios-types:exp-acl-type
+    |     |  |  +--rw in?             empty
+    |     |  |  +--rw out?            empty
+    |     |  +--rw dhcp
+    |     |  |  +--rw relay
+    |     |  |     +--rw information
+    |     |  |        +--rw option
+    |     |  |           +--rw subscriber-id?   string
+    |     |  +--rw verify
+    |     |     +--rw source?          empty
+    |     |     +--rw vlan?            empty
+    |     |     +--rw dhcp-snooping?   empty
+    |     |     +--rw port-security?   empty
+    |     +--rw ipv6
+    |     |  +--rw traffic-filter?   string
+    |     |  +--rw in?               empty
+    |     |  +--rw out?              empty
+    |     +--rw rewrite
+    |     |  +--rw ingress
+    |     |     +--rw tag
+    |     |        +--rw pop
+    |     |        |  +--rw way?    enumeration
+    |     |        |  +--rw mode?   enumeration
+    |     |        +--rw push
+    |     |        |  +--rw dot1q?   uint16
+    |     |        |  +--rw mode?    enumeration
+    |     |        +--rw translate
+    |     |           +--rw t1-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t1-to-2
+    |     |           |  +--rw dot1q?          uint16
+    |     |           |  +--rw second-dot1q?   uint16
+    |     |           |  +--rw mode?           enumeration
+    |     |           +--rw t2-to-1
+    |     |           |  +--rw dot1q?   uint16
+    |     |           |  +--rw mode?    enumeration
+    |     |           +--rw t2-to-2
+    |     |              +--rw dot1q?          uint16
+    |     |              +--rw second-dot1q?   uint16
+    |     |              +--rw mode?           enumeration
+    |     +--rw group?                uint32
+    |     +--rw errdisable
+    |     |  +--rw recovery
+    |     |     +--rw cause
+    |     |        +--rw mac-security?   uint32
+    |     +--rw ethernet-container
+    |     |  +--rw ethernet
+    |     |     +--rw lmi
+    |     |     |  +--rw ce-vlan
+    |     |     |     +--rw map
+    |     |     |        +--rw (map-choice)?
+    |     |     |           +--:(any)
+    |     |     |           |  +--rw any?          empty
+    |     |     |           +--:(default)
+    |     |     |           |  +--rw default?      empty
+    |     |     |           +--:(untagged)
+    |     |     |           |  +--rw untagged?     empty
+    |     |     |           +--:(vlan-range)
+    |     |     |              +--rw vlan-range?   string
+    |     |     +--rw loopback
+    |     |        +--rw permit
+    |     |           +--rw external?   empty
+    |     |           +--rw internal?   empty
+    |     +--rw snmp
+    |     |  +--rw trap
+    |     |  |  +--rw link-status?   empty
+    |     |  +--rw ifindex
+    |     |     +--rw persist?   empty
+    |     +--rw bridge-domain
+    |     |  +--rw bridge-id?            uint16
+    |     |  +--rw split-horizon
+    |     |  |  +--rw group?   uint8
+    |     |  +--rw from-encapsulation?   empty
+    |     +--rw mac
+    |     |  +--rw security!
+    |     |  |  +--rw maximum
+    |     |  |  |  +--rw addresses?   uint16
+    |     |  |  +--rw violation?   enumeration
+    |     |  +--rw access-group* [acl-name]
+    |     |     +--rw acl-name    string
+    |     |     +--rw in?         empty
+    |     |     +--rw out?        empty
+    |     +--rw service-policy
+    |     |  +--rw input* [name]
+    |     |  |  +--rw name    string
+    |     |  +--rw output* [name]
+    |     |     +--rw name    string
+    |     +--rw shutdown?             empty
+    |     +--rw cfm
+    |     |  +--rw encapsulation
+    |     |  |  +--rw dot1ad
+    |     |  |  |  +--rw vlan-id?   uint16
+    |     |  |  |  +--rw cos?       uint8
+    |     |  |  |  +--rw dot1q?     uint16
+    |     |  |  +--rw dot1q
+    |     |  |     +--rw vlan-id?        uint16
+    |     |  |     +--rw cos?            uint8
+    |     |  |     +--rw second-dot1q?   uint16
+    |     |  +--rw mep
+    |     |  |  +--rw domain?   string
+    |     |  |  +--rw mpid?     uint16
+    |     |  +--rw mip
+    |     |     +--rw level?   uint8
+    |     +--rw l2protocol
+    |        +--rw discard!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw peer!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw forward!
+    |        |  +--rw protocol*   enumeration
+    |        +--rw tunnel!
+    |           +--rw protocol*   enumeration
+    +--rw lacp
+       +--rw port-priority?   uint32
+       +--rw rate?            enumeration
+  augment /ios:native/ios:interface/ios:BDI:
+    +--rw carrier-delay
+    |  +--rw (delay-choice)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds?   uint8
+    |  |  +--:(msec)
+    |  |     +--rw msec?      uint16
+    |  +--rw down
+    |  |  +--rw (delay-choice)?
+    |  |     +--:(seconds)
+    |  |     |  +--rw seconds?   uint8
+    |  |     +--:(msec)
+    |  |        +--rw msec?      uint16
+    |  +--rw up
+    |     +--rw (delay-choice)?
+    |        +--:(seconds)
+    |        |  +--rw seconds?   uint8
+    |        +--:(msec)
+    |           +--rw msec?      uint16
+    +--rw channel-group
+    |  +--rw number?       uint16
+    |  +--rw mode?         enumeration
+    |  +--rw non-silent?   empty
+    |  +--rw link?         uint8
+    |  +--rw auto?         empty
+    +--rw channel-protocol?   enumeration
+    +--rw ethernet
+    |  +--rw oam!
+    |  |  +--rw link-monitor
+    |  |  |  +--rw frame
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw thresh?   uint16
+    |  |  |  |  |  |  +--rw none?     empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-period
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw f-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-seconds
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw e-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw high-threshold
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw on?               empty
+    |  |  |  +--rw receive-crc
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw crc-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?         empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw supported?        empty
+    |  |  |  +--rw symbol-period
+    |  |  |     +--rw threshold
+    |  |  |     |  +--rw high
+    |  |  |     |  |  +--rw err-thresh?   uint16
+    |  |  |     |  |  +--rw none?         empty
+    |  |  |     |  +--rw low?    uint16
+    |  |  |     +--rw window?      uint16
+    |  |  +--rw max-rate?          uint8
+    |  |  +--rw min-rate?          uint8
+    |  |  +--rw mode?              enumeration
+    |  |  +--rw remote-failure
+    |  |  |  +--rw critical-event
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw dying-gasp
+    |  |  |  |  +--rw action!
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw link-fault
+    |  |  |     +--rw action!
+    |  |  |        +--rw error-disable-interface?   empty
+    |  |  +--rw remote-loopback
+    |  |  |  +--rw supported?   empty
+    |  |  |  +--rw timeout?     uint8
+    |  |  +--rw timeout?           uint8
+    |  +--rw dot1ad
+    |     +--rw (dot1ad-choice)?
+    |        +--:(nni)
+    |        |  +--rw nni?   empty
+    |        +--:(uni)
+    |           +--rw uni
+    |              +--rw (uni-choice)?
+    |                 +--:(c-port)
+    |                 |  +--rw c-port?   empty
+    |                 +--:(s-port)
+    |                    +--rw s-port?   empty
+    +--rw eapol
+    |  +--rw destination-address
+    |     +--rw broadcast-address?   empty
+    +--rw synchronous
+    |  +--rw mode?   empty
+    +--rw speed
+    |  +--rw (speed-choice)?
+    |     +--:(auto)
+    |     |  +--rw auto?          empty
+    |     +--:(value-10)
+    |     |  +--rw value-10?      empty
+    |     +--:(value-100)
+    |     |  +--rw value-100?     empty
+    |     +--:(value-1000)
+    |     |  +--rw value-1000?    empty
+    |     +--:(value-10000)
+    |     |  +--rw value-10000?   empty
+    |     +--:(nonegotiate)
+    |        +--rw nonegotiate?   empty
+    +--rw duplex?             enumeration
+    +--rw negotiation
+    |  +--rw auto?   boolean
+    +--rw plim
+    |  +--rw ethernet
+    |  |  +--rw vlan
+    |  |     +--rw filter
+    |  |        +--rw disable?   empty
+    |  +--rw qos
+    |     +--rw input
+    |        +--rw queue
+    |           +--rw (priority)?
+    |              +--:(low)
+    |              |  +--rw zero
+    |              |     +--rw pause
+    |              |        +--rw enable?      boolean
+    |              |        +--rw threshold?   uint8
+    |              +--:(high)
+    |                 +--rw strict-priority
+    |                    +--rw pause
+    |                       +--rw enable?      boolean
+    |                       +--rw threshold?   uint8
+    +--rw pppoe
+    |  +--rw enable!
+    |  |  +--rw group?   union
+    |  +--rw max-sessions?   uint16
+    +--rw service
+       +--rw instance* [id]
+          +--rw id                    uint32
+          +--rw trunk?                empty
+          +--rw GigabitEthernet?      empty
+          +--rw ethernet?             empty
+          +--rw ethernet-evc-name?    string
+          +--rw description?          string
+          +--rw evc-name?             string
+          +--rw encapsulation
+          |  +--rw default?           empty
+          |  +--rw dot1ad
+          |  |  +--rw id*      union
+          |  |  +--rw cos*     uint8
+          |  |  +--rw dot1q*   union
+          |  |  +--rw cos2
+          |  |  |  +--rw cos*   uint8
+          |  |  +--rw etype*   enumeration
+          |  |  +--rw exact?   empty
+          |  +--rw dot1q
+          |  |  +--rw id*             union
+          |  |  +--rw cos*            uint8
+          |  |  +--rw second-dot1q*   union
+          |  |  +--rw cos2
+          |  |  |  +--rw cos*   uint8
+          |  |  +--rw etype*          enumeration
+          |  |  +--rw exact?          empty
+          |  |  +--rw vlan-type?      enumeration
+          |  +--rw priority-tagged!
+          |  |  +--rw cos-container
+          |  |  |  +--rw cos*   uint8
+          |  |  +--rw etype*           enumeration
+          |  +--rw untagged!
+          +--rw ip
+          |  +--rw acl
+          |  |  +--rw access-group?   ios-types:exp-acl-type
+          |  |  +--rw in?             empty
+          |  |  +--rw out?            empty
+          |  +--rw dhcp
+          |  |  +--rw relay
+          |  |     +--rw information
+          |  |        +--rw option
+          |  |           +--rw subscriber-id?   string
+          |  +--rw verify
+          |     +--rw source?          empty
+          |     +--rw vlan?            empty
+          |     +--rw dhcp-snooping?   empty
+          |     +--rw port-security?   empty
+          +--rw ipv6
+          |  +--rw traffic-filter?   string
+          |  +--rw in?               empty
+          |  +--rw out?              empty
+          +--rw rewrite
+          |  +--rw ingress
+          |     +--rw tag
+          |        +--rw pop
+          |        |  +--rw way?    enumeration
+          |        |  +--rw mode?   enumeration
+          |        +--rw push
+          |        |  +--rw dot1q?   uint16
+          |        |  +--rw mode?    enumeration
+          |        +--rw translate
+          |           +--rw t1-to-1
+          |           |  +--rw dot1q?   uint16
+          |           |  +--rw mode?    enumeration
+          |           +--rw t1-to-2
+          |           |  +--rw dot1q?          uint16
+          |           |  +--rw second-dot1q?   uint16
+          |           |  +--rw mode?           enumeration
+          |           +--rw t2-to-1
+          |           |  +--rw dot1q?   uint16
+          |           |  +--rw mode?    enumeration
+          |           +--rw t2-to-2
+          |              +--rw dot1q?          uint16
+          |              +--rw second-dot1q?   uint16
+          |              +--rw mode?           enumeration
+          +--rw group?                uint32
+          +--rw errdisable
+          |  +--rw recovery
+          |     +--rw cause
+          |        +--rw mac-security?   uint32
+          +--rw ethernet-container
+          |  +--rw ethernet
+          |     +--rw lmi
+          |     |  +--rw ce-vlan
+          |     |     +--rw map
+          |     |        +--rw (map-choice)?
+          |     |           +--:(any)
+          |     |           |  +--rw any?          empty
+          |     |           +--:(default)
+          |     |           |  +--rw default?      empty
+          |     |           +--:(untagged)
+          |     |           |  +--rw untagged?     empty
+          |     |           +--:(vlan-range)
+          |     |              +--rw vlan-range?   string
+          |     +--rw loopback
+          |        +--rw permit
+          |           +--rw external?   empty
+          |           +--rw internal?   empty
+          +--rw snmp
+          |  +--rw trap
+          |  |  +--rw link-status?   empty
+          |  +--rw ifindex
+          |     +--rw persist?   empty
+          +--rw bridge-domain
+          |  +--rw bridge-id?            uint16
+          |  +--rw split-horizon
+          |  |  +--rw group?   uint8
+          |  +--rw from-encapsulation?   empty
+          +--rw mac
+          |  +--rw security!
+          |  |  +--rw maximum
+          |  |  |  +--rw addresses?   uint16
+          |  |  +--rw violation?   enumeration
+          |  +--rw access-group* [acl-name]
+          |     +--rw acl-name    string
+          |     +--rw in?         empty
+          |     +--rw out?        empty
+          +--rw service-policy
+          |  +--rw input* [name]
+          |  |  +--rw name    string
+          |  +--rw output* [name]
+          |     +--rw name    string
+          +--rw shutdown?             empty
+          +--rw cfm
+          |  +--rw encapsulation
+          |  |  +--rw dot1ad
+          |  |  |  +--rw vlan-id?   uint16
+          |  |  |  +--rw cos?       uint8
+          |  |  |  +--rw dot1q?     uint16
+          |  |  +--rw dot1q
+          |  |     +--rw vlan-id?        uint16
+          |  |     +--rw cos?            uint8
+          |  |     +--rw second-dot1q?   uint16
+          |  +--rw mep
+          |  |  +--rw domain?   string
+          |  |  +--rw mpid?     uint16
+          |  +--rw mip
+          |     +--rw level?   uint8
+          +--rw l2protocol
+             +--rw discard!
+             |  +--rw protocol*   enumeration
+             +--rw peer!
+             |  +--rw protocol*   enumeration
+             +--rw forward!
+             |  +--rw protocol*   enumeration
+             +--rw tunnel!
+                +--rw protocol*   enumeration
+  augment /ios:native/ios:interface/ios:Vlan:
+    +--rw carrier-delay
+    |  +--rw (delay-choice)?
+    |  |  +--:(seconds)
+    |  |  |  +--rw seconds?   uint8
+    |  |  +--:(msec)
+    |  |     +--rw msec?      uint16
+    |  +--rw down
+    |  |  +--rw (delay-choice)?
+    |  |     +--:(seconds)
+    |  |     |  +--rw seconds?   uint8
+    |  |     +--:(msec)
+    |  |        +--rw msec?      uint16
+    |  +--rw up
+    |     +--rw (delay-choice)?
+    |        +--:(seconds)
+    |        |  +--rw seconds?   uint8
+    |        +--:(msec)
+    |           +--rw msec?      uint16
+    +--rw channel-group
+    |  +--rw number?       uint16
+    |  +--rw mode?         enumeration
+    |  +--rw non-silent?   empty
+    |  +--rw link?         uint8
+    |  +--rw auto?         empty
+    +--rw channel-protocol?   enumeration
+    +--rw ethernet
+    |  +--rw oam!
+    |  |  +--rw link-monitor
+    |  |  |  +--rw frame
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw thresh?   uint16
+    |  |  |  |  |  |  +--rw none?     empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-period
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw f-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw frame-seconds
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw e-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?       empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw high-threshold
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw on?               empty
+    |  |  |  +--rw receive-crc
+    |  |  |  |  +--rw threshold
+    |  |  |  |  |  +--rw high
+    |  |  |  |  |  |  +--rw crc-thresh?   uint16
+    |  |  |  |  |  |  +--rw none?         empty
+    |  |  |  |  |  +--rw low?    uint16
+    |  |  |  |  +--rw window?      uint16
+    |  |  |  +--rw supported?        empty
+    |  |  |  +--rw symbol-period
+    |  |  |     +--rw threshold
+    |  |  |     |  +--rw high
+    |  |  |     |  |  +--rw err-thresh?   uint16
+    |  |  |     |  |  +--rw none?         empty
+    |  |  |     |  +--rw low?    uint16
+    |  |  |     +--rw window?      uint16
+    |  |  +--rw max-rate?          uint8
+    |  |  +--rw min-rate?          uint8
+    |  |  +--rw mode?              enumeration
+    |  |  +--rw remote-failure
+    |  |  |  +--rw critical-event
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw dying-gasp
+    |  |  |  |  +--rw action!
+    |  |  |  |     +--rw error-disable-interface?   empty
+    |  |  |  +--rw link-fault
+    |  |  |     +--rw action!
+    |  |  |        +--rw error-disable-interface?   empty
+    |  |  +--rw remote-loopback
+    |  |  |  +--rw supported?   empty
+    |  |  |  +--rw timeout?     uint8
+    |  |  +--rw timeout?           uint8
+    |  +--rw dot1ad
+    |     +--rw (dot1ad-choice)?
+    |        +--:(nni)
+    |        |  +--rw nni?   empty
+    |        +--:(uni)
+    |           +--rw uni
+    |              +--rw (uni-choice)?
+    |                 +--:(c-port)
+    |                 |  +--rw c-port?   empty
+    |                 +--:(s-port)
+    |                    +--rw s-port?   empty
+    +--rw eapol
+    |  +--rw destination-address
+    |     +--rw broadcast-address?   empty
+    +--rw synchronous
+    |  +--rw mode?   empty
+    +--rw speed
+    |  +--rw (speed-choice)?
+    |     +--:(auto)
+    |     |  +--rw auto?          empty
+    |     +--:(value-10)
+    |     |  +--rw value-10?      empty
+    |     +--:(value-100)
+    |     |  +--rw value-100?     empty
+    |     +--:(value-1000)
+    |     |  +--rw value-1000?    empty
+    |     +--:(value-10000)
+    |     |  +--rw value-10000?   empty
+    |     +--:(nonegotiate)
+    |        +--rw nonegotiate?   empty
+    +--rw duplex?             enumeration
+    +--rw negotiation
+    |  +--rw auto?   boolean
+    +--rw plim
+    |  +--rw ethernet
+    |  |  +--rw vlan
+    |  |     +--rw filter
+    |  |        +--rw disable?   empty
+    |  +--rw qos
+    |     +--rw input
+    |        +--rw queue
+    |           +--rw (priority)?
+    |              +--:(low)
+    |              |  +--rw zero
+    |              |     +--rw pause
+    |              |        +--rw enable?      boolean
+    |              |        +--rw threshold?   uint8
+    |              +--:(high)
+    |                 +--rw strict-priority
+    |                    +--rw pause
+    |                       +--rw enable?      boolean
+    |                       +--rw threshold?   uint8
+    +--rw pppoe
+    |  +--rw enable!
+    |  |  +--rw group?   union
+    |  +--rw max-sessions?   uint16
+    +--rw service
+       +--rw instance* [id]
+          +--rw id                    uint32
+          +--rw trunk?                empty
+          +--rw GigabitEthernet?      empty
+          +--rw ethernet?             empty
+          +--rw ethernet-evc-name?    string
+          +--rw description?          string
+          +--rw evc-name?             string
+          +--rw encapsulation
+          |  +--rw default?           empty
+          |  +--rw dot1ad
+          |  |  +--rw id*      union
+          |  |  +--rw cos*     uint8
+          |  |  +--rw dot1q*   union
+          |  |  +--rw cos2
+          |  |  |  +--rw cos*   uint8
+          |  |  +--rw etype*   enumeration
+          |  |  +--rw exact?   empty
+          |  +--rw dot1q
+          |  |  +--rw id*             union
+          |  |  +--rw cos*            uint8
+          |  |  +--rw second-dot1q*   union
+          |  |  +--rw cos2
+          |  |  |  +--rw cos*   uint8
+          |  |  +--rw etype*          enumeration
+          |  |  +--rw exact?          empty
+          |  |  +--rw vlan-type?      enumeration
+          |  +--rw priority-tagged!
+          |  |  +--rw cos-container
+          |  |  |  +--rw cos*   uint8
+          |  |  +--rw etype*           enumeration
+          |  +--rw untagged!
+          +--rw ip
+          |  +--rw acl
+          |  |  +--rw access-group?   ios-types:exp-acl-type
+          |  |  +--rw in?             empty
+          |  |  +--rw out?            empty
+          |  +--rw dhcp
+          |  |  +--rw relay
+          |  |     +--rw information
+          |  |        +--rw option
+          |  |           +--rw subscriber-id?   string
+          |  +--rw verify
+          |     +--rw source?          empty
+          |     +--rw vlan?            empty
+          |     +--rw dhcp-snooping?   empty
+          |     +--rw port-security?   empty
+          +--rw ipv6
+          |  +--rw traffic-filter?   string
+          |  +--rw in?               empty
+          |  +--rw out?              empty
+          +--rw rewrite
+          |  +--rw ingress
+          |     +--rw tag
+          |        +--rw pop
+          |        |  +--rw way?    enumeration
+          |        |  +--rw mode?   enumeration
+          |        +--rw push
+          |        |  +--rw dot1q?   uint16
+          |        |  +--rw mode?    enumeration
+          |        +--rw translate
+          |           +--rw t1-to-1
+          |           |  +--rw dot1q?   uint16
+          |           |  +--rw mode?    enumeration
+          |           +--rw t1-to-2
+          |           |  +--rw dot1q?          uint16
+          |           |  +--rw second-dot1q?   uint16
+          |           |  +--rw mode?           enumeration
+          |           +--rw t2-to-1
+          |           |  +--rw dot1q?   uint16
+          |           |  +--rw mode?    enumeration
+          |           +--rw t2-to-2
+          |              +--rw dot1q?          uint16
+          |              +--rw second-dot1q?   uint16
+          |              +--rw mode?           enumeration
+          +--rw group?                uint32
+          +--rw errdisable
+          |  +--rw recovery
+          |     +--rw cause
+          |        +--rw mac-security?   uint32
+          +--rw ethernet-container
+          |  +--rw ethernet
+          |     +--rw lmi
+          |     |  +--rw ce-vlan
+          |     |     +--rw map
+          |     |        +--rw (map-choice)?
+          |     |           +--:(any)
+          |     |           |  +--rw any?          empty
+          |     |           +--:(default)
+          |     |           |  +--rw default?      empty
+          |     |           +--:(untagged)
+          |     |           |  +--rw untagged?     empty
+          |     |           +--:(vlan-range)
+          |     |              +--rw vlan-range?   string
+          |     +--rw loopback
+          |        +--rw permit
+          |           +--rw external?   empty
+          |           +--rw internal?   empty
+          +--rw snmp
+          |  +--rw trap
+          |  |  +--rw link-status?   empty
+          |  +--rw ifindex
+          |     +--rw persist?   empty
+          +--rw bridge-domain
+          |  +--rw bridge-id?            uint16
+          |  +--rw split-horizon
+          |  |  +--rw group?   uint8
+          |  +--rw from-encapsulation?   empty
+          +--rw mac
+          |  +--rw security!
+          |  |  +--rw maximum
+          |  |  |  +--rw addresses?   uint16
+          |  |  +--rw violation?   enumeration
+          |  +--rw access-group* [acl-name]
+          |     +--rw acl-name    string
+          |     +--rw in?         empty
+          |     +--rw out?        empty
+          +--rw service-policy
+          |  +--rw input* [name]
+          |  |  +--rw name    string
+          |  +--rw output* [name]
+          |     +--rw name    string
+          +--rw shutdown?             empty
+          +--rw cfm
+          |  +--rw encapsulation
+          |  |  +--rw dot1ad
+          |  |  |  +--rw vlan-id?   uint16
+          |  |  |  +--rw cos?       uint8
+          |  |  |  +--rw dot1q?     uint16
+          |  |  +--rw dot1q
+          |  |     +--rw vlan-id?        uint16
+          |  |     +--rw cos?            uint8
+          |  |     +--rw second-dot1q?   uint16
+          |  +--rw mep
+          |  |  +--rw domain?   string
+          |  |  +--rw mpid?     uint16
+          |  +--rw mip
+          |     +--rw level?   uint8
+          +--rw l2protocol
+             +--rw discard!
+             |  +--rw protocol*   enumeration
+             +--rw peer!
+             |  +--rw protocol*   enumeration
+             +--rw forward!
+             |  +--rw protocol*   enumeration
+             +--rw tunnel!
+                +--rw protocol*   enumeration
+Xpaths for model: Cisco-IOS-XE-ethernet.yang

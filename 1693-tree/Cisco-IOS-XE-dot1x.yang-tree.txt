@@ -1,0 +1,232 @@
+ 
+KPI for model: Cisco-IOS-XE-dot1x.yang
+
+module: Cisco-IOS-XE-dot1x
+  augment /ios:native/ios:dot1x:
+    +--rw credentials* [profile-name]
+    |  +--rw profile-name      string
+    |  +--rw username?         string
+    |  +--rw password
+    |  |  +--rw type?     enumeration
+    |  |  +--rw secret?   string
+    |  +--rw pki-trustpoint?   string
+    +--rw critical
+    |  +--rw eapol?      empty
+    |  +--rw recovery
+    |     +--rw delay?   uint16
+    +--rw test
+    |  +--rw timeout?   uint16
+    +--rw logging
+    |  +--rw verbose?   empty
+    +--rw supplicant
+    |  +--rw force-multicast?   empty
+    +--rw system-auth-control?   empty
+  augment /ios:native/ios:fallback:
+    +--rw profile
+       +--rw fallback-list* [name]
+          +--rw name           string
+          +--rw description?   string
+          +--rw ip
+             +--rw access-group* [name]
+             |  +--rw name    union
+             |  +--rw in?     empty
+             +--rw admission?      string
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw dot1x {ios-features:dot1x}?
+       +--rw authenticator
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw credentials?      string
+       +--rw max-reauth-req?   uint8
+       +--rw max-req?          uint8
+       +--rw max-start?        uint8
+       +--rw pae?              enumeration
+       +--rw supplicant
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw timeout
+          +--rw auth-period?        uint16
+          +--rw held-period?        uint16
+          +--rw quiet-period?       uint16
+          +--rw ratelimit-period?   uint16
+          +--rw server-timeout?     uint16
+          +--rw start-period?       uint16
+          +--rw supp-timeout?       uint16
+          +--rw tx-period?          uint16
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw dot1x {ios-features:dot1x}?
+       +--rw authenticator
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw credentials?      string
+       +--rw max-reauth-req?   uint8
+       +--rw max-req?          uint8
+       +--rw max-start?        uint8
+       +--rw pae?              enumeration
+       +--rw supplicant
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw timeout
+          +--rw auth-period?        uint16
+          +--rw held-period?        uint16
+          +--rw quiet-period?       uint16
+          +--rw ratelimit-period?   uint16
+          +--rw server-timeout?     uint16
+          +--rw start-period?       uint16
+          +--rw supp-timeout?       uint16
+          +--rw tx-period?          uint16
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw dot1x {ios-features:dot1x}?
+       +--rw authenticator
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw credentials?      string
+       +--rw max-reauth-req?   uint8
+       +--rw max-req?          uint8
+       +--rw max-start?        uint8
+       +--rw pae?              enumeration
+       +--rw supplicant
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw timeout
+          +--rw auth-period?        uint16
+          +--rw held-period?        uint16
+          +--rw quiet-period?       uint16
+          +--rw ratelimit-period?   uint16
+          +--rw server-timeout?     uint16
+          +--rw start-period?       uint16
+          +--rw supp-timeout?       uint16
+          +--rw tx-period?          uint16
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw dot1x {ios-features:dot1x}?
+       +--rw authenticator
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw credentials?      string
+       +--rw max-reauth-req?   uint8
+       +--rw max-req?          uint8
+       +--rw max-start?        uint8
+       +--rw pae?              enumeration
+       +--rw supplicant
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw timeout
+          +--rw auth-period?        uint16
+          +--rw held-period?        uint16
+          +--rw quiet-period?       uint16
+          +--rw ratelimit-period?   uint16
+          +--rw server-timeout?     uint16
+          +--rw start-period?       uint16
+          +--rw supp-timeout?       uint16
+          +--rw tx-period?          uint16
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw dot1x {ios-features:dot1x}?
+       +--rw authenticator
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw credentials?      string
+       +--rw max-reauth-req?   uint8
+       +--rw max-req?          uint8
+       +--rw max-start?        uint8
+       +--rw pae?              enumeration
+       +--rw supplicant
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw timeout
+          +--rw auth-period?        uint16
+          +--rw held-period?        uint16
+          +--rw quiet-period?       uint16
+          +--rw ratelimit-period?   uint16
+          +--rw server-timeout?     uint16
+          +--rw start-period?       uint16
+          +--rw supp-timeout?       uint16
+          +--rw tx-period?          uint16
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw dot1x {ios-features:dot1x}?
+       +--rw authenticator
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw credentials?      string
+       +--rw max-reauth-req?   uint8
+       +--rw max-req?          uint8
+       +--rw max-start?        uint8
+       +--rw pae?              enumeration
+       +--rw supplicant
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw timeout
+          +--rw auth-period?        uint16
+          +--rw held-period?        uint16
+          +--rw quiet-period?       uint16
+          +--rw ratelimit-period?   uint16
+          +--rw server-timeout?     uint16
+          +--rw start-period?       uint16
+          +--rw supp-timeout?       uint16
+          +--rw tx-period?          uint16
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw dot1x {ios-features:dot1x}?
+       +--rw authenticator
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw credentials?      string
+       +--rw max-reauth-req?   uint8
+       +--rw max-req?          uint8
+       +--rw max-start?        uint8
+       +--rw pae?              enumeration
+       +--rw supplicant
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw timeout
+          +--rw auth-period?        uint16
+          +--rw held-period?        uint16
+          +--rw quiet-period?       uint16
+          +--rw ratelimit-period?   uint16
+          +--rw server-timeout?     uint16
+          +--rw start-period?       uint16
+          +--rw supp-timeout?       uint16
+          +--rw tx-period?          uint16
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw dot1x {ios-features:dot1x}?
+       +--rw authenticator
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw credentials?      string
+       +--rw max-reauth-req?   uint8
+       +--rw max-req?          uint8
+       +--rw max-start?        uint8
+       +--rw pae?              enumeration
+       +--rw supplicant
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw timeout
+          +--rw auth-period?        uint16
+          +--rw held-period?        uint16
+          +--rw quiet-period?       uint16
+          +--rw ratelimit-period?   uint16
+          +--rw server-timeout?     uint16
+          +--rw start-period?       uint16
+          +--rw supp-timeout?       uint16
+          +--rw tx-period?          uint16
+  augment /ios:native/ios:interface/ios:Port-channel:
+    +--rw dot1x {ios-features:dot1x}?
+       +--rw authenticator
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw credentials?      string
+       +--rw max-reauth-req?   uint8
+       +--rw max-req?          uint8
+       +--rw max-start?        uint8
+       +--rw pae?              enumeration
+       +--rw supplicant
+       |  +--rw eap
+       |     +--rw profile?   string
+       +--rw timeout
+          +--rw auth-period?        uint16
+          +--rw held-period?        uint16
+          +--rw quiet-period?       uint16
+          +--rw ratelimit-period?   uint16
+          +--rw server-timeout?     uint16
+          +--rw start-period?       uint16
+          +--rw supp-timeout?       uint16
+          +--rw tx-period?          uint16
+Xpaths for model: Cisco-IOS-XE-dot1x.yang

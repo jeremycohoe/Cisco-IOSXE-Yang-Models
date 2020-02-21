@@ -1,0 +1,20 @@
+ 
+KPI for model: Cisco-IOS-XE-efp-oper.yang
+module: Cisco-IOS-XE-efp-oper
+  +--ro efp-stats
+     +--ro efp-stat* [id interface]
+        +--ro id           uint32
+        +--ro interface    string
+        +--ro in-pkts?     yang:counter64
+        +--ro in-bytes?    yang:counter64
+        +--ro out-pkts?    yang:counter64
+        +--ro out-bytes?   yang:counter64
+Xpaths for model: Cisco-IOS-XE-efp-oper.yang
+/efp-stats-ios-xe-oper:efp-stats,container,
+/efp-stats-ios-xe-oper:efp-stats/efp-stats-ios-xe-oper:efp-stat,list,
+/efp-stats-ios-xe-oper:efp-stats/efp-stats-ios-xe-oper:efp-stat/efp-stats-ios-xe-oper:id,leaf,uint32
+/efp-stats-ios-xe-oper:efp-stats/efp-stats-ios-xe-oper:efp-stat/efp-stats-ios-xe-oper:interface,leaf,string
+/efp-stats-ios-xe-oper:efp-stats/efp-stats-ios-xe-oper:efp-stat/efp-stats-ios-xe-oper:in-pkts,leaf,yang:counter64
+/efp-stats-ios-xe-oper:efp-stats/efp-stats-ios-xe-oper:efp-stat/efp-stats-ios-xe-oper:in-bytes,leaf,yang:counter64
+/efp-stats-ios-xe-oper:efp-stats/efp-stats-ios-xe-oper:efp-stat/efp-stats-ios-xe-oper:out-pkts,leaf,yang:counter64
+/efp-stats-ios-xe-oper:efp-stats/efp-stats-ios-xe-oper:efp-stat/efp-stats-ios-xe-oper:out-bytes,leaf,yang:counter64

@@ -1,0 +1,93 @@
+ 
+KPI for model: cisco-ia.yang
+
+module: cisco-ia
+  augment /cisco-sfm:netconf-yang:
+    +--rw cisco-ia
+       +--rw auto-sync?                 cia-sync-type
+       +--rw init-sync?                 cia-sync-type
+       +--rw intelligent-sync?          boolean
+       +--rw snmp-trap-control
+       |  +--rw global-forwarding?   boolean
+       |  +--rw trap-list* [trap-oid]
+       |     +--rw trap-oid       yang:object-identifier-128
+       |     +--rw description?   string
+       |     +--rw forward?       boolean
+       +--rw message-diag-level?        int16
+       +--rw max-diag-messages-saved?   int16
+       +--rw post-sync-acl-process?     boolean
+       +--rw config-change-delay?       int16
+       +--rw process-missing-prc?       boolean
+       +--rw missing-prc-method?        parser-msg-processing-method
+       +--rw snmp-community-string?     string
+       +--rw preserve-paths-enabled?    boolean
+       +--rw preserve-ned-path* [xpath]
+       |  +--rw xpath    string
+       +--ro parser-msg-ignore* [message]
+       |  +--ro message    string
+       +--rw conf-parser-msg-ignore* [message]
+       |  +--rw message    string
+       +--ro parser-msg-error* [message]
+       |  +--ro message    string
+       +--rw conf-parser-msg-error* [message]
+       |  +--rw message    string
+       +--ro full-sync-cli* [command]
+       |  +--ro command    string
+       +--rw conf-full-sync-cli* [command]
+       |  +--rw command    string
+       +--ro nes-ttynum?                int16
+       +--rw restored?                  boolean
+       +--rw logging
+       |  +--rw confd-log-level?      syslog-severity
+       |  +--rw ciaauthd-log-level?   cia-log-level
+       |  +--rw nes-log-level?        cia-log-level
+       |  +--rw onep-log-level?       onep-log-level
+       |  o--rw odm-log-level?        cia-log-level
+       |  +--rw sync-log-level?       cia-log-level
+       +--rw blocking
+       |  +--rw cli-blocking-enabled?         boolean
+       |  +--rw network-element-command* [command]
+       |  |  +--rw command    string
+       |  +--rw confd-cfg-blocking-enabled?   boolean
+       |  +--rw confd-cfg-command* [command]
+       |     +--rw command    string
+       +--rw pivot-commands
+          +--ro pivot-command* [command]
+             +--ro command    string
+             +--ro retry!
+                +--ro min-retry-time?   uint16
+                +--ro max-retry-time?   uint16
+
+  rpcs:
+    +---x sync-from
+    |  +---w input
+    |  |  +---w sync-defaults?         empty
+    |  |  +---w ignore-presrv-paths?   empty
+    |  +--ro output
+    |     +--ro result?   string
+    +---x save-config
+    |  +--ro output
+    |     +--ro result?   string
+    +---x is-syncing
+    |  +--ro output
+    |     +--ro result?   string
+    +---x checkpoint
+    |  +--ro output
+    |     +--ro result?   string
+    +---x revert
+    |  +---w input
+    |  |  +---w now?     empty
+    |  |  +---w timer?   int16
+    |  |  +---w idle?    int16
+    |  +--ro output
+    |     +--ro result?   string
+    +---x rollback
+       +---w input
+       |  +---w target-url         string
+       |  +---w verbose?           boolean
+       |  +---w nolock?            boolean
+       |  +---w revert-on-error?   empty
+       |  +---w revert-timer?      int16
+       +--ro output
+          +--ro result?   string
+Xpaths for model: cisco-ia.yang

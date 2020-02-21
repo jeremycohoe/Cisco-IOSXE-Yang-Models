@@ -1,0 +1,53 @@
+ 
+KPI for model: Cisco-IOS-XE-nam.yang
+
+module: Cisco-IOS-XE-nam
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw analysis-module
+       +--rw monitoring
+          +--rw interface-name?   string
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw analysis-module
+       +--rw monitoring
+          +--rw interface-name?   string
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw analysis-module
+       +--rw monitoring
+          +--rw interface-name?   string
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw analysis-module
+       +--rw monitoring
+          +--rw interface-name?   string
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw analysis-module
+       +--rw monitoring
+          +--rw interface-name?   string
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw analysis-module
+       +--rw monitoring
+          +--rw interface-name?   string
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw analysis-module
+       +--rw monitoring
+          +--rw interface-name?   string
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw analysis-module
+       +--rw monitoring
+          +--rw interface-name?   string
+  augment /ios:native/ios:interface/ios:Tunnel:
+    +--rw analysis-module
+       +--rw monitoring
+          +--rw interface-name?   string
+  augment /ios:native/ios:interface/ios:Port-channel:
+    +--rw analysis-module
+       +--rw monitoring
+          +--rw interface-name?   string
+  augment /ios:native/ios:ppp:
+    +--rw analysis-module
+       +--rw monitoring
+          +--rw interface-name?   string
+  augment /ios:native/ios:interface/ios:Serial:
+    +--rw analysis-module
+       +--rw monitoring
+          +--rw interface-name?   string
+Xpaths for model: Cisco-IOS-XE-nam.yang

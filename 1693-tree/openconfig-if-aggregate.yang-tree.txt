@@ -1,0 +1,19 @@
+ 
+KPI for model: openconfig-if-aggregate.yang
+
+module: openconfig-if-aggregate
+  augment /oc-if:interfaces/oc-if:interface:
+    +--rw aggregation
+       +--rw config
+       |  +--rw lag-type?    aggregation-type
+       |  +--rw min-links?   uint16
+       +--ro state
+          +--ro lag-type?    aggregation-type
+          +--ro min-links?   uint16
+          +--ro lag-speed?   uint32
+          +--ro member*      oc-if:base-interface-ref
+  augment /oc-if:interfaces/oc-if:interface/oc-eth:ethernet/oc-eth:config:
+    +--rw aggregate-id?   -> /oc-if:interfaces/interface/name
+  augment /oc-if:interfaces/oc-if:interface/oc-eth:ethernet/oc-eth:state:
+    +--ro aggregate-id?   -> /oc-if:interfaces/interface/name
+Xpaths for model: openconfig-if-aggregate.yang

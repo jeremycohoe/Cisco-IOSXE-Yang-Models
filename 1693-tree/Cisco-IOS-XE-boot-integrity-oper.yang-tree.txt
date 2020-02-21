@@ -1,0 +1,50 @@
+ 
+KPI for model: Cisco-IOS-XE-boot-integrity-oper.yang
+module: Cisco-IOS-XE-boot-integrity-oper
+  +--ro boot-integrity-oper-data
+     +--ro boot-integrity!
+     |  +--ro platform?            string
+     |  +--ro boot-ver?            string
+     |  +--ro boot-loader-ver?     string
+     |  +--ro os-version?          string
+     |  +--ro boot-hash?           string
+     |  +--ro boot-loader-hash?    string
+     |  +--ro os-hash?             string
+     |  +--ro package-count?       uint8
+     |  +--ro pcr-register* [index]
+     |  |  +--ro index          uint8
+     |  |  +--ro pcr-content?   string
+     |  +--ro package-signature* [name]
+     |  |  +--ro name    string
+     |  |  +--ro hash?   string
+     |  +--ro signature?           string
+     |  +--ro sig-version?         uint32
+     +--ro sudi-certificate!
+        +--ro crca-pem?         string
+        +--ro cmca-pem?         string
+        +--ro sudi-pem?         string
+        +--ro sudi-signature?   string
+Xpaths for model: Cisco-IOS-XE-boot-integrity-oper.yang
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data,container,
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity,container,
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:platform,leaf,string
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:boot-ver,leaf,string
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:boot-loader-ver,leaf,string
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:os-version,leaf,string
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:boot-hash,leaf,string
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:boot-loader-hash,leaf,string
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:os-hash,leaf,string
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:package-count,leaf,uint8
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:pcr-register,list,
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:pcr-register/boot-integrity-ios-xe-oper:index,leaf,uint8
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:pcr-register/boot-integrity-ios-xe-oper:pcr-content,leaf,string
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:package-signature,list,
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:package-signature/boot-integrity-ios-xe-oper:name,leaf,string
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:package-signature/boot-integrity-ios-xe-oper:hash,leaf,string
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:signature,leaf,string
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:boot-integrity/boot-integrity-ios-xe-oper:sig-version,leaf,uint32
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:sudi-certificate,container,
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:sudi-certificate/boot-integrity-ios-xe-oper:crca-pem,leaf,string
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:sudi-certificate/boot-integrity-ios-xe-oper:cmca-pem,leaf,string
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:sudi-certificate/boot-integrity-ios-xe-oper:sudi-pem,leaf,string
+/boot-integrity-ios-xe-oper:boot-integrity-oper-data/boot-integrity-ios-xe-oper:sudi-certificate/boot-integrity-ios-xe-oper:sudi-signature,leaf,string

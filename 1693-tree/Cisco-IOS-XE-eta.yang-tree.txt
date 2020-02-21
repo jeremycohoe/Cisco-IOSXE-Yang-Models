@@ -1,0 +1,68 @@
+ 
+KPI for model: Cisco-IOS-XE-eta.yang
+
+module: Cisco-IOS-XE-eta
+  augment /ios:native:
+    +--rw et-analytics!
+       +--rw ip
+       |  +--rw flow-export
+       |     +--rw destination* [address port]
+       |     |  +--rw address    inet:ipv4-address
+       |     |  +--rw port       uint16
+       |     +--rw destination-vrf
+       |        +--rw destination* [address port vrf]
+       |           +--rw address    inet:ipv4-address
+       |           +--rw port       uint16
+       |           +--rw vrf        string
+       +--rw inactive-timeout?   uint32
+       +--rw whitelist
+          +--rw acl?   union
+  augment /ios:native/ios:interface/ios:Ethernet:
+    +--rw et-analytics
+       +--rw enable?   empty
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw et-analytics
+       +--rw enable?   empty
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw et-analytics
+       +--rw enable?   empty
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw et-analytics
+       +--rw enable?   empty
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw et-analytics
+       +--rw enable?   empty
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw et-analytics
+       +--rw enable?   empty
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw et-analytics
+       +--rw enable?   empty
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw et-analytics
+       +--rw enable?   empty
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw et-analytics
+       +--rw enable?   empty
+  augment /ios:native/ios:interface/ios:LISP:
+    +--rw et-analytics
+       +--rw enable?   empty
+  augment /ios:native/ios:interface/ios:Loopback:
+    +--rw et-analytics
+       +--rw enable?   empty
+  augment /ios:native/ios:interface/ios:Tunnel:
+    +--rw et-analytics
+       +--rw enable?   empty
+  augment /ios:native/ios:interface/ios:Virtual-Template:
+    +--rw et-analytics
+       +--rw enable?   empty
+  augment /ios:native/ios:interface/ios:Vlan:
+    +--rw et-analytics
+       +--rw enable?   empty
+  augment /ios:native/ios:interface/ios:vasileft:
+    +--rw et-analytics
+       +--rw enable?   empty
+  augment /ios:native/ios:interface/ios:vasiright:
+    +--rw et-analytics
+       +--rw enable?   empty
+Xpaths for model: Cisco-IOS-XE-eta.yang

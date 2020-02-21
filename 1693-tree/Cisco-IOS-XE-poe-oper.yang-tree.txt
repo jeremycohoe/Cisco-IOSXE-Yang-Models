@@ -1,0 +1,16 @@
+ 
+KPI for model: Cisco-IOS-XE-poe-oper.yang
+module: Cisco-IOS-XE-poe-oper
+  +--ro poe-oper-data
+     +--ro poe-port* [intf-name]
+        +--ro intf-name           string
+        +--ro poe-intf-enabled?   boolean
+        +--ro power-used?         decimal64
+        +--ro pd-class?           poe-ios-xe-oper:ilpower-pd-class
+Xpaths for model: Cisco-IOS-XE-poe-oper.yang
+/poe-ios-xe-oper:poe-oper-data,container,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port,list,
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:intf-name,leaf,string
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:poe-intf-enabled,leaf,boolean
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:power-used,leaf,decimal64
+/poe-ios-xe-oper:poe-oper-data/poe-ios-xe-oper:poe-port/poe-ios-xe-oper:pd-class,leaf,poe-ios-xe-oper:ilpower-pd-class

@@ -1,0 +1,63 @@
+ 
+KPI for model: tailf-netconf-query.yang
+module: tailf-netconf-query
+
+  rpcs:
+    +---x start-query
+    |  +---w input
+    |  |  +---w foreach    yang:xpath1.0
+    |  |  +---w select* []
+    |  |  |  +---w label?         string
+    |  |  |  +---w expression     yang:xpath1.0
+    |  |  |  +---w result-type*   enumeration
+    |  |  +---w sort-by*   yang:xpath1.0
+    |  |  +---w limit?     uint32
+    |  |  +---w offset?    uint32
+    |  |  +---w timeout?   uint32
+    |  +--ro output
+    |     +--ro query-handle?   uint32
+    +---x fetch-query-result
+    |  +---w input
+    |  |  +---w query-handle?   uint32
+    |  +--ro output
+    |     +--ro query-result
+    |        +--ro result* []
+    |           +--ro select* []
+    |              +--ro label?         string
+    |              +--ro (select-result)?
+    |                 +--:(path-value)
+    |                 |  +--ro path?    instance-identifier
+    |                 |  +--ro value?   string
+    |                 +--:(inline)
+    |                    +--ro data?    <anyxml>
+    +---x immediate-query
+    |  +---w input
+    |  |  +---w foreach    yang:xpath1.0
+    |  |  +---w select* []
+    |  |  |  +---w label?         string
+    |  |  |  +---w expression     yang:xpath1.0
+    |  |  |  +---w result-type*   enumeration
+    |  |  +---w sort-by*   yang:xpath1.0
+    |  |  +---w limit?     uint32
+    |  |  +---w offset?    uint32
+    |  |  +---w timeout?   uint32
+    |  +--ro output
+    |     +--ro query-result
+    |        +--ro result* []
+    |           +--ro select* []
+    |              +--ro label?         string
+    |              +--ro (select-result)?
+    |                 +--:(path-value)
+    |                 |  +--ro path?    instance-identifier
+    |                 |  +--ro value?   string
+    |                 +--:(inline)
+    |                    +--ro data?    <anyxml>
+    +---x reset-query
+    |  +---w input
+    |     +---w query-handle?   uint32
+    |     +---w offset?         uint32
+    |     +---w timeout?        uint32
+    +---x stop-query
+       +---w input
+          +---w query-handle?   uint32
+Xpaths for model: tailf-netconf-query.yang

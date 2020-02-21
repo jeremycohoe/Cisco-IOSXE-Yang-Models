@@ -1,0 +1,120 @@
+ 
+KPI for model: ietf-netconf.yang
+module: ietf-netconf
+
+  rpcs:
+    +---x get-config
+    |  +---w input
+    |  |  +---w source
+    |  |  |  +---w (config-source)
+    |  |  |     +--:(candidate)
+    |  |  |     |  +---w candidate?   empty {candidate}?
+    |  |  |     +--:(running)
+    |  |  |     |  +---w running?     empty
+    |  |  |     +--:(startup)
+    |  |  |        +---w startup?     empty {startup}?
+    |  |  +---w filter?   <anyxml>
+    |  +--ro output
+    |     +--ro data?   <anyxml>
+    +---x edit-config
+    |  +---w input
+    |     +---w target
+    |     |  +---w (config-target)
+    |     |     +--:(candidate)
+    |     |     |  +---w candidate?   empty {candidate}?
+    |     |     +--:(running)
+    |     |        +---w running?     empty {writable-running}?
+    |     +---w default-operation?   enumeration
+    |     +---w test-option?         enumeration {validate}?
+    |     +---w error-option?        enumeration
+    |     +---w (edit-content)
+    |        +--:(config)
+    |        |  +---w config?        <anyxml>
+    |        +--:(url)
+    |           +---w url?           inet:uri {url}?
+    +---x copy-config
+    |  +---w input
+    |     +---w target
+    |     |  +---w (config-target)
+    |     |     +--:(candidate)
+    |     |     |  +---w candidate?   empty {candidate}?
+    |     |     +--:(running)
+    |     |     |  +---w running?     empty {writable-running}?
+    |     |     +--:(startup)
+    |     |     |  +---w startup?     empty {startup}?
+    |     |     +--:(url)
+    |     |        +---w url?         inet:uri {url}?
+    |     +---w source
+    |        +---w (config-source)
+    |           +--:(candidate)
+    |           |  +---w candidate?   empty {candidate}?
+    |           +--:(running)
+    |           |  +---w running?     empty
+    |           +--:(startup)
+    |           |  +---w startup?     empty {startup}?
+    |           +--:(url)
+    |           |  +---w url?         inet:uri {url}?
+    |           +--:(config)
+    |              +---w config?      <anyxml>
+    +---x delete-config
+    |  +---w input
+    |     +---w target
+    |        +---w (config-target)
+    |           +--:(startup)
+    |           |  +---w startup?   empty {startup}?
+    |           +--:(url)
+    |              +---w url?       inet:uri {url}?
+    +---x lock
+    |  +---w input
+    |     +---w target
+    |        +---w (config-target)
+    |           +--:(candidate)
+    |           |  +---w candidate?   empty {candidate}?
+    |           +--:(running)
+    |           |  +---w running?     empty
+    |           +--:(startup)
+    |              +---w startup?     empty {startup}?
+    +---x unlock
+    |  +---w input
+    |     +---w target
+    |        +---w (config-target)
+    |           +--:(candidate)
+    |           |  +---w candidate?   empty {candidate}?
+    |           +--:(running)
+    |           |  +---w running?     empty
+    |           +--:(startup)
+    |              +---w startup?     empty {startup}?
+    +---x get
+    |  +---w input
+    |  |  +---w filter?   <anyxml>
+    |  +--ro output
+    |     +--ro data?   <anyxml>
+    +---x close-session
+    +---x kill-session
+    |  +---w input
+    |     +---w session-id    session-id-type
+    +---x commit {candidate}?
+    |  +---w input
+    |     +---w confirmed?         empty {confirmed-commit}?
+    |     +---w confirm-timeout?   uint32 {confirmed-commit}?
+    |     +---w persist?           string {confirmed-commit}?
+    |     +---w persist-id?        string {confirmed-commit}?
+    +---x discard-changes {candidate}?
+    +---x cancel-commit {confirmed-commit}?
+    |  +---w input
+    |     +---w persist-id?   string
+    +---x validate {validate}?
+       +---w input
+          +---w source
+             +---w (config-source)
+                +--:(candidate)
+                |  +---w candidate?   empty {candidate}?
+                +--:(running)
+                |  +---w running?     empty
+                +--:(startup)
+                |  +---w startup?     empty {startup}?
+                +--:(url)
+                |  +---w url?         inet:uri {url}?
+                +--:(config)
+                   +---w config?      <anyxml>
+Xpaths for model: ietf-netconf.yang

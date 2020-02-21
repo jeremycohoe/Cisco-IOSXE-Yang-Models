@@ -1,0 +1,483 @@
+ 
+KPI for model: Cisco-IOS-XE-sanet.yang
+
+module: Cisco-IOS-XE-sanet
+  augment /ios:native:
+    +--rw access-session
+    |  +--rw attributes
+    |  |  +--rw filter-list
+    |  |     +--rw list* [name]
+    |  |        +--rw name    string
+    |  |        +--rw cdp?    empty
+    |  |        +--rw dhcp?   empty
+    |  |        +--rw lldp?   empty
+    |  +--rw mac-move
+    |     +--rw deny?   empty
+    +--rw authentication
+       +--rw command
+       |  +--rw bounce-port
+       |  |  +--rw ignore?   empty
+       |  +--rw disable-port
+       |     +--rw ignore?   empty
+       +--rw critical
+       |  +--rw recovery
+       |     +--rw delay?   uint32
+       +--rw mac-move
+          +--rw permit?   empty
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw no-response
+    |  |     +--rw action
+    |  |        +--rw authorize
+    |  |           +--rw vlan?   uint16
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw value?    uint16
+    |  |  |  +--rw server?   empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  +--rw dynamic?   empty
+    |  |  |  +--rw server!
+    |  |  |     +--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  +--rw violation?           enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw no-response
+    |  |     +--rw action
+    |  |        +--rw authorize
+    |  |           +--rw vlan?   uint16
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw value?    uint16
+    |  |  |  +--rw server?   empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  +--rw dynamic?   empty
+    |  |  |  +--rw server!
+    |  |  |     +--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  +--rw violation?           enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw no-response
+    |  |     +--rw action
+    |  |        +--rw authorize
+    |  |           +--rw vlan?   uint16
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw value?    uint16
+    |  |  |  +--rw server?   empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  +--rw dynamic?   empty
+    |  |  |  +--rw server!
+    |  |  |     +--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  +--rw violation?           enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw no-response
+    |  |     +--rw action
+    |  |        +--rw authorize
+    |  |           +--rw vlan?   uint16
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw value?    uint16
+    |  |  |  +--rw server?   empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  +--rw dynamic?   empty
+    |  |  |  +--rw server!
+    |  |  |     +--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  +--rw violation?           enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw no-response
+    |  |     +--rw action
+    |  |        +--rw authorize
+    |  |           +--rw vlan?   uint16
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw value?    uint16
+    |  |  |  +--rw server?   empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  +--rw dynamic?   empty
+    |  |  |  +--rw server!
+    |  |  |     +--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  +--rw violation?           enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw no-response
+    |  |     +--rw action
+    |  |        +--rw authorize
+    |  |           +--rw vlan?   uint16
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw value?    uint16
+    |  |  |  +--rw server?   empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  +--rw dynamic?   empty
+    |  |  |  +--rw server!
+    |  |  |     +--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  +--rw violation?           enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw no-response
+    |  |     +--rw action
+    |  |        +--rw authorize
+    |  |           +--rw vlan?   uint16
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw value?    uint16
+    |  |  |  +--rw server?   empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  +--rw dynamic?   empty
+    |  |  |  +--rw server!
+    |  |  |     +--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  +--rw violation?           enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw no-response
+    |  |     +--rw action
+    |  |        +--rw authorize
+    |  |           +--rw vlan?   uint16
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw value?    uint16
+    |  |  |  +--rw server?   empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  +--rw dynamic?   empty
+    |  |  |  +--rw server!
+    |  |  |     +--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  +--rw violation?           enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:Port-channel:
+    +--rw authentication
+    |  +--rw control-direction?   enumeration
+    |  +--rw event
+    |  |  +--rw server
+    |  |  |  +--rw alive
+    |  |  |  |  +--rw action
+    |  |  |  |     +--rw reinitialize?   empty
+    |  |  |  +--rw dead
+    |  |  |     +--rw action
+    |  |  |        +--rw authorize!
+    |  |  |        |  +--rw vlan?    uint16
+    |  |  |        |  +--rw voice?   empty
+    |  |  |        +--rw reinitialize
+    |  |  |           +--rw vlan?   uint16
+    |  |  +--rw fail
+    |  |  |  +--rw action
+    |  |  |     +--rw authorize
+    |  |  |        +--rw vlan?   uint16
+    |  |  +--rw no-response
+    |  |     +--rw action
+    |  |        +--rw authorize
+    |  |           +--rw vlan?   uint16
+    |  +--rw fallback?            string
+    |  +--rw host-mode?           enumeration
+    |  +--rw open?                empty
+    |  +--rw order
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw priority
+    |  |  +--rw dot1x?     empty
+    |  |  +--rw mab?       empty
+    |  |  +--rw webauth?   empty
+    |  +--rw port-control?        enumeration
+    |  +--rw periodic?            empty
+    |  +--rw timer
+    |  |  +--rw reauthenticate
+    |  |  |  +--rw value?    uint16
+    |  |  |  +--rw server?   empty
+    |  |  +--rw inactivity
+    |  |  |  +--rw value
+    |  |  |  |  +--rw value?     uint16
+    |  |  |  |  +--rw dynamic?   empty
+    |  |  |  +--rw server!
+    |  |  |     +--rw dynamic?   empty
+    |  |  +--rw restart?          uint16
+    |  +--rw violation?           enumeration
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:Virtual-Template:
+    +--rw mab!
+       +--rw eap?   empty
+  augment /ios:native/ios:interface/ios:VirtualPortGroup:
+    +--rw mab!
+       +--rw eap?   empty
+Xpaths for model: Cisco-IOS-XE-sanet.yang

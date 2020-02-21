@@ -1,0 +1,40 @@
+ 
+KPI for model: Cisco-IOS-XE-lldp.yang
+
+module: Cisco-IOS-XE-lldp
+  augment /ios:native:
+    +--rw lldp
+       +--rw run?   empty
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw lldp
+       +--rw receive?    boolean
+       +--rw transmit?   boolean
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw lldp
+       +--rw receive?    boolean
+       +--rw transmit?   boolean
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw lldp
+       +--rw receive?    boolean
+       +--rw transmit?   boolean
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw lldp
+       +--rw receive?    boolean
+       +--rw transmit?   boolean
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw lldp
+       +--rw receive?    boolean
+       +--rw transmit?   boolean
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw lldp
+       +--rw receive?    boolean
+       +--rw transmit?   boolean
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw lldp
+       +--rw receive?    boolean
+       +--rw transmit?   boolean
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw lldp
+       +--rw receive?    boolean
+       +--rw transmit?   boolean
+Xpaths for model: Cisco-IOS-XE-lldp.yang

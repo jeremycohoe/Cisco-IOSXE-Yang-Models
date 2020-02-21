@@ -1,0 +1,6 @@
+ 
+KPI for model: cisco-self-mgmt.yang
+module: cisco-self-mgmt
+  +--rw netconf-yang
+Xpaths for model: cisco-self-mgmt.yang
+/cisco-sfm:netconf-yang,container,

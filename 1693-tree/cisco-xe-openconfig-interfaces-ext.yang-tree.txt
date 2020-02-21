@@ -1,0 +1,16 @@
+ 
+KPI for model: cisco-xe-openconfig-interfaces-ext.yang
+
+module: cisco-xe-openconfig-interfaces-ext
+  augment /oc-if:interfaces/oc-if:interface/oc-if:hold-time/oc-if:config:
+    +--rw dampening-time?   uint32
+  augment /oc-if:interfaces/oc-if:interface/oc-if:hold-time/oc-if:config:
+    +--rw maximum-suppressing-time?   uint32
+  augment /oc-if:interfaces/oc-if:interface/oc-if:hold-time/oc-if:state:
+    +--ro dampening-time?   uint32
+  augment /oc-if:interfaces/oc-if:interface/oc-if:hold-time/oc-if:state:
+    +--ro maximum-suppressing-time?   uint32
+  augment /oc-if:interfaces/oc-if:interface/oc-if:config:
+    +--rw bandwidth
+       +--rw kilobits?   uint32
+Xpaths for model: cisco-xe-openconfig-interfaces-ext.yang

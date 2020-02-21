@@ -1,0 +1,219 @@
+ 
+KPI for model: Cisco-IOS-XE-igmp.yang
+
+module: Cisco-IOS-XE-igmp
+  augment /ios:native/ios:ip:
+    +--rw igmp
+       +--rw snooping-conf
+       |  +--rw snooping?   boolean
+       +--rw snooping
+       |  +--rw check
+       |  |  +--rw rtr-alert-option?   empty
+       |  |  +--rw ttl?                empty
+       |  +--rw explicit-tracking
+       |  |  +--rw limit?   uint32
+       |  +--rw l2-entry-limit?               uint32
+       |  +--rw last-member-query-count?      uint8
+       |  +--rw last-member-query-interval?   uint16
+       |  +--rw querier!
+       |  |  +--rw address?             inet:ipv4-address
+       |  |  +--rw max-response-time?   uint8
+       |  |  +--rw query-interval?      uint16
+       |  |  +--rw tcn
+       |  |  |  +--rw query
+       |  |  |     +--rw count?      uint8
+       |  |  |     +--rw interval?   uint8
+       |  |  +--rw timer
+       |  |  |  +--rw expiry?   uint16
+       |  |  +--rw version?             uint8
+       |  +--rw report-suppression?           empty
+       |  +--rw robustness-variable?          uint8
+       |  +--rw tcn
+       |     +--rw flood
+       |     |  +--rw query
+       |     |     +--rw count?   uint8
+       |     +--rw query
+       |        +--rw solicit?   empty
+       +--rw ssm-map
+       |  +--rw enable?   empty
+       |  +--rw query
+       |  |  +--rw dns?   empty
+       |  +--rw static
+       |     +--rw acl?         union
+       |     +--rw source-ip?   inet:ipv4-address
+       +--rw vrf* [name]
+          +--rw name       string
+          +--rw ssm-map
+             +--rw enable?   empty
+             +--rw static* [srcaddress]
+                +--rw srcaddress    inet:ipv4-address
+                +--rw aclname?      string
+  augment /ios:native/ios:interface/ios:FastEthernet/ios:ip:
+    +--rw igmp
+       +--rw static-group
+       |  +--rw groups* [name]
+       |  |  +--rw name      union
+       |  |  +--rw source*   union
+       |  +--rw class-map* [id]
+       |     +--rw id    -> /ios:native/policy/policy:class-map/name
+       +--rw join-group* [ip-group-address]
+       |  +--rw ip-group-address    inet:ipv4-address
+       |  +--rw source?             inet:ipv4-address
+       +--rw version?        uint8
+  augment /ios:native/ios:interface/ios:GigabitEthernet/ios:ip:
+    +--rw igmp
+       +--rw static-group
+       |  +--rw groups* [name]
+       |  |  +--rw name      union
+       |  |  +--rw source*   union
+       |  +--rw class-map* [id]
+       |     +--rw id    -> /ios:native/policy/policy:class-map/name
+       +--rw join-group* [ip-group-address]
+       |  +--rw ip-group-address    inet:ipv4-address
+       |  +--rw source?             inet:ipv4-address
+       +--rw version?        uint8
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet/ios:ip:
+    +--rw igmp
+       +--rw static-group
+       |  +--rw groups* [name]
+       |  |  +--rw name      union
+       |  |  +--rw source*   union
+       |  +--rw class-map* [id]
+       |     +--rw id    -> /ios:native/policy/policy:class-map/name
+       +--rw join-group* [ip-group-address]
+       |  +--rw ip-group-address    inet:ipv4-address
+       |  +--rw source?             inet:ipv4-address
+       +--rw version?        uint8
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet/ios:ip:
+    +--rw igmp
+       +--rw static-group
+       |  +--rw groups* [name]
+       |  |  +--rw name      union
+       |  |  +--rw source*   union
+       |  +--rw class-map* [id]
+       |     +--rw id    -> /ios:native/policy/policy:class-map/name
+       +--rw join-group* [ip-group-address]
+       |  +--rw ip-group-address    inet:ipv4-address
+       |  +--rw source?             inet:ipv4-address
+       +--rw version?        uint8
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE/ios:ip:
+    +--rw igmp
+       +--rw static-group
+       |  +--rw groups* [name]
+       |  |  +--rw name      union
+       |  |  +--rw source*   union
+       |  +--rw class-map* [id]
+       |     +--rw id    -> /ios:native/policy/policy:class-map/name
+       +--rw join-group* [ip-group-address]
+       |  +--rw ip-group-address    inet:ipv4-address
+       |  +--rw source?             inet:ipv4-address
+       +--rw version?        uint8
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet/ios:ip:
+    +--rw igmp
+       +--rw static-group
+       |  +--rw groups* [name]
+       |  |  +--rw name      union
+       |  |  +--rw source*   union
+       |  +--rw class-map* [id]
+       |     +--rw id    -> /ios:native/policy/policy:class-map/name
+       +--rw join-group* [ip-group-address]
+       |  +--rw ip-group-address    inet:ipv4-address
+       |  +--rw source?             inet:ipv4-address
+       +--rw version?        uint8
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet/ios:ip:
+    +--rw igmp
+       +--rw static-group
+       |  +--rw groups* [name]
+       |  |  +--rw name      union
+       |  |  +--rw source*   union
+       |  +--rw class-map* [id]
+       |     +--rw id    -> /ios:native/policy/policy:class-map/name
+       +--rw join-group* [ip-group-address]
+       |  +--rw ip-group-address    inet:ipv4-address
+       |  +--rw source?             inet:ipv4-address
+       +--rw version?        uint8
+  augment /ios:native/ios:interface/ios:HundredGigE/ios:ip:
+    +--rw igmp
+       +--rw static-group
+       |  +--rw groups* [name]
+       |  |  +--rw name      union
+       |  |  +--rw source*   union
+       |  +--rw class-map* [id]
+       |     +--rw id    -> /ios:native/policy/policy:class-map/name
+       +--rw join-group* [ip-group-address]
+       |  +--rw ip-group-address    inet:ipv4-address
+       |  +--rw source?             inet:ipv4-address
+       +--rw version?        uint8
+  augment /ios:native/ios:interface/ios:Loopback/ios:ip:
+    +--rw igmp
+       +--rw static-group
+       |  +--rw groups* [name]
+       |  |  +--rw name      union
+       |  |  +--rw source*   union
+       |  +--rw class-map* [id]
+       |     +--rw id    -> /ios:native/policy/policy:class-map/name
+       +--rw join-group* [ip-group-address]
+       |  +--rw ip-group-address    inet:ipv4-address
+       |  +--rw source?             inet:ipv4-address
+       +--rw version?        uint8
+  augment /ios:native/ios:interface/ios:Port-channel/ios:ip:
+    +--rw igmp
+       +--rw static-group
+       |  +--rw groups* [name]
+       |  |  +--rw name      union
+       |  |  +--rw source*   union
+       |  +--rw class-map* [id]
+       |     +--rw id    -> /ios:native/policy/policy:class-map/name
+       +--rw join-group* [ip-group-address]
+       |  +--rw ip-group-address    inet:ipv4-address
+       |  +--rw source?             inet:ipv4-address
+       +--rw version?        uint8
+  augment /ios:native/ios:interface/ios:Tunnel/ios:ip:
+    +--rw igmp
+       +--rw static-group
+       |  +--rw groups* [name]
+       |  |  +--rw name      union
+       |  |  +--rw source*   union
+       |  +--rw class-map* [id]
+       |     +--rw id    -> /ios:native/policy/policy:class-map/name
+       +--rw join-group* [ip-group-address]
+       |  +--rw ip-group-address    inet:ipv4-address
+       |  +--rw source?             inet:ipv4-address
+       +--rw version?        uint8
+  augment /ios:native/ios:interface/ios:Virtual-Template/ios:ip:
+    +--rw igmp
+       +--rw static-group
+       |  +--rw groups* [name]
+       |  |  +--rw name      union
+       |  |  +--rw source*   union
+       |  +--rw class-map* [id]
+       |     +--rw id    -> /ios:native/policy/policy:class-map/name
+       +--rw join-group* [ip-group-address]
+       |  +--rw ip-group-address    inet:ipv4-address
+       |  +--rw source?             inet:ipv4-address
+       +--rw version?        uint8
+  augment /ios:native/ios:interface/ios:VirtualPortGroup/ios:ip:
+    +--rw igmp
+       +--rw static-group
+       |  +--rw groups* [name]
+       |  |  +--rw name      union
+       |  |  +--rw source*   union
+       |  +--rw class-map* [id]
+       |     +--rw id    -> /ios:native/policy/policy:class-map/name
+       +--rw join-group* [ip-group-address]
+       |  +--rw ip-group-address    inet:ipv4-address
+       |  +--rw source?             inet:ipv4-address
+       +--rw version?        uint8
+  augment /ios:native/ios:interface/ios:Vlan/ios:ip:
+    +--rw igmp
+       +--rw static-group
+       |  +--rw groups* [name]
+       |  |  +--rw name      union
+       |  |  +--rw source*   union
+       |  +--rw class-map* [id]
+       |     +--rw id    -> /ios:native/policy/policy:class-map/name
+       +--rw join-group* [ip-group-address]
+       |  +--rw ip-group-address    inet:ipv4-address
+       |  +--rw source?             inet:ipv4-address
+       +--rw version?        uint8
+Xpaths for model: Cisco-IOS-XE-igmp.yang

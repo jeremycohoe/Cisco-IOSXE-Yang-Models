@@ -1,0 +1,124 @@
+ 
+KPI for model: Cisco-IOS-XE-ppp.yang
+
+module: Cisco-IOS-XE-ppp
+  augment /ios:native/ios:ppp:
+    +--rw packet
+       +--rw throttle?     uint32
+       +--rw allow_time?   uint32
+       +--rw block_time?   uint32
+  augment /ios:native/ios:multilink:
+    +--rw bundle-name?        enumeration {ios-features:multilink}?
+    +--rw virtual-template?   uint16 {ios-features:multilink}?
+  augment /ios:native/ios:interface/ios:Multilink:
+    +--rw ppp {ios-features:multilink}?
+       +--rw accounting?       union
+       +--rw chap
+       |  +--rw hostname?           string
+       |  +--rw challenge-length?   uint8
+       +--rw authentication
+       |  +--rw method?       enumeration
+       |  +--rw list-name?    string
+       |  +--rw chap?         empty
+       |  +--rw callback?     empty
+       |  +--rw callin?       empty
+       |  +--rw callout?      empty
+       |  +--rw default?      empty
+       |  +--rw eap?          empty
+       |  +--rw ms-chap?      empty
+       |  +--rw ms-chap-v2?   empty
+       |  +--rw one-time?     empty
+       |  +--rw optional?     empty
+       |  +--rw pap?          empty
+       +--rw authorization?    union
+       +--rw ipcp
+       |  +--rw dns
+       |     +--rw primary?   inet:ipv4-address
+       +--rw multilink!
+          +--rw links
+          |  +--rw minimum
+          |     +--rw minimum-value?   uint8
+          |     +--rw mandatory?       empty
+          +--rw group?      uint32
+          +--rw endpoint
+          |  +--rw string?   string
+          +--rw fragment
+             +--rw delay
+             |  +--rw delay-value?              uint16
+             |  +--rw additional-delay-value?   uint16
+             +--rw disable?   empty
+  augment /ios:native/ios:interface/ios:Serial:
+    +--rw ppp {ios-features:multilink}?
+       +--rw accounting?       union
+       +--rw chap
+       |  +--rw hostname?           string
+       |  +--rw challenge-length?   uint8
+       +--rw authentication
+       |  +--rw method?       enumeration
+       |  +--rw list-name?    string
+       |  +--rw chap?         empty
+       |  +--rw callback?     empty
+       |  +--rw callin?       empty
+       |  +--rw callout?      empty
+       |  +--rw default?      empty
+       |  +--rw eap?          empty
+       |  +--rw ms-chap?      empty
+       |  +--rw ms-chap-v2?   empty
+       |  +--rw one-time?     empty
+       |  +--rw optional?     empty
+       |  +--rw pap?          empty
+       +--rw authorization?    union
+       +--rw ipcp
+       |  +--rw dns
+       |     +--rw primary?   inet:ipv4-address
+       +--rw multilink!
+          +--rw links
+          |  +--rw minimum
+          |     +--rw minimum-value?   uint8
+          |     +--rw mandatory?       empty
+          +--rw group?      uint32
+          +--rw endpoint
+          |  +--rw string?   string
+          +--rw fragment
+             +--rw delay
+             |  +--rw delay-value?              uint16
+             |  +--rw additional-delay-value?   uint16
+             +--rw disable?   empty
+  augment /ios:native/ios:interface/ios:Virtual-Template:
+    +--rw ppp {ios-features:multilink}?
+       +--rw accounting?       union
+       +--rw chap
+       |  +--rw hostname?           string
+       |  +--rw challenge-length?   uint8
+       +--rw authentication
+       |  +--rw method?       enumeration
+       |  +--rw list-name?    string
+       |  +--rw chap?         empty
+       |  +--rw callback?     empty
+       |  +--rw callin?       empty
+       |  +--rw callout?      empty
+       |  +--rw default?      empty
+       |  +--rw eap?          empty
+       |  +--rw ms-chap?      empty
+       |  +--rw ms-chap-v2?   empty
+       |  +--rw one-time?     empty
+       |  +--rw optional?     empty
+       |  +--rw pap?          empty
+       +--rw authorization?    union
+       +--rw ipcp
+       |  +--rw dns
+       |     +--rw primary?   inet:ipv4-address
+       +--rw multilink!
+          +--rw links
+          |  +--rw minimum
+          |     +--rw minimum-value?   uint8
+          |     +--rw mandatory?       empty
+          +--rw group?      uint32
+          +--rw endpoint
+          |  +--rw string?   string
+          +--rw fragment
+             +--rw delay
+             |  +--rw delay-value?              uint16
+             |  +--rw additional-delay-value?   uint16
+             +--rw disable?   empty
+Xpaths for model: Cisco-IOS-XE-ppp.yang

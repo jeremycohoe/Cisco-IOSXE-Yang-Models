@@ -1,0 +1,28 @@
+ 
+KPI for model: Cisco-IOS-XE-arp-oper.yang
+module: Cisco-IOS-XE-arp-oper
+  +--ro arp-data
+     +--ro arp-vrf* [vrf]
+        +--ro vrf         string
+        +--ro arp-oper* [address]
+           +--ro address      inet:ip-address
+           +--ro enctype?     ios-common-ios-xe-oper:ios-encaps-type
+           +--ro interface?   string
+           +--ro type?        ios-common-ios-xe-oper:ios-linktype
+           +--ro mode?        arp-ios-xe-oper:ios-arp-mode
+           +--ro hwtype?      ios-common-ios-xe-oper:ios-snpa-type
+           +--ro hardware?    yang:mac-address
+           +--ro time?        yang:date-and-time
+Xpaths for model: Cisco-IOS-XE-arp-oper.yang
+/arp-ios-xe-oper:arp-data,container,
+/arp-ios-xe-oper:arp-data/arp-ios-xe-oper:arp-vrf,list,
+/arp-ios-xe-oper:arp-data/arp-ios-xe-oper:arp-vrf/arp-ios-xe-oper:vrf,leaf,string
+/arp-ios-xe-oper:arp-data/arp-ios-xe-oper:arp-vrf/arp-ios-xe-oper:arp-oper,list,
+/arp-ios-xe-oper:arp-data/arp-ios-xe-oper:arp-vrf/arp-ios-xe-oper:arp-oper/arp-ios-xe-oper:address,leaf,inet:ip-address
+/arp-ios-xe-oper:arp-data/arp-ios-xe-oper:arp-vrf/arp-ios-xe-oper:arp-oper/arp-ios-xe-oper:enctype,leaf,ios-common-ios-xe-oper:ios-encaps-type
+/arp-ios-xe-oper:arp-data/arp-ios-xe-oper:arp-vrf/arp-ios-xe-oper:arp-oper/arp-ios-xe-oper:interface,leaf,string
+/arp-ios-xe-oper:arp-data/arp-ios-xe-oper:arp-vrf/arp-ios-xe-oper:arp-oper/arp-ios-xe-oper:type,leaf,ios-common-ios-xe-oper:ios-linktype
+/arp-ios-xe-oper:arp-data/arp-ios-xe-oper:arp-vrf/arp-ios-xe-oper:arp-oper/arp-ios-xe-oper:mode,leaf,arp-ios-xe-oper:ios-arp-mode
+/arp-ios-xe-oper:arp-data/arp-ios-xe-oper:arp-vrf/arp-ios-xe-oper:arp-oper/arp-ios-xe-oper:hwtype,leaf,ios-common-ios-xe-oper:ios-snpa-type
+/arp-ios-xe-oper:arp-data/arp-ios-xe-oper:arp-vrf/arp-ios-xe-oper:arp-oper/arp-ios-xe-oper:hardware,leaf,yang:mac-address
+/arp-ios-xe-oper:arp-data/arp-ios-xe-oper:arp-vrf/arp-ios-xe-oper:arp-oper/arp-ios-xe-oper:time,leaf,yang:date-and-time

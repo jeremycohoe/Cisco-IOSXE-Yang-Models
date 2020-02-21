@@ -1,0 +1,78 @@
+ 
+KPI for model: openconfig-platform-transceiver.yang
+
+module: openconfig-platform-transceiver
+  augment /oc-platform:components/oc-platform:component:
+    +--rw transceiver
+       +--rw config
+       |  +--rw enabled?                boolean
+       |  +--rw form-factor-preconf?    identityref
+       |  +--rw ethernet-pmd-preconf?   identityref
+       +--ro state
+       |  +--ro enabled?                     boolean
+       |  +--ro form-factor-preconf?         identityref
+       |  +--ro ethernet-pmd-preconf?        identityref
+       |  +--ro present?                     enumeration
+       |  +--ro form-factor?                 identityref
+       |  +--ro connector-type?              identityref
+       |  +--ro internal-temp?               int16
+       |  +--ro vendor?                      string
+       |  +--ro vendor-part?                 string
+       |  +--ro vendor-rev?                  string
+       |  +--ro ethernet-pmd?                identityref
+       |  +--ro sonet-sdh-compliance-code?   identityref
+       |  +--ro otn-compliance-code?         identityref
+       |  +--ro serial-no?                   string
+       |  +--ro date-code?                   oc-yang:date-and-time
+       |  +--ro fault-condition?             boolean
+       |  +--ro output-power
+       |  |  +--ro instant?    decimal64
+       |  |  +--ro avg?        decimal64
+       |  |  +--ro min?        decimal64
+       |  |  +--ro max?        decimal64
+       |  |  +--ro interval?   oc-types:stat-interval
+       |  +--ro input-power
+       |  |  +--ro instant?    decimal64
+       |  |  +--ro avg?        decimal64
+       |  |  +--ro min?        decimal64
+       |  |  +--ro max?        decimal64
+       |  |  +--ro interval?   oc-types:stat-interval
+       |  +--ro laser-bias-current
+       |     +--ro instant?    decimal64
+       |     +--ro avg?        decimal64
+       |     +--ro min?        decimal64
+       |     +--ro max?        decimal64
+       |     +--ro interval?   oc-types:stat-interval
+       +--rw physical-channels
+          +--rw channel* [index]
+             +--rw index     -> ../config/index
+             +--rw config
+             |  +--rw index?                 uint16
+             |  +--rw description?           string
+             |  +--rw tx-laser?              boolean
+             |  +--rw target-output-power?   decimal64
+             +--ro state
+                +--ro index?                 uint16
+                +--ro description?           string
+                +--ro tx-laser?              boolean
+                +--ro target-output-power?   decimal64
+                +--ro output-frequency?      oc-opt-types:frequency-type
+                +--ro output-power
+                |  +--ro instant?    decimal64
+                |  +--ro avg?        decimal64
+                |  +--ro min?        decimal64
+                |  +--ro max?        decimal64
+                |  +--ro interval?   oc-types:stat-interval
+                +--ro input-power
+                |  +--ro instant?    decimal64
+                |  +--ro avg?        decimal64
+                |  +--ro min?        decimal64
+                |  +--ro max?        decimal64
+                |  +--ro interval?   oc-types:stat-interval
+                +--ro laser-bias-current
+                   +--ro instant?    decimal64
+                   +--ro avg?        decimal64
+                   +--ro min?        decimal64
+                   +--ro max?        decimal64
+                   +--ro interval?   oc-types:stat-interval
+Xpaths for model: openconfig-platform-transceiver.yang

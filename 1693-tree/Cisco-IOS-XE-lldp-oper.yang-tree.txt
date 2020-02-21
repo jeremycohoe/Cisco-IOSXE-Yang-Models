@@ -1,0 +1,34 @@
+ 
+KPI for model: Cisco-IOS-XE-lldp-oper.yang
+module: Cisco-IOS-XE-lldp-oper
+  +--ro lldp-entries
+     +--ro lldp-entry* [device-id local-interface connecting-interface]
+        +--ro device-id               string
+        +--ro local-interface         string
+        +--ro connecting-interface    string
+        +--ro ttl?                    uint32
+        +--ro capabilities
+           +--ro repeater?       empty
+           +--ro bridge?         empty
+           +--ro access-point?   empty
+           +--ro router?         empty
+           +--ro telephone?      empty
+           +--ro docsis?         empty
+           +--ro station?        empty
+           +--ro other?          empty
+Xpaths for model: Cisco-IOS-XE-lldp-oper.yang
+/lldp-ios-xe-oper:lldp-entries,container,
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry,list,
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:device-id,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:local-interface,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:connecting-interface,leaf,string
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:ttl,leaf,uint32
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities,container,
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:repeater,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:bridge,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:access-point,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:router,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:telephone,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:docsis,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:station,leaf,empty
+/lldp-ios-xe-oper:lldp-entries/lldp-ios-xe-oper:lldp-entry/lldp-ios-xe-oper:capabilities/lldp-ios-xe-oper:other,leaf,empty

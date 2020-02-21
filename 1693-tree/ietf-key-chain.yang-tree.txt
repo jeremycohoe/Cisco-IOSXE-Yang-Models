@@ -1,0 +1,150 @@
+ 
+KPI for model: ietf-key-chain.yang
+module: ietf-key-chain
+  +--rw key-chains* [name]
+     +--rw name                string
+     +--rw accept-tolerance {accept-tolerance}?
+     |  +--rw duration?   uint32
+     +--rw key* [key-id]
+        +--rw key-id              uint64
+        +--rw key-string
+        |  +--rw (key-string-style)?
+        |     +--:(keystring)
+        |     |  +--rw keystring?            string
+        |     +--:(hexadecimal) {hex-key-string}?
+        |        +--rw hexadecimal-string?   yang:hex-string
+        +--rw lifetime
+        |  +--rw (lifetime)?
+        |     +--:(send-and-accept-lifetime)
+        |     |  +--rw send-accept-lifetime
+        |     |     +--rw (lifetime)?
+        |     |        +--:(always)
+        |     |        |  +--rw always?                empty
+        |     |        +--:(start-end-time)
+        |     |           +--rw start-date-time?       yang:date-and-time
+        |     |           +--rw (end-time)?
+        |     |              +--:(infinite)
+        |     |              |  +--rw no-end-time?     empty
+        |     |              +--:(duration)
+        |     |              |  +--rw duration?        uint32
+        |     |              +--:(end-date-time)
+        |     |                 +--rw end-date-time?   yang:date-and-time
+        |     +--:(independent-send-accept-lifetime) {independent-send-accept-lifetime}?
+        |        +--rw send-lifetime
+        |        |  +--rw (lifetime)?
+        |        |     +--:(always)
+        |        |     |  +--rw always?                empty
+        |        |     +--:(start-end-time)
+        |        |        +--rw start-date-time?       yang:date-and-time
+        |        |        +--rw (end-time)?
+        |        |           +--:(infinite)
+        |        |           |  +--rw no-end-time?     empty
+        |        |           +--:(duration)
+        |        |           |  +--rw duration?        uint32
+        |        |           +--:(end-date-time)
+        |        |              +--rw end-date-time?   yang:date-and-time
+        |        +--rw accept-lifetime
+        |           +--rw (lifetime)?
+        |              +--:(always)
+        |              |  +--rw always?                empty
+        |              +--:(start-end-time)
+        |                 +--rw start-date-time?       yang:date-and-time
+        |                 +--rw (end-time)?
+        |                    +--:(infinite)
+        |                    |  +--rw no-end-time?     empty
+        |                    +--:(duration)
+        |                    |  +--rw duration?        uint32
+        |                    +--:(end-date-time)
+        |                       +--rw end-date-time?   yang:date-and-time
+        +--rw crypto-algorithm
+           +--rw (algorithm)?
+              +--:(hmac-sha1-12)
+              |  +--rw hmac-sha1-12?   empty
+              +--:(hmac-sha1-20)
+              |  +--rw hmac-sha1-20?   empty
+              +--:(md5)
+              |  +--rw md5?            empty
+              +--:(sha-1)
+              |  +--rw sha-1?          empty
+              +--:(hmac-sha-1)
+              |  +--rw hmac-sha-1?     empty
+              +--:(hmac-sha-256)
+              |  +--rw hmac-sha-256?   empty
+              +--:(hmac-sha-384)
+              |  +--rw hmac-sha-384?   empty
+              +--:(hmac-sha-512)
+                 +--rw hmac-sha-512?   empty
+Xpaths for model: ietf-key-chain.yang
+/key-chain:key-chains,list,
+/key-chain:key-chains/key-chain:name,leaf,string
+/key-chain:key-chains/key-chain:accept-tolerance,container,
+/key-chain:key-chains/key-chain:accept-tolerance/key-chain:duration,leaf,uint32
+/key-chain:key-chains/key-chain:key,list,
+/key-chain:key-chains/key-chain:key/key-chain:key-id,leaf,uint64
+/key-chain:key-chains/key-chain:key/key-chain:key-string,container,
+/key-chain:key-chains/key-chain:key/key-chain:key-string,choice,
+/key-chain:key-chains/key-chain:key/key-chain:key-string,case,
+/key-chain:key-chains/key-chain:key/key-chain:key-string/key-chain:keystring,leaf,string
+/key-chain:key-chains/key-chain:key/key-chain:key-string,case,
+/key-chain:key-chains/key-chain:key/key-chain:key-string/key-chain:hexadecimal-string,leaf,yang:hex-string
+/key-chain:key-chains/key-chain:key/key-chain:lifetime,container,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime,choice,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-accept-lifetime,container,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-accept-lifetime,choice,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-accept-lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-accept-lifetime/key-chain:always,leaf,empty
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-accept-lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-accept-lifetime/key-chain:start-date-time,leaf,yang:date-and-time
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-accept-lifetime,choice,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-accept-lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-accept-lifetime/key-chain:no-end-time,leaf,empty
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-accept-lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-accept-lifetime/key-chain:duration,leaf,uint32
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-accept-lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-accept-lifetime/key-chain:end-date-time,leaf,yang:date-and-time
+/key-chain:key-chains/key-chain:key/key-chain:lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-lifetime,container,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-lifetime,choice,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-lifetime/key-chain:always,leaf,empty
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-lifetime/key-chain:start-date-time,leaf,yang:date-and-time
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-lifetime,choice,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-lifetime/key-chain:no-end-time,leaf,empty
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-lifetime/key-chain:duration,leaf,uint32
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:send-lifetime/key-chain:end-date-time,leaf,yang:date-and-time
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:accept-lifetime,container,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:accept-lifetime,choice,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:accept-lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:accept-lifetime/key-chain:always,leaf,empty
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:accept-lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:accept-lifetime/key-chain:start-date-time,leaf,yang:date-and-time
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:accept-lifetime,choice,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:accept-lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:accept-lifetime/key-chain:no-end-time,leaf,empty
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:accept-lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:accept-lifetime/key-chain:duration,leaf,uint32
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:accept-lifetime,case,
+/key-chain:key-chains/key-chain:key/key-chain:lifetime/key-chain:accept-lifetime/key-chain:end-date-time,leaf,yang:date-and-time
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm,container,
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm,choice,
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm,case,
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm/key-chain:hmac-sha1-12,leaf,empty
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm,case,
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm/key-chain:hmac-sha1-20,leaf,empty
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm,case,
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm/key-chain:md5,leaf,empty
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm,case,
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm/key-chain:sha-1,leaf,empty
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm,case,
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm/key-chain:hmac-sha-1,leaf,empty
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm,case,
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm/key-chain:hmac-sha-256,leaf,empty
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm,case,
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm/key-chain:hmac-sha-384,leaf,empty
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm,case,
+/key-chain:key-chains/key-chain:key/key-chain:crypto-algorithm/key-chain:hmac-sha-512,leaf,empty

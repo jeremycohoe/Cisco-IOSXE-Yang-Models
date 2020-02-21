@@ -1,0 +1,108 @@
+ 
+KPI for model: Cisco-IOS-XE-mdt-oper.yang
+module: Cisco-IOS-XE-mdt-oper
+  +--ro mdt-oper-data
+     +--ro mdt-streams
+     |  +--ro stream*   string
+     +--ro mdt-subscriptions* [subscription-id]
+     |  +--ro subscription-id     uint32
+     |  +--ro base
+     |  |  +--ro stream?                    string
+     |  |  +--ro encoding?                  string
+     |  |  +--ro source-vrf?                string
+     |  |  +--ro source-address?            inet:ip-address
+     |  |  +--ro (update-trigger-choice)?
+     |  |  |  +--:(sub-upd-trig-none)
+     |  |  |  |  +--ro no-trigger?          uint32
+     |  |  |  +--:(sub-upd-trig-periodic)
+     |  |  |  |  +--ro period               uint32
+     |  |  |  +--:(sub-upd-trig-on-change)
+     |  |  |     +--ro no-synch-on-start?   boolean
+     |  |  +--ro (filter-type-choice)?
+     |  |     +--:(sub-filter-type-none)
+     |  |     |  +--ro no-filter?           uint32
+     |  |     +--:(sub-filter-type-xpath)
+     |  |     |  +--ro xpath?               string
+     |  |     +--:(sub-filter-type-tdl-uri)
+     |  |     |  +--ro tdl-uri?             string
+     |  |     +--:(sub-filter-type-tdl-transform)
+     |  |        +--ro transform-name?      string
+     |  +--ro type?               mdt-oper:mdt-sub-type
+     |  +--ro state?              mdt-oper:mdt-sub-state
+     |  +--ro comments?           string
+     |  +--ro updates-in?         uint64
+     |  +--ro updates-dampened?   uint64
+     |  +--ro updates-dropped?    uint64
+     |  +--ro mdt-receivers* [address port]
+     |     +--ro protocol?   string
+     |     +--ro state?      mdt-oper:mdt-receiver-state
+     |     +--ro comments?   string
+     |     +--ro profile?    string
+     |     +--ro address     inet:ip-address
+     |     +--ro port        uint16
+     +--ro mdt-connections* [address port source-vrf source-address]
+        +--ro transport?           string
+        +--ro peer-id?             string
+        +--ro state?               mdt-oper:mdt-con-state
+        +--ro mdt-sub-con-stats* [sub-id]
+        |  +--ro sub-id             uint32
+        |  +--ro updates-sent?      uint64
+        |  +--ro updates-dropped?   uint64
+        +--ro profile?             string
+        +--ro address              inet:ip-address
+        +--ro port                 uint16
+        +--ro source-vrf           string
+        +--ro source-address       inet:ip-address
+Xpaths for model: Cisco-IOS-XE-mdt-oper.yang
+/mdt-oper:mdt-oper-data,container,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-streams,container,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-streams/mdt-oper:stream,leaf-list,string
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions,list,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:subscription-id,leaf,uint32
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base,container,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base/mdt-oper:stream,leaf,string
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base/mdt-oper:encoding,leaf,string
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base/mdt-oper:source-vrf,leaf,string
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base/mdt-oper:source-address,leaf,inet:ip-address
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base,choice,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base,case,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base/mdt-oper:no-trigger,leaf,uint32
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base,case,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base/mdt-oper:period,leaf,uint32
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base,case,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base/mdt-oper:no-synch-on-start,leaf,boolean
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base,choice,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base,case,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base/mdt-oper:no-filter,leaf,uint32
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base,case,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base/mdt-oper:xpath,leaf,string
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base,case,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base/mdt-oper:tdl-uri,leaf,string
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base,case,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:base/mdt-oper:transform-name,leaf,string
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:type,leaf,mdt-oper:mdt-sub-type
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:state,leaf,mdt-oper:mdt-sub-state
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:comments,leaf,string
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:updates-in,leaf,uint64
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:updates-dampened,leaf,uint64
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:updates-dropped,leaf,uint64
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:mdt-receivers,list,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:mdt-receivers/mdt-oper:protocol,leaf,string
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:mdt-receivers/mdt-oper:state,leaf,mdt-oper:mdt-receiver-state
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:mdt-receivers/mdt-oper:comments,leaf,string
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:mdt-receivers/mdt-oper:profile,leaf,string
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:mdt-receivers/mdt-oper:address,leaf,inet:ip-address
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-subscriptions/mdt-oper:mdt-receivers/mdt-oper:port,leaf,uint16
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-connections,list,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-connections/mdt-oper:transport,leaf,string
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-connections/mdt-oper:peer-id,leaf,string
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-connections/mdt-oper:state,leaf,mdt-oper:mdt-con-state
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-connections/mdt-oper:mdt-sub-con-stats,list,
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-connections/mdt-oper:mdt-sub-con-stats/mdt-oper:sub-id,leaf,uint32
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-connections/mdt-oper:mdt-sub-con-stats/mdt-oper:updates-sent,leaf,uint64
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-connections/mdt-oper:mdt-sub-con-stats/mdt-oper:updates-dropped,leaf,uint64
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-connections/mdt-oper:profile,leaf,string
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-connections/mdt-oper:address,leaf,inet:ip-address
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-connections/mdt-oper:port,leaf,uint16
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-connections/mdt-oper:source-vrf,leaf,string
+/mdt-oper:mdt-oper-data/mdt-oper:mdt-connections/mdt-oper:source-address,leaf,inet:ip-address

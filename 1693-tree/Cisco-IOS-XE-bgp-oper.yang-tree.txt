@@ -1,0 +1,698 @@
+ 
+KPI for model: Cisco-IOS-XE-bgp-oper.yang
+module: Cisco-IOS-XE-bgp-oper
+  +--ro bgp-state-data
+     +--ro neighbors
+     |  +--ro neighbor* [afi-safi vrf-name neighbor-id]
+     |     +--ro afi-safi                       bgp-common-ios-xe-oper:afi-safi
+     |     +--ro vrf-name                       string
+     |     +--ro neighbor-id                    string
+     |     +--ro description?                   string
+     |     +--ro bgp-version?                   uint16
+     |     +--ro link?                          bgp-ios-xe-oper:bgp-link
+     |     +--ro up-time?                       string
+     |     +--ro last-write?                    string
+     |     +--ro last-read?                     string
+     |     +--ro installed-prefixes?            uint32
+     |     +--ro session-state?                 bgp-ios-xe-oper:bgp-fsm-state
+     |     +--ro negotiated-keepalive-timers
+     |     |  +--ro hold-time?            uint16
+     |     |  +--ro keepalive-interval?   uint16
+     |     +--ro negotiated-cap*                string
+     |     +--ro bgp-neighbor-counters
+     |     |  +--ro sent
+     |     |  |  +--ro opens?             uint32
+     |     |  |  +--ro updates?           uint32
+     |     |  |  +--ro notifications?     uint32
+     |     |  |  +--ro keepalives?        uint32
+     |     |  |  +--ro route-refreshes?   uint32
+     |     |  +--ro received
+     |     |  |  +--ro opens?             uint32
+     |     |  |  +--ro updates?           uint32
+     |     |  |  +--ro notifications?     uint32
+     |     |  |  +--ro keepalives?        uint32
+     |     |  |  +--ro route-refreshes?   uint32
+     |     |  +--ro inq-depth?    uint32
+     |     |  +--ro outq-depth?   uint32
+     |     +--ro connection
+     |     |  +--ro state?               bgp-common-ios-xe-oper:tcp-fsm-state
+     |     |  +--ro mode?                bgp-ios-xe-oper:bgp-mode
+     |     |  +--ro total-established?   uint32
+     |     |  +--ro total-dropped?       uint32
+     |     |  +--ro last-reset?          string
+     |     |  +--ro reset-reason?        string
+     |     +--ro transport
+     |     |  +--ro path-mtu-discovery?   boolean
+     |     |  +--ro local-port?           uint32
+     |     |  +--ro local-host?           inet:ip-address
+     |     |  +--ro foreign-port?         uint32
+     |     |  +--ro foreign-host?         inet:ip-address
+     |     |  +--ro mss?                  uint32
+     |     +--ro prefix-activity
+     |     |  +--ro sent
+     |     |  |  +--ro current-prefixes?    uint64
+     |     |  |  +--ro total-prefixes?      uint64
+     |     |  |  +--ro implicit-withdraw?   uint64
+     |     |  |  +--ro explicit-withdraw?   uint64
+     |     |  |  +--ro bestpaths?           uint64
+     |     |  |  +--ro multipaths?          uint64
+     |     |  +--ro received
+     |     |     +--ro current-prefixes?    uint64
+     |     |     +--ro total-prefixes?      uint64
+     |     |     +--ro implicit-withdraw?   uint64
+     |     |     +--ro explicit-withdraw?   uint64
+     |     |     +--ro bestpaths?           uint64
+     |     |     +--ro multipaths?          uint64
+     |     +--ro as?                            uint32
+     +--ro address-families
+     |  +--ro address-family* [afi-safi vrf-name]
+     |     +--ro afi-safi                  bgp-common-ios-xe-oper:afi-safi
+     |     +--ro vrf-name                  string
+     |     +--ro router-id?                inet:ip-address
+     |     +--ro bgp-table-version?        uint64
+     |     +--ro routing-table-version?    uint64
+     |     +--ro prefixes
+     |     |  +--ro total-entries?   uint64
+     |     |  +--ro memory-usage?    uint64
+     |     +--ro path
+     |     |  +--ro total-entries?   uint64
+     |     |  +--ro memory-usage?    uint64
+     |     +--ro as-path
+     |     |  +--ro total-entries?   uint64
+     |     |  +--ro memory-usage?    uint64
+     |     +--ro route-map
+     |     |  +--ro total-entries?   uint64
+     |     |  +--ro memory-usage?    uint64
+     |     +--ro filter-list
+     |     |  +--ro total-entries?   uint64
+     |     |  +--ro memory-usage?    uint64
+     |     +--ro activities
+     |     |  +--ro prefixes?        uint64
+     |     |  +--ro paths?           uint64
+     |     |  +--ro scan-interval?   string
+     |     +--ro total-memory?             uint64
+     |     +--ro bgp-neighbor-summaries
+     |     |  +--ro bgp-neighbor-summary* [id]
+     |     |     +--ro id                        string
+     |     |     +--ro bgp-version?              uint32
+     |     |     +--ro messages-received?        uint64
+     |     |     +--ro messages-sent?            uint64
+     |     |     +--ro table-version?            uint64
+     |     |     +--ro input-queue?              uint64
+     |     |     +--ro output-queue?             uint64
+     |     |     +--ro up-time?                  string
+     |     |     +--ro state?                    bgp-ios-xe-oper:bgp-fsm-state
+     |     |     +--ro prefixes-received?        uint64
+     |     |     +--ro dynamically-configured?   boolean
+     |     |     +--ro as?                       uint32
+     |     +--ro local-as?                 uint32
+     +--ro bgp-route-vrfs
+     |  +--ro bgp-route-vrf* [vrf]
+     |     +--ro vrf              string
+     |     +--ro bgp-route-afs
+     |        +--ro bgp-route-af* [afi-safi]
+     |           +--ro afi-safi               bgp-common-ios-xe-oper:afi-safi
+     |           +--ro bgp-route-filters
+     |           |  +--ro bgp-route-filter* [route-filter]
+     |           |     +--ro route-filter         bgp-route-ios-xe-oper:bgp-route-filters
+     |           |     +--ro bgp-route-entries
+     |           |        +--ro bgp-route-entry* [prefix]
+     |           |           +--ro prefix              string
+     |           |           +--ro version?            uint32
+     |           |           +--ro available-paths?    uint32
+     |           |           +--ro advertised-to?      string
+     |           |           +--ro bgp-path-entries
+     |           |              +--ro bgp-path-entry* [nexthop]
+     |           |                 +--ro nexthop               string
+     |           |                 +--ro metric?               uint32
+     |           |                 +--ro local-pref?           uint32
+     |           |                 +--ro weight?               uint32
+     |           |                 +--ro as-path?              string
+     |           |                 +--ro origin?               bgp-route-ios-xe-oper:bgp-origin-code
+     |           |                 +--ro path-status
+     |           |                 |  +--ro suppressed?        empty
+     |           |                 |  +--ro damped?            empty
+     |           |                 |  +--ro history?           empty
+     |           |                 |  +--ro valid?             empty
+     |           |                 |  +--ro sourced?           empty
+     |           |                 |  +--ro bestpath?          empty
+     |           |                 |  +--ro internal?          empty
+     |           |                 |  +--ro rib-fail?          empty
+     |           |                 |  +--ro stale?             empty
+     |           |                 |  +--ro multipath?         empty
+     |           |                 |  +--ro backup-path?       empty
+     |           |                 |  +--ro rt-filter?         empty
+     |           |                 |  +--ro best-external?     empty
+     |           |                 |  +--ro additional-path?   empty
+     |           |                 |  +--ro rib-compressed?    empty
+     |           |                 +--ro rpki-status?          bgp-route-ios-xe-oper:bgp-rpki-status
+     |           |                 +--ro community?            string
+     |           |                 +--ro mpls-in?              string
+     |           |                 +--ro mpls-out?             string
+     |           |                 +--ro sr-profile-name?      string
+     |           |                 +--ro sr-binding-sid?       uint32
+     |           |                 +--ro sr-label-indx?        uint32
+     |           |                 +--ro as4-path?             string
+     |           |                 +--ro atomic-aggregate?     boolean
+     |           |                 +--ro aggr-as-number?       uint32
+     |           |                 +--ro aggr-as4-number?      uint32
+     |           |                 +--ro aggr-address?         string
+     |           |                 +--ro originator-id?        string
+     |           |                 +--ro cluster-list?         string
+     |           |                 +--ro extended-community?   string
+     |           |                 +--ro ext-aigp-metric?      uint64
+     |           |                 +--ro path-id?              uint32
+     |           +--ro bgp-route-neighbors
+     |           |  +--ro bgp-route-neighbor* [nbr-id]
+     |           |     +--ro nbr-id                        string
+     |           |     +--ro bgp-neighbor-route-filters
+     |           |        +--ro bgp-neighbor-route-filter* [nbr-fltr]
+     |           |           +--ro nbr-fltr                      bgp-route-ios-xe-oper:bgp-neighbor-route-filters
+     |           |           +--ro bgp-neighbor-route-entries
+     |           |              +--ro bgp-neighbor-route-entry* [prefix]
+     |           |                 +--ro prefix                       string
+     |           |                 +--ro version?                     uint32
+     |           |                 +--ro available-paths?             uint32
+     |           |                 +--ro advertised-to?               string
+     |           |                 +--ro bgp-neighbor-path-entries
+     |           |                    +--ro bgp-neighbor-path-entry* [nexthop]
+     |           |                       +--ro nexthop               string
+     |           |                       +--ro metric?               uint32
+     |           |                       +--ro local-pref?           uint32
+     |           |                       +--ro weight?               uint32
+     |           |                       +--ro as-path?              string
+     |           |                       +--ro origin?               bgp-route-ios-xe-oper:bgp-origin-code
+     |           |                       +--ro path-status
+     |           |                       |  +--ro suppressed?        empty
+     |           |                       |  +--ro damped?            empty
+     |           |                       |  +--ro history?           empty
+     |           |                       |  +--ro valid?             empty
+     |           |                       |  +--ro sourced?           empty
+     |           |                       |  +--ro bestpath?          empty
+     |           |                       |  +--ro internal?          empty
+     |           |                       |  +--ro rib-fail?          empty
+     |           |                       |  +--ro stale?             empty
+     |           |                       |  +--ro multipath?         empty
+     |           |                       |  +--ro backup-path?       empty
+     |           |                       |  +--ro rt-filter?         empty
+     |           |                       |  +--ro best-external?     empty
+     |           |                       |  +--ro additional-path?   empty
+     |           |                       |  +--ro rib-compressed?    empty
+     |           |                       +--ro rpki-status?          bgp-route-ios-xe-oper:bgp-rpki-status
+     |           |                       +--ro community?            string
+     |           |                       +--ro mpls-in?              string
+     |           |                       +--ro mpls-out?             string
+     |           |                       +--ro sr-profile-name?      string
+     |           |                       +--ro sr-binding-sid?       uint32
+     |           |                       +--ro sr-label-indx?        uint32
+     |           |                       +--ro as4-path?             string
+     |           |                       +--ro atomic-aggregate?     boolean
+     |           |                       +--ro aggr-as-number?       uint32
+     |           |                       +--ro aggr-as4-number?      uint32
+     |           |                       +--ro aggr-address?         string
+     |           |                       +--ro originator-id?        string
+     |           |                       +--ro cluster-list?         string
+     |           |                       +--ro extended-community?   string
+     |           |                       +--ro ext-aigp-metric?      uint64
+     |           |                       +--ro path-id?              uint32
+     |           +--ro bgp-peer-groups
+     |              +--ro bgp-peer-group* [name]
+     |                 +--ro name                        string
+     |                 +--ro description?                string
+     |                 +--ro remote-as?                  uint32
+     |                 +--ro bgp-version?                uint16
+     |                 +--ro min-time?                   uint16
+     |                 +--ro num-of-sessions?            uint32
+     |                 +--ro num-estab-sessions?         uint32
+     |                 +--ro num-sso-sessions?           uint32
+     |                 +--ro peer-members*               string
+     |                 +--ro fmt-grp-ix?                 uint16
+     |                 +--ro adv-ix?                     uint16
+     |                 +--ro aspath-in?                  uint32
+     |                 +--ro aspath-out?                 uint32
+     |                 +--ro routemap-in?                string
+     |                 +--ro routemap-out?               string
+     |                 +--ro updated-messages?           uint64
+     |                 +--ro rep-count?                  uint32
+     |                 +--ro slowpeer-detection-value?   uint16
+     |                 +--ro weight?                     uint16
+     |                 +--ro send-community?             boolean
+     |                 +--ro extended-community?         boolean
+     |                 +--ro remove-private-as?          boolean
+     +--ro bgp-route-rds
+        +--ro bgp-route-rd* [rd-value]
+           +--ro rd-value            string
+           +--ro bgp-rd-route-afs
+              +--ro bgp-rd-route-af* [afi-safi]
+                 +--ro afi-safi                  bgp-common-ios-xe-oper:afi-safi
+                 +--ro bgp-rd-route-filters
+                 |  +--ro bgp-rd-route-filter* [route-filter]
+                 |     +--ro route-filter            bgp-route-ios-xe-oper:bgp-route-filters
+                 |     +--ro bgp-rd-route-entries
+                 |        +--ro bgp-rd-route-entry* [prefix]
+                 |           +--ro prefix                 string
+                 |           +--ro version?               uint32
+                 |           +--ro available-paths?       uint32
+                 |           +--ro advertised-to?         string
+                 |           +--ro bgp-rd-path-entries
+                 |              +--ro bgp-rd-path-entry* [nexthop]
+                 |                 +--ro nexthop               string
+                 |                 +--ro metric?               uint32
+                 |                 +--ro local-pref?           uint32
+                 |                 +--ro weight?               uint32
+                 |                 +--ro as-path?              string
+                 |                 +--ro origin?               bgp-route-ios-xe-oper:bgp-origin-code
+                 |                 +--ro path-status
+                 |                 |  +--ro suppressed?        empty
+                 |                 |  +--ro damped?            empty
+                 |                 |  +--ro history?           empty
+                 |                 |  +--ro valid?             empty
+                 |                 |  +--ro sourced?           empty
+                 |                 |  +--ro bestpath?          empty
+                 |                 |  +--ro internal?          empty
+                 |                 |  +--ro rib-fail?          empty
+                 |                 |  +--ro stale?             empty
+                 |                 |  +--ro multipath?         empty
+                 |                 |  +--ro backup-path?       empty
+                 |                 |  +--ro rt-filter?         empty
+                 |                 |  +--ro best-external?     empty
+                 |                 |  +--ro additional-path?   empty
+                 |                 |  +--ro rib-compressed?    empty
+                 |                 +--ro rpki-status?          bgp-route-ios-xe-oper:bgp-rpki-status
+                 |                 +--ro community?            string
+                 |                 +--ro mpls-in?              string
+                 |                 +--ro mpls-out?             string
+                 |                 +--ro sr-profile-name?      string
+                 |                 +--ro sr-binding-sid?       uint32
+                 |                 +--ro sr-label-indx?        uint32
+                 |                 +--ro as4-path?             string
+                 |                 +--ro atomic-aggregate?     boolean
+                 |                 +--ro aggr-as-number?       uint32
+                 |                 +--ro aggr-as4-number?      uint32
+                 |                 +--ro aggr-address?         string
+                 |                 +--ro originator-id?        string
+                 |                 +--ro cluster-list?         string
+                 |                 +--ro extended-community?   string
+                 |                 +--ro ext-aigp-metric?      uint64
+                 |                 +--ro path-id?              uint32
+                 +--ro bgp-rd-route-neighbors
+                    +--ro bgp-rd-route-neighbor* [neighbor-id]
+                       +--ro neighbor-id                      string
+                       +--ro bgp-rd-neighbor-route-filters
+                          +--ro bgp-rd-neighbor-route-filter* [neighbor-filter]
+                             +--ro neighbor-filter                  bgp-route-ios-xe-oper:bgp-neighbor-route-filters
+                             +--ro bgp-rd-neighbor-route-entries
+                                +--ro bgp-rd-neighbor-route-entry* [prefix]
+                                   +--ro prefix                          string
+                                   +--ro version?                        uint32
+                                   +--ro available-paths?                uint32
+                                   +--ro advertised-to?                  string
+                                   +--ro bgp-rd-neighbor-path-entries
+                                      +--ro bgp-rd-neighbor-path-entry* [nexthop]
+                                         +--ro nexthop               string
+                                         +--ro metric?               uint32
+                                         +--ro local-pref?           uint32
+                                         +--ro weight?               uint32
+                                         +--ro as-path?              string
+                                         +--ro origin?               bgp-route-ios-xe-oper:bgp-origin-code
+                                         +--ro path-status
+                                         |  +--ro suppressed?        empty
+                                         |  +--ro damped?            empty
+                                         |  +--ro history?           empty
+                                         |  +--ro valid?             empty
+                                         |  +--ro sourced?           empty
+                                         |  +--ro bestpath?          empty
+                                         |  +--ro internal?          empty
+                                         |  +--ro rib-fail?          empty
+                                         |  +--ro stale?             empty
+                                         |  +--ro multipath?         empty
+                                         |  +--ro backup-path?       empty
+                                         |  +--ro rt-filter?         empty
+                                         |  +--ro best-external?     empty
+                                         |  +--ro additional-path?   empty
+                                         |  +--ro rib-compressed?    empty
+                                         +--ro rpki-status?          bgp-route-ios-xe-oper:bgp-rpki-status
+                                         +--ro community?            string
+                                         +--ro mpls-in?              string
+                                         +--ro mpls-out?             string
+                                         +--ro sr-profile-name?      string
+                                         +--ro sr-binding-sid?       uint32
+                                         +--ro sr-label-indx?        uint32
+                                         +--ro as4-path?             string
+                                         +--ro atomic-aggregate?     boolean
+                                         +--ro aggr-as-number?       uint32
+                                         +--ro aggr-as4-number?      uint32
+                                         +--ro aggr-address?         string
+                                         +--ro originator-id?        string
+                                         +--ro cluster-list?         string
+                                         +--ro extended-community?   string
+                                         +--ro ext-aigp-metric?      uint64
+                                         +--ro path-id?              uint32
+Xpaths for model: Cisco-IOS-XE-bgp-oper.yang
+/bgp-ios-xe-oper:bgp-state-data,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:afi-safi,leaf,bgp-common-ios-xe-oper:afi-safi
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:vrf-name,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:neighbor-id,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:description,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-version,leaf,uint16
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:link,leaf,bgp-ios-xe-oper:bgp-link
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:up-time,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:last-write,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:last-read,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:installed-prefixes,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:session-state,leaf,bgp-ios-xe-oper:bgp-fsm-state
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:negotiated-keepalive-timers,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:negotiated-keepalive-timers/bgp-ios-xe-oper:hold-time,leaf,uint16
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:negotiated-keepalive-timers/bgp-ios-xe-oper:keepalive-interval,leaf,uint16
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:negotiated-cap,leaf-list,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-neighbor-counters,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-neighbor-counters/bgp-ios-xe-oper:sent,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-neighbor-counters/bgp-ios-xe-oper:sent/bgp-ios-xe-oper:opens,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-neighbor-counters/bgp-ios-xe-oper:sent/bgp-ios-xe-oper:updates,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-neighbor-counters/bgp-ios-xe-oper:sent/bgp-ios-xe-oper:notifications,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-neighbor-counters/bgp-ios-xe-oper:sent/bgp-ios-xe-oper:keepalives,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-neighbor-counters/bgp-ios-xe-oper:sent/bgp-ios-xe-oper:route-refreshes,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-neighbor-counters/bgp-ios-xe-oper:received,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-neighbor-counters/bgp-ios-xe-oper:received/bgp-ios-xe-oper:opens,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-neighbor-counters/bgp-ios-xe-oper:received/bgp-ios-xe-oper:updates,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-neighbor-counters/bgp-ios-xe-oper:received/bgp-ios-xe-oper:notifications,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-neighbor-counters/bgp-ios-xe-oper:received/bgp-ios-xe-oper:keepalives,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-neighbor-counters/bgp-ios-xe-oper:received/bgp-ios-xe-oper:route-refreshes,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-neighbor-counters/bgp-ios-xe-oper:inq-depth,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:bgp-neighbor-counters/bgp-ios-xe-oper:outq-depth,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:connection,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:connection/bgp-ios-xe-oper:state,leaf,bgp-common-ios-xe-oper:tcp-fsm-state
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:connection/bgp-ios-xe-oper:mode,leaf,bgp-ios-xe-oper:bgp-mode
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:connection/bgp-ios-xe-oper:total-established,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:connection/bgp-ios-xe-oper:total-dropped,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:connection/bgp-ios-xe-oper:last-reset,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:connection/bgp-ios-xe-oper:reset-reason,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:transport,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:transport/bgp-ios-xe-oper:path-mtu-discovery,leaf,boolean
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:transport/bgp-ios-xe-oper:local-port,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:transport/bgp-ios-xe-oper:local-host,leaf,inet:ip-address
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:transport/bgp-ios-xe-oper:foreign-port,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:transport/bgp-ios-xe-oper:foreign-host,leaf,inet:ip-address
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:transport/bgp-ios-xe-oper:mss,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:prefix-activity,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:prefix-activity/bgp-ios-xe-oper:sent,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:prefix-activity/bgp-ios-xe-oper:sent/bgp-ios-xe-oper:current-prefixes,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:prefix-activity/bgp-ios-xe-oper:sent/bgp-ios-xe-oper:total-prefixes,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:prefix-activity/bgp-ios-xe-oper:sent/bgp-ios-xe-oper:implicit-withdraw,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:prefix-activity/bgp-ios-xe-oper:sent/bgp-ios-xe-oper:explicit-withdraw,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:prefix-activity/bgp-ios-xe-oper:sent/bgp-ios-xe-oper:bestpaths,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:prefix-activity/bgp-ios-xe-oper:sent/bgp-ios-xe-oper:multipaths,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:prefix-activity/bgp-ios-xe-oper:received,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:prefix-activity/bgp-ios-xe-oper:received/bgp-ios-xe-oper:current-prefixes,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:prefix-activity/bgp-ios-xe-oper:received/bgp-ios-xe-oper:total-prefixes,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:prefix-activity/bgp-ios-xe-oper:received/bgp-ios-xe-oper:implicit-withdraw,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:prefix-activity/bgp-ios-xe-oper:received/bgp-ios-xe-oper:explicit-withdraw,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:prefix-activity/bgp-ios-xe-oper:received/bgp-ios-xe-oper:bestpaths,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:prefix-activity/bgp-ios-xe-oper:received/bgp-ios-xe-oper:multipaths,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:neighbors/bgp-ios-xe-oper:neighbor/bgp-ios-xe-oper:as,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:afi-safi,leaf,bgp-common-ios-xe-oper:afi-safi
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:vrf-name,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:router-id,leaf,inet:ip-address
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:bgp-table-version,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:routing-table-version,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:prefixes,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:prefixes/bgp-ios-xe-oper:total-entries,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:prefixes/bgp-ios-xe-oper:memory-usage,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:path,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:path/bgp-ios-xe-oper:total-entries,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:path/bgp-ios-xe-oper:memory-usage,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:as-path,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:as-path/bgp-ios-xe-oper:total-entries,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:as-path/bgp-ios-xe-oper:memory-usage,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:route-map,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:route-map/bgp-ios-xe-oper:total-entries,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:route-map/bgp-ios-xe-oper:memory-usage,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:filter-list,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:filter-list/bgp-ios-xe-oper:total-entries,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:filter-list/bgp-ios-xe-oper:memory-usage,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:activities,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:activities/bgp-ios-xe-oper:prefixes,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:activities/bgp-ios-xe-oper:paths,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:activities/bgp-ios-xe-oper:scan-interval,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:total-memory,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:bgp-neighbor-summaries,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:bgp-neighbor-summaries/bgp-ios-xe-oper:bgp-neighbor-summary,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:bgp-neighbor-summaries/bgp-ios-xe-oper:bgp-neighbor-summary/bgp-ios-xe-oper:id,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:bgp-neighbor-summaries/bgp-ios-xe-oper:bgp-neighbor-summary/bgp-ios-xe-oper:bgp-version,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:bgp-neighbor-summaries/bgp-ios-xe-oper:bgp-neighbor-summary/bgp-ios-xe-oper:messages-received,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:bgp-neighbor-summaries/bgp-ios-xe-oper:bgp-neighbor-summary/bgp-ios-xe-oper:messages-sent,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:bgp-neighbor-summaries/bgp-ios-xe-oper:bgp-neighbor-summary/bgp-ios-xe-oper:table-version,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:bgp-neighbor-summaries/bgp-ios-xe-oper:bgp-neighbor-summary/bgp-ios-xe-oper:input-queue,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:bgp-neighbor-summaries/bgp-ios-xe-oper:bgp-neighbor-summary/bgp-ios-xe-oper:output-queue,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:bgp-neighbor-summaries/bgp-ios-xe-oper:bgp-neighbor-summary/bgp-ios-xe-oper:up-time,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:bgp-neighbor-summaries/bgp-ios-xe-oper:bgp-neighbor-summary/bgp-ios-xe-oper:state,leaf,bgp-ios-xe-oper:bgp-fsm-state
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:bgp-neighbor-summaries/bgp-ios-xe-oper:bgp-neighbor-summary/bgp-ios-xe-oper:prefixes-received,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:bgp-neighbor-summaries/bgp-ios-xe-oper:bgp-neighbor-summary/bgp-ios-xe-oper:dynamically-configured,leaf,boolean
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:bgp-neighbor-summaries/bgp-ios-xe-oper:bgp-neighbor-summary/bgp-ios-xe-oper:as,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:address-families/bgp-ios-xe-oper:address-family/bgp-ios-xe-oper:local-as,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:vrf,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:afi-safi,leaf,bgp-common-ios-xe-oper:afi-safi
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:route-filter,leaf,bgp-route-ios-xe-oper:bgp-route-filters
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:prefix,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:version,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:available-paths,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:advertised-to,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:nexthop,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:metric,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:local-pref,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:weight,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:as-path,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:origin,leaf,bgp-route-ios-xe-oper:bgp-origin-code
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:suppressed,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:damped,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:history,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:valid,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:sourced,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:bestpath,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:internal,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:rib-fail,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:stale,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:multipath,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:backup-path,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:rt-filter,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:best-external,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:additional-path,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:rib-compressed,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:rpki-status,leaf,bgp-route-ios-xe-oper:bgp-rpki-status
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:community,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:mpls-in,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:mpls-out,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:sr-profile-name,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:sr-binding-sid,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:sr-label-indx,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:as4-path,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:atomic-aggregate,leaf,boolean
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:aggr-as-number,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:aggr-as4-number,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:aggr-address,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:originator-id,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:cluster-list,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:extended-community,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:ext-aigp-metric,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-filters/bgp-ios-xe-oper:bgp-route-filter/bgp-ios-xe-oper:bgp-route-entries/bgp-ios-xe-oper:bgp-route-entry/bgp-ios-xe-oper:bgp-path-entries/bgp-ios-xe-oper:bgp-path-entry/bgp-ios-xe-oper:path-id,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:nbr-id,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:nbr-fltr,leaf,bgp-route-ios-xe-oper:bgp-neighbor-route-filters
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:prefix,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:version,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:available-paths,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:advertised-to,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:nexthop,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:metric,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:local-pref,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:weight,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:as-path,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:origin,leaf,bgp-route-ios-xe-oper:bgp-origin-code
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:suppressed,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:damped,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:history,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:valid,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:sourced,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:bestpath,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:internal,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:rib-fail,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:stale,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:multipath,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:backup-path,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:rt-filter,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:best-external,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:additional-path,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:rib-compressed,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:rpki-status,leaf,bgp-route-ios-xe-oper:bgp-rpki-status
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:community,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:mpls-in,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:mpls-out,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:sr-profile-name,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:sr-binding-sid,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:sr-label-indx,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:as4-path,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:atomic-aggregate,leaf,boolean
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:aggr-as-number,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:aggr-as4-number,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:aggr-address,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:originator-id,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:cluster-list,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:extended-community,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:ext-aigp-metric,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-route-neighbors/bgp-ios-xe-oper:bgp-route-neighbor/bgp-ios-xe-oper:bgp-neighbor-route-filters/bgp-ios-xe-oper:bgp-neighbor-route-filter/bgp-ios-xe-oper:bgp-neighbor-route-entries/bgp-ios-xe-oper:bgp-neighbor-route-entry/bgp-ios-xe-oper:bgp-neighbor-path-entries/bgp-ios-xe-oper:bgp-neighbor-path-entry/bgp-ios-xe-oper:path-id,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:name,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:description,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:remote-as,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:bgp-version,leaf,uint16
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:min-time,leaf,uint16
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:num-of-sessions,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:num-estab-sessions,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:num-sso-sessions,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:peer-members,leaf-list,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:fmt-grp-ix,leaf,uint16
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:adv-ix,leaf,uint16
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:aspath-in,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:aspath-out,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:routemap-in,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:routemap-out,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:updated-messages,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:rep-count,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:slowpeer-detection-value,leaf,uint16
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:weight,leaf,uint16
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:send-community,leaf,boolean
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:extended-community,leaf,boolean
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-vrfs/bgp-ios-xe-oper:bgp-route-vrf/bgp-ios-xe-oper:bgp-route-afs/bgp-ios-xe-oper:bgp-route-af/bgp-ios-xe-oper:bgp-peer-groups/bgp-ios-xe-oper:bgp-peer-group/bgp-ios-xe-oper:remove-private-as,leaf,boolean
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:rd-value,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:afi-safi,leaf,bgp-common-ios-xe-oper:afi-safi
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:route-filter,leaf,bgp-route-ios-xe-oper:bgp-route-filters
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:prefix,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:version,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:available-paths,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:advertised-to,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:nexthop,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:metric,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:local-pref,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:weight,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:as-path,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:origin,leaf,bgp-route-ios-xe-oper:bgp-origin-code
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:suppressed,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:damped,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:history,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:valid,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:sourced,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:bestpath,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:internal,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:rib-fail,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:stale,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:multipath,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:backup-path,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:rt-filter,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:best-external,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:additional-path,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:rib-compressed,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:rpki-status,leaf,bgp-route-ios-xe-oper:bgp-rpki-status
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:community,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:mpls-in,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:mpls-out,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:sr-profile-name,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:sr-binding-sid,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:sr-label-indx,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:as4-path,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:atomic-aggregate,leaf,boolean
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:aggr-as-number,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:aggr-as4-number,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:aggr-address,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:originator-id,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:cluster-list,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:extended-community,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:ext-aigp-metric,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-filters/bgp-ios-xe-oper:bgp-rd-route-filter/bgp-ios-xe-oper:bgp-rd-route-entries/bgp-ios-xe-oper:bgp-rd-route-entry/bgp-ios-xe-oper:bgp-rd-path-entries/bgp-ios-xe-oper:bgp-rd-path-entry/bgp-ios-xe-oper:path-id,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:neighbor-id,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:neighbor-filter,leaf,bgp-route-ios-xe-oper:bgp-neighbor-route-filters
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:prefix,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:version,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:available-paths,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:advertised-to,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry,list,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:nexthop,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:metric,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:local-pref,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:weight,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:as-path,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:origin,leaf,bgp-route-ios-xe-oper:bgp-origin-code
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status,container,
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:suppressed,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:damped,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:history,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:valid,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:sourced,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:bestpath,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:internal,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:rib-fail,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:stale,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:multipath,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:backup-path,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:rt-filter,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:best-external,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:additional-path,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-status/bgp-ios-xe-oper:rib-compressed,leaf,empty
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:rpki-status,leaf,bgp-route-ios-xe-oper:bgp-rpki-status
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:community,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:mpls-in,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:mpls-out,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:sr-profile-name,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:sr-binding-sid,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:sr-label-indx,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:as4-path,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:atomic-aggregate,leaf,boolean
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:aggr-as-number,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:aggr-as4-number,leaf,uint32
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:aggr-address,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:originator-id,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:cluster-list,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:extended-community,leaf,string
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:ext-aigp-metric,leaf,uint64
+/bgp-ios-xe-oper:bgp-state-data/bgp-ios-xe-oper:bgp-route-rds/bgp-ios-xe-oper:bgp-route-rd/bgp-ios-xe-oper:bgp-rd-route-afs/bgp-ios-xe-oper:bgp-rd-route-af/bgp-ios-xe-oper:bgp-rd-route-neighbors/bgp-ios-xe-oper:bgp-rd-route-neighbor/bgp-ios-xe-oper:bgp-rd-neighbor-route-filters/bgp-ios-xe-oper:bgp-rd-neighbor-route-filter/bgp-ios-xe-oper:bgp-rd-neighbor-route-entries/bgp-ios-xe-oper:bgp-rd-neighbor-route-entry/bgp-ios-xe-oper:bgp-rd-neighbor-path-entries/bgp-ios-xe-oper:bgp-rd-neighbor-path-entry/bgp-ios-xe-oper:path-id,leaf,uint32

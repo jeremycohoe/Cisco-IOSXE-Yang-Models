@@ -1,0 +1,220 @@
+ 
+KPI for model: Cisco-IOS-XE-fw-oper.yang
+module: Cisco-IOS-XE-fw-oper
+  +--ro fw-oper-data
+     +--ro fw-drop-stats!
+     |  +--ro catch-all?                                        uint64
+     |  +--ro l4-max-halfsession?                               uint64
+     |  +--ro l4-too-many-pkts?                                 uint64
+     |  +--ro l4-session-limit?                                 uint64
+     |  +--ro l4-invalid-hdr?                                   uint64
+     |  +--ro l4-internal-err-undefined-dir?                    uint64
+     |  +--ro l4-scb-close?                                     uint64
+     |  +--ro l4-tcp-invalid-ack-flag?                          uint64
+     |  +--ro l4-tcp-invalid-ack-num?                           uint64
+     |  +--ro l4-tcp-invalid-tcp-initiator?                     uint64
+     |  +--ro l4-tcp-syn-with-data?                             uint64
+     |  +--ro l4-tcp-invalid-win-scale-option?                  uint64
+     |  +--ro l4-tcp-invalid-seg-synsent-state?                 uint64
+     |  +--ro l4-tcp-invalid-seg-synrcvd-state?                 uint64
+     |  +--ro l4-tcp-invalid-seg-pkt-too-old?                   uint64
+     |  +--ro l4-tcp-invalid-seg-pkt-win-overflow?              uint64
+     |  +--ro l4-tcp-invalid-seg-pyld-after-fin-send?           uint64
+     |  +--ro l4-tcp-invalid-flags?                             uint64
+     |  +--ro l4-tcp-invalid-seq?                               uint64
+     |  +--ro l4-tcp-retrans-invalid-flags?                     uint64
+     |  +--ro l4-tcp-l7-ooo-seg?                                uint64
+     |  +--ro l4-tcp-syn-flood-drop?                            uint64
+     |  +--ro l4-tcp-internal-err-synflood-alloc-hostdb-fail?   uint64
+     |  +--ro l4-tcp-synflood-blackout-drop?                    uint64
+     |  +--ro l4-tcp-unexpect-tcp-payload?                      uint64
+     |  +--ro l4-tcp-syn-in-win?                                uint64
+     |  +--ro l4-tcp-rst-in-win?                                uint64
+     |  +--ro l4-tcp-stray-seg?                                 uint64
+     |  +--ro l4-tcp-rst-to-resp?                               uint64
+     |  +--ro insp-pam-lookup-fail?                             uint64
+     |  +--ro insp-internal-err-get-stat-blk-fail?              uint64
+     |  +--ro insp-dstaddr-lookup-fail?                         uint64
+     |  +--ro insp-policy-not-present?                          uint64
+     |  +--ro insp-sess-miss-policy-not-present?                uint64
+     |  +--ro insp-classification-fail?                         uint64
+     |  +--ro insp-class-action-drop?                           uint64
+     |  +--ro insp-policy-misconfigure?                         uint64
+     |  +--ro l4-icmp-too-many-err-pkts?                        uint64
+     |  +--ro l4-icmp-internal-err-no-nat?                      uint64
+     |  +--ro l4-icmp-internal-err-alloc-fail?                  uint64
+     |  +--ro l4-icmp-internal-err-get-stat-blk-fail?           uint64
+     |  +--ro l4-icmp-internal-err-dir-not-identified?          uint64
+     |  +--ro l4-icmp-scb-close?                                uint64
+     |  +--ro l4-icmp-pkt-no-ip-hdr?                            uint64
+     |  +--ro l4-icmp-pkt-too-short?                            uint64
+     |  +--ro l4-icmp-err-no-ip-no-icmp?                        uint64
+     |  +--ro l4-icmp-err-pkts-burst?                           uint64
+     |  +--ro l4-icmp-err-multiple-unreach?                     uint64
+     |  +--ro l4-icmp-err-l4-invalid-seq?                       uint64
+     |  +--ro l4-icmp-err-l4-invalid-ack?                       uint64
+     |  +--ro l4-icmp-err-policy-not-present?                   uint64
+     |  +--ro l4-icmp-err-classification-fail?                  uint64
+     |  +--ro syncookie-max-dst?                                uint64
+     |  +--ro syncookie-internal-err-alloc-fail?                uint64
+     |  +--ro syncookie-trigger?                                uint64
+     |  +--ro policy-fragment-drop?                             uint64
+     |  +--ro policy-action-drop?                               uint64
+     |  +--ro policy-icmp-action-drop?                          uint64
+     |  +--ro l7-type-drop?                                     uint64
+     |  +--ro l7-no-seg?                                        uint64
+     |  +--ro l7-no-frag?                                       uint64
+     |  +--ro l7-unknown-proto?                                 uint64
+     |  +--ro l7-alg-ret-drop?                                  uint64
+     |  +--ro l7-promote-fail-no-zone-pair?                     uint64
+     |  +--ro l7-promote-fail-no-policy?                        uint64
+     |  +--ro no-session?                                       uint64
+     |  +--ro no-new-session?                                   uint64
+     |  +--ro not-initiator?                                    uint64
+     |  +--ro invalid-zone?                                     uint64
+     |  +--ro ha-ar-standby?                                    uint64
+     |  +--ro no-forwarding-zone?                               uint64
+     |  +--ro backpressure?                                     uint64
+     |  +--ro zone-mismatch?                                    uint64
+     |  +--ro fdb-err?                                          uint64
+     |  +--ro lisp-header-restore-fail?                         uint64
+     |  +--ro lisp-inner-pkt-insane?                            uint64
+     |  +--ro lisp-inner-ipv4-insane?                           uint64
+     |  +--ro lisp-inner-ipv6-insane?                           uint64
+     +--ro fw-zonepair-entries* [zonepair-name]
+        +--ro zonepair-name             string
+        +--ro src-zone-name?            string
+        +--ro dst-zone-name?            string
+        +--ro policy-name?              string
+        +--ro fw-traffic-class-entry* [class-name]
+           +--ro class-name                        string
+           +--ro zonepair-name?                    string
+           +--ro class-action?                     string
+           +--ro pkts-counter?                     uint64
+           +--ro bytes-counter?                    uint64
+           +--ro attempted-conn?                   uint64
+           +--ro current-active-conn?              uint64
+           +--ro max-active-conn?                  uint64
+           +--ro current-halfopen-conn?            uint64
+           +--ro max-halfopen-conn?                uint64
+           +--ro current-terminating-conn?         uint64
+           +--ro max-terminating-conn?             uint64
+           +--ro time-since-last-session-create?   uint64
+           +--ro fw-tc-match-entry* [match-name match-type-id]
+           |  +--ro match-name       string
+           |  +--ro match-type-id    uint8
+           |  +--ro match-type?      string
+           +--ro fw-tc-proto-entry* [proto-id]
+              +--ro proto-id         uint16
+              +--ro protocol-name?   string
+              +--ro byte-counters?   uint64
+              +--ro pkt-counters?    uint64
+Xpaths for model: Cisco-IOS-XE-fw-oper.yang
+/fw-ios-xe-oper:fw-oper-data,container,
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats,container,
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:catch-all,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-max-halfsession,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-too-many-pkts,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-session-limit,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-invalid-hdr,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-internal-err-undefined-dir,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-scb-close,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-invalid-ack-flag,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-invalid-ack-num,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-invalid-tcp-initiator,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-syn-with-data,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-invalid-win-scale-option,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-invalid-seg-synsent-state,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-invalid-seg-synrcvd-state,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-invalid-seg-pkt-too-old,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-invalid-seg-pkt-win-overflow,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-invalid-seg-pyld-after-fin-send,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-invalid-flags,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-invalid-seq,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-retrans-invalid-flags,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-l7-ooo-seg,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-syn-flood-drop,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-internal-err-synflood-alloc-hostdb-fail,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-synflood-blackout-drop,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-unexpect-tcp-payload,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-syn-in-win,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-rst-in-win,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-stray-seg,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-tcp-rst-to-resp,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:insp-pam-lookup-fail,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:insp-internal-err-get-stat-blk-fail,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:insp-dstaddr-lookup-fail,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:insp-policy-not-present,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:insp-sess-miss-policy-not-present,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:insp-classification-fail,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:insp-class-action-drop,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:insp-policy-misconfigure,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-icmp-too-many-err-pkts,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-icmp-internal-err-no-nat,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-icmp-internal-err-alloc-fail,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-icmp-internal-err-get-stat-blk-fail,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-icmp-internal-err-dir-not-identified,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-icmp-scb-close,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-icmp-pkt-no-ip-hdr,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-icmp-pkt-too-short,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-icmp-err-no-ip-no-icmp,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-icmp-err-pkts-burst,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-icmp-err-multiple-unreach,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-icmp-err-l4-invalid-seq,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-icmp-err-l4-invalid-ack,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-icmp-err-policy-not-present,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l4-icmp-err-classification-fail,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:syncookie-max-dst,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:syncookie-internal-err-alloc-fail,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:syncookie-trigger,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:policy-fragment-drop,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:policy-action-drop,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:policy-icmp-action-drop,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l7-type-drop,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l7-no-seg,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l7-no-frag,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l7-unknown-proto,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l7-alg-ret-drop,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l7-promote-fail-no-zone-pair,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:l7-promote-fail-no-policy,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:no-session,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:no-new-session,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:not-initiator,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:invalid-zone,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:ha-ar-standby,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:no-forwarding-zone,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:backpressure,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:zone-mismatch,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:fdb-err,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:lisp-header-restore-fail,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:lisp-inner-pkt-insane,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:lisp-inner-ipv4-insane,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-drop-stats/fw-ios-xe-oper:lisp-inner-ipv6-insane,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries,list,
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:zonepair-name,leaf,string
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:src-zone-name,leaf,string
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:dst-zone-name,leaf,string
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:policy-name,leaf,string
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry,list,
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:class-name,leaf,string
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:zonepair-name,leaf,string
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:class-action,leaf,string
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:pkts-counter,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:bytes-counter,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:attempted-conn,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:current-active-conn,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:max-active-conn,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:current-halfopen-conn,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:max-halfopen-conn,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:current-terminating-conn,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:max-terminating-conn,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:time-since-last-session-create,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:fw-tc-match-entry,list,
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:fw-tc-match-entry/fw-ios-xe-oper:match-name,leaf,string
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:fw-tc-match-entry/fw-ios-xe-oper:match-type-id,leaf,uint8
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:fw-tc-match-entry/fw-ios-xe-oper:match-type,leaf,string
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:fw-tc-proto-entry,list,
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:fw-tc-proto-entry/fw-ios-xe-oper:proto-id,leaf,uint16
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:fw-tc-proto-entry/fw-ios-xe-oper:protocol-name,leaf,string
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:fw-tc-proto-entry/fw-ios-xe-oper:byte-counters,leaf,uint64
+/fw-ios-xe-oper:fw-oper-data/fw-ios-xe-oper:fw-zonepair-entries/fw-ios-xe-oper:fw-traffic-class-entry/fw-ios-xe-oper:fw-tc-proto-entry/fw-ios-xe-oper:pkt-counters,leaf,uint64

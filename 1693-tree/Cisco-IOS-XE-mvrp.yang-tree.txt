@@ -1,0 +1,146 @@
+ 
+KPI for model: Cisco-IOS-XE-mvrp.yang
+
+module: Cisco-IOS-XE-mvrp
+  augment /ios:native/ios:mvrp:
+    +--rw global?         empty
+    +--rw mac-learning
+    |  +--rw auto?   empty
+    +--rw vlan
+       +--rw create?   empty
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw mvrp!
+       +--rw mvrp?           empty
+       +--rw registration
+       |  +--rw fixed?       empty
+       |  +--rw forbidden?   empty
+       |  +--rw normal?      empty
+       +--rw timer
+          +--rw join!
+          |  +--rw _range?   uint32
+          +--rw leave!
+          |  +--rw _range?   uint32
+          +--rw leave-all!
+          |  +--rw _range?   uint32
+          +--rw periodic?    empty
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw mvrp!
+       +--rw mvrp?           empty
+       +--rw registration
+       |  +--rw fixed?       empty
+       |  +--rw forbidden?   empty
+       |  +--rw normal?      empty
+       +--rw timer
+          +--rw join!
+          |  +--rw _range?   uint32
+          +--rw leave!
+          |  +--rw _range?   uint32
+          +--rw leave-all!
+          |  +--rw _range?   uint32
+          +--rw periodic?    empty
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw mvrp!
+       +--rw mvrp?           empty
+       +--rw registration
+       |  +--rw fixed?       empty
+       |  +--rw forbidden?   empty
+       |  +--rw normal?      empty
+       +--rw timer
+          +--rw join!
+          |  +--rw _range?   uint32
+          +--rw leave!
+          |  +--rw _range?   uint32
+          +--rw leave-all!
+          |  +--rw _range?   uint32
+          +--rw periodic?    empty
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw mvrp!
+       +--rw mvrp?           empty
+       +--rw registration
+       |  +--rw fixed?       empty
+       |  +--rw forbidden?   empty
+       |  +--rw normal?      empty
+       +--rw timer
+          +--rw join!
+          |  +--rw _range?   uint32
+          +--rw leave!
+          |  +--rw _range?   uint32
+          +--rw leave-all!
+          |  +--rw _range?   uint32
+          +--rw periodic?    empty
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw mvrp!
+       +--rw mvrp?           empty
+       +--rw registration
+       |  +--rw fixed?       empty
+       |  +--rw forbidden?   empty
+       |  +--rw normal?      empty
+       +--rw timer
+          +--rw join!
+          |  +--rw _range?   uint32
+          +--rw leave!
+          |  +--rw _range?   uint32
+          +--rw leave-all!
+          |  +--rw _range?   uint32
+          +--rw periodic?    empty
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw mvrp!
+       +--rw mvrp?           empty
+       +--rw registration
+       |  +--rw fixed?       empty
+       |  +--rw forbidden?   empty
+       |  +--rw normal?      empty
+       +--rw timer
+          +--rw join!
+          |  +--rw _range?   uint32
+          +--rw leave!
+          |  +--rw _range?   uint32
+          +--rw leave-all!
+          |  +--rw _range?   uint32
+          +--rw periodic?    empty
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw mvrp!
+       +--rw mvrp?           empty
+       +--rw registration
+       |  +--rw fixed?       empty
+       |  +--rw forbidden?   empty
+       |  +--rw normal?      empty
+       +--rw timer
+          +--rw join!
+          |  +--rw _range?   uint32
+          +--rw leave!
+          |  +--rw _range?   uint32
+          +--rw leave-all!
+          |  +--rw _range?   uint32
+          +--rw periodic?    empty
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw mvrp!
+       +--rw mvrp?           empty
+       +--rw registration
+       |  +--rw fixed?       empty
+       |  +--rw forbidden?   empty
+       |  +--rw normal?      empty
+       +--rw timer
+          +--rw join!
+          |  +--rw _range?   uint32
+          +--rw leave!
+          |  +--rw _range?   uint32
+          +--rw leave-all!
+          |  +--rw _range?   uint32
+          +--rw periodic?    empty
+  augment /ios:native/ios:interface/ios:Port-channel:
+    +--rw mvrp!
+       +--rw mvrp?           empty
+       +--rw registration
+       |  +--rw fixed?       empty
+       |  +--rw forbidden?   empty
+       |  +--rw normal?      empty
+       +--rw timer
+          +--rw join!
+          |  +--rw _range?   uint32
+          +--rw leave!
+          |  +--rw _range?   uint32
+          +--rw leave-all!
+          |  +--rw _range?   uint32
+          +--rw periodic?    empty
+Xpaths for model: Cisco-IOS-XE-mvrp.yang

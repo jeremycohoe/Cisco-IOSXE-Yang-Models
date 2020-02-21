@@ -1,0 +1,167 @@
+ 
+KPI for model: Cisco-IOS-XE-ezpm.yang
+
+module: Cisco-IOS-XE-ezpm
+  augment /ios:native/ios:performance:
+    +--rw monitor
+       +--rw context* [name]
+       |  +--rw name               string
+       |  +--rw profile?           enumeration
+       |  +--rw default
+       |  |  +--rw description?       empty
+       |  |  +--rw exporter
+       |  |  |  +--rw destination?   inet:ip-address
+       |  |  |  +--rw source?        string
+       |  |  |  +--rw port?          uint16
+       |  |  |  +--rw transport?     enumeration
+       |  |  |  +--rw vrf?           string
+       |  |  +--rw traffic-monitor
+       |  |     +--rw all!
+       |  |     |  +--rw ipv4?   empty
+       |  |     |  +--rw ipv6?   empty
+       |  |     +--rw application-response-time!
+       |  |     |  +--rw cache-size?         uint32
+       |  |     |  +--rw class-replace?      string
+       |  |     |  +--rw interval-timeout?   uint32
+       |  |     |  +--rw cache-type?         enumeration
+       |  |     |  +--rw class-and?          string
+       |  |     |  +--rw ipv4?               empty
+       |  |     |  +--rw ipv6?               empty
+       |  |     +--rw application-traffic-stats!
+       |  |     |  +--rw cache-size?         uint32
+       |  |     |  +--rw class-replace?      string
+       |  |     |  +--rw interval-timeout?   uint32
+       |  |     +--rw conversation-traffic-stats!
+       |  |     |  +--rw cache-size?         uint32
+       |  |     |  +--rw class-replace?      string
+       |  |     |  +--rw interval-timeout?   uint32
+       |  |     |  +--rw cache-type?         enumeration
+       |  |     |  +--rw ipv4?               empty
+       |  |     |  +--rw ipv6?               empty
+       |  |     +--rw media!
+       |  |     |  +--rw cache-size?         uint32
+       |  |     |  +--rw class-replace?      string
+       |  |     |  +--rw interval-timeout?   uint32
+       |  |     |  +--rw class-and?          string
+       |  |     |  +--rw egress?             empty
+       |  |     |  +--rw ingress?            empty
+       |  |     |  +--rw ipv4?               empty
+       |  |     |  +--rw ipv6?               empty
+       |  |     +--rw url!
+       |  |     |  +--rw cache-size?      uint32
+       |  |     |  +--rw class-and?       string
+       |  |     |  +--rw class-replace?   string
+       |  |     |  +--rw ipv4?            empty
+       |  |     |  +--rw ipv6?            empty
+       |  |     |  +--rw sampling-rate?   uint32
+       |  |     +--rw application-client-server-stats!
+       |  |     |  +--rw cache-size?         uint32
+       |  |     |  +--rw class-replace?      string
+       |  |     |  +--rw interval-timeout?   uint32
+       |  |     |  +--rw cache-type?         enumeration
+       |  |     |  +--rw ipv4?               empty
+       |  |     |  +--rw ipv6?               empty
+       |  |     +--rw application-stats!
+       |  |        +--rw cache-size?         uint32
+       |  |        +--rw class-replace?      string
+       |  |        +--rw interval-timeout?   uint32
+       |  +--rw description?       string
+       |  +--rw exporter
+       |  |  +--rw destination?   inet:ip-address
+       |  |  +--rw source?        string
+       |  |  +--rw port?          uint16
+       |  |  +--rw transport?     enumeration
+       |  |  +--rw vrf?           string
+       |  +--rw traffic-monitor
+       |     +--rw all!
+       |     |  +--rw ipv4?   empty
+       |     |  +--rw ipv6?   empty
+       |     +--rw application-response-time!
+       |     |  +--rw cache-size?         uint32
+       |     |  +--rw class-replace?      string
+       |     |  +--rw interval-timeout?   uint32
+       |     |  +--rw cache-type?         enumeration
+       |     |  +--rw class-and?          string
+       |     |  +--rw ipv4?               empty
+       |     |  +--rw ipv6?               empty
+       |     +--rw application-traffic-stats!
+       |     |  +--rw cache-size?         uint32
+       |     |  +--rw class-replace?      string
+       |     |  +--rw interval-timeout?   uint32
+       |     +--rw conversation-traffic-stats!
+       |     |  +--rw cache-size?         uint32
+       |     |  +--rw class-replace?      string
+       |     |  +--rw interval-timeout?   uint32
+       |     |  +--rw cache-type?         enumeration
+       |     |  +--rw ipv4?               empty
+       |     |  +--rw ipv6?               empty
+       |     +--rw media!
+       |     |  +--rw cache-size?         uint32
+       |     |  +--rw class-replace?      string
+       |     |  +--rw interval-timeout?   uint32
+       |     |  +--rw class-and?          string
+       |     |  +--rw egress?             empty
+       |     |  +--rw ingress?            empty
+       |     |  +--rw ipv4?               empty
+       |     |  +--rw ipv6?               empty
+       |     +--rw url!
+       |     |  +--rw cache-size?      uint32
+       |     |  +--rw class-and?       string
+       |     |  +--rw class-replace?   string
+       |     |  +--rw ipv4?            empty
+       |     |  +--rw ipv6?            empty
+       |     |  +--rw sampling-rate?   uint32
+       |     +--rw application-client-server-stats!
+       |     |  +--rw cache-size?         uint32
+       |     |  +--rw class-replace?      string
+       |     |  +--rw interval-timeout?   uint32
+       |     |  +--rw cache-type?         enumeration
+       |     |  +--rw ipv4?               empty
+       |     |  +--rw ipv6?               empty
+       |     +--rw application-stats!
+       |        +--rw cache-size?         uint32
+       |        +--rw class-replace?      string
+       |        +--rw interval-timeout?   uint32
+       +--rw observation-point
+          +--rw encrypted-text?   empty
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw performance {ios-features:ezpm}?
+       +--rw monitor
+          +--rw context*   string
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw performance {ios-features:ezpm}?
+       +--rw monitor
+          +--rw context*   string
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw performance {ios-features:ezpm}?
+       +--rw monitor
+          +--rw context*   string
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw performance {ios-features:ezpm}?
+       +--rw monitor
+          +--rw context*   string
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw performance {ios-features:ezpm}?
+       +--rw monitor
+          +--rw context*   string
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw performance {ios-features:ezpm}?
+       +--rw monitor
+          +--rw context*   string
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw performance {ios-features:ezpm}?
+       +--rw monitor
+          +--rw context*   string
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw performance {ios-features:ezpm}?
+       +--rw monitor
+          +--rw context*   string
+  augment /ios:native/ios:interface/ios:Tunnel:
+    +--rw performance {ios-features:ezpm}?
+       +--rw monitor
+          +--rw context*   string
+  augment /ios:native/ios:interface/ios:Loopback:
+    +--rw performance {ios-features:ezpm}?
+       +--rw monitor
+          +--rw context*   string
+Xpaths for model: Cisco-IOS-XE-ezpm.yang

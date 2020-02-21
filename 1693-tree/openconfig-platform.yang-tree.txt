@@ -1,0 +1,79 @@
+ 
+KPI for model: openconfig-platform.yang
+module: openconfig-platform
+  +--rw components
+     +--rw component* [name]
+        +--rw name             -> ../config/name
+        +--rw config
+        |  +--rw name?   string
+        +--ro state
+        |  +--ro name?          string
+        |  +--ro type?          union
+        |  +--ro id?            string
+        |  +--ro description?   string
+        |  +--ro mfg-name?      string
+        |  +--ro version?       string
+        |  +--ro serial-no?     string
+        |  +--ro part-no?       string
+        |  +--ro temperature
+        |     +--ro instant?   decimal64
+        |     +--ro avg?       decimal64
+        |     +--ro min?       decimal64
+        |     +--ro max?       decimal64
+        +--rw properties
+        |  +--rw property* [name]
+        |     +--rw name      -> ../config/name
+        |     +--rw config
+        |     |  +--rw name?    string
+        |     |  +--rw value?   union
+        |     +--ro state
+        |        +--ro name?           string
+        |        +--ro value?          union
+        |        +--ro configurable?   boolean
+        +--rw subcomponents
+           +--rw subcomponent* [name]
+              +--rw name      -> ../config/name
+              +--rw config
+              |  +--rw name?   -> ../../../../../component/config/name
+              +--ro state
+                 +--ro name?   -> ../../../../../component/config/name
+
+  augment /oc-if:interfaces/oc-if:interface/oc-if:state:
+    +--ro hardware-port?   -> /components/component/name
+Xpaths for model: openconfig-platform.yang
+/oc-platform:components,container,
+/oc-platform:components/oc-platform:component,list,
+/oc-platform:components/oc-platform:component/oc-platform:name,leaf,leafref
+/oc-platform:components/oc-platform:component/oc-platform:config,container,
+/oc-platform:components/oc-platform:component/oc-platform:config/oc-platform:name,leaf,string
+/oc-platform:components/oc-platform:component/oc-platform:state,container,
+/oc-platform:components/oc-platform:component/oc-platform:state/oc-platform:name,leaf,string
+/oc-platform:components/oc-platform:component/oc-platform:state/oc-platform:type,leaf,union
+/oc-platform:components/oc-platform:component/oc-platform:state/oc-platform:id,leaf,string
+/oc-platform:components/oc-platform:component/oc-platform:state/oc-platform:description,leaf,string
+/oc-platform:components/oc-platform:component/oc-platform:state/oc-platform:mfg-name,leaf,string
+/oc-platform:components/oc-platform:component/oc-platform:state/oc-platform:version,leaf,string
+/oc-platform:components/oc-platform:component/oc-platform:state/oc-platform:serial-no,leaf,string
+/oc-platform:components/oc-platform:component/oc-platform:state/oc-platform:part-no,leaf,string
+/oc-platform:components/oc-platform:component/oc-platform:state/oc-platform:temperature,container,
+/oc-platform:components/oc-platform:component/oc-platform:state/oc-platform:temperature/oc-platform:instant,leaf,decimal64
+/oc-platform:components/oc-platform:component/oc-platform:state/oc-platform:temperature/oc-platform:avg,leaf,decimal64
+/oc-platform:components/oc-platform:component/oc-platform:state/oc-platform:temperature/oc-platform:min,leaf,decimal64
+/oc-platform:components/oc-platform:component/oc-platform:state/oc-platform:temperature/oc-platform:max,leaf,decimal64
+/oc-platform:components/oc-platform:component/oc-platform:properties,container,
+/oc-platform:components/oc-platform:component/oc-platform:properties/oc-platform:property,list,
+/oc-platform:components/oc-platform:component/oc-platform:properties/oc-platform:property/oc-platform:name,leaf,leafref
+/oc-platform:components/oc-platform:component/oc-platform:properties/oc-platform:property/oc-platform:config,container,
+/oc-platform:components/oc-platform:component/oc-platform:properties/oc-platform:property/oc-platform:config/oc-platform:name,leaf,string
+/oc-platform:components/oc-platform:component/oc-platform:properties/oc-platform:property/oc-platform:config/oc-platform:value,leaf,union
+/oc-platform:components/oc-platform:component/oc-platform:properties/oc-platform:property/oc-platform:state,container,
+/oc-platform:components/oc-platform:component/oc-platform:properties/oc-platform:property/oc-platform:state/oc-platform:name,leaf,string
+/oc-platform:components/oc-platform:component/oc-platform:properties/oc-platform:property/oc-platform:state/oc-platform:value,leaf,union
+/oc-platform:components/oc-platform:component/oc-platform:properties/oc-platform:property/oc-platform:state/oc-platform:configurable,leaf,boolean
+/oc-platform:components/oc-platform:component/oc-platform:subcomponents,container,
+/oc-platform:components/oc-platform:component/oc-platform:subcomponents/oc-platform:subcomponent,list,
+/oc-platform:components/oc-platform:component/oc-platform:subcomponents/oc-platform:subcomponent/oc-platform:name,leaf,leafref
+/oc-platform:components/oc-platform:component/oc-platform:subcomponents/oc-platform:subcomponent/oc-platform:config,container,
+/oc-platform:components/oc-platform:component/oc-platform:subcomponents/oc-platform:subcomponent/oc-platform:config/oc-platform:name,leaf,leafref
+/oc-platform:components/oc-platform:component/oc-platform:subcomponents/oc-platform:subcomponent/oc-platform:state,container,
+/oc-platform:components/oc-platform:component/oc-platform:subcomponents/oc-platform:subcomponent/oc-platform:state/oc-platform:name,leaf,leafref

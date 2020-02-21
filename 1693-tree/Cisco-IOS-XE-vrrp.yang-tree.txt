@@ -1,0 +1,684 @@
+ 
+KPI for model: Cisco-IOS-XE-vrrp.yang
+
+module: Cisco-IOS-XE-vrrp
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw vrrp
+       +--rw vrrp-group* [group-id]
+       |  +--rw group-id          uint8
+       |  +--rw address-family
+       |     +--rw ipv4!
+       |     |  +--rw vrrpv2?           empty
+       |     |  +--rw address
+       |     |  |  +--rw primary
+       |     |  |  |  +--rw address?   inet:ipv4-address
+       |     |  |  |  +--rw primary?   empty
+       |     |  |  +--rw secondary* [address]
+       |     |  |     +--rw address      inet:ipv4-address
+       |     |  |     +--rw secondary    empty
+       |     |  +--rw description?      string
+       |     |  +--rw match-address?    empty
+       |     |  +--rw preempt-config
+       |     |  |  +--rw preempt?   boolean
+       |     |  +--rw preempt
+       |     |  |  +--rw delay
+       |     |  |     +--rw minimum?   uint16
+       |     |  +--rw priority?         uint8
+       |     |  +--rw shutdown?         empty
+       |     |  +--rw timers
+       |     |  |  +--rw advertise?   uint16
+       |     |  +--rw track
+       |     |  |  +--rw event* [object-id]
+       |     |  |     +--rw object-id          uint16
+       |     |  |     +--rw (action)
+       |     |  |        +--:(priority)
+       |     |  |        |  +--rw decrement?   uint8
+       |     |  |        +--:(other)
+       |     |  |           +--rw shutdown?    empty
+       |     |  +--rw vrrs
+       |     |     +--rw leader?   string
+       |     +--rw ipv6!
+       |        +--rw address
+       |        |  +--rw primary
+       |        |  |  +--rw ipv6-link-local?   inet:ipv6-address
+       |        |  |  +--rw primary?           empty
+       |        |  +--rw ipv6-prefix* [prefix]
+       |        |     +--rw prefix    ios-types:ipv6-prefix
+       |        +--rw description?      string
+       |        +--rw match-address?    empty
+       |        +--rw preempt-config
+       |        |  +--rw preempt?   boolean
+       |        +--rw preempt
+       |        |  +--rw delay
+       |        |     +--rw minimum?   uint16
+       |        +--rw priority?         uint8
+       |        +--rw shutdown?         empty
+       |        +--rw timers
+       |        |  +--rw advertise?   uint16
+       |        +--rw track
+       |        |  +--rw event* [object-id]
+       |        |     +--rw object-id          uint16
+       |        |     +--rw (action)
+       |        |        +--:(priority)
+       |        |        |  +--rw decrement?   uint8
+       |        |        +--:(other)
+       |        |           +--rw shutdown?    empty
+       |        +--rw vrrs
+       |           +--rw leader?   string
+       +--rw vrrp-group-v2* [group-id]
+       |  +--rw group-id          uint8
+       |  +--rw authentication
+       |  |  +--rw text?   string
+       |  +--rw description?      string
+       |  +--rw ip
+       |  |  +--rw primary
+       |  |  |  +--rw address?   inet:ipv4-address
+       |  |  +--rw secondary* [address]
+       |  |     +--rw address      inet:ipv4-address
+       |  |     +--rw secondary    empty
+       |  +--rw name?             string
+       |  +--rw preempt-config
+       |  |  +--rw preempt?   boolean
+       |  +--rw preempt
+       |  |  +--rw delay
+       |  |     +--rw minimum?   uint16
+       |  +--rw priority?         uint8
+       |  +--rw shutdown?         empty
+       |  +--rw timers
+       |  |  +--rw advertise
+       |  |  |  +--rw (interval-setting)?
+       |  |  |     +--:(second)
+       |  |  |     |  +--rw interval?   uint8
+       |  |  |     +--:(milisecond)
+       |  |  |        +--rw msec?       uint16
+       |  |  +--rw learn?       empty
+       |  +--rw track
+       |     +--rw event* [object-id]
+       |        +--rw object-id    uint16
+       |        +--rw decrement?   uint8
+       +--rw delay
+          +--rw reload?    uint16
+          +--rw minimum?   uint16
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw vrrp
+       +--rw vrrp-group* [group-id]
+       |  +--rw group-id          uint8
+       |  +--rw address-family
+       |     +--rw ipv4!
+       |     |  +--rw vrrpv2?           empty
+       |     |  +--rw address
+       |     |  |  +--rw primary
+       |     |  |  |  +--rw address?   inet:ipv4-address
+       |     |  |  |  +--rw primary?   empty
+       |     |  |  +--rw secondary* [address]
+       |     |  |     +--rw address      inet:ipv4-address
+       |     |  |     +--rw secondary    empty
+       |     |  +--rw description?      string
+       |     |  +--rw match-address?    empty
+       |     |  +--rw preempt-config
+       |     |  |  +--rw preempt?   boolean
+       |     |  +--rw preempt
+       |     |  |  +--rw delay
+       |     |  |     +--rw minimum?   uint16
+       |     |  +--rw priority?         uint8
+       |     |  +--rw shutdown?         empty
+       |     |  +--rw timers
+       |     |  |  +--rw advertise?   uint16
+       |     |  +--rw track
+       |     |  |  +--rw event* [object-id]
+       |     |  |     +--rw object-id          uint16
+       |     |  |     +--rw (action)
+       |     |  |        +--:(priority)
+       |     |  |        |  +--rw decrement?   uint8
+       |     |  |        +--:(other)
+       |     |  |           +--rw shutdown?    empty
+       |     |  +--rw vrrs
+       |     |     +--rw leader?   string
+       |     +--rw ipv6!
+       |        +--rw address
+       |        |  +--rw primary
+       |        |  |  +--rw ipv6-link-local?   inet:ipv6-address
+       |        |  |  +--rw primary?           empty
+       |        |  +--rw ipv6-prefix* [prefix]
+       |        |     +--rw prefix    ios-types:ipv6-prefix
+       |        +--rw description?      string
+       |        +--rw match-address?    empty
+       |        +--rw preempt-config
+       |        |  +--rw preempt?   boolean
+       |        +--rw preempt
+       |        |  +--rw delay
+       |        |     +--rw minimum?   uint16
+       |        +--rw priority?         uint8
+       |        +--rw shutdown?         empty
+       |        +--rw timers
+       |        |  +--rw advertise?   uint16
+       |        +--rw track
+       |        |  +--rw event* [object-id]
+       |        |     +--rw object-id          uint16
+       |        |     +--rw (action)
+       |        |        +--:(priority)
+       |        |        |  +--rw decrement?   uint8
+       |        |        +--:(other)
+       |        |           +--rw shutdown?    empty
+       |        +--rw vrrs
+       |           +--rw leader?   string
+       +--rw vrrp-group-v2* [group-id]
+       |  +--rw group-id          uint8
+       |  +--rw authentication
+       |  |  +--rw text?   string
+       |  +--rw description?      string
+       |  +--rw ip
+       |  |  +--rw primary
+       |  |  |  +--rw address?   inet:ipv4-address
+       |  |  +--rw secondary* [address]
+       |  |     +--rw address      inet:ipv4-address
+       |  |     +--rw secondary    empty
+       |  +--rw name?             string
+       |  +--rw preempt-config
+       |  |  +--rw preempt?   boolean
+       |  +--rw preempt
+       |  |  +--rw delay
+       |  |     +--rw minimum?   uint16
+       |  +--rw priority?         uint8
+       |  +--rw shutdown?         empty
+       |  +--rw timers
+       |  |  +--rw advertise
+       |  |  |  +--rw (interval-setting)?
+       |  |  |     +--:(second)
+       |  |  |     |  +--rw interval?   uint8
+       |  |  |     +--:(milisecond)
+       |  |  |        +--rw msec?       uint16
+       |  |  +--rw learn?       empty
+       |  +--rw track
+       |     +--rw event* [object-id]
+       |        +--rw object-id    uint16
+       |        +--rw decrement?   uint8
+       +--rw delay
+          +--rw reload?    uint16
+          +--rw minimum?   uint16
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw vrrp
+       +--rw vrrp-group* [group-id]
+       |  +--rw group-id          uint8
+       |  +--rw address-family
+       |     +--rw ipv4!
+       |     |  +--rw vrrpv2?           empty
+       |     |  +--rw address
+       |     |  |  +--rw primary
+       |     |  |  |  +--rw address?   inet:ipv4-address
+       |     |  |  |  +--rw primary?   empty
+       |     |  |  +--rw secondary* [address]
+       |     |  |     +--rw address      inet:ipv4-address
+       |     |  |     +--rw secondary    empty
+       |     |  +--rw description?      string
+       |     |  +--rw match-address?    empty
+       |     |  +--rw preempt-config
+       |     |  |  +--rw preempt?   boolean
+       |     |  +--rw preempt
+       |     |  |  +--rw delay
+       |     |  |     +--rw minimum?   uint16
+       |     |  +--rw priority?         uint8
+       |     |  +--rw shutdown?         empty
+       |     |  +--rw timers
+       |     |  |  +--rw advertise?   uint16
+       |     |  +--rw track
+       |     |  |  +--rw event* [object-id]
+       |     |  |     +--rw object-id          uint16
+       |     |  |     +--rw (action)
+       |     |  |        +--:(priority)
+       |     |  |        |  +--rw decrement?   uint8
+       |     |  |        +--:(other)
+       |     |  |           +--rw shutdown?    empty
+       |     |  +--rw vrrs
+       |     |     +--rw leader?   string
+       |     +--rw ipv6!
+       |        +--rw address
+       |        |  +--rw primary
+       |        |  |  +--rw ipv6-link-local?   inet:ipv6-address
+       |        |  |  +--rw primary?           empty
+       |        |  +--rw ipv6-prefix* [prefix]
+       |        |     +--rw prefix    ios-types:ipv6-prefix
+       |        +--rw description?      string
+       |        +--rw match-address?    empty
+       |        +--rw preempt-config
+       |        |  +--rw preempt?   boolean
+       |        +--rw preempt
+       |        |  +--rw delay
+       |        |     +--rw minimum?   uint16
+       |        +--rw priority?         uint8
+       |        +--rw shutdown?         empty
+       |        +--rw timers
+       |        |  +--rw advertise?   uint16
+       |        +--rw track
+       |        |  +--rw event* [object-id]
+       |        |     +--rw object-id          uint16
+       |        |     +--rw (action)
+       |        |        +--:(priority)
+       |        |        |  +--rw decrement?   uint8
+       |        |        +--:(other)
+       |        |           +--rw shutdown?    empty
+       |        +--rw vrrs
+       |           +--rw leader?   string
+       +--rw vrrp-group-v2* [group-id]
+       |  +--rw group-id          uint8
+       |  +--rw authentication
+       |  |  +--rw text?   string
+       |  +--rw description?      string
+       |  +--rw ip
+       |  |  +--rw primary
+       |  |  |  +--rw address?   inet:ipv4-address
+       |  |  +--rw secondary* [address]
+       |  |     +--rw address      inet:ipv4-address
+       |  |     +--rw secondary    empty
+       |  +--rw name?             string
+       |  +--rw preempt-config
+       |  |  +--rw preempt?   boolean
+       |  +--rw preempt
+       |  |  +--rw delay
+       |  |     +--rw minimum?   uint16
+       |  +--rw priority?         uint8
+       |  +--rw shutdown?         empty
+       |  +--rw timers
+       |  |  +--rw advertise
+       |  |  |  +--rw (interval-setting)?
+       |  |  |     +--:(second)
+       |  |  |     |  +--rw interval?   uint8
+       |  |  |     +--:(milisecond)
+       |  |  |        +--rw msec?       uint16
+       |  |  +--rw learn?       empty
+       |  +--rw track
+       |     +--rw event* [object-id]
+       |        +--rw object-id    uint16
+       |        +--rw decrement?   uint8
+       +--rw delay
+          +--rw reload?    uint16
+          +--rw minimum?   uint16
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw vrrp
+       +--rw vrrp-group* [group-id]
+       |  +--rw group-id          uint8
+       |  +--rw address-family
+       |     +--rw ipv4!
+       |     |  +--rw vrrpv2?           empty
+       |     |  +--rw address
+       |     |  |  +--rw primary
+       |     |  |  |  +--rw address?   inet:ipv4-address
+       |     |  |  |  +--rw primary?   empty
+       |     |  |  +--rw secondary* [address]
+       |     |  |     +--rw address      inet:ipv4-address
+       |     |  |     +--rw secondary    empty
+       |     |  +--rw description?      string
+       |     |  +--rw match-address?    empty
+       |     |  +--rw preempt-config
+       |     |  |  +--rw preempt?   boolean
+       |     |  +--rw preempt
+       |     |  |  +--rw delay
+       |     |  |     +--rw minimum?   uint16
+       |     |  +--rw priority?         uint8
+       |     |  +--rw shutdown?         empty
+       |     |  +--rw timers
+       |     |  |  +--rw advertise?   uint16
+       |     |  +--rw track
+       |     |  |  +--rw event* [object-id]
+       |     |  |     +--rw object-id          uint16
+       |     |  |     +--rw (action)
+       |     |  |        +--:(priority)
+       |     |  |        |  +--rw decrement?   uint8
+       |     |  |        +--:(other)
+       |     |  |           +--rw shutdown?    empty
+       |     |  +--rw vrrs
+       |     |     +--rw leader?   string
+       |     +--rw ipv6!
+       |        +--rw address
+       |        |  +--rw primary
+       |        |  |  +--rw ipv6-link-local?   inet:ipv6-address
+       |        |  |  +--rw primary?           empty
+       |        |  +--rw ipv6-prefix* [prefix]
+       |        |     +--rw prefix    ios-types:ipv6-prefix
+       |        +--rw description?      string
+       |        +--rw match-address?    empty
+       |        +--rw preempt-config
+       |        |  +--rw preempt?   boolean
+       |        +--rw preempt
+       |        |  +--rw delay
+       |        |     +--rw minimum?   uint16
+       |        +--rw priority?         uint8
+       |        +--rw shutdown?         empty
+       |        +--rw timers
+       |        |  +--rw advertise?   uint16
+       |        +--rw track
+       |        |  +--rw event* [object-id]
+       |        |     +--rw object-id          uint16
+       |        |     +--rw (action)
+       |        |        +--:(priority)
+       |        |        |  +--rw decrement?   uint8
+       |        |        +--:(other)
+       |        |           +--rw shutdown?    empty
+       |        +--rw vrrs
+       |           +--rw leader?   string
+       +--rw vrrp-group-v2* [group-id]
+       |  +--rw group-id          uint8
+       |  +--rw authentication
+       |  |  +--rw text?   string
+       |  +--rw description?      string
+       |  +--rw ip
+       |  |  +--rw primary
+       |  |  |  +--rw address?   inet:ipv4-address
+       |  |  +--rw secondary* [address]
+       |  |     +--rw address      inet:ipv4-address
+       |  |     +--rw secondary    empty
+       |  +--rw name?             string
+       |  +--rw preempt-config
+       |  |  +--rw preempt?   boolean
+       |  +--rw preempt
+       |  |  +--rw delay
+       |  |     +--rw minimum?   uint16
+       |  +--rw priority?         uint8
+       |  +--rw shutdown?         empty
+       |  +--rw timers
+       |  |  +--rw advertise
+       |  |  |  +--rw (interval-setting)?
+       |  |  |     +--:(second)
+       |  |  |     |  +--rw interval?   uint8
+       |  |  |     +--:(milisecond)
+       |  |  |        +--rw msec?       uint16
+       |  |  +--rw learn?       empty
+       |  +--rw track
+       |     +--rw event* [object-id]
+       |        +--rw object-id    uint16
+       |        +--rw decrement?   uint8
+       +--rw delay
+          +--rw reload?    uint16
+          +--rw minimum?   uint16
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw vrrp
+       +--rw vrrp-group* [group-id]
+       |  +--rw group-id          uint8
+       |  +--rw address-family
+       |     +--rw ipv4!
+       |     |  +--rw vrrpv2?           empty
+       |     |  +--rw address
+       |     |  |  +--rw primary
+       |     |  |  |  +--rw address?   inet:ipv4-address
+       |     |  |  |  +--rw primary?   empty
+       |     |  |  +--rw secondary* [address]
+       |     |  |     +--rw address      inet:ipv4-address
+       |     |  |     +--rw secondary    empty
+       |     |  +--rw description?      string
+       |     |  +--rw match-address?    empty
+       |     |  +--rw preempt-config
+       |     |  |  +--rw preempt?   boolean
+       |     |  +--rw preempt
+       |     |  |  +--rw delay
+       |     |  |     +--rw minimum?   uint16
+       |     |  +--rw priority?         uint8
+       |     |  +--rw shutdown?         empty
+       |     |  +--rw timers
+       |     |  |  +--rw advertise?   uint16
+       |     |  +--rw track
+       |     |  |  +--rw event* [object-id]
+       |     |  |     +--rw object-id          uint16
+       |     |  |     +--rw (action)
+       |     |  |        +--:(priority)
+       |     |  |        |  +--rw decrement?   uint8
+       |     |  |        +--:(other)
+       |     |  |           +--rw shutdown?    empty
+       |     |  +--rw vrrs
+       |     |     +--rw leader?   string
+       |     +--rw ipv6!
+       |        +--rw address
+       |        |  +--rw primary
+       |        |  |  +--rw ipv6-link-local?   inet:ipv6-address
+       |        |  |  +--rw primary?           empty
+       |        |  +--rw ipv6-prefix* [prefix]
+       |        |     +--rw prefix    ios-types:ipv6-prefix
+       |        +--rw description?      string
+       |        +--rw match-address?    empty
+       |        +--rw preempt-config
+       |        |  +--rw preempt?   boolean
+       |        +--rw preempt
+       |        |  +--rw delay
+       |        |     +--rw minimum?   uint16
+       |        +--rw priority?         uint8
+       |        +--rw shutdown?         empty
+       |        +--rw timers
+       |        |  +--rw advertise?   uint16
+       |        +--rw track
+       |        |  +--rw event* [object-id]
+       |        |     +--rw object-id          uint16
+       |        |     +--rw (action)
+       |        |        +--:(priority)
+       |        |        |  +--rw decrement?   uint8
+       |        |        +--:(other)
+       |        |           +--rw shutdown?    empty
+       |        +--rw vrrs
+       |           +--rw leader?   string
+       +--rw vrrp-group-v2* [group-id]
+       |  +--rw group-id          uint8
+       |  +--rw authentication
+       |  |  +--rw text?   string
+       |  +--rw description?      string
+       |  +--rw ip
+       |  |  +--rw primary
+       |  |  |  +--rw address?   inet:ipv4-address
+       |  |  +--rw secondary* [address]
+       |  |     +--rw address      inet:ipv4-address
+       |  |     +--rw secondary    empty
+       |  +--rw name?             string
+       |  +--rw preempt-config
+       |  |  +--rw preempt?   boolean
+       |  +--rw preempt
+       |  |  +--rw delay
+       |  |     +--rw minimum?   uint16
+       |  +--rw priority?         uint8
+       |  +--rw shutdown?         empty
+       |  +--rw timers
+       |  |  +--rw advertise
+       |  |  |  +--rw (interval-setting)?
+       |  |  |     +--:(second)
+       |  |  |     |  +--rw interval?   uint8
+       |  |  |     +--:(milisecond)
+       |  |  |        +--rw msec?       uint16
+       |  |  +--rw learn?       empty
+       |  +--rw track
+       |     +--rw event* [object-id]
+       |        +--rw object-id    uint16
+       |        +--rw decrement?   uint8
+       +--rw delay
+          +--rw reload?    uint16
+          +--rw minimum?   uint16
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw vrrp
+       +--rw vrrp-group* [group-id]
+       |  +--rw group-id          uint8
+       |  +--rw address-family
+       |     +--rw ipv4!
+       |     |  +--rw vrrpv2?           empty
+       |     |  +--rw address
+       |     |  |  +--rw primary
+       |     |  |  |  +--rw address?   inet:ipv4-address
+       |     |  |  |  +--rw primary?   empty
+       |     |  |  +--rw secondary* [address]
+       |     |  |     +--rw address      inet:ipv4-address
+       |     |  |     +--rw secondary    empty
+       |     |  +--rw description?      string
+       |     |  +--rw match-address?    empty
+       |     |  +--rw preempt-config
+       |     |  |  +--rw preempt?   boolean
+       |     |  +--rw preempt
+       |     |  |  +--rw delay
+       |     |  |     +--rw minimum?   uint16
+       |     |  +--rw priority?         uint8
+       |     |  +--rw shutdown?         empty
+       |     |  +--rw timers
+       |     |  |  +--rw advertise?   uint16
+       |     |  +--rw track
+       |     |  |  +--rw event* [object-id]
+       |     |  |     +--rw object-id          uint16
+       |     |  |     +--rw (action)
+       |     |  |        +--:(priority)
+       |     |  |        |  +--rw decrement?   uint8
+       |     |  |        +--:(other)
+       |     |  |           +--rw shutdown?    empty
+       |     |  +--rw vrrs
+       |     |     +--rw leader?   string
+       |     +--rw ipv6!
+       |        +--rw address
+       |        |  +--rw primary
+       |        |  |  +--rw ipv6-link-local?   inet:ipv6-address
+       |        |  |  +--rw primary?           empty
+       |        |  +--rw ipv6-prefix* [prefix]
+       |        |     +--rw prefix    ios-types:ipv6-prefix
+       |        +--rw description?      string
+       |        +--rw match-address?    empty
+       |        +--rw preempt-config
+       |        |  +--rw preempt?   boolean
+       |        +--rw preempt
+       |        |  +--rw delay
+       |        |     +--rw minimum?   uint16
+       |        +--rw priority?         uint8
+       |        +--rw shutdown?         empty
+       |        +--rw timers
+       |        |  +--rw advertise?   uint16
+       |        +--rw track
+       |        |  +--rw event* [object-id]
+       |        |     +--rw object-id          uint16
+       |        |     +--rw (action)
+       |        |        +--:(priority)
+       |        |        |  +--rw decrement?   uint8
+       |        |        +--:(other)
+       |        |           +--rw shutdown?    empty
+       |        +--rw vrrs
+       |           +--rw leader?   string
+       +--rw vrrp-group-v2* [group-id]
+       |  +--rw group-id          uint8
+       |  +--rw authentication
+       |  |  +--rw text?   string
+       |  +--rw description?      string
+       |  +--rw ip
+       |  |  +--rw primary
+       |  |  |  +--rw address?   inet:ipv4-address
+       |  |  +--rw secondary* [address]
+       |  |     +--rw address      inet:ipv4-address
+       |  |     +--rw secondary    empty
+       |  +--rw name?             string
+       |  +--rw preempt-config
+       |  |  +--rw preempt?   boolean
+       |  +--rw preempt
+       |  |  +--rw delay
+       |  |     +--rw minimum?   uint16
+       |  +--rw priority?         uint8
+       |  +--rw shutdown?         empty
+       |  +--rw timers
+       |  |  +--rw advertise
+       |  |  |  +--rw (interval-setting)?
+       |  |  |     +--:(second)
+       |  |  |     |  +--rw interval?   uint8
+       |  |  |     +--:(milisecond)
+       |  |  |        +--rw msec?       uint16
+       |  |  +--rw learn?       empty
+       |  +--rw track
+       |     +--rw event* [object-id]
+       |        +--rw object-id    uint16
+       |        +--rw decrement?   uint8
+       +--rw delay
+          +--rw reload?    uint16
+          +--rw minimum?   uint16
+  augment /ios:native/ios:interface/ios:Vlan:
+    +--rw vrrp
+       +--rw vrrp-group* [group-id]
+       |  +--rw group-id          uint8
+       |  +--rw address-family
+       |     +--rw ipv4!
+       |     |  +--rw vrrpv2?           empty
+       |     |  +--rw address
+       |     |  |  +--rw primary
+       |     |  |  |  +--rw address?   inet:ipv4-address
+       |     |  |  |  +--rw primary?   empty
+       |     |  |  +--rw secondary* [address]
+       |     |  |     +--rw address      inet:ipv4-address
+       |     |  |     +--rw secondary    empty
+       |     |  +--rw description?      string
+       |     |  +--rw match-address?    empty
+       |     |  +--rw preempt-config
+       |     |  |  +--rw preempt?   boolean
+       |     |  +--rw preempt
+       |     |  |  +--rw delay
+       |     |  |     +--rw minimum?   uint16
+       |     |  +--rw priority?         uint8
+       |     |  +--rw shutdown?         empty
+       |     |  +--rw timers
+       |     |  |  +--rw advertise?   uint16
+       |     |  +--rw track
+       |     |  |  +--rw event* [object-id]
+       |     |  |     +--rw object-id          uint16
+       |     |  |     +--rw (action)
+       |     |  |        +--:(priority)
+       |     |  |        |  +--rw decrement?   uint8
+       |     |  |        +--:(other)
+       |     |  |           +--rw shutdown?    empty
+       |     |  +--rw vrrs
+       |     |     +--rw leader?   string
+       |     +--rw ipv6!
+       |        +--rw address
+       |        |  +--rw primary
+       |        |  |  +--rw ipv6-link-local?   inet:ipv6-address
+       |        |  |  +--rw primary?           empty
+       |        |  +--rw ipv6-prefix* [prefix]
+       |        |     +--rw prefix    ios-types:ipv6-prefix
+       |        +--rw description?      string
+       |        +--rw match-address?    empty
+       |        +--rw preempt-config
+       |        |  +--rw preempt?   boolean
+       |        +--rw preempt
+       |        |  +--rw delay
+       |        |     +--rw minimum?   uint16
+       |        +--rw priority?         uint8
+       |        +--rw shutdown?         empty
+       |        +--rw timers
+       |        |  +--rw advertise?   uint16
+       |        +--rw track
+       |        |  +--rw event* [object-id]
+       |        |     +--rw object-id          uint16
+       |        |     +--rw (action)
+       |        |        +--:(priority)
+       |        |        |  +--rw decrement?   uint8
+       |        |        +--:(other)
+       |        |           +--rw shutdown?    empty
+       |        +--rw vrrs
+       |           +--rw leader?   string
+       +--rw vrrp-group-v2* [group-id]
+       |  +--rw group-id          uint8
+       |  +--rw authentication
+       |  |  +--rw text?   string
+       |  +--rw description?      string
+       |  +--rw ip
+       |  |  +--rw primary
+       |  |  |  +--rw address?   inet:ipv4-address
+       |  |  +--rw secondary* [address]
+       |  |     +--rw address      inet:ipv4-address
+       |  |     +--rw secondary    empty
+       |  +--rw name?             string
+       |  +--rw preempt-config
+       |  |  +--rw preempt?   boolean
+       |  +--rw preempt
+       |  |  +--rw delay
+       |  |     +--rw minimum?   uint16
+       |  +--rw priority?         uint8
+       |  +--rw shutdown?         empty
+       |  +--rw timers
+       |  |  +--rw advertise
+       |  |  |  +--rw (interval-setting)?
+       |  |  |     +--:(second)
+       |  |  |     |  +--rw interval?   uint8
+       |  |  |     +--:(milisecond)
+       |  |  |        +--rw msec?       uint16
+       |  |  +--rw learn?       empty
+       |  +--rw track
+       |     +--rw event* [object-id]
+       |        +--rw object-id    uint16
+       |        +--rw decrement?   uint8
+       +--rw delay
+          +--rw reload?    uint16
+          +--rw minimum?   uint16
+Xpaths for model: Cisco-IOS-XE-vrrp.yang

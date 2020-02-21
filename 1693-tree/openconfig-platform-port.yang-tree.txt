@@ -1,0 +1,13 @@
+ 
+KPI for model: openconfig-platform-port.yang
+
+module: openconfig-platform-port
+  augment /oc-platform:components/oc-platform:component:
+    +--rw breakout-mode
+       +--rw config
+       |  +--rw num-channels?    uint8
+       |  +--rw channel-speed?   identityref
+       +--ro state
+          +--ro num-channels?    uint8
+          +--ro channel-speed?   identityref
+Xpaths for model: openconfig-platform-port.yang

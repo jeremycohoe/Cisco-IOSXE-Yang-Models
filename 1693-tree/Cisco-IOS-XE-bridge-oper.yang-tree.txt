@@ -1,0 +1,76 @@
+ 
+KPI for model: Cisco-IOS-XE-bridge-oper.yang
+module: Cisco-IOS-XE-bridge-oper
+  +--ro bridge-instances
+     +--ro bridge-entry* [bridge-id]
+        +--ro bridge-id              uint32
+        +--ro name?                  string
+        +--ro vlan?                  uint32
+        +--ro routing-interface?     string
+        +--ro max-macs?              uint32
+        +--ro num-macs?              uint32
+        +--ro age-time?              uint32
+        +--ro rx-packets?            uint64
+        +--ro rx-octets?             uint64
+        +--ro tx-packets?            uint64
+        +--ro tx-octets?             uint64
+        +--ro flood-packets?         uint64
+        +--ro flood-octets?          uint64
+        +--ro rx-routed-packets?     uint64
+        +--ro tx-routed-packets?     uint64
+        +--ro learn?                 uint64
+        +--ro age?                   uint64
+        +--ro move?                  uint64
+        +--ro bridge-intf-entries
+        |  +--ro bridge-intf-entry* [if-name]
+        |     +--ro if-name         string
+        |     +--ro vlan?           uint32
+        |     +--ro native-vlan?    boolean
+        |     +--ro admin-status?   bridge-ios-xe-oper:intf-status-type
+        |     +--ro oper-status?    bridge-ios-xe-oper:intf-status-type
+        |     +--ro encap-type?     string
+        |     +--ro ifindex?        uint32
+        |     +--ro mtu?            uint32
+        +--ro bridge-matm-entries
+           +--ro bridge-matm-entry* [mac-address]
+              +--ro mac-address    yang:mac-address
+              +--ro interface*     string
+              +--ro vlan?          uint32
+              +--ro type?          bridge-ios-xe-oper:bridge-mac-type
+Xpaths for model: Cisco-IOS-XE-bridge-oper.yang
+/bridge-ios-xe-oper:bridge-instances,container,
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry,list,
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-id,leaf,uint32
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:name,leaf,string
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:vlan,leaf,uint32
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:routing-interface,leaf,string
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:max-macs,leaf,uint32
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:num-macs,leaf,uint32
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:age-time,leaf,uint32
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:rx-packets,leaf,uint64
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:rx-octets,leaf,uint64
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:tx-packets,leaf,uint64
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:tx-octets,leaf,uint64
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:flood-packets,leaf,uint64
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:flood-octets,leaf,uint64
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:rx-routed-packets,leaf,uint64
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:tx-routed-packets,leaf,uint64
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:learn,leaf,uint64
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:age,leaf,uint64
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:move,leaf,uint64
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-intf-entries,container,
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-intf-entries/bridge-ios-xe-oper:bridge-intf-entry,list,
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-intf-entries/bridge-ios-xe-oper:bridge-intf-entry/bridge-ios-xe-oper:if-name,leaf,string
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-intf-entries/bridge-ios-xe-oper:bridge-intf-entry/bridge-ios-xe-oper:vlan,leaf,uint32
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-intf-entries/bridge-ios-xe-oper:bridge-intf-entry/bridge-ios-xe-oper:native-vlan,leaf,boolean
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-intf-entries/bridge-ios-xe-oper:bridge-intf-entry/bridge-ios-xe-oper:admin-status,leaf,bridge-ios-xe-oper:intf-status-type
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-intf-entries/bridge-ios-xe-oper:bridge-intf-entry/bridge-ios-xe-oper:oper-status,leaf,bridge-ios-xe-oper:intf-status-type
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-intf-entries/bridge-ios-xe-oper:bridge-intf-entry/bridge-ios-xe-oper:encap-type,leaf,string
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-intf-entries/bridge-ios-xe-oper:bridge-intf-entry/bridge-ios-xe-oper:ifindex,leaf,uint32
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-intf-entries/bridge-ios-xe-oper:bridge-intf-entry/bridge-ios-xe-oper:mtu,leaf,uint32
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-matm-entries,container,
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-matm-entries/bridge-ios-xe-oper:bridge-matm-entry,list,
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-matm-entries/bridge-ios-xe-oper:bridge-matm-entry/bridge-ios-xe-oper:mac-address,leaf,yang:mac-address
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-matm-entries/bridge-ios-xe-oper:bridge-matm-entry/bridge-ios-xe-oper:interface,leaf-list,string
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-matm-entries/bridge-ios-xe-oper:bridge-matm-entry/bridge-ios-xe-oper:vlan,leaf,uint32
+/bridge-ios-xe-oper:bridge-instances/bridge-ios-xe-oper:bridge-entry/bridge-ios-xe-oper:bridge-matm-entries/bridge-ios-xe-oper:bridge-matm-entry/bridge-ios-xe-oper:type,leaf,bridge-ios-xe-oper:bridge-mac-type

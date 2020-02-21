@@ -1,0 +1,38 @@
+ 
+KPI for model: Cisco-IOS-XE-process-cpu-oper.yang
+module: Cisco-IOS-XE-process-cpu-oper
+  +--ro cpu-usage
+     +--ro cpu-utilization
+        +--ro five-seconds?          uint8
+        +--ro five-seconds-intr?     uint8
+        +--ro one-minute?            uint8
+        +--ro five-minutes?          uint8
+        +--ro cpu-usage-processes
+           +--ro cpu-usage-process* [pid name]
+              +--ro pid                 uint32
+              +--ro name                string
+              +--ro tty?                uint16
+              +--ro total-run-time?     uint64
+              +--ro invocation-count?   uint32
+              +--ro avg-run-time?       uint64
+              +--ro five-seconds?       decimal64
+              +--ro one-minute?         decimal64
+              +--ro five-minutes?       decimal64
+Xpaths for model: Cisco-IOS-XE-process-cpu-oper.yang
+/process-cpu-ios-xe-oper:cpu-usage,container,
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization,container,
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization/process-cpu-ios-xe-oper:five-seconds,leaf,uint8
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization/process-cpu-ios-xe-oper:five-seconds-intr,leaf,uint8
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization/process-cpu-ios-xe-oper:one-minute,leaf,uint8
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization/process-cpu-ios-xe-oper:five-minutes,leaf,uint8
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization/process-cpu-ios-xe-oper:cpu-usage-processes,container,
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization/process-cpu-ios-xe-oper:cpu-usage-processes/process-cpu-ios-xe-oper:cpu-usage-process,list,
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization/process-cpu-ios-xe-oper:cpu-usage-processes/process-cpu-ios-xe-oper:cpu-usage-process/process-cpu-ios-xe-oper:pid,leaf,uint32
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization/process-cpu-ios-xe-oper:cpu-usage-processes/process-cpu-ios-xe-oper:cpu-usage-process/process-cpu-ios-xe-oper:name,leaf,string
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization/process-cpu-ios-xe-oper:cpu-usage-processes/process-cpu-ios-xe-oper:cpu-usage-process/process-cpu-ios-xe-oper:tty,leaf,uint16
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization/process-cpu-ios-xe-oper:cpu-usage-processes/process-cpu-ios-xe-oper:cpu-usage-process/process-cpu-ios-xe-oper:total-run-time,leaf,uint64
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization/process-cpu-ios-xe-oper:cpu-usage-processes/process-cpu-ios-xe-oper:cpu-usage-process/process-cpu-ios-xe-oper:invocation-count,leaf,uint32
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization/process-cpu-ios-xe-oper:cpu-usage-processes/process-cpu-ios-xe-oper:cpu-usage-process/process-cpu-ios-xe-oper:avg-run-time,leaf,uint64
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization/process-cpu-ios-xe-oper:cpu-usage-processes/process-cpu-ios-xe-oper:cpu-usage-process/process-cpu-ios-xe-oper:five-seconds,leaf,decimal64
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization/process-cpu-ios-xe-oper:cpu-usage-processes/process-cpu-ios-xe-oper:cpu-usage-process/process-cpu-ios-xe-oper:one-minute,leaf,decimal64
+/process-cpu-ios-xe-oper:cpu-usage/process-cpu-ios-xe-oper:cpu-utilization/process-cpu-ios-xe-oper:cpu-usage-processes/process-cpu-ios-xe-oper:cpu-usage-process/process-cpu-ios-xe-oper:five-minutes,leaf,decimal64

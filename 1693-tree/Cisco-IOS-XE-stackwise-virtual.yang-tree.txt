@@ -1,0 +1,14 @@
+ 
+KPI for model: Cisco-IOS-XE-stackwise-virtual.yang
+
+module: Cisco-IOS-XE-stackwise-virtual
+  augment /ios:native/ios:stackwise-virtual:
+    +--rw domain
+    |  +--rw domain?   uint16
+    +--rw dual-active
+       +--rw detection
+          +--rw pagp!
+             +--rw trust
+                +--rw channel-group
+                   +--rw channel-group-number?   uint16
+Xpaths for model: Cisco-IOS-XE-stackwise-virtual.yang

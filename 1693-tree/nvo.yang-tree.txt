@@ -1,0 +1,46 @@
+ 
+KPI for model: nvo.yang
+module: nvo
+  +--rw nvo-instances
+     +--rw nvo-instance* [nvo-id]
+        +--rw nvo-id                   uint16
+        +--rw overlay-encapsulation?   identityref
+        +--rw source-interface         if:interface-ref
+        +--rw virtual-network* [vni-start vni-end]
+           +--rw vni-start             virtual-network-id-type
+           +--rw vni-end               virtual-network-id-type
+           +--rw (replication-mode)
+           |  +--:(ip-multicast)
+           |  |  +--rw multicast
+           |  |     +--rw multicast-group-min?   pim:IPv4-Multicast-Group-Address
+           |  |     +--rw multicast-group-max?   pim:IPv4-Multicast-Group-Address
+           |  +--:(static-peer-list)
+           |  |  +--rw peers* [peer-ip]
+           |  |     +--rw peer-ip    inet:ip-address
+           |  +--:(bgp)
+           |     +--rw bgp?            empty
+           +--rw routing-instance?     rt:routing-instance-ref
+           +--rw end-host-discovery?   enumeration
+           +--rw suppress-arp?         empty
+Xpaths for model: nvo.yang
+/nvo:nvo-instances,container,
+/nvo:nvo-instances/nvo:nvo-instance,list,
+/nvo:nvo-instances/nvo:nvo-instance/nvo:nvo-id,leaf,uint16
+/nvo:nvo-instances/nvo:nvo-instance/nvo:overlay-encapsulation,leaf,identityref
+/nvo:nvo-instances/nvo:nvo-instance/nvo:source-interface,leaf,if:interface-ref
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network,list,
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network/nvo:vni-start,leaf,virtual-network-id-type
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network/nvo:vni-end,leaf,virtual-network-id-type
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network,choice,
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network,case,
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network/nvo:multicast,container,
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network/nvo:multicast/nvo:multicast-group-min,leaf,pim:IPv4-Multicast-Group-Address
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network/nvo:multicast/nvo:multicast-group-max,leaf,pim:IPv4-Multicast-Group-Address
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network,case,
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network/nvo:peers,list,
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network/nvo:peers/nvo:peer-ip,leaf,inet:ip-address
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network,case,
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network/nvo:bgp,leaf,empty
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network/nvo:routing-instance,leaf,rt:routing-instance-ref
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network/nvo:end-host-discovery,leaf,enumeration
+/nvo:nvo-instances/nvo:nvo-instance/nvo:virtual-network/nvo:suppress-arp,leaf,empty

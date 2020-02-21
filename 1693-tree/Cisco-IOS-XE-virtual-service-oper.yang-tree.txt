@@ -1,0 +1,186 @@
+ 
+KPI for model: Cisco-IOS-XE-virtual-service-oper.yang
+module: Cisco-IOS-XE-virtual-service-oper
+  +--ro virtual-services
+     +--ro virtual-service* [name]
+        +--ro name                  string
+        +--ro details
+        |  +--ro state?                    string
+        |  +--ro package-information
+        |  |  +--ro name?          string
+        |  |  +--ro path?          string
+        |  |  +--ro application
+        |  |  |  +--ro name?                string
+        |  |  |  +--ro installed-version?   string
+        |  |  |  +--ro description?         string
+        |  |  |  +--ro type?                string
+        |  |  |  +--ro owner?               string
+        |  |  +--ro signing
+        |  |  |  +--ro key-type?   string
+        |  |  |  +--ro method?     string
+        |  |  +--ro licensing
+        |  |     +--ro name?      string
+        |  |     +--ro version?   string
+        |  +--ro detailed-guest-status
+        |  |  +--ro processes
+        |  |     +--ro name?     string
+        |  |     +--ro status?   string
+        |  |     +--ro pid?      string
+        |  |     +--ro uptime?   string
+        |  |     +--ro memory?   string
+        |  +--ro activated-profile-name?   string
+        |  +--ro resource-reservation
+        |  |  +--ro disk?     uint64
+        |  |  +--ro memory?   uint64
+        |  |  +--ro cpu?      uint64
+        |  +--ro guest-interface?          string
+        |  +--ro resource-admission
+        |     +--ro state?        string
+        |     +--ro disk-space?   string
+        |     +--ro memory?       string
+        |     +--ro cpu?          uint64
+        |     +--ro vcpus?        string
+        +--ro utilization
+        |  +--ro name?          string
+        |  +--ro cpu-util
+        |  |  +--ro requested-application-util?   uint64
+        |  |  +--ro actual-application-util?      uint64
+        |  |  +--ro cpu-state?                    string
+        |  +--ro memory-util
+        |     +--ro memory-allocation?   string
+        |     +--ro memory-used?         string
+        +--ro network-utils
+        |  +--ro network-util* [name]
+        |     +--ro name          string
+        |     +--ro alias?        string
+        |     +--ro rx-packets?   uint64
+        |     +--ro rx-bytes?     uint64
+        |     +--ro rx-errors?    uint64
+        |     +--ro tx-packets?   uint64
+        |     +--ro tx-bytes?     uint64
+        |     +--ro tx-errors?    uint64
+        +--ro storage-utils
+        |  +--ro storage-util* [name]
+        |     +--ro name           string
+        |     +--ro alias?         string
+        |     +--ro rd-bytes?      uint64
+        |     +--ro rd-requests?   uint64
+        |     +--ro errors?        uint64
+        |     +--ro wr-bytes?      uint64
+        |     +--ro wr-requests?   uint64
+        |     +--ro capacity?      uint64
+        |     +--ro available?     string
+        |     +--ro used?          uint64
+        |     +--ro usage?         string
+        +--ro processes
+        |  +--ro process* [name]
+        |     +--ro name      string
+        |     +--ro status?   string
+        |     +--ro pid?      string
+        |     +--ro uptime?   string
+        |     +--ro memory?   string
+        +--ro attached-devices
+        |  +--ro attached-device* [name]
+        |     +--ro name     string
+        |     +--ro type?    string
+        |     +--ro alias?   string
+        +--ro network-interfaces
+        |  +--ro network-interface* [mac-address]
+        |     +--ro mac-address           yang:mac-address
+        |     +--ro attached-interface?   string
+        |     +--ro ipv4-address?         inet:ipv4-address
+        +--ro guest-routes
+           +--ro guest-route* [route]
+              +--ro route    string
+Xpaths for model: Cisco-IOS-XE-virtual-service-oper.yang
+/virtual-service-ios-xe-oper:virtual-services,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service,list,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:name,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:state,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:package-information,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:package-information/virtual-service-ios-xe-oper:name,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:package-information/virtual-service-ios-xe-oper:path,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:package-information/virtual-service-ios-xe-oper:application,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:package-information/virtual-service-ios-xe-oper:application/virtual-service-ios-xe-oper:name,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:package-information/virtual-service-ios-xe-oper:application/virtual-service-ios-xe-oper:installed-version,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:package-information/virtual-service-ios-xe-oper:application/virtual-service-ios-xe-oper:description,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:package-information/virtual-service-ios-xe-oper:application/virtual-service-ios-xe-oper:type,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:package-information/virtual-service-ios-xe-oper:application/virtual-service-ios-xe-oper:owner,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:package-information/virtual-service-ios-xe-oper:signing,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:package-information/virtual-service-ios-xe-oper:signing/virtual-service-ios-xe-oper:key-type,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:package-information/virtual-service-ios-xe-oper:signing/virtual-service-ios-xe-oper:method,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:package-information/virtual-service-ios-xe-oper:licensing,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:package-information/virtual-service-ios-xe-oper:licensing/virtual-service-ios-xe-oper:name,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:package-information/virtual-service-ios-xe-oper:licensing/virtual-service-ios-xe-oper:version,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:detailed-guest-status,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:detailed-guest-status/virtual-service-ios-xe-oper:processes,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:detailed-guest-status/virtual-service-ios-xe-oper:processes/virtual-service-ios-xe-oper:name,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:detailed-guest-status/virtual-service-ios-xe-oper:processes/virtual-service-ios-xe-oper:status,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:detailed-guest-status/virtual-service-ios-xe-oper:processes/virtual-service-ios-xe-oper:pid,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:detailed-guest-status/virtual-service-ios-xe-oper:processes/virtual-service-ios-xe-oper:uptime,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:detailed-guest-status/virtual-service-ios-xe-oper:processes/virtual-service-ios-xe-oper:memory,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:activated-profile-name,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:resource-reservation,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:resource-reservation/virtual-service-ios-xe-oper:disk,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:resource-reservation/virtual-service-ios-xe-oper:memory,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:resource-reservation/virtual-service-ios-xe-oper:cpu,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:guest-interface,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:resource-admission,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:resource-admission/virtual-service-ios-xe-oper:state,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:resource-admission/virtual-service-ios-xe-oper:disk-space,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:resource-admission/virtual-service-ios-xe-oper:memory,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:resource-admission/virtual-service-ios-xe-oper:cpu,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:details/virtual-service-ios-xe-oper:resource-admission/virtual-service-ios-xe-oper:vcpus,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:utilization,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:utilization/virtual-service-ios-xe-oper:name,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:utilization/virtual-service-ios-xe-oper:cpu-util,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:utilization/virtual-service-ios-xe-oper:cpu-util/virtual-service-ios-xe-oper:requested-application-util,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:utilization/virtual-service-ios-xe-oper:cpu-util/virtual-service-ios-xe-oper:actual-application-util,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:utilization/virtual-service-ios-xe-oper:cpu-util/virtual-service-ios-xe-oper:cpu-state,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:utilization/virtual-service-ios-xe-oper:memory-util,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:utilization/virtual-service-ios-xe-oper:memory-util/virtual-service-ios-xe-oper:memory-allocation,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:utilization/virtual-service-ios-xe-oper:memory-util/virtual-service-ios-xe-oper:memory-used,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:network-utils,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:network-utils/virtual-service-ios-xe-oper:network-util,list,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:network-utils/virtual-service-ios-xe-oper:network-util/virtual-service-ios-xe-oper:name,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:network-utils/virtual-service-ios-xe-oper:network-util/virtual-service-ios-xe-oper:alias,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:network-utils/virtual-service-ios-xe-oper:network-util/virtual-service-ios-xe-oper:rx-packets,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:network-utils/virtual-service-ios-xe-oper:network-util/virtual-service-ios-xe-oper:rx-bytes,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:network-utils/virtual-service-ios-xe-oper:network-util/virtual-service-ios-xe-oper:rx-errors,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:network-utils/virtual-service-ios-xe-oper:network-util/virtual-service-ios-xe-oper:tx-packets,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:network-utils/virtual-service-ios-xe-oper:network-util/virtual-service-ios-xe-oper:tx-bytes,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:network-utils/virtual-service-ios-xe-oper:network-util/virtual-service-ios-xe-oper:tx-errors,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:storage-utils,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:storage-utils/virtual-service-ios-xe-oper:storage-util,list,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:storage-utils/virtual-service-ios-xe-oper:storage-util/virtual-service-ios-xe-oper:name,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:storage-utils/virtual-service-ios-xe-oper:storage-util/virtual-service-ios-xe-oper:alias,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:storage-utils/virtual-service-ios-xe-oper:storage-util/virtual-service-ios-xe-oper:rd-bytes,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:storage-utils/virtual-service-ios-xe-oper:storage-util/virtual-service-ios-xe-oper:rd-requests,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:storage-utils/virtual-service-ios-xe-oper:storage-util/virtual-service-ios-xe-oper:errors,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:storage-utils/virtual-service-ios-xe-oper:storage-util/virtual-service-ios-xe-oper:wr-bytes,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:storage-utils/virtual-service-ios-xe-oper:storage-util/virtual-service-ios-xe-oper:wr-requests,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:storage-utils/virtual-service-ios-xe-oper:storage-util/virtual-service-ios-xe-oper:capacity,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:storage-utils/virtual-service-ios-xe-oper:storage-util/virtual-service-ios-xe-oper:available,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:storage-utils/virtual-service-ios-xe-oper:storage-util/virtual-service-ios-xe-oper:used,leaf,uint64
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:storage-utils/virtual-service-ios-xe-oper:storage-util/virtual-service-ios-xe-oper:usage,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:processes,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:processes/virtual-service-ios-xe-oper:process,list,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:processes/virtual-service-ios-xe-oper:process/virtual-service-ios-xe-oper:name,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:processes/virtual-service-ios-xe-oper:process/virtual-service-ios-xe-oper:status,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:processes/virtual-service-ios-xe-oper:process/virtual-service-ios-xe-oper:pid,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:processes/virtual-service-ios-xe-oper:process/virtual-service-ios-xe-oper:uptime,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:processes/virtual-service-ios-xe-oper:process/virtual-service-ios-xe-oper:memory,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:attached-devices,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:attached-devices/virtual-service-ios-xe-oper:attached-device,list,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:attached-devices/virtual-service-ios-xe-oper:attached-device/virtual-service-ios-xe-oper:name,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:attached-devices/virtual-service-ios-xe-oper:attached-device/virtual-service-ios-xe-oper:type,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:attached-devices/virtual-service-ios-xe-oper:attached-device/virtual-service-ios-xe-oper:alias,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:network-interfaces,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:network-interfaces/virtual-service-ios-xe-oper:network-interface,list,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:network-interfaces/virtual-service-ios-xe-oper:network-interface/virtual-service-ios-xe-oper:mac-address,leaf,yang:mac-address
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:network-interfaces/virtual-service-ios-xe-oper:network-interface/virtual-service-ios-xe-oper:attached-interface,leaf,string
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:network-interfaces/virtual-service-ios-xe-oper:network-interface/virtual-service-ios-xe-oper:ipv4-address,leaf,inet:ipv4-address
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:guest-routes,container,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:guest-routes/virtual-service-ios-xe-oper:guest-route,list,
+/virtual-service-ios-xe-oper:virtual-services/virtual-service-ios-xe-oper:virtual-service/virtual-service-ios-xe-oper:guest-routes/virtual-service-ios-xe-oper:guest-route/virtual-service-ios-xe-oper:route,leaf,string

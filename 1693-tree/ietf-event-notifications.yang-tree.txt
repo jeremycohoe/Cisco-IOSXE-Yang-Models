@@ -1,0 +1,219 @@
+ 
+KPI for model: ietf-event-notifications.yang
+module: ietf-event-notifications
+  +--ro streams
+  |  +--ro stream*   stream
+  +--rw filters
+  |  +--rw filter* [filter-id]
+  |     +--rw filter-id       filter-id
+  |     +--rw (filter-type)?
+  |        +--:(rfc5277)
+  |           +--rw filter?   <anyxml>
+  +--rw subscription-config {configured-subscriptions}?
+  |  +--rw subscription* [subscription-id]
+  |     +--rw subscription-id           subscription-id
+  |     +--rw stream?                   stream
+  |     +--rw encoding?                 encoding
+  |     +--rw (filter-type)?
+  |     |  +--:(rfc5277)
+  |     |  |  +--rw filter?             <anyxml>
+  |     |  +--:(by-reference)
+  |     |     +--rw filter-ref?         filter-ref
+  |     +--rw startTime?                yang:date-and-time
+  |     +--rw stopTime?                 yang:date-and-time
+  |     +--rw receivers {configured-subscriptions}?
+  |     |  +--rw receiver* [address]
+  |     |     +--rw address     inet:host
+  |     |     +--rw port        inet:port-number
+  |     |     +--rw protocol?   transport-protocol
+  |     +--rw (push-source)? {configured-subscriptions}?
+  |        +--:(interface-originated)
+  |        |  +--rw source-interface?   if:interface-ref
+  |        +--:(address-originated)
+  |           +--rw source-vrf?         uint32
+  |           +--rw source-address      inet:ip-address-no-zone
+  +--ro subscriptions
+     +--ro subscription* [subscription-id]
+        +--ro subscription-id            subscription-id
+        +--ro configured-subscription?   empty {configured-subscriptions}?
+        +--ro subscription-status?       subscription-status
+        +--ro stream?                    stream
+        +--ro encoding?                  encoding
+        +--ro (filter-type)?
+        |  +--:(rfc5277)
+        |  |  +--ro filter?              <anyxml>
+        |  +--:(by-reference)
+        |     +--ro filter-ref?          filter-ref
+        +--ro startTime?                 yang:date-and-time
+        +--ro stopTime?                  yang:date-and-time
+        +--ro receivers {configured-subscriptions}?
+        |  +--ro receiver* [address]
+        |     +--ro address     inet:host
+        |     +--ro port        inet:port-number
+        |     +--ro protocol?   transport-protocol
+        +--ro (push-source)? {configured-subscriptions}?
+           +--:(interface-originated)
+           |  +--ro source-interface?    if:interface-ref
+           +--:(address-originated)
+              +--ro source-vrf?          uint32
+              +--ro source-address       inet:ip-address-no-zone
+
+  rpcs:
+    +---x establish-subscription
+    |  +---w input
+    |  |  +---w stream?             stream
+    |  |  +---w encoding?           encoding
+    |  |  +---w (filter-type)?
+    |  |  |  +--:(rfc5277)
+    |  |  |  |  +---w filter?       <anyxml>
+    |  |  |  +--:(by-reference)
+    |  |  |     +---w filter-ref?   filter-ref
+    |  |  +---w startTime?          yang:date-and-time
+    |  |  +---w stopTime?           yang:date-and-time
+    |  +--ro output
+    |     +--ro subscription-result       subscription-result
+    |     +--ro (result)?
+    |        +--:(success)
+    |        |  +--ro subscription-id     subscription-id
+    |        +--:(no-success)
+    |           +--ro stream?             stream
+    |           +--ro encoding?           encoding
+    |           +--ro (filter-type)?
+    |           |  +--:(rfc5277)
+    |           |  |  +--ro filter?       <anyxml>
+    |           |  +--:(by-reference)
+    |           |     +--ro filter-ref?   filter-ref
+    |           +--ro startTime?          yang:date-and-time
+    |           +--ro stopTime?           yang:date-and-time
+    +---x create-subscription
+    |  +---w input
+    |     +---w stream?         stream
+    |     +---w encoding?       encoding
+    |     +---w (filter-type)?
+    |     |  +--:(rfc5277)
+    |     |     +---w filter?   <anyxml>
+    |     +---w startTime?      yang:date-and-time
+    |     +---w stopTime?       yang:date-and-time
+    +---x modify-subscription
+    |  +---w input
+    |  |  +---w subscription-id?    subscription-id
+    |  |  +---w (filter-type)?
+    |  |  |  +--:(rfc5277)
+    |  |  |  |  +---w filter?       <anyxml>
+    |  |  |  +--:(by-reference)
+    |  |  |     +---w filter-ref?   filter-ref
+    |  |  +---w startTime?          yang:date-and-time
+    |  |  +---w stopTime?           yang:date-and-time
+    |  +--ro output
+    |     +--ro subscription-result       subscription-result
+    |     +--ro (result)?
+    |        +--:(success)
+    |        |  +--ro subscription-id     subscription-id
+    |        +--:(no-success)
+    |           +--ro stream?             stream
+    |           +--ro encoding?           encoding
+    |           +--ro (filter-type)?
+    |           |  +--:(rfc5277)
+    |           |  |  +--ro filter?       <anyxml>
+    |           |  +--:(by-reference)
+    |           |     +--ro filter-ref?   filter-ref
+    |           +--ro startTime?          yang:date-and-time
+    |           +--ro stopTime?           yang:date-and-time
+    +---x delete-subscription
+       +---w input
+       |  +---w subscription-id    subscription-id
+       +--ro output
+          +--ro subscription-result    subscription-result
+
+  notifications:
+    +---n replay-complete
+    |  +--ro subscription-id    subscription-id
+    +---n notification-complete
+    |  +--ro subscription-id    subscription-id
+    +---n subscription-started
+    |  +--ro subscription-id     subscription-id
+    |  +--ro stream?             stream
+    |  +--ro encoding?           encoding
+    |  +--ro (filter-type)?
+    |  |  +--:(rfc5277)
+    |  |  |  +--ro filter?       <anyxml>
+    |  |  +--:(by-reference)
+    |  |     +--ro filter-ref?   filter-ref
+    |  +--ro startTime?          yang:date-and-time
+    |  +--ro stopTime?           yang:date-and-time
+    +---n subscription-suspended
+    |  +--ro subscription-id    subscription-id
+    |  +--ro reason?            subscription-susp-reason
+    +---n subscription-resumed
+    |  +--ro subscription-id    subscription-id
+    +---n subscription-modified
+    |  +--ro subscription-id     subscription-id
+    |  +--ro stream?             stream
+    |  +--ro encoding?           encoding
+    |  +--ro (filter-type)?
+    |  |  +--:(rfc5277)
+    |  |  |  +--ro filter?       <anyxml>
+    |  |  +--:(by-reference)
+    |  |     +--ro filter-ref?   filter-ref
+    |  +--ro startTime?          yang:date-and-time
+    |  +--ro stopTime?           yang:date-and-time
+    +---n subscription-terminated
+       +--ro subscription-id    subscription-id
+       +--ro reason?            subscription-term-reason
+Xpaths for model: ietf-event-notifications.yang
+/notif-bis:streams,container,
+/notif-bis:streams/notif-bis:stream,leaf-list,stream
+/notif-bis:filters,container,
+/notif-bis:filters/notif-bis:filter,list,
+/notif-bis:filters/notif-bis:filter/notif-bis:filter-id,leaf,filter-id
+/notif-bis:filters/notif-bis:filter,choice,
+/notif-bis:filters/notif-bis:filter,case,
+/notif-bis:filters/notif-bis:filter/notif-bis:filter,anyxml,
+/notif-bis:subscription-config,container,
+/notif-bis:subscription-config/notif-bis:subscription,list,
+/notif-bis:subscription-config/notif-bis:subscription/notif-bis:subscription-id,leaf,subscription-id
+/notif-bis:subscription-config/notif-bis:subscription/notif-bis:stream,leaf,stream
+/notif-bis:subscription-config/notif-bis:subscription/notif-bis:encoding,leaf,encoding
+/notif-bis:subscription-config/notif-bis:subscription,choice,
+/notif-bis:subscription-config/notif-bis:subscription,case,
+/notif-bis:subscription-config/notif-bis:subscription/notif-bis:filter,anyxml,
+/notif-bis:subscription-config/notif-bis:subscription,case,
+/notif-bis:subscription-config/notif-bis:subscription/notif-bis:filter-ref,leaf,filter-ref
+/notif-bis:subscription-config/notif-bis:subscription/notif-bis:startTime,leaf,yang:date-and-time
+/notif-bis:subscription-config/notif-bis:subscription/notif-bis:stopTime,leaf,yang:date-and-time
+/notif-bis:subscription-config/notif-bis:subscription/notif-bis:receivers,container,
+/notif-bis:subscription-config/notif-bis:subscription/notif-bis:receivers/notif-bis:receiver,list,
+/notif-bis:subscription-config/notif-bis:subscription/notif-bis:receivers/notif-bis:receiver/notif-bis:address,leaf,inet:host
+/notif-bis:subscription-config/notif-bis:subscription/notif-bis:receivers/notif-bis:receiver/notif-bis:port,leaf,inet:port-number
+/notif-bis:subscription-config/notif-bis:subscription/notif-bis:receivers/notif-bis:receiver/notif-bis:protocol,leaf,transport-protocol
+/notif-bis:subscription-config/notif-bis:subscription,choice,
+/notif-bis:subscription-config/notif-bis:subscription,case,
+/notif-bis:subscription-config/notif-bis:subscription/notif-bis:source-interface,leaf,if:interface-ref
+/notif-bis:subscription-config/notif-bis:subscription,case,
+/notif-bis:subscription-config/notif-bis:subscription/notif-bis:source-vrf,leaf,uint32
+/notif-bis:subscription-config/notif-bis:subscription/notif-bis:source-address,leaf,inet:ip-address-no-zone
+/notif-bis:subscriptions,container,
+/notif-bis:subscriptions/notif-bis:subscription,list,
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:subscription-id,leaf,subscription-id
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:configured-subscription,leaf,empty
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:subscription-status,leaf,subscription-status
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:stream,leaf,stream
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:encoding,leaf,encoding
+/notif-bis:subscriptions/notif-bis:subscription,choice,
+/notif-bis:subscriptions/notif-bis:subscription,case,
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:filter,anyxml,
+/notif-bis:subscriptions/notif-bis:subscription,case,
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:filter-ref,leaf,filter-ref
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:startTime,leaf,yang:date-and-time
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:stopTime,leaf,yang:date-and-time
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:receivers,container,
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:receivers/notif-bis:receiver,list,
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:receivers/notif-bis:receiver/notif-bis:address,leaf,inet:host
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:receivers/notif-bis:receiver/notif-bis:port,leaf,inet:port-number
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:receivers/notif-bis:receiver/notif-bis:protocol,leaf,transport-protocol
+/notif-bis:subscriptions/notif-bis:subscription,choice,
+/notif-bis:subscriptions/notif-bis:subscription,case,
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:source-interface,leaf,if:interface-ref
+/notif-bis:subscriptions/notif-bis:subscription,case,
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:source-vrf,leaf,uint32
+/notif-bis:subscriptions/notif-bis:subscription/notif-bis:source-address,leaf,inet:ip-address-no-zone

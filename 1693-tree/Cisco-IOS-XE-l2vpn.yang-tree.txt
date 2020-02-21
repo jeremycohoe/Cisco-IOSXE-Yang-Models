@@ -1,0 +1,1167 @@
+ 
+KPI for model: Cisco-IOS-XE-l2vpn.yang
+
+module: Cisco-IOS-XE-l2vpn
+  augment /ios:native/ios:interface/ios:pseudowire:
+    +--rw encapsulation?     enumeration {ios-features:l2vpn}?
+    +--rw ip {ios-features:l2vpn}?
+    |  +--rw dfbit
+    |  |  +--rw set?   empty
+    |  +--rw local
+    |  |  +--rw interface
+    |  |     +--rw (interface-choice)?
+    |  |        +--:(AppNav-Compress)
+    |  |        |  +--rw AppNav-Compress?             uint16
+    |  |        +--:(AppNav-UnCompress)
+    |  |        |  +--rw AppNav-UnCompress?           uint16
+    |  |        +--:(ATM)
+    |  |        |  +--rw ATM?                         string
+    |  |        +--:(ATM-subinterface)
+    |  |        |  +--rw ATM-subinterface
+    |  |        |     +--rw ATM?   string
+    |  |        +--:(ATM-ACR)
+    |  |        |  +--rw ATM-ACR?                     string
+    |  |        +--:(ATM-ACRsubinterface)
+    |  |        |  +--rw ATM-ACRsubinterface
+    |  |        |     +--rw ATM-ACR?   string
+    |  |        +--:(BDI)
+    |  |        |  +--rw BDI?                         string
+    |  |        +--:(CEM)
+    |  |        |  +--rw CEM?                         string
+    |  |        +--:(CEM-ACR)
+    |  |        |  +--rw CEM-ACR?                     uint8
+    |  |        +--:(Embedded-Service-Engine)
+    |  |        |  +--rw Embedded-Service-Engine?     string
+    |  |        +--:(Ethernet)
+    |  |        |  +--rw Ethernet?                    string
+    |  |        +--:(FastEthernet)
+    |  |        |  +--rw FastEthernet?                string
+    |  |        +--:(GigabitEthernet)
+    |  |        |  +--rw GigabitEthernet?             string
+    |  |        +--:(FiveGigabitEthernet)
+    |  |        |  +--rw FiveGigabitEthernet?         string
+    |  |        +--:(TwentyFiveGigE)
+    |  |        |  +--rw TwentyFiveGigE?              string
+    |  |        +--:(TwoGigabitEthernet)
+    |  |        |  +--rw TwoGigabitEthernet?          string
+    |  |        +--:(FortyGigabitEthernet)
+    |  |        |  +--rw FortyGigabitEthernet?        string
+    |  |        +--:(HundredGigE)
+    |  |        |  +--rw HundredGigE?                 string
+    |  |        +--:(LISP)
+    |  |        |  +--rw LISP?                        string
+    |  |        +--:(LISP-subinterface)
+    |  |        |  +--rw LISP-subinterface
+    |  |        |     +--rw LISP?   string
+    |  |        +--:(Loopback)
+    |  |        |  +--rw Loopback?                    uint32
+    |  |        +--:(Multilink)
+    |  |        |  +--rw Multilink?                   uint16
+    |  |        +--:(nve)
+    |  |        |  +--rw nve?                         uint16
+    |  |        +--:(overlay)
+    |  |        |  +--rw overlay?                     uint16
+    |  |        +--:(Port-channel)
+    |  |        |  +--rw Port-channel?                uint32
+    |  |        +--:(Port-channel-subinterface)
+    |  |        |  +--rw Port-channel-subinterface
+    |  |        |     +--rw Port-channel?   string
+    |  |        +--:(pseudowire)
+    |  |        |  +--rw pseudowire?                  uint32
+    |  |        +--:(SM)
+    |  |        |  +--rw SM?                          string
+    |  |        +--:(Cellular)
+    |  |        |  +--rw Cellular?                    string
+    |  |        +--:(Serial)
+    |  |        |  +--rw Serial?                      string
+    |  |        +--:(TenGigabitEthernet)
+    |  |        |  +--rw TenGigabitEthernet?          string
+    |  |        +--:(Tunnel)
+    |  |        |  +--rw Tunnel?                      uint32
+    |  |        +--:(Virtual-Template)
+    |  |        |  +--rw Virtual-Template?            uint16
+    |  |        +--:(Vlan)
+    |  |        |  +--rw Vlan?                        uint16
+    |  |        +--:(VirtualPortGroup)
+    |  |        |  +--rw VirtualPortGroup?            uint16
+    |  |        +--:(vasileft)
+    |  |        |  +--rw vasileft?                    uint16
+    |  |        +--:(vasiright)
+    |  |           +--rw vasiright?                   uint16
+    |  +--rw pmtu!
+    |  |  +--rw max?   uint16
+    |  +--rw protocol?   enumeration
+    |  +--rw tos
+    |  |  +--rw reflect?   empty
+    |  |  +--rw value?     uint8
+    |  +--rw ttl?        uint8
+    +--rw control-word?      empty {ios-features:l2vpn}?
+    +--rw interworking?      enumeration {ios-features:l2vpn}?
+    +--rw load-balance {ios-features:l2vpn}?
+    |  +--rw flow!
+    |     +--rw ethernet?   enumeration
+    +--rw monitor {ios-features:l2vpn}?
+    |  +--rw peer
+    |     +--rw bfd!
+    |        +--rw local
+    |           +--rw interface
+    |              +--rw (interface-choice)?
+    |                 +--:(AppNav-Compress)
+    |                 |  +--rw AppNav-Compress?             uint16
+    |                 +--:(AppNav-UnCompress)
+    |                 |  +--rw AppNav-UnCompress?           uint16
+    |                 +--:(ATM)
+    |                 |  +--rw ATM?                         string
+    |                 +--:(ATM-subinterface)
+    |                 |  +--rw ATM-subinterface
+    |                 |     +--rw ATM?   string
+    |                 +--:(ATM-ACR)
+    |                 |  +--rw ATM-ACR?                     string
+    |                 +--:(ATM-ACRsubinterface)
+    |                 |  +--rw ATM-ACRsubinterface
+    |                 |     +--rw ATM-ACR?   string
+    |                 +--:(BDI)
+    |                 |  +--rw BDI?                         string
+    |                 +--:(CEM)
+    |                 |  +--rw CEM?                         string
+    |                 +--:(CEM-ACR)
+    |                 |  +--rw CEM-ACR?                     uint8
+    |                 +--:(Embedded-Service-Engine)
+    |                 |  +--rw Embedded-Service-Engine?     string
+    |                 +--:(Ethernet)
+    |                 |  +--rw Ethernet?                    string
+    |                 +--:(FastEthernet)
+    |                 |  +--rw FastEthernet?                string
+    |                 +--:(GigabitEthernet)
+    |                 |  +--rw GigabitEthernet?             string
+    |                 +--:(FiveGigabitEthernet)
+    |                 |  +--rw FiveGigabitEthernet?         string
+    |                 +--:(TwentyFiveGigE)
+    |                 |  +--rw TwentyFiveGigE?              string
+    |                 +--:(TwoGigabitEthernet)
+    |                 |  +--rw TwoGigabitEthernet?          string
+    |                 +--:(FortyGigabitEthernet)
+    |                 |  +--rw FortyGigabitEthernet?        string
+    |                 +--:(HundredGigE)
+    |                 |  +--rw HundredGigE?                 string
+    |                 +--:(LISP)
+    |                 |  +--rw LISP?                        string
+    |                 +--:(LISP-subinterface)
+    |                 |  +--rw LISP-subinterface
+    |                 |     +--rw LISP?   string
+    |                 +--:(Loopback)
+    |                 |  +--rw Loopback?                    uint32
+    |                 +--:(Multilink)
+    |                 |  +--rw Multilink?                   uint16
+    |                 +--:(nve)
+    |                 |  +--rw nve?                         uint16
+    |                 +--:(overlay)
+    |                 |  +--rw overlay?                     uint16
+    |                 +--:(Port-channel)
+    |                 |  +--rw Port-channel?                uint32
+    |                 +--:(Port-channel-subinterface)
+    |                 |  +--rw Port-channel-subinterface
+    |                 |     +--rw Port-channel?   string
+    |                 +--:(pseudowire)
+    |                 |  +--rw pseudowire?                  uint32
+    |                 +--:(SM)
+    |                 |  +--rw SM?                          string
+    |                 +--:(Cellular)
+    |                 |  +--rw Cellular?                    string
+    |                 +--:(Serial)
+    |                 |  +--rw Serial?                      string
+    |                 +--:(TenGigabitEthernet)
+    |                 |  +--rw TenGigabitEthernet?          string
+    |                 +--:(Tunnel)
+    |                 |  +--rw Tunnel?                      uint32
+    |                 +--:(Virtual-Template)
+    |                 |  +--rw Virtual-Template?            uint16
+    |                 +--:(Vlan)
+    |                 |  +--rw Vlan?                        uint16
+    |                 +--:(VirtualPortGroup)
+    |                 |  +--rw VirtualPortGroup?            uint16
+    |                 +--:(vasileft)
+    |                 |  +--rw vasileft?                    uint16
+    |                 +--:(vasiright)
+    |                    +--rw vasiright?                   uint16
+    +--rw preferred-path {ios-features:l2vpn}?
+    |  +--rw interface
+    |  |  +--rw (Tunnel-Tunnel-tp)?
+    |  |  |  +--:(Tunnel-case)
+    |  |  |  |  +--rw Tunnel?       uint64
+    |  |  |  +--:(Tunnel-tp-case)
+    |  |  |     +--rw Tunnel-tp?    uint16
+    |  |  +--rw disable-fallback?   empty
+    |  +--rw peer-container
+    |     +--rw peer?               union
+    |     +--rw disable-fallback?   empty
+    +--rw protocol-mpls {ios-features:l2vpn}?
+    |  +--rw protocol?   enumeration
+    +--rw protocol-l2tpv2 {ios-features:l2vpn}?
+    |  +--rw protocol?   enumeration
+    +--rw protocol-l2tpv3 {ios-features:l2vpn}?
+    |  +--rw protocol?   enumeration
+    +--rw sequencing?        enumeration {ios-features:l2vpn}?
+    +--rw status! {ios-features:l2vpn}?
+    |  +--rw admin-down
+    |  |  +--rw disconnect?   empty
+    |  +--rw control-plane
+    |  |  +--rw route-watch?   empty
+    |  +--rw decoupled?       empty
+    |  +--rw peer
+    |  |  +--rw topology
+    |  |     +--rw dual-homed?   empty
+    |  +--rw redundancy
+    |     +--rw master?   empty
+    +--rw switching {ios-features:l2vpn}?
+       +--rw tlv?   empty
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw xconnect {ios-features:l2vpn}?
+       +--rw address?         inet:ipv4-address
+       +--rw vcid?            uint32
+       +--rw encapsulation?   enumeration
+       +--rw manual?          empty
+       +--rw sequence?        enumeration
+       +--rw pw-class?        string
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw xconnect {ios-features:l2vpn}?
+       +--rw address?         inet:ipv4-address
+       +--rw vcid?            uint32
+       +--rw encapsulation?   enumeration
+       +--rw manual?          empty
+       +--rw sequence?        enumeration
+       +--rw pw-class?        string
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw xconnect {ios-features:l2vpn}?
+       +--rw address?         inet:ipv4-address
+       +--rw vcid?            uint32
+       +--rw encapsulation?   enumeration
+       +--rw manual?          empty
+       +--rw sequence?        enumeration
+       +--rw pw-class?        string
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw xconnect {ios-features:l2vpn}?
+       +--rw address?         inet:ipv4-address
+       +--rw vcid?            uint32
+       +--rw encapsulation?   enumeration
+       +--rw manual?          empty
+       +--rw sequence?        enumeration
+       +--rw pw-class?        string
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw xconnect {ios-features:l2vpn}?
+       +--rw address?         inet:ipv4-address
+       +--rw vcid?            uint32
+       +--rw encapsulation?   enumeration
+       +--rw manual?          empty
+       +--rw sequence?        enumeration
+       +--rw pw-class?        string
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw xconnect {ios-features:l2vpn}?
+       +--rw address?         inet:ipv4-address
+       +--rw vcid?            uint32
+       +--rw encapsulation?   enumeration
+       +--rw manual?          empty
+       +--rw sequence?        enumeration
+       +--rw pw-class?        string
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw xconnect {ios-features:l2vpn}?
+       +--rw address?         inet:ipv4-address
+       +--rw vcid?            uint32
+       +--rw encapsulation?   enumeration
+       +--rw manual?          empty
+       +--rw sequence?        enumeration
+       +--rw pw-class?        string
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw xconnect {ios-features:l2vpn}?
+       +--rw address?         inet:ipv4-address
+       +--rw vcid?            uint32
+       +--rw encapsulation?   enumeration
+       +--rw manual?          empty
+       +--rw sequence?        enumeration
+       +--rw pw-class?        string
+  augment /ios:native/ios:interface/ios:Port-channel:
+    +--rw xconnect {ios-features:l2vpn}?
+       +--rw address?         inet:ipv4-address
+       +--rw vcid?            uint32
+       +--rw encapsulation?   enumeration
+       +--rw manual?          empty
+       +--rw sequence?        enumeration
+       +--rw pw-class?        string
+  augment /ios:native/ios:interface/ios:FastEthernet/ios-eth:service/ios-eth:instance:
+    +--rw (xconnect-choice)? {ios-features:efp}?
+       +--:(xconnect)
+       |  +--rw xconnect
+       |     +--rw address?         inet:ipv4-address
+       |     +--rw vcid?            uint32
+       |     +--rw encapsulation?   enumeration
+       |     +--rw manual?          empty
+       |     +--rw pw-class?        string
+       |     +--rw sequencing?      enumeration
+       |     +--rw backup
+       |     |  +--rw peer
+       |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+       |     |  |  +--rw vcid?                  uint32
+       |     |  |  +--rw pw-class?              string
+       |     |  |  +--rw priority?              uint8
+       |     |  +--rw delay
+       |     |     +--rw min?   uint32
+       |     |     +--rw max?   uint32
+       |     +--rw mtu?             uint32
+       +--:(xconnect-pw-class)
+          +--rw xconnect-pw-class
+             +--rw xconnect
+                +--rw address?    inet:ipv4-address
+                +--rw vcid?       uint32
+                +--rw pw-class?   string
+                +--rw udp
+                   +--rw port
+                      +--rw local?    uint32
+                      +--rw remote?   uint32
+  augment /ios:native/ios:interface/ios:GigabitEthernet/ios-eth:service/ios-eth:instance:
+    +--rw (xconnect-choice)? {ios-features:efp}?
+       +--:(xconnect)
+       |  +--rw xconnect
+       |     +--rw address?         inet:ipv4-address
+       |     +--rw vcid?            uint32
+       |     +--rw encapsulation?   enumeration
+       |     +--rw manual?          empty
+       |     +--rw pw-class?        string
+       |     +--rw sequencing?      enumeration
+       |     +--rw backup
+       |     |  +--rw peer
+       |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+       |     |  |  +--rw vcid?                  uint32
+       |     |  |  +--rw pw-class?              string
+       |     |  |  +--rw priority?              uint8
+       |     |  +--rw delay
+       |     |     +--rw min?   uint32
+       |     |     +--rw max?   uint32
+       |     +--rw mtu?             uint32
+       +--:(xconnect-pw-class)
+          +--rw xconnect-pw-class
+             +--rw xconnect
+                +--rw address?    inet:ipv4-address
+                +--rw vcid?       uint32
+                +--rw pw-class?   string
+                +--rw udp
+                   +--rw port
+                      +--rw local?    uint32
+                      +--rw remote?   uint32
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet/ios-eth:service/ios-eth:instance:
+    +--rw (xconnect-choice)? {ios-features:efp}?
+       +--:(xconnect)
+       |  +--rw xconnect
+       |     +--rw address?         inet:ipv4-address
+       |     +--rw vcid?            uint32
+       |     +--rw encapsulation?   enumeration
+       |     +--rw manual?          empty
+       |     +--rw pw-class?        string
+       |     +--rw sequencing?      enumeration
+       |     +--rw backup
+       |     |  +--rw peer
+       |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+       |     |  |  +--rw vcid?                  uint32
+       |     |  |  +--rw pw-class?              string
+       |     |  |  +--rw priority?              uint8
+       |     |  +--rw delay
+       |     |     +--rw min?   uint32
+       |     |     +--rw max?   uint32
+       |     +--rw mtu?             uint32
+       +--:(xconnect-pw-class)
+          +--rw xconnect-pw-class
+             +--rw xconnect
+                +--rw address?    inet:ipv4-address
+                +--rw vcid?       uint32
+                +--rw pw-class?   string
+                +--rw udp
+                   +--rw port
+                      +--rw local?    uint32
+                      +--rw remote?   uint32
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet/ios-eth:service/ios-eth:instance:
+    +--rw (xconnect-choice)? {ios-features:efp}?
+       +--:(xconnect)
+       |  +--rw xconnect
+       |     +--rw address?         inet:ipv4-address
+       |     +--rw vcid?            uint32
+       |     +--rw encapsulation?   enumeration
+       |     +--rw manual?          empty
+       |     +--rw pw-class?        string
+       |     +--rw sequencing?      enumeration
+       |     +--rw backup
+       |     |  +--rw peer
+       |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+       |     |  |  +--rw vcid?                  uint32
+       |     |  |  +--rw pw-class?              string
+       |     |  |  +--rw priority?              uint8
+       |     |  +--rw delay
+       |     |     +--rw min?   uint32
+       |     |     +--rw max?   uint32
+       |     +--rw mtu?             uint32
+       +--:(xconnect-pw-class)
+          +--rw xconnect-pw-class
+             +--rw xconnect
+                +--rw address?    inet:ipv4-address
+                +--rw vcid?       uint32
+                +--rw pw-class?   string
+                +--rw udp
+                   +--rw port
+                      +--rw local?    uint32
+                      +--rw remote?   uint32
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE/ios-eth:service/ios-eth:instance:
+    +--rw (xconnect-choice)? {ios-features:efp}?
+       +--:(xconnect)
+       |  +--rw xconnect
+       |     +--rw address?         inet:ipv4-address
+       |     +--rw vcid?            uint32
+       |     +--rw encapsulation?   enumeration
+       |     +--rw manual?          empty
+       |     +--rw pw-class?        string
+       |     +--rw sequencing?      enumeration
+       |     +--rw backup
+       |     |  +--rw peer
+       |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+       |     |  |  +--rw vcid?                  uint32
+       |     |  |  +--rw pw-class?              string
+       |     |  |  +--rw priority?              uint8
+       |     |  +--rw delay
+       |     |     +--rw min?   uint32
+       |     |     +--rw max?   uint32
+       |     +--rw mtu?             uint32
+       +--:(xconnect-pw-class)
+          +--rw xconnect-pw-class
+             +--rw xconnect
+                +--rw address?    inet:ipv4-address
+                +--rw vcid?       uint32
+                +--rw pw-class?   string
+                +--rw udp
+                   +--rw port
+                      +--rw local?    uint32
+                      +--rw remote?   uint32
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet/ios-eth:service/ios-eth:instance:
+    +--rw (xconnect-choice)? {ios-features:efp}?
+       +--:(xconnect)
+       |  +--rw xconnect
+       |     +--rw address?         inet:ipv4-address
+       |     +--rw vcid?            uint32
+       |     +--rw encapsulation?   enumeration
+       |     +--rw manual?          empty
+       |     +--rw pw-class?        string
+       |     +--rw sequencing?      enumeration
+       |     +--rw backup
+       |     |  +--rw peer
+       |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+       |     |  |  +--rw vcid?                  uint32
+       |     |  |  +--rw pw-class?              string
+       |     |  |  +--rw priority?              uint8
+       |     |  +--rw delay
+       |     |     +--rw min?   uint32
+       |     |     +--rw max?   uint32
+       |     +--rw mtu?             uint32
+       +--:(xconnect-pw-class)
+          +--rw xconnect-pw-class
+             +--rw xconnect
+                +--rw address?    inet:ipv4-address
+                +--rw vcid?       uint32
+                +--rw pw-class?   string
+                +--rw udp
+                   +--rw port
+                      +--rw local?    uint32
+                      +--rw remote?   uint32
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet/ios-eth:service/ios-eth:instance:
+    +--rw (xconnect-choice)? {ios-features:efp}?
+       +--:(xconnect)
+       |  +--rw xconnect
+       |     +--rw address?         inet:ipv4-address
+       |     +--rw vcid?            uint32
+       |     +--rw encapsulation?   enumeration
+       |     +--rw manual?          empty
+       |     +--rw pw-class?        string
+       |     +--rw sequencing?      enumeration
+       |     +--rw backup
+       |     |  +--rw peer
+       |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+       |     |  |  +--rw vcid?                  uint32
+       |     |  |  +--rw pw-class?              string
+       |     |  |  +--rw priority?              uint8
+       |     |  +--rw delay
+       |     |     +--rw min?   uint32
+       |     |     +--rw max?   uint32
+       |     +--rw mtu?             uint32
+       +--:(xconnect-pw-class)
+          +--rw xconnect-pw-class
+             +--rw xconnect
+                +--rw address?    inet:ipv4-address
+                +--rw vcid?       uint32
+                +--rw pw-class?   string
+                +--rw udp
+                   +--rw port
+                      +--rw local?    uint32
+                      +--rw remote?   uint32
+  augment /ios:native/ios:interface/ios:HundredGigE/ios-eth:service/ios-eth:instance:
+    +--rw (xconnect-choice)? {ios-features:efp}?
+       +--:(xconnect)
+       |  +--rw xconnect
+       |     +--rw address?         inet:ipv4-address
+       |     +--rw vcid?            uint32
+       |     +--rw encapsulation?   enumeration
+       |     +--rw manual?          empty
+       |     +--rw pw-class?        string
+       |     +--rw sequencing?      enumeration
+       |     +--rw backup
+       |     |  +--rw peer
+       |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+       |     |  |  +--rw vcid?                  uint32
+       |     |  |  +--rw pw-class?              string
+       |     |  |  +--rw priority?              uint8
+       |     |  +--rw delay
+       |     |     +--rw min?   uint32
+       |     |     +--rw max?   uint32
+       |     +--rw mtu?             uint32
+       +--:(xconnect-pw-class)
+          +--rw xconnect-pw-class
+             +--rw xconnect
+                +--rw address?    inet:ipv4-address
+                +--rw vcid?       uint32
+                +--rw pw-class?   string
+                +--rw udp
+                   +--rw port
+                      +--rw local?    uint32
+                      +--rw remote?   uint32
+  augment /ios:native/ios:interface/ios:Port-channel/ios-eth:service/ios-eth:instance:
+    +--rw (xconnect-choice)? {ios-features:efp}?
+       +--:(xconnect)
+       |  +--rw xconnect
+       |     +--rw address?         inet:ipv4-address
+       |     +--rw vcid?            uint32
+       |     +--rw encapsulation?   enumeration
+       |     +--rw manual?          empty
+       |     +--rw pw-class?        string
+       |     +--rw sequencing?      enumeration
+       |     +--rw backup
+       |     |  +--rw peer
+       |     |  |  +--rw peer-router-ip-addr?   inet:ipv4-address
+       |     |  |  +--rw vcid?                  uint32
+       |     |  |  +--rw pw-class?              string
+       |     |  |  +--rw priority?              uint8
+       |     |  +--rw delay
+       |     |     +--rw min?   uint32
+       |     |     +--rw max?   uint32
+       |     +--rw mtu?             uint32
+       +--:(xconnect-pw-class)
+          +--rw xconnect-pw-class
+             +--rw xconnect
+                +--rw address?    inet:ipv4-address
+                +--rw vcid?       uint32
+                +--rw pw-class?   string
+                +--rw udp
+                   +--rw port
+                      +--rw local?    uint32
+                      +--rw remote?   uint32
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw evpn
+       +--rw ethernet-segment* [es-value]
+          +--rw es-value       uint16
+          +--rw df-election
+          |  +--rw wait-time?   uint8
+          +--rw redundancy
+          |  +--rw (redundancy-choice)?
+          |     +--:(all-active)
+          |     |  +--rw all-active?      empty
+          |     +--:(single-active)
+          |        +--rw single-active?   empty
+          +--rw sytem-mac?     string
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw evpn
+       +--rw ethernet-segment* [es-value]
+          +--rw es-value       uint16
+          +--rw df-election
+          |  +--rw wait-time?   uint8
+          +--rw redundancy
+          |  +--rw (redundancy-choice)?
+          |     +--:(all-active)
+          |     |  +--rw all-active?      empty
+          |     +--:(single-active)
+          |        +--rw single-active?   empty
+          +--rw sytem-mac?     string
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw evpn
+       +--rw ethernet-segment* [es-value]
+          +--rw es-value       uint16
+          +--rw df-election
+          |  +--rw wait-time?   uint8
+          +--rw redundancy
+          |  +--rw (redundancy-choice)?
+          |     +--:(all-active)
+          |     |  +--rw all-active?      empty
+          |     +--:(single-active)
+          |        +--rw single-active?   empty
+          +--rw sytem-mac?     string
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw evpn
+       +--rw ethernet-segment* [es-value]
+          +--rw es-value       uint16
+          +--rw df-election
+          |  +--rw wait-time?   uint8
+          +--rw redundancy
+          |  +--rw (redundancy-choice)?
+          |     +--:(all-active)
+          |     |  +--rw all-active?      empty
+          |     +--:(single-active)
+          |        +--rw single-active?   empty
+          +--rw sytem-mac?     string
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw evpn
+       +--rw ethernet-segment* [es-value]
+          +--rw es-value       uint16
+          +--rw df-election
+          |  +--rw wait-time?   uint8
+          +--rw redundancy
+          |  +--rw (redundancy-choice)?
+          |     +--:(all-active)
+          |     |  +--rw all-active?      empty
+          |     +--:(single-active)
+          |        +--rw single-active?   empty
+          +--rw sytem-mac?     string
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw evpn
+       +--rw ethernet-segment* [es-value]
+          +--rw es-value       uint16
+          +--rw df-election
+          |  +--rw wait-time?   uint8
+          +--rw redundancy
+          |  +--rw (redundancy-choice)?
+          |     +--:(all-active)
+          |     |  +--rw all-active?      empty
+          |     +--:(single-active)
+          |        +--rw single-active?   empty
+          +--rw sytem-mac?     string
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw evpn
+       +--rw ethernet-segment* [es-value]
+          +--rw es-value       uint16
+          +--rw df-election
+          |  +--rw wait-time?   uint8
+          +--rw redundancy
+          |  +--rw (redundancy-choice)?
+          |     +--:(all-active)
+          |     |  +--rw all-active?      empty
+          |     +--:(single-active)
+          |        +--rw single-active?   empty
+          +--rw sytem-mac?     string
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw evpn
+       +--rw ethernet-segment* [es-value]
+          +--rw es-value       uint16
+          +--rw df-election
+          |  +--rw wait-time?   uint8
+          +--rw redundancy
+          |  +--rw (redundancy-choice)?
+          |     +--:(all-active)
+          |     |  +--rw all-active?      empty
+          |     +--:(single-active)
+          |        +--rw single-active?   empty
+          +--rw sytem-mac?     string
+  augment /ios:native/ios:interface/ios:Port-channel:
+    +--rw evpn
+       +--rw ethernet-segment* [es-value]
+          +--rw es-value       uint16
+          +--rw df-election
+          |  +--rw wait-time?   uint8
+          +--rw redundancy
+          |  +--rw (redundancy-choice)?
+          |     +--:(all-active)
+          |     |  +--rw all-active?      empty
+          |     +--:(single-active)
+          |        +--rw single-active?   empty
+          +--rw sytem-mac?     string
+  augment /ios:native/ios:l2:
+    +--rw vfi* [name] {ios-features:l2vpn,ios-features:l2}?
+       +--rw name             string
+       +--rw mode?            enumeration
+       +--rw evc?             string
+       +--rw vpn
+       |  +--rw id?   uint64
+       +--rw bridge-domain?   uint16
+       +--rw mtu?             uint32
+       +--rw neighbor* [router-id]
+          +--rw router-id        inet:ipv4-address
+          +--rw vc-id?           uint64
+          +--rw encapsulation?   enumeration
+          +--rw pw-class?        string
+  augment /ios:native/ios:l2vpn:
+    +--rw pseudowire {ios-features:l2vpn}?
+    |  +--rw static-oam
+    |  |  +--rw class* [pw-nm]
+    |  |     +--rw pw-nm      string
+    |  |     +--rw timeout
+    |  |        +--rw refresh
+    |  |           +--rw send
+    |  |              +--rw interval?   uint32
+    |  +--rw tlv
+    |  |  +--rw template* [tlv-nm]
+    |  |     +--rw tlv-nm    string
+    |  |     +--rw tlv
+    |  |        +--rw tlv-type
+    |  |        |  +--rw type?   uint8
+    |  |        +--rw tlv-description
+    |  |           +--rw description?   string
+    |  +--rw group
+    |  |  +--rw status?   empty
+    |  +--rw routing?      empty
+    +--rw vfi {ios-features:l2vpn}?
+    |  +--rw context* [vfi-nm]
+    |     +--rw vfi-nm           string
+    |     +--rw autodiscovery
+    |     |  +--rw bgp
+    |     |     +--rw signaling
+    |     |        +--rw bgp!
+    |     |        |  +--rw template?   string
+    |     |        +--rw ldp!
+    |     |           +--rw template?   string
+    |     +--rw vpn
+    |        +--rw id?   uint32
+    +--rw xconnect {ios-features:l2vpn}?
+    |  +--rw context* [xc-name]
+    |     +--rw xc-name                    string
+    |     +--rw xc-Mode-config-xconnect
+    |        +--rw description?    string
+    |        +--rw interworking
+    |        |  +--rw ethernet?   empty
+    |        |  +--rw ip?         empty
+    |        |  +--rw vlan?       empty
+    |        +--rw match
+    |        |  +--rw protocol
+    |        |     +--rw ipv6?   empty
+    |        +--rw member
+    |        |  +--rw ipv4* [ipv4]
+    |        |  |  +--rw ipv4        inet:ipv4-address
+    |        |  |  +--rw mem-vcid?   uint32
+    |        |  +--rw interface* [interface]
+    |        |  |  +--rw interface           string
+    |        |  |  +--rw group?              empty
+    |        |  |  +--rw service-instance?   empty
+    |        |  +--rw Vlan?        uint16
+    |        +--rw redundancy
+    |        |  +--rw delay?        uint8
+    |        |  +--rw predictive
+    |        |     +--rw disabled?   empty
+    |        |     +--rw enabled?    empty
+    |        +--rw remote
+    |        |  +--rw circuit
+    |        |  |  +--rw id?   empty
+    |        |  +--rw link
+    |        |     +--rw failure?   empty
+    |        +--rw shutdown?       empty
+    +--rw evpn_cont {ios-features:l2vpn}?
+       +--rw evpn
+       |  +--rw replication-type
+       |  |  +--rw (replication-type-choice)?
+       |  |     +--:(ingress)
+       |  |     |  +--rw ingress?   empty
+       |  |     +--:(static)
+       |  |     |  +--rw static?    empty
+       |  |     +--:(p2mp)
+       |  |     |  +--rw p2mp?      empty
+       |  |     +--:(mp2mp)
+       |  |        +--rw mp2mp?     empty
+       |  +--rw arp
+       |  |  +--rw flooding-suppression
+       |  |     +--rw disable?   empty
+       |  +--rw mac
+       |  |  +--rw duplication
+       |  |     +--rw limit?   uint16
+       |  |     +--rw time?    uint32
+       |  +--rw ip
+       |  |  +--rw duplication
+       |  |     +--rw limit?   uint16
+       |  |     +--rw time?    uint32
+       |  +--rw mpls
+       |  |  +--rw label
+       |  |     +--rw mode
+       |  |        +--rw (mode-choice)?
+       |  |           +--:(per-ce)
+       |  |           |  +--rw per-ce?    empty
+       |  |           +--:(per-evi)
+       |  |           |  +--rw per-evi?   empty
+       |  |           +--:(per-bd)
+       |  |              +--rw per-bd?    empty
+       |  +--rw multihoming
+       |  |  +--rw aliasing
+       |  |     +--rw disable?   empty
+       |  +--rw router-id
+       |     +--rw interface
+       |        +--rw (interface-choice)?
+       |           +--:(AppNav-Compress)
+       |           |  +--rw AppNav-Compress?             uint16
+       |           +--:(AppNav-UnCompress)
+       |           |  +--rw AppNav-UnCompress?           uint16
+       |           +--:(ATM)
+       |           |  +--rw ATM?                         string
+       |           +--:(ATM-subinterface)
+       |           |  +--rw ATM-subinterface
+       |           |     +--rw ATM?   string
+       |           +--:(ATM-ACR)
+       |           |  +--rw ATM-ACR?                     string
+       |           +--:(ATM-ACRsubinterface)
+       |           |  +--rw ATM-ACRsubinterface
+       |           |     +--rw ATM-ACR?   string
+       |           +--:(BDI)
+       |           |  +--rw BDI?                         string
+       |           +--:(CEM)
+       |           |  +--rw CEM?                         string
+       |           +--:(CEM-ACR)
+       |           |  +--rw CEM-ACR?                     uint8
+       |           +--:(Embedded-Service-Engine)
+       |           |  +--rw Embedded-Service-Engine?     string
+       |           +--:(Ethernet)
+       |           |  +--rw Ethernet?                    string
+       |           +--:(FastEthernet)
+       |           |  +--rw FastEthernet?                string
+       |           +--:(GigabitEthernet)
+       |           |  +--rw GigabitEthernet?             string
+       |           +--:(FiveGigabitEthernet)
+       |           |  +--rw FiveGigabitEthernet?         string
+       |           +--:(TwentyFiveGigE)
+       |           |  +--rw TwentyFiveGigE?              string
+       |           +--:(TwoGigabitEthernet)
+       |           |  +--rw TwoGigabitEthernet?          string
+       |           +--:(FortyGigabitEthernet)
+       |           |  +--rw FortyGigabitEthernet?        string
+       |           +--:(HundredGigE)
+       |           |  +--rw HundredGigE?                 string
+       |           +--:(LISP)
+       |           |  +--rw LISP?                        string
+       |           +--:(LISP-subinterface)
+       |           |  +--rw LISP-subinterface
+       |           |     +--rw LISP?   string
+       |           +--:(Loopback)
+       |           |  +--rw Loopback?                    uint32
+       |           +--:(Multilink)
+       |           |  +--rw Multilink?                   uint16
+       |           +--:(nve)
+       |           |  +--rw nve?                         uint16
+       |           +--:(overlay)
+       |           |  +--rw overlay?                     uint16
+       |           +--:(Port-channel)
+       |           |  +--rw Port-channel?                uint32
+       |           +--:(Port-channel-subinterface)
+       |           |  +--rw Port-channel-subinterface
+       |           |     +--rw Port-channel?   string
+       |           +--:(pseudowire)
+       |           |  +--rw pseudowire?                  uint32
+       |           +--:(SM)
+       |           |  +--rw SM?                          string
+       |           +--:(Cellular)
+       |           |  +--rw Cellular?                    string
+       |           +--:(Serial)
+       |           |  +--rw Serial?                      string
+       |           +--:(TenGigabitEthernet)
+       |           |  +--rw TenGigabitEthernet?          string
+       |           +--:(Tunnel)
+       |           |  +--rw Tunnel?                      uint32
+       |           +--:(Virtual-Template)
+       |           |  +--rw Virtual-Template?            uint16
+       |           +--:(Vlan)
+       |           |  +--rw Vlan?                        uint16
+       |           +--:(VirtualPortGroup)
+       |           |  +--rw VirtualPortGroup?            uint16
+       |           +--:(vasileft)
+       |           |  +--rw vasileft?                    uint16
+       |           +--:(vasiright)
+       |              +--rw vasiright?                   uint16
+       +--rw evpn-instance
+          +--rw evpn
+             +--rw instance
+                +--rw instance* [evpn-instance-num]
+                   +--rw evpn-instance-num       string
+                   +--rw (evpn-service-type)?
+                      +--:(point-to-point)
+                      |  +--rw point-to-point!
+                      |     +--rw encapsulation?            enumeration
+                      |     +--rw auto-route-target_cont
+                      |     |  +--rw auto-route-target?   empty
+                      |     +--rw rd
+                      |     |  +--rw rd-value?   string
+                      |     +--rw route-target
+                      |        +--rw rt-value?   string
+                      |        +--rw both
+                      |        |  +--rw rt-value?   string
+                      |        +--rw export
+                      |        |  +--rw rt-value?   string
+                      |        +--rw import
+                      |           +--rw rt-value?   string
+                      +--:(vlan-aware)
+                      |  +--rw vlan-aware!
+                      |     +--rw encapsulation?            enumeration
+                      |     +--rw auto-route-target_cont
+                      |     |  +--rw auto-route-target?   empty
+                      |     +--rw rd
+                      |     |  +--rw rd-value?   string
+                      |     +--rw route-target
+                      |        +--rw rt-value?   string
+                      |        +--rw both
+                      |        |  +--rw rt-value?   string
+                      |        +--rw export
+                      |        |  +--rw rt-value?   string
+                      |        +--rw import
+                      |           +--rw rt-value?   string
+                      +--:(vlan-based)
+                      |  +--rw vlan-based!
+                      |     +--rw encapsulation?            enumeration
+                      |     +--rw auto-route-target_cont
+                      |     |  +--rw auto-route-target?   empty
+                      |     +--rw rd
+                      |     |  +--rw rd-value?   string
+                      |     +--rw route-target
+                      |        +--rw rt-value?   string
+                      |        +--rw both
+                      |        |  +--rw rt-value?   string
+                      |        +--rw export
+                      |        |  +--rw rt-value?   string
+                      |        +--rw import
+                      |           +--rw rt-value?   string
+                      +--:(vlan-bundle)
+                         +--rw vlan-bundle!
+                            +--rw encapsulation?            enumeration
+                            +--rw auto-route-target_cont
+                            |  +--rw auto-route-target?   empty
+                            +--rw rd
+                            |  +--rw rd-value?   string
+                            +--rw route-target
+                               +--rw rt-value?   string
+                               +--rw both
+                               |  +--rw rt-value?   string
+                               +--rw export
+                               |  +--rw rt-value?   string
+                               +--rw import
+                                  +--rw rt-value?   string
+  augment /ios:native/ios:l2vpn-config:
+    +--rw l2vpn! {ios-features:l2vpn}?
+       +--rw logging
+       |  +--rw pseudowire
+       |  |  +--rw status?   empty
+       |  +--rw redundancy?   empty
+       +--rw redundancy
+       |  +--rw predictive
+       |     +--rw enabled?   empty
+       +--rw router-id?    inet:ipv4-address
+       +--rw shutdown?     empty
+  augment /ios:native/ios:xconnect:
+    +--rw logging {ios-features:l2vpn}?
+       +--rw pseudowire
+       |  +--rw status?   empty
+       +--rw redundancy?   empty
+  augment /ios:native/ios:pseudowire-class:
+    +--rw encapsulation?     enumeration {ios-features:l2vpn}?
+    +--rw ip {ios-features:l2vpn}?
+    |  +--rw dfbit
+    |  |  +--rw set?   empty
+    |  +--rw local
+    |  |  +--rw interface
+    |  |     +--rw (interface-choice)?
+    |  |        +--:(AppNav-Compress)
+    |  |        |  +--rw AppNav-Compress?             uint16
+    |  |        +--:(AppNav-UnCompress)
+    |  |        |  +--rw AppNav-UnCompress?           uint16
+    |  |        +--:(ATM)
+    |  |        |  +--rw ATM?                         string
+    |  |        +--:(ATM-subinterface)
+    |  |        |  +--rw ATM-subinterface
+    |  |        |     +--rw ATM?   string
+    |  |        +--:(ATM-ACR)
+    |  |        |  +--rw ATM-ACR?                     string
+    |  |        +--:(ATM-ACRsubinterface)
+    |  |        |  +--rw ATM-ACRsubinterface
+    |  |        |     +--rw ATM-ACR?   string
+    |  |        +--:(BDI)
+    |  |        |  +--rw BDI?                         string
+    |  |        +--:(CEM)
+    |  |        |  +--rw CEM?                         string
+    |  |        +--:(CEM-ACR)
+    |  |        |  +--rw CEM-ACR?                     uint8
+    |  |        +--:(Embedded-Service-Engine)
+    |  |        |  +--rw Embedded-Service-Engine?     string
+    |  |        +--:(Ethernet)
+    |  |        |  +--rw Ethernet?                    string
+    |  |        +--:(FastEthernet)
+    |  |        |  +--rw FastEthernet?                string
+    |  |        +--:(GigabitEthernet)
+    |  |        |  +--rw GigabitEthernet?             string
+    |  |        +--:(FiveGigabitEthernet)
+    |  |        |  +--rw FiveGigabitEthernet?         string
+    |  |        +--:(TwentyFiveGigE)
+    |  |        |  +--rw TwentyFiveGigE?              string
+    |  |        +--:(TwoGigabitEthernet)
+    |  |        |  +--rw TwoGigabitEthernet?          string
+    |  |        +--:(FortyGigabitEthernet)
+    |  |        |  +--rw FortyGigabitEthernet?        string
+    |  |        +--:(HundredGigE)
+    |  |        |  +--rw HundredGigE?                 string
+    |  |        +--:(LISP)
+    |  |        |  +--rw LISP?                        string
+    |  |        +--:(LISP-subinterface)
+    |  |        |  +--rw LISP-subinterface
+    |  |        |     +--rw LISP?   string
+    |  |        +--:(Loopback)
+    |  |        |  +--rw Loopback?                    uint32
+    |  |        +--:(Multilink)
+    |  |        |  +--rw Multilink?                   uint16
+    |  |        +--:(nve)
+    |  |        |  +--rw nve?                         uint16
+    |  |        +--:(overlay)
+    |  |        |  +--rw overlay?                     uint16
+    |  |        +--:(Port-channel)
+    |  |        |  +--rw Port-channel?                uint32
+    |  |        +--:(Port-channel-subinterface)
+    |  |        |  +--rw Port-channel-subinterface
+    |  |        |     +--rw Port-channel?   string
+    |  |        +--:(pseudowire)
+    |  |        |  +--rw pseudowire?                  uint32
+    |  |        +--:(SM)
+    |  |        |  +--rw SM?                          string
+    |  |        +--:(Cellular)
+    |  |        |  +--rw Cellular?                    string
+    |  |        +--:(Serial)
+    |  |        |  +--rw Serial?                      string
+    |  |        +--:(TenGigabitEthernet)
+    |  |        |  +--rw TenGigabitEthernet?          string
+    |  |        +--:(Tunnel)
+    |  |        |  +--rw Tunnel?                      uint32
+    |  |        +--:(Virtual-Template)
+    |  |        |  +--rw Virtual-Template?            uint16
+    |  |        +--:(Vlan)
+    |  |        |  +--rw Vlan?                        uint16
+    |  |        +--:(VirtualPortGroup)
+    |  |        |  +--rw VirtualPortGroup?            uint16
+    |  |        +--:(vasileft)
+    |  |        |  +--rw vasileft?                    uint16
+    |  |        +--:(vasiright)
+    |  |           +--rw vasiright?                   uint16
+    |  +--rw pmtu!
+    |  |  +--rw max?   uint16
+    |  +--rw protocol?   enumeration
+    |  +--rw tos
+    |  |  +--rw reflect?   empty
+    |  |  +--rw value?     uint8
+    |  +--rw ttl?        uint8
+    +--rw control-word?      empty {ios-features:l2vpn}?
+    +--rw interworking?      enumeration {ios-features:l2vpn}?
+    +--rw load-balance {ios-features:l2vpn}?
+    |  +--rw flow!
+    |     +--rw ethernet?   enumeration
+    +--rw monitor {ios-features:l2vpn}?
+    |  +--rw peer
+    |     +--rw bfd!
+    |        +--rw local
+    |           +--rw interface
+    |              +--rw (interface-choice)?
+    |                 +--:(AppNav-Compress)
+    |                 |  +--rw AppNav-Compress?             uint16
+    |                 +--:(AppNav-UnCompress)
+    |                 |  +--rw AppNav-UnCompress?           uint16
+    |                 +--:(ATM)
+    |                 |  +--rw ATM?                         string
+    |                 +--:(ATM-subinterface)
+    |                 |  +--rw ATM-subinterface
+    |                 |     +--rw ATM?   string
+    |                 +--:(ATM-ACR)
+    |                 |  +--rw ATM-ACR?                     string
+    |                 +--:(ATM-ACRsubinterface)
+    |                 |  +--rw ATM-ACRsubinterface
+    |                 |     +--rw ATM-ACR?   string
+    |                 +--:(BDI)
+    |                 |  +--rw BDI?                         string
+    |                 +--:(CEM)
+    |                 |  +--rw CEM?                         string
+    |                 +--:(CEM-ACR)
+    |                 |  +--rw CEM-ACR?                     uint8
+    |                 +--:(Embedded-Service-Engine)
+    |                 |  +--rw Embedded-Service-Engine?     string
+    |                 +--:(Ethernet)
+    |                 |  +--rw Ethernet?                    string
+    |                 +--:(FastEthernet)
+    |                 |  +--rw FastEthernet?                string
+    |                 +--:(GigabitEthernet)
+    |                 |  +--rw GigabitEthernet?             string
+    |                 +--:(FiveGigabitEthernet)
+    |                 |  +--rw FiveGigabitEthernet?         string
+    |                 +--:(TwentyFiveGigE)
+    |                 |  +--rw TwentyFiveGigE?              string
+    |                 +--:(TwoGigabitEthernet)
+    |                 |  +--rw TwoGigabitEthernet?          string
+    |                 +--:(FortyGigabitEthernet)
+    |                 |  +--rw FortyGigabitEthernet?        string
+    |                 +--:(HundredGigE)
+    |                 |  +--rw HundredGigE?                 string
+    |                 +--:(LISP)
+    |                 |  +--rw LISP?                        string
+    |                 +--:(LISP-subinterface)
+    |                 |  +--rw LISP-subinterface
+    |                 |     +--rw LISP?   string
+    |                 +--:(Loopback)
+    |                 |  +--rw Loopback?                    uint32
+    |                 +--:(Multilink)
+    |                 |  +--rw Multilink?                   uint16
+    |                 +--:(nve)
+    |                 |  +--rw nve?                         uint16
+    |                 +--:(overlay)
+    |                 |  +--rw overlay?                     uint16
+    |                 +--:(Port-channel)
+    |                 |  +--rw Port-channel?                uint32
+    |                 +--:(Port-channel-subinterface)
+    |                 |  +--rw Port-channel-subinterface
+    |                 |     +--rw Port-channel?   string
+    |                 +--:(pseudowire)
+    |                 |  +--rw pseudowire?                  uint32
+    |                 +--:(SM)
+    |                 |  +--rw SM?                          string
+    |                 +--:(Cellular)
+    |                 |  +--rw Cellular?                    string
+    |                 +--:(Serial)
+    |                 |  +--rw Serial?                      string
+    |                 +--:(TenGigabitEthernet)
+    |                 |  +--rw TenGigabitEthernet?          string
+    |                 +--:(Tunnel)
+    |                 |  +--rw Tunnel?                      uint32
+    |                 +--:(Virtual-Template)
+    |                 |  +--rw Virtual-Template?            uint16
+    |                 +--:(Vlan)
+    |                 |  +--rw Vlan?                        uint16
+    |                 +--:(VirtualPortGroup)
+    |                 |  +--rw VirtualPortGroup?            uint16
+    |                 +--:(vasileft)
+    |                 |  +--rw vasileft?                    uint16
+    |                 +--:(vasiright)
+    |                    +--rw vasiright?                   uint16
+    +--rw preferred-path {ios-features:l2vpn}?
+    |  +--rw interface
+    |  |  +--rw (Tunnel-Tunnel-tp)?
+    |  |  |  +--:(Tunnel-case)
+    |  |  |  |  +--rw Tunnel?       uint64
+    |  |  |  +--:(Tunnel-tp-case)
+    |  |  |     +--rw Tunnel-tp?    uint16
+    |  |  +--rw disable-fallback?   empty
+    |  +--rw peer-container
+    |     +--rw peer?               union
+    |     +--rw disable-fallback?   empty
+    +--rw protocol-mpls {ios-features:l2vpn}?
+    |  +--rw protocol?   enumeration
+    +--rw protocol-l2tpv2 {ios-features:l2vpn}?
+    |  +--rw protocol?   enumeration
+    +--rw protocol-l2tpv3 {ios-features:l2vpn}?
+    |  +--rw protocol?   enumeration
+    +--rw sequencing?        enumeration {ios-features:l2vpn}?
+    +--rw status! {ios-features:l2vpn}?
+    |  +--rw admin-down
+    |  |  +--rw disconnect?   empty
+    |  +--rw control-plane
+    |  |  +--rw route-watch?   empty
+    |  +--rw decoupled?       empty
+    |  +--rw peer
+    |  |  +--rw topology
+    |  |     +--rw dual-homed?   empty
+    |  +--rw redundancy
+    |     +--rw master?   empty
+    +--rw switching {ios-features:l2vpn}?
+       +--rw tlv?   empty
+Xpaths for model: Cisco-IOS-XE-l2vpn.yang

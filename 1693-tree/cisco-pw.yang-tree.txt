@@ -1,0 +1,276 @@
+ 
+KPI for model: cisco-pw.yang
+module: cisco-pw
+  +--rw pseudowire-config
+  |  +--rw global
+  |  |  +--rw pw-grouping?                        boolean {pw-grouping-config}?
+  |  |  +--rw pw-oam-refresh-transmit?            uint32 {pw-oam-refresh-config}?
+  |  |  +--rw pw-status?                          boolean {pw-status-config}?
+  |  |  +--rw predictive-redundancy?              boolean {predictive-redundancy-config}?
+  |  |  +--rw vc-state-notification-enabled?      boolean
+  |  |  +--rw vc-state-notification-batch-size?   uint32
+  |  |  +--rw vc-state-notification-rate?         uint32
+  |  +--rw pw-templates
+  |  |  +--rw pw-template* [name]
+  |  |     +--rw name                        string
+  |  |     +--rw encapsulation?              identityref
+  |  |     +--rw control-word?               boolean
+  |  |     +--rw signaling-protocol?         identityref
+  |  |     +--rw load-balance {pw-load-balancing}?
+  |  |     |  +--rw (flow)? {pw-class-flow-setting}?
+  |  |     |  |  +--:(ethernet)
+  |  |     |  |  |  +--rw ethernet?   identityref
+  |  |     |  |  +--:(ip)
+  |  |     |  |     +--rw ip?         identityref
+  |  |     |  +--rw flow-label
+  |  |     |     +--rw direction?     enumeration
+  |  |     |     +--rw tlv-code-17?   boolean {flow-label-tlv-code17}?
+  |  |     |     +--rw static?        boolean {flow-label-static-config}?
+  |  |     +--rw preferred-path {pw-preferred-path}?
+  |  |     |  +--rw (path)?
+  |  |     |  |  +--:(interface)
+  |  |     |  |  |  +--rw interface?    if:interface-ref
+  |  |     |  |  +--:(address) {preferred-path-peer}?
+  |  |     |  |  |  +--rw address?      inet:ip-address
+  |  |     |  |  +--:(hostname) {preferred-path-peer}?
+  |  |     |  |     +--rw hostname?     string
+  |  |     |  +--rw disable-fallback?   boolean
+  |  |     +--rw sequencing {pw-sequencing}?
+  |  |     |  +--rw direction?   identityref
+  |  |     |  +--rw resync?      int32
+  |  |     +--rw vc-type?                    identityref
+  |  |     +--rw switching-tlv?              boolean
+  |  |     +--rw vccv {pw-vccv}?
+  |  |     |  +--rw control-word?   boolean
+  |  |     +--rw switchover-delay {pw-class-switchover-delay}?
+  |  |     |  +--rw switchover-timer?   uint8
+  |  |     |  +--rw (restore-timer-or-never)?
+  |  |     |     +--:(timer)
+  |  |     |     |  +--rw timer?        uint8
+  |  |     |     +--:(never)
+  |  |     |        +--rw never?        boolean
+  |  |     +--rw source-ip?                  inet:ipv4-address {pw-class-source-ip}?
+  |  |     +--rw tag-rewrite-ingress-vlan?   uint16 {pw-class-tag-rewrite}?
+  |  |     +--rw mac-withdraw?               boolean {pw-mac-withdraw-config}?
+  |  |     +--rw status
+  |  |     |  +--rw decoupled?              boolean {pw-class-status}?
+  |  |     |  +--rw disable?                boolean {pw-class-status}?
+  |  |     |  +--rw peer-topo-dual-homed?   boolean
+  |  |     |  +--rw route-watch-disable?    boolean {pw-class-status}?
+  |  |     |  +--rw redundancy-master?      boolean {pw-class-status}?
+  |  |     +--rw port-profile-spec {pw-port-profiles}?
+  |  |        +--rw description?   string
+  |  |        +--rw shutdown?      boolean
+  |  |        +--rw shut-force?    boolean
+  |  |        +--rw mtu?           uint32
+  |  |        +--rw max-ports?     uint16
+  |  |        +--rw enabled?       boolean
+  |  +--rw pw-static-oam-classes {pw-static-oam-config}?
+  |     +--rw pw-static-oam-class* [name]
+  |        +--rw name                    string
+  |        +--rw ack?                    boolean
+  |        +--rw keepalive?              uint32
+  |        +--rw timeout-refresh-send?   uint32
+  |        +--rw timeout-refresh-ack?    uint32
+  +--ro pseudowire-state
+     +--ro pseudowires* [vc-peer-address vc-id vc-owner-type vc-name vc-index]
+        +--ro vc-type?                   identityref
+        +--ro vc-owner-type              enumeration
+        +--ro vc-owner-name?             string
+        +--ro vc-psn-type?               enumeration
+        +--ro vc-peer-address            inet:ip-address
+        +--ro vc-id                      pw-vc-id-type
+        +--ro vc-index                   pw-vc-index-type
+        +--ro vc-local-group-id?         pw-group-id-type
+        +--ro vc-control-word?           boolean
+        +--ro vc-local-if-mtu?           uint32
+        +--ro vc-remote-group-id?        pw-group-id-type
+        +--ro vc-remote-control-word?    enumeration
+        +--ro vc-remote-if-mtu?          uint32
+        +--ro vc-outbound-label?         uint32
+        +--ro vc-inbound-label?          uint32
+        +--ro vc-name                    string
+        +--ro vc-oper-status?            pw-oper-state-type
+        +--ro vc-inbound-oper-status?    pw-oper-state-type
+        +--ro vc-outbound-oper-status?   pw-oper-state-type
+        +--ro statistics
+           +--ro vc-create-time?       yang:timestamp
+           +--ro vc-up-time?           yang:timeticks
+           +--ro discontinuity-time    yang:date-and-time
+           +--ro in-octets?            yang:counter64
+           +--ro in-pkts?              yang:counter64
+           +--ro in-errors?            yang:counter64
+           +--ro out-octets?           yang:counter64
+           +--ro out-pkts?             yang:counter64
+           +--ro out-errors?           yang:counter64
+
+  augment /if:interfaces/if:interface:
+    +--rw pw-neighbor {pw-interface}?
+       +--rw neighbor-ip-address?        inet:ip-address
+       +--rw vc-id?                      uint32
+       +--rw static-label
+       |  +--rw local-label?    uint32
+       |  +--rw remote-label?   uint32
+       +--rw source-template?            pw-template-ref
+       +--rw encapsulation?              identityref
+       +--rw control-word?               boolean
+       +--rw signaling-protocol?         identityref
+       +--rw load-balance {pw-load-balancing}?
+       |  +--rw (flow)? {pw-class-flow-setting}?
+       |  |  +--:(ethernet)
+       |  |  |  +--rw ethernet?   identityref
+       |  |  +--:(ip)
+       |  |     +--rw ip?         identityref
+       |  +--rw flow-label
+       |     +--rw direction?     enumeration
+       |     +--rw tlv-code-17?   boolean {flow-label-tlv-code17}?
+       |     +--rw static?        boolean {flow-label-static-config}?
+       +--rw preferred-path {pw-preferred-path}?
+       |  +--rw (path)?
+       |  |  +--:(interface)
+       |  |  |  +--rw interface?    if:interface-ref
+       |  |  +--:(address) {preferred-path-peer}?
+       |  |  |  +--rw address?      inet:ip-address
+       |  |  +--:(hostname) {preferred-path-peer}?
+       |  |     +--rw hostname?     string
+       |  +--rw disable-fallback?   boolean
+       +--rw sequencing {pw-sequencing}?
+       |  +--rw direction?   identityref
+       |  +--rw resync?      int32
+       +--rw vc-type?                    identityref
+       +--rw switching-tlv?              boolean
+       +--rw vccv {pw-vccv}?
+       |  +--rw control-word?   boolean
+       +--rw switchover-delay {pw-class-switchover-delay}?
+       |  +--rw switchover-timer?   uint8
+       |  +--rw (restore-timer-or-never)?
+       |     +--:(timer)
+       |     |  +--rw timer?        uint8
+       |     +--:(never)
+       |        +--rw never?        boolean
+       +--rw source-ip?                  inet:ipv4-address {pw-class-source-ip}?
+       +--rw tag-rewrite-ingress-vlan?   uint16 {pw-class-tag-rewrite}?
+       +--rw mac-withdraw?               boolean {pw-mac-withdraw-config}?
+       +--rw status
+          +--rw decoupled?              boolean {pw-class-status}?
+          +--rw disable?                boolean {pw-class-status}?
+          +--rw peer-topo-dual-homed?   boolean
+          +--rw route-watch-disable?    boolean {pw-class-status}?
+          +--rw redundancy-master?      boolean {pw-class-status}?
+  augment /if:interfaces-state/if:interface:
+    +--ro pseudowire
+       +--ro neighbor-ip-address?   inet:ip-address
+       +--ro vc-id?                 uint32
+
+  notifications:
+    +---n vc-up-notification
+    |  +--ro vc-list* []
+    |     +--ro vc-peer-address?   pw-oper-vc-peer-addr-ref
+    |     +--ro vc-id?             pw-oper-vc-id-ref
+    +---n vc-down-notification
+       +--ro vc-list* []
+          +--ro vc-peer-address?   pw-oper-vc-peer-addr-ref
+          +--ro vc-id?             pw-oper-vc-id-ref
+Xpaths for model: cisco-pw.yang
+/l2vpn-pw:pseudowire-config,container,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:global,container,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:global/l2vpn-pw:pw-grouping,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:global/l2vpn-pw:pw-oam-refresh-transmit,leaf,uint32
+/l2vpn-pw:pseudowire-config/l2vpn-pw:global/l2vpn-pw:pw-status,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:global/l2vpn-pw:predictive-redundancy,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:global/l2vpn-pw:vc-state-notification-enabled,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:global/l2vpn-pw:vc-state-notification-batch-size,leaf,uint32
+/l2vpn-pw:pseudowire-config/l2vpn-pw:global/l2vpn-pw:vc-state-notification-rate,leaf,uint32
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates,container,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template,list,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:name,leaf,string
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:encapsulation,leaf,identityref
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:control-word,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:signaling-protocol,leaf,identityref
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:load-balance,container,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:load-balance,choice,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:load-balance,case,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:load-balance/l2vpn-pw:ethernet,leaf,identityref
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:load-balance,case,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:load-balance/l2vpn-pw:ip,leaf,identityref
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:load-balance/l2vpn-pw:flow-label,container,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:load-balance/l2vpn-pw:flow-label/l2vpn-pw:direction,leaf,enumeration
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:load-balance/l2vpn-pw:flow-label/l2vpn-pw:tlv-code-17,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:load-balance/l2vpn-pw:flow-label/l2vpn-pw:static,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:preferred-path,container,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:preferred-path,choice,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:preferred-path,case,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:preferred-path/l2vpn-pw:interface,leaf,if:interface-ref
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:preferred-path,case,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:preferred-path/l2vpn-pw:address,leaf,inet:ip-address
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:preferred-path,case,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:preferred-path/l2vpn-pw:hostname,leaf,string
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:preferred-path/l2vpn-pw:disable-fallback,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:sequencing,container,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:sequencing/l2vpn-pw:direction,leaf,identityref
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:sequencing/l2vpn-pw:resync,leaf,int32
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:vc-type,leaf,identityref
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:switching-tlv,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:vccv,container,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:vccv/l2vpn-pw:control-word,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:switchover-delay,container,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:switchover-delay/l2vpn-pw:switchover-timer,leaf,uint8
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:switchover-delay,choice,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:switchover-delay,case,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:switchover-delay/l2vpn-pw:timer,leaf,uint8
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:switchover-delay,case,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:switchover-delay/l2vpn-pw:never,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:source-ip,leaf,inet:ipv4-address
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:tag-rewrite-ingress-vlan,leaf,uint16
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:mac-withdraw,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:status,container,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:status/l2vpn-pw:decoupled,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:status/l2vpn-pw:disable,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:status/l2vpn-pw:peer-topo-dual-homed,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:status/l2vpn-pw:route-watch-disable,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:status/l2vpn-pw:redundancy-master,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:port-profile-spec,container,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:port-profile-spec/l2vpn-pw:description,leaf,string
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:port-profile-spec/l2vpn-pw:shutdown,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:port-profile-spec/l2vpn-pw:shut-force,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:port-profile-spec/l2vpn-pw:mtu,leaf,uint32
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:port-profile-spec/l2vpn-pw:max-ports,leaf,uint16
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-templates/l2vpn-pw:pw-template/l2vpn-pw:port-profile-spec/l2vpn-pw:enabled,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-static-oam-classes,container,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-static-oam-classes/l2vpn-pw:pw-static-oam-class,list,
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-static-oam-classes/l2vpn-pw:pw-static-oam-class/l2vpn-pw:name,leaf,string
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-static-oam-classes/l2vpn-pw:pw-static-oam-class/l2vpn-pw:ack,leaf,boolean
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-static-oam-classes/l2vpn-pw:pw-static-oam-class/l2vpn-pw:keepalive,leaf,uint32
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-static-oam-classes/l2vpn-pw:pw-static-oam-class/l2vpn-pw:timeout-refresh-send,leaf,uint32
+/l2vpn-pw:pseudowire-config/l2vpn-pw:pw-static-oam-classes/l2vpn-pw:pw-static-oam-class/l2vpn-pw:timeout-refresh-ack,leaf,uint32
+/l2vpn-pw:pseudowire-state,container,
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires,list,
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-type,leaf,identityref
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-owner-type,leaf,enumeration
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-owner-name,leaf,string
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-psn-type,leaf,enumeration
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-peer-address,leaf,inet:ip-address
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-id,leaf,pw-vc-id-type
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-index,leaf,pw-vc-index-type
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-local-group-id,leaf,pw-group-id-type
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-control-word,leaf,boolean
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-local-if-mtu,leaf,uint32
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-remote-group-id,leaf,pw-group-id-type
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-remote-control-word,leaf,enumeration
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-remote-if-mtu,leaf,uint32
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-outbound-label,leaf,uint32
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-inbound-label,leaf,uint32
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-name,leaf,string
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-oper-status,leaf,pw-oper-state-type
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-inbound-oper-status,leaf,pw-oper-state-type
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:vc-outbound-oper-status,leaf,pw-oper-state-type
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:statistics,container,
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:statistics/l2vpn-pw:vc-create-time,leaf,yang:timestamp
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:statistics/l2vpn-pw:vc-up-time,leaf,yang:timeticks
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:statistics/l2vpn-pw:discontinuity-time,leaf,yang:date-and-time
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:statistics/l2vpn-pw:in-octets,leaf,yang:counter64
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:statistics/l2vpn-pw:in-pkts,leaf,yang:counter64
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:statistics/l2vpn-pw:in-errors,leaf,yang:counter64
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:statistics/l2vpn-pw:out-octets,leaf,yang:counter64
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:statistics/l2vpn-pw:out-pkts,leaf,yang:counter64
+/l2vpn-pw:pseudowire-state/l2vpn-pw:pseudowires/l2vpn-pw:statistics/l2vpn-pw:out-errors,leaf,yang:counter64

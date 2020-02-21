@@ -1,0 +1,69 @@
+ 
+KPI for model: Cisco-IOS-XE-segment-routing.yang
+
+module: Cisco-IOS-XE-segment-routing
+  augment /ios:native/ios:segment-routing:
+    +--rw mpls!
+       +--rw connected-prefix-sid-map!
+       |  +--rw address-family
+       |     +--rw ipv4!
+       |     |  +--rw prefixes* [ipprefix]
+       |     |     +--rw ipprefix    inet:ipv4-prefix
+       |     |     +--rw index
+       |     |     |  +--rw range-start?   uint32
+       |     |     |  +--rw range?         uint32
+       |     |     |  +--rw attach?        empty
+       |     |     +--rw absolute
+       |     |        +--rw range-start?   uint32
+       |     |        +--rw range?         uint32
+       |     |        +--rw attach?        empty
+       |     +--rw ipv4-strict-spf
+       |        +--rw ipv4
+       |           +--rw strict-spf!
+       |              +--rw prefixes* [ipprefix]
+       |                 +--rw ipprefix    inet:ipv4-prefix
+       |                 +--rw index
+       |                 |  +--rw range-start?   uint32
+       |                 |  +--rw range?         uint32
+       |                 |  +--rw attach?        empty
+       |                 +--rw absolute
+       |                    +--rw range-start?   uint32
+       |                    +--rw range?         uint32
+       |                    +--rw attach?        empty
+       +--rw global-block
+       |  +--rw range-start?   uint32
+       |  +--rw range-end?     uint32
+       +--rw mapping-server!
+       |  +--rw prefix-sid-map!
+       |     +--rw address-family
+       |        +--rw ipv4!
+       |        |  +--rw prefixes* [ipprefix]
+       |        |     +--rw ipprefix    inet:ipv4-prefix
+       |        |     +--rw index
+       |        |     |  +--rw range-start?   uint32
+       |        |     |  +--rw range?         uint32
+       |        |     |  +--rw attach?        empty
+       |        |     +--rw absolute
+       |        |        +--rw range-start?   uint32
+       |        |        +--rw range?         uint32
+       |        |        +--rw attach?        empty
+       |        +--rw ipv4-strict-spf
+       |           +--rw ipv4
+       |              +--rw strict-spf!
+       |                 +--rw prefixes* [ipprefix]
+       |                    +--rw ipprefix    inet:ipv4-prefix
+       |                    +--rw index
+       |                    |  +--rw range-start?   uint32
+       |                    |  +--rw range?         uint32
+       |                    |  +--rw attach?        empty
+       |                    +--rw absolute
+       |                       +--rw range-start?   uint32
+       |                       +--rw range?         uint32
+       |                       +--rw attach?        empty
+       +--rw set-attributes!
+       |  +--rw address-family
+       |     +--rw ipv4!
+       |        +--rw explicit-null?        empty
+       |        +--rw sr-label-preferred?   empty
+       +--rw shutdown?                   empty
+Xpaths for model: Cisco-IOS-XE-segment-routing.yang

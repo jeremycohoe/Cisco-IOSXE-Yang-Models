@@ -1,0 +1,92 @@
+ 
+KPI for model: Cisco-IOS-XE-cdp-oper.yang
+module: Cisco-IOS-XE-cdp-oper
+  +--ro cdp-neighbor-details
+     +--ro cdp-neighbor-detail* [device-id]
+        +--ro device-id              uint32
+        +--ro device-name?           string
+        +--ro local-intf-name?       string
+        +--ro port-id?               string
+        +--ro capability?            string
+        +--ro platform-name?         string
+        +--ro version?               string
+        +--ro duplex?                cdp-ios-xe-oper:cdp-duplex
+        +--ro adv-version?           cdp-ios-xe-oper:cdp-adv-version
+        +--ro hello-message
+        |  +--ro oui?             string
+        |  +--ro protocol-id?     string
+        |  +--ro payload-value?   string
+        |  +--ro payload-len?     uint16
+        +--ro vty-mgmt-domain?       string
+        +--ro native-vlan?           uint16
+        +--ro vvid-tag?              uint8
+        +--ro vvid?                  uint16
+        +--ro power?                 uint32
+        +--ro power-request
+        |  +--ro power-request-id?      uint16
+        |  +--ro power-man-id?          uint16
+        |  +--ro power-request-level?   string
+        +--ro power-available
+        |  +--ro power-request-id?   uint16
+        |  +--ro power-man-id?       uint16
+        |  +--ro power-available?    uint32
+        |  +--ro power-man-level?    uint32
+        +--ro unidirectional-mode?   cdp-ios-xe-oper:cdp-unidirectional-mode
+        +--ro spare-pair
+        |  +--ro spare-pair-poe?                  cdp-ios-xe-oper:cdp-yes-no
+        |  +--ro spare-pair-detection-required?   cdp-ios-xe-oper:cdp-yes-no
+        |  +--ro spare-pair-pd-config?            cdp-ios-xe-oper:cdp-enable-disable
+        |  +--ro spare-pair-pse-operational?      cdp-ios-xe-oper:cdp-yes-no
+        +--ro mgmt-address?          inet:ip-address
+        +--ro ip-address?            inet:ip-address
+        +--ro ipv6-address?          inet:ip-address
+        +--ro clns-address?          string
+        +--ro decnet-addr?           string
+        +--ro novell-addr?           string
+        +--ro second-port-status?    string
+        +--ro table-id?              uint16
+Xpaths for model: Cisco-IOS-XE-cdp-oper.yang
+/cdp-ios-xe-oper:cdp-neighbor-details,container,
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail,list,
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:device-id,leaf,uint32
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:device-name,leaf,string
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:local-intf-name,leaf,string
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:port-id,leaf,string
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:capability,leaf,string
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:platform-name,leaf,string
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:version,leaf,string
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:duplex,leaf,cdp-ios-xe-oper:cdp-duplex
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:adv-version,leaf,cdp-ios-xe-oper:cdp-adv-version
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:hello-message,container,
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:hello-message/cdp-ios-xe-oper:oui,leaf,string
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:hello-message/cdp-ios-xe-oper:protocol-id,leaf,string
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:hello-message/cdp-ios-xe-oper:payload-value,leaf,string
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:hello-message/cdp-ios-xe-oper:payload-len,leaf,uint16
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:vty-mgmt-domain,leaf,string
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:native-vlan,leaf,uint16
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:vvid-tag,leaf,uint8
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:vvid,leaf,uint16
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:power,leaf,uint32
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:power-request,container,
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:power-request/cdp-ios-xe-oper:power-request-id,leaf,uint16
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:power-request/cdp-ios-xe-oper:power-man-id,leaf,uint16
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:power-request/cdp-ios-xe-oper:power-request-level,leaf,string
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:power-available,container,
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:power-available/cdp-ios-xe-oper:power-request-id,leaf,uint16
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:power-available/cdp-ios-xe-oper:power-man-id,leaf,uint16
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:power-available/cdp-ios-xe-oper:power-available,leaf,uint32
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:power-available/cdp-ios-xe-oper:power-man-level,leaf,uint32
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:unidirectional-mode,leaf,cdp-ios-xe-oper:cdp-unidirectional-mode
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:spare-pair,container,
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:spare-pair/cdp-ios-xe-oper:spare-pair-poe,leaf,cdp-ios-xe-oper:cdp-yes-no
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:spare-pair/cdp-ios-xe-oper:spare-pair-detection-required,leaf,cdp-ios-xe-oper:cdp-yes-no
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:spare-pair/cdp-ios-xe-oper:spare-pair-pd-config,leaf,cdp-ios-xe-oper:cdp-enable-disable
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:spare-pair/cdp-ios-xe-oper:spare-pair-pse-operational,leaf,cdp-ios-xe-oper:cdp-yes-no
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:mgmt-address,leaf,inet:ip-address
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:ip-address,leaf,inet:ip-address
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:ipv6-address,leaf,inet:ip-address
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:clns-address,leaf,string
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:decnet-addr,leaf,string
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:novell-addr,leaf,string
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:second-port-status,leaf,string
+/cdp-ios-xe-oper:cdp-neighbor-details/cdp-ios-xe-oper:cdp-neighbor-detail/cdp-ios-xe-oper:table-id,leaf,uint16

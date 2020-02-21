@@ -1,0 +1,701 @@
+ 
+KPI for model: Cisco-IOS-XE-tunnel.yang
+
+module: Cisco-IOS-XE-tunnel
+  augment /ios:native/ios:interface/ios:Tunnel:
+    +--rw nhrp
+    |  +--rw event-publisher
+    |  |  +--rw max-event-timeout?   uint8
+    |  +--rw group?             string
+    |  +--rw map
+    |  |  +--rw group
+    |  |     +--rw nhrp-name* [nhrp-name]
+    |  |        +--rw nhrp-name         string
+    |  |        +--rw service-policy
+    |  |           +--rw output?   string
+    |  +--rw route-watch?       boolean
+    +--rw tunnel
+       +--rw tun-6rd
+       |  +--rw br?                  inet:ipv4-address
+       |  +--rw ipv4
+       |  |  +--rw prefix-len?   uint8
+       |  |  +--rw suffix-len?   uint8
+       |  +--rw prefix?              ios-types:ipv6-prefix
+       |  +--rw reverse-map-check?   empty
+       +--rw bandwidth
+       |  +--rw receive?    uint32
+       |  +--rw transmit?   uint32
+       +--rw checksum?               empty
+       +--rw source?                 string
+       +--rw destination
+       |  +--rw ipaddress-or-host?   inet:host
+       |  +--rw list
+       |     +--rw mpls
+       |        +--rw traffic-eng
+       |           +--rw name?   string
+       +--rw dst-port
+       |  +--rw (dst-port-choice)?
+       |     +--:(port-num-case)
+       |     |  +--rw port-num?   uint16
+       |     +--:(dynamic-case)
+       |        +--rw dynamic?    empty
+       +--rw endpoint
+       |  +--rw service-policy
+       |     +--rw output?   string
+       +--rw entropy?                empty
+       +--rw fixup
+       |  +--rw nat?   empty
+       +--rw flow
+       |  +--rw egress-records?   empty
+       +--rw key?                    uint64
+       +--rw mode
+       |  +--rw (mode-choice)?
+       |     +--:(ipsec)
+       |     |  +--rw ipsec
+       |     |     +--rw ipv4!
+       |     |     +--rw ipv6!
+       |     +--:(mpls)
+       |     |  +--rw mpls
+       |     |     +--rw traffic-eng!
+       |     |        +--rw multilsp?              empty
+       |     |        +--rw point-to-multipoint?   empty
+       |     +--:(ethernet)
+       |     |  +--rw ethernet
+       |     |     +--rw gre?   enumeration
+       |     +--:(gre)
+       |     |  +--rw gre
+       |     |     +--rw ip?           empty
+       |     |     +--rw ipv6?         empty
+       |     |     +--rw multipoint!
+       |     |        +--rw ipv6?   empty
+       |     +--:(ipip)
+       |     |  +--rw ipip!
+       |     |     +--rw decapsulate-any?   empty
+       |     +--:(ipv6)
+       |     |  +--rw ipv6?       empty
+       |     +--:(ipv6ip)
+       |     |  +--rw ipv6ip!
+       |     |     +--rw auto-6rd?    empty
+       |     |     +--rw auto-6to4?   empty
+       |     |     +--rw isatap?      empty
+       |     +--:(udp)
+       |        +--rw udp?        enumeration
+       +--rw network-id
+       |  +--rw id?        uint16
+       |  +--rw nexthop?   inet:ipv4-address
+       |  +--rw qos?       string
+       |  +--rw weight?    uint16
+       +--rw path-mtu-discovery!
+       +--rw protection
+       +--rw mpls
+       |  +--rw traffic-eng
+       |     +--rw affinity-mask
+       |     |  +--rw affinity?   mpls-te-attribute-flags
+       |     |  +--rw mask?       mpls-te-attribute-flags
+       |     +--rw auto-bw!
+       |     |  +--rw frequency?              uint32
+       |     |  +--rw collect-bw?             empty
+       |     |  +--rw adjustment-threshold?   uint8
+       |     |  +--rw overflow-limit
+       |     |  |  +--rw limit?                uint8
+       |     |  |  +--rw overflow-threshold?   uint8
+       |     |  +--rw max-bw?                 uint32
+       |     |  +--rw min-bw?                 uint32
+       |     +--rw autoroute
+       |     |  +--rw announce?      empty
+       |     |  +--rw metric
+       |     |  |  +--rw (metric-choice)?
+       |     |  |     +--:(range)
+       |     |  |     |  +--rw range?      uint32
+       |     |  |     +--:(absolute)
+       |     |  |     |  +--rw absolute?   uint32
+       |     |  |     +--:(relative)
+       |     |  |        +--rw relative?   int8
+       |     |  +--rw destination?   empty
+       |     +--rw backup-bw
+       |     |  +--rw (backup-bw-choice)?
+       |     |     +--:(bw-option)
+       |     |     |  +--rw bandwidth?           uint32
+       |     |     +--:(sub-pool-option)
+       |     |     |  +--rw sub-pool
+       |     |     |     +--rw (sub-pool-choice)?
+       |     |     |        +--:(unlimited)
+       |     |     |        |  +--rw unlimited?         empty
+       |     |     |        +--:(sub-pool-config)
+       |     |     |           +--rw sub-pool-config
+       |     |     |              +--rw bandwidth?           uint32
+       |     |     |              +--rw (class-global-pool-choice)?
+       |     |     |                 +--:(class-type-choice)
+       |     |     |                 |  +--rw class-type
+       |     |     |                 |     +--rw class-type-num?    uint8
+       |     |     |                 |     +--rw (bandwidth-option)?
+       |     |     |                 |        +--:(bandwidth)
+       |     |     |                 |        |  +--rw bandwidth?   uint32
+       |     |     |                 |        +--:(unlimited)
+       |     |     |                 |           +--rw unlimited?   empty
+       |     |     |                 +--:(global-pool-choice)
+       |     |     |                    +--rw global-pool
+       |     |     |                       +--rw (bandwidth-option)?
+       |     |     |                          +--:(bandwidth)
+       |     |     |                          |  +--rw bandwidth?   uint32
+       |     |     |                          +--:(unlimited)
+       |     |     |                             +--rw unlimited?   empty
+       |     |     +--:(class-global-pool-option)
+       |     |        +--rw (class-global-pool-choice)?
+       |     |           +--:(class-type-choice)
+       |     |           |  +--rw class-type
+       |     |           |     +--rw class-type-num?    uint8
+       |     |           |     +--rw (bandwidth-option)?
+       |     |           |        +--:(bandwidth)
+       |     |           |        |  +--rw bandwidth?   uint32
+       |     |           |        +--:(unlimited)
+       |     |           |           +--rw unlimited?   empty
+       |     |           +--:(global-pool-choice)
+       |     |              +--rw global-pool
+       |     |                 +--rw (bandwidth-option)?
+       |     |                    +--:(bandwidth)
+       |     |                    |  +--rw bandwidth?   uint32
+       |     |                    +--:(unlimited)
+       |     |                       +--rw unlimited?   empty
+       |     +--rw bandwidth
+       |     |  +--rw (bandwidth-choice)?
+       |     |     +--:(bandwidth-option)
+       |     |     |  +--rw bw?           uint32
+       |     |     |  +--rw class-type?   uint8
+       |     |     +--:(sub-pool-option)
+       |     |        +--rw sub-pool?     uint32
+       |     +--rw bfd
+       |     |  +--rw sbfd?   string
+       |     +--rw binding-sid
+       |     |  +--rw label?   uint32
+       |     +--rw exp
+       |     |  +--rw exp-value*   uint8
+       |     |  +--rw default?     empty
+       |     +--rw exp-bundle
+       |     |  +--rw master?   empty
+       |     |  +--rw member
+       |     |     +--rw Tunnel?   uint32
+       |     +--rw fast-reroute!
+       |     |  +--rw bw-protect?     empty
+       |     |  +--rw node-protect?   empty
+       |     +--rw forwarding-adjacency!
+       |     |  +--rw holdtime?   uint32
+       |     +--rw interface
+       |     |  +--rw down
+       |     |     +--rw delay?   uint32
+       |     +--rw load-share?             uint32
+       |     +--rw name?                   string
+       |     +--rw path-option
+       |     |  +--rw working* [id]
+       |     |  |  +--rw id                       uint32
+       |     |  |  +--rw (path-option-choice)
+       |     |  |     +--:(dynamic-option)
+       |     |  |     |  +--rw dynamic!
+       |     |  |     |     +--rw (popt-choice)?
+       |     |  |     |        +--:(option-segment-routing)
+       |     |  |     |        |  +--rw segment-routing!
+       |     |  |     |        |     +--rw (popt-sr-choice)?
+       |     |  |     |        |        +--:(option-attributes)
+       |     |  |     |        |        |  +--rw attributes?   string
+       |     |  |     |        |        +--:(option-lockdown)
+       |     |  |     |        |        |  +--rw lockdown?     empty
+       |     |  |     |        |        |  +--rw sticky?       empty
+       |     |  |     |        |        +--:(option-pce)
+       |     |  |     |        |           +--rw pce?          empty
+       |     |  |     |        |           +--rw address?      inet:ipv4-address
+       |     |  |     |        |           +--rw verbatim?     empty
+       |     |  |     |        +--:(option-pce)
+       |     |  |     |        |  +--rw pce?               empty
+       |     |  |     |        |  +--rw address?           inet:ipv4-address
+       |     |  |     |        |  +--rw verbatim?          empty
+       |     |  |     |        +--:(option-lockdown)
+       |     |  |     |        |  +--rw lockdown?          empty
+       |     |  |     |        |  +--rw sticky?            empty
+       |     |  |     |        |  +--rw bandwidth
+       |     |  |     |        |     +--rw (bandwidth-choice)?
+       |     |  |     |        |        +--:(bandwidth-option)
+       |     |  |     |        |        |  +--rw bandwidth?   uint32
+       |     |  |     |        |        +--:(sub-pool-option)
+       |     |  |     |        |           +--rw sub-pool?    uint32
+       |     |  |     |        +--:(option-attibutes)
+       |     |  |     |           +--rw attributes?        string
+       |     |  |     +--:(explicit-option)
+       |     |  |     |  +--rw explicit
+       |     |  |     |     +--rw (id-choice)
+       |     |  |     |     |  +--:(identifier-option)
+       |     |  |     |     |  |  +--rw identifier?   uint16
+       |     |  |     |     |  +--:(name-option)
+       |     |  |     |     |     +--rw name?         string
+       |     |  |     |     +--rw segment-routing?    empty
+       |     |  |     |     +--rw verbatim?           empty
+       |     |  |     |     +--rw (popt-choice)?
+       |     |  |     |        +--:(attributes-option)
+       |     |  |     |        |  +--rw attributes?   string
+       |     |  |     |        +--:(lockdown-option)
+       |     |  |     |           +--rw lockdown?     empty
+       |     |  |     |           +--rw sticky?       empty
+       |     |  |     |           +--rw bandwidth
+       |     |  |     |              +--rw (bandwidth-choice)?
+       |     |  |     |                 +--:(bandwidth-option)
+       |     |  |     |                 |  +--rw bandwidth?   uint32
+       |     |  |     |                 +--:(sub-pool-option)
+       |     |  |     |                    +--rw sub-pool?    uint32
+       |     |  |     +--:(segment-routing-option)
+       |     |  |        +--rw segment-routing!
+       |     |  |           +--rw lockdown?   empty
+       |     |  |           +--rw sticky?     empty
+       |     |  +--rw protect* [id]
+       |     |     +--rw id                -> ../../working/id
+       |     |     +--rw (protect-choice)
+       |     |        +--:(diverse-option)
+       |     |        |  +--rw diverse
+       |     |        |     +--rw node?               empty
+       |     |        |     +--rw srlg?               empty
+       |     |        |     +--rw segment-routing?    empty
+       |     |        |     +--rw non-revertive?      empty
+       |     |        |     +--rw pce?                empty
+       |     |        |     +--rw address?            inet:ipv4-address
+       |     |        |     +--rw verbatim?           empty
+       |     |        |     +--rw lockdown?           empty
+       |     |        |     +--rw (popt-choice)?
+       |     |        |        +--:(attributes-option)
+       |     |        |        |  +--rw attributes?   string
+       |     |        |        +--:(bandwidth-option)
+       |     |        |           +--rw bandwidth
+       |     |        |              +--rw (bandwidth-choice)?
+       |     |        |                 +--:(bandwidth-option)
+       |     |        |                 |  +--rw bandwidth?   uint32
+       |     |        |                 +--:(sub-pool-option)
+       |     |        |                    +--rw sub-pool?    uint32
+       |     |        +--:(explicit-option)
+       |     |        |  +--rw explicit
+       |     |        |     +--rw (id-choice)
+       |     |        |     |  +--:(identifier-option)
+       |     |        |     |  |  +--rw identifier?   uint16
+       |     |        |     |  +--:(name-option)
+       |     |        |     |     +--rw name?         string
+       |     |        |     +--rw segment-routing?    empty
+       |     |        |     +--rw non-revertive?      empty
+       |     |        |     +--rw verbatim?           empty
+       |     |        |     +--rw (popt-choice)?
+       |     |        |        +--:(attributes-option)
+       |     |        |        |  +--rw attributes?   string
+       |     |        |        +--:(bandwidth-option)
+       |     |        |           +--rw bandwidth
+       |     |        |              +--rw (bandwidth-choice)?
+       |     |        |                 +--:(bandwidth-option)
+       |     |        |                 |  +--rw bandwidth?   uint32
+       |     |        |                 +--:(sub-pool-option)
+       |     |        |                    +--rw sub-pool?    uint32
+       |     |        +--:(list-option)
+       |     |           +--rw list
+       |     |              +--rw (id-choice)
+       |     |              |  +--:(identifier-option)
+       |     |              |  |  +--rw identifier?   uint16
+       |     |              |  +--:(name-option)
+       |     |              |     +--rw name?         string
+       |     |              +--rw segment-routing?    empty
+       |     |              +--rw non-revertive?      empty
+       |     |              +--rw (popt-choice)?
+       |     |                 +--:(attributes-option)
+       |     |                 |  +--rw attributes?   string
+       |     |                 +--:(bandwidth-option)
+       |     |                 |  +--rw bandwidth
+       |     |                 |     +--rw (bandwidth-choice)?
+       |     |                 |        +--:(bandwidth-option)
+       |     |                 |        |  +--rw bandwidth?   uint32
+       |     |                 |        +--:(sub-pool-option)
+       |     |                 |           +--rw sub-pool?    uint32
+       |     |                 +--:(pce-option)
+       |     |                    +--rw pce?          empty
+       |     |                    +--rw address?      inet:ipv4-address
+       |     |                    +--rw verbatim?     empty
+       |     +--rw path-selection
+       |     |  +--rw metric?            enumeration
+       |     |  +--rw invalidation
+       |     |  |  +--rw value?   int32
+       |     |  |  +--rw drop?    empty
+       |     |  +--rw segment-routing
+       |     |  |  +--rw adjacency?   enumeration
+       |     |  +--rw cost-limit?        uint32
+       |     |  +--rw hop-limit?         uint8
+       |     |  +--rw tiebreaker?        mpls-te-tiebreaker-type
+       |     +--rw priority!
+       |     |  +--rw setup-priority    uint8
+       |     |  +--rw hold-priority?    uint8
+       |     +--rw record-route!
+       +--rw raw-packet-interface?   string
+       +--rw rbscp
+       |  +--rw ack-split?      uint8
+       |  +--rw delay?          empty
+       |  +--rw input-drop?     uint8
+       |  +--rw long-drop?      empty
+       |  +--rw report?         empty
+       |  +--rw window-stuff?   uint8
+       +--rw snooping?               enumeration
+       +--rw src-port
+       |  +--rw (src-port-choice)?
+       |     +--:(port-num-case)
+       |     |  +--rw port-num?   uint16
+       |     +--:(dynamic-case)
+       |        +--rw dynamic?    empty
+       +--rw tos?                    uint8
+       +--rw ttl?                    uint8
+       +--rw udlr
+       |  +--rw address-resolution?   empty
+       |  +--rw receive-only?         string
+       |  +--rw send-only?            string
+       +--rw vlan
+       |  +--rw id1?      uint16
+       |  +--rw hyphen?   empty
+       |  +--rw id2?      uint16
+       +--rw vrf?                    string
+  augment /ios:native/ios:interface/ios:Virtual-Template:
+    +--rw nhrp {ios-features:virtual-template}?
+    |  +--rw event-publisher
+    |  |  +--rw max-event-timeout?   uint8
+    |  +--rw group?             string
+    |  +--rw map
+    |  |  +--rw group
+    |  |     +--rw nhrp-name* [nhrp-name]
+    |  |        +--rw nhrp-name         string
+    |  |        +--rw service-policy
+    |  |           +--rw output?   string
+    |  +--rw route-watch?       boolean
+    +--rw tunnel {ios-features:virtual-template}?
+       +--rw tun-6rd
+       |  +--rw br?                  inet:ipv4-address
+       |  +--rw ipv4
+       |  |  +--rw prefix-len?   uint8
+       |  |  +--rw suffix-len?   uint8
+       |  +--rw prefix?              ios-types:ipv6-prefix
+       |  +--rw reverse-map-check?   empty
+       +--rw bandwidth
+       |  +--rw receive?    uint32
+       |  +--rw transmit?   uint32
+       +--rw checksum?               empty
+       +--rw source?                 string
+       +--rw destination
+       |  +--rw ipaddress-or-host?   inet:host
+       |  +--rw list
+       |     +--rw mpls
+       |        +--rw traffic-eng
+       |           +--rw name?   string
+       +--rw dst-port
+       |  +--rw (dst-port-choice)?
+       |     +--:(port-num-case)
+       |     |  +--rw port-num?   uint16
+       |     +--:(dynamic-case)
+       |        +--rw dynamic?    empty
+       +--rw endpoint
+       |  +--rw service-policy
+       |     +--rw output?   string
+       +--rw entropy?                empty
+       +--rw fixup
+       |  +--rw nat?   empty
+       +--rw flow
+       |  +--rw egress-records?   empty
+       +--rw key?                    uint64
+       +--rw mode
+       |  +--rw (mode-choice)?
+       |     +--:(ipsec)
+       |     |  +--rw ipsec
+       |     |     +--rw ipv4!
+       |     |     +--rw ipv6!
+       |     +--:(mpls)
+       |     |  +--rw mpls
+       |     |     +--rw traffic-eng!
+       |     |        +--rw multilsp?              empty
+       |     |        +--rw point-to-multipoint?   empty
+       |     +--:(ethernet)
+       |     |  +--rw ethernet
+       |     |     +--rw gre?   enumeration
+       |     +--:(gre)
+       |     |  +--rw gre
+       |     |     +--rw ip?           empty
+       |     |     +--rw ipv6?         empty
+       |     |     +--rw multipoint!
+       |     |        +--rw ipv6?   empty
+       |     +--:(ipip)
+       |     |  +--rw ipip!
+       |     |     +--rw decapsulate-any?   empty
+       |     +--:(ipv6)
+       |     |  +--rw ipv6?       empty
+       |     +--:(ipv6ip)
+       |     |  +--rw ipv6ip!
+       |     |     +--rw auto-6rd?    empty
+       |     |     +--rw auto-6to4?   empty
+       |     |     +--rw isatap?      empty
+       |     +--:(udp)
+       |        +--rw udp?        enumeration
+       +--rw network-id
+       |  +--rw id?        uint16
+       |  +--rw nexthop?   inet:ipv4-address
+       |  +--rw qos?       string
+       |  +--rw weight?    uint16
+       +--rw path-mtu-discovery!
+       +--rw protection
+       +--rw mpls
+       |  +--rw traffic-eng
+       |     +--rw affinity-mask
+       |     |  +--rw affinity?   mpls-te-attribute-flags
+       |     |  +--rw mask?       mpls-te-attribute-flags
+       |     +--rw auto-bw!
+       |     |  +--rw frequency?              uint32
+       |     |  +--rw collect-bw?             empty
+       |     |  +--rw adjustment-threshold?   uint8
+       |     |  +--rw overflow-limit
+       |     |  |  +--rw limit?                uint8
+       |     |  |  +--rw overflow-threshold?   uint8
+       |     |  +--rw max-bw?                 uint32
+       |     |  +--rw min-bw?                 uint32
+       |     +--rw autoroute
+       |     |  +--rw announce?      empty
+       |     |  +--rw metric
+       |     |  |  +--rw (metric-choice)?
+       |     |  |     +--:(range)
+       |     |  |     |  +--rw range?      uint32
+       |     |  |     +--:(absolute)
+       |     |  |     |  +--rw absolute?   uint32
+       |     |  |     +--:(relative)
+       |     |  |        +--rw relative?   int8
+       |     |  +--rw destination?   empty
+       |     +--rw backup-bw
+       |     |  +--rw (backup-bw-choice)?
+       |     |     +--:(bw-option)
+       |     |     |  +--rw bandwidth?           uint32
+       |     |     +--:(sub-pool-option)
+       |     |     |  +--rw sub-pool
+       |     |     |     +--rw (sub-pool-choice)?
+       |     |     |        +--:(unlimited)
+       |     |     |        |  +--rw unlimited?         empty
+       |     |     |        +--:(sub-pool-config)
+       |     |     |           +--rw sub-pool-config
+       |     |     |              +--rw bandwidth?           uint32
+       |     |     |              +--rw (class-global-pool-choice)?
+       |     |     |                 +--:(class-type-choice)
+       |     |     |                 |  +--rw class-type
+       |     |     |                 |     +--rw class-type-num?    uint8
+       |     |     |                 |     +--rw (bandwidth-option)?
+       |     |     |                 |        +--:(bandwidth)
+       |     |     |                 |        |  +--rw bandwidth?   uint32
+       |     |     |                 |        +--:(unlimited)
+       |     |     |                 |           +--rw unlimited?   empty
+       |     |     |                 +--:(global-pool-choice)
+       |     |     |                    +--rw global-pool
+       |     |     |                       +--rw (bandwidth-option)?
+       |     |     |                          +--:(bandwidth)
+       |     |     |                          |  +--rw bandwidth?   uint32
+       |     |     |                          +--:(unlimited)
+       |     |     |                             +--rw unlimited?   empty
+       |     |     +--:(class-global-pool-option)
+       |     |        +--rw (class-global-pool-choice)?
+       |     |           +--:(class-type-choice)
+       |     |           |  +--rw class-type
+       |     |           |     +--rw class-type-num?    uint8
+       |     |           |     +--rw (bandwidth-option)?
+       |     |           |        +--:(bandwidth)
+       |     |           |        |  +--rw bandwidth?   uint32
+       |     |           |        +--:(unlimited)
+       |     |           |           +--rw unlimited?   empty
+       |     |           +--:(global-pool-choice)
+       |     |              +--rw global-pool
+       |     |                 +--rw (bandwidth-option)?
+       |     |                    +--:(bandwidth)
+       |     |                    |  +--rw bandwidth?   uint32
+       |     |                    +--:(unlimited)
+       |     |                       +--rw unlimited?   empty
+       |     +--rw bandwidth
+       |     |  +--rw (bandwidth-choice)?
+       |     |     +--:(bandwidth-option)
+       |     |     |  +--rw bw?           uint32
+       |     |     |  +--rw class-type?   uint8
+       |     |     +--:(sub-pool-option)
+       |     |        +--rw sub-pool?     uint32
+       |     +--rw bfd
+       |     |  +--rw sbfd?   string
+       |     +--rw binding-sid
+       |     |  +--rw label?   uint32
+       |     +--rw exp
+       |     |  +--rw exp-value*   uint8
+       |     |  +--rw default?     empty
+       |     +--rw exp-bundle
+       |     |  +--rw master?   empty
+       |     |  +--rw member
+       |     |     +--rw Tunnel?   uint32
+       |     +--rw fast-reroute!
+       |     |  +--rw bw-protect?     empty
+       |     |  +--rw node-protect?   empty
+       |     +--rw forwarding-adjacency!
+       |     |  +--rw holdtime?   uint32
+       |     +--rw interface
+       |     |  +--rw down
+       |     |     +--rw delay?   uint32
+       |     +--rw load-share?             uint32
+       |     +--rw name?                   string
+       |     +--rw path-option
+       |     |  +--rw working* [id]
+       |     |  |  +--rw id                       uint32
+       |     |  |  +--rw (path-option-choice)
+       |     |  |     +--:(dynamic-option)
+       |     |  |     |  +--rw dynamic!
+       |     |  |     |     +--rw (popt-choice)?
+       |     |  |     |        +--:(option-segment-routing)
+       |     |  |     |        |  +--rw segment-routing!
+       |     |  |     |        |     +--rw (popt-sr-choice)?
+       |     |  |     |        |        +--:(option-attributes)
+       |     |  |     |        |        |  +--rw attributes?   string
+       |     |  |     |        |        +--:(option-lockdown)
+       |     |  |     |        |        |  +--rw lockdown?     empty
+       |     |  |     |        |        |  +--rw sticky?       empty
+       |     |  |     |        |        +--:(option-pce)
+       |     |  |     |        |           +--rw pce?          empty
+       |     |  |     |        |           +--rw address?      inet:ipv4-address
+       |     |  |     |        |           +--rw verbatim?     empty
+       |     |  |     |        +--:(option-pce)
+       |     |  |     |        |  +--rw pce?               empty
+       |     |  |     |        |  +--rw address?           inet:ipv4-address
+       |     |  |     |        |  +--rw verbatim?          empty
+       |     |  |     |        +--:(option-lockdown)
+       |     |  |     |        |  +--rw lockdown?          empty
+       |     |  |     |        |  +--rw sticky?            empty
+       |     |  |     |        |  +--rw bandwidth
+       |     |  |     |        |     +--rw (bandwidth-choice)?
+       |     |  |     |        |        +--:(bandwidth-option)
+       |     |  |     |        |        |  +--rw bandwidth?   uint32
+       |     |  |     |        |        +--:(sub-pool-option)
+       |     |  |     |        |           +--rw sub-pool?    uint32
+       |     |  |     |        +--:(option-attibutes)
+       |     |  |     |           +--rw attributes?        string
+       |     |  |     +--:(explicit-option)
+       |     |  |     |  +--rw explicit
+       |     |  |     |     +--rw (id-choice)
+       |     |  |     |     |  +--:(identifier-option)
+       |     |  |     |     |  |  +--rw identifier?   uint16
+       |     |  |     |     |  +--:(name-option)
+       |     |  |     |     |     +--rw name?         string
+       |     |  |     |     +--rw segment-routing?    empty
+       |     |  |     |     +--rw verbatim?           empty
+       |     |  |     |     +--rw (popt-choice)?
+       |     |  |     |        +--:(attributes-option)
+       |     |  |     |        |  +--rw attributes?   string
+       |     |  |     |        +--:(lockdown-option)
+       |     |  |     |           +--rw lockdown?     empty
+       |     |  |     |           +--rw sticky?       empty
+       |     |  |     |           +--rw bandwidth
+       |     |  |     |              +--rw (bandwidth-choice)?
+       |     |  |     |                 +--:(bandwidth-option)
+       |     |  |     |                 |  +--rw bandwidth?   uint32
+       |     |  |     |                 +--:(sub-pool-option)
+       |     |  |     |                    +--rw sub-pool?    uint32
+       |     |  |     +--:(segment-routing-option)
+       |     |  |        +--rw segment-routing!
+       |     |  |           +--rw lockdown?   empty
+       |     |  |           +--rw sticky?     empty
+       |     |  +--rw protect* [id]
+       |     |     +--rw id                -> ../../working/id
+       |     |     +--rw (protect-choice)
+       |     |        +--:(diverse-option)
+       |     |        |  +--rw diverse
+       |     |        |     +--rw node?               empty
+       |     |        |     +--rw srlg?               empty
+       |     |        |     +--rw segment-routing?    empty
+       |     |        |     +--rw non-revertive?      empty
+       |     |        |     +--rw pce?                empty
+       |     |        |     +--rw address?            inet:ipv4-address
+       |     |        |     +--rw verbatim?           empty
+       |     |        |     +--rw lockdown?           empty
+       |     |        |     +--rw (popt-choice)?
+       |     |        |        +--:(attributes-option)
+       |     |        |        |  +--rw attributes?   string
+       |     |        |        +--:(bandwidth-option)
+       |     |        |           +--rw bandwidth
+       |     |        |              +--rw (bandwidth-choice)?
+       |     |        |                 +--:(bandwidth-option)
+       |     |        |                 |  +--rw bandwidth?   uint32
+       |     |        |                 +--:(sub-pool-option)
+       |     |        |                    +--rw sub-pool?    uint32
+       |     |        +--:(explicit-option)
+       |     |        |  +--rw explicit
+       |     |        |     +--rw (id-choice)
+       |     |        |     |  +--:(identifier-option)
+       |     |        |     |  |  +--rw identifier?   uint16
+       |     |        |     |  +--:(name-option)
+       |     |        |     |     +--rw name?         string
+       |     |        |     +--rw segment-routing?    empty
+       |     |        |     +--rw non-revertive?      empty
+       |     |        |     +--rw verbatim?           empty
+       |     |        |     +--rw (popt-choice)?
+       |     |        |        +--:(attributes-option)
+       |     |        |        |  +--rw attributes?   string
+       |     |        |        +--:(bandwidth-option)
+       |     |        |           +--rw bandwidth
+       |     |        |              +--rw (bandwidth-choice)?
+       |     |        |                 +--:(bandwidth-option)
+       |     |        |                 |  +--rw bandwidth?   uint32
+       |     |        |                 +--:(sub-pool-option)
+       |     |        |                    +--rw sub-pool?    uint32
+       |     |        +--:(list-option)
+       |     |           +--rw list
+       |     |              +--rw (id-choice)
+       |     |              |  +--:(identifier-option)
+       |     |              |  |  +--rw identifier?   uint16
+       |     |              |  +--:(name-option)
+       |     |              |     +--rw name?         string
+       |     |              +--rw segment-routing?    empty
+       |     |              +--rw non-revertive?      empty
+       |     |              +--rw (popt-choice)?
+       |     |                 +--:(attributes-option)
+       |     |                 |  +--rw attributes?   string
+       |     |                 +--:(bandwidth-option)
+       |     |                 |  +--rw bandwidth
+       |     |                 |     +--rw (bandwidth-choice)?
+       |     |                 |        +--:(bandwidth-option)
+       |     |                 |        |  +--rw bandwidth?   uint32
+       |     |                 |        +--:(sub-pool-option)
+       |     |                 |           +--rw sub-pool?    uint32
+       |     |                 +--:(pce-option)
+       |     |                    +--rw pce?          empty
+       |     |                    +--rw address?      inet:ipv4-address
+       |     |                    +--rw verbatim?     empty
+       |     +--rw path-selection
+       |     |  +--rw metric?            enumeration
+       |     |  +--rw invalidation
+       |     |  |  +--rw value?   int32
+       |     |  |  +--rw drop?    empty
+       |     |  +--rw segment-routing
+       |     |  |  +--rw adjacency?   enumeration
+       |     |  +--rw cost-limit?        uint32
+       |     |  +--rw hop-limit?         uint8
+       |     |  +--rw tiebreaker?        mpls-te-tiebreaker-type
+       |     +--rw priority!
+       |     |  +--rw setup-priority    uint8
+       |     |  +--rw hold-priority?    uint8
+       |     +--rw record-route!
+       +--rw raw-packet-interface?   string
+       +--rw rbscp
+       |  +--rw ack-split?      uint8
+       |  +--rw delay?          empty
+       |  +--rw input-drop?     uint8
+       |  +--rw long-drop?      empty
+       |  +--rw report?         empty
+       |  +--rw window-stuff?   uint8
+       +--rw snooping?               enumeration
+       +--rw src-port
+       |  +--rw (src-port-choice)?
+       |     +--:(port-num-case)
+       |     |  +--rw port-num?   uint16
+       |     +--:(dynamic-case)
+       |        +--rw dynamic?    empty
+       +--rw tos?                    uint8
+       +--rw ttl?                    uint8
+       +--rw udlr
+       |  +--rw address-resolution?   empty
+       |  +--rw receive-only?         string
+       |  +--rw send-only?            string
+       +--rw vlan
+       |  +--rw id1?      uint16
+       |  +--rw hyphen?   empty
+       |  +--rw id2?      uint16
+       +--rw vrf?                    string
+Xpaths for model: Cisco-IOS-XE-tunnel.yang

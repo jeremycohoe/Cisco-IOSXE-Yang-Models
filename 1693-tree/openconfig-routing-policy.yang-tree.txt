@@ -1,0 +1,214 @@
+ 
+KPI for model: openconfig-routing-policy.yang
+module: openconfig-routing-policy
+  +--rw routing-policy
+     +--rw defined-sets
+     |  +--rw prefix-sets
+     |  |  +--rw prefix-set* [prefix-set-name]
+     |  |     +--rw prefix-set-name    -> ../config/prefix-set-name
+     |  |     +--rw config
+     |  |     |  +--rw prefix-set-name?   string
+     |  |     +--ro state
+     |  |     |  +--ro prefix-set-name?   string
+     |  |     +--rw prefixes
+     |  |        +--rw prefix* [ip-prefix masklength-range]
+     |  |           +--rw ip-prefix           -> ../config/ip-prefix
+     |  |           +--rw masklength-range    -> ../config/masklength-range
+     |  |           +--rw config
+     |  |           |  +--rw ip-prefix           inet:ip-prefix
+     |  |           |  +--rw masklength-range?   string
+     |  |           +--ro state
+     |  |              +--ro ip-prefix           inet:ip-prefix
+     |  |              +--ro masklength-range?   string
+     |  +--rw neighbor-sets
+     |  |  +--rw neighbor-set* [neighbor-set-name]
+     |  |     +--rw neighbor-set-name    -> ../config/neighbor-set-name
+     |  |     +--rw config
+     |  |     |  +--rw neighbor-set-name?   string
+     |  |     |  +--rw address*             inet:ip-address-no-zone
+     |  |     +--ro state
+     |  |        +--ro neighbor-set-name?   string
+     |  |        +--ro address*             inet:ip-address-no-zone
+     |  +--rw tag-sets
+     |     +--rw tag-set* [tag-set-name]
+     |        +--rw tag-set-name    -> ../config/tag-set-name
+     |        +--rw config
+     |        |  +--rw tag-set-name?   string
+     |        |  +--rw tag-value*      oc-pol-types:tag-type
+     |        +--ro state
+     |           +--ro tag-set-name?   string
+     |           +--ro tag-value*      oc-pol-types:tag-type
+     +--rw policy-definitions
+        +--rw policy-definition* [name]
+           +--rw name          -> ../config/name
+           +--rw config
+           |  +--rw name?   string
+           +--ro state
+           |  +--ro name?   string
+           +--rw statements
+              +--rw statement* [name]
+                 +--rw name          -> ../config/name
+                 +--rw config
+                 |  +--rw name?   string
+                 +--ro state
+                 |  +--ro name?   string
+                 +--rw conditions
+                 |  +--rw config
+                 |  |  +--rw call-policy?           -> /routing-policy/policy-definitions/policy-definition/name
+                 |  |  +--rw install-protocol-eq?   identityref
+                 |  +--ro state
+                 |  |  +--ro call-policy?           -> /routing-policy/policy-definitions/policy-definition/name
+                 |  |  +--ro install-protocol-eq?   identityref
+                 |  +--rw match-interface
+                 |  |  +--rw config
+                 |  |  |  +--rw interface?      -> /oc-if:interfaces/interface/name
+                 |  |  |  +--rw subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+                 |  |  +--ro state
+                 |  |     +--ro interface?      -> /oc-if:interfaces/interface/name
+                 |  |     +--ro subinterface?   -> /oc-if:interfaces/interface[oc-if:name=current()/../interface]/subinterfaces/subinterface/index
+                 |  +--rw match-prefix-set
+                 |  |  +--rw config
+                 |  |  |  +--rw prefix-set?          -> /routing-policy/defined-sets/prefix-sets/prefix-set/prefix-set-name
+                 |  |  |  +--rw match-set-options?   oc-pol-types:match-set-options-restricted-type
+                 |  |  +--ro state
+                 |  |     +--ro prefix-set?          -> /routing-policy/defined-sets/prefix-sets/prefix-set/prefix-set-name
+                 |  |     +--ro match-set-options?   oc-pol-types:match-set-options-restricted-type
+                 |  +--rw match-neighbor-set
+                 |  |  +--rw config
+                 |  |  |  +--rw neighbor-set?        -> /routing-policy/defined-sets/neighbor-sets/neighbor-set/neighbor-set-name
+                 |  |  |  +--rw match-set-options?   oc-pol-types:match-set-options-restricted-type
+                 |  |  +--ro state
+                 |  |     +--ro neighbor-set?        -> /routing-policy/defined-sets/neighbor-sets/neighbor-set/neighbor-set-name
+                 |  |     +--ro match-set-options?   oc-pol-types:match-set-options-restricted-type
+                 |  +--rw match-tag-set
+                 |  |  +--rw config
+                 |  |  |  +--rw tag-set?             -> /routing-policy/defined-sets/tag-sets/tag-set/tag-set-name
+                 |  |  |  +--rw match-set-options?   oc-pol-types:match-set-options-restricted-type
+                 |  |  +--ro state
+                 |  |     +--ro tag-set?             -> /routing-policy/defined-sets/tag-sets/tag-set/tag-set-name
+                 |  |     +--ro match-set-options?   oc-pol-types:match-set-options-restricted-type
+                 |  +--rw igp-conditions
+                 +--rw actions
+                    +--rw config
+                    |  +--rw (route-disposition)?
+                    |     +--:(accept-route)
+                    |     |  +--rw accept-route?   empty
+                    |     +--:(reject-route)
+                    |        +--rw reject-route?   empty
+                    +--ro state
+                    |  +--ro (route-disposition)?
+                    |     +--:(accept-route)
+                    |     |  +--ro accept-route?   empty
+                    |     +--:(reject-route)
+                    |        +--ro reject-route?   empty
+                    +--rw igp-actions
+                       +--rw config
+                       |  +--rw set-tag?   oc-pol-types:tag-type
+                       +--ro state
+                          +--ro set-tag?   oc-pol-types:tag-type
+Xpaths for model: openconfig-routing-policy.yang
+/oc-rpol:routing-policy,container,
+/oc-rpol:routing-policy/oc-rpol:defined-sets,container,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets,container,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set,list,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set/oc-rpol:prefix-set-name,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set/oc-rpol:config,container,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set/oc-rpol:config/oc-rpol:prefix-set-name,leaf,string
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set/oc-rpol:state,container,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set/oc-rpol:state/oc-rpol:prefix-set-name,leaf,string
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set/oc-rpol:prefixes,container,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set/oc-rpol:prefixes/oc-rpol:prefix,list,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set/oc-rpol:prefixes/oc-rpol:prefix/oc-rpol:ip-prefix,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set/oc-rpol:prefixes/oc-rpol:prefix/oc-rpol:masklength-range,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set/oc-rpol:prefixes/oc-rpol:prefix/oc-rpol:config,container,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set/oc-rpol:prefixes/oc-rpol:prefix/oc-rpol:config/oc-rpol:ip-prefix,leaf,inet:ip-prefix
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set/oc-rpol:prefixes/oc-rpol:prefix/oc-rpol:config/oc-rpol:masklength-range,leaf,string
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set/oc-rpol:prefixes/oc-rpol:prefix/oc-rpol:state,container,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set/oc-rpol:prefixes/oc-rpol:prefix/oc-rpol:state/oc-rpol:ip-prefix,leaf,inet:ip-prefix
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:prefix-sets/oc-rpol:prefix-set/oc-rpol:prefixes/oc-rpol:prefix/oc-rpol:state/oc-rpol:masklength-range,leaf,string
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:neighbor-sets,container,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:neighbor-sets/oc-rpol:neighbor-set,list,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:neighbor-sets/oc-rpol:neighbor-set/oc-rpol:neighbor-set-name,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:neighbor-sets/oc-rpol:neighbor-set/oc-rpol:config,container,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:neighbor-sets/oc-rpol:neighbor-set/oc-rpol:config/oc-rpol:neighbor-set-name,leaf,string
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:neighbor-sets/oc-rpol:neighbor-set/oc-rpol:config/oc-rpol:address,leaf-list,inet:ip-address-no-zone
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:neighbor-sets/oc-rpol:neighbor-set/oc-rpol:state,container,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:neighbor-sets/oc-rpol:neighbor-set/oc-rpol:state/oc-rpol:neighbor-set-name,leaf,string
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:neighbor-sets/oc-rpol:neighbor-set/oc-rpol:state/oc-rpol:address,leaf-list,inet:ip-address-no-zone
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:tag-sets,container,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:tag-sets/oc-rpol:tag-set,list,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:tag-sets/oc-rpol:tag-set/oc-rpol:tag-set-name,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:tag-sets/oc-rpol:tag-set/oc-rpol:config,container,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:tag-sets/oc-rpol:tag-set/oc-rpol:config/oc-rpol:tag-set-name,leaf,string
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:tag-sets/oc-rpol:tag-set/oc-rpol:config/oc-rpol:tag-value,leaf-list,oc-pol-types:tag-type
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:tag-sets/oc-rpol:tag-set/oc-rpol:state,container,
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:tag-sets/oc-rpol:tag-set/oc-rpol:state/oc-rpol:tag-set-name,leaf,string
+/oc-rpol:routing-policy/oc-rpol:defined-sets/oc-rpol:tag-sets/oc-rpol:tag-set/oc-rpol:state/oc-rpol:tag-value,leaf-list,oc-pol-types:tag-type
+/oc-rpol:routing-policy/oc-rpol:policy-definitions,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition,list,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:name,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:config,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:config/oc-rpol:name,leaf,string
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:state,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:state/oc-rpol:name,leaf,string
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement,list,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:name,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:config,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:config/oc-rpol:name,leaf,string
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:state,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:state/oc-rpol:name,leaf,string
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:config,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:config/oc-rpol:call-policy,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:config/oc-rpol:install-protocol-eq,leaf,identityref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:state,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:state/oc-rpol:call-policy,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:state/oc-rpol:install-protocol-eq,leaf,identityref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-interface,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-interface/oc-rpol:config,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-interface/oc-rpol:config/oc-rpol:interface,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-interface/oc-rpol:config/oc-rpol:subinterface,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-interface/oc-rpol:state,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-interface/oc-rpol:state/oc-rpol:interface,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-interface/oc-rpol:state/oc-rpol:subinterface,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-prefix-set,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-prefix-set/oc-rpol:config,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-prefix-set/oc-rpol:config/oc-rpol:prefix-set,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-prefix-set/oc-rpol:config/oc-rpol:match-set-options,leaf,oc-pol-types:match-set-options-restricted-type
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-prefix-set/oc-rpol:state,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-prefix-set/oc-rpol:state/oc-rpol:prefix-set,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-prefix-set/oc-rpol:state/oc-rpol:match-set-options,leaf,oc-pol-types:match-set-options-restricted-type
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-neighbor-set,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-neighbor-set/oc-rpol:config,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-neighbor-set/oc-rpol:config/oc-rpol:neighbor-set,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-neighbor-set/oc-rpol:config/oc-rpol:match-set-options,leaf,oc-pol-types:match-set-options-restricted-type
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-neighbor-set/oc-rpol:state,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-neighbor-set/oc-rpol:state/oc-rpol:neighbor-set,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-neighbor-set/oc-rpol:state/oc-rpol:match-set-options,leaf,oc-pol-types:match-set-options-restricted-type
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-tag-set,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-tag-set/oc-rpol:config,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-tag-set/oc-rpol:config/oc-rpol:tag-set,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-tag-set/oc-rpol:config/oc-rpol:match-set-options,leaf,oc-pol-types:match-set-options-restricted-type
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-tag-set/oc-rpol:state,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-tag-set/oc-rpol:state/oc-rpol:tag-set,leaf,leafref
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:match-tag-set/oc-rpol:state/oc-rpol:match-set-options,leaf,oc-pol-types:match-set-options-restricted-type
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:conditions/oc-rpol:igp-conditions,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:config,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:config,choice,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:config,case,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:config/oc-rpol:accept-route,leaf,empty
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:config,case,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:config/oc-rpol:reject-route,leaf,empty
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:state,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:state,choice,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:state,case,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:state/oc-rpol:accept-route,leaf,empty
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:state,case,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:state/oc-rpol:reject-route,leaf,empty
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:igp-actions,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:igp-actions/oc-rpol:config,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:igp-actions/oc-rpol:config/oc-rpol:set-tag,leaf,oc-pol-types:tag-type
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:igp-actions/oc-rpol:state,container,
+/oc-rpol:routing-policy/oc-rpol:policy-definitions/oc-rpol:policy-definition/oc-rpol:statements/oc-rpol:statement/oc-rpol:actions/oc-rpol:igp-actions/oc-rpol:state/oc-rpol:set-tag,leaf,oc-pol-types:tag-type

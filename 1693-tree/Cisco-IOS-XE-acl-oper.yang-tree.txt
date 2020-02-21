@@ -1,0 +1,20 @@
+ 
+KPI for model: Cisco-IOS-XE-acl-oper.yang
+module: Cisco-IOS-XE-acl-oper
+  +--ro access-lists
+     +--ro access-list* [access-control-list-name]
+        +--ro access-control-list-name    string
+        +--ro access-list-entries
+           +--ro access-list-entry* [rule-name]
+              +--ro rule-name                        uint32
+              +--ro access-list-entries-oper-data
+                 +--ro match-counter?   yang:counter64
+Xpaths for model: Cisco-IOS-XE-acl-oper.yang
+/acl-ios-xe-oper:access-lists,container,
+/acl-ios-xe-oper:access-lists/acl-ios-xe-oper:access-list,list,
+/acl-ios-xe-oper:access-lists/acl-ios-xe-oper:access-list/acl-ios-xe-oper:access-control-list-name,leaf,string
+/acl-ios-xe-oper:access-lists/acl-ios-xe-oper:access-list/acl-ios-xe-oper:access-list-entries,container,
+/acl-ios-xe-oper:access-lists/acl-ios-xe-oper:access-list/acl-ios-xe-oper:access-list-entries/acl-ios-xe-oper:access-list-entry,list,
+/acl-ios-xe-oper:access-lists/acl-ios-xe-oper:access-list/acl-ios-xe-oper:access-list-entries/acl-ios-xe-oper:access-list-entry/acl-ios-xe-oper:rule-name,leaf,uint32
+/acl-ios-xe-oper:access-lists/acl-ios-xe-oper:access-list/acl-ios-xe-oper:access-list-entries/acl-ios-xe-oper:access-list-entry/acl-ios-xe-oper:access-list-entries-oper-data,container,
+/acl-ios-xe-oper:access-lists/acl-ios-xe-oper:access-list/acl-ios-xe-oper:access-list-entries/acl-ios-xe-oper:access-list-entry/acl-ios-xe-oper:access-list-entries-oper-data/acl-ios-xe-oper:match-counter,leaf,yang:counter64

@@ -1,0 +1,54 @@
+ 
+KPI for model: Cisco-IOS-XE-fib-oper.yang
+module: Cisco-IOS-XE-fib-oper
+  +--ro fib-oper-data
+     +--ro fib-ni-entry* [instance-name]
+        +--ro instance-name      string
+        +--ro af?                fib-ios-xe-oper:fib-address-family
+        +--ro num-pfx?           uint32
+        +--ro num-pfx-fwd?       uint32
+        +--ro num-pfx-non-fwd?   uint32
+        +--ro fib-entries* [ip-addr]
+           +--ro ip-addr                inet:ip-prefix
+           +--ro instance-name?         string
+           +--ro af?                    fib-ios-xe-oper:fib-address-family
+           +--ro num-paths?             uint8
+           +--ro packets-forwarded?     uint64
+           +--ro octets-forwarded?      uint64
+           +--ro fib-nexthop-entries* [nh-addr]
+              +--ro nh-addr             inet:ip-prefix
+              +--ro index?              uint32
+              +--ro af?                 fib-ios-xe-oper:fib-address-family
+              +--ro ifname?             string
+              +--ro path-type?          fib-ios-xe-oper:fib-path-type
+              +--ro path-id?            uint32
+              +--ro weight?             uint8
+              +--ro encap?              fib-ios-xe-oper:encapsulation-header-type
+              +--ro decap?              fib-ios-xe-oper:encapsulation-header-type
+              +--ro resolved-nh-addr?   inet:ip-prefix
+Xpaths for model: Cisco-IOS-XE-fib-oper.yang
+/fib-ios-xe-oper:fib-oper-data,container,
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry,list,
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:instance-name,leaf,string
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:af,leaf,fib-ios-xe-oper:fib-address-family
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:num-pfx,leaf,uint32
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:num-pfx-fwd,leaf,uint32
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:num-pfx-non-fwd,leaf,uint32
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries,list,
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:ip-addr,leaf,inet:ip-prefix
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:instance-name,leaf,string
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:af,leaf,fib-ios-xe-oper:fib-address-family
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:num-paths,leaf,uint8
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:packets-forwarded,leaf,uint64
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:octets-forwarded,leaf,uint64
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:fib-nexthop-entries,list,
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:fib-nexthop-entries/fib-ios-xe-oper:nh-addr,leaf,inet:ip-prefix
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:fib-nexthop-entries/fib-ios-xe-oper:index,leaf,uint32
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:fib-nexthop-entries/fib-ios-xe-oper:af,leaf,fib-ios-xe-oper:fib-address-family
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:fib-nexthop-entries/fib-ios-xe-oper:ifname,leaf,string
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:fib-nexthop-entries/fib-ios-xe-oper:path-type,leaf,fib-ios-xe-oper:fib-path-type
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:fib-nexthop-entries/fib-ios-xe-oper:path-id,leaf,uint32
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:fib-nexthop-entries/fib-ios-xe-oper:weight,leaf,uint8
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:fib-nexthop-entries/fib-ios-xe-oper:encap,leaf,fib-ios-xe-oper:encapsulation-header-type
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:fib-nexthop-entries/fib-ios-xe-oper:decap,leaf,fib-ios-xe-oper:encapsulation-header-type
+/fib-ios-xe-oper:fib-oper-data/fib-ios-xe-oper:fib-ni-entry/fib-ios-xe-oper:fib-entries/fib-ios-xe-oper:fib-nexthop-entries/fib-ios-xe-oper:resolved-nh-addr,leaf,inet:ip-prefix

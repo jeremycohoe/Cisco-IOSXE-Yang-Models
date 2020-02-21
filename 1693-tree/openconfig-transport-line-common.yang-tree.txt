@@ -1,0 +1,9 @@
+ 
+KPI for model: openconfig-transport-line-common.yang
+
+module: openconfig-transport-line-common
+  augment /oc-platform:components/oc-platform:component:
+    +--rw optical-port
+       +--ro state
+          +--ro optical-port-type?   identityref
+Xpaths for model: openconfig-transport-line-common.yang

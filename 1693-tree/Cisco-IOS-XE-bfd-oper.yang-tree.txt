@@ -1,0 +1,94 @@
+ 
+KPI for model: Cisco-IOS-XE-bfd-oper.yang
+module: Cisco-IOS-XE-bfd-oper
+  +--ro bfd-state
+     +--ro sessions
+        +--ro session* [type]
+           +--ro type                 bfd-ios-xe-oper:bfd-oper-session-type
+           +--ro bfd-tunnel-paths
+           |  +--ro bfd-tunnel-path* [interface lsp-type]
+           |     +--ro interface       string
+           |     +--ro lsp-type        bfd-ios-xe-oper:bfd-lsp-type
+           |     +--ro ld?             uint32
+           |     +--ro rd?             uint32
+           |     +--ro remote-state?   bfd-ios-xe-oper:bfd-remote-state-type
+           |     +--ro state?          bfd-ios-xe-oper:bfd-state-type
+           +--ro bfd-circuits
+           |  +--ro bfd-circuit* [interface vcid]
+           |     +--ro interface       string
+           |     +--ro vcid            uint32
+           |     +--ro ld?             uint32
+           |     +--ro rd?             uint32
+           |     +--ro remote-state?   bfd-ios-xe-oper:bfd-remote-state-type
+           |     +--ro state?          bfd-ios-xe-oper:bfd-state-type
+           +--ro bfd-nbrs
+           |  +--ro bfd-nbr* [ip interface]
+           |     +--ro ip              inet:ip-address
+           |     +--ro interface       string
+           |     +--ro ld?             uint32
+           |     +--ro rd?             uint32
+           |     +--ro remote-state?   bfd-ios-xe-oper:bfd-remote-state-type
+           |     +--ro state?          bfd-ios-xe-oper:bfd-state-type
+           +--ro bfd-mhop-nbrs
+           |  +--ro bfd-mhop-nbr* [ip src-ip]
+           |     +--ro ip              inet:ip-address
+           |     +--ro src-ip          inet:ip-address
+           |     +--ro ld?             uint32
+           |     +--ro rd?             uint32
+           |     +--ro remote-state?   bfd-ios-xe-oper:bfd-remote-state-type
+           |     +--ro state?          bfd-ios-xe-oper:bfd-state-type
+           +--ro bfd-mhop-vrf-nbrs
+              +--ro bfd-mhop-vrf-nbr* [ip vrf src-ip]
+                 +--ro ip              inet:ip-address
+                 +--ro vrf             string
+                 +--ro src-ip          inet:ip-address
+                 +--ro ld?             uint32
+                 +--ro rd?             uint32
+                 +--ro remote-state?   bfd-ios-xe-oper:bfd-remote-state-type
+                 +--ro state?          bfd-ios-xe-oper:bfd-state-type
+Xpaths for model: Cisco-IOS-XE-bfd-oper.yang
+/bfd-ios-xe-oper:bfd-state,container,
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions,container,
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session,list,
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:type,leaf,bfd-ios-xe-oper:bfd-oper-session-type
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-tunnel-paths,container,
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-tunnel-paths/bfd-ios-xe-oper:bfd-tunnel-path,list,
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-tunnel-paths/bfd-ios-xe-oper:bfd-tunnel-path/bfd-ios-xe-oper:interface,leaf,string
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-tunnel-paths/bfd-ios-xe-oper:bfd-tunnel-path/bfd-ios-xe-oper:lsp-type,leaf,bfd-ios-xe-oper:bfd-lsp-type
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-tunnel-paths/bfd-ios-xe-oper:bfd-tunnel-path/bfd-ios-xe-oper:ld,leaf,uint32
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-tunnel-paths/bfd-ios-xe-oper:bfd-tunnel-path/bfd-ios-xe-oper:rd,leaf,uint32
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-tunnel-paths/bfd-ios-xe-oper:bfd-tunnel-path/bfd-ios-xe-oper:remote-state,leaf,bfd-ios-xe-oper:bfd-remote-state-type
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-tunnel-paths/bfd-ios-xe-oper:bfd-tunnel-path/bfd-ios-xe-oper:state,leaf,bfd-ios-xe-oper:bfd-state-type
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-circuits,container,
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-circuits/bfd-ios-xe-oper:bfd-circuit,list,
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-circuits/bfd-ios-xe-oper:bfd-circuit/bfd-ios-xe-oper:interface,leaf,string
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-circuits/bfd-ios-xe-oper:bfd-circuit/bfd-ios-xe-oper:vcid,leaf,uint32
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-circuits/bfd-ios-xe-oper:bfd-circuit/bfd-ios-xe-oper:ld,leaf,uint32
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-circuits/bfd-ios-xe-oper:bfd-circuit/bfd-ios-xe-oper:rd,leaf,uint32
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-circuits/bfd-ios-xe-oper:bfd-circuit/bfd-ios-xe-oper:remote-state,leaf,bfd-ios-xe-oper:bfd-remote-state-type
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-circuits/bfd-ios-xe-oper:bfd-circuit/bfd-ios-xe-oper:state,leaf,bfd-ios-xe-oper:bfd-state-type
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-nbrs,container,
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-nbrs/bfd-ios-xe-oper:bfd-nbr,list,
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-nbrs/bfd-ios-xe-oper:bfd-nbr/bfd-ios-xe-oper:ip,leaf,inet:ip-address
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-nbrs/bfd-ios-xe-oper:bfd-nbr/bfd-ios-xe-oper:interface,leaf,string
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-nbrs/bfd-ios-xe-oper:bfd-nbr/bfd-ios-xe-oper:ld,leaf,uint32
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-nbrs/bfd-ios-xe-oper:bfd-nbr/bfd-ios-xe-oper:rd,leaf,uint32
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-nbrs/bfd-ios-xe-oper:bfd-nbr/bfd-ios-xe-oper:remote-state,leaf,bfd-ios-xe-oper:bfd-remote-state-type
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-nbrs/bfd-ios-xe-oper:bfd-nbr/bfd-ios-xe-oper:state,leaf,bfd-ios-xe-oper:bfd-state-type
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-nbrs,container,
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-nbrs/bfd-ios-xe-oper:bfd-mhop-nbr,list,
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-nbrs/bfd-ios-xe-oper:bfd-mhop-nbr/bfd-ios-xe-oper:ip,leaf,inet:ip-address
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-nbrs/bfd-ios-xe-oper:bfd-mhop-nbr/bfd-ios-xe-oper:src-ip,leaf,inet:ip-address
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-nbrs/bfd-ios-xe-oper:bfd-mhop-nbr/bfd-ios-xe-oper:ld,leaf,uint32
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-nbrs/bfd-ios-xe-oper:bfd-mhop-nbr/bfd-ios-xe-oper:rd,leaf,uint32
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-nbrs/bfd-ios-xe-oper:bfd-mhop-nbr/bfd-ios-xe-oper:remote-state,leaf,bfd-ios-xe-oper:bfd-remote-state-type
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-nbrs/bfd-ios-xe-oper:bfd-mhop-nbr/bfd-ios-xe-oper:state,leaf,bfd-ios-xe-oper:bfd-state-type
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-vrf-nbrs,container,
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-vrf-nbrs/bfd-ios-xe-oper:bfd-mhop-vrf-nbr,list,
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-vrf-nbrs/bfd-ios-xe-oper:bfd-mhop-vrf-nbr/bfd-ios-xe-oper:ip,leaf,inet:ip-address
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-vrf-nbrs/bfd-ios-xe-oper:bfd-mhop-vrf-nbr/bfd-ios-xe-oper:vrf,leaf,string
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-vrf-nbrs/bfd-ios-xe-oper:bfd-mhop-vrf-nbr/bfd-ios-xe-oper:src-ip,leaf,inet:ip-address
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-vrf-nbrs/bfd-ios-xe-oper:bfd-mhop-vrf-nbr/bfd-ios-xe-oper:ld,leaf,uint32
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-vrf-nbrs/bfd-ios-xe-oper:bfd-mhop-vrf-nbr/bfd-ios-xe-oper:rd,leaf,uint32
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-vrf-nbrs/bfd-ios-xe-oper:bfd-mhop-vrf-nbr/bfd-ios-xe-oper:remote-state,leaf,bfd-ios-xe-oper:bfd-remote-state-type
+/bfd-ios-xe-oper:bfd-state/bfd-ios-xe-oper:sessions/bfd-ios-xe-oper:session/bfd-ios-xe-oper:bfd-mhop-vrf-nbrs/bfd-ios-xe-oper:bfd-mhop-vrf-nbr/bfd-ios-xe-oper:state,leaf,bfd-ios-xe-oper:bfd-state-type
