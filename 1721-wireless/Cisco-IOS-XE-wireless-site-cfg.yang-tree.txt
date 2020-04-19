@@ -1,0 +1,544 @@
+
+KPI for model: Cisco-IOS-XE-wireless-site-cfg.yang
+module: Cisco-IOS-XE-wireless-site-cfg
+  +--rw site-cfg-data
+     +--rw ap-cfg-profiles
+     |  +--rw ap-cfg-profile* [profile-name]
+     |     +--rw profile-name                                            string
+     |     +--rw description?                                            string
+     |     +--rw ble-beacon-interval?                                    uint8
+     |     +--rw ble-beacon-advpwr?                                      uint8
+     |     +--rw data-encryption-flag?                                   boolean
+     |     +--rw ap-packet-capture-profile?                              string
+     |     +--rw ap-trace-profile?                                       string
+     |     +--rw stats-timer
+     |     |  +--rw stats-timer?   uint16
+     |     +--rw led-state
+     |     |  +--rw led-state?   boolean
+     |     +--rw link-latency
+     |     |  +--rw link-latency-flag?   wireless-ap-types:enm-link-latency-type
+     |     +--rw jumbo-mtu
+     |     |  +--rw jumbo-mtu?   boolean
+     |     +--rw ap-mode
+     |     |  +--rw ap-sub-mode?    wireless-ap-types:ap-sub-mode-type
+     |     |  +--rw fast-channel?   uint32
+     |     +--rw poe
+     |     |  +--rw pre-standard8023af-switch-flag?   boolean
+     |     |  +--rw power-injector-state?             boolean
+     |     |  +--rw power-injector-selection?         wireless-ap-types:power-injector-sel-type
+     |     |  +--rw injector-switch-mac?              yang:mac-address
+     |     +--rw device-mgmt
+     |     |  +--rw telnet?   boolean
+     |     |  +--rw ssh?      boolean
+     |     +--rw user-mgmt
+     |     |  +--rw username?        string
+     |     |  +--rw password?        string
+     |     |  +--rw password-type?   wireless-enum-types:crypt-type
+     |     |  +--rw secret?          string
+     |     |  +--rw secret-type?     wireless-enum-types:crypt-type
+     |     +--rw tcp-mss
+     |     |  +--rw adjust-mss?       boolean
+     |     |  +--rw tcp-adjust-mss?   uint16
+     |     +--rw tunnel
+     |     |  +--rw preferred-mode?   wireless-enum-types:preferred-mode-type
+     |     |  +--rw udp-lite?         wireless-enum-types:ipv6-capwap-checksum-type
+     |     +--rw capwap-timer
+     |     |  +--rw heart-beat-timeout?          uint8
+     |     |  +--rw discovery-timeout?           uint8
+     |     |  +--rw fast-heart-beat-timeout?     uint8
+     |     |  +--rw primary-discovery-timeout?   uint16
+     |     |  +--rw primed-join-timeout?         uint16
+     |     +--rw retransmit-timer
+     |     |  +--rw count?      uint8
+     |     |  +--rw interval?   uint8
+     |     +--rw login-credentials
+     |     |  +--rw dot1x-username?        string
+     |     |  +--rw dot1x-password?        string
+     |     |  +--rw dot1x-password-type?   wireless-enum-types:crypt-type
+     |     +--rw dot1x-eap-type-info
+     |     |  +--rw dot1x-eap-type?   wireless-ap-types:enm-ap-dot1x-eap-type
+     |     +--rw lsc-ap-auth-type-info
+     |     |  +--rw lsc-ap-auth-type?   wireless-ap-types:enm-lsc-ap-auth-state-type
+     |     +--rw coredump
+     |     |  +--rw coredump-flag?         wireless-enum-types:memory-core-dump-flag
+     |     |  +--rw tftp-server-address?   inet:ip-address
+     |     |  +--rw corefile-name?         string
+     |     +--rw syslog
+     |     |  +--rw facility-value?   wireless-ap-types:syslog-facility-value
+     |     |  +--rw log-level?        wireless-types:syslog-trap-level
+     |     |  +--rw host?             inet:ip-address
+     |     |  +--rw tls-mode?         boolean
+     |     +--rw backup-controllers
+     |     |  +--rw fallback-enabled?            boolean
+     |     |  +--rw primary-controller-name?     string
+     |     |  +--rw secondary-controller-name?   string
+     |     |  +--rw primary-controller-ip?       inet:ip-address
+     |     |  +--rw secondary-controller-ip?     inet:ip-address
+     |     +--rw hyperlocation
+     |     |  +--rw hyperlocation-enable?           boolean
+     |     |  +--rw pak-rssi-threshold-detection?   int32
+     |     |  +--rw pak-rssi-threshold-trigger?     uint8
+     |     |  +--rw pak-rssi-threshold-reset?       uint8
+     |     +--rw rogue-detection
+     |     |  +--rw profile-name?                                   string
+     |     |  +--rw rogue-detection-monitor-mode-report-interval?   uint32
+     |     |  +--rw ap-rogue-detection-min-rssi?                    int32
+     |     |  +--rw ap-rogue-detection-transient-interval?          uint32
+     |     |  +--rw rogue-containment-flexconnect?                  boolean
+     |     |  +--rw rogue-containment-autorate?                     boolean
+     |     |  +--rw ap-rogue-detection?                             boolean
+     |     +--rw lag-info
+     |     |  +--rw ap-lag-enabled?   boolean
+     |     +--rw tftp-down-grade
+     |     |  +--rw tftp-downgrade-ip-address?   inet:ip-address
+     |     |  +--rw tftp-downgrade-filename?     string
+     |     +--rw traffic-limit
+     |     |  +--rw max1x-session-limit-per-ap?   uint8
+     |     +--rw cdp
+     |     |  +--rw cdp-enable?   boolean
+     |     o--rw ntp-server?                                             inet:ip-address
+     |     +--rw capwap-window
+     |     |  +--rw window-size?   uint8
+     |     +--rw mesh
+     |     |  +--rw mesh-profile-name?   string
+     |     +--rw reporting-interval
+     |     |  +--rw radio-24ghz?   uint8
+     |     |  +--rw radio-5ghz?    uint8
+     |     +--rw ext-module
+     |     |  +--rw enable?   boolean
+     |     +--rw icap
+     |     |  +--rw full-trace-enabled?                boolean
+     |     |  +--rw partial-trace-enabled?             boolean
+     |     |  +--rw partial-trace-proto-all?           boolean
+     |     |  +--rw partial-trace-proto-mgmt-all?      boolean
+     |     |  +--rw partial-trace-proto-mgmt-assoc?    boolean
+     |     |  +--rw partial-trace-proto-mgmt-auth?     boolean
+     |     |  +--rw partial-trace-proto-mgmt-probe?    boolean
+     |     |  +--rw partial-trace-proto-data-all?      boolean
+     |     |  +--rw partial-trace-proto-data-arp?      boolean
+     |     |  +--rw partial-trace-proto-data-dhcp?     boolean
+     |     |  +--rw partial-trace-proto-data-dhcpv6?   boolean
+     |     |  +--rw partial-trace-proto-data-dns?      boolean
+     |     |  +--rw partial-trace-proto-data-eap?      boolean
+     |     |  +--rw partial-trace-proto-data-icmp?     boolean
+     |     |  +--rw partial-trace-proto-data-icmpv6?   boolean
+     |     |  +--rw partial-trace-proto-cisco-all?     boolean
+     |     |  +--rw partial-trace-proto-cisco-ndp?     boolean
+     |     |  +--rw anomaly-det-enabled?               boolean
+     |     |  +--rw anomaly-det-trigger-trace-ap?      boolean
+     |     |  +--rw anomaly-det-dhcp-timeout?          uint8
+     |     |  +--rw client-stats-enabled?              boolean
+     |     |  +--rw client-stats-freq?                 uint16
+     |     |  +--rw ap-stats-system-enabled?           boolean
+     |     |  +--rw ap-stats-system-freq?              uint16
+     |     |  +--rw ap-stats-memory-enabled?           boolean
+     |     |  +--rw ap-stats-memory-freq?              uint16
+     |     |  +--rw ap-stats-interface-enabled?        boolean
+     |     |  +--rw ap-stats-interface-freq?           uint16
+     |     |  +--rw ap-stats-routing-enabled?          boolean
+     |     |  +--rw ap-stats-routing-freq?             uint16
+     |     |  +--rw ap-stats-radio-enabled?            boolean
+     |     |  +--rw ap-stats-radio-freq?               uint16
+     |     |  +--rw ap-stats-wlan-enabled?             boolean
+     |     |  +--rw ap-stats-wlan-freq?                uint16
+     |     |  +--rw ap-stats-dns-enabled?              boolean
+     |     |  +--rw ap-stats-dns-freq?                 uint16
+     |     |  +--rw rf-spectrum-enabled?               boolean
+     |     |  +--rw rf-spectrum-slot0-enabled?         boolean
+     |     |  +--rw rf-spectrum-slot1-enabled?         boolean
+     |     |  +--rw rf-spectrum-slot2-enabled?         boolean
+     |     |  +--rw adr-individual-enable?             boolean
+     |     |  +--rw adr-individual-throttle?           uint32
+     |     |  +--rw adr-summary-enable?                boolean
+     |     |  +--rw adr-summary-frequency?             uint32
+     |     |  +--rw client-filter-stats-freq?          uint32
+     |     |  +--rw client-filter-stats-enabled?       boolean
+     |     o--rw lawful-interception
+     |     |  +--rw enable?           boolean
+     |     |  +--rw timer-interval?   uint16
+     |     +--rw persistent-ssid-broadcast
+     |     |  +--rw enable?   boolean
+     |     +--rw dhcp-server
+     |     |  +--rw enable?   boolean
+     |     +--rw usb-module-status
+     |     |  +--rw enable?   boolean
+     |     x--rw halo-ble-entries
+     |     |  +--rw halo-ble-entry* [beacon-id]
+     |     |     +--rw beacon-id    uint8
+     |     |     +--rw txpower?     uint8
+     |     |     +--rw enabled?     boolean
+     |     |     +--rw uuid?        string
+     |     +--rw icap-full-packet-trace-client-mac-address-entries
+     |     |  +--rw icap-full-packet-trace-client-mac-address-entry* [addr]
+     |     |     +--rw addr    yang:mac-address
+     |     +--rw icap-partial-packet-trace-client-mac-address-entries
+     |     |  +--rw icap-partial-packet-trace-client-mac-address-entry* [addr]
+     |     |     +--rw addr    yang:mac-address
+     |     +--rw icap-anomaly-detection-client-mac-address-entries
+     |     |  +--rw icap-anomaly-detection-client-mac-address-entry* [addr]
+     |     |     +--rw addr    yang:mac-address
+     |     +--rw icap-client-statistics-client-mac-address-entries
+     |     |  +--rw icap-client-statistics-client-mac-address-entry* [addr]
+     |     |     +--rw addr    yang:mac-address
+     |     +--rw gas-rate-limit
+     |     |  +--rw enable?                 boolean
+     |     |  +--rw num-req-per-interval?   uint8
+     |     |  +--rw interval-msec?          uint16
+     |     +--rw qosmap
+     |     |  +--rw ap-trusts-upstream-dscp?   boolean
+     |     |  +--rw qosmap-action-frame?       boolean
+     |     +--rw qosmap-dscp-to-ups
+     |     |  +--rw qosmap-dscp-to-up* [up]
+     |     |     +--rw dscp-low?     uint8
+     |     |     +--rw dscp-high?    uint8
+     |     |     +--rw up            uint8
+     |     |     +--rw up-to-dscp?   uint8
+     |     +--rw qosmap-dscp-to-up-exceptions
+     |     |  +--rw qosmap-dscp-to-up-exception* [dscp]
+     |     |     +--rw dscp    uint8
+     |     |     +--rw up?     uint8
+     |     +--rw client-rssi
+     |     |  +--rw client-rssi-stats?            boolean
+     |     |  +--rw client-rssi-stats-interval?   uint16
+     |     +--rw ntp-server-info
+     |     |  +--rw ntp-address?   inet:ip-address
+     |     +--rw awips-enabled?                                          boolean
+     |     +--rw accounting
+     |     |  +--rw method-list?   string
+     |     +--rw apphost
+     |     |  +--rw enable?   boolean
+     |     +--rw aux-client-interface
+     |     |  +--rw vlan-id?   uint16
+     |     +--rw proxy
+     |     |  +--rw hostname?        string
+     |     |  +--rw port?            uint16
+     |     |  +--rw no-proxy-list?   string
+     |     +--rw grpc-enable?                                            boolean
+     |     +--rw bssid-enable-stats?                                     boolean
+     |     +--rw bssid-stats-frequency?                                  uint32
+     |     +--rw private-ip-discovery?                                   boolean
+     |     +--rw public-ip-discovery?                                    boolean
+     |     +--rw led-flash
+     |     |  +--rw flash-sec?        uint16
+     |     |  +--rw led-flash-mode?   wireless-ap-types:enm-ap-led-flash-mode
+     |     +--rw bssid-neighbor-stats-enable?                            boolean
+     |     +--rw bssid-neighbor-stats-frequency?                         uint32
+     +--rw ap-packet-capture-profiles
+     |  +--rw ap-packet-capture-profile* [profile-name]
+     |     +--rw profile-name             string
+     |     +--rw description?             string
+     |     +--rw buffer-size?             uint16
+     |     +--rw duration?                uint16
+     |     +--rw truncate-len?            uint16
+     |     +--rw ftp-server-ip?           inet:ip-address
+     |     +--rw ftp-path?                string
+     |     +--rw ftp-username?            string
+     |     +--rw ftp-password?            string
+     |     +--rw ftp-password-type?       wireless-enum-types:crypt-type
+     |     +--rw classifier-control?      boolean
+     |     +--rw classifier-management?   boolean
+     |     +--rw classifier-data?         boolean
+     |     +--rw classifier-dot1x?        boolean
+     |     +--rw classifier-arp?          boolean
+     |     +--rw classifier-iapp?         boolean
+     |     +--rw classifier-ip?           boolean
+     |     +--rw classifier-tcp?          boolean
+     |     +--rw classifier-tcp-port?     uint16
+     |     +--rw classifier-udp?          boolean
+     |     +--rw classifier-udp-port?     uint16
+     |     +--rw classifier-broadcast?    boolean
+     |     +--rw classifier-multicast?    boolean
+     +--rw ap-trace-profiles
+     |  +--rw ap-trace-profile* [profile-name]
+     |     +--rw profile-name                    string
+     |     +--rw description?                    string
+     |     +--rw ap-trace-client-console-log?    boolean
+     |     +--rw ap-trace-client-filter-arp?     boolean
+     |     +--rw ap-trace-client-filter-assoc?   boolean
+     |     +--rw ap-trace-client-filter-auth?    boolean
+     |     +--rw ap-trace-client-filter-dhcp?    boolean
+     |     +--rw ap-trace-client-filter-eap?     boolean
+     |     +--rw ap-trace-client-filter-icmp?    boolean
+     |     +--rw ap-trace-client-filter-ndp?     boolean
+     |     +--rw ap-trace-client-filter-probe?   boolean
+     +--rw site-tag-configs
+        +--rw site-tag-config* [site-tag-name]
+           +--rw site-tag-name                  string
+           +--rw description?                   string
+           +--rw flex-profile?                  string
+           +--rw ap-join-profile?               string
+           +--rw is-local-site?                 boolean
+           +--rw fabric-control-plane-name?     string
+           +--rw image-download-profile-name?   string
+           +--rw arp-caching?                   boolean
+Xpaths for model: Cisco-IOS-XE-wireless-site-cfg.yang
+/wireless-site-cfg:site-cfg-data,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile,list,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:profile-name,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:description,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:ble-beacon-interval,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:ble-beacon-advpwr,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:data-encryption-flag,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:ap-packet-capture-profile,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:ap-trace-profile,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:stats-timer,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:stats-timer/wireless-site-cfg:stats-timer,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:led-state,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:led-state/wireless-site-cfg:led-state,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:link-latency,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:link-latency/wireless-site-cfg:link-latency-flag,leaf,wireless-ap-types:enm-link-latency-type
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:jumbo-mtu,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:jumbo-mtu/wireless-site-cfg:jumbo-mtu,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:ap-mode,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:ap-mode/wireless-site-cfg:ap-sub-mode,leaf,wireless-ap-types:ap-sub-mode-type
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:ap-mode/wireless-site-cfg:fast-channel,leaf,uint32
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:poe,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:poe/wireless-site-cfg:pre-standard8023af-switch-flag,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:poe/wireless-site-cfg:power-injector-state,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:poe/wireless-site-cfg:power-injector-selection,leaf,wireless-ap-types:power-injector-sel-type
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:poe/wireless-site-cfg:injector-switch-mac,leaf,yang:mac-address
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:device-mgmt,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:device-mgmt/wireless-site-cfg:telnet,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:device-mgmt/wireless-site-cfg:ssh,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:user-mgmt,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:user-mgmt/wireless-site-cfg:username,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:user-mgmt/wireless-site-cfg:password,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:user-mgmt/wireless-site-cfg:password-type,leaf,wireless-enum-types:crypt-type
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:user-mgmt/wireless-site-cfg:secret,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:user-mgmt/wireless-site-cfg:secret-type,leaf,wireless-enum-types:crypt-type
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:tcp-mss,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:tcp-mss/wireless-site-cfg:adjust-mss,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:tcp-mss/wireless-site-cfg:tcp-adjust-mss,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:tunnel,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:tunnel/wireless-site-cfg:preferred-mode,leaf,wireless-enum-types:preferred-mode-type
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:tunnel/wireless-site-cfg:udp-lite,leaf,wireless-enum-types:ipv6-capwap-checksum-type
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:capwap-timer,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:capwap-timer/wireless-site-cfg:heart-beat-timeout,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:capwap-timer/wireless-site-cfg:discovery-timeout,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:capwap-timer/wireless-site-cfg:fast-heart-beat-timeout,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:capwap-timer/wireless-site-cfg:primary-discovery-timeout,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:capwap-timer/wireless-site-cfg:primed-join-timeout,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:retransmit-timer,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:retransmit-timer/wireless-site-cfg:count,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:retransmit-timer/wireless-site-cfg:interval,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:login-credentials,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:login-credentials/wireless-site-cfg:dot1x-username,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:login-credentials/wireless-site-cfg:dot1x-password,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:login-credentials/wireless-site-cfg:dot1x-password-type,leaf,wireless-enum-types:crypt-type
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:dot1x-eap-type-info,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:dot1x-eap-type-info/wireless-site-cfg:dot1x-eap-type,leaf,wireless-ap-types:enm-ap-dot1x-eap-type
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:lsc-ap-auth-type-info,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:lsc-ap-auth-type-info/wireless-site-cfg:lsc-ap-auth-type,leaf,wireless-ap-types:enm-lsc-ap-auth-state-type
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:coredump,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:coredump/wireless-site-cfg:coredump-flag,leaf,wireless-enum-types:memory-core-dump-flag
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:coredump/wireless-site-cfg:tftp-server-address,leaf,inet:ip-address
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:coredump/wireless-site-cfg:corefile-name,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:syslog,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:syslog/wireless-site-cfg:facility-value,leaf,wireless-ap-types:syslog-facility-value
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:syslog/wireless-site-cfg:log-level,leaf,wireless-types:syslog-trap-level
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:syslog/wireless-site-cfg:host,leaf,inet:ip-address
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:syslog/wireless-site-cfg:tls-mode,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:backup-controllers,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:backup-controllers/wireless-site-cfg:fallback-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:backup-controllers/wireless-site-cfg:primary-controller-name,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:backup-controllers/wireless-site-cfg:secondary-controller-name,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:backup-controllers/wireless-site-cfg:primary-controller-ip,leaf,inet:ip-address
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:backup-controllers/wireless-site-cfg:secondary-controller-ip,leaf,inet:ip-address
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:hyperlocation,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:hyperlocation/wireless-site-cfg:hyperlocation-enable,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:hyperlocation/wireless-site-cfg:pak-rssi-threshold-detection,leaf,int32
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:hyperlocation/wireless-site-cfg:pak-rssi-threshold-trigger,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:hyperlocation/wireless-site-cfg:pak-rssi-threshold-reset,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:rogue-detection,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:rogue-detection/wireless-site-cfg:profile-name,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:rogue-detection/wireless-site-cfg:rogue-detection-monitor-mode-report-interval,leaf,uint32
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:rogue-detection/wireless-site-cfg:ap-rogue-detection-min-rssi,leaf,int32
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:rogue-detection/wireless-site-cfg:ap-rogue-detection-transient-interval,leaf,uint32
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:rogue-detection/wireless-site-cfg:rogue-containment-flexconnect,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:rogue-detection/wireless-site-cfg:rogue-containment-autorate,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:rogue-detection/wireless-site-cfg:ap-rogue-detection,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:lag-info,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:lag-info/wireless-site-cfg:ap-lag-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:tftp-down-grade,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:tftp-down-grade/wireless-site-cfg:tftp-downgrade-ip-address,leaf,inet:ip-address
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:tftp-down-grade/wireless-site-cfg:tftp-downgrade-filename,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:traffic-limit,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:traffic-limit/wireless-site-cfg:max1x-session-limit-per-ap,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:cdp,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:cdp/wireless-site-cfg:cdp-enable,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:ntp-server,leaf,inet:ip-address
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:capwap-window,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:capwap-window/wireless-site-cfg:window-size,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:mesh,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:mesh/wireless-site-cfg:mesh-profile-name,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:reporting-interval,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:reporting-interval/wireless-site-cfg:radio-24ghz,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:reporting-interval/wireless-site-cfg:radio-5ghz,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:ext-module,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:ext-module/wireless-site-cfg:enable,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:full-trace-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-proto-all,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-proto-mgmt-all,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-proto-mgmt-assoc,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-proto-mgmt-auth,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-proto-mgmt-probe,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-proto-data-all,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-proto-data-arp,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-proto-data-dhcp,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-proto-data-dhcpv6,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-proto-data-dns,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-proto-data-eap,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-proto-data-icmp,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-proto-data-icmpv6,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-proto-cisco-all,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:partial-trace-proto-cisco-ndp,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:anomaly-det-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:anomaly-det-trigger-trace-ap,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:anomaly-det-dhcp-timeout,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:client-stats-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:client-stats-freq,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:ap-stats-system-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:ap-stats-system-freq,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:ap-stats-memory-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:ap-stats-memory-freq,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:ap-stats-interface-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:ap-stats-interface-freq,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:ap-stats-routing-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:ap-stats-routing-freq,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:ap-stats-radio-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:ap-stats-radio-freq,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:ap-stats-wlan-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:ap-stats-wlan-freq,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:ap-stats-dns-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:ap-stats-dns-freq,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:rf-spectrum-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:rf-spectrum-slot0-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:rf-spectrum-slot1-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:rf-spectrum-slot2-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:adr-individual-enable,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:adr-individual-throttle,leaf,uint32
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:adr-summary-enable,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:adr-summary-frequency,leaf,uint32
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:client-filter-stats-freq,leaf,uint32
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap/wireless-site-cfg:client-filter-stats-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:lawful-interception,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:lawful-interception/wireless-site-cfg:enable,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:lawful-interception/wireless-site-cfg:timer-interval,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:persistent-ssid-broadcast,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:persistent-ssid-broadcast/wireless-site-cfg:enable,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:dhcp-server,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:dhcp-server/wireless-site-cfg:enable,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:usb-module-status,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:usb-module-status/wireless-site-cfg:enable,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:halo-ble-entries,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:halo-ble-entries/wireless-site-cfg:halo-ble-entry,list,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:halo-ble-entries/wireless-site-cfg:halo-ble-entry/wireless-site-cfg:beacon-id,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:halo-ble-entries/wireless-site-cfg:halo-ble-entry/wireless-site-cfg:txpower,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:halo-ble-entries/wireless-site-cfg:halo-ble-entry/wireless-site-cfg:enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:halo-ble-entries/wireless-site-cfg:halo-ble-entry/wireless-site-cfg:uuid,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap-full-packet-trace-client-mac-address-entries,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap-full-packet-trace-client-mac-address-entries/wireless-site-cfg:icap-full-packet-trace-client-mac-address-entry,list,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap-full-packet-trace-client-mac-address-entries/wireless-site-cfg:icap-full-packet-trace-client-mac-address-entry/wireless-site-cfg:addr,leaf,yang:mac-address
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap-partial-packet-trace-client-mac-address-entries,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap-partial-packet-trace-client-mac-address-entries/wireless-site-cfg:icap-partial-packet-trace-client-mac-address-entry,list,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap-partial-packet-trace-client-mac-address-entries/wireless-site-cfg:icap-partial-packet-trace-client-mac-address-entry/wireless-site-cfg:addr,leaf,yang:mac-address
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap-anomaly-detection-client-mac-address-entries,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap-anomaly-detection-client-mac-address-entries/wireless-site-cfg:icap-anomaly-detection-client-mac-address-entry,list,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap-anomaly-detection-client-mac-address-entries/wireless-site-cfg:icap-anomaly-detection-client-mac-address-entry/wireless-site-cfg:addr,leaf,yang:mac-address
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap-client-statistics-client-mac-address-entries,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap-client-statistics-client-mac-address-entries/wireless-site-cfg:icap-client-statistics-client-mac-address-entry,list,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:icap-client-statistics-client-mac-address-entries/wireless-site-cfg:icap-client-statistics-client-mac-address-entry/wireless-site-cfg:addr,leaf,yang:mac-address
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:gas-rate-limit,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:gas-rate-limit/wireless-site-cfg:enable,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:gas-rate-limit/wireless-site-cfg:num-req-per-interval,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:gas-rate-limit/wireless-site-cfg:interval-msec,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:qosmap,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:qosmap/wireless-site-cfg:ap-trusts-upstream-dscp,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:qosmap/wireless-site-cfg:qosmap-action-frame,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:qosmap-dscp-to-ups,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:qosmap-dscp-to-ups/wireless-site-cfg:qosmap-dscp-to-up,list,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:qosmap-dscp-to-ups/wireless-site-cfg:qosmap-dscp-to-up/wireless-site-cfg:dscp-low,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:qosmap-dscp-to-ups/wireless-site-cfg:qosmap-dscp-to-up/wireless-site-cfg:dscp-high,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:qosmap-dscp-to-ups/wireless-site-cfg:qosmap-dscp-to-up/wireless-site-cfg:up,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:qosmap-dscp-to-ups/wireless-site-cfg:qosmap-dscp-to-up/wireless-site-cfg:up-to-dscp,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:qosmap-dscp-to-up-exceptions,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:qosmap-dscp-to-up-exceptions/wireless-site-cfg:qosmap-dscp-to-up-exception,list,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:qosmap-dscp-to-up-exceptions/wireless-site-cfg:qosmap-dscp-to-up-exception/wireless-site-cfg:dscp,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:qosmap-dscp-to-up-exceptions/wireless-site-cfg:qosmap-dscp-to-up-exception/wireless-site-cfg:up,leaf,uint8
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:client-rssi,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:client-rssi/wireless-site-cfg:client-rssi-stats,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:client-rssi/wireless-site-cfg:client-rssi-stats-interval,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:ntp-server-info,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:ntp-server-info/wireless-site-cfg:ntp-address,leaf,inet:ip-address
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:awips-enabled,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:accounting,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:accounting/wireless-site-cfg:method-list,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:apphost,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:apphost/wireless-site-cfg:enable,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:aux-client-interface,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:aux-client-interface/wireless-site-cfg:vlan-id,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:proxy,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:proxy/wireless-site-cfg:hostname,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:proxy/wireless-site-cfg:port,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:proxy/wireless-site-cfg:no-proxy-list,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:grpc-enable,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:bssid-enable-stats,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:bssid-stats-frequency,leaf,uint32
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:private-ip-discovery,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:public-ip-discovery,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:led-flash,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:led-flash/wireless-site-cfg:flash-sec,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:led-flash/wireless-site-cfg:led-flash-mode,leaf,wireless-ap-types:enm-ap-led-flash-mode
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:bssid-neighbor-stats-enable,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-cfg-profiles/wireless-site-cfg:ap-cfg-profile/wireless-site-cfg:bssid-neighbor-stats-frequency,leaf,uint32
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile,list,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:profile-name,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:description,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:buffer-size,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:duration,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:truncate-len,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:ftp-server-ip,leaf,inet:ip-address
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:ftp-path,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:ftp-username,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:ftp-password,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:ftp-password-type,leaf,wireless-enum-types:crypt-type
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:classifier-control,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:classifier-management,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:classifier-data,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:classifier-dot1x,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:classifier-arp,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:classifier-iapp,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:classifier-ip,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:classifier-tcp,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:classifier-tcp-port,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:classifier-udp,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:classifier-udp-port,leaf,uint16
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:classifier-broadcast,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-packet-capture-profiles/wireless-site-cfg:ap-packet-capture-profile/wireless-site-cfg:classifier-multicast,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-trace-profiles,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-trace-profiles/wireless-site-cfg:ap-trace-profile,list,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-trace-profiles/wireless-site-cfg:ap-trace-profile/wireless-site-cfg:profile-name,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-trace-profiles/wireless-site-cfg:ap-trace-profile/wireless-site-cfg:description,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-trace-profiles/wireless-site-cfg:ap-trace-profile/wireless-site-cfg:ap-trace-client-console-log,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-trace-profiles/wireless-site-cfg:ap-trace-profile/wireless-site-cfg:ap-trace-client-filter-arp,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-trace-profiles/wireless-site-cfg:ap-trace-profile/wireless-site-cfg:ap-trace-client-filter-assoc,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-trace-profiles/wireless-site-cfg:ap-trace-profile/wireless-site-cfg:ap-trace-client-filter-auth,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-trace-profiles/wireless-site-cfg:ap-trace-profile/wireless-site-cfg:ap-trace-client-filter-dhcp,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-trace-profiles/wireless-site-cfg:ap-trace-profile/wireless-site-cfg:ap-trace-client-filter-eap,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-trace-profiles/wireless-site-cfg:ap-trace-profile/wireless-site-cfg:ap-trace-client-filter-icmp,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-trace-profiles/wireless-site-cfg:ap-trace-profile/wireless-site-cfg:ap-trace-client-filter-ndp,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:ap-trace-profiles/wireless-site-cfg:ap-trace-profile/wireless-site-cfg:ap-trace-client-filter-probe,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:site-tag-configs,container,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:site-tag-configs/wireless-site-cfg:site-tag-config,list,
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:site-tag-configs/wireless-site-cfg:site-tag-config/wireless-site-cfg:site-tag-name,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:site-tag-configs/wireless-site-cfg:site-tag-config/wireless-site-cfg:description,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:site-tag-configs/wireless-site-cfg:site-tag-config/wireless-site-cfg:flex-profile,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:site-tag-configs/wireless-site-cfg:site-tag-config/wireless-site-cfg:ap-join-profile,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:site-tag-configs/wireless-site-cfg:site-tag-config/wireless-site-cfg:is-local-site,leaf,boolean
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:site-tag-configs/wireless-site-cfg:site-tag-config/wireless-site-cfg:fabric-control-plane-name,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:site-tag-configs/wireless-site-cfg:site-tag-config/wireless-site-cfg:image-download-profile-name,leaf,string
+/wireless-site-cfg:site-cfg-data/wireless-site-cfg:site-tag-configs/wireless-site-cfg:site-tag-config/wireless-site-cfg:arp-caching,leaf,boolean

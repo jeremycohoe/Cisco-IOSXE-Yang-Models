@@ -1,0 +1,55 @@
+
+KPI for model: Cisco-IOS-XE-wireless-events-oper.yang
+module: Cisco-IOS-XE-wireless-events-oper
+  +--ro wireless-events
+
+  notifications:
+    +---n wsa-client-event
+    |  +--ro client-mac?                   yang:mac-address
+    |  +--ro wtp-mac?                      yang:mac-address
+    |  +--ro state-transition-timestamp?   yang:date-and-time
+    |  +--ro audit-session-id?             string
+    |  +--ro ssid?                         string
+    |  +--ro client-event?                 wsa-types:wsa-client-events
+    |  +--ro client-event-result?          wsa-types:wsa-client-event-result
+    |  +--ro vlan-id?                      uint32
+    |  +--ro client-vnid?                  uint32
+    |  +--ro client-sgt?                   uint16
+    |  +--ro rssi?                         int8
+    |  +--ro snr?                          uint8
+    |  +--ro ms-ap-slot-id?                uint8
+    |  +--ro mm-client-role?               wireless-mobility-types:mm-client-role
+    |  +--ro ipv4-address?                 inet:ipv4-address
+    |  +--ro ipv6*                         inet:ipv6-address
+    |  +--ro dhcp-server-ip-addr* []
+    |  |  +--ro server-ip?   inet:ip-address
+    |  +--ro aaa-server?                   inet:ip-address
+    |  +--ro is-fabric-client?             boolean
+    |  +--ro client-event-reason?          wsa-types:wsa-client-event-reason-3p
+    |  +--ro client-event-reason-addon?    wsa-types:wsa-client-event-reason-addon-3p
+    +---n rogue-events
+       +--ro reporting-ap
+       |  +--ro name?          string
+       |  +--ro mac-address?   yang:mac-address
+       |  +--ro slot-id?       uint32
+       +--ro rogue-mac-address?                   yang:mac-address
+       +--ro (event-type-choice)?
+          +--:(rogue-potential-honeypot-detected)
+          |  +--ro potential-honeypot-detected
+          |     +--ro ssid?      string
+          |     +--ro channel?   uint32
+          +--:(rogue-potential-honeypot-cleared)
+          |  +--ro potential-honeypot-cleared
+          |     +--ro ssid?      string
+          |     +--ro channel?   uint32
+          +--:(rogue-ap-impersonation-detected)
+          |  +--ro ap-impersonation-detected
+          |     +--ro impersonating-src-mac?   yang:mac-address
+          |     +--ro is-beacon-ds?            boolean
+          |     +--ro channel?                 uint8
+          +--:(rogue-mfp-containment-detected)
+             +--ro pmf-info-detected
+                +--ro is-client?        boolean
+                +--ro pmf-client-mac?   yang:mac-address
+Xpaths for model: Cisco-IOS-XE-wireless-events-oper.yang
+/wireless-event-oper:wireless-events,container,

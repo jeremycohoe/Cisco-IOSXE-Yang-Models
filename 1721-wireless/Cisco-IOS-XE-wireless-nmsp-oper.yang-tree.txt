@@ -1,0 +1,224 @@
+
+KPI for model: Cisco-IOS-XE-wireless-nmsp-oper.yang
+module: Cisco-IOS-XE-wireless-nmsp-oper
+  +--ro nmsp-oper-data
+     +--ro client-registration* [client-id]
+     |  +--ro client-id    uint32
+     |  +--ro services
+     |     +--ro mask?                            uint64
+     |     +--ro rssi-ms?                         empty
+     |     +--ro rssi-rfid?                       empty
+     |     +--ro rssi-rogue?                      empty
+     |     +--ro rssi-interferer?                 empty
+     |     +--ro rssi-hs?                         empty
+     |     +--ro rssi-ms-associated-only?         empty
+     |     +--ro spectrum-interferer?             empty
+     |     +--ro spectrum-air-quality?            empty
+     |     +--ro spectrum-aggregate-interferer?   empty
+     |     +--ro info-ms?                         empty
+     |     +--ro info-rfid?                       empty
+     |     +--ro info-rogue?                      empty
+     |     +--ro info-hs?                         empty
+     |     +--ro stats-ms?                        empty
+     |     +--ro stats-rfid?                      empty
+     |     +--ro stats-rogue?                     empty
+     |     +--ro attach?                          empty
+     |     +--ro location?                        empty
+     |     +--ro fmchs?                           empty
+     |     +--ro ap-monitor?                      empty
+     |     +--ro wips?                            empty
+     |     +--ro on-demand?                       empty
+     |     +--ro ap-info?                         empty
+     +--ro cmx-connection* [peer-ip]
+     |  +--ro peer-ip          inet:ip-address
+     |  +--ro connection-id?   uint64
+     |  +--ro active?          boolean
+     |  +--ro con-stats
+     |  |  +--ro tx-msg-counter* []
+     |  |  |  +--ro counter?   uint64
+     |  |  |  +--ro msg-id?    uint16
+     |  |  +--ro rx-msg-counter* []
+     |  |  |  +--ro counter?   uint64
+     |  |  |  +--ro msg-id?    uint16
+     |  |  +--ro unsupported-msg-count?   uint64
+     |  |  +--ro tx-data-frames?          uint64
+     |  |  +--ro rx-data-frames?          uint64
+     |  |  +--ro connections?             uint64
+     |  |  +--ro disconnections?          uint64
+     |  +--ro subscriptions
+     |  |  +--ro mask?                            uint64
+     |  |  +--ro rssi-ms?                         empty
+     |  |  +--ro rssi-rfid?                       empty
+     |  |  +--ro rssi-rogue?                      empty
+     |  |  +--ro rssi-interferer?                 empty
+     |  |  +--ro rssi-hs?                         empty
+     |  |  +--ro rssi-ms-associated-only?         empty
+     |  |  +--ro spectrum-interferer?             empty
+     |  |  +--ro spectrum-air-quality?            empty
+     |  |  +--ro spectrum-aggregate-interferer?   empty
+     |  |  +--ro info-ms?                         empty
+     |  |  +--ro info-rfid?                       empty
+     |  |  +--ro info-rogue?                      empty
+     |  |  +--ro info-hs?                         empty
+     |  |  +--ro stats-ms?                        empty
+     |  |  +--ro stats-rfid?                      empty
+     |  |  +--ro stats-rogue?                     empty
+     |  |  +--ro attach?                          empty
+     |  |  +--ro location?                        empty
+     |  |  +--ro fmchs?                           empty
+     |  |  +--ro ap-monitor?                      empty
+     |  |  +--ro wips?                            empty
+     |  |  +--ro on-demand?                       empty
+     |  |  +--ro ap-info?                         empty
+     |  +--ro transport?       wireless-nmsp-oper:enm-nmsp-transport-type
+     +--ro cmx-cloud-info!
+     |  +--ro cloud-status
+     |  |  +--ro ip-address?            inet:ip-address
+     |  |  +--ro connectivity?          wireless-nmsp-oper:enm-nmsp-cloud-connectivity-type
+     |  |  +--ro service-up?            boolean
+     |  |  +--ro last-request-status?   string
+     |  |  +--ro heartbeat-status-ok?   boolean
+     |  +--ro cloud-stats
+     |     +--ro tx-dataframes?       uint32
+     |     +--ro rx-dataframes?       uint32
+     |     +--ro tx-heartbeat-req?    uint32
+     |     +--ro heartbeat-timeout?   uint32
+     |     +--ro rx-subscriber-req?   uint32
+     |     +--ro tx-databytes?        uint32
+     |     +--ro rx-databytes?        uint32
+     |     +--ro tx-heartbeat-fail?   uint32
+     |     +--ro rx-data-fail?        uint32
+     |     +--ro tx-data-fail?        uint32
+     +--ro statistics!
+        +--ro ssl-stats
+        |  +--ro verify-count?           uint64
+        |  +--ro verify-fail?            uint64
+        |  +--ro verify-success?         uint64
+        |  +--ro connection-created?     uint64
+        |  +--ro connection-closed?      uint64
+        |  +--ro accept-attempts?        uint64
+        |  +--ro accept-fail?            uint64
+        |  +--ro accept-reject?          uint64
+        |  +--ro accept-success?         uint64
+        |  +--ro accept-register-fail?   uint64
+        +--ro aaa-stats
+        |  +--ro aaa-request?              uint64
+        |  +--ro aaa-send-fail?            uint64
+        |  +--ro aaa-send-success?         uint64
+        |  +--ro aaa-response?             uint64
+        |  +--ro aaa-validation-total?     uint64
+        |  +--ro aaa-validation-fail?      uint64
+        |  +--ro aaa-validation-success?   uint64
+        +--ro srv-stats
+           +--ro srv-restarts?   uint64
+Xpaths for model: Cisco-IOS-XE-wireless-nmsp-oper.yang
+/wireless-nmsp-oper:nmsp-oper-data,container,
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration,list,
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:client-id,leaf,uint32
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services,container,
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:mask,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:rssi-ms,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:rssi-rfid,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:rssi-rogue,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:rssi-interferer,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:rssi-hs,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:rssi-ms-associated-only,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:spectrum-interferer,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:spectrum-air-quality,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:spectrum-aggregate-interferer,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:info-ms,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:info-rfid,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:info-rogue,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:info-hs,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:stats-ms,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:stats-rfid,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:stats-rogue,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:attach,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:location,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:fmchs,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:ap-monitor,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:wips,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:on-demand,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:client-registration/wireless-nmsp-oper:services/wireless-nmsp-oper:ap-info,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection,list,
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:peer-ip,leaf,inet:ip-address
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:connection-id,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:active,leaf,boolean
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:con-stats,container,
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:con-stats/wireless-nmsp-oper:tx-msg-counter,list,
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:con-stats/wireless-nmsp-oper:tx-msg-counter/wireless-nmsp-oper:counter,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:con-stats/wireless-nmsp-oper:tx-msg-counter/wireless-nmsp-oper:msg-id,leaf,uint16
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:con-stats/wireless-nmsp-oper:rx-msg-counter,list,
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:con-stats/wireless-nmsp-oper:rx-msg-counter/wireless-nmsp-oper:counter,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:con-stats/wireless-nmsp-oper:rx-msg-counter/wireless-nmsp-oper:msg-id,leaf,uint16
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:con-stats/wireless-nmsp-oper:unsupported-msg-count,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:con-stats/wireless-nmsp-oper:tx-data-frames,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:con-stats/wireless-nmsp-oper:rx-data-frames,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:con-stats/wireless-nmsp-oper:connections,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:con-stats/wireless-nmsp-oper:disconnections,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions,container,
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:mask,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:rssi-ms,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:rssi-rfid,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:rssi-rogue,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:rssi-interferer,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:rssi-hs,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:rssi-ms-associated-only,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:spectrum-interferer,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:spectrum-air-quality,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:spectrum-aggregate-interferer,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:info-ms,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:info-rfid,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:info-rogue,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:info-hs,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:stats-ms,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:stats-rfid,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:stats-rogue,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:attach,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:location,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:fmchs,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:ap-monitor,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:wips,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:on-demand,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:subscriptions/wireless-nmsp-oper:ap-info,leaf,empty
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-connection/wireless-nmsp-oper:transport,leaf,wireless-nmsp-oper:enm-nmsp-transport-type
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info,container,
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-status,container,
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-status/wireless-nmsp-oper:ip-address,leaf,inet:ip-address
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-status/wireless-nmsp-oper:connectivity,leaf,wireless-nmsp-oper:enm-nmsp-cloud-connectivity-type
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-status/wireless-nmsp-oper:service-up,leaf,boolean
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-status/wireless-nmsp-oper:last-request-status,leaf,string
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-status/wireless-nmsp-oper:heartbeat-status-ok,leaf,boolean
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-stats,container,
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-stats/wireless-nmsp-oper:tx-dataframes,leaf,uint32
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-stats/wireless-nmsp-oper:rx-dataframes,leaf,uint32
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-stats/wireless-nmsp-oper:tx-heartbeat-req,leaf,uint32
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-stats/wireless-nmsp-oper:heartbeat-timeout,leaf,uint32
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-stats/wireless-nmsp-oper:rx-subscriber-req,leaf,uint32
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-stats/wireless-nmsp-oper:tx-databytes,leaf,uint32
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-stats/wireless-nmsp-oper:rx-databytes,leaf,uint32
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-stats/wireless-nmsp-oper:tx-heartbeat-fail,leaf,uint32
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-stats/wireless-nmsp-oper:rx-data-fail,leaf,uint32
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:cmx-cloud-info/wireless-nmsp-oper:cloud-stats/wireless-nmsp-oper:tx-data-fail,leaf,uint32
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics,container,
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:ssl-stats,container,
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:ssl-stats/wireless-nmsp-oper:verify-count,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:ssl-stats/wireless-nmsp-oper:verify-fail,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:ssl-stats/wireless-nmsp-oper:verify-success,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:ssl-stats/wireless-nmsp-oper:connection-created,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:ssl-stats/wireless-nmsp-oper:connection-closed,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:ssl-stats/wireless-nmsp-oper:accept-attempts,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:ssl-stats/wireless-nmsp-oper:accept-fail,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:ssl-stats/wireless-nmsp-oper:accept-reject,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:ssl-stats/wireless-nmsp-oper:accept-success,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:ssl-stats/wireless-nmsp-oper:accept-register-fail,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:aaa-stats,container,
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:aaa-stats/wireless-nmsp-oper:aaa-request,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:aaa-stats/wireless-nmsp-oper:aaa-send-fail,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:aaa-stats/wireless-nmsp-oper:aaa-send-success,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:aaa-stats/wireless-nmsp-oper:aaa-response,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:aaa-stats/wireless-nmsp-oper:aaa-validation-total,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:aaa-stats/wireless-nmsp-oper:aaa-validation-fail,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:aaa-stats/wireless-nmsp-oper:aaa-validation-success,leaf,uint64
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:srv-stats,container,
+/wireless-nmsp-oper:nmsp-oper-data/wireless-nmsp-oper:statistics/wireless-nmsp-oper:srv-stats/wireless-nmsp-oper:srv-restarts,leaf,uint64

@@ -1,0 +1,108 @@
+
+KPI for model: Cisco-IOS-XE-wireless-rfid-oper.yang
+module: Cisco-IOS-XE-wireless-rfid-oper
+  +--ro rfid-oper-data
+     +--ro rfid-data* [rfid-mac-addr]
+        +--ro rfid-mac-addr             yang:mac-address
+        +--ro rfid-type?                wireless-rfid-ios-oper:enm-rfid-data-type
+        +--ro rfid-auto-interval?       uint16
+        +--ro rfid-bytes-rx?            uint32
+        +--ro rfid-packets-rx?          uint32
+        +--ro rfid-last-heard-second?   yang:date-and-time
+        +--ro rfid-vendor
+        |  +--ro (type-choice)?
+        |     +--:(bluesoft-rfid-data)
+        |     |  +--ro bluesoft
+        |     |     +--ro last-seq-num?   uint8
+        |     |     +--ro tag-type?       uint8
+        |     +--:(cisco-rfid-data)
+        |        +--ro cisco
+        |           +--ro rfid-cisco-hdr
+        |           |  +--ro ccx-version?   uint8
+        |           |  +--ro tx-power?      int8
+        |           |  +--ro channel?       uint8
+        |           |  +--ro reg-class?     uint8
+        |           |  +--ro burst-len?     uint8
+        |           +--ro seq-control
+        |           |  +--ro seq-num?    uint16
+        |           |  +--ro frag-num?   uint16
+        |           +--ro payload-len?      uint16
+        |           +--ro ccx-payload
+        |              +--ro data*   uint8
+        +--ro ap-high-rssi
+        |  +--ro ap-mac-addr?   yang:mac-address
+        |  +--ro rssi
+        |     +--ro num?         int16
+        |     +--ro denom?       uint16
+        |     +--ro value?       int8
+        |     +--ro last-sent?   int8
+        +--ro ap-data* []
+        |  +--ro rssi
+        |  |  +--ro num?         int16
+        |  |  +--ro denom?       uint16
+        |  |  +--ro value?       int8
+        |  |  +--ro last-sent?   int8
+        |  +--ro slot?          uint8
+        |  +--ro band?          uint8
+        |  +--ro snr
+        |  |  +--ro num?     int16
+        |  |  +--ro denom?   uint16
+        |  |  +--ro value?   int8
+        |  +--ro time-stamp?    yang:date-and-time
+        |  +--ro expired?       boolean
+        |  +--ro ap-mac-addr?   yang:mac-address
+        +--ro tx-power?                 int8
+        +--ro timer-handle?             uint64
+Xpaths for model: Cisco-IOS-XE-wireless-rfid-oper.yang
+/wireless-rfid-ios-oper:rfid-oper-data,container,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data,list,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-mac-addr,leaf,yang:mac-address
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-type,leaf,wireless-rfid-ios-oper:enm-rfid-data-type
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-auto-interval,leaf,uint16
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-bytes-rx,leaf,uint32
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-packets-rx,leaf,uint32
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-last-heard-second,leaf,yang:date-and-time
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor,container,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor,choice,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor,case,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:bluesoft,container,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:bluesoft/wireless-rfid-ios-oper:last-seq-num,leaf,uint8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:bluesoft/wireless-rfid-ios-oper:tag-type,leaf,uint8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor,case,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:cisco,container,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:cisco/wireless-rfid-ios-oper:rfid-cisco-hdr,container,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:cisco/wireless-rfid-ios-oper:rfid-cisco-hdr/wireless-rfid-ios-oper:ccx-version,leaf,uint8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:cisco/wireless-rfid-ios-oper:rfid-cisco-hdr/wireless-rfid-ios-oper:tx-power,leaf,int8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:cisco/wireless-rfid-ios-oper:rfid-cisco-hdr/wireless-rfid-ios-oper:channel,leaf,uint8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:cisco/wireless-rfid-ios-oper:rfid-cisco-hdr/wireless-rfid-ios-oper:reg-class,leaf,uint8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:cisco/wireless-rfid-ios-oper:rfid-cisco-hdr/wireless-rfid-ios-oper:burst-len,leaf,uint8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:cisco/wireless-rfid-ios-oper:seq-control,container,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:cisco/wireless-rfid-ios-oper:seq-control/wireless-rfid-ios-oper:seq-num,leaf,uint16
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:cisco/wireless-rfid-ios-oper:seq-control/wireless-rfid-ios-oper:frag-num,leaf,uint16
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:cisco/wireless-rfid-ios-oper:payload-len,leaf,uint16
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:cisco/wireless-rfid-ios-oper:ccx-payload,container,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:rfid-vendor/wireless-rfid-ios-oper:cisco/wireless-rfid-ios-oper:ccx-payload/wireless-rfid-ios-oper:data,leaf-list,uint8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-high-rssi,container,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-high-rssi/wireless-rfid-ios-oper:ap-mac-addr,leaf,yang:mac-address
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-high-rssi/wireless-rfid-ios-oper:rssi,container,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-high-rssi/wireless-rfid-ios-oper:rssi/wireless-rfid-ios-oper:num,leaf,int16
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-high-rssi/wireless-rfid-ios-oper:rssi/wireless-rfid-ios-oper:denom,leaf,uint16
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-high-rssi/wireless-rfid-ios-oper:rssi/wireless-rfid-ios-oper:value,leaf,int8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-high-rssi/wireless-rfid-ios-oper:rssi/wireless-rfid-ios-oper:last-sent,leaf,int8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-data,list,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-data/wireless-rfid-ios-oper:rssi,container,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-data/wireless-rfid-ios-oper:rssi/wireless-rfid-ios-oper:num,leaf,int16
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-data/wireless-rfid-ios-oper:rssi/wireless-rfid-ios-oper:denom,leaf,uint16
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-data/wireless-rfid-ios-oper:rssi/wireless-rfid-ios-oper:value,leaf,int8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-data/wireless-rfid-ios-oper:rssi/wireless-rfid-ios-oper:last-sent,leaf,int8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-data/wireless-rfid-ios-oper:slot,leaf,uint8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-data/wireless-rfid-ios-oper:band,leaf,uint8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-data/wireless-rfid-ios-oper:snr,container,
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-data/wireless-rfid-ios-oper:snr/wireless-rfid-ios-oper:num,leaf,int16
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-data/wireless-rfid-ios-oper:snr/wireless-rfid-ios-oper:denom,leaf,uint16
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-data/wireless-rfid-ios-oper:snr/wireless-rfid-ios-oper:value,leaf,int8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-data/wireless-rfid-ios-oper:time-stamp,leaf,yang:date-and-time
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-data/wireless-rfid-ios-oper:expired,leaf,boolean
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:ap-data/wireless-rfid-ios-oper:ap-mac-addr,leaf,yang:mac-address
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:tx-power,leaf,int8
+/wireless-rfid-ios-oper:rfid-oper-data/wireless-rfid-ios-oper:rfid-data/wireless-rfid-ios-oper:timer-handle,leaf,uint64

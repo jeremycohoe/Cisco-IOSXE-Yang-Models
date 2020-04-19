@@ -1,0 +1,16 @@
+
+KPI for model: Cisco-IOS-XE-wireless-hyperlocation-oper.yang
+module: Cisco-IOS-XE-wireless-hyperlocation-oper
+  +--ro hyperlocation-oper-data
+     +--ro ewlc-hyperlocation-profile* [name]
+        +--ro name               string
+        +--ro status?            boolean
+        +--ro reason-down?       wireless-types:enm-hyperlocation-reason
+        +--ro oper-ntp-server?   inet:ip-address
+Xpaths for model: Cisco-IOS-XE-wireless-hyperlocation-oper.yang
+/wireless-hyperlocation-oper:hyperlocation-oper-data,container,
+/wireless-hyperlocation-oper:hyperlocation-oper-data/wireless-hyperlocation-oper:ewlc-hyperlocation-profile,list,
+/wireless-hyperlocation-oper:hyperlocation-oper-data/wireless-hyperlocation-oper:ewlc-hyperlocation-profile/wireless-hyperlocation-oper:name,leaf,string
+/wireless-hyperlocation-oper:hyperlocation-oper-data/wireless-hyperlocation-oper:ewlc-hyperlocation-profile/wireless-hyperlocation-oper:status,leaf,boolean
+/wireless-hyperlocation-oper:hyperlocation-oper-data/wireless-hyperlocation-oper:ewlc-hyperlocation-profile/wireless-hyperlocation-oper:reason-down,leaf,wireless-types:enm-hyperlocation-reason
+/wireless-hyperlocation-oper:hyperlocation-oper-data/wireless-hyperlocation-oper:ewlc-hyperlocation-profile/wireless-hyperlocation-oper:oper-ntp-server,leaf,inet:ip-address

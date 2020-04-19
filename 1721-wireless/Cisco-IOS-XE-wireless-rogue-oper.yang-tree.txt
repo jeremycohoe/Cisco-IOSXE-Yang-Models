@@ -1,0 +1,530 @@
+
+KPI for model: Cisco-IOS-XE-wireless-rogue-oper.yang
+module: Cisco-IOS-XE-wireless-rogue-oper
+  +--ro rogue-oper-data
+     +--ro rogue-stats!
+     |  +--ro restart-count?                            uint32
+     |  +--ro pending-count?                            uint32
+     |  +--ro lrad-count?                               uint32
+     |  +--ro on-my-network-count?                      uint32
+     |  +--ro adhoc-count?                              uint32
+     |  +--ro unknown-count?                            uint32
+     |  +--ro unclassified-count?                       uint32
+     |  +--ro malicious-count?                          uint32
+     |  +--ro friendly-count?                           uint32
+     |  +--ro custom-count?                             uint32
+     |  +--ro not-adhoc-count?                          uint32
+     |  +--ro total-count?                              uint32
+     |  +--ro contained-count?                          uint32
+     |  +--ro contained-client-count?                   uint32
+     |  +--ro contained-pending-count?                  uint32
+     |  +--ro contained-pending-client-count?           uint32
+     |  +--ro total-client-count?                       uint32
+     |  +--ro max-count?                                uint32
+     |  +--ro max-client-count?                         uint32
+     |  +--ro report-count?                             uint64
+     |  +--ro client-report-count?                      uint64
+     |  +--ro rate-report-count?                        uint32
+     |  +--ro rate-client-report-count?                 uint32
+     |  +--ro iapp-ap-pkt?                              uint64
+     |  +--ro iapp-client-pkt?                          uint64
+     |  +--ro rate-iapp-ap-pkt?                         uint32
+     |  +--ro rate-iapp-client-pkt?                     uint32
+     |  +--ro rldp-count?                               uint64
+     |  +--ro aaa-msg-rx-count?                         uint64
+     |  +--ro aaa-msg-tx-count?                         uint64
+     |  +--ro snmp-traps-tx-count?                      uint64
+     |  +--ro lrad-off-count?                           uint64
+     |  +--ro ap-create-count?                          uint64
+     |  +--ro ap-delete-count?                          uint64
+     |  +--ro ap-radio-up-count?                        uint64
+     |  +--ro ap-radio-down-count?                      uint64
+     |  +--ro ap-name-change-count?                     uint32
+     |  +--ro wncd-ipc-tx-count?                        uint64
+     |  +--ro wncd-ipc-rx-count?                        uint64
+     |  +--ro wncmgr-ipc-rx-count?                      uint64
+     |  +--ro ios-ipc-tx-count?                         uint64
+     |  +--ro ios-ipc-rx-count?                         uint64
+     |  +--ro nmspd-ipc-tx-count?                       uint64
+     |  +--ro nmspd-ipc-rx-count?                       uint64
+     |  +--ro contain-msg-count?                        uint64
+     |  +--ro fsm-errors?                               uint32
+     |  +--ro trap-errors?                              uint32
+     |  +--ro enq-count
+     |  +--ro similar-ap-report-count?                  uint64
+     |  +--ro similar-client-report-count?              uint64
+     |  +--ro snmp-traps-per-type
+     |  +--ro iapp-report-messages-load-shedded?        uint32
+     |  +--ro managed-client-message-count?             uint32
+     |  +--ro managed-client-join-count?                uint32
+     |  +--ro managed-client-leave-count?               uint32
+     |  +--ro managed-rogue-client-count?               uint32
+     |  +--ro proc-time
+     |  +--ro global-history
+     |  +--ro tbl-apf-vap-cache-reload-count?           uint32
+     |  +--ro new-lrad-count?                           uint64
+     |  +--ro lrad-purge-count?                         uint64
+     |  +--ro rssi-change-count?                        uint64
+     |  +--ro final-state-change-count?                 uint64
+     |  +--ro contain-level-change-count?               uint64
+     |  +--ro class-change-count?                       uint64
+     |  +--ro adhoc-change-count?                       uint64
+     |  +--ro on-my-network-change-count?               uint64
+     |  +--ro n-clients-changed-count?                  uint64
+     |  +--ro client-new-lrad-count?                    uint64
+     |  +--ro client-lrad-purge-count?                  uint64
+     |  +--ro client-rssi-change-count?                 uint64
+     |  +--ro client-final-state-change-count?          uint64
+     |  +--ro client-contain-level-change-count?        uint64
+     |  +--ro client-channel-change-count?              uint64
+     |  +--ro client-ip-change-count?                   uint64
+     |  +--ro client-roam-count?                        uint64
+     |  +--ro rogue-ap-reports-dropped-scale?           uint64
+     |  +--ro rogue-client-reports-dropped-scale?       uint64
+     |  +--ro rogue-client-reports-dropped-no-parent?   uint64
+     |  +--ro rogue-enabled?                            boolean
+     |  +--ro mm-ipc-rx-count?                          uint64
+     |  +--ro rogue-wsa-events-triggered-counter?       uint64
+     |  +--ro rogue-wsa-events-enqueued-counter?        uint64
+     |  +--ro rogue-wsa-events-triggered-per-type
+     |  +--ro rogue-wsa-events-enqueued-per-type
+     |  +--ro bssid-ipc-count?                          uint64
+     |  +--ro ap-channel-change-count?                  uint64
+     |  +--ro beacon-ds-attack-count?                   uint64
+     |  +--ro internal-count?                           uint32
+     |  +--ro external-count?                           uint32
+     |  +--ro alert-count?                              uint32
+     |  +--ro threat-count?                             uint32
+     +--ro rogue-data* [rogue-address]
+     |  +--ro rogue-address                      yang:mac-address
+     |  +--ro rogue-class-type?                  wireless-enum-types:rogue-class-type
+     |  +--ro rogue-mode?                        wireless-enum-types:rogue-state
+     |  +--ro rogue-containment-level?           uint32
+     |  +--ro actual-containment?                uint32
+     |  +--ro manual-contained?                  boolean
+     |  +--ro class-override-src?                wireless-rogue-oper:enm-rogue-override-src
+     |  +--ro containment-type?                  wireless-rogue-oper:enm-rogue-containment-type
+     |  +--ro contained?                         boolean
+     |  +--ro severity-score?                    uint32
+     |  +--ro class-type-custom-name?            string
+     |  +--ro rogue-first-timestamp?             yang:date-and-time
+     |  +--ro rogue-last-timestamp?              yang:date-and-time
+     |  +--ro rogue-is-on-my-network?            boolean
+     |  +--ro ad-hoc?                            boolean
+     |  +--ro ad-hoc-bssid?                      yang:mac-address
+     |  +--ro rogue-rule-name?                   string
+     |  +--ro rogue-radio-type-last-seen?        wireless-rogue-oper:enm-rogue-radio-type
+     |  +--ro rldp-retries?                      uint32
+     |  +--ro rogue-class-type-change?           wireless-rogue-oper:enm-rogue-class-type-change
+     |  +--ro rogue-state-change?                wireless-rogue-oper:enm-rogue-state-type-change
+     |  +--ro rogue-if-num?                      uint32
+     |  +--ro managed-ap?                        boolean
+     |  +--ro autocontain-adhoc-trap?            boolean
+     |  +--ro autocontain-trap?                  boolean
+     |  +--ro potential-honeypot-trap?           boolean
+     |  +--ro history
+     |  +--ro rldp-history
+     |  +--ro rldp-last-result?                  wireless-enum-types:rogue-rldp-result
+     |  +--ro rldp-in-progress?                  boolean
+     |  +--ro max-detected-rssi?                 int8
+     |  +--ro ssid-max-rssi?                     string
+     |  +--ro ap-name-max-rssi?                  string
+     |  +--ro detecting-radio-type-802-11bg?     empty
+     |  +--ro detecting-radio-type-802-11a?      empty
+     |  +--ro detecting-radio-type-802-11abgn?   empty
+     |  +--ro detecting-radio-type-80211ac?      empty
+     |  +--ro detecting-radio-type-80211n-5g?    empty
+     |  +--ro detecting-radio-type-80211n-24g?   empty
+     |  +--ro detecting-radio-type-80211g?       empty
+     |  +--ro lrad-mac-max-rssi?                 yang:mac-address
+     |  +--ro rogue-radio-type-max-rssi?         wireless-rogue-oper:enm-rogue-radio-type
+     |  +--ro last-channel?                      uint32
+     |  +--ro radio-type-count*                  uint8
+     |  +--ro last-heard-lrad-key
+     |  |  +--ro lrad-mac-addr?   yang:mac-address
+     |  |  +--ro slot-id?         uint8
+     |  +--ro n-lrads?                           uint32
+     |  +--ro rogue-lrad* [lrad-mac-addr slot-id]
+     |  |  +--ro ssid?                                  string
+     |  |  +--ro hidden-ssid?                           boolean
+     |  |  +--ro name?                                  string
+     |  |  +--ro rssi
+     |  |  |  +--ro val?   int8
+     |  |  |  +--ro num?   int16
+     |  |  |  +--ro den?   int16
+     |  |  +--ro snr
+     |  |  |  +--ro val?   int8
+     |  |  |  +--ro num?   int16
+     |  |  |  +--ro den?   int16
+     |  |  +--ro short-preamble?                        uint8
+     |  |  +--ro channel?                               uint32
+     |  |  +--ro channels*                              uint32
+     |  |  +--ro encrypted?                             uint32
+     |  |  +--ro wpa-support?                           uint32
+     |  |  +--ro dot11-phy-support?                     uint32
+     |  |  +--ro last-heard?                            yang:date-and-time
+     |  |  +--ro chan-width?                            uint16
+     |  |  +--ro chan-width-label?                      uint16
+     |  |  +--ro ext-chan?                              uint32
+     |  |  +--ro band-id?                               uint8
+     |  |  +--ro num-slots?                             uint32
+     |  |  +--ro report-radio-type?                     uint32
+     |  |  +--ro contain-result?                        wireless-rogue-oper:enm-rogue-validation-result
+     |  |  +--ro contain-slot-id?                       wireless-enum-types:slot-id-type
+     |  |  +--ro contain-radio-type?                    uint32
+     |  |  +--ro radio-type?                            wireless-rogue-oper:enm-rogue-radio-type
+     |  |  +--ro containment-type?                      wireless-rogue-oper:enm-rogue-containment-type
+     |  |  +--ro containment-channel-count?             uint8
+     |  |  +--ro rogue-containment-chans?               string
+     |  |  +--ro parent-rogue-data-rogue-address-key?   yang:mac-address
+     |  |  +--ro auth-fail-count?                       uint8
+     |  |  +--ro mfp-status?                            wireless-rogue-oper:enm-rogue-mfp
+     |  |  +--ro channel-from-ds?                       boolean
+     |  |  +--ro lrad-mac-addr                          yang:mac-address
+     |  |  +--ro slot-id                                uint8
+     |  +--ro n-clients?                         uint32
+     |  +--ro rogue-client* [rogue-client-address]
+     |  |  +--ro rogue-client-address    yang:mac-address
+     |  +--ro remote-override
+     |  |  +--ro remote-override-class-type?          wireless-enum-types:rogue-class-type
+     |  |  +--ro remote-override-mode?                wireless-enum-types:rogue-state
+     |  |  +--ro remote-override-containment-level?   uint32
+     |  +--ro last-heard-ssid?                   string
+     |  +--ro mfp-required?                      boolean
+     |  +--ro is-impersonation?                  empty
+     +--ro rogue-client-data* [rogue-client-address]
+     |  +--ro rogue-client-address              yang:mac-address
+     |  +--ro rogue-client-bssid?               yang:mac-address
+     |  +--ro rogue-client-gateway?             yang:mac-address
+     |  +--ro rogue-client-state?               wireless-enum-types:rogue-state
+     |  +--ro rogue-client-containment-level?   uint32
+     |  +--ro actual-containment?               uint32
+     |  +--ro containment-type?                 wireless-rogue-oper:enm-rogue-containment-type
+     |  +--ro rogue-client-if-num?              uint32
+     |  +--ro rogue-client-ipv4-addr?           inet:ipv4-address
+     |  +--ro rogue-client-ipv6-addr?           inet:ipv6-address
+     |  +--ro manual-contained?                 boolean
+     |  +--ro contained?                        boolean
+     |  +--ro aaa-check?                        boolean
+     |  +--ro cmx-check?                        boolean
+     |  +--ro rogue-client-first-timestamp?     yang:date-and-time
+     |  +--ro rogue-client-last-timestamp?      yang:date-and-time
+     |  +--ro n-lrads?                          uint32
+     |  +--ro last-heard-lrad-key
+     |  |  +--ro lrad-mac-addr?   yang:mac-address
+     |  |  +--ro slot-id?         uint8
+     |  +--ro history
+     |  +--ro parent-rogue-data-address?        yang:mac-address
+     |  +--ro rogue-client-lrad* [lrad-mac-addr slot-id]
+     |     +--ro last-heard?                                          yang:date-and-time
+     |     +--ro name?                                                string
+     |     +--ro rssi
+     |     |  +--ro val?   int8
+     |     |  +--ro num?   int16
+     |     |  +--ro den?   int16
+     |     +--ro snr
+     |     |  +--ro val?   int8
+     |     |  +--ro num?   int16
+     |     |  +--ro den?   int16
+     |     +--ro channel?                                             uint32
+     |     +--ro band-id?                                             uint8
+     |     +--ro num-slots?                                           uint32
+     |     +--ro contain-slot-id?                                     wireless-enum-types:slot-id-type
+     |     +--ro contain-radio-type?                                  uint32
+     |     +--ro contain-result?                                      wireless-rogue-oper:enm-rogue-validation-result
+     |     +--ro parent-rogue-client-data-rogue-client-address-key?   yang:mac-address
+     |     +--ro lrad-mac-addr                                        yang:mac-address
+     |     +--ro slot-id                                              uint8
+     +--ro rogue-containment-lrad* [lrad-mac-addr slot-id]
+     |  +--ro n-contained?     uint32
+     |  +--ro params* [rogue-mac-address]
+     |  |  +--ro rogue-mac-address              yang:mac-address
+     |  |  +--ro bssid?                         yang:mac-address
+     |  |  +--ro containment-type?              wireless-rogue-oper:enm-rogue-containment-type
+     |  |  +--ro chans*                         uint8
+     |  |  +--ro detecting-slot-id?             wireless-enum-types:slot-id-type
+     |  |  +--ro band-id?                       uint8
+     |  |  +--ro parent-containment-lrad-key
+     |  |     +--ro lrad-mac-addr?   yang:mac-address
+     |  |     +--ro slot-id?         uint8
+     |  +--ro lrad-mac-addr    yang:mac-address
+     |  +--ro slot-id          uint8
+     +--ro rldp-ap* [ap-mac]
+     |  +--ro ap-mac                    yang:mac-address
+     |  +--ro slot-id?                  wireless-enum-types:slot-id-type
+     |  +--ro rogue-ap-mac?             yang:mac-address
+     |  +--ro rogue-channel?            uint32
+     |  +--ro rogue-chan-width-label?   uint16
+     +--ro rldp-stats!
+        +--ro num-in-progress?       uint32
+        +--ro num-rldp-started?      uint32
+        +--ro auth-timeout?          uint32
+        +--ro assoc-timeout?         uint32
+        +--ro dhcp-timeout?          uint32
+        +--ro not-connected?         uint32
+        +--ro connected?             uint32
+        +--ro rldp-socket-enabled?   boolean
+Xpaths for model: Cisco-IOS-XE-wireless-rogue-oper.yang
+/wireless-rogue-oper:rogue-oper-data,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:restart-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:pending-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:lrad-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:on-my-network-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:adhoc-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:unknown-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:unclassified-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:malicious-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:friendly-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:custom-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:not-adhoc-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:total-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:contained-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:contained-client-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:contained-pending-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:contained-pending-client-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:total-client-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:max-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:max-client-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:report-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:client-report-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:rate-report-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:rate-client-report-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:iapp-ap-pkt,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:iapp-client-pkt,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:rate-iapp-ap-pkt,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:rate-iapp-client-pkt,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:rldp-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:aaa-msg-rx-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:aaa-msg-tx-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:snmp-traps-tx-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:lrad-off-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:ap-create-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:ap-delete-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:ap-radio-up-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:ap-radio-down-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:ap-name-change-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:wncd-ipc-tx-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:wncd-ipc-rx-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:wncmgr-ipc-rx-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:ios-ipc-tx-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:ios-ipc-rx-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:nmspd-ipc-tx-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:nmspd-ipc-rx-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:contain-msg-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:fsm-errors,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:trap-errors,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:enq-count,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:similar-ap-report-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:similar-client-report-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:snmp-traps-per-type,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:iapp-report-messages-load-shedded,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:managed-client-message-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:managed-client-join-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:managed-client-leave-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:managed-rogue-client-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:proc-time,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:global-history,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:tbl-apf-vap-cache-reload-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:new-lrad-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:lrad-purge-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:rssi-change-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:final-state-change-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:contain-level-change-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:class-change-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:adhoc-change-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:on-my-network-change-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:n-clients-changed-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:client-new-lrad-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:client-lrad-purge-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:client-rssi-change-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:client-final-state-change-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:client-contain-level-change-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:client-channel-change-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:client-ip-change-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:client-roam-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:rogue-ap-reports-dropped-scale,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:rogue-client-reports-dropped-scale,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:rogue-client-reports-dropped-no-parent,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:rogue-enabled,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:mm-ipc-rx-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:rogue-wsa-events-triggered-counter,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:rogue-wsa-events-enqueued-counter,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:rogue-wsa-events-triggered-per-type,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:rogue-wsa-events-enqueued-per-type,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:bssid-ipc-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:ap-channel-change-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:beacon-ds-attack-count,leaf,uint64
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:internal-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:external-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:alert-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-stats/wireless-rogue-oper:threat-count,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data,list,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-address,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-class-type,leaf,wireless-enum-types:rogue-class-type
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-mode,leaf,wireless-enum-types:rogue-state
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-containment-level,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:actual-containment,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:manual-contained,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:class-override-src,leaf,wireless-rogue-oper:enm-rogue-override-src
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:containment-type,leaf,wireless-rogue-oper:enm-rogue-containment-type
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:contained,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:severity-score,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:class-type-custom-name,leaf,string
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-first-timestamp,leaf,yang:date-and-time
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-last-timestamp,leaf,yang:date-and-time
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-is-on-my-network,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:ad-hoc,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:ad-hoc-bssid,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-rule-name,leaf,string
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-radio-type-last-seen,leaf,wireless-rogue-oper:enm-rogue-radio-type
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rldp-retries,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-class-type-change,leaf,wireless-rogue-oper:enm-rogue-class-type-change
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-state-change,leaf,wireless-rogue-oper:enm-rogue-state-type-change
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-if-num,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:managed-ap,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:autocontain-adhoc-trap,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:autocontain-trap,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:potential-honeypot-trap,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:history,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rldp-history,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rldp-last-result,leaf,wireless-enum-types:rogue-rldp-result
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rldp-in-progress,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:max-detected-rssi,leaf,int8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:ssid-max-rssi,leaf,string
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:ap-name-max-rssi,leaf,string
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:detecting-radio-type-802-11bg,leaf,empty
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:detecting-radio-type-802-11a,leaf,empty
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:detecting-radio-type-802-11abgn,leaf,empty
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:detecting-radio-type-80211ac,leaf,empty
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:detecting-radio-type-80211n-5g,leaf,empty
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:detecting-radio-type-80211n-24g,leaf,empty
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:detecting-radio-type-80211g,leaf,empty
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:lrad-mac-max-rssi,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-radio-type-max-rssi,leaf,wireless-rogue-oper:enm-rogue-radio-type
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:last-channel,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:radio-type-count,leaf-list,uint8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:last-heard-lrad-key,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:last-heard-lrad-key/wireless-rogue-oper:lrad-mac-addr,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:last-heard-lrad-key/wireless-rogue-oper:slot-id,leaf,uint8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:n-lrads,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad,list,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:ssid,leaf,string
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:hidden-ssid,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:name,leaf,string
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:rssi,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:rssi/wireless-rogue-oper:val,leaf,int8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:rssi/wireless-rogue-oper:num,leaf,int16
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:rssi/wireless-rogue-oper:den,leaf,int16
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:snr,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:snr/wireless-rogue-oper:val,leaf,int8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:snr/wireless-rogue-oper:num,leaf,int16
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:snr/wireless-rogue-oper:den,leaf,int16
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:short-preamble,leaf,uint8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:channel,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:channels,leaf-list,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:encrypted,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:wpa-support,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:dot11-phy-support,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:last-heard,leaf,yang:date-and-time
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:chan-width,leaf,uint16
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:chan-width-label,leaf,uint16
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:ext-chan,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:band-id,leaf,uint8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:num-slots,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:report-radio-type,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:contain-result,leaf,wireless-rogue-oper:enm-rogue-validation-result
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:contain-slot-id,leaf,wireless-enum-types:slot-id-type
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:contain-radio-type,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:radio-type,leaf,wireless-rogue-oper:enm-rogue-radio-type
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:containment-type,leaf,wireless-rogue-oper:enm-rogue-containment-type
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:containment-channel-count,leaf,uint8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:rogue-containment-chans,leaf,string
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:parent-rogue-data-rogue-address-key,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:auth-fail-count,leaf,uint8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:mfp-status,leaf,wireless-rogue-oper:enm-rogue-mfp
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:channel-from-ds,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:lrad-mac-addr,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-lrad/wireless-rogue-oper:slot-id,leaf,uint8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:n-clients,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-client,list,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:rogue-client/wireless-rogue-oper:rogue-client-address,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:remote-override,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:remote-override/wireless-rogue-oper:remote-override-class-type,leaf,wireless-enum-types:rogue-class-type
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:remote-override/wireless-rogue-oper:remote-override-mode,leaf,wireless-enum-types:rogue-state
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:remote-override/wireless-rogue-oper:remote-override-containment-level,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:last-heard-ssid,leaf,string
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:mfp-required,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-data/wireless-rogue-oper:is-impersonation,leaf,empty
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data,list,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-address,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-bssid,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-gateway,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-state,leaf,wireless-enum-types:rogue-state
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-containment-level,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:actual-containment,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:containment-type,leaf,wireless-rogue-oper:enm-rogue-containment-type
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-if-num,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-ipv4-addr,leaf,inet:ipv4-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-ipv6-addr,leaf,inet:ipv6-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:manual-contained,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:contained,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:aaa-check,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:cmx-check,leaf,boolean
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-first-timestamp,leaf,yang:date-and-time
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-last-timestamp,leaf,yang:date-and-time
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:n-lrads,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:last-heard-lrad-key,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:last-heard-lrad-key/wireless-rogue-oper:lrad-mac-addr,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:last-heard-lrad-key/wireless-rogue-oper:slot-id,leaf,uint8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:history,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:parent-rogue-data-address,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad,list,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:last-heard,leaf,yang:date-and-time
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:name,leaf,string
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:rssi,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:rssi/wireless-rogue-oper:val,leaf,int8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:rssi/wireless-rogue-oper:num,leaf,int16
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:rssi/wireless-rogue-oper:den,leaf,int16
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:snr,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:snr/wireless-rogue-oper:val,leaf,int8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:snr/wireless-rogue-oper:num,leaf,int16
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:snr/wireless-rogue-oper:den,leaf,int16
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:channel,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:band-id,leaf,uint8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:num-slots,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:contain-slot-id,leaf,wireless-enum-types:slot-id-type
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:contain-radio-type,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:contain-result,leaf,wireless-rogue-oper:enm-rogue-validation-result
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:parent-rogue-client-data-rogue-client-address-key,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:lrad-mac-addr,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-client-data/wireless-rogue-oper:rogue-client-lrad/wireless-rogue-oper:slot-id,leaf,uint8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-containment-lrad,list,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-containment-lrad/wireless-rogue-oper:n-contained,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-containment-lrad/wireless-rogue-oper:params,list,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-containment-lrad/wireless-rogue-oper:params/wireless-rogue-oper:rogue-mac-address,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-containment-lrad/wireless-rogue-oper:params/wireless-rogue-oper:bssid,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-containment-lrad/wireless-rogue-oper:params/wireless-rogue-oper:containment-type,leaf,wireless-rogue-oper:enm-rogue-containment-type
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-containment-lrad/wireless-rogue-oper:params/wireless-rogue-oper:chans,leaf-list,uint8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-containment-lrad/wireless-rogue-oper:params/wireless-rogue-oper:detecting-slot-id,leaf,wireless-enum-types:slot-id-type
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-containment-lrad/wireless-rogue-oper:params/wireless-rogue-oper:band-id,leaf,uint8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-containment-lrad/wireless-rogue-oper:params/wireless-rogue-oper:parent-containment-lrad-key,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-containment-lrad/wireless-rogue-oper:params/wireless-rogue-oper:parent-containment-lrad-key/wireless-rogue-oper:lrad-mac-addr,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-containment-lrad/wireless-rogue-oper:params/wireless-rogue-oper:parent-containment-lrad-key/wireless-rogue-oper:slot-id,leaf,uint8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-containment-lrad/wireless-rogue-oper:lrad-mac-addr,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rogue-containment-lrad/wireless-rogue-oper:slot-id,leaf,uint8
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rldp-ap,list,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rldp-ap/wireless-rogue-oper:ap-mac,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rldp-ap/wireless-rogue-oper:slot-id,leaf,wireless-enum-types:slot-id-type
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rldp-ap/wireless-rogue-oper:rogue-ap-mac,leaf,yang:mac-address
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rldp-ap/wireless-rogue-oper:rogue-channel,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rldp-ap/wireless-rogue-oper:rogue-chan-width-label,leaf,uint16
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rldp-stats,container,
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rldp-stats/wireless-rogue-oper:num-in-progress,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rldp-stats/wireless-rogue-oper:num-rldp-started,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rldp-stats/wireless-rogue-oper:auth-timeout,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rldp-stats/wireless-rogue-oper:assoc-timeout,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rldp-stats/wireless-rogue-oper:dhcp-timeout,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rldp-stats/wireless-rogue-oper:not-connected,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rldp-stats/wireless-rogue-oper:connected,leaf,uint32
+/wireless-rogue-oper:rogue-oper-data/wireless-rogue-oper:rldp-stats/wireless-rogue-oper:rldp-socket-enabled,leaf,boolean

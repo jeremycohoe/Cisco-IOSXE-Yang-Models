@@ -1,0 +1,534 @@
+
+KPI for model: Cisco-IOS-XE-wireless-mesh-oper.yang
+module: Cisco-IOS-XE-wireless-mesh-oper
+  +--ro mesh-oper-data
+     +--ro mesh-q-stats* [wtp-mac q-type]
+     |  +--ro wtp-mac        yang:mac-address
+     |  +--ro q-type         wireless-types:mesh-node-pkt-queue-type
+     |  +--ro peak-length?   uint16
+     |  +--ro average-len?   uint16
+     |  +--ro overflows?     uint16
+     +--ro mesh-dr-stats* [wtp-mac neigh-ap-mac data-rate-index]
+     |  +--ro wtp-mac            yang:mac-address
+     |  +--ro neigh-ap-mac       yang:mac-address
+     |  +--ro data-rate-index    uint32
+     |  +--ro tx-success?        uint32
+     |  +--ro tx-attempts?       uint32
+     +--ro mesh-sec-stats* [wtp-mac]
+     |  +--ro wtp-mac          yang:mac-address
+     |  +--ro tx-pkts-total?   uint32
+     |  +--ro rx-pkts-total?   uint32
+     |  +--ro rx-pkts-error?   uint32
+     |  +--ro stats-parent
+     |  |  +--ro unknown-assoc-req?         uint32
+     |  |  +--ro invalid-assoc-req?         uint32
+     |  |  +--ro unknown-tgr-auth-req?      uint32
+     |  |  +--ro invalid-tgr-auth-req?      uint32
+     |  |  +--ro unknown-tgr-reassoc-req?   uint32
+     |  |  +--ro invalid-tgr-reassoc-req?   uint32
+     |  +--ro stats-child
+     |     +--ro assoc-failure?         uint32
+     |     +--ro assoc-timeout?         uint32
+     |     +--ro assoc-success?         uint32
+     |     +--ro auth-failure?          uint32
+     |     +--ro auth-timeout?          uint32
+     |     +--ro auth-success?          uint32
+     |     +--ro tgr-auth-failure?      uint32
+     |     +--ro tgr-auth-timeout?      uint32
+     |     +--ro tgr-auth-success?      uint32
+     |     +--ro tgr-reassoc-failure?   uint32
+     |     +--ro tgr-reassoc-timeout?   uint32
+     |     +--ro tgr-reassoc-success?   uint32
+     +--ro mesh-oper-data* [wtp-mac]
+     |  +--ro wtp-mac                        yang:mac-address
+     |  +--ro bhaul-slot-id?                 uint8
+     |  +--ro bhaul-rate-mcs-ss?             uint8
+     |  +--ro active-trunk-native-vlan?      uint16
+     |  +--ro configured-role?               wireless-types:ap-role
+     |  +--ro bhaul-radio-mode?              wireless-types:mesh-bhaul-mode
+     |  +--ro ap-mode?                       wireless-types:enm-ewlc-spam-ap-modes
+     |  +--ro ap-role?                       wireless-types:ap-role
+     |  +--ro bhaul-radio-type?              wireless-types:mesh-bhaul-radio-type
+     |  +--ro bhaul-data-rate-type?          wireless-types:mesh-bhaul-data-rate-type
+     |  +--ro bhaul-tx-rate?                 wireless-types:mesh-dot11abg-data-rate
+     |  +--ro bhaul-rate-mcs-index?          uint32
+     |  +--ro neigh-child-cnt?               uint32
+     |  +--ro ap-specific-bhaul-tx-rate?     boolean
+     |  +--ro trunk-vlan-enabled?            boolean
+     |  +--ro bhaul-child-presence?          boolean
+     |  +--ro bhaul-over-ethernet?           boolean
+     |  +--ro bgn-strict-match?              boolean
+     |  +--ro use-default-bgn?               boolean
+     |  +--ro daisy-chain-mode?              boolean
+     |  +--ro rap-strict-daisy-chain-mode?   boolean
+     |  +--ro block-child-enabled?           boolean
+     |  +--ro ethernet-bridging-enabled?     boolean
+     |  +--ro preferred-parent?              yang:mac-address
+     |  +--ro parent-ap-awpp-addr?           yang:mac-address
+     |  +--ro bridge-group-name?             string
+     |  +--ro psk-key-timestamp?             string
+     |  +--ro mesh-profile-configured?       string
+     |  +--ro mesh-profile-inuse?            string
+     +--ro mesh-gps-info* [wtp-mac]
+     |  +--ro wtp-mac           yang:mac-address
+     |  +--ro location-flags?   uint8
+     |  +--ro latitude?         uint32
+     |  +--ro longitude?        uint32
+     |  +--ro altitude?         uint32
+     +--ro mesh-ap-node-cac-info* [wtp-mac]
+     |  +--ro wtp-mac                        yang:mac-address
+     |  +--ro bw-in-use-24ghz?               uint16
+     |  +--ro bw-in-use-5ghz?                uint16
+     |  +--ro mesh-call-in-progress-24ghz?   uint16
+     |  +--ro mesh-call-in-progress-5ghz?    uint16
+     |  +--ro mesh-call-rejected?            uint16
+     |  +--ro voice-bw-allocated-24ghz?      uint32
+     |  +--ro voice-bw-allocated-5ghz?       uint32
+     |  +--ro mesh-wmm-data* [client-mac]
+     |     +--ro client-mac           yang:mac-address
+     |     +--ro radio-type?          wireless-enum-types:enm-radio-type
+     |     +--ro direction?           uint8
+     |     +--ro nominal-msdu-size?   uint16
+     |     +--ro bw-allocated?        uint16
+     |     +--ro mean-data-rate?      uint32
+     +--ro mesh-cm* [wtp-mac]
+     |  +--ro wtp-mac                  yang:mac-address
+     |  +--ro cm-mac-address?          yang:mac-address
+     |  +--ro ap-mac-address?          yang:mac-address
+     |  +--ro ap-cm-int-mac-address?   yang:mac-address
+     |  +--ro mask-bit?                uint32
+     |  +--ro cm-sw-version?           string
+     |  +--ro cm-status?               string
+     |  +--ro cm-serial-number?        string
+     +--ro mesh-neigh* [wtp-mac neigh-ap-mac]
+     |  +--ro wtp-mac            yang:mac-address
+     |  +--ro neigh-ap-mac       yang:mac-address
+     |  +--ro mesh-neighs
+     |  |  +--ro channel?                     uint8
+     |  |  +--ro potl-parent-timeouts-left?   uint8
+     |  |  +--ro timeouts-left-for-child?     uint8
+     |  |  +--ro snr?                         uint8
+     |  |  +--ro snr-up?                      uint8
+     |  |  +--ro snr-down?                    uint8
+     |  |  +--ro link-snr?                    uint8
+     |  |  +--ro slot-id?                     uint8
+     |  |  +--ro chan-width?                  uint8
+     |  |  +--ro blacklist-timeouts-left?     uint16
+     |  |  +--ro neigh-type?                  wireless-types:enm-mesh-node-neigh-type
+     |  |  +--ro neigh-state?                 wireless-types:enm-mesh-node-neigh-state
+     |  |  +--ro rate?                        uint32
+     |  |  +--ro adjusted-ease?               uint32
+     |  |  +--ro unadjusted-ease?             uint32
+     |  |  +--ro rap-ease?                    uint32
+     |  |  +--ro tx-pkts-parent?              uint32
+     |  |  +--ro rx-pkts-parent?              uint32
+     |  |  +--ro poor-snr?                    uint32
+     |  |  +--ro neigh-status?                wireless-mesh-oper:flag-neigh-status
+     |  |  +--ro neigh-mac-addr?              yang:mac-address
+     |  |  +--ro neigh-base-mac-addr?         yang:mac-address
+     |  |  +--ro ap-identity?                 yang:mac-address
+     |  |  +--ro neigh-ap-name?               string
+     |  |  +--ro bridge-group-name?           string
+     |  |  +--ro last-update?                 yang:date-and-time
+     |  |  +--ro parent-change-time?          yang:date-and-time
+     |  +--ro neigh-per-stats
+     |     +--ro tx-pkts-total?      uint32
+     |     +--ro tx-pkts-success?    uint32
+     |     +--ro retry-pkts-total?   uint32
+     |     +--ro rts-attempts?       uint32
+     |     +--ro rts-success?        uint32
+     +--ro mesh-ap-neigh* [wtp-mac]
+     |  +--ro wtp-mac        yang:mac-address
+     |  +--ro adj-modinfo
+     |  |  +--ro rap?                       uint8
+     |  |  +--ro current-sector-hops?       uint8
+     |  |  +--ro neigh-state?               wireless-types:mesh-adj-state
+     |  |  +--ro malformed-neigh-pkts?      uint32
+     |  |  +--ro poor-neigh-snr?            uint32
+     |  |  +--ro blacklist-pkts?            uint32
+     |  |  +--ro insufficient-memory?       uint32
+     |  |  +--ro rx-neigh-req?              uint32
+     |  |  +--ro rx-neigh-resp?             uint32
+     |  |  +--ro tx-neigh-req?              uint32
+     |  |  +--ro tx-neigh-resp?             uint32
+     |  |  +--ro authentication-failures?   uint32
+     |  |  +--ro parent-changes?            uint32
+     |  |  +--ro neigh-timeout?             uint32
+     |  |  +--ro rx-neigh-update?           uint32
+     |  |  +--ro tx-neigh-update?           uint32
+     |  |  +--ro current-best-neigh?        uint32
+     |  +--ro dr-stats
+     |     +--ro last-update?    uint8
+     |     +--ro rts-attempts?   uint32
+     |     +--ro rts-success?    uint32
+     +--ro mesh-subset-channel-list* [bgn channel]
+     |  +--ro bgn                string
+     |  +--ro channel            uint8
+     |  +--ro rap-local-count?   uint8
+     +--ro mesh-comp-info* [wtp-mac]
+     |  +--ro wtp-mac            yang:mac-address
+     |  +--ro env-info
+     |  |  +--ro number-of-ports?   uint32
+     |  |  +--ro bhaul-intf-name?   string
+     |  |  +--ro eth-if-status
+     |  |     +--ro buffer* []
+     |  |        +--ro intf-name?         string
+     |  |        +--ro port-number?       uint8
+     |  |        +--ro speed?             uint8
+     |  |        +--ro duplex?            uint8
+     |  |        +--ro status?            boolean
+     |  |        +--ro eth-stats
+     |  |        |  +--ro rx-ucast-pkts?     uint32
+     |  |        |  +--ro rx-n-ucast-pkts?   uint32
+     |  |        |  +--ro tx-ucast-pkts?     uint32
+     |  |        |  +--ro tx-n-ucast-pkts?   uint32
+     |  |        +--ro eth-vlan-config
+     |  |           +--ro current-config
+     |  |           |  +--ro mode?                    wireless-types:ethernet-port-type
+     |  |           |  +--ro vlan-id?                 uint16
+     |  |           |  +--ro trunk-vlan-list-count?   uint16
+     |  |           |  +--ro trunk-vlan-list
+     |  |           |     +--ro buffer*   uint16
+     |  |           +--ro stored-config
+     |  |              +--ro mode?                    wireless-types:ethernet-port-type
+     |  |              +--ro vlan-id?                 uint16
+     |  |              +--ro trunk-vlan-list-count?   uint16
+     |  |              +--ro trunk-vlan-list
+     |  |                 +--ro buffer*   uint16
+     |  +--ro battery-state
+     |  |  +--ro wtp-mac?            yang:mac-address
+     |  |  +--ro input-voltage?      uint16
+     |  |  +--ro output-voltage?     uint16
+     |  |  +--ro output-power?       uint16
+     |  |  +--ro internal-voltage?   uint16
+     |  |  +--ro temperature?        uint16
+     |  |  +--ro current?            uint16
+     |  |  +--ro charge?             uint16
+     |  |  +--ro alarms?             wireless-types:mesh-node-battery-alarm
+     |  |  +--ro sw-version?         string
+     |  |  +--ro serial-number?      string
+     |  +--ro peripheral-info
+     |     +--ro temperature
+     |     |  +--ro status?            uint32
+     |     |  +--ro degree?            uint32
+     |     |  +--ro heater-status?     uint32
+     |     |  +--ro temp-state?        uint32
+     |     |  +--ro temp-fahrenheit?   uint32
+     |     +--ro cm-installed?          boolean
+     |     +--ro fiber-sfp-installed?   boolean
+     |     +--ro poe-out-status?        boolean
+     |     +--ro orientation?           uint8
+     +--ro mesh-linktest-parameters* [linktest-id]
+        +--ro linktest-id        uint32
+        +--ro record-in-use?     boolean
+        x--ro started-at?        yang:date-and-time
+        +--ro config
+        |  +--ro data-rate?         wireless-types:mesh-linktest-rate
+        |  +--ro data-rate-index?   wireless-types:mesh-linktest-rate-idx
+        |  +--ro status?            wireless-types:mesh-linktest-cfg-status
+        |  +--ro packet-size?       uint16
+        |  +--ro duration?          uint16
+        |  +--ro pkts-per-sec?      uint32
+        +--ro results
+        |  +--ro elapsed-time?                        uint32
+        |  +--ro last-rx-rate?                        uint32
+        |  +--ro link-test-buffer-allocation-error?   uint32
+        |  +--ro link-test-queue-full-error?          uint32
+        |  +--ro total-tx-pkts?                       uint32
+        |  +--ro total-rx-pkts?                       uint32
+        |  +--ro good-rx-pkts?                        uint32
+        |  +--ro duplicate-rx-pkts?                   uint32
+        |  +--ro short-rx-pkts?                       uint32
+        |  +--ro big-rx-pkts?                         uint32
+        |  +--ro rx-pkts-physical-errors?             uint32
+        |  +--ro rx-pkts-crc-errors?                  uint32
+        |  +--ro rx-pkts-seq-errors?                  uint32
+        |  +--ro rx-pkts-unknown-errors?              uint32
+        |  +--ro rx-pkts-prev-seq?                    uint32
+        |  +--ro rx-pkts-lost?                        uint32
+        |  +--ro rx-pkts-average-snr?                 int32
+        |  +--ro rx-pkts-highest-snr?                 int32
+        |  +--ro rx-pkts-lowest-snr?                  int32
+        |  +--ro rx-pkts-average-nf?                  int32
+        |  +--ro rx-pkts-highest-nf?                  int32
+        |  +--ro rx-pkts-lowest-nf?                   int32
+        |  +--ro rx-pkts-average-rssi?                int32
+        |  +--ro rx-pkts-highest-rssi?                int32
+        |  +--ro rx-pkts-lowest-rssi?                 int32
+        |  +--ro last-elapsed-timestamp?              yang:date-and-time
+        |  +--ro last-rx-timestamp?                   yang:date-and-time
+        |  +--ro snr-profile
+        |  |  +--ro buffer-snr*   uint32
+        |  +--ro nf-profile
+        |  |  +--ro buffer-nf*   uint32
+        |  +--ro rssi-profile
+        |     +--ro buffer-rssi*   uint32
+        +--ro start-time?        yang:date-and-time
+        +--ro source-mac?        yang:mac-address
+        +--ro destination-mac?   yang:mac-address
+Xpaths for model: Cisco-IOS-XE-wireless-mesh-oper.yang
+/wireless-mesh-oper:mesh-oper-data,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-q-stats,list,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-q-stats/wireless-mesh-oper:wtp-mac,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-q-stats/wireless-mesh-oper:q-type,leaf,wireless-types:mesh-node-pkt-queue-type
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-q-stats/wireless-mesh-oper:peak-length,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-q-stats/wireless-mesh-oper:average-len,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-q-stats/wireless-mesh-oper:overflows,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-dr-stats,list,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-dr-stats/wireless-mesh-oper:wtp-mac,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-dr-stats/wireless-mesh-oper:neigh-ap-mac,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-dr-stats/wireless-mesh-oper:data-rate-index,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-dr-stats/wireless-mesh-oper:tx-success,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-dr-stats/wireless-mesh-oper:tx-attempts,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats,list,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:wtp-mac,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:tx-pkts-total,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:rx-pkts-total,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:rx-pkts-error,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-parent,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-parent/wireless-mesh-oper:unknown-assoc-req,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-parent/wireless-mesh-oper:invalid-assoc-req,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-parent/wireless-mesh-oper:unknown-tgr-auth-req,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-parent/wireless-mesh-oper:invalid-tgr-auth-req,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-parent/wireless-mesh-oper:unknown-tgr-reassoc-req,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-parent/wireless-mesh-oper:invalid-tgr-reassoc-req,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-child,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-child/wireless-mesh-oper:assoc-failure,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-child/wireless-mesh-oper:assoc-timeout,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-child/wireless-mesh-oper:assoc-success,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-child/wireless-mesh-oper:auth-failure,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-child/wireless-mesh-oper:auth-timeout,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-child/wireless-mesh-oper:auth-success,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-child/wireless-mesh-oper:tgr-auth-failure,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-child/wireless-mesh-oper:tgr-auth-timeout,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-child/wireless-mesh-oper:tgr-auth-success,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-child/wireless-mesh-oper:tgr-reassoc-failure,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-child/wireless-mesh-oper:tgr-reassoc-timeout,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-sec-stats/wireless-mesh-oper:stats-child/wireless-mesh-oper:tgr-reassoc-success,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data,list,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:wtp-mac,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:bhaul-slot-id,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:bhaul-rate-mcs-ss,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:active-trunk-native-vlan,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:configured-role,leaf,wireless-types:ap-role
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:bhaul-radio-mode,leaf,wireless-types:mesh-bhaul-mode
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:ap-mode,leaf,wireless-types:enm-ewlc-spam-ap-modes
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:ap-role,leaf,wireless-types:ap-role
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:bhaul-radio-type,leaf,wireless-types:mesh-bhaul-radio-type
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:bhaul-data-rate-type,leaf,wireless-types:mesh-bhaul-data-rate-type
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:bhaul-tx-rate,leaf,wireless-types:mesh-dot11abg-data-rate
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:bhaul-rate-mcs-index,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:neigh-child-cnt,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:ap-specific-bhaul-tx-rate,leaf,boolean
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:trunk-vlan-enabled,leaf,boolean
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:bhaul-child-presence,leaf,boolean
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:bhaul-over-ethernet,leaf,boolean
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:bgn-strict-match,leaf,boolean
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:use-default-bgn,leaf,boolean
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:daisy-chain-mode,leaf,boolean
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:rap-strict-daisy-chain-mode,leaf,boolean
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:block-child-enabled,leaf,boolean
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:ethernet-bridging-enabled,leaf,boolean
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:preferred-parent,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:parent-ap-awpp-addr,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:bridge-group-name,leaf,string
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:psk-key-timestamp,leaf,string
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-profile-configured,leaf,string
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-profile-inuse,leaf,string
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-gps-info,list,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-gps-info/wireless-mesh-oper:wtp-mac,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-gps-info/wireless-mesh-oper:location-flags,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-gps-info/wireless-mesh-oper:latitude,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-gps-info/wireless-mesh-oper:longitude,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-gps-info/wireless-mesh-oper:altitude,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info,list,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info/wireless-mesh-oper:wtp-mac,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info/wireless-mesh-oper:bw-in-use-24ghz,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info/wireless-mesh-oper:bw-in-use-5ghz,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info/wireless-mesh-oper:mesh-call-in-progress-24ghz,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info/wireless-mesh-oper:mesh-call-in-progress-5ghz,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info/wireless-mesh-oper:mesh-call-rejected,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info/wireless-mesh-oper:voice-bw-allocated-24ghz,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info/wireless-mesh-oper:voice-bw-allocated-5ghz,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info/wireless-mesh-oper:mesh-wmm-data,list,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info/wireless-mesh-oper:mesh-wmm-data/wireless-mesh-oper:client-mac,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info/wireless-mesh-oper:mesh-wmm-data/wireless-mesh-oper:radio-type,leaf,wireless-enum-types:enm-radio-type
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info/wireless-mesh-oper:mesh-wmm-data/wireless-mesh-oper:direction,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info/wireless-mesh-oper:mesh-wmm-data/wireless-mesh-oper:nominal-msdu-size,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info/wireless-mesh-oper:mesh-wmm-data/wireless-mesh-oper:bw-allocated,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-node-cac-info/wireless-mesh-oper:mesh-wmm-data/wireless-mesh-oper:mean-data-rate,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-cm,list,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-cm/wireless-mesh-oper:wtp-mac,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-cm/wireless-mesh-oper:cm-mac-address,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-cm/wireless-mesh-oper:ap-mac-address,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-cm/wireless-mesh-oper:ap-cm-int-mac-address,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-cm/wireless-mesh-oper:mask-bit,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-cm/wireless-mesh-oper:cm-sw-version,leaf,string
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-cm/wireless-mesh-oper:cm-status,leaf,string
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-cm/wireless-mesh-oper:cm-serial-number,leaf,string
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh,list,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:wtp-mac,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:neigh-ap-mac,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:channel,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:potl-parent-timeouts-left,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:timeouts-left-for-child,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:snr,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:snr-up,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:snr-down,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:link-snr,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:slot-id,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:chan-width,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:blacklist-timeouts-left,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:neigh-type,leaf,wireless-types:enm-mesh-node-neigh-type
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:neigh-state,leaf,wireless-types:enm-mesh-node-neigh-state
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:rate,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:adjusted-ease,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:unadjusted-ease,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:rap-ease,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:tx-pkts-parent,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:rx-pkts-parent,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:poor-snr,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:neigh-status,leaf,wireless-mesh-oper:flag-neigh-status
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:neigh-mac-addr,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:neigh-base-mac-addr,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:ap-identity,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:neigh-ap-name,leaf,string
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:bridge-group-name,leaf,string
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:last-update,leaf,yang:date-and-time
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:mesh-neighs/wireless-mesh-oper:parent-change-time,leaf,yang:date-and-time
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:neigh-per-stats,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:neigh-per-stats/wireless-mesh-oper:tx-pkts-total,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:neigh-per-stats/wireless-mesh-oper:tx-pkts-success,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:neigh-per-stats/wireless-mesh-oper:retry-pkts-total,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:neigh-per-stats/wireless-mesh-oper:rts-attempts,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-neigh/wireless-mesh-oper:neigh-per-stats/wireless-mesh-oper:rts-success,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh,list,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:wtp-mac,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:rap,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:current-sector-hops,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:neigh-state,leaf,wireless-types:mesh-adj-state
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:malformed-neigh-pkts,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:poor-neigh-snr,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:blacklist-pkts,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:insufficient-memory,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:rx-neigh-req,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:rx-neigh-resp,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:tx-neigh-req,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:tx-neigh-resp,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:authentication-failures,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:parent-changes,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:neigh-timeout,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:rx-neigh-update,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:tx-neigh-update,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:adj-modinfo/wireless-mesh-oper:current-best-neigh,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:dr-stats,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:dr-stats/wireless-mesh-oper:last-update,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:dr-stats/wireless-mesh-oper:rts-attempts,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-ap-neigh/wireless-mesh-oper:dr-stats/wireless-mesh-oper:rts-success,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-subset-channel-list,list,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-subset-channel-list/wireless-mesh-oper:bgn,leaf,string
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-subset-channel-list/wireless-mesh-oper:channel,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-subset-channel-list/wireless-mesh-oper:rap-local-count,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info,list,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:wtp-mac,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:number-of-ports,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:bhaul-intf-name,leaf,string
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer,list,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:intf-name,leaf,string
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:port-number,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:speed,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:duplex,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:status,leaf,boolean
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-stats,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-stats/wireless-mesh-oper:rx-ucast-pkts,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-stats/wireless-mesh-oper:rx-n-ucast-pkts,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-stats/wireless-mesh-oper:tx-ucast-pkts,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-stats/wireless-mesh-oper:tx-n-ucast-pkts,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-vlan-config,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-vlan-config/wireless-mesh-oper:current-config,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-vlan-config/wireless-mesh-oper:current-config/wireless-mesh-oper:mode,leaf,wireless-types:ethernet-port-type
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-vlan-config/wireless-mesh-oper:current-config/wireless-mesh-oper:vlan-id,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-vlan-config/wireless-mesh-oper:current-config/wireless-mesh-oper:trunk-vlan-list-count,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-vlan-config/wireless-mesh-oper:current-config/wireless-mesh-oper:trunk-vlan-list,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-vlan-config/wireless-mesh-oper:current-config/wireless-mesh-oper:trunk-vlan-list/wireless-mesh-oper:buffer,leaf-list,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-vlan-config/wireless-mesh-oper:stored-config,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-vlan-config/wireless-mesh-oper:stored-config/wireless-mesh-oper:mode,leaf,wireless-types:ethernet-port-type
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-vlan-config/wireless-mesh-oper:stored-config/wireless-mesh-oper:vlan-id,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-vlan-config/wireless-mesh-oper:stored-config/wireless-mesh-oper:trunk-vlan-list-count,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-vlan-config/wireless-mesh-oper:stored-config/wireless-mesh-oper:trunk-vlan-list,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:env-info/wireless-mesh-oper:eth-if-status/wireless-mesh-oper:buffer/wireless-mesh-oper:eth-vlan-config/wireless-mesh-oper:stored-config/wireless-mesh-oper:trunk-vlan-list/wireless-mesh-oper:buffer,leaf-list,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:battery-state,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:battery-state/wireless-mesh-oper:wtp-mac,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:battery-state/wireless-mesh-oper:input-voltage,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:battery-state/wireless-mesh-oper:output-voltage,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:battery-state/wireless-mesh-oper:output-power,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:battery-state/wireless-mesh-oper:internal-voltage,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:battery-state/wireless-mesh-oper:temperature,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:battery-state/wireless-mesh-oper:current,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:battery-state/wireless-mesh-oper:charge,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:battery-state/wireless-mesh-oper:alarms,leaf,wireless-types:mesh-node-battery-alarm
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:battery-state/wireless-mesh-oper:sw-version,leaf,string
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:battery-state/wireless-mesh-oper:serial-number,leaf,string
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:peripheral-info,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:peripheral-info/wireless-mesh-oper:temperature,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:peripheral-info/wireless-mesh-oper:temperature/wireless-mesh-oper:status,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:peripheral-info/wireless-mesh-oper:temperature/wireless-mesh-oper:degree,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:peripheral-info/wireless-mesh-oper:temperature/wireless-mesh-oper:heater-status,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:peripheral-info/wireless-mesh-oper:temperature/wireless-mesh-oper:temp-state,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:peripheral-info/wireless-mesh-oper:temperature/wireless-mesh-oper:temp-fahrenheit,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:peripheral-info/wireless-mesh-oper:cm-installed,leaf,boolean
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:peripheral-info/wireless-mesh-oper:fiber-sfp-installed,leaf,boolean
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:peripheral-info/wireless-mesh-oper:poe-out-status,leaf,boolean
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-comp-info/wireless-mesh-oper:peripheral-info/wireless-mesh-oper:orientation,leaf,uint8
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters,list,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:linktest-id,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:record-in-use,leaf,boolean
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:started-at,leaf,yang:date-and-time
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:config,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:config/wireless-mesh-oper:data-rate,leaf,wireless-types:mesh-linktest-rate
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:config/wireless-mesh-oper:data-rate-index,leaf,wireless-types:mesh-linktest-rate-idx
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:config/wireless-mesh-oper:status,leaf,wireless-types:mesh-linktest-cfg-status
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:config/wireless-mesh-oper:packet-size,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:config/wireless-mesh-oper:duration,leaf,uint16
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:config/wireless-mesh-oper:pkts-per-sec,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:elapsed-time,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:last-rx-rate,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:link-test-buffer-allocation-error,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:link-test-queue-full-error,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:total-tx-pkts,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:total-rx-pkts,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:good-rx-pkts,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:duplicate-rx-pkts,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:short-rx-pkts,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:big-rx-pkts,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rx-pkts-physical-errors,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rx-pkts-crc-errors,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rx-pkts-seq-errors,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rx-pkts-unknown-errors,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rx-pkts-prev-seq,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rx-pkts-lost,leaf,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rx-pkts-average-snr,leaf,int32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rx-pkts-highest-snr,leaf,int32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rx-pkts-lowest-snr,leaf,int32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rx-pkts-average-nf,leaf,int32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rx-pkts-highest-nf,leaf,int32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rx-pkts-lowest-nf,leaf,int32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rx-pkts-average-rssi,leaf,int32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rx-pkts-highest-rssi,leaf,int32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rx-pkts-lowest-rssi,leaf,int32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:last-elapsed-timestamp,leaf,yang:date-and-time
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:last-rx-timestamp,leaf,yang:date-and-time
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:snr-profile,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:snr-profile/wireless-mesh-oper:buffer-snr,leaf-list,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:nf-profile,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:nf-profile/wireless-mesh-oper:buffer-nf,leaf-list,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rssi-profile,container,
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:results/wireless-mesh-oper:rssi-profile/wireless-mesh-oper:buffer-rssi,leaf-list,uint32
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:start-time,leaf,yang:date-and-time
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:source-mac,leaf,yang:mac-address
+/wireless-mesh-oper:mesh-oper-data/wireless-mesh-oper:mesh-linktest-parameters/wireless-mesh-oper:destination-mac,leaf,yang:mac-address

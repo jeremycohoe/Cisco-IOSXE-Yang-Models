@@ -1,0 +1,61 @@
+
+KPI for model: Cisco-IOS-XE-wireless-access-point-cmd-rpc.yang
+module: Cisco-IOS-XE-wireless-access-point-cmd-rpc
+
+  rpcs:
+    +---x ap-reset
+    |  +---w input
+    |     +---w (ap-identifier-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x clear-ap-personal-ssid
+    |  +---w input
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x set-ap-static-ip-enable
+    |  +---w input
+    |     +---w ip-addr           inet:ip-address
+    |     +---w net-mask?         inet:ip-address
+    |     +---w prefix?           uint32
+    |     +---w gateway           inet:ip-address
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x set-ap-static-ip-disable
+    |  +---w input
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x set-ap-predownload
+    |  +---w input
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x swap-ap-image
+    |  +---w input
+    |     +---w enable            boolean
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x clear-ap-config
+       +---w input
+          +---w operation-type    wireless-types:ap-clear-config-op-type
+          +---w (ap-identifier-choice)
+             +--:(ap-identifier-name)
+             |  +---w ap-name     string
+             +--:(ap-identifier-mac-address)
+                +---w mac-addr    yang:mac-address
+Xpaths for model: Cisco-IOS-XE-wireless-access-point-cmd-rpc.yang

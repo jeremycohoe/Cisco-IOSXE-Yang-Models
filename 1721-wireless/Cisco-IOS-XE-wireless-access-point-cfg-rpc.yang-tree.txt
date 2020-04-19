@@ -1,0 +1,136 @@
+
+KPI for model: Cisco-IOS-XE-wireless-access-point-cfg-rpc.yang
+module: Cisco-IOS-XE-wireless-access-point-cfg-rpc
+
+  rpcs:
+    +---x set-ap-vlan-tag
+    |  +---w input
+    |     +---w vlan-id           uint32
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x set-ap-monitor-mode-chnl-optimize
+    |  +---w input
+    |     +---w mode              wireless-enum-types:lomm-mode-type
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x set-lrad-led-state
+    |  +---w input
+    |     +---w ledstate          boolean
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x set-ap-location
+    |  +---w input
+    |     +---w location          string
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x set-ap-name
+    |  +---w input
+    |     +---w name              string
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x set-ap-antenna-band-mode
+    |  +---w input
+    |     +---w band-val          wireless-enum-types:ant-band-mode
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x set-ap-country
+    |  +---w input
+    |     +---w country-string    string
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x set-ap-slot-ext-antenna-gain
+    |  +---w input
+    |     +---w external-antenna-gain    uint8
+    |     +---w slot-id                  uint8
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name            string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr           yang:mac-address
+    +---x dual-band-radio-band
+    |  +---w input
+    |     +---w slot-id           uint8
+    |     +---w band              uint32
+    |     +---w toband            uint32
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x set-ap-led-brightness-level
+    |  +---w input
+    |     +---w led-brightness-level    uint8
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name           string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr          yang:mac-address
+    +---x set-ap-slot-tx-power-level
+    |  +---w input
+    |     +---w tx-power-level    uint8
+    |     +---w slot-id           uint8
+    |     +---w band              uint32
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x set-ap-slot-antenna-mode
+    |  +---w input
+    |     +---w antenna-mode      wireless-enum-types:enm-antenna-mode
+    |     +---w slot-id           uint8
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x set-ap-admin-state
+    |  +---w input
+    |     +---w mode              wireless-enum-types:enm-admin-status
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x set-ap-slot-admin-state
+    |  +---w input
+    |     +---w mode              wireless-enum-types:enm-admin-status
+    |     +---w slot-id           uint8
+    |     +---w band              uint32
+    |     +---w (alternative-choice)
+    |        +--:(ap-identifier-name)
+    |        |  +---w ap-name     string
+    |        +--:(ap-identifier-mac-address)
+    |           +---w mac-addr    yang:mac-address
+    +---x set-ap-slot-tx-power-customize
+       +---w input
+          +---w mode              wireless-types:w-config-type
+          +---w slot-id           uint8
+          +---w band              uint32
+          +---w (alternative-choice)
+             +--:(ap-identifier-name)
+             |  +---w ap-name     string
+             +--:(ap-identifier-mac-address)
+                +---w mac-addr    yang:mac-address
+Xpaths for model: Cisco-IOS-XE-wireless-access-point-cfg-rpc.yang

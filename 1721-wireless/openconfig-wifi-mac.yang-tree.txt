@@ -1,0 +1,468 @@
+
+KPI for model: openconfig-wifi-mac.yang
+module: openconfig-wifi-mac
+  +--rw ssids
+     +--rw ssid* [name]
+        +--rw name             -> ../config/name
+        +--rw config
+        |  +--rw name?                    string
+        |  +--rw enabled?                 boolean
+        |  +--rw hidden?                  boolean
+        |  +--rw default-vlan?            oc-vlan-types:vlan-id
+        |  +--rw vlan-list*               oc-vlan-types:vlan-id
+        |  +--rw operating-frequency?     identityref
+        |  +--rw basic-data-rates*        identityref
+        |  +--rw supported-data-rates*    identityref
+        |  +--rw broadcast-filter?        boolean
+        |  +--rw multicast-filter?        boolean
+        |  +--rw ipv6-ndp-filter?         boolean
+        |  +--rw ipv6-ndp-filter-timer?   uint16
+        |  +--rw station-isolation?       boolean
+        |  +--rw opmode?                  enumeration
+        |  +--rw wpa2-psk?                string
+        |  +--rw server-group?            string
+        |  +--rw dva?                     boolean
+        |  +--rw mobility-domain?         string
+        |  +--rw dhcp-required?           boolean
+        |  +--rw qbss-load?               boolean
+        |  +--rw advertise-apname?        boolean
+        |  +--rw csa?                     boolean
+        |  +--rw ptk-timeout?             uint16
+        |  +--rw gtk-timeout?             uint16
+        |  +--rw dot11k?                  boolean
+        |  +--rw okc?                     boolean
+        +--ro state
+        |  +--ro name?                    string
+        |  +--ro enabled?                 boolean
+        |  +--ro hidden?                  boolean
+        |  +--ro default-vlan?            oc-vlan-types:vlan-id
+        |  +--ro vlan-list*               oc-vlan-types:vlan-id
+        |  +--ro operating-frequency?     identityref
+        |  +--ro basic-data-rates*        identityref
+        |  +--ro supported-data-rates*    identityref
+        |  +--ro broadcast-filter?        boolean
+        |  +--ro multicast-filter?        boolean
+        |  +--ro ipv6-ndp-filter?         boolean
+        |  +--ro ipv6-ndp-filter-timer?   uint16
+        |  +--ro station-isolation?       boolean
+        |  +--ro opmode?                  enumeration
+        |  +--ro wpa2-psk?                string
+        |  +--ro server-group?            string
+        |  +--ro dva?                     boolean
+        |  +--ro mobility-domain?         string
+        |  +--ro dhcp-required?           boolean
+        |  +--ro qbss-load?               boolean
+        |  +--ro advertise-apname?        boolean
+        |  +--ro csa?                     boolean
+        |  +--ro ptk-timeout?             uint16
+        |  +--ro gtk-timeout?             uint16
+        |  +--ro dot11k?                  boolean
+        |  +--ro okc?                     boolean
+        |  +--ro bssids
+        |     +--ro bssid* [radio-id bssid]
+        |        +--ro bssid       -> ../state/bssid
+        |        +--ro radio-id    -> ../state/radio-id
+        |        +--ro state
+        |           +--ro bssid?                    oc-yang:mac-address
+        |           +--ro radio-id?                 uint8
+        |           +--ro num-associated-clients?   uint8
+        |           +--ro counters
+        |              +--ro rx-bss-dot11-channel-utilization?   oc-types:percentage
+        |              +--ro rx-mgmt?                            oc-yang:counter64
+        |              +--ro rx-control?                         oc-yang:counter64
+        |              +--ro rx-data-dist
+        |              |  +--ro rx-0-64?             oc-yang:counter64
+        |              |  +--ro rx-65-128?           oc-yang:counter64
+        |              |  +--ro rx-129-256?          oc-yang:counter64
+        |              |  +--ro rx-257-512?          oc-yang:counter64
+        |              |  +--ro rx-513-1024?         oc-yang:counter64
+        |              |  +--ro rx-1025-2048?        oc-yang:counter64
+        |              |  +--ro rx-2049-4096?        oc-yang:counter64
+        |              |  +--ro rx-4097-8192?        oc-yang:counter64
+        |              |  +--ro rx-8193-16384?       oc-yang:counter64
+        |              |  +--ro rx-16385-32768?      oc-yang:counter64
+        |              |  +--ro rx-32769-65536?      oc-yang:counter64
+        |              |  +--ro rx-65537-131072?     oc-yang:counter64
+        |              |  +--ro rx-131073-262144?    oc-yang:counter64
+        |              |  +--ro rx-262145-524288?    oc-yang:counter64
+        |              |  +--ro rx-524289-1048576?   oc-yang:counter64
+        |              +--ro rx-data-wmm
+        |              |  +--ro vi?   oc-yang:counter64
+        |              |  +--ro vo?   oc-yang:counter64
+        |              |  +--ro be?   oc-yang:counter64
+        |              |  +--ro bk?   oc-yang:counter64
+        |              +--ro rx-mcs
+        |              |  +--ro mcs0?   oc-yang:counter64
+        |              |  +--ro mcs1?   oc-yang:counter64
+        |              |  +--ro mcs2?   oc-yang:counter64
+        |              |  +--ro mcs3?   oc-yang:counter64
+        |              |  +--ro mcs4?   oc-yang:counter64
+        |              |  +--ro mcs5?   oc-yang:counter64
+        |              |  +--ro mcs6?   oc-yang:counter64
+        |              |  +--ro mcs7?   oc-yang:counter64
+        |              |  +--ro mcs8?   oc-yang:counter64
+        |              |  +--ro mcs9?   oc-yang:counter64
+        |              +--ro rx-retries?                         oc-yang:counter64
+        |              +--ro rx-retries-data?                    oc-yang:counter64
+        |              +--ro rx-retries-subframe?                oc-yang:counter64
+        |              +--ro rx-bytes-data?                      oc-yang:counter64
+        |              +--ro tx-bss-dot11-channel-utilization?   oc-types:percentage
+        |              +--ro tx-mgmt?                            oc-yang:counter64
+        |              +--ro tx-control?                         oc-yang:counter64
+        |              +--ro tx-data-dist
+        |              |  +--ro tx-0-64?             oc-yang:counter64
+        |              |  +--ro tx-65-128?           oc-yang:counter64
+        |              |  +--ro tx-129-256?          oc-yang:counter64
+        |              |  +--ro tx-257-512?          oc-yang:counter64
+        |              |  +--ro tx-513-1024?         oc-yang:counter64
+        |              |  +--ro tx-1025-2048?        oc-yang:counter64
+        |              |  +--ro tx-2049-4096?        oc-yang:counter64
+        |              |  +--ro tx-4097-8192?        oc-yang:counter64
+        |              |  +--ro tx-8193-16384?       oc-yang:counter64
+        |              |  +--ro tx-16385-32768?      oc-yang:counter64
+        |              |  +--ro tx-32769-65536?      oc-yang:counter64
+        |              |  +--ro tx-65537-131072?     oc-yang:counter64
+        |              |  +--ro tx-131073-262144?    oc-yang:counter64
+        |              |  +--ro tx-262145-524288?    oc-yang:counter64
+        |              |  +--ro tx-524289-1048576?   oc-yang:counter64
+        |              +--ro tx-data-wmm
+        |              |  +--ro vi?   oc-yang:counter64
+        |              |  +--ro vo?   oc-yang:counter64
+        |              |  +--ro bk?   oc-yang:counter64
+        |              |  +--ro be?   oc-yang:counter64
+        |              +--ro tx-mcs
+        |              |  +--ro mcs0?   oc-yang:counter64
+        |              |  +--ro mcs1?   oc-yang:counter64
+        |              |  +--ro mcs2?   oc-yang:counter64
+        |              |  +--ro mcs3?   oc-yang:counter64
+        |              |  +--ro mcs4?   oc-yang:counter64
+        |              |  +--ro mcs5?   oc-yang:counter64
+        |              |  +--ro mcs6?   oc-yang:counter64
+        |              |  +--ro mcs7?   oc-yang:counter64
+        |              |  +--ro mcs8?   oc-yang:counter64
+        |              |  +--ro mcs9?   oc-yang:counter64
+        |              +--ro tx-retries?                         oc-yang:counter64
+        |              +--ro tx-retries-data?                    oc-yang:counter64
+        |              +--ro tx-retries-subframe?                oc-yang:counter64
+        |              +--ro tx-bytes-data?                      oc-yang:counter64
+        |              +--ro bss-channel-utilization?            oc-types:percentage
+        +--rw wmm
+        |  +--rw config
+        |  |  +--rw trust-dscp?      boolean
+        |  |  +--rw wmm-vo-remark*   uint8
+        |  |  +--rw wmm-vi-remark*   uint8
+        |  |  +--rw wmm-be-remark*   uint8
+        |  |  +--rw wmm-bk-remark*   uint8
+        |  +--ro state
+        |     +--ro trust-dscp?      boolean
+        |     +--ro wmm-vo-remark*   uint8
+        |     +--ro wmm-vi-remark*   uint8
+        |     +--ro wmm-be-remark*   uint8
+        |     +--ro wmm-bk-remark*   uint8
+        +--rw dot11r
+        |  +--rw config
+        |  |  +--rw dot11r?                 boolean
+        |  |  +--rw dot11r-domainid?        uint16
+        |  |  +--rw dot11r-method?          enumeration
+        |  |  +--rw dot11r-r1key-timeout?   uint16
+        |  +--ro state
+        |     +--ro dot11r?                 boolean
+        |     +--ro dot11r-domainid?        uint16
+        |     +--ro dot11r-method?          enumeration
+        |     +--ro dot11r-r1key-timeout?   uint16
+        +--rw dot11v
+        |  +--rw config
+        |  |  +--rw dot11v-dms?               boolean
+        |  |  +--rw dot11v-bssidle?           boolean
+        |  |  +--rw dot11v-bssidle-timeout?   uint16
+        |  |  +--rw dot11v-bsstransition?     boolean
+        |  +--ro state
+        |     +--ro dot11v-dms?               boolean
+        |     +--ro dot11v-bssidle?           boolean
+        |     +--ro dot11v-bssidle-timeout?   uint16
+        |     +--ro dot11v-bsstransition?     boolean
+        +--rw clients
+        |  +--ro client* [mac]
+        |     +--ro mac                    -> ../state/mac
+        |     +--ro state
+        |     |  +--ro mac?        oc-yang:mac-address
+        |     |  +--ro counters
+        |     |     +--ro tx-bytes?     oc-yang:counter64
+        |     |     +--ro rx-bytes?     oc-yang:counter64
+        |     |     +--ro rx-retries?   oc-yang:counter64
+        |     |     +--ro tx-retries?   oc-yang:counter64
+        |     +--ro client-rf
+        |     |  +--ro state
+        |     |     +--ro rssi?              int8
+        |     |     +--ro snr?               uint8
+        |     |     +--ro ss?                uint8
+        |     |     +--ro phy-rate?          uint16
+        |     |     +--ro connection-mode?   enumeration
+        |     |     +--ro frequency?         uint8
+        |     +--ro client-capabilities
+        |     |  +--ro state
+        |     |     +--ro client-capabilities*   identityref
+        |     |     +--ro channel-support*       uint8
+        |     +--ro dot11k-neighbors
+        |     |  +--ro state
+        |     |     +--ro neighbor-bssid?        oc-yang:mac-address
+        |     |     +--ro neighbor-channel?      uint8
+        |     |     +--ro neighbor-rssi?         int8
+        |     |     +--ro neighbor-antenna?      uint8
+        |     |     +--ro channel-load-report?   uint8
+        |     +--ro client-connection
+        |        +--ro state
+        |           +--ro client-state?       identityref
+        |           +--ro connection-time?    uint16
+        |           +--ro username?           string
+        |           +--ro hostname?           string
+        |           +--ro ipv4-address?       oc-inet:ipv4-address
+        |           +--ro ipv6-address*       oc-inet:ipv6-address
+        |           +--ro operating-system?   string
+        +--rw dot1x-timers
+        |  +--rw config
+        |  |  +--rw max-auth-failures?   uint8
+        |  |  +--rw blacklist-time?      uint16
+        |  +--ro state
+        |     +--ro max-auth-failures?   uint8
+        |     +--ro blacklist-time?      uint16
+        +--rw band-steering
+           +--rw config
+           |  +--rw band-steering?   boolean
+           |  +--rw steering-rssi?   int8
+           +--ro state
+              +--ro band-steering?   boolean
+              +--ro steering-rssi?   int8
+Xpaths for model: openconfig-wifi-mac.yang
+/oc-wifi-mac:ssids,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid,list,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:name,leaf,leafref
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:name,leaf,string
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:enabled,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:hidden,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:default-vlan,leaf,oc-vlan-types:vlan-id
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:vlan-list,leaf-list,oc-vlan-types:vlan-id
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:operating-frequency,leaf,identityref
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:basic-data-rates,leaf-list,identityref
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:supported-data-rates,leaf-list,identityref
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:broadcast-filter,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:multicast-filter,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:ipv6-ndp-filter,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:ipv6-ndp-filter-timer,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:station-isolation,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:opmode,leaf,enumeration
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:wpa2-psk,leaf,string
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:server-group,leaf,string
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:dva,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:mobility-domain,leaf,string
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:dhcp-required,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:qbss-load,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:advertise-apname,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:csa,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:ptk-timeout,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:gtk-timeout,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:dot11k,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:config/oc-wifi-mac:okc,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:name,leaf,string
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:enabled,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:hidden,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:default-vlan,leaf,oc-vlan-types:vlan-id
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:vlan-list,leaf-list,oc-vlan-types:vlan-id
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:operating-frequency,leaf,identityref
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:basic-data-rates,leaf-list,identityref
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:supported-data-rates,leaf-list,identityref
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:broadcast-filter,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:multicast-filter,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:ipv6-ndp-filter,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:ipv6-ndp-filter-timer,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:station-isolation,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:opmode,leaf,enumeration
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:wpa2-psk,leaf,string
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:server-group,leaf,string
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:dva,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:mobility-domain,leaf,string
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:dhcp-required,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:qbss-load,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:advertise-apname,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:csa,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:ptk-timeout,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:gtk-timeout,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:dot11k,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:okc,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid,list,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:bssid,leaf,leafref
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:radio-id,leaf,leafref
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:bssid,leaf,oc-yang:mac-address
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:radio-id,leaf,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:num-associated-clients,leaf,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-bss-dot11-channel-utilization,leaf,oc-types:percentage
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-mgmt,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-control,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist/oc-wifi-mac:rx-0-64,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist/oc-wifi-mac:rx-65-128,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist/oc-wifi-mac:rx-129-256,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist/oc-wifi-mac:rx-257-512,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist/oc-wifi-mac:rx-513-1024,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist/oc-wifi-mac:rx-1025-2048,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist/oc-wifi-mac:rx-2049-4096,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist/oc-wifi-mac:rx-4097-8192,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist/oc-wifi-mac:rx-8193-16384,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist/oc-wifi-mac:rx-16385-32768,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist/oc-wifi-mac:rx-32769-65536,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist/oc-wifi-mac:rx-65537-131072,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist/oc-wifi-mac:rx-131073-262144,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist/oc-wifi-mac:rx-262145-524288,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-dist/oc-wifi-mac:rx-524289-1048576,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-wmm,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-wmm/oc-wifi-mac:vi,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-wmm/oc-wifi-mac:vo,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-wmm/oc-wifi-mac:be,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-data-wmm/oc-wifi-mac:bk,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-mcs,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-mcs/oc-wifi-mac:mcs0,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-mcs/oc-wifi-mac:mcs1,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-mcs/oc-wifi-mac:mcs2,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-mcs/oc-wifi-mac:mcs3,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-mcs/oc-wifi-mac:mcs4,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-mcs/oc-wifi-mac:mcs5,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-mcs/oc-wifi-mac:mcs6,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-mcs/oc-wifi-mac:mcs7,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-mcs/oc-wifi-mac:mcs8,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-mcs/oc-wifi-mac:mcs9,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-retries,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-retries-data,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-retries-subframe,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-bytes-data,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-bss-dot11-channel-utilization,leaf,oc-types:percentage
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-mgmt,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-control,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist/oc-wifi-mac:tx-0-64,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist/oc-wifi-mac:tx-65-128,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist/oc-wifi-mac:tx-129-256,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist/oc-wifi-mac:tx-257-512,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist/oc-wifi-mac:tx-513-1024,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist/oc-wifi-mac:tx-1025-2048,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist/oc-wifi-mac:tx-2049-4096,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist/oc-wifi-mac:tx-4097-8192,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist/oc-wifi-mac:tx-8193-16384,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist/oc-wifi-mac:tx-16385-32768,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist/oc-wifi-mac:tx-32769-65536,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist/oc-wifi-mac:tx-65537-131072,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist/oc-wifi-mac:tx-131073-262144,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist/oc-wifi-mac:tx-262145-524288,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-dist/oc-wifi-mac:tx-524289-1048576,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-wmm,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-wmm/oc-wifi-mac:vi,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-wmm/oc-wifi-mac:vo,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-wmm/oc-wifi-mac:bk,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-data-wmm/oc-wifi-mac:be,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-mcs,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-mcs/oc-wifi-mac:mcs0,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-mcs/oc-wifi-mac:mcs1,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-mcs/oc-wifi-mac:mcs2,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-mcs/oc-wifi-mac:mcs3,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-mcs/oc-wifi-mac:mcs4,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-mcs/oc-wifi-mac:mcs5,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-mcs/oc-wifi-mac:mcs6,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-mcs/oc-wifi-mac:mcs7,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-mcs/oc-wifi-mac:mcs8,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-mcs/oc-wifi-mac:mcs9,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-retries,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-retries-data,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-retries-subframe,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-bytes-data,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:state/oc-wifi-mac:bssids/oc-wifi-mac:bssid/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:bss-channel-utilization,leaf,oc-types:percentage
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:wmm,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:wmm/oc-wifi-mac:config,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:wmm/oc-wifi-mac:config/oc-wifi-mac:trust-dscp,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:wmm/oc-wifi-mac:config/oc-wifi-mac:wmm-vo-remark,leaf-list,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:wmm/oc-wifi-mac:config/oc-wifi-mac:wmm-vi-remark,leaf-list,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:wmm/oc-wifi-mac:config/oc-wifi-mac:wmm-be-remark,leaf-list,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:wmm/oc-wifi-mac:config/oc-wifi-mac:wmm-bk-remark,leaf-list,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:wmm/oc-wifi-mac:state,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:wmm/oc-wifi-mac:state/oc-wifi-mac:trust-dscp,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:wmm/oc-wifi-mac:state/oc-wifi-mac:wmm-vo-remark,leaf-list,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:wmm/oc-wifi-mac:state/oc-wifi-mac:wmm-vi-remark,leaf-list,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:wmm/oc-wifi-mac:state/oc-wifi-mac:wmm-be-remark,leaf-list,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:wmm/oc-wifi-mac:state/oc-wifi-mac:wmm-bk-remark,leaf-list,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11r,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11r/oc-wifi-mac:config,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11r/oc-wifi-mac:config/oc-wifi-mac:dot11r,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11r/oc-wifi-mac:config/oc-wifi-mac:dot11r-domainid,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11r/oc-wifi-mac:config/oc-wifi-mac:dot11r-method,leaf,enumeration
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11r/oc-wifi-mac:config/oc-wifi-mac:dot11r-r1key-timeout,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11r/oc-wifi-mac:state,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11r/oc-wifi-mac:state/oc-wifi-mac:dot11r,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11r/oc-wifi-mac:state/oc-wifi-mac:dot11r-domainid,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11r/oc-wifi-mac:state/oc-wifi-mac:dot11r-method,leaf,enumeration
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11r/oc-wifi-mac:state/oc-wifi-mac:dot11r-r1key-timeout,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11v,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11v/oc-wifi-mac:config,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11v/oc-wifi-mac:config/oc-wifi-mac:dot11v-dms,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11v/oc-wifi-mac:config/oc-wifi-mac:dot11v-bssidle,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11v/oc-wifi-mac:config/oc-wifi-mac:dot11v-bssidle-timeout,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11v/oc-wifi-mac:config/oc-wifi-mac:dot11v-bsstransition,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11v/oc-wifi-mac:state,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11v/oc-wifi-mac:state/oc-wifi-mac:dot11v-dms,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11v/oc-wifi-mac:state/oc-wifi-mac:dot11v-bssidle,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11v/oc-wifi-mac:state/oc-wifi-mac:dot11v-bssidle-timeout,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot11v/oc-wifi-mac:state/oc-wifi-mac:dot11v-bsstransition,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client,list,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:mac,leaf,leafref
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:state,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:state/oc-wifi-mac:mac,leaf,oc-yang:mac-address
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:state/oc-wifi-mac:counters,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-bytes,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-bytes,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:rx-retries,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:state/oc-wifi-mac:counters/oc-wifi-mac:tx-retries,leaf,oc-yang:counter64
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-rf,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-rf/oc-wifi-mac:state,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-rf/oc-wifi-mac:state/oc-wifi-mac:rssi,leaf,int8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-rf/oc-wifi-mac:state/oc-wifi-mac:snr,leaf,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-rf/oc-wifi-mac:state/oc-wifi-mac:ss,leaf,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-rf/oc-wifi-mac:state/oc-wifi-mac:phy-rate,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-rf/oc-wifi-mac:state/oc-wifi-mac:connection-mode,leaf,enumeration
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-rf/oc-wifi-mac:state/oc-wifi-mac:frequency,leaf,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-capabilities,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-capabilities/oc-wifi-mac:state,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-capabilities/oc-wifi-mac:state/oc-wifi-mac:client-capabilities,leaf-list,identityref
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-capabilities/oc-wifi-mac:state/oc-wifi-mac:channel-support,leaf-list,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:dot11k-neighbors,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:dot11k-neighbors/oc-wifi-mac:state,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:dot11k-neighbors/oc-wifi-mac:state/oc-wifi-mac:neighbor-bssid,leaf,oc-yang:mac-address
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:dot11k-neighbors/oc-wifi-mac:state/oc-wifi-mac:neighbor-channel,leaf,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:dot11k-neighbors/oc-wifi-mac:state/oc-wifi-mac:neighbor-rssi,leaf,int8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:dot11k-neighbors/oc-wifi-mac:state/oc-wifi-mac:neighbor-antenna,leaf,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:dot11k-neighbors/oc-wifi-mac:state/oc-wifi-mac:channel-load-report,leaf,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-connection,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-connection/oc-wifi-mac:state,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-connection/oc-wifi-mac:state/oc-wifi-mac:client-state,leaf,identityref
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-connection/oc-wifi-mac:state/oc-wifi-mac:connection-time,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-connection/oc-wifi-mac:state/oc-wifi-mac:username,leaf,string
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-connection/oc-wifi-mac:state/oc-wifi-mac:hostname,leaf,string
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-connection/oc-wifi-mac:state/oc-wifi-mac:ipv4-address,leaf,oc-inet:ipv4-address
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-connection/oc-wifi-mac:state/oc-wifi-mac:ipv6-address,leaf-list,oc-inet:ipv6-address
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:clients/oc-wifi-mac:client/oc-wifi-mac:client-connection/oc-wifi-mac:state/oc-wifi-mac:operating-system,leaf,string
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot1x-timers,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot1x-timers/oc-wifi-mac:config,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot1x-timers/oc-wifi-mac:config/oc-wifi-mac:max-auth-failures,leaf,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot1x-timers/oc-wifi-mac:config/oc-wifi-mac:blacklist-time,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot1x-timers/oc-wifi-mac:state,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot1x-timers/oc-wifi-mac:state/oc-wifi-mac:max-auth-failures,leaf,uint8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:dot1x-timers/oc-wifi-mac:state/oc-wifi-mac:blacklist-time,leaf,uint16
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:band-steering,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:band-steering/oc-wifi-mac:config,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:band-steering/oc-wifi-mac:config/oc-wifi-mac:band-steering,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:band-steering/oc-wifi-mac:config/oc-wifi-mac:steering-rssi,leaf,int8
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:band-steering/oc-wifi-mac:state,container,
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:band-steering/oc-wifi-mac:state/oc-wifi-mac:band-steering,leaf,boolean
+/oc-wifi-mac:ssids/oc-wifi-mac:ssid/oc-wifi-mac:band-steering/oc-wifi-mac:state/oc-wifi-mac:steering-rssi,leaf,int8

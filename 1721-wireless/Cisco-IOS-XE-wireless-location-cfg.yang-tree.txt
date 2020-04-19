@@ -1,0 +1,50 @@
+
+KPI for model: Cisco-IOS-XE-wireless-location-cfg.yang
+module: Cisco-IOS-XE-wireless-location-cfg
+  +--rw location-cfg-data
+     +--rw nmsp-config!
+     |  +--rw enable?                             boolean
+     |  +--rw is-secure?                          boolean
+     |  +--rw rssi-measurement-notify-interval?   uint32
+     |  +--rw client-notify-interval?             uint32
+     |  +--rw rogue-client-notify-interval?       uint32
+     |  +--rw rogue-ap-notify-interval?           uint32
+     |  +--rw spectrum-notify-interval?           uint32
+     |  +--rw cloud-params
+     |     +--rw enable?           boolean
+     |     +--rw server-url?       string
+     |     +--rw proxy-hostname?   string
+     |     +--rw proxy-port?       uint16
+     |     +--rw auth-token?       string
+     +--rw location
+        +--rw location-algorithm?                     wireless-enum-types:apf-location-algorithm-type
+        +--rw location-notify-client-threshold?       uint32
+        +--rw location-rssi-client-threshold?         wireless-enum-types:half-life-time
+        +--rw location-rssi-cal-client-threshold?     wireless-enum-types:half-life-time
+        +--rw location-rssi-rogue-ap-threshold?       wireless-enum-types:half-life-time
+        +--rw location-expiry-client-threshold?       uint32
+        +--rw location-expiry-cal-client-threshold?   uint32
+Xpaths for model: Cisco-IOS-XE-wireless-location-cfg.yang
+/wireless-location-cfg:location-cfg-data,container,
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:nmsp-config,container,
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:nmsp-config/wireless-location-cfg:enable,leaf,boolean
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:nmsp-config/wireless-location-cfg:is-secure,leaf,boolean
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:nmsp-config/wireless-location-cfg:rssi-measurement-notify-interval,leaf,uint32
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:nmsp-config/wireless-location-cfg:client-notify-interval,leaf,uint32
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:nmsp-config/wireless-location-cfg:rogue-client-notify-interval,leaf,uint32
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:nmsp-config/wireless-location-cfg:rogue-ap-notify-interval,leaf,uint32
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:nmsp-config/wireless-location-cfg:spectrum-notify-interval,leaf,uint32
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:nmsp-config/wireless-location-cfg:cloud-params,container,
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:nmsp-config/wireless-location-cfg:cloud-params/wireless-location-cfg:enable,leaf,boolean
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:nmsp-config/wireless-location-cfg:cloud-params/wireless-location-cfg:server-url,leaf,string
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:nmsp-config/wireless-location-cfg:cloud-params/wireless-location-cfg:proxy-hostname,leaf,string
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:nmsp-config/wireless-location-cfg:cloud-params/wireless-location-cfg:proxy-port,leaf,uint16
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:nmsp-config/wireless-location-cfg:cloud-params/wireless-location-cfg:auth-token,leaf,string
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:location,container,
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:location/wireless-location-cfg:location-algorithm,leaf,wireless-enum-types:apf-location-algorithm-type
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:location/wireless-location-cfg:location-notify-client-threshold,leaf,uint32
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:location/wireless-location-cfg:location-rssi-client-threshold,leaf,wireless-enum-types:half-life-time
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:location/wireless-location-cfg:location-rssi-cal-client-threshold,leaf,wireless-enum-types:half-life-time
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:location/wireless-location-cfg:location-rssi-rogue-ap-threshold,leaf,wireless-enum-types:half-life-time
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:location/wireless-location-cfg:location-expiry-client-threshold,leaf,uint32
+/wireless-location-cfg:location-cfg-data/wireless-location-cfg:location/wireless-location-cfg:location-expiry-cal-client-threshold,leaf,uint32

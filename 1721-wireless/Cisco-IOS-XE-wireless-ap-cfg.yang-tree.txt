@@ -1,0 +1,82 @@
+
+KPI for model: Cisco-IOS-XE-wireless-ap-cfg.yang
+module: Cisco-IOS-XE-wireless-ap-cfg
+  +--rw ap-cfg-data
+     +--rw location-entries
+     |  +--rw location-entry* [location-name]
+     |     +--rw location-name     string
+     |     +--rw description?      string
+     |     +--rw tag-info
+     |     |  +--rw policy-tag?   string
+     |     |  +--rw site-tag?     string
+     |     |  +--rw rf-tag?       string
+     |     +--rw associated-aps
+     |        +--rw associated-ap* [ap-mac]
+     |           +--rw ap-mac    yang:mac-address
+     +--rw tag-source-priority-configs
+     |  +--rw tag-source-priority-config* [priority]
+     |     +--rw priority    uint8
+     |     +--rw tag-src?    wireless-ap-types:enm-ap-tag-source
+     +--rw ap-filter-configs
+     |  +--rw ap-filter-config* [filter-name]
+     |     +--rw filter-name        string
+     |     +--rw filter-string?     string
+     |     +--rw filter-priority?   uint8
+     |     +--rw apply-tag-list
+     |        +--rw policy-tag?   string
+     |        +--rw site-tag?     string
+     |        +--rw rf-tag?       string
+     o--rw ap-filter-priority-cfg-entries
+     |  +--rw ap-filter-priority-cfg-entry* [priority]
+     |     +--rw priority       uint8
+     |     +--rw filter-name?   string
+     +--rw ap-rule-priority-cfg-entries
+     |  +--rw ap-rule-priority-cfg-entry* [priority]
+     |     +--rw priority       uint32
+     |     +--rw filter-name?   string
+     +--rw ap-tags
+        +--rw ap-tag* [ap-mac]
+           +--rw ap-mac        yang:mac-address
+           +--rw policy-tag?   string
+           +--rw site-tag?     string
+           +--rw rf-tag?       string
+Xpaths for model: Cisco-IOS-XE-wireless-ap-cfg.yang
+/wireless-ap-cfg:ap-cfg-data,container,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:location-entries,container,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:location-entries/wireless-ap-cfg:location-entry,list,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:location-entries/wireless-ap-cfg:location-entry/wireless-ap-cfg:location-name,leaf,string
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:location-entries/wireless-ap-cfg:location-entry/wireless-ap-cfg:description,leaf,string
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:location-entries/wireless-ap-cfg:location-entry/wireless-ap-cfg:tag-info,container,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:location-entries/wireless-ap-cfg:location-entry/wireless-ap-cfg:tag-info/wireless-ap-cfg:policy-tag,leaf,string
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:location-entries/wireless-ap-cfg:location-entry/wireless-ap-cfg:tag-info/wireless-ap-cfg:site-tag,leaf,string
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:location-entries/wireless-ap-cfg:location-entry/wireless-ap-cfg:tag-info/wireless-ap-cfg:rf-tag,leaf,string
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:location-entries/wireless-ap-cfg:location-entry/wireless-ap-cfg:associated-aps,container,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:location-entries/wireless-ap-cfg:location-entry/wireless-ap-cfg:associated-aps/wireless-ap-cfg:associated-ap,list,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:location-entries/wireless-ap-cfg:location-entry/wireless-ap-cfg:associated-aps/wireless-ap-cfg:associated-ap/wireless-ap-cfg:ap-mac,leaf,yang:mac-address
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:tag-source-priority-configs,container,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:tag-source-priority-configs/wireless-ap-cfg:tag-source-priority-config,list,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:tag-source-priority-configs/wireless-ap-cfg:tag-source-priority-config/wireless-ap-cfg:priority,leaf,uint8
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:tag-source-priority-configs/wireless-ap-cfg:tag-source-priority-config/wireless-ap-cfg:tag-src,leaf,wireless-ap-types:enm-ap-tag-source
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-filter-configs,container,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-filter-configs/wireless-ap-cfg:ap-filter-config,list,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-filter-configs/wireless-ap-cfg:ap-filter-config/wireless-ap-cfg:filter-name,leaf,string
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-filter-configs/wireless-ap-cfg:ap-filter-config/wireless-ap-cfg:filter-string,leaf,string
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-filter-configs/wireless-ap-cfg:ap-filter-config/wireless-ap-cfg:filter-priority,leaf,uint8
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-filter-configs/wireless-ap-cfg:ap-filter-config/wireless-ap-cfg:apply-tag-list,container,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-filter-configs/wireless-ap-cfg:ap-filter-config/wireless-ap-cfg:apply-tag-list/wireless-ap-cfg:policy-tag,leaf,string
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-filter-configs/wireless-ap-cfg:ap-filter-config/wireless-ap-cfg:apply-tag-list/wireless-ap-cfg:site-tag,leaf,string
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-filter-configs/wireless-ap-cfg:ap-filter-config/wireless-ap-cfg:apply-tag-list/wireless-ap-cfg:rf-tag,leaf,string
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-filter-priority-cfg-entries,container,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-filter-priority-cfg-entries/wireless-ap-cfg:ap-filter-priority-cfg-entry,list,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-filter-priority-cfg-entries/wireless-ap-cfg:ap-filter-priority-cfg-entry/wireless-ap-cfg:priority,leaf,uint8
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-filter-priority-cfg-entries/wireless-ap-cfg:ap-filter-priority-cfg-entry/wireless-ap-cfg:filter-name,leaf,string
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-rule-priority-cfg-entries,container,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-rule-priority-cfg-entries/wireless-ap-cfg:ap-rule-priority-cfg-entry,list,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-rule-priority-cfg-entries/wireless-ap-cfg:ap-rule-priority-cfg-entry/wireless-ap-cfg:priority,leaf,uint32
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-rule-priority-cfg-entries/wireless-ap-cfg:ap-rule-priority-cfg-entry/wireless-ap-cfg:filter-name,leaf,string
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-tags,container,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-tags/wireless-ap-cfg:ap-tag,list,
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-tags/wireless-ap-cfg:ap-tag/wireless-ap-cfg:ap-mac,leaf,yang:mac-address
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-tags/wireless-ap-cfg:ap-tag/wireless-ap-cfg:policy-tag,leaf,string
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-tags/wireless-ap-cfg:ap-tag/wireless-ap-cfg:site-tag,leaf,string
+/wireless-ap-cfg:ap-cfg-data/wireless-ap-cfg:ap-tags/wireless-ap-cfg:ap-tag/wireless-ap-cfg:rf-tag,leaf,string

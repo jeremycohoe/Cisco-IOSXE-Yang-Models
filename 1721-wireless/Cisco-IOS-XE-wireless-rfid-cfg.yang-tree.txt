@@ -1,0 +1,20 @@
+
+KPI for model: Cisco-IOS-XE-wireless-rfid-cfg.yang
+module: Cisco-IOS-XE-wireless-rfid-cfg
+  +--rw rfid-cfg-data
+     +--rw rfid!
+        +--rw rfid-enable-bluesoft?    boolean
+        +--rw rfid-timeout?            uint16
+        +--rw rfid-enable-cisco?       boolean
+        +--rw rfid-rssi-expiry?        uint16
+        +--rw rfid-rssi-halflife?      uint32
+        +--rw rfid-notify-threshold?   uint32
+Xpaths for model: Cisco-IOS-XE-wireless-rfid-cfg.yang
+/wireless-rfid-cfg:rfid-cfg-data,container,
+/wireless-rfid-cfg:rfid-cfg-data/wireless-rfid-cfg:rfid,container,
+/wireless-rfid-cfg:rfid-cfg-data/wireless-rfid-cfg:rfid/wireless-rfid-cfg:rfid-enable-bluesoft,leaf,boolean
+/wireless-rfid-cfg:rfid-cfg-data/wireless-rfid-cfg:rfid/wireless-rfid-cfg:rfid-timeout,leaf,uint16
+/wireless-rfid-cfg:rfid-cfg-data/wireless-rfid-cfg:rfid/wireless-rfid-cfg:rfid-enable-cisco,leaf,boolean
+/wireless-rfid-cfg:rfid-cfg-data/wireless-rfid-cfg:rfid/wireless-rfid-cfg:rfid-rssi-expiry,leaf,uint16
+/wireless-rfid-cfg:rfid-cfg-data/wireless-rfid-cfg:rfid/wireless-rfid-cfg:rfid-rssi-halflife,leaf,uint32
+/wireless-rfid-cfg:rfid-cfg-data/wireless-rfid-cfg:rfid/wireless-rfid-cfg:rfid-notify-threshold,leaf,uint32

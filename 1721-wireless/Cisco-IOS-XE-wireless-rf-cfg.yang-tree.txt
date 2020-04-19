@@ -1,0 +1,300 @@
+
+KPI for model: Cisco-IOS-XE-wireless-rf-cfg.yang
+module: Cisco-IOS-XE-wireless-rf-cfg
+  +--rw rf-cfg-data
+     +--rw atf-policies
+     |  +--rw atf-policy* [policy-id]
+     |     +--rw atfpolicy-name    string
+     |     +--rw policy-id         uint32
+     |     +--rw policy-weight?    uint8
+     |     +--rw client-sharing?   boolean
+     +--rw rf-tags
+     |  +--rw rf-tag* [tag-name]
+     |     +--rw tag-name                  string
+     |     +--rw description?              string
+     |     +--rw dot11a-rf-profile-name?   string
+     |     +--rw dot11b-rf-profile-name?   string
+     +--rw rf-profiles
+     |  +--rw rf-profile* [name]
+     |     +--rw name                                    string
+     |     +--rw description?                            string
+     |     +--rw tx-power-min?                           int8
+     |     +--rw tx-power-max?                           int8
+     |     +--rw tx-power-v1-threshold?                  int16
+     |     +--rw tx-power-v2-threshold?                  int16
+     |     +--rw status?                                 boolean
+     |     +--rw band?                                   wireless-types:enm-ewlc-dot11-radio-band
+     |     +--rw data-rate-1m?                           wireless-enum-types:rate-state
+     |     +--rw data-rate-2m?                           wireless-enum-types:rate-state
+     |     +--rw data-rate-5-5m?                         wireless-enum-types:rate-state
+     |     +--rw data-rate-11m?                          wireless-enum-types:rate-state
+     |     +--rw data-rate-6m?                           wireless-enum-types:rate-state
+     |     +--rw data-rate-9m?                           wireless-enum-types:rate-state
+     |     +--rw data-rate-12m?                          wireless-enum-types:rate-state
+     |     +--rw data-rate-18m?                          wireless-enum-types:rate-state
+     |     +--rw data-rate-24m?                          wireless-enum-types:rate-state
+     |     +--rw data-rate-36m?                          wireless-enum-types:rate-state
+     |     +--rw data-rate-48m?                          wireless-enum-types:rate-state
+     |     +--rw data-rate-54m?                          wireless-enum-types:rate-state
+     |     +--rw coverage-data-packet-rssi-threshold?    int16
+     |     +--rw min-num-clients?                        int32
+     |     +--rw coverage-voice-packet-rssi-threshold?   int16
+     |     +--rw exception-level?                        uint16
+     |     +--rw band-select-client-rssi?                int16
+     |     +--rw band-select-client-mid-rssi?            int16
+     |     +--rw band-select-cycle-count?                uint16
+     |     +--rw band-select-cycle-threshold?            uint16
+     |     +--rw band-select-age-out-dual-band?          uint16
+     |     +--rw band-select-age-out-suppression?        uint16
+     |     +--rw band-select-probe-response?             boolean
+     |     +--rw dca-contribution-interference?          boolean
+     |     +--rw rf-dca-chan-width?                      wireless-enum-types:rf-dca-chan-width
+     |     +--rw load-balancing-window?                  uint32
+     |     +--rw load-balancing-denial-count?            uint32
+     |     +--rw trap-threshold-clients?                 uint32
+     |     +--rw trap-threshold-interference?            uint16
+     |     +--rw trap-threshold-noise?                   int32
+     |     +--rw trap-threshold-utilization?             uint16
+     |     +--rw max-radio-clients?                      uint16
+     |     +--rw multicast-data-rate?                    wireless-enum-types:enm-multicast-data-rate
+     |     +--rw rx-sen-sop-threshold?                   wireless-types:rx-sen-sop-threshold-level
+     |     +--rw rx-sen-sop-custom?                      int16
+     |     +--rw client-network-preference?              wireless-types:enm-client-network-preference
+     |     +--rw hsr-mode?                               boolean
+     |     +--rw hsr-neighbor-timeout?                   uint16
+     |     +--rw opt-roam-rssi-treshold?                 int16
+     |     +--rw opt-roam-rssi-check-enable?             boolean
+     |     +--rw atf-oper-mode?                          wireless-enum-types:apf-ate-mode
+     |     +--rw atf-optimization?                       wireless-enum-types:apf-ate-stealing-policy
+     |     +--rw bridge-client-access?                   boolean
+     |     +--rw airtime-allocation?                     uint8
+     |     +--rw client-aware-fra?                       boolean
+     |     +--rw client-select-threshold?                uint8
+     |     +--rw client-reset-threshold?                 uint8
+     |     +--rw rf-mcs-entries
+     |     |  +--rw rf-mcs-entry* [rf-index]
+     |     |     +--rw rf-index                uint8
+     |     |     +--rw rf-80211n-mcs-enable?   boolean
+     |     +--rw rf-dca-allowed-channels
+     |     |  +--rw rf-dca-allowed-channel* [channel]
+     |     |     +--rw channel    uint32
+     |     +--rw rfdca-removed-channels
+     |        +--rw rfdca-removed-channel* [channel]
+     |           +--rw channel    uint32
+     +--rw rf-profile-default-entries
+        +--rw rf-profile-default-entry* [band]
+           +--rw band                                       wireless-types:enm-ewlc-dot11-radio-band
+           +--rw name                                       string
+           +--rw description?                               string
+           +--rw tx-power-min?                              int8
+           +--rw tx-power-max?                              int8
+           +--rw tx-power-v1-threshold?                     int16
+           +--rw tx-power-v2-threshold?                     int16
+           +--rw status?                                    boolean
+           +--rw data-rate-1m?                              wireless-enum-types:rate-state
+           +--rw data-rate-2m?                              wireless-enum-types:rate-state
+           +--rw data-rate-5-5m?                            wireless-enum-types:rate-state
+           +--rw data-rate-11m?                             wireless-enum-types:rate-state
+           +--rw data-rate-6m?                              wireless-enum-types:rate-state
+           +--rw data-rate-9m?                              wireless-enum-types:rate-state
+           +--rw data-rate-12m?                             wireless-enum-types:rate-state
+           +--rw data-rate-18m?                             wireless-enum-types:rate-state
+           +--rw data-rate-24m?                             wireless-enum-types:rate-state
+           +--rw data-rate-36m?                             wireless-enum-types:rate-state
+           +--rw data-rate-48m?                             wireless-enum-types:rate-state
+           +--rw data-rate-54m?                             wireless-enum-types:rate-state
+           +--rw coverage-data-packet-rssi-threshold?       int16
+           +--rw min-num-clients?                           int32
+           +--rw coverage-voice-packet-rssi-threshold?      int16
+           +--rw exception-level?                           uint16
+           +--rw band-select-client-rssi?                   int16
+           +--rw band-select-client-mid-rssi?               int16
+           +--rw band-select-cycle-count?                   uint16
+           +--rw band-select-cycle-threshold?               uint16
+           +--rw band-select-age-out-dual-band?             uint16
+           +--rw band-select-age-out-suppression?           uint16
+           +--rw band-select-probe-response?                boolean
+           +--rw dca-contribution-interference?             boolean
+           +--rw rf-dca-chan-width?                         wireless-enum-types:rf-dca-chan-width
+           +--rw load-balancing-window?                     uint32
+           +--rw load-balancing-denial-count?               uint32
+           +--rw trap-threshold-clients?                    uint32
+           +--rw trap-threshold-interference?               uint16
+           +--rw trap-threshold-noise?                      int32
+           +--rw trap-threshold-utilization?                uint16
+           +--rw max-radio-clients?                         uint16
+           +--rw multicast-data-rate?                       wireless-enum-types:enm-multicast-data-rate
+           +--rw rx-sen-sop-threshold?                      wireless-types:rx-sen-sop-threshold-level
+           +--rw rx-sen-sop-custom?                         int16
+           +--rw client-network-preference?                 wireless-types:enm-client-network-preference
+           +--rw hsr-mode?                                  boolean
+           +--rw hsr-neighbor-timeout?                      uint16
+           +--rw opt-roam-rssi-treshold?                    int16
+           +--rw opt-roam-rssi-check-enable?                boolean
+           +--rw atf-oper-mode?                             wireless-enum-types:apf-ate-mode
+           +--rw atf-optimization?                          wireless-enum-types:apf-ate-stealing-policy
+           +--rw bridge-client-access?                      boolean
+           +--rw airtime-allocation?                        uint8
+           +--rw client-aware-fra?                          boolean
+           +--rw client-select-threshold?                   uint8
+           +--rw client-reset-threshold?                    uint8
+           +--rw rf-mcs-default-entries
+           |  +--rw rf-mcs-default-entry* [rf-index]
+           |     +--rw rf-index                uint8
+           |     +--rw mcs-data-rate?          uint16
+           |     +--rw rf-80211n-mcs-enable?   boolean
+           +--rw rf-dca-allowed-channels-default-entries
+           |  +--rw rf-dca-allowed-channel-default-entry* [channel]
+           |     +--rw channel    uint32
+           +--rw rf-dca-removed-channels-default-entries
+              +--rw rf-dca-removed-channels-default-entry* [channel]
+                 +--rw channel    uint32
+Xpaths for model: Cisco-IOS-XE-wireless-rf-cfg.yang
+/wireless-rf-cfg:rf-cfg-data,container,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:atf-policies,container,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:atf-policies/wireless-rf-cfg:atf-policy,list,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:atf-policies/wireless-rf-cfg:atf-policy/wireless-rf-cfg:atfpolicy-name,leaf,string
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:atf-policies/wireless-rf-cfg:atf-policy/wireless-rf-cfg:policy-id,leaf,uint32
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:atf-policies/wireless-rf-cfg:atf-policy/wireless-rf-cfg:policy-weight,leaf,uint8
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:atf-policies/wireless-rf-cfg:atf-policy/wireless-rf-cfg:client-sharing,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-tags,container,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-tags/wireless-rf-cfg:rf-tag,list,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-tags/wireless-rf-cfg:rf-tag/wireless-rf-cfg:tag-name,leaf,string
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-tags/wireless-rf-cfg:rf-tag/wireless-rf-cfg:description,leaf,string
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-tags/wireless-rf-cfg:rf-tag/wireless-rf-cfg:dot11a-rf-profile-name,leaf,string
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-tags/wireless-rf-cfg:rf-tag/wireless-rf-cfg:dot11b-rf-profile-name,leaf,string
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles,container,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile,list,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:name,leaf,string
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:description,leaf,string
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:tx-power-min,leaf,int8
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:tx-power-max,leaf,int8
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:tx-power-v1-threshold,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:tx-power-v2-threshold,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:status,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:band,leaf,wireless-types:enm-ewlc-dot11-radio-band
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:data-rate-1m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:data-rate-2m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:data-rate-5-5m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:data-rate-11m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:data-rate-6m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:data-rate-9m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:data-rate-12m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:data-rate-18m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:data-rate-24m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:data-rate-36m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:data-rate-48m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:data-rate-54m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:coverage-data-packet-rssi-threshold,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:min-num-clients,leaf,int32
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:coverage-voice-packet-rssi-threshold,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:exception-level,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:band-select-client-rssi,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:band-select-client-mid-rssi,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:band-select-cycle-count,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:band-select-cycle-threshold,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:band-select-age-out-dual-band,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:band-select-age-out-suppression,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:band-select-probe-response,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:dca-contribution-interference,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:rf-dca-chan-width,leaf,wireless-enum-types:rf-dca-chan-width
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:load-balancing-window,leaf,uint32
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:load-balancing-denial-count,leaf,uint32
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:trap-threshold-clients,leaf,uint32
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:trap-threshold-interference,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:trap-threshold-noise,leaf,int32
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:trap-threshold-utilization,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:max-radio-clients,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:multicast-data-rate,leaf,wireless-enum-types:enm-multicast-data-rate
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:rx-sen-sop-threshold,leaf,wireless-types:rx-sen-sop-threshold-level
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:rx-sen-sop-custom,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:client-network-preference,leaf,wireless-types:enm-client-network-preference
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:hsr-mode,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:hsr-neighbor-timeout,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:opt-roam-rssi-treshold,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:opt-roam-rssi-check-enable,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:atf-oper-mode,leaf,wireless-enum-types:apf-ate-mode
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:atf-optimization,leaf,wireless-enum-types:apf-ate-stealing-policy
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:bridge-client-access,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:airtime-allocation,leaf,uint8
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:client-aware-fra,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:client-select-threshold,leaf,uint8
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:client-reset-threshold,leaf,uint8
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:rf-mcs-entries,container,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:rf-mcs-entries/wireless-rf-cfg:rf-mcs-entry,list,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:rf-mcs-entries/wireless-rf-cfg:rf-mcs-entry/wireless-rf-cfg:rf-index,leaf,uint8
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:rf-mcs-entries/wireless-rf-cfg:rf-mcs-entry/wireless-rf-cfg:rf-80211n-mcs-enable,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:rf-dca-allowed-channels,container,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:rf-dca-allowed-channels/wireless-rf-cfg:rf-dca-allowed-channel,list,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:rf-dca-allowed-channels/wireless-rf-cfg:rf-dca-allowed-channel/wireless-rf-cfg:channel,leaf,uint32
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:rfdca-removed-channels,container,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:rfdca-removed-channels/wireless-rf-cfg:rfdca-removed-channel,list,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profiles/wireless-rf-cfg:rf-profile/wireless-rf-cfg:rfdca-removed-channels/wireless-rf-cfg:rfdca-removed-channel/wireless-rf-cfg:channel,leaf,uint32
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries,container,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry,list,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:band,leaf,wireless-types:enm-ewlc-dot11-radio-band
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:name,leaf,string
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:description,leaf,string
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:tx-power-min,leaf,int8
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:tx-power-max,leaf,int8
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:tx-power-v1-threshold,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:tx-power-v2-threshold,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:status,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:data-rate-1m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:data-rate-2m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:data-rate-5-5m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:data-rate-11m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:data-rate-6m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:data-rate-9m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:data-rate-12m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:data-rate-18m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:data-rate-24m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:data-rate-36m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:data-rate-48m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:data-rate-54m,leaf,wireless-enum-types:rate-state
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:coverage-data-packet-rssi-threshold,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:min-num-clients,leaf,int32
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:coverage-voice-packet-rssi-threshold,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:exception-level,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:band-select-client-rssi,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:band-select-client-mid-rssi,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:band-select-cycle-count,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:band-select-cycle-threshold,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:band-select-age-out-dual-band,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:band-select-age-out-suppression,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:band-select-probe-response,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:dca-contribution-interference,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:rf-dca-chan-width,leaf,wireless-enum-types:rf-dca-chan-width
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:load-balancing-window,leaf,uint32
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:load-balancing-denial-count,leaf,uint32
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:trap-threshold-clients,leaf,uint32
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:trap-threshold-interference,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:trap-threshold-noise,leaf,int32
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:trap-threshold-utilization,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:max-radio-clients,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:multicast-data-rate,leaf,wireless-enum-types:enm-multicast-data-rate
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:rx-sen-sop-threshold,leaf,wireless-types:rx-sen-sop-threshold-level
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:rx-sen-sop-custom,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:client-network-preference,leaf,wireless-types:enm-client-network-preference
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:hsr-mode,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:hsr-neighbor-timeout,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:opt-roam-rssi-treshold,leaf,int16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:opt-roam-rssi-check-enable,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:atf-oper-mode,leaf,wireless-enum-types:apf-ate-mode
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:atf-optimization,leaf,wireless-enum-types:apf-ate-stealing-policy
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:bridge-client-access,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:airtime-allocation,leaf,uint8
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:client-aware-fra,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:client-select-threshold,leaf,uint8
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:client-reset-threshold,leaf,uint8
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:rf-mcs-default-entries,container,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:rf-mcs-default-entries/wireless-rf-cfg:rf-mcs-default-entry,list,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:rf-mcs-default-entries/wireless-rf-cfg:rf-mcs-default-entry/wireless-rf-cfg:rf-index,leaf,uint8
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:rf-mcs-default-entries/wireless-rf-cfg:rf-mcs-default-entry/wireless-rf-cfg:mcs-data-rate,leaf,uint16
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:rf-mcs-default-entries/wireless-rf-cfg:rf-mcs-default-entry/wireless-rf-cfg:rf-80211n-mcs-enable,leaf,boolean
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:rf-dca-allowed-channels-default-entries,container,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:rf-dca-allowed-channels-default-entries/wireless-rf-cfg:rf-dca-allowed-channel-default-entry,list,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:rf-dca-allowed-channels-default-entries/wireless-rf-cfg:rf-dca-allowed-channel-default-entry/wireless-rf-cfg:channel,leaf,uint32
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:rf-dca-removed-channels-default-entries,container,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:rf-dca-removed-channels-default-entries/wireless-rf-cfg:rf-dca-removed-channels-default-entry,list,
+/wireless-rf-cfg:rf-cfg-data/wireless-rf-cfg:rf-profile-default-entries/wireless-rf-cfg:rf-profile-default-entry/wireless-rf-cfg:rf-dca-removed-channels-default-entries/wireless-rf-cfg:rf-dca-removed-channels-default-entry/wireless-rf-cfg:channel,leaf,uint32

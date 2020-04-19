@@ -1,0 +1,70 @@
+
+KPI for model: Cisco-IOS-XE-wireless-tunnel-cfg.yang
+module: Cisco-IOS-XE-wireless-tunnel-cfg
+  +--rw wireless-tunnel-cfg
+     +--rw tunnel-profiles
+     |  +--rw tunnel-profile* [name]
+     |     +--rw name                string
+     |     +--rw cfg
+     |     |  +--rw status?                 boolean
+     |     |  +--rw aaa-override?           boolean
+     |     |  +--rw aaa-proxy?              boolean
+     |     |  +--rw aaa-accounting-proxy?   boolean
+     |     |  +--rw opt82-enable?           boolean
+     |     |  +--rw opt82-ascii?            boolean
+     |     |  +--rw opt82-delimiter?        string
+     |     |  +--rw central-fwd?            boolean
+     |     +--rw opt82-circuit-id?   string
+     |     +--rw opt82-remote-id?    string
+     |     +--rw rules
+     |        +--rw rule* [priority]
+     |           +--rw priority    uint32
+     |           +--rw cfg
+     |              +--rw realm?         string
+     |              +--rw vlan-id?       uint32
+     |              +--rw domain-name?   string
+     +--rw tunnel-domain-cfgs
+     |  +--rw tunnel-domain-cfg* [name type]
+     +--rw eogre-global-cfg
+     |  +--rw heartbeat-interval?         uint32
+     |  +--rw heartbeat-max-skip-count?   uint32
+     |  +--rw interface-name?             string
+     +--rw eogre-tunnel-aaa-proxy-keys
+        +--rw eogre-tunnel-aaa-proxy-key* [interface-name]
+           +--rw interface-name    string
+           +--rw aaa-key           string
+           +--rw aaa-key-type?     wireless-enum-types:crypt-type
+Xpaths for model: Cisco-IOS-XE-wireless-tunnel-cfg.yang
+/wireless-tunnel-cfg:wireless-tunnel-cfg,container,
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles,container,
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile,list,
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:name,leaf,string
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:cfg,container,
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:cfg/wireless-tunnel-cfg:status,leaf,boolean
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:cfg/wireless-tunnel-cfg:aaa-override,leaf,boolean
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:cfg/wireless-tunnel-cfg:aaa-proxy,leaf,boolean
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:cfg/wireless-tunnel-cfg:aaa-accounting-proxy,leaf,boolean
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:cfg/wireless-tunnel-cfg:opt82-enable,leaf,boolean
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:cfg/wireless-tunnel-cfg:opt82-ascii,leaf,boolean
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:cfg/wireless-tunnel-cfg:opt82-delimiter,leaf,string
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:cfg/wireless-tunnel-cfg:central-fwd,leaf,boolean
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:opt82-circuit-id,leaf,string
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:opt82-remote-id,leaf,string
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:rules,container,
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:rules/wireless-tunnel-cfg:rule,list,
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:rules/wireless-tunnel-cfg:rule/wireless-tunnel-cfg:priority,leaf,uint32
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:rules/wireless-tunnel-cfg:rule/wireless-tunnel-cfg:cfg,container,
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:rules/wireless-tunnel-cfg:rule/wireless-tunnel-cfg:cfg/wireless-tunnel-cfg:realm,leaf,string
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:rules/wireless-tunnel-cfg:rule/wireless-tunnel-cfg:cfg/wireless-tunnel-cfg:vlan-id,leaf,uint32
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-profiles/wireless-tunnel-cfg:tunnel-profile/wireless-tunnel-cfg:rules/wireless-tunnel-cfg:rule/wireless-tunnel-cfg:cfg/wireless-tunnel-cfg:domain-name,leaf,string
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-domain-cfgs,container,
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:tunnel-domain-cfgs/wireless-tunnel-cfg:tunnel-domain-cfg,list,
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:eogre-global-cfg,container,
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:eogre-global-cfg/wireless-tunnel-cfg:heartbeat-interval,leaf,uint32
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:eogre-global-cfg/wireless-tunnel-cfg:heartbeat-max-skip-count,leaf,uint32
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:eogre-global-cfg/wireless-tunnel-cfg:interface-name,leaf,string
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:eogre-tunnel-aaa-proxy-keys,container,
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:eogre-tunnel-aaa-proxy-keys/wireless-tunnel-cfg:eogre-tunnel-aaa-proxy-key,list,
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:eogre-tunnel-aaa-proxy-keys/wireless-tunnel-cfg:eogre-tunnel-aaa-proxy-key/wireless-tunnel-cfg:interface-name,leaf,string
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:eogre-tunnel-aaa-proxy-keys/wireless-tunnel-cfg:eogre-tunnel-aaa-proxy-key/wireless-tunnel-cfg:aaa-key,leaf,string
+/wireless-tunnel-cfg:wireless-tunnel-cfg/wireless-tunnel-cfg:eogre-tunnel-aaa-proxy-keys/wireless-tunnel-cfg:eogre-tunnel-aaa-proxy-key/wireless-tunnel-cfg:aaa-key-type,leaf,wireless-enum-types:crypt-type

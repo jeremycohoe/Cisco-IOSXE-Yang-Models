@@ -1,0 +1,22 @@
+
+KPI for model: Cisco-IOS-XE-wireless-cts-sxp-oper.yang
+module: Cisco-IOS-XE-wireless-cts-sxp-oper
+  +--ro cts-sxp-oper-data
+     +--ro flex-mode-ap-sxp-connection-status* [wtp-mac peer-ip conn-mode]
+        +--ro wtp-mac          yang:mac-address
+        +--ro peer-ip          inet:ip-address
+        +--ro conn-mode        uint8
+        +--ro src-ip?          inet:ip-address
+        +--ro nego-version?    uint8
+        +--ro conn-status?     uint8
+        +--ro password-type?   wireless-types:enm-cts-sxp-password-type
+Xpaths for model: Cisco-IOS-XE-wireless-cts-sxp-oper.yang
+/wireless-oper-cts-sxp:cts-sxp-oper-data,container,
+/wireless-oper-cts-sxp:cts-sxp-oper-data/wireless-oper-cts-sxp:flex-mode-ap-sxp-connection-status,list,
+/wireless-oper-cts-sxp:cts-sxp-oper-data/wireless-oper-cts-sxp:flex-mode-ap-sxp-connection-status/wireless-oper-cts-sxp:wtp-mac,leaf,yang:mac-address
+/wireless-oper-cts-sxp:cts-sxp-oper-data/wireless-oper-cts-sxp:flex-mode-ap-sxp-connection-status/wireless-oper-cts-sxp:peer-ip,leaf,inet:ip-address
+/wireless-oper-cts-sxp:cts-sxp-oper-data/wireless-oper-cts-sxp:flex-mode-ap-sxp-connection-status/wireless-oper-cts-sxp:conn-mode,leaf,uint8
+/wireless-oper-cts-sxp:cts-sxp-oper-data/wireless-oper-cts-sxp:flex-mode-ap-sxp-connection-status/wireless-oper-cts-sxp:src-ip,leaf,inet:ip-address
+/wireless-oper-cts-sxp:cts-sxp-oper-data/wireless-oper-cts-sxp:flex-mode-ap-sxp-connection-status/wireless-oper-cts-sxp:nego-version,leaf,uint8
+/wireless-oper-cts-sxp:cts-sxp-oper-data/wireless-oper-cts-sxp:flex-mode-ap-sxp-connection-status/wireless-oper-cts-sxp:conn-status,leaf,uint8
+/wireless-oper-cts-sxp:cts-sxp-oper-data/wireless-oper-cts-sxp:flex-mode-ap-sxp-connection-status/wireless-oper-cts-sxp:password-type,leaf,wireless-types:enm-cts-sxp-password-type

@@ -1,0 +1,28 @@
+
+KPI for model: Cisco-IOS-XE-wireless-location-oper.yang
+module: Cisco-IOS-XE-wireless-location-oper
+  +--ro location-oper-data
+     +--ro location-rssi-measurements* [client-mac-addr lrad-addr]
+        +--ro client-mac-addr       yang:mac-address
+        +--ro lrad-addr             yang:mac-address
+        +--ro radio-measurements* []
+           +--ro band?     wireless-rrm-types:enm-rrm-phy-type
+           +--ro type?     wireless-location-oper:source-type
+           +--ro sample
+           |  +--ro rssi-value-a?     int8
+           |  +--ro rssi-value-b?     int8
+           |  +--ro rssi-timestamp?   yang:date-and-time
+           +--ro snr?      int8
+Xpaths for model: Cisco-IOS-XE-wireless-location-oper.yang
+/wireless-location-oper:location-oper-data,container,
+/wireless-location-oper:location-oper-data/wireless-location-oper:location-rssi-measurements,list,
+/wireless-location-oper:location-oper-data/wireless-location-oper:location-rssi-measurements/wireless-location-oper:client-mac-addr,leaf,yang:mac-address
+/wireless-location-oper:location-oper-data/wireless-location-oper:location-rssi-measurements/wireless-location-oper:lrad-addr,leaf,yang:mac-address
+/wireless-location-oper:location-oper-data/wireless-location-oper:location-rssi-measurements/wireless-location-oper:radio-measurements,list,
+/wireless-location-oper:location-oper-data/wireless-location-oper:location-rssi-measurements/wireless-location-oper:radio-measurements/wireless-location-oper:band,leaf,wireless-rrm-types:enm-rrm-phy-type
+/wireless-location-oper:location-oper-data/wireless-location-oper:location-rssi-measurements/wireless-location-oper:radio-measurements/wireless-location-oper:type,leaf,wireless-location-oper:source-type
+/wireless-location-oper:location-oper-data/wireless-location-oper:location-rssi-measurements/wireless-location-oper:radio-measurements/wireless-location-oper:sample,container,
+/wireless-location-oper:location-oper-data/wireless-location-oper:location-rssi-measurements/wireless-location-oper:radio-measurements/wireless-location-oper:sample/wireless-location-oper:rssi-value-a,leaf,int8
+/wireless-location-oper:location-oper-data/wireless-location-oper:location-rssi-measurements/wireless-location-oper:radio-measurements/wireless-location-oper:sample/wireless-location-oper:rssi-value-b,leaf,int8
+/wireless-location-oper:location-oper-data/wireless-location-oper:location-rssi-measurements/wireless-location-oper:radio-measurements/wireless-location-oper:sample/wireless-location-oper:rssi-timestamp,leaf,yang:date-and-time
+/wireless-location-oper:location-oper-data/wireless-location-oper:location-rssi-measurements/wireless-location-oper:radio-measurements/wireless-location-oper:snr,leaf,int8

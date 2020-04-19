@@ -1,0 +1,38 @@
+
+KPI for model: Cisco-IOS-XE-wireless-awips-oper.yang
+module: Cisco-IOS-XE-wireless-awips-oper
+  +--ro awips-oper-data
+     +--ro awips-alarm* [alarm-timestamp ap-mac alarm-id client-mac-addr msg-indx]
+     |  +--ro version?           uint32
+     |  +--ro signature-id?      uint32
+     |  +--ro alarm-string?      string
+     |  +--ro dev-context
+     |  |  +--ro context-id?       wireless-oper-awips:ap-awips-context-id
+     |  |  +--ro context-string?   binary
+     |  +--ro alarm-timestamp    yang:date-and-time
+     |  +--ro ap-mac             yang:mac-address
+     |  +--ro alarm-id           uint32
+     |  +--ro client-mac-addr    yang:mac-address
+     |  +--ro msg-indx           uint32
+     +--ro awips-per-ap-info* [ap-mac]
+        +--ro ap-mac          yang:mac-address
+        +--ro awips-status?   wireless-oper-awips:ap-awips-status
+        +--ro alarm-count?    uint64
+Xpaths for model: Cisco-IOS-XE-wireless-awips-oper.yang
+/wireless-oper-awips:awips-oper-data,container,
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-alarm,list,
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-alarm/wireless-oper-awips:version,leaf,uint32
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-alarm/wireless-oper-awips:signature-id,leaf,uint32
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-alarm/wireless-oper-awips:alarm-string,leaf,string
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-alarm/wireless-oper-awips:dev-context,container,
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-alarm/wireless-oper-awips:dev-context/wireless-oper-awips:context-id,leaf,wireless-oper-awips:ap-awips-context-id
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-alarm/wireless-oper-awips:dev-context/wireless-oper-awips:context-string,leaf,binary
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-alarm/wireless-oper-awips:alarm-timestamp,leaf,yang:date-and-time
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-alarm/wireless-oper-awips:ap-mac,leaf,yang:mac-address
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-alarm/wireless-oper-awips:alarm-id,leaf,uint32
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-alarm/wireless-oper-awips:client-mac-addr,leaf,yang:mac-address
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-alarm/wireless-oper-awips:msg-indx,leaf,uint32
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-per-ap-info,list,
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-per-ap-info/wireless-oper-awips:ap-mac,leaf,yang:mac-address
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-per-ap-info/wireless-oper-awips:awips-status,leaf,wireless-oper-awips:ap-awips-status
+/wireless-oper-awips:awips-oper-data/wireless-oper-awips:awips-per-ap-info/wireless-oper-awips:alarm-count,leaf,uint64

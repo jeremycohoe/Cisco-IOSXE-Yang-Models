@@ -1,0 +1,252 @@
+
+KPI for model: Cisco-IOS-XE-wireless-mdns-oper.yang
+module: Cisco-IOS-XE-wireless-mdns-oper
+  +--ro mdns-oper-data
+     +--ro mdns-global-stats!
+     |  +--ro stats-global
+     |  |  +--ro pak-sent?                yang:counter64
+     |  |  +--ro pak-sent-v4?             yang:counter64
+     |  |  +--ro pak-sent-advt-v4?        yang:counter64
+     |  |  +--ro pak-sent-query-v4?       yang:counter64
+     |  |  +--ro pak-sent-v6?             yang:counter64
+     |  |  +--ro pak-sent-advt-v6?        yang:counter64
+     |  |  +--ro pak-sent-query-v6?       yang:counter64
+     |  |  +--ro pak-sent-mcast?          yang:counter64
+     |  |  +--ro pak-sent-mcast-v4?       yang:counter64
+     |  |  +--ro pak-sent-mcast-v6?       yang:counter64
+     |  |  +--ro pak-received?            yang:counter64
+     |  |  +--ro pak-received-advt?       yang:counter64
+     |  |  +--ro pak-received-query?      yang:counter64
+     |  |  +--ro pak-received-v4?         yang:counter64
+     |  |  +--ro pak-received-advt-v4?    yang:counter64
+     |  |  +--ro pak-received-query-v4?   yang:counter64
+     |  |  +--ro pak-received-v6?         yang:counter64
+     |  |  +--ro pak-received-advt-v6?    yang:counter64
+     |  |  +--ro pak-received-query-v6?   yang:counter64
+     |  |  +--ro pak-dropped?             yang:counter64
+     |  |  +--ro ptr-query?               yang:counter64
+     |  |  +--ro srv-query?               yang:counter64
+     |  |  +--ro a-query?                 yang:counter64
+     |  |  +--ro aaaa-query?              yang:counter64
+     |  |  +--ro txt-query?               yang:counter64
+     |  |  +--ro any-query?               yang:counter64
+     |  |  +--ro other-query?             yang:counter64
+     |  +--ro last-clear-time?   yang:date-and-time
+     +--ro mdns-wlan-stats* [wlan-id]
+     |  +--ro wlan-id            uint32
+     |  +--ro stats-wlan
+     |  |  +--ro pak-sent?                yang:counter64
+     |  |  +--ro pak-sent-v4?             yang:counter64
+     |  |  +--ro pak-sent-advt-v4?        yang:counter64
+     |  |  +--ro pak-sent-query-v4?       yang:counter64
+     |  |  +--ro pak-sent-v6?             yang:counter64
+     |  |  +--ro pak-sent-advt-v6?        yang:counter64
+     |  |  +--ro pak-sent-query-v6?       yang:counter64
+     |  |  +--ro pak-sent-mcast?          yang:counter64
+     |  |  +--ro pak-sent-mcast-v4?       yang:counter64
+     |  |  +--ro pak-sent-mcast-v6?       yang:counter64
+     |  |  +--ro pak-received?            yang:counter64
+     |  |  +--ro pak-received-advt?       yang:counter64
+     |  |  +--ro pak-received-query?      yang:counter64
+     |  |  +--ro pak-received-v4?         yang:counter64
+     |  |  +--ro pak-received-advt-v4?    yang:counter64
+     |  |  +--ro pak-received-query-v4?   yang:counter64
+     |  |  +--ro pak-received-v6?         yang:counter64
+     |  |  +--ro pak-received-advt-v6?    yang:counter64
+     |  |  +--ro pak-received-query-v6?   yang:counter64
+     |  |  +--ro pak-dropped?             yang:counter64
+     |  |  +--ro ptr-query?               yang:counter64
+     |  |  +--ro srv-query?               yang:counter64
+     |  |  +--ro a-query?                 yang:counter64
+     |  |  +--ro aaaa-query?              yang:counter64
+     |  |  +--ro txt-query?               yang:counter64
+     |  |  +--ro any-query?               yang:counter64
+     |  |  +--ro other-query?             yang:counter64
+     |  +--ro last-clear-time?   yang:date-and-time
+     +--ro mdns-rlan-stats* [rlan-id]
+     |  +--ro rlan-id            uint32
+     |  +--ro stats-rlan
+     |  |  +--ro pak-sent?                yang:counter64
+     |  |  +--ro pak-sent-v4?             yang:counter64
+     |  |  +--ro pak-sent-advt-v4?        yang:counter64
+     |  |  +--ro pak-sent-query-v4?       yang:counter64
+     |  |  +--ro pak-sent-v6?             yang:counter64
+     |  |  +--ro pak-sent-advt-v6?        yang:counter64
+     |  |  +--ro pak-sent-query-v6?       yang:counter64
+     |  |  +--ro pak-sent-mcast?          yang:counter64
+     |  |  +--ro pak-sent-mcast-v4?       yang:counter64
+     |  |  +--ro pak-sent-mcast-v6?       yang:counter64
+     |  |  +--ro pak-received?            yang:counter64
+     |  |  +--ro pak-received-advt?       yang:counter64
+     |  |  +--ro pak-received-query?      yang:counter64
+     |  |  +--ro pak-received-v4?         yang:counter64
+     |  |  +--ro pak-received-advt-v4?    yang:counter64
+     |  |  +--ro pak-received-query-v4?   yang:counter64
+     |  |  +--ro pak-received-v6?         yang:counter64
+     |  |  +--ro pak-received-advt-v6?    yang:counter64
+     |  |  +--ro pak-received-query-v6?   yang:counter64
+     |  |  +--ro pak-dropped?             yang:counter64
+     |  |  +--ro ptr-query?               yang:counter64
+     |  |  +--ro srv-query?               yang:counter64
+     |  |  +--ro a-query?                 yang:counter64
+     |  |  +--ro aaaa-query?              yang:counter64
+     |  |  +--ro txt-query?               yang:counter64
+     |  |  +--ro any-query?               yang:counter64
+     |  |  +--ro other-query?             yang:counter64
+     |  +--ro last-clear-time?   yang:date-and-time
+     +--ro mdns-glan-stats* [glan-id]
+        +--ro glan-id            uint32
+        +--ro stats-glan
+        |  +--ro pak-sent?                yang:counter64
+        |  +--ro pak-sent-v4?             yang:counter64
+        |  +--ro pak-sent-advt-v4?        yang:counter64
+        |  +--ro pak-sent-query-v4?       yang:counter64
+        |  +--ro pak-sent-v6?             yang:counter64
+        |  +--ro pak-sent-advt-v6?        yang:counter64
+        |  +--ro pak-sent-query-v6?       yang:counter64
+        |  +--ro pak-sent-mcast?          yang:counter64
+        |  +--ro pak-sent-mcast-v4?       yang:counter64
+        |  +--ro pak-sent-mcast-v6?       yang:counter64
+        |  +--ro pak-received?            yang:counter64
+        |  +--ro pak-received-advt?       yang:counter64
+        |  +--ro pak-received-query?      yang:counter64
+        |  +--ro pak-received-v4?         yang:counter64
+        |  +--ro pak-received-advt-v4?    yang:counter64
+        |  +--ro pak-received-query-v4?   yang:counter64
+        |  +--ro pak-received-v6?         yang:counter64
+        |  +--ro pak-received-advt-v6?    yang:counter64
+        |  +--ro pak-received-query-v6?   yang:counter64
+        |  +--ro pak-dropped?             yang:counter64
+        |  +--ro ptr-query?               yang:counter64
+        |  +--ro srv-query?               yang:counter64
+        |  +--ro a-query?                 yang:counter64
+        |  +--ro aaaa-query?              yang:counter64
+        |  +--ro txt-query?               yang:counter64
+        |  +--ro any-query?               yang:counter64
+        |  +--ro other-query?             yang:counter64
+        +--ro last-clear-time?   yang:date-and-time
+Xpaths for model: Cisco-IOS-XE-wireless-mdns-oper.yang
+/mdns-oper:mdns-oper-data,container,
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats,container,
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global,container,
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-sent,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-sent-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-sent-advt-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-sent-query-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-sent-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-sent-advt-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-sent-query-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-sent-mcast,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-sent-mcast-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-sent-mcast-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-received,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-received-advt,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-received-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-received-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-received-advt-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-received-query-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-received-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-received-advt-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-received-query-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:pak-dropped,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:ptr-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:srv-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:a-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:aaaa-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:txt-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:any-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:stats-global/mdns-oper:other-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-global-stats/mdns-oper:last-clear-time,leaf,yang:date-and-time
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats,list,
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:wlan-id,leaf,uint32
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan,container,
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-sent,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-sent-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-sent-advt-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-sent-query-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-sent-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-sent-advt-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-sent-query-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-sent-mcast,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-sent-mcast-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-sent-mcast-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-received,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-received-advt,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-received-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-received-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-received-advt-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-received-query-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-received-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-received-advt-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-received-query-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:pak-dropped,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:ptr-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:srv-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:a-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:aaaa-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:txt-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:any-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:stats-wlan/mdns-oper:other-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-wlan-stats/mdns-oper:last-clear-time,leaf,yang:date-and-time
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats,list,
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:rlan-id,leaf,uint32
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan,container,
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-sent,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-sent-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-sent-advt-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-sent-query-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-sent-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-sent-advt-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-sent-query-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-sent-mcast,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-sent-mcast-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-sent-mcast-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-received,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-received-advt,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-received-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-received-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-received-advt-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-received-query-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-received-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-received-advt-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-received-query-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:pak-dropped,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:ptr-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:srv-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:a-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:aaaa-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:txt-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:any-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:stats-rlan/mdns-oper:other-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-rlan-stats/mdns-oper:last-clear-time,leaf,yang:date-and-time
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats,list,
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:glan-id,leaf,uint32
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan,container,
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-sent,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-sent-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-sent-advt-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-sent-query-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-sent-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-sent-advt-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-sent-query-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-sent-mcast,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-sent-mcast-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-sent-mcast-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-received,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-received-advt,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-received-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-received-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-received-advt-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-received-query-v4,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-received-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-received-advt-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-received-query-v6,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:pak-dropped,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:ptr-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:srv-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:a-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:aaaa-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:txt-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:any-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:stats-glan/mdns-oper:other-query,leaf,yang:counter64
+/mdns-oper:mdns-oper-data/mdns-oper:mdns-glan-stats/mdns-oper:last-clear-time,leaf,yang:date-and-time

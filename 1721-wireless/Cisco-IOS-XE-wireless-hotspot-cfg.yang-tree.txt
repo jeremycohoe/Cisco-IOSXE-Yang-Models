@@ -1,0 +1,198 @@
+
+KPI for model: Cisco-IOS-XE-wireless-hotspot-cfg.yang
+module: Cisco-IOS-XE-wireless-hotspot-cfg
+  +--rw hotspot-cfg-data
+     +--rw hotspot-anqp-server-configs
+     |  +--rw hotspot-anqp-server-config* [server-name]
+     |     +--rw server-name                       string
+     |     +--rw description?                      string
+     |     +--rw server-settings
+     |     |  +--rw gas-request-timeout?       uint16
+     |     |  +--rw fragmentation-threshold?   uint16
+     |     +--rw beacon-params
+     |     |  +--rw internet-enabled?         wireless-hotspot-cfg:enum-hotspot-network-access
+     |     |  +--rw network-type?             wireless-hotspot-cfg:enum-hotspot-network-type
+     |     |  +--rw group-type?               wireless-hotspot-cfg:enum-hotspot-venue-group-type
+     |     |  +--rw hessid?                   yang:mac-address
+     |     |  +--rw anqp-domain-id?           uint16
+     |     |  +--rw anqp-domain-id-present?   empty
+     |     +--rw ipv4-type?                        wireless-hotspot-cfg:enum-hotspot-ipv4-addr-type
+     |     +--rw ipv6-type?                        wireless-hotspot-cfg:enum-hotspot-ipv6-addr-type
+     |     +--rw wan-metrics
+     |     |  +--rw downlink-speed?              uint32
+     |     |  +--rw uplink-speed?                uint32
+     |     |  +--rw downlink-load?               uint8
+     |     |  +--rw uplink-load?                 uint8
+     |     |  +--rw load-measurement-duration?   uint16
+     |     |  +--rw link-status?                 wireless-hotspot-cfg:enum-hotspot-link-status
+     |     |  +--rw full-capacity-link?          boolean
+     |     +--rw osu-ssid?                         string
+     |     +--rw roaming-elements
+     |     |  +--rw roaming-element* [roaming-element]
+     |     |     +--rw is-beacon?         boolean
+     |     |     +--rw roaming-element    string
+     |     +--rw network-auth-types
+     |     |  +--rw network-auth-type* [type]
+     |     |     +--rw type    wireless-hotspot-cfg:enum-hotspot-network-authentication-type
+     |     |     +--rw url?    string
+     |     +--rw domain-names
+     |     |  +--rw domain-name* [name]
+     |     |     +--rw name    string
+     |     +--rw venue-names
+     |     |  +--rw venue-name* [language]
+     |     |     +--rw language    string
+     |     |     +--rw name        string
+     |     |     +--rw url?        string
+     |     +--rw nai-realms
+     |     |  +--rw nai-realm* [nai-realm]
+     |     |     +--rw nai-realm      string
+     |     |     +--rw eap-methods
+     |     |        +--rw eap-method* [eap-method]
+     |     |           +--rw eap-method     wireless-hotspot-cfg:enum-hotspot-eap-method-type
+     |     |           +--rw auth-params
+     |     |              +--rw auth-param* [eap-auth-type-key]
+     |     |                 +--rw eap-auth-type-key         wireless-hotspot-cfg:enum-hotspot-authentication-param-type
+     |     |                 +--rw non-eap-inner-value?      wireless-hotspot-cfg:enum-hotspot-non-eap-inner-auth-type
+     |     |                 +--rw inner-eap-method-value?   wireless-hotspot-cfg:enum-hotspot-eap-method-type
+     |     |                 +--rw credential-value?         wireless-hotspot-cfg:enum-hotspot-credential-type
+     |     |                 +--rw tunnel-value?             wireless-hotspot-cfg:enum-hotspot-tunneled-eap-credential-type
+     |     +--rw hotspot-3gpp-cellular-networks
+     |     |  +--rw hotspot-3gpp-cellular-network* [mcc mnc]
+     |     |     +--rw mcc    string
+     |     |     +--rw mnc    string
+     |     +--rw operator-friendly-names
+     |     |  +--rw operator-friendly-name* [language]
+     |     |     +--rw language    string
+     |     |     +--rw name        string
+     |     +--rw operating-classes
+     |     |  +--rw operating-class* [class-id]
+     |     |     +--rw class-id    uint8
+     |     +--rw osu-providers
+     |     |  +--rw osu-provider* [osu-provider-name]
+     |     |     +--rw osu-methods
+     |     |     |  +--rw primary-method-type?     wireless-hotspot-cfg:enum-osu-method-type
+     |     |     |  +--rw secondary-method-type?   wireless-hotspot-cfg:enum-osu-method-type
+     |     |     +--rw osu-provider-name     string
+     |     |     +--rw osu-server-uri?       string
+     |     |     +--rw osu-nai?              string
+     |     |     +--rw osu-friendly-names
+     |     |     |  +--rw osu-friendly-name* [language]
+     |     |     |     +--rw language       string
+     |     |     |     +--rw name           string
+     |     |     |     +--rw description?   string
+     |     |     +--rw osu-icons
+     |     |        +--rw osu-icon* [filename]
+     |     |           +--rw filename    string
+     |     +--rw connection-capabilities
+     |        +--rw connection-capability* [port-number ip-protocol]
+     |           +--rw status?        wireless-hotspot-cfg:enum-hotspot-connection-status-type
+     |           +--rw port-number    uint16
+     |           +--rw ip-protocol    uint8
+     +--rw hotspot-icons
+     |  +--rw hotspot-icon* [filename]
+     |     +--rw width        uint16
+     |     +--rw height       uint16
+     |     +--rw filename     string
+     |     +--rw path         string
+     |     +--rw language     string
+     |     +--rw icon-type    string
+     +--rw hotspot-global-config!
+        +--rw max-gas-req-per-sec?   uint16
+Xpaths for model: Cisco-IOS-XE-wireless-hotspot-cfg.yang
+/wireless-hotspot-cfg:hotspot-cfg-data,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:server-name,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:description,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:server-settings,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:server-settings/wireless-hotspot-cfg:gas-request-timeout,leaf,uint16
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:server-settings/wireless-hotspot-cfg:fragmentation-threshold,leaf,uint16
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:beacon-params,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:beacon-params/wireless-hotspot-cfg:internet-enabled,leaf,wireless-hotspot-cfg:enum-hotspot-network-access
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:beacon-params/wireless-hotspot-cfg:network-type,leaf,wireless-hotspot-cfg:enum-hotspot-network-type
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:beacon-params/wireless-hotspot-cfg:group-type,leaf,wireless-hotspot-cfg:enum-hotspot-venue-group-type
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:beacon-params/wireless-hotspot-cfg:hessid,leaf,yang:mac-address
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:beacon-params/wireless-hotspot-cfg:anqp-domain-id,leaf,uint16
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:beacon-params/wireless-hotspot-cfg:anqp-domain-id-present,leaf,empty
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:ipv4-type,leaf,wireless-hotspot-cfg:enum-hotspot-ipv4-addr-type
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:ipv6-type,leaf,wireless-hotspot-cfg:enum-hotspot-ipv6-addr-type
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:wan-metrics,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:wan-metrics/wireless-hotspot-cfg:downlink-speed,leaf,uint32
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:wan-metrics/wireless-hotspot-cfg:uplink-speed,leaf,uint32
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:wan-metrics/wireless-hotspot-cfg:downlink-load,leaf,uint8
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:wan-metrics/wireless-hotspot-cfg:uplink-load,leaf,uint8
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:wan-metrics/wireless-hotspot-cfg:load-measurement-duration,leaf,uint16
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:wan-metrics/wireless-hotspot-cfg:link-status,leaf,wireless-hotspot-cfg:enum-hotspot-link-status
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:wan-metrics/wireless-hotspot-cfg:full-capacity-link,leaf,boolean
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-ssid,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:roaming-elements,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:roaming-elements/wireless-hotspot-cfg:roaming-element,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:roaming-elements/wireless-hotspot-cfg:roaming-element/wireless-hotspot-cfg:is-beacon,leaf,boolean
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:roaming-elements/wireless-hotspot-cfg:roaming-element/wireless-hotspot-cfg:roaming-element,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:network-auth-types,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:network-auth-types/wireless-hotspot-cfg:network-auth-type,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:network-auth-types/wireless-hotspot-cfg:network-auth-type/wireless-hotspot-cfg:type,leaf,wireless-hotspot-cfg:enum-hotspot-network-authentication-type
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:network-auth-types/wireless-hotspot-cfg:network-auth-type/wireless-hotspot-cfg:url,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:domain-names,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:domain-names/wireless-hotspot-cfg:domain-name,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:domain-names/wireless-hotspot-cfg:domain-name/wireless-hotspot-cfg:name,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:venue-names,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:venue-names/wireless-hotspot-cfg:venue-name,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:venue-names/wireless-hotspot-cfg:venue-name/wireless-hotspot-cfg:language,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:venue-names/wireless-hotspot-cfg:venue-name/wireless-hotspot-cfg:name,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:venue-names/wireless-hotspot-cfg:venue-name/wireless-hotspot-cfg:url,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:nai-realms,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:nai-realms/wireless-hotspot-cfg:nai-realm,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:nai-realms/wireless-hotspot-cfg:nai-realm/wireless-hotspot-cfg:nai-realm,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:nai-realms/wireless-hotspot-cfg:nai-realm/wireless-hotspot-cfg:eap-methods,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:nai-realms/wireless-hotspot-cfg:nai-realm/wireless-hotspot-cfg:eap-methods/wireless-hotspot-cfg:eap-method,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:nai-realms/wireless-hotspot-cfg:nai-realm/wireless-hotspot-cfg:eap-methods/wireless-hotspot-cfg:eap-method/wireless-hotspot-cfg:eap-method,leaf,wireless-hotspot-cfg:enum-hotspot-eap-method-type
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:nai-realms/wireless-hotspot-cfg:nai-realm/wireless-hotspot-cfg:eap-methods/wireless-hotspot-cfg:eap-method/wireless-hotspot-cfg:auth-params,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:nai-realms/wireless-hotspot-cfg:nai-realm/wireless-hotspot-cfg:eap-methods/wireless-hotspot-cfg:eap-method/wireless-hotspot-cfg:auth-params/wireless-hotspot-cfg:auth-param,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:nai-realms/wireless-hotspot-cfg:nai-realm/wireless-hotspot-cfg:eap-methods/wireless-hotspot-cfg:eap-method/wireless-hotspot-cfg:auth-params/wireless-hotspot-cfg:auth-param/wireless-hotspot-cfg:eap-auth-type-key,leaf,wireless-hotspot-cfg:enum-hotspot-authentication-param-type
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:nai-realms/wireless-hotspot-cfg:nai-realm/wireless-hotspot-cfg:eap-methods/wireless-hotspot-cfg:eap-method/wireless-hotspot-cfg:auth-params/wireless-hotspot-cfg:auth-param/wireless-hotspot-cfg:non-eap-inner-value,leaf,wireless-hotspot-cfg:enum-hotspot-non-eap-inner-auth-type
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:nai-realms/wireless-hotspot-cfg:nai-realm/wireless-hotspot-cfg:eap-methods/wireless-hotspot-cfg:eap-method/wireless-hotspot-cfg:auth-params/wireless-hotspot-cfg:auth-param/wireless-hotspot-cfg:inner-eap-method-value,leaf,wireless-hotspot-cfg:enum-hotspot-eap-method-type
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:nai-realms/wireless-hotspot-cfg:nai-realm/wireless-hotspot-cfg:eap-methods/wireless-hotspot-cfg:eap-method/wireless-hotspot-cfg:auth-params/wireless-hotspot-cfg:auth-param/wireless-hotspot-cfg:credential-value,leaf,wireless-hotspot-cfg:enum-hotspot-credential-type
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:nai-realms/wireless-hotspot-cfg:nai-realm/wireless-hotspot-cfg:eap-methods/wireless-hotspot-cfg:eap-method/wireless-hotspot-cfg:auth-params/wireless-hotspot-cfg:auth-param/wireless-hotspot-cfg:tunnel-value,leaf,wireless-hotspot-cfg:enum-hotspot-tunneled-eap-credential-type
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:hotspot-3gpp-cellular-networks,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:hotspot-3gpp-cellular-networks/wireless-hotspot-cfg:hotspot-3gpp-cellular-network,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:hotspot-3gpp-cellular-networks/wireless-hotspot-cfg:hotspot-3gpp-cellular-network/wireless-hotspot-cfg:mcc,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:hotspot-3gpp-cellular-networks/wireless-hotspot-cfg:hotspot-3gpp-cellular-network/wireless-hotspot-cfg:mnc,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:operator-friendly-names,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:operator-friendly-names/wireless-hotspot-cfg:operator-friendly-name,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:operator-friendly-names/wireless-hotspot-cfg:operator-friendly-name/wireless-hotspot-cfg:language,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:operator-friendly-names/wireless-hotspot-cfg:operator-friendly-name/wireless-hotspot-cfg:name,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:operating-classes,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:operating-classes/wireless-hotspot-cfg:operating-class,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:operating-classes/wireless-hotspot-cfg:operating-class/wireless-hotspot-cfg:class-id,leaf,uint8
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers/wireless-hotspot-cfg:osu-provider,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers/wireless-hotspot-cfg:osu-provider/wireless-hotspot-cfg:osu-methods,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers/wireless-hotspot-cfg:osu-provider/wireless-hotspot-cfg:osu-methods/wireless-hotspot-cfg:primary-method-type,leaf,wireless-hotspot-cfg:enum-osu-method-type
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers/wireless-hotspot-cfg:osu-provider/wireless-hotspot-cfg:osu-methods/wireless-hotspot-cfg:secondary-method-type,leaf,wireless-hotspot-cfg:enum-osu-method-type
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers/wireless-hotspot-cfg:osu-provider/wireless-hotspot-cfg:osu-provider-name,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers/wireless-hotspot-cfg:osu-provider/wireless-hotspot-cfg:osu-server-uri,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers/wireless-hotspot-cfg:osu-provider/wireless-hotspot-cfg:osu-nai,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers/wireless-hotspot-cfg:osu-provider/wireless-hotspot-cfg:osu-friendly-names,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers/wireless-hotspot-cfg:osu-provider/wireless-hotspot-cfg:osu-friendly-names/wireless-hotspot-cfg:osu-friendly-name,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers/wireless-hotspot-cfg:osu-provider/wireless-hotspot-cfg:osu-friendly-names/wireless-hotspot-cfg:osu-friendly-name/wireless-hotspot-cfg:language,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers/wireless-hotspot-cfg:osu-provider/wireless-hotspot-cfg:osu-friendly-names/wireless-hotspot-cfg:osu-friendly-name/wireless-hotspot-cfg:name,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers/wireless-hotspot-cfg:osu-provider/wireless-hotspot-cfg:osu-friendly-names/wireless-hotspot-cfg:osu-friendly-name/wireless-hotspot-cfg:description,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers/wireless-hotspot-cfg:osu-provider/wireless-hotspot-cfg:osu-icons,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers/wireless-hotspot-cfg:osu-provider/wireless-hotspot-cfg:osu-icons/wireless-hotspot-cfg:osu-icon,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:osu-providers/wireless-hotspot-cfg:osu-provider/wireless-hotspot-cfg:osu-icons/wireless-hotspot-cfg:osu-icon/wireless-hotspot-cfg:filename,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:connection-capabilities,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:connection-capabilities/wireless-hotspot-cfg:connection-capability,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:connection-capabilities/wireless-hotspot-cfg:connection-capability/wireless-hotspot-cfg:status,leaf,wireless-hotspot-cfg:enum-hotspot-connection-status-type
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:connection-capabilities/wireless-hotspot-cfg:connection-capability/wireless-hotspot-cfg:port-number,leaf,uint16
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-anqp-server-configs/wireless-hotspot-cfg:hotspot-anqp-server-config/wireless-hotspot-cfg:connection-capabilities/wireless-hotspot-cfg:connection-capability/wireless-hotspot-cfg:ip-protocol,leaf,uint8
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-icons,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-icons/wireless-hotspot-cfg:hotspot-icon,list,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-icons/wireless-hotspot-cfg:hotspot-icon/wireless-hotspot-cfg:width,leaf,uint16
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-icons/wireless-hotspot-cfg:hotspot-icon/wireless-hotspot-cfg:height,leaf,uint16
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-icons/wireless-hotspot-cfg:hotspot-icon/wireless-hotspot-cfg:filename,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-icons/wireless-hotspot-cfg:hotspot-icon/wireless-hotspot-cfg:path,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-icons/wireless-hotspot-cfg:hotspot-icon/wireless-hotspot-cfg:language,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-icons/wireless-hotspot-cfg:hotspot-icon/wireless-hotspot-cfg:icon-type,leaf,string
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-global-config,container,
+/wireless-hotspot-cfg:hotspot-cfg-data/wireless-hotspot-cfg:hotspot-global-config/wireless-hotspot-cfg:max-gas-req-per-sec,leaf,uint16

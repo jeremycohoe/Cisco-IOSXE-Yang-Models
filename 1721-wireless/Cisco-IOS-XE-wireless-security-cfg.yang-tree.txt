@@ -1,0 +1,36 @@
+
+KPI for model: Cisco-IOS-XE-wireless-security-cfg.yang
+module: Cisco-IOS-XE-wireless-security-cfg
+  +--rw lsc-cfg-data
+     +--rw lsc-prov!
+     |  +--rw status?         wireless-types:lsc-prov-status
+     |  +--rw key-size?       wireless-types:enum-ewlc-lsc-key-size
+     |  +--rw join-attempt?   uint32
+     |  +--rw country?        string
+     |  +--rw state?          string
+     |  +--rw city?           string
+     |  +--rw domain?         string
+     |  +--rw org?            string
+     |  +--rw email-addr?     string
+     |  +--rw sig-256?        boolean
+     |  +--rw lsc-tp-name?    string
+     +--rw lsc-provision-entries
+        +--rw lsc-provision-entry* [ap-mac]
+           +--rw ap-mac    yang:mac-address
+Xpaths for model: Cisco-IOS-XE-wireless-security-cfg.yang
+/wireless-security-cfg:lsc-cfg-data,container,
+/wireless-security-cfg:lsc-cfg-data/wireless-security-cfg:lsc-prov,container,
+/wireless-security-cfg:lsc-cfg-data/wireless-security-cfg:lsc-prov/wireless-security-cfg:status,leaf,wireless-types:lsc-prov-status
+/wireless-security-cfg:lsc-cfg-data/wireless-security-cfg:lsc-prov/wireless-security-cfg:key-size,leaf,wireless-types:enum-ewlc-lsc-key-size
+/wireless-security-cfg:lsc-cfg-data/wireless-security-cfg:lsc-prov/wireless-security-cfg:join-attempt,leaf,uint32
+/wireless-security-cfg:lsc-cfg-data/wireless-security-cfg:lsc-prov/wireless-security-cfg:country,leaf,string
+/wireless-security-cfg:lsc-cfg-data/wireless-security-cfg:lsc-prov/wireless-security-cfg:state,leaf,string
+/wireless-security-cfg:lsc-cfg-data/wireless-security-cfg:lsc-prov/wireless-security-cfg:city,leaf,string
+/wireless-security-cfg:lsc-cfg-data/wireless-security-cfg:lsc-prov/wireless-security-cfg:domain,leaf,string
+/wireless-security-cfg:lsc-cfg-data/wireless-security-cfg:lsc-prov/wireless-security-cfg:org,leaf,string
+/wireless-security-cfg:lsc-cfg-data/wireless-security-cfg:lsc-prov/wireless-security-cfg:email-addr,leaf,string
+/wireless-security-cfg:lsc-cfg-data/wireless-security-cfg:lsc-prov/wireless-security-cfg:sig-256,leaf,boolean
+/wireless-security-cfg:lsc-cfg-data/wireless-security-cfg:lsc-prov/wireless-security-cfg:lsc-tp-name,leaf,string
+/wireless-security-cfg:lsc-cfg-data/wireless-security-cfg:lsc-provision-entries,container,
+/wireless-security-cfg:lsc-cfg-data/wireless-security-cfg:lsc-provision-entries/wireless-security-cfg:lsc-provision-entry,list,
+/wireless-security-cfg:lsc-cfg-data/wireless-security-cfg:lsc-provision-entries/wireless-security-cfg:lsc-provision-entry/wireless-security-cfg:ap-mac,leaf,yang:mac-address

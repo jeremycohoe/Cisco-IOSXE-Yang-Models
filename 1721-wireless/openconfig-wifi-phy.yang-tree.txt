@@ -1,0 +1,122 @@
+
+KPI for model: openconfig-wifi-phy.yang
+module: openconfig-wifi-phy
+  +--rw radios
+     +--rw radio* [id]
+        +--rw id           -> ../config/id
+        +--rw config
+        |  +--rw id?                       uint8
+        |  +--rw operating-frequency?      identityref
+        |  +--rw enabled?                  boolean
+        |  +--rw transmit-power?           uint8
+        |  +--rw channel?                  uint8
+        |  +--rw channel-width?            uint8
+        |  +--rw dca?                      boolean
+        |  +--rw allowed-channels*         oc-wifi-types:channels-type
+        |  +--rw dtp?                      boolean
+        |  +--rw dtp-min?                  int8
+        |  +--rw dtp-max?                  int8
+        |  +--rw antenna-gain?             int8
+        |  +--rw scanning?                 boolean
+        |  +--rw scanning-interval?        uint8
+        |  +--rw scanning-dwell-time?      uint16
+        |  +--rw scanning-defer-clients?   uint8
+        |  +--rw scanning-defer-traffic?   boolean
+        +--ro state
+        |  +--ro id?                             uint8
+        |  +--ro operating-frequency?            identityref
+        |  +--ro enabled?                        boolean
+        |  +--ro transmit-power?                 uint8
+        |  +--ro channel?                        uint8
+        |  +--ro channel-width?                  uint8
+        |  +--ro dca?                            boolean
+        |  +--ro allowed-channels*               oc-wifi-types:channels-type
+        |  +--ro dtp?                            boolean
+        |  +--ro dtp-min?                        int8
+        |  +--ro dtp-max?                        int8
+        |  +--ro antenna-gain?                   int8
+        |  +--ro scanning?                       boolean
+        |  +--ro scanning-interval?              uint8
+        |  +--ro scanning-dwell-time?            uint16
+        |  +--ro scanning-defer-clients?         uint8
+        |  +--ro scanning-defer-traffic?         boolean
+        |  +--ro base-radio-mac?                 oc-yang:mac-address
+        |  +--ro dfs-hit-time?                   oc-types:timeticks64
+        |  +--ro channel-change-reason?          identityref
+        |  +--ro total-channel-utilization?      oc-types:percentage
+        |  +--ro rx-dot11-channel-utilization?   oc-types:percentage
+        |  +--ro rx-noise-channel-utilization?   oc-types:percentage
+        |  +--ro tx-dot11-channel-utilization?   oc-types:percentage
+        |  +--ro counters
+        |     +--ro failed-fcs-frames?   oc-yang:counter64
+        |     +--ro noise-floor?         int8
+        +--rw neighbors
+           +--ro neighbor* [bssid]
+              +--ro bssid    -> ../state/bssid
+              +--ro state
+                 +--ro bssid?             oc-yang:mac-address
+                 +--ro ssid?              string
+                 +--ro rssi?              int8
+                 +--ro channel?           uint16
+                 +--ro primary-channel?   uint16
+                 +--ro last-seen?         oc-types:timeticks64
+Xpaths for model: openconfig-wifi-phy.yang
+/oc-wifi-phy:radios,container,
+/oc-wifi-phy:radios/oc-wifi-phy:radio,list,
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:id,leaf,leafref
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config,container,
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:id,leaf,uint8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:operating-frequency,leaf,identityref
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:enabled,leaf,boolean
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:transmit-power,leaf,uint8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:channel,leaf,uint8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:channel-width,leaf,uint8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:dca,leaf,boolean
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:allowed-channels,leaf-list,oc-wifi-types:channels-type
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:dtp,leaf,boolean
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:dtp-min,leaf,int8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:dtp-max,leaf,int8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:antenna-gain,leaf,int8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:scanning,leaf,boolean
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:scanning-interval,leaf,uint8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:scanning-dwell-time,leaf,uint16
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:scanning-defer-clients,leaf,uint8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:config/oc-wifi-phy:scanning-defer-traffic,leaf,boolean
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state,container,
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:id,leaf,uint8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:operating-frequency,leaf,identityref
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:enabled,leaf,boolean
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:transmit-power,leaf,uint8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:channel,leaf,uint8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:channel-width,leaf,uint8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:dca,leaf,boolean
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:allowed-channels,leaf-list,oc-wifi-types:channels-type
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:dtp,leaf,boolean
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:dtp-min,leaf,int8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:dtp-max,leaf,int8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:antenna-gain,leaf,int8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:scanning,leaf,boolean
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:scanning-interval,leaf,uint8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:scanning-dwell-time,leaf,uint16
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:scanning-defer-clients,leaf,uint8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:scanning-defer-traffic,leaf,boolean
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:base-radio-mac,leaf,oc-yang:mac-address
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:dfs-hit-time,leaf,oc-types:timeticks64
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:channel-change-reason,leaf,identityref
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:total-channel-utilization,leaf,oc-types:percentage
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:rx-dot11-channel-utilization,leaf,oc-types:percentage
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:rx-noise-channel-utilization,leaf,oc-types:percentage
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:tx-dot11-channel-utilization,leaf,oc-types:percentage
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:counters,container,
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:counters/oc-wifi-phy:failed-fcs-frames,leaf,oc-yang:counter64
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:state/oc-wifi-phy:counters/oc-wifi-phy:noise-floor,leaf,int8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:neighbors,container,
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:neighbors/oc-wifi-phy:neighbor,list,
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:neighbors/oc-wifi-phy:neighbor/oc-wifi-phy:bssid,leaf,leafref
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:neighbors/oc-wifi-phy:neighbor/oc-wifi-phy:state,container,
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:neighbors/oc-wifi-phy:neighbor/oc-wifi-phy:state/oc-wifi-phy:bssid,leaf,oc-yang:mac-address
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:neighbors/oc-wifi-phy:neighbor/oc-wifi-phy:state/oc-wifi-phy:ssid,leaf,string
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:neighbors/oc-wifi-phy:neighbor/oc-wifi-phy:state/oc-wifi-phy:rssi,leaf,int8
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:neighbors/oc-wifi-phy:neighbor/oc-wifi-phy:state/oc-wifi-phy:channel,leaf,uint16
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:neighbors/oc-wifi-phy:neighbor/oc-wifi-phy:state/oc-wifi-phy:primary-channel,leaf,uint16
+/oc-wifi-phy:radios/oc-wifi-phy:radio/oc-wifi-phy:neighbors/oc-wifi-phy:neighbor/oc-wifi-phy:state/oc-wifi-phy:last-seen,leaf,oc-types:timeticks64
